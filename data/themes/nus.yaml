@@ -1,0 +1,41 @@
+# HugoBlox Theme Pack
+
+hugoblox:
+  meta:
+    format: "hugoblox-theme@1"
+    name: "NUS"
+    vendor: "WING-NUS"
+    version: "1.0.0"
+    license: "MIT"
+
+  type: "dual"
+
+  light:
+    colors:
+      primary: "#EF7C00"
+      secondary: "#003D7C"
+      neutral: "#111827"
+    surfaces:
+      background: "#f7fafc"
+      foreground: "#111827"
+      header:
+        background: "#ffffff"
+        foreground: "#061323"
+      footer:
+        background: "#061323"
+        foreground: "#f8fafc"
+
+  dark:
+    colors:
+      primary: "#EF7C00"
+      secondary: "#4A90D9"
+      neutral: "#111827"
+    surfaces:
+      background: "#061323"
+      foreground: "#f8fafc"
+      header:
+        background: "#061323"
+        foreground: "#f8fafc"
+      footer:
+        background: "#030914"
+        foreground: "#dbeafe"

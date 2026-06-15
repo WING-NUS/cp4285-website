@@ -1,0 +1,32 @@
+# HugoBlox Font Pack
+
+hugoblox:
+  meta:
+    format: "hugoblox-font@1"
+    name: "Arial"
+    vendor: "WING-NUS"
+    version: "1.0.0"
+    license: "MIT"
+    description: "Arial-first sans serif typography with no external font requests."
+
+  families:
+    heading: "system-sans"
+    body: "system-sans"
+    code: "system-mono"
+    nav: "system-sans"
+
+  weights:
+    heading: [700, 800]
+    body: [400, 700]
+    code: [400]
+    nav: [700]
+
+  leading:
+    heading: 1.15
+    body: 1.6
+    code: 1.5
+
+  tracking:
+    heading: "0"
+    body: "0"
+    caps: "0.04em"
