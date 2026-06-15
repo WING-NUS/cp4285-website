@@ -1,7 +1,7 @@
 [build]
   command = """
     set -e
-    echo "=== Starting CS4285 website build process ==="
+    echo "=== Starting CP4285 website build process ==="
     echo "Node version: $(node --version)"
     echo "pnpm version: $(pnpm --version)"
     echo "Hugo version: $(hugo version)"

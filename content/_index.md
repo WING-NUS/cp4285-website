@@ -7,7 +7,7 @@ sections:
   - block: hero
     content:
       title: "CP4285: Modern Recommendation Systems"
-      text: Emerging Topics in Computer Science V. Course documentation, weekly materials, assignment briefs, and policies for Modern Recommendation Systems at the National University of Singapore.
+      text: Emerging Topics in Computer Science V. Algorithms, evaluation, and responsible design for modern recommender systems.
       primary_action:
         text: Open Docs
         url: /docs/

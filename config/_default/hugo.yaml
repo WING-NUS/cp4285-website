@@ -5,7 +5,7 @@
 
 # Website name (set in params.yaml under hugoblox.identity.name)
 title: 'CP4285: Modern Recommendation Systems'
-baseURL: 'https://wing-nus.github.io/cs4285-website/'
+baseURL: 'https://wing-nus.github.io/cp4285/'
 
 ############################
 ## PAGE OPTIONS

@@ -1,4 +1,4 @@
-module github.com/WING-NUS/cs4285-website
+module github.com/WING-NUS/cp4285
 
 go 1.19
 

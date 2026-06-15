@@ -230,7 +230,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   repository:
     enable: true
-    url: "https://github.com/WING-NUS/cs4285-website"
+    url: "https://github.com/WING-NUS/cp4285"
     branch: main
     content_dir: content
 
