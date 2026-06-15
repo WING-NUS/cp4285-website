@@ -1,13 +1,13 @@
 ---
-title: 'CS4285'
+title: 'CS4285: Modern Recommendation Systems'
 date: 2026-06-15
 type: landing
 
 sections:
   - block: hero
     content:
-      title: CS4285
-      text: Course documentation, weekly materials, assignment briefs, and policies for students at the National University of Singapore.
+      title: "CS4285: Modern Recommendation Systems"
+      text: Course documentation, weekly materials, assignment briefs, and policies for Modern Recommendation Systems at the National University of Singapore.
       primary_action:
         text: Open Docs
         url: /docs/
@@ -18,7 +18,7 @@ sections:
       announcement:
         text: "NUS School of Computing"
         link:
-          text: "Course documentation hub"
+          text: "Modern Recommendation Systems"
           url: "/docs/"
     design:
       spacing:

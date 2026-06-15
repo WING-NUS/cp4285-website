@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@10.14.0",
-  "description": "CS4285 documentation website built with Hugo Blox",
+  "description": "CS4285 Modern Recommendation Systems documentation website built with Hugo Blox",
   "scripts": {
     "dev": "hugo server --disableFastRender",
     "build": "hugo --minify && pnpm run pagefind",

@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 # Website name (set in params.yaml under hugoblox.identity.name)
-title: 'CS4285'
+title: 'CS4285: Modern Recommendation Systems'
 baseURL: 'https://wing-nus.github.io/cs4285-website/'
 
 ############################

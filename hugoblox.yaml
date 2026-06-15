@@ -5,4 +5,4 @@ deploy:
   host: 'github-pages'
 template:
   id: "documentation"
-  name: "CS4285 Documentation"
+  name: "CS4285: Modern Recommendation Systems"

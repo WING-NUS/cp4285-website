@@ -3,7 +3,7 @@ title: Resources
 weight: 40
 ---
 
-Use this page to collect readings, tools, datasets, and external references used in CS4285.
+Use this page to collect readings, tools, datasets, and external references used in CS4285 Modern Recommendation Systems.
 
 ## Reading List
 

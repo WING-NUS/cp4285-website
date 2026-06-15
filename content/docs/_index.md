@@ -1,9 +1,9 @@
 ---
 linkTitle: Docs
-title: CS4285 Documentation
+title: "CS4285: Modern Recommendation Systems"
 ---
 
-Welcome to the CS4285 documentation site. Use this space for course materials, weekly plans, assignments, and policies.
+Welcome to the CS4285 Modern Recommendation Systems documentation site. Use this space for course materials, weekly plans, assignments, and policies.
 
 <!--more-->
 
