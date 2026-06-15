@@ -41,6 +41,12 @@ If you only want to validate Hugo configuration and module resolution:
 hugo config
 ```
 
+## Deployment
+
+GitHub Pages deployment is handled by `.github/workflows/deploy.yml`.
+
+The workflow runs on pushes to `main` and can also be started manually from the GitHub Actions tab. It builds the Hugo site, generates the Pagefind search index, and deploys `public/` to GitHub Pages.
+
 ## Content
 
 Course pages live in `content/docs/`. The homepage is configured in `content/_index.md`.
