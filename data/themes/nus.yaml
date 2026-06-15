@@ -12,18 +12,18 @@ hugoblox:
 
   light:
     colors:
-      primary: "#EF7C00"
+      primary: "#D66D00"
       secondary: "#003D7C"
-      neutral: "#111827"
+      neutral: "#334155"
     surfaces:
-      background: "#f7fafc"
-      foreground: "#111827"
+      background: "#F8FAFC"
+      foreground: "#172033"
       header:
-        background: "#ffffff"
+        background: "#FFFFFF"
         foreground: "#061323"
       footer:
-        background: "#061323"
-        foreground: "#f8fafc"
+        background: "#003D7C"
+        foreground: "#F8FAFC"
 
   dark:
     colors:

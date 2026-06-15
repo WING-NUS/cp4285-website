@@ -1,6 +1,6 @@
-# CS4285: Modern Recommendation Systems Website
+# CP4285: Modern Recommendation Systems Website
 
-Documentation website for CS4285: Modern Recommendation Systems at the National University of Singapore.
+Documentation website for CP4285: Modern Recommendation Systems, Emerging Topics in Computer Science V, at the National University of Singapore.
 
 The site is built with the Hugo Blox Documentation template and customized with:
 

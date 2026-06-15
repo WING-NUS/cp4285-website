@@ -13,15 +13,15 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   identity:
     # Site name - shown in navbar, footer, copyright, and browser title by default
-    name: "CS4285: Modern Recommendation Systems"
+    name: "CP4285: Modern Recommendation Systems"
     # Legal entity for copyright notices (defaults to name if not set)
     organization: "National University of Singapore"
     # Schema.org type for structured data
     type: organization # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: "Modern Recommendation Systems"
+    tagline: "Emerging Topics in Computer Science V"
     # Site meta description for search engines and social sharing
-    description: "CS4285 Modern Recommendation Systems course documentation, schedules, assignments, and policies for students at the National University of Singapore."
+    description: "CP4285 Modern Recommendation Systems, Emerging Topics in Computer Science V, course documentation, schedules, assignments, and policies for students at the National University of Singapore."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
       twitter: "" # Twitter/X handle for Twitter Cards (without @)

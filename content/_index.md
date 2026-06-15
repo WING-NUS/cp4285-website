@@ -1,13 +1,13 @@
 ---
-title: 'CS4285: Modern Recommendation Systems'
+title: 'CP4285: Modern Recommendation Systems'
 date: 2026-06-15
 type: landing
 
 sections:
   - block: hero
     content:
-      title: "CS4285: Modern Recommendation Systems"
-      text: Course documentation, weekly materials, assignment briefs, and policies for Modern Recommendation Systems at the National University of Singapore.
+      title: "CP4285: Modern Recommendation Systems"
+      text: Emerging Topics in Computer Science V. Course documentation, weekly materials, assignment briefs, and policies for Modern Recommendation Systems at the National University of Singapore.
       primary_action:
         text: Open Docs
         url: /docs/
@@ -18,7 +18,7 @@ sections:
       announcement:
         text: "NUS School of Computing"
         link:
-          text: "Modern Recommendation Systems"
+          text: "Emerging Topics in Computer Science V"
           url: "/docs/"
     design:
       spacing:
@@ -46,7 +46,7 @@ sections:
           icon: folder-open
           description: Reading lists, tools, datasets, and links used throughout the course.
     design:
-      css_class: "bg-gray-950"
+      css_class: "bg-slate-50 dark:bg-gray-950"
   - block: cta-card
     content:
       title: Start With The Documentation
