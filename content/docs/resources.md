@@ -1,6 +1,6 @@
 ---
 title: Resources
-weight: 40
+weight: 50
 ---
 
 Use this page to collect readings, tools, datasets, and external references used in CP4285 Modern Recommendation Systems.

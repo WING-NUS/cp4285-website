@@ -3,18 +3,27 @@ title: Assignments
 weight: 20
 ---
 
-Use this page as the index for coursework.
+Coursework is organized around steady participation, written critique, project work, and short checks on core concepts. The final exam assesses individual understanding across the semester.
 
-## Assignment Briefs
+## Coursework Components
 
-{{< cards >}}
-  {{< card title="Assignment 1" icon="document-text" subtitle="Add scope, due date, and submission instructions." >}}
-  {{< card title="Project" icon="users" subtitle="Add team formation, milestones, and presentation details." >}}
-{{< /cards >}}
+| Component | Weightage | Description |
+| --- | ---: | --- |
+| Class Participation | 10% | Active contribution to seminars, project critique, peer feedback, and in-class discussion. |
+| Essays | 20% | Short written analyses of recommender-system methods, evaluation choices, and social implications. |
+| Project / Group Project | 30% | Team project covering problem formulation, dataset preparation, baselines, model design, evaluation, error analysis, ethical analysis, and final presentation. |
+| Quizzes / Tests | 10% | Short checks on foundational concepts, metrics, and model design choices. |
+| Final Exam | 30% | Individual final examination covering the full course. |
+
+## Project Milestones
+
+| Milestone | Timing | Purpose |
+| --- | --- | --- |
+| Project Design Critique | Week 7 | Teams present the application domain, dataset, user problem, recommendation objective, baselines, evaluation plan, and ethical risks. |
+| Final Project Presentation | Week 13 | Teams present the implemented recommender, evaluation results, error analysis, ethical analysis, and future improvements. |
 
 ## Submission Notes
 
-- State where work should be submitted.
-- List accepted file formats.
-- Describe any required repository, report, or presentation structure.
-- Clarify how extensions and late submissions are handled.
+- Submission channels, file formats, and deadlines will be announced by the teaching team.
+- Group submissions should clearly state each member's contribution.
+- Written work should include enough methodological detail for the teaching team to assess assumptions, implementation choices, evaluation design, and ethical reasoning.

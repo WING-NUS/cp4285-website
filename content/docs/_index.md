@@ -24,6 +24,7 @@ By the end of the course, students should be able to:
 {{< cards >}}
   {{< card url="schedule" title="Schedule" icon="calendar-days" subtitle="Weekly topics, milestones, and important dates." >}}
   {{< card url="assignments" title="Assignments" icon="clipboard-document-check" subtitle="Submission briefs and grading expectations." >}}
+  {{< card url="grading" title="Grading" icon="chart-bar" subtitle="Assessment components, weights, and final exam weighting." >}}
   {{< card url="policies" title="Policies" icon="shield-check" subtitle="Course conduct, late work, and communication." >}}
   {{< card url="resources" title="Resources" icon="folder-open" subtitle="Readings, datasets, tools, and references." >}}
 {{< /cards >}}

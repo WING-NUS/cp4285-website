@@ -1,6 +1,6 @@
 ---
 title: Policies
-weight: 30
+weight: 40
 ---
 
 Use this page for policies that students should be able to find quickly.

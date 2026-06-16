@@ -7,7 +7,7 @@ sections:
   - block: hero
     content:
       title: "CP4285: Modern Recommendation Systems"
-      text: Emerging Topics in Computer Science V. Algorithms, evaluation, and responsible design for modern recommender systems.
+      text: Emerging Topics in Computer Science V. Foundations, project critique, modern recommender methods, and final presentations.
       primary_action:
         text: Open Docs
         url: /docs/
@@ -30,30 +30,30 @@ sections:
   - block: features
     id: docs
     content:
-      title: Course Hub
-      text: Keep the site organized around the material students need most often during the semester.
+      title: Course Rhythm
+      text: The semester moves from foundations into project critique, then advanced methods and final presentations.
       items:
-        - name: Weekly Schedule
+        - name: "Weeks 1-6: Foundations"
           icon: calendar-days
-          description: Lecture topics, tutorial flow, project milestones, and important dates.
-        - name: Assignments
-          icon: clipboard-document-check
-          description: Briefs, expectations, submission notes, and grading guidance.
-        - name: Course Policies
+          description: Recommendation tasks, latent factors, evaluation, neural models, sequence models, and retrieval-ranking architectures.
+        - name: "Week 7: Design Review"
           icon: shield-check
-          description: Academic integrity, communication norms, late policy, and support channels.
-        - name: Resources
-          icon: folder-open
-          description: Reading lists, tools, datasets, and links used throughout the course.
+          description: Teams critique project domains, datasets, objectives, baselines, evaluation plans, feasibility, and ethical risks.
+        - name: "Weeks 8-12: Modern Recommenders"
+          icon: chart-bar
+          description: Learning-to-rank, graph recommendation, multi-objective systems, online learning, LLMs, and research frontiers.
+        - name: "Week 13: Project Showcase"
+          icon: presentation-chart-bar
+          description: Final project presentations integrate technical design, evaluation results, error analysis, and ethical analysis.
     design:
       css_class: "bg-slate-50 dark:bg-gray-950"
   - block: cta-card
     content:
-      title: Start With The Documentation
-      text: The docs section is the source of truth for course materials and can be extended one Markdown page at a time.
+      title: Start With The Schedule
+      text: The schedule is the anchor for weekly topics, project milestones, critique, presentations, reading week, and the final exam.
       button:
-        text: Browse Docs
-        url: /docs/
+        text: View Schedule
+        url: /docs/schedule/
     design:
       card:
         css_class: "bg-primary-700"

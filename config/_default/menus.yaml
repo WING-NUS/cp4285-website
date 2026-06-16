@@ -14,9 +14,12 @@ main:
   - name: Assignments
     url: docs/assignments/
     weight: 40
+  - name: Grading
+    url: docs/grading/
+    weight: 50
   - name: Policies
     url: docs/policies/
-    weight: 50
+    weight: 60
 
 sidebar:
   - identifier: more
