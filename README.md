@@ -1,4 +1,4 @@
-# CP4285: Modern Recommendation Systems Website
+# CP4285 Website
 
 Documentation website for CP4285: Modern Recommendation Systems, Emerging Topics in Computer Science V, at the National University of Singapore.
 
