@@ -27,6 +27,10 @@ hugo_stats.json
 
 # Dependencies
 node_modules/
+.pnpm-store/
+
+# Local Hugo/Tailwind executable wrapper
+.hugo-bin/
 
 # ============================================================================
 # Environment & Configuration

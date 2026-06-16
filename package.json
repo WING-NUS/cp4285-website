@@ -5,8 +5,8 @@
   "packageManager": "pnpm@10.14.0",
   "description": "CP4285 Modern Recommendation Systems documentation website built with Hugo Blox",
   "scripts": {
-    "dev": "hugo server --disableFastRender",
-    "build": "hugo --minify && pnpm run pagefind",
+    "dev": "node scripts/hugo-with-tailwind.mjs server --disableFastRender",
+    "build": "node scripts/hugo-with-tailwind.mjs --minify && pnpm run pagefind",
     "pagefind": "pagefind --site public"
   },
   "dependencies": {
