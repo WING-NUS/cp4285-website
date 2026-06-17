@@ -15,14 +15,37 @@ Workload: [(2-0-0-3-5)](https://nusmods.com/courses/CP4285/emerging-topics-in-co
 
 By the end of the course, students should be able to:
 
-- **CLO 1**: Explain and compare classical recommendation methods, including collaborative filtering, content-based filtering, and hybrid approaches.
-- **CLO 2**: Implement matrix factorization and neural recommendation models using modern deep learning frameworks.
-- **CLO 3**: Design and execute rigorous offline evaluation protocols using appropriate ranking metrics.
-- **CLO 4**: Analyse the cold-start problem and propose strategies to address it.
-- **CLO 5**: Critique recommender systems from fairness, privacy, transparency, and stakeholder impact perspectives.
-- **CLO 6**: Explain advanced recommendation architectures including sequential, graph-based, multi-objective, and LLM-enhanced systems.
-- **CLO 7**: Design and justify a complete recommendation system pipeline from problem formulation through evaluation and ethical analysis.
-- **CLO 8**: Communicate and defend recommendation-system designs and results to a technical audience.
+| CLO | Outcome |
+| :-- | :--- |
+| **CLO 1** | Explain and compare classical recommendation methods, including collaborative filtering, content-based filtering, and hybrid approaches. |
+| **CLO 2** | Implement matrix factorization and neural recommendation models using modern deep learning frameworks. |
+| **CLO 3** | Design and execute rigorous offline evaluation protocols using appropriate ranking metrics. |
+| **CLO 4** | Analyse the cold-start problem and propose strategies to address it. |
+| **CLO 5** | Critique recommender systems from fairness, privacy, transparency, and stakeholder impact perspectives. |
+| **CLO 6** | Explain advanced recommendation architectures including sequential, graph-based, multi-objective, and LLM-enhanced systems. |
+| **CLO 7** | Design and justify a complete recommendation system pipeline from problem formulation through evaluation and ethical analysis. |
+| **CLO 8** | Communicate and defend recommendation-system designs and results to a technical audience. |
+
+## CLO–Week Mapping
+
+The table below shows which CLOs are addressed in each teaching week.
+
+| Week | Topic | CLOs |
+| :--- | :--- | :--- |
+| **Week 1** | Recommendation Problems & Classical Methods | CLO 1, CLO 4 |
+| **Week 2** | Latent Factor Models | CLO 1, CLO 2, CLO 4 |
+| **Week 3** | Evaluation of Recommendation Systems | CLO 3, CLO 5 |
+| **Week 4** | Neural Recommendation Models | CLO 2, CLO 5, CLO 6 |
+| **Week 5** | Sequential & Session-Based Recommendation | CLO 5, CLO 6 |
+| **Week 6** | Retrieval & Ranking Architectures | CLO 5, CLO 6, CLO 7 |
+| **Recess** | No Class | — |
+| **Week 7** | Project Design Critique Workshop | CLO 3, CLO 5, CLO 7, CLO 8 |
+| **Week 8** | Learning-to-Rank | CLO 3, CLO 5, CLO 6 |
+| **Week 9** | Graph-Based Recommendation | CLO 5, CLO 6 |
+| **Week 10** | Multi-Objective Recommendation | CLO 3, CLO 5, CLO 6 |
+| **Week 11** | Exploration & Online Learning | CLO 5, CLO 6, CLO 7 |
+| **Week 12** | LLMs, Generative Recommendation & Research Frontiers | CLO 5, CLO 6 |
+| **Week 13** | Final Project Presentations | CLO 1–8 (synthesis) |
 
 ## Quick Links
 
