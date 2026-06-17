@@ -190,6 +190,46 @@ a {
   color: #fecdd3;
 }
 
+.course-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.course-schedule-table th,
+.course-schedule-table td {
+  border-bottom: 1px solid color-mix(in srgb, var(--hb-color-border, #d1d5db) 74%, transparent);
+  padding: 0.78rem 0.9rem;
+  vertical-align: top;
+}
+
+.course-schedule-table th {
+  background: color-mix(in srgb, var(--hb-color-primary-50, #eff6ff) 62%, transparent);
+  color: var(--hb-color-heading, #111827);
+  font-weight: 800;
+  text-align: left;
+}
+
+.course-schedule-table .schedule-break-row td {
+  background: color-mix(in srgb, #fef3c7 72%, var(--hb-color-background, #fff));
+}
+
+.course-schedule-table .schedule-exam-row td {
+  background: color-mix(in srgb, #dbeafe 76%, var(--hb-color-background, #fff));
+}
+
+.dark .course-schedule-table th {
+  background: color-mix(in srgb, #1e3a8a 32%, var(--hb-color-background, #030712));
+  color: #f8fafc;
+}
+
+.dark .course-schedule-table .schedule-break-row td {
+  background: color-mix(in srgb, #78350f 34%, var(--hb-color-background, #030712));
+}
+
+.dark .course-schedule-table .schedule-exam-row td {
+  background: color-mix(in srgb, #1e3a8a 38%, var(--hb-color-background, #030712));
+}
+
 .hb-card,
 .card {
   border-radius: 8px;

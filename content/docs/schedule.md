@@ -11,25 +11,120 @@ weight: 10
 
 ## Weekly Schedule
 
-| Week | Date / Period | Focus | Ethics Thread |
-| --- | --- | --- | --- |
-| 1 | Tue, 11 Aug 2026 | Recommendation Problems and Classical Methods | Popularity bias, exposure inequality, platform incentives |
-| 2 | Tue, 18 Aug 2026 | Latent Factor Models | Bias encoded in historical interactions, representation, interpretability |
-| 3 | Tue, 25 Aug 2026 | Evaluation of Recommendation Systems | Metrics as value choices, accuracy versus user welfare |
-| 4 | Tue, 1 Sep 2026 | Neural Recommendation Models | Explainability versus performance, transparency concerns |
-| 5 | Tue, 8 Sep 2026 | Sequential and Session-Based Recommendation | Engagement optimization, behavioral manipulation risks |
-| 6 | Tue, 15 Sep 2026 | Retrieval and Ranking Architectures | Visibility allocation, stakeholder impacts |
-| Recess Week | Tue, 22 Sep 2026 | No class | |
-| 7 | Tue, 29 Sep 2026 | Project Design Critique Workshop | Feasibility, bias, evaluation design, project scope |
-| 8 | Tue, 6 Oct 2026 | Learning-to-Rank | Position bias, fair ranking |
-| 9 | Tue, 13 Oct 2026 | Graph-Based Recommendation | Homophily, echo chambers, community amplification |
-| 10 | Tue, 20 Oct 2026 | Multi-Objective Recommendation | Balancing stakeholder interests |
-| 11 | Tue, 27 Oct 2026 | Exploration and Online Learning | Online experimentation, fair exposure |
-| 12 | Tue, 3 Nov 2026 | LLMs, Generative Recommendation, and Research Frontiers | Trust, hallucination, persuasive AI, governance |
-| 13 | Tue, 10 Nov 2026 | Final Project Presentations | Technical, product, and societal considerations |
-| Reading Week | Sat, 14 Nov 2026-Fri, 20 Nov 2026 | Reading week | |
-| Examination Week 1 | Mon, 23 Nov 2026 | Final exam, 13:00-15:00 SGT, venue to be announced | |
-| Examination Week 2 | Sat, 28 Nov 2026-Sat, 5 Dec 2026 | Examination period | |
+<table class="course-schedule-table">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Date / Period</th>
+      <th>Focus</th>
+      <th>Assessment Due</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Tue, 11 Aug 2026</td>
+      <td>Recommendation Problems and Classical Methods</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Tue, 18 Aug 2026</td>
+      <td>Latent Factor Models</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Tue, 25 Aug 2026</td>
+      <td>Evaluation of Recommendation Systems</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Tue, 1 Sep 2026</td>
+      <td>Neural Recommendation Models</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Tue, 8 Sep 2026</td>
+      <td>Sequential and Session-Based Recommendation</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tue, 15 Sep 2026</td>
+      <td>Retrieval and Ranking Architectures</td>
+      <td></td>
+    </tr>
+    <tr class="schedule-break-row">
+      <td>Recess Week</td>
+      <td>Tue, 22 Sep 2026</td>
+      <td>No class</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tue, 29 Sep 2026</td>
+      <td>Project Design Critique Workshop</td>
+      <td>Project design critique</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Tue, 6 Oct 2026</td>
+      <td>Learning-to-Rank</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Tue, 13 Oct 2026</td>
+      <td>Graph-Based Recommendation</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Tue, 20 Oct 2026</td>
+      <td>Multi-Objective Recommendation</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Tue, 27 Oct 2026</td>
+      <td>Exploration and Online Learning</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Tue, 3 Nov 2026</td>
+      <td>LLMs, Generative Recommendation, and Research Frontiers</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Tue, 10 Nov 2026</td>
+      <td>Final Project Presentations</td>
+      <td>Final project presentation</td>
+    </tr>
+    <tr class="schedule-break-row">
+      <td>Reading Week</td>
+      <td>Sat, 14 Nov 2026-Fri, 20 Nov 2026</td>
+      <td>Reading week</td>
+      <td></td>
+    </tr>
+    <tr class="schedule-exam-row">
+      <td>Examination Week 1</td>
+      <td>Mon, 23 Nov 2026</td>
+      <td>Examination period</td>
+      <td>Final exam, 13:00-15:00 SGT, venue to be announced</td>
+    </tr>
+    <tr class="schedule-exam-row">
+      <td>Examination Week 2</td>
+      <td>Sat, 28 Nov 2026-Sat, 5 Dec 2026</td>
+      <td>Examination period</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Weekly Details
 
@@ -42,6 +137,8 @@ Topics:
 - Popularity-based recommendation
 - Content-based recommendation
 - Collaborative filtering
+
+Ethics thread: popularity bias, exposure inequality, and platform incentives.
 
 Learning outcomes:
 
@@ -58,6 +155,8 @@ Topics:
 - User-item embeddings
 - Bias models
 - Ranking objectives, including Bayesian Personalized Ranking
+
+Ethics thread: bias encoded in historical interactions, representation, and interpretability.
 
 Learning outcomes:
 
@@ -77,6 +176,8 @@ Topics:
 - NDCG
 - Business metrics
 
+Ethics thread: metrics as value choices, and accuracy versus user welfare.
+
 Learning outcomes:
 
 - Design evaluation protocols.
@@ -91,6 +192,8 @@ Topics:
 - Neural collaborative filtering
 - Deep ranking models
 - Representation learning
+
+Ethics thread: explainability versus performance, and transparency concerns.
 
 Learning outcomes:
 
@@ -108,6 +211,8 @@ Topics:
 - SASRec
 - Transformer recommenders
 
+Ethics thread: engagement optimization and behavioral manipulation risks.
+
 Learning outcomes:
 
 - Model temporal preferences.
@@ -124,6 +229,8 @@ Topics:
 - Ranking
 - Re-ranking
 - Two-tower architectures
+
+Ethics thread: visibility allocation and stakeholder impacts.
 
 Learning outcomes:
 
@@ -143,6 +250,8 @@ Student deliverables:
 - Baselines
 - Evaluation plan
 - Ethical risks
+
+Ethics thread: feasibility, bias, evaluation design, and project scope.
 
 Peer critique themes:
 
@@ -169,6 +278,8 @@ Topics:
 - Listwise ranking
 - LambdaRank intuition
 
+Ethics thread: position bias and fair ranking.
+
 Learning outcomes:
 
 - Formulate ranking objectives.
@@ -184,6 +295,8 @@ Topics:
 - Graph embeddings
 - Graph neural networks
 - LightGCN
+
+Ethics thread: homophily, echo chambers, and community amplification.
 
 Learning outcomes:
 
@@ -202,6 +315,8 @@ Topics:
 - Coverage
 - Long-term satisfaction
 
+Ethics thread: balancing stakeholder interests.
+
 Learning outcomes:
 
 - Define non-accuracy objectives.
@@ -217,6 +332,8 @@ Topics:
 - Contextual bandits
 - Exploration-exploitation
 - Feedback loops
+
+Ethics thread: online experimentation and fair exposure.
 
 Learning outcomes:
 
@@ -235,6 +352,8 @@ Topics:
 - Foundation models
 - Causal recommendation
 - Future directions
+
+Ethics thread: trust, hallucination, persuasive AI, and governance.
 
 Learning outcomes:
 
@@ -255,6 +374,8 @@ Required presentation components:
 6. Error analysis
 7. Ethical analysis
 8. Future improvements
+
+Ethics thread: technical, product, and societal considerations.
 
 Learning outcomes:
 
