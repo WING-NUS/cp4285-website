@@ -17,15 +17,15 @@ Coursework is organized around steady participation, written critique, project w
 
 ## Submission Notes
 
-- Submission channels, file formats, and deadlines will be announced by the teaching team.
+- Submission channels, file formats, and deadlines will be announced by the instructor.
 - Group submissions should clearly state each member's contribution.
-- Written work should include enough methodological detail for the teaching team to assess assumptions, implementation choices, evaluation design, and ethical reasoning.
+- Written work should include enough methodological detail for the instructor to assess assumptions, implementation choices, evaluation design, and ethical reasoning.
 
 ## Group Project
 
-A key part of mastering any skill is practicing it beyond the formal algorithmic basis. **Projects** form an integral part of the assessment (30% of total marks). Student groups should have 5 to 6 members and will be partially self-assembled (into initial subgroups of size 1 to 3) and then assembled by the teaching staff into final groups, with project preferences and expertise taken into account. You will also be assigned a contact TA as **project mentor** that you should use as a resource for questions and advice. The TA will correspond with you and attempt to check in with you on a weekly basis. *It is your responsibility to ensure that your group meets with your project mentor, not your mentor's responsibility to chase you.*
+A key part of mastering any skill is practicing it beyond the formal algorithmic basis. **Projects** form an integral part of the assessment (30% of total marks). Student groups should have 5 to 6 members and will be partially self-assembled (into initial subgroups of size 1 to 3) and then assembled by the instructor into final groups, with project preferences and expertise taken into account. The instructor will correspond with groups and check in on a regular basis. *It is your responsibility to ensure that your group meets with the instructor, not the instructor's responsibility to chase you.*
 
-The staff will propose a set of suitable recommendation system datasets for student groups to work with. Details will be released in Canvas Files.
+The instructor will propose a set of suitable recommendation system datasets for student groups to work with. Details will be released in Canvas Files.
 
 Note that performance on macroscopic metrics alone is not the critical factor in your grade. We primarily evaluate with respect to the interesting and well-motivated ideas your team employs to solve the task, the quality of your evaluation, and your ethical analysis.
 
@@ -40,7 +40,7 @@ Note that performance on macroscopic metrics alone is not the critical factor in
 
 ### Project Topics and Datasets
 
-The teaching staff will release a curated list of recommendation system datasets suitable for the project. You are expected to select one dataset and define a clear recommendation problem around it. Your project should include:
+The instructor will release a curated list of recommendation system datasets suitable for the project. You are expected to select one dataset and define a clear recommendation problem around it. Your project should include:
 
 - A well-defined user problem and recommendation objective.
 - At least one classical baseline (e.g., collaborative filtering, matrix factorization).

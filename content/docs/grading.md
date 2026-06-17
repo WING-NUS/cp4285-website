@@ -48,7 +48,7 @@ This course follows the [NUS Policy for Use of AI in Teaching and Learning](http
 
 If you do not document your use of AI where it is permitted, it implies that you did not use AI; any doubts we have may be investigated and prosecuted. Your submission of work and your e-signature during submission acknowledges your compliance with and understanding of these rules.
 
-Where in doubt, please raise your concerns with the teaching staff **before** attempting any potentially non-compliant actions. Unfortunately, we have had to prosecute and fail students who have not obeyed these rules.
+Where in doubt, please raise your concerns with the instructor **before** attempting any potentially non-compliant actions. Unfortunately, we have had to prosecute and fail students who have not obeyed these rules.
 
 ## Late Submissions
 
