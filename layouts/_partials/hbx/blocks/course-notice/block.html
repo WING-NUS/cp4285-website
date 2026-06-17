@@ -1,0 +1,13 @@
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+{{ $text := "" }}
+{{ with index $content "text" }}{{ $text = printf "%v" . | emojify | $page.RenderString | safeHTML }}{{ end }}
+
+<div class="course-public-alert mx-auto max-w-prose px-6">
+  <div class="course-public-alert__box">
+    <div class="course-public-alert__mark" aria-hidden="true">!</div>
+    <div class="course-public-alert__text">{{ $text }}</div>
+  </div>
+</div>

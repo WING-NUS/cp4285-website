@@ -2,12 +2,12 @@
 #   The weight parameter defines the order that the links will appear in.
 
 main:
+  - name: Go to Canvas
+    url: https://canvas.nus.edu.sg/courses/98339
+    weight: 5
   - name: Home
     url: /
     weight: 10
-  - name: Docs
-    url: docs/
-    weight: 20
   - name: Schedule
     url: docs/schedule/
     weight: 30

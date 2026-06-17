@@ -1,0 +1,43 @@
+{{/*
+  Local override: keep Hugo Blox image resolution behavior, but make static
+  fallback URLs baseURL-aware for sites deployed under a subpath.
+*/}}
+{{ $result := dict }}
+{{ $path := strings.TrimSpace (printf "%v" (.path | default "")) }}
+
+{{ if $path }}
+  {{ $is_remote := or (strings.HasPrefix $path "http://") (strings.HasPrefix $path "https://") }}
+
+  {{ if $is_remote }}
+    {{ $remote := try (resources.GetRemote $path) }}
+    {{ if and $remote (not $remote.Err) }}
+      {{ $result = dict "resource" $remote.Value }}
+    {{ else }}
+      {{ $result = dict "fallback_url" $path }}
+    {{ end }}
+  {{ else }}
+    {{ $normalized := $path }}
+    {{ $normalized = strings.TrimPrefix "/" $normalized }}
+    {{ $normalized = strings.TrimPrefix "./" $normalized }}
+    {{ $normalized = strings.TrimPrefix "assets/" $normalized }}
+    {{ $normalized = strings.TrimPrefix "media/" $normalized }}
+    {{ $normalized = path.Clean $normalized }}
+
+    {{ if and $normalized (ne $normalized ".") }}
+      {{ $resource := false }}
+      {{ with .Page }}
+        {{ $resource = (.Resources.ByType "image").GetMatch $normalized }}
+      {{ end }}
+      {{ if not $resource }}
+        {{ $resource = resources.Get (path.Join "media" $normalized) }}
+      {{ end }}
+      {{ if $resource }}
+        {{ $result = dict "resource" $resource }}
+      {{ else }}
+        {{ $result = dict "fallback_url" (printf "%s%s" site.Home.RelPermalink $normalized) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $result }}
