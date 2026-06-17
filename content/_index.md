@@ -35,6 +35,13 @@ sections:
       css_class: "bg-white dark:bg-gray-950"
   - block: markdown
     content:
+      title: About Emerging Topics in Computer Science Courses
+      text: |
+        CP4285 is part of the **CP428x Emerging Topics in Computer Science** series at NUS. These are pilot courses, each run for a single semester only, with the intention of eventually becoming a permanent offering. Students should expect that the course is not yet fully mature: content, assessments, and delivery are actively evolving. The series exists to expose undergraduates to emerging areas of computer science before they become established parts of the curriculum.
+    design:
+      css_class: "bg-slate-50 dark:bg-gray-950"
+  - block: markdown
+    content:
       title: About the Course
       text: |
         CP4285: Modern Recommendation Systems examines the algorithms, data, and design trade-offs behind contemporary recommender systems. The course connects classical recommendation methods with modern neural approaches, and emphasizes practical implementation, careful evaluation, and responsible deployment in real-world settings.
