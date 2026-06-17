@@ -114,7 +114,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   copyright:
     # Copyright notice - supports {year}, {name}, {license} placeholders
-    notice: "© {year} {name}, National University of Singapore. This work is licensed under {license}"
+    notice: '© {year} <a href="https://www.comp.nus.edu.sg/~kanmy/" target="_blank" rel="noopener">KAN Min-Yen</a>, National University of Singapore. This work is licensed under {license}'
     license:
       type: cc # cc | custom
       allow_derivatives: false

@@ -26,5 +26,4 @@ By the end of the course, students should be able to:
   {{< card url="assignments" title="Assignments & Projects" icon="clipboard-document-check" subtitle="Coursework components, project milestones, and submission notes." >}}
   {{< card url="grading" title="Grading" icon="chart-bar" subtitle="Assessment components, weights, academic honesty, and AI use policy." >}}
   {{< card url="faq" title="FAQ" icon="question-mark-circle" subtitle="Frequently asked questions about the course." >}}
-  {{< card url="resources" title="Resources" icon="folder-open" subtitle="Readings, datasets, tools, and references." >}}
 {{< /cards >}}
