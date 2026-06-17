@@ -55,8 +55,8 @@ For questions about lecture material, please use the relevant weekly discussion 
 
 ## Course Content and Prerequisites
 
-1. *What are the prerequisites for this course?*
-   Students are expected to have a prior understanding of modern neural machine learning architectures. Please refer to NUSMods for the official prerequisite listing.
+1. *What are the prerequisites for CP4285?*
+   The formal prerequisite is completion of at least 120 units. [CS2109S](https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning) (Introduction to AI and Machine Learning) or equivalent is also required. Students who have not taken CS2109S but have equivalent background in neural machine learning may seek approval from Min.
 
 2. *What programming language will we use?*
    We will use Python 3.11 or newer, with libraries such as PyTorch, Scikit-learn, and RecBole for recommendation system tasks.
