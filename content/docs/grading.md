@@ -48,8 +48,8 @@ This course follows the [NUS Policy for Use of AI in Teaching and Learning](http
 
 If you do not document your use of AI where it is permitted, it implies that you did not use AI; any doubts we have may be investigated and prosecuted. Your submission of work and your e-signature during submission acknowledges your compliance with and understanding of these rules.
 
-Where in doubt, please raise your concerns with the instructor **before** attempting any potentially non-compliant actions. Unfortunately, we have had to prosecute and fail students who have not obeyed these rules.
+Where in doubt, please raise your concerns with Min **before** attempting any potentially non-compliant actions. Unfortunately, we have had to prosecute and fail students who have not obeyed these rules.
 
 ## Late Submissions
 
-We do not accept late submissions for essays or project milestones unless you have a valid reason (e.g., medical certificate). Please contact the instructor as early as possible if you anticipate difficulties meeting a deadline. Extensions will be granted at the instructor's discretion.
+We do not accept late submissions for essays or project milestones unless you have a valid reason (e.g., medical certificate). Please contact Min as early as possible if you anticipate difficulties meeting a deadline. Extensions will be granted at Min's discretion.

@@ -14,13 +14,13 @@ For questions about lecture material, please use the relevant weekly discussion 
    Lectures will be recorded where technology permits. Recordings are made available to facilitate revision only and are not a substitute for attendance. The standard NUS expectation is that all activities are face-to-face.
 
 3. *I'm doing an ATAP/SIP/FYP related to recommendation systems. Am I allowed to take the course?*
-   Generally yes. However, if the course is oversubscribed, you will need to make an official appeal. Please contact the instructor directly if you have concerns about your eligibility.
+   Generally yes. However, if the course is oversubscribed, you will need to make an official appeal. Please contact Min directly if you have concerns about your eligibility.
 
 4. *I'm on exchange. Can I take this course?*
    Exchange students are welcome. Please ensure you meet the prerequisites and follow the standard NUS exchange enrolment process.
 
 5. *Can I audit the course?*
-   Auditing is not officially supported. If you are interested, please contact the instructor.
+   Auditing is not officially supported. If you are interested, please contact Min.
 
 ## Grading and Assessments
 
@@ -34,7 +34,7 @@ For questions about lecture material, please use the relevant weekly discussion 
    Please refer to the [Assignments page](../assignments) for full details. In brief, your team will select a recommendation system dataset, implement classical and neural baselines, evaluate them rigorously, and conduct an ethical analysis.
 
 4. *How are project groups formed?*
-   You will first self-assemble into initial subgroups of 1–3 students via the Project Mini-team Declaration survey (due Week 5). The instructor will then assemble final groups of 5–6 students, taking project preferences and expertise into account.
+   You will first self-assemble into initial subgroups of 1–3 students via the Project Mini-team Declaration survey (due Week 5). Min will then assemble final groups of 5–6 students, taking project preferences and expertise into account.
 
 5. *Will my participation grade be visible on Canvas?*
    No. Your participation grade will not be available to you on Canvas until final grades are released.
