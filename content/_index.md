@@ -18,10 +18,7 @@ sections:
       trust:
         text: '<span class="hero-attribution">Recommendation icons created by <a href="https://www.flaticon.com/free-icons/recommendation" title="recommendation icons">Freepik - Flaticon</a></span>'
       announcement:
-        text: "NUS School of Computing"
-        link:
-          text: "Emerging Topics in Computer Science V"
-          url: "docs/schedule/"
+        text: "NUS School of Computing — Emerging Topics in Computer Science V"
     design:
       spacing:
         padding: ["5rem", 0, "4rem", 0]

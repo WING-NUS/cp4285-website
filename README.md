@@ -49,7 +49,7 @@ The workflow runs on pushes to `main` and can also be started manually from the 
 
 ## Content
 
-Course pages live in `content/docs/`. The homepage is configured in `content/_index.md`.
+The homepage (`content/_index.md`) contains the course description, prerequisites, learning outcomes, and links to sub-pages. Course sub-pages (schedule, assignments, grading, FAQ) live in `content/docs/`.
 
 Branding and visual defaults live in:
 
