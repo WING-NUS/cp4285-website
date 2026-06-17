@@ -43,10 +43,10 @@ This course follows the [NUS Policy for Use of AI in Teaching and Learning](http
 | --- | --- | --- |
 | Group Project | **Yes** | AI use is permitted and encouraged where appropriate. You must document all AI use in your submission. Share your AI usage approach with your group and document it collectively. |
 | In-seminar participation | **Yes** | AI use is permitted. You must be able to explain and justify any AI-assisted contributions in your own words. |
-| Individual Essays | **No** | Essays are individual analytical writing tasks. AI tools may **not** be used to generate, paraphrase, or substantially assist in drafting your essay text. The essay is an assessment of your own critical thinking and writing ability. |
+| Individual Essays (take-home, individual) | **Yes** (with declaration) | AI tools are permitted as a resource. However, no collaboration with other students is allowed. You **must** submit an AI declaration with each essay. Where requested by Min, you must provide full documentation of your AI use (e.g., prompts, outputs, and how they were incorporated). The essay remains an assessment of your own critical thinking; AI may assist but must not substitute your analysis. |
 | Final Examination | **No** | The examination is conducted on Examplify in a closed, supervised environment. No AI tools are permitted. |
 
-If you do not document your use of AI where it is permitted, it implies that you did not use AI; any doubts we have may be investigated and prosecuted. Your submission of work and your e-signature during submission acknowledges your compliance with and understanding of these rules.
+For the Group Project, if you do not document your AI use, it implies that you did not use AI; any doubts we have may be investigated and prosecuted. For Individual Essays, an AI declaration is **mandatory** regardless of whether AI was used; failure to submit a declaration will be treated as a policy violation. Your submission of work and your e-signature during submission acknowledges your compliance with and understanding of these rules.
 
 Where in doubt, please raise your concerns with Min **before** attempting any potentially non-compliant actions. Unfortunately, we have had to prosecute and fail students who have not obeyed these rules.
 

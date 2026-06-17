@@ -7,19 +7,22 @@ For questions about lecture material, please use the relevant weekly discussion 
 
 ## Administrivia
 
-1. *What is the format of this course?*
+1. *What are the prerequisites for CP4285?*
+   The formal prerequisite is completion of at least 120 units. [CS2109S](https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning) (Introduction to AI and Machine Learning) or equivalent is also required. Students who have not taken CS2109S but have equivalent background in neural machine learning may seek approval from Min.
+
+2. *What is the format of this course?*
    Seminars are **mandatory, physical face-to-face sessions**. The course is taught by Kan Min-Yen. The class meets every **Tuesday, 10:00–12:00**, at **Seminar Room 12, COM3-01-21**. There are no tutorial sessions for this course.
 
-2. *Will lectures be recorded?*
+3. *Will lectures be recorded?*
    Lectures will be recorded where technology permits. Recordings are made available to facilitate revision only and are not a substitute for attendance. The standard NUS expectation is that all activities are face-to-face.
 
-3. *I'm doing an ATAP/SIP/FYP related to recommendation systems. Am I allowed to take the course?*
+4. *I'm doing an ATAP/SIP/FYP related to recommendation systems. Am I allowed to take the course?*
    Generally yes. However, if the course is oversubscribed, you will need to make an official appeal. Please contact Min directly if you have concerns about your eligibility.
 
-4. *I'm on exchange. Can I take this course?*
+5. *I'm on exchange. Can I take this course?*
    Exchange students are welcome. Please ensure you meet the prerequisites and follow the standard NUS exchange enrolment process.
 
-5. *Can I audit the course?*
+6. *Can I audit the course?*
    Auditing is not officially supported. If you are interested, please contact Min.
 
 ## Grading and Assessments
@@ -28,7 +31,7 @@ For questions about lecture material, please use the relevant weekly discussion 
    Please refer to the [Grading page](../grading) for the full breakdown: Final Exam (30%), Group Project (30%), Essays (20%), Quizzes/Tests (10%), Class Participation (10%).
 
 2. *Are essays individual or group work?*
-   Essays are individual assignments. AI use is not permitted for essays. Please refer to the [Grading page](../grading) for the full AI use policy.
+   Essays are individual take-home assignments (each worth 10%). AI tools are permitted as a resource, but no collaboration with other students is allowed. You must submit an AI declaration with each essay; where requested by Min, you must provide full documentation of your AI use. Please refer to the [Grading page](../grading) for the full AI use policy.
 
 3. *What is the group project about?*
    Please refer to the [Assignments page](../assignments) for full details. In brief, your team will select a recommendation system dataset, implement classical and neural baselines, evaluate them rigorously, and conduct an ethical analysis.

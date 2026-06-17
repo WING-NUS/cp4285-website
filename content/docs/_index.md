@@ -5,7 +5,7 @@ title: "CP4285: Modern Recommendation Systems"
 
 CP4285: Modern Recommendation Systems examines the algorithms, data, and design trade-offs behind contemporary recommender systems. The course connects classical recommendation methods with modern neural approaches, and emphasizes practical implementation, careful evaluation, and responsible deployment in real-world settings.
 
-[CS2109S](https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning) (Introduction to AI and Machine Learning) or equivalent, and completion of at least 120 units. Students without CS2109S but with equivalent background may seek approval from Min.
+**Prerequisites:** [CS2109S](https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning) (Introduction to AI and Machine Learning) or equivalent, and completion of at least 120 units. Students without CS2109S but with equivalent background may seek approval from Min.
 
 Workload: [(2-0-0-3-5)](https://nusmods.com/courses/CP4285/emerging-topics-in-computing-v#timetable) — 2 hours lecture, 3 hours projects and assignments, 5 hours preparatory and other work; approximately 10 hours per week.
 

@@ -53,6 +53,15 @@ Min will release a curated list of recommendation system datasets suitable for t
 
 You may use the SoC Compute Cluster for your project work. Details on how to access the cluster will be provided in Canvas Announcements. You may also use Google Colab or other cloud platforms, but ensure your experiments are reproducible.
 
+### Peer Assessment via TEAMMATES
+
+This course uses [TEAMMATES](https://teammatesv4.appspot.com/web/front/home) for intra-team peer assessment to evaluate individual contribution and calibrate project grades. There are two rounds:
+
+- **Formative Assessment (Week 7, ungraded):** A mid-project peer review to give your team early feedback on contribution and collaboration. Results are for your team's reflection only and do not affect your grade.
+- **Summative Assessment (Week 13, graded):** A final peer review conducted at the end of the course. Results will be used to moderate individual project grades — outstanding contributors may receive a grade uplift, while those who have not contributed adequately may receive a reduced project grade.
+
+You will receive an invitation to TEAMMATES via your NUS email. Please complete both assessments by their respective deadlines.
+
 ### Academic Honesty for Projects
 
 Group projects are collaborative by nature. However, each member is expected to contribute meaningfully. Please refer to the [Grading page](../grading) for the full academic honesty policy, including the No-Sponge Rule. AI tools may be used for the project but must be documented appropriately.
