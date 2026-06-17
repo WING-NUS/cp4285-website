@@ -23,8 +23,8 @@ By the end of the course, students should be able to:
 
 {{< cards >}}
   {{< card url="schedule" title="Schedule" icon="calendar-days" subtitle="Weekly topics, milestones, and important dates." >}}
-  {{< card url="assignments" title="Assignments" icon="clipboard-document-check" subtitle="Submission briefs and grading expectations." >}}
-  {{< card url="grading" title="Grading" icon="chart-bar" subtitle="Assessment components, weights, and final exam weighting." >}}
-  {{< card url="policies" title="Policies" icon="shield-check" subtitle="Course conduct, late work, and communication." >}}
+  {{< card url="assignments" title="Assignments & Projects" icon="clipboard-document-check" subtitle="Coursework components, project milestones, and submission notes." >}}
+  {{< card url="grading" title="Grading" icon="chart-bar" subtitle="Assessment components, weights, academic honesty, and AI use policy." >}}
+  {{< card url="faq" title="FAQ" icon="question-mark-circle" subtitle="Frequently asked questions about the course." >}}
   {{< card url="resources" title="Resources" icon="folder-open" subtitle="Readings, datasets, tools, and references." >}}
 {{< /cards >}}

@@ -21,7 +21,7 @@ hugoblox:
     # Short tagline displayed on your site
     tagline: "Emerging Topics in Computer Science V"
     # Site meta description for search engines and social sharing
-    description: "CP4285 Modern Recommendation Systems, Emerging Topics in Computer Science V, course documentation, schedules, assignments, and policies for students at the National University of Singapore."
+    description: "CP4285 Modern Recommendation Systems, Emerging Topics in Computer Science V, course documentation, schedule, assignments, projects, grading, and FAQ for students at the National University of Singapore."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
       twitter: "" # Twitter/X handle for Twitter Cards (without @)

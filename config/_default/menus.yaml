@@ -11,14 +11,14 @@ main:
   - name: Schedule
     url: docs/schedule/
     weight: 30
-  - name: Assignments
+  - name: Assignments & Projects
     url: docs/assignments/
     weight: 40
   - name: Grading
     url: docs/grading/
     weight: 50
-  - name: Policies
-    url: docs/policies/
+  - name: FAQ
+    url: docs/faq/
     weight: 60
 
 sidebar:
