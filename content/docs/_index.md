@@ -7,6 +7,8 @@ CP4285: Modern Recommendation Systems examines the algorithms, data, and design 
 
 Students are expected to have prior understanding of modern neural machine learning architectures.
 
+Workload: [(2-0-0-3-5)](https://nusmods.com/courses/CP4285/emerging-topics-in-computing-v#timetable) — 2 hours lecture, 3 hours projects and assignments, 5 hours preparatory and other work; approximately 10 hours per week.
+
 <!--more-->
 
 ## Learning Outcomes
