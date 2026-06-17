@@ -15,11 +15,14 @@ Workload: [(2-0-0-3-5)](https://nusmods.com/courses/CP4285/emerging-topics-in-co
 
 By the end of the course, students should be able to:
 
-- Explain collaborative filtering vs content-based filtering.
-- Implement matrix factorization.
-- Evaluate recommendations using offline metrics.
-- Understand cold-start problems.
-- Critique recommender systems from fairness and privacy perspectives.
+- **CLO 1**: Explain and compare classical recommendation methods, including collaborative filtering, content-based filtering, and hybrid approaches.
+- **CLO 2**: Implement matrix factorization and neural recommendation models using modern deep learning frameworks.
+- **CLO 3**: Design and execute rigorous offline evaluation protocols using appropriate ranking metrics.
+- **CLO 4**: Analyse the cold-start problem and propose strategies to address it.
+- **CLO 5**: Critique recommender systems from fairness, privacy, transparency, and stakeholder impact perspectives.
+- **CLO 6**: Explain advanced recommendation architectures including sequential, graph-based, multi-objective, and LLM-enhanced systems.
+- **CLO 7**: Design and justify a complete recommendation system pipeline from problem formulation through evaluation and ethical analysis.
+- **CLO 8**: Communicate and defend recommendation-system designs and results to a technical audience.
 
 ## Quick Links
 
