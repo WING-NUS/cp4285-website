@@ -37,24 +37,31 @@ sections:
     content:
       title: About Emerging Topics in Computer Science Courses
       text: |
-        CP4285 is part of the **CP428x Emerging Topics in Computer Science** series at NUS. These are pilot courses, each run for a single semester only, with the intention of eventually becoming a permanent offering. Students should expect that the course is not yet fully mature: content, assessments, and delivery are actively evolving. The series exists to expose undergraduates to emerging areas of computer science before they become established parts of the curriculum.
+        CP4285 is part of the **CP428x Emerging Topics in Computer Science** series at [NUS Computing](https://www.comp.nus.edu.sg/). These are pilot courses, each run for a single semester only, with the intention of eventually becoming a permanent offering. Students should expect that the course is not yet fully mature: content, assessments, and delivery are actively evolving. The series exists to expose undergraduates to emerging areas of computer science before they become established parts of the curriculum.
     design:
       css_class: "bg-slate-50 dark:bg-gray-950"
   - block: markdown
     content:
-      title: About the Course
+      title: Why Recommendation Systems?
+      text: |
+        Recommendation systems now shape many everyday decisions: what people read, watch, buy, study, apply for, and who or what receives attention. Their influence extends beyond convenience into visibility, opportunity, trust, and social outcomes, making it important to understand not only how these systems work, but also what values and trade-offs they encode.
+    design:
+      css_class: "bg-white dark:bg-gray-950"
+  - block: markdown
+    content:
+      title: About This Course
       text: |
         CP4285: Modern Recommendation Systems examines the algorithms, data, and design trade-offs behind contemporary recommender systems. The course connects classical recommendation methods with modern neural approaches, and emphasizes practical implementation, careful evaluation, and responsible deployment in real-world settings.
 
-        Recommendation systems now shape many everyday decisions: what people read, watch, buy, study, apply for, and who or what receives attention. Their influence extends beyond convenience into visibility, opportunity, trust, and social outcomes, making it important to understand not only how these systems work, but also what values and trade-offs they encode.
-
         CP4285 covers classical methods, neural architectures, ranking and retrieval pipelines, sequential models, graph-based recommendation, online learning, and emerging LLM-based approaches. Ethical issues are interwoven throughout, including bias, fairness, privacy, exposure, transparency, and stakeholder impact. Students apply these ideas in a hands-on group project requiring problem formulation, dataset work, baselines, model design, evaluation, critique, and final presentation.
+
+        The course is hosted by [WING.NUS](https://wing.comp.nus.edu.sg/), the Web IR / NLP research group at NUS led by Min.
 
         **Prerequisites:** [CS2109S](https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning) (Introduction to AI and Machine Learning) or equivalent, and completion of at least 120 units. Students without CS2109S but with equivalent background may seek approval from Min.
 
         **Workload:** [(2-0-0-3-5)](https://nusmods.com/courses/CP4285/emerging-topics-in-computing-v#timetable) — 2 hours lecture, 3 hours projects and assignments, 5 hours preparatory and other work; approximately 10 hours per week.
     design:
-      css_class: "bg-white dark:bg-gray-950"
+      css_class: "bg-slate-50 dark:bg-gray-950"
   - block: features
     id: rhythm
     content:
@@ -74,7 +81,7 @@ sections:
           icon: presentation-chart-bar
           description: Final project presentations integrate technical design, evaluation results, error analysis, and ethical analysis.
     design:
-      css_class: "bg-slate-50 dark:bg-gray-950"
+      css_class: "bg-white dark:bg-gray-950"
   - block: markdown
     id: outcomes
     content:
@@ -93,7 +100,7 @@ sections:
         | **CLO 7** | Design and justify a complete recommendation system pipeline from problem formulation through evaluation and ethical analysis. |
         | **CLO 8** | Communicate and defend recommendation-system designs and results to a technical audience. |
     design:
-      css_class: "bg-white dark:bg-gray-950"
+      css_class: "bg-slate-50 dark:bg-gray-950"
   - block: features
     id: links
     content:
@@ -116,5 +123,5 @@ sections:
           description: Frequently asked questions about the course.
           url: docs/faq/
     design:
-      css_class: "bg-slate-50 dark:bg-gray-950"
+      css_class: "bg-white dark:bg-gray-950"
 ---

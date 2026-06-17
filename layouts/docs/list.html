@@ -1,0 +1,18 @@
+{{- if .Params.redirect_url -}}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ .Title }}</title>
+    <meta http-equiv="refresh" content="0; url={{ .Params.redirect_url | absURL }}" />
+    <link rel="canonical" href="{{ .Params.redirect_url | absURL }}" />
+  </head>
+  <body>
+    <p>Redirecting to <a href="{{ .Params.redirect_url | absURL }}">{{ .Params.redirect_url | absURL }}</a>…</p>
+  </body>
+</html>
+{{- else -}}
+{{- define "main" -}}
+  {{ partial "docs_layout.html" . }}
+{{- end -}}
+{{- end -}}
