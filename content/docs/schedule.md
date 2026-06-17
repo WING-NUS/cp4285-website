@@ -128,7 +128,8 @@ weight: 10
 
 ## Weekly Details
 
-### Week 1: Recommendation Problems and Classical Methods
+{{< week-card >}}
+### Week 1: Recommendation Problems and Classical Methods (11-17 Aug 2026)
 
 Topics:
 
@@ -146,8 +147,10 @@ Learning outcomes:
 - Differentiate recommendation paradigms.
 - Analyze cold-start challenges.
 - Explain how recommendation objectives affect exposure.
+{{< /week-card >}}
 
-### Week 2: Latent Factor Models
+{{< week-card >}}
+### Week 2: Latent Factor Models (18-24 Aug 2026)
 
 Topics:
 
@@ -164,8 +167,10 @@ Learning outcomes:
 - Train embedding-based recommenders.
 - Compare prediction and ranking objectives.
 - Discuss risks of learning from historical behavior.
+{{< /week-card >}}
 
-### Week 3: Evaluation of Recommendation Systems
+{{< week-card >}}
+### Week 3: Evaluation of Recommendation Systems (25-31 Aug 2026)
 
 Topics:
 
@@ -184,8 +189,10 @@ Learning outcomes:
 - Compute ranking metrics.
 - Critique metric selection.
 - Explain limitations of offline evaluation.
+{{< /week-card >}}
 
-### Week 4: Neural Recommendation Models
+{{< week-card >}}
+### Week 4: Neural Recommendation Models (1-7 Sep 2026)
 
 Topics:
 
@@ -201,8 +208,10 @@ Learning outcomes:
 - Compare neural and latent-factor approaches.
 - Analyze explainability challenges.
 - Assess trade-offs between complexity and transparency.
+{{< /week-card >}}
 
-### Week 5: Sequential and Session-Based Recommendation
+{{< week-card >}}
+### Week 5: Sequential and Session-Based Recommendation (8-14 Sep 2026)
 
 Topics:
 
@@ -219,8 +228,10 @@ Learning outcomes:
 - Implement next-item prediction.
 - Compare static and dynamic representations.
 - Critically assess engagement-driven objectives.
+{{< /week-card >}}
 
-### Week 6: Retrieval and Ranking Architectures
+{{< week-card >}}
+### Week 6: Retrieval and Ranking Architectures (15-21 Sep 2026)
 
 Topics:
 
@@ -238,8 +249,10 @@ Learning outcomes:
 - Design retrieval-ranking architectures.
 - Analyze scalability trade-offs.
 - Evaluate how ranking affects different stakeholders.
+{{< /week-card >}}
 
-### Week 7: Project Design Critique Workshop
+{{< week-card >}}
+### Week 7: Project Design Critique Workshop (29 Sep-5 Oct 2026)
 
 Student deliverables:
 
@@ -268,8 +281,10 @@ Learning outcomes:
 - Refine project scope based on feedback.
 
 Suggested weight: 5-10% participation or milestone grade.
+{{< /week-card >}}
 
-### Week 8: Learning-to-Rank
+{{< week-card >}}
+### Week 8: Learning-to-Rank (6-12 Oct 2026)
 
 Topics:
 
@@ -286,8 +301,10 @@ Learning outcomes:
 - Compare ranking approaches.
 - Analyze position bias.
 - Discuss fairness implications of ranking.
+{{< /week-card >}}
 
-### Week 9: Graph-Based Recommendation
+{{< week-card >}}
+### Week 9: Graph-Based Recommendation (13-19 Oct 2026)
 
 Topics:
 
@@ -304,8 +321,10 @@ Learning outcomes:
 - Explain graph propagation.
 - Build graph-based recommenders.
 - Analyze risks of graph-driven feedback loops.
+{{< /week-card >}}
 
-### Week 10: Multi-Objective Recommendation
+{{< week-card >}}
+### Week 10: Multi-Objective Recommendation (20-26 Oct 2026)
 
 Topics:
 
@@ -323,8 +342,10 @@ Learning outcomes:
 - Measure diversity and novelty.
 - Design multi-objective recommenders.
 - Justify objective trade-offs.
+{{< /week-card >}}
 
-### Week 11: Exploration and Online Learning
+{{< week-card >}}
+### Week 11: Exploration and Online Learning (27 Oct-2 Nov 2026)
 
 Topics:
 
@@ -341,8 +362,10 @@ Learning outcomes:
 - Design adaptive recommendation policies.
 - Analyze recommendation feedback loops.
 - Discuss ethical implications of experimentation.
+{{< /week-card >}}
 
-### Week 12: LLMs, Generative Recommendation, and Research Frontiers
+{{< week-card >}}
+### Week 12: LLMs, Generative Recommendation, and Research Frontiers (3-9 Nov 2026)
 
 Topics:
 
@@ -361,8 +384,10 @@ Learning outcomes:
 - Evaluate LLM-based recommendation systems.
 - Critique emerging approaches.
 - Identify open research challenges.
+{{< /week-card >}}
 
-### Week 13: Final Project Presentations
+{{< week-card >}}
+### Week 13: Final Project Presentations (10 Nov 2026)
 
 Required presentation components:
 
@@ -383,3 +408,4 @@ Learning outcomes:
 - Defend technical decisions.
 - Interpret evaluation results critically.
 - Integrate technical, product, and societal considerations.
+{{< /week-card >}}

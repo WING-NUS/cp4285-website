@@ -230,6 +230,77 @@ a {
   background: color-mix(in srgb, #1e3a8a 38%, var(--hb-color-background, #030712));
 }
 
+.weekly-detail-card {
+  margin: 1.35rem 0;
+  border: 1px solid color-mix(in srgb, var(--hb-color-border, #d1d5db) 70%, transparent);
+  border-left: 0.34rem solid #ef7c00;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(239, 124, 0, 0.08), transparent 34%),
+    color-mix(in srgb, var(--hb-color-background, #fff) 94%, #f8fafc);
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.weekly-detail-card > :first-child {
+  margin-top: 0;
+}
+
+.weekly-detail-card > :last-child {
+  margin-bottom: 0;
+}
+
+.weekly-detail-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.85rem;
+  color: color-mix(in srgb, #003d7c 86%, var(--hb-color-heading, #111827));
+}
+
+.weekly-detail-card:nth-of-type(even) {
+  border-left-color: #003d7c;
+  background:
+    linear-gradient(135deg, rgba(0, 61, 124, 0.07), transparent 34%),
+    color-mix(in srgb, var(--hb-color-background, #fff) 94%, #f8fafc);
+}
+
+.weekly-detail-card:nth-of-type(even) h3 {
+  color: color-mix(in srgb, #ef7c00 84%, var(--hb-color-heading, #111827));
+}
+
+.weekly-detail-card p {
+  margin-top: 0.9rem;
+  margin-bottom: 0.45rem;
+}
+
+.weekly-detail-card ul,
+.weekly-detail-card ol {
+  margin-top: 0.35rem;
+}
+
+.dark .weekly-detail-card {
+  border-color: rgba(148, 163, 184, 0.24);
+  border-left-color: #f59e0b;
+  background:
+    linear-gradient(135deg, rgba(239, 124, 0, 0.12), transparent 34%),
+    color-mix(in srgb, var(--hb-color-background, #030712) 88%, #0f172a);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.26);
+}
+
+.dark .weekly-detail-card h3 {
+  color: #fed7aa;
+}
+
+.dark .weekly-detail-card:nth-of-type(even) {
+  border-left-color: #60a5fa;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.15), transparent 34%),
+    color-mix(in srgb, var(--hb-color-background, #030712) 88%, #0f172a);
+}
+
+.dark .weekly-detail-card:nth-of-type(even) h3 {
+  color: #bfdbfe;
+}
+
 .hb-card,
 .card {
   border-radius: 8px;
