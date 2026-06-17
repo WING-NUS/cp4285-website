@@ -231,7 +231,7 @@ hugoblox:
   repository:
     enable: true
     url: "https://github.com/WING-NUS/cp4285-website"
-    branch: main
+    branch: codex/hugo-blox-documentation-site
     content_dir: content
 
   # ────────────────────────────────────────────────────────────────────────────

@@ -9,15 +9,6 @@ weight: 10
 | --- | --- | --- |
 | Every Tuesday | 10:00-12:00 SGT | [Seminar Room 12, COM3-01-21](https://nusmods.com/venues/COM3-01-21) |
 
-## Course Rhythm
-
-| Phase | Weeks | Focus |
-| --- | --- | --- |
-| Foundations | 1-6 | Build and evaluate recommenders |
-| Design Review | 7 | Critique and refine project plans |
-| Modern Recommenders | 8-12 | Study advanced methods that can be incorporated into projects |
-| Showcase | 13 | Present final recommendation-system projects |
-
 ## Weekly Schedule
 
 | Week | Date / Period | Focus | Ethics Thread |

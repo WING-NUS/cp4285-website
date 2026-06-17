@@ -10,16 +10,13 @@ sections:
       text: Emerging Topics in Computer Science V. Foundations, project critique, modern recommender methods, and final presentations.
       primary_action:
         text: Open Docs
-        url: /docs/
+        url: docs/
         icon: book-open
-      secondary_action:
-        text: View Schedule
-        url: /docs/schedule/
       announcement:
         text: "NUS School of Computing"
         link:
           text: "Emerging Topics in Computer Science V"
-          url: "/docs/"
+          url: "docs/"
     design:
       spacing:
         padding: ["5rem", 0, "4rem", 0]
@@ -47,14 +44,4 @@ sections:
           description: Final project presentations integrate technical design, evaluation results, error analysis, and ethical analysis.
     design:
       css_class: "bg-slate-50 dark:bg-gray-950"
-  - block: cta-card
-    content:
-      title: Start With The Schedule
-      text: The schedule is the anchor for weekly topics, project milestones, critique, presentations, reading week, and the final exam.
-      button:
-        text: View Schedule
-        url: /docs/schedule/
-    design:
-      card:
-        css_class: "bg-primary-700"
 ---
