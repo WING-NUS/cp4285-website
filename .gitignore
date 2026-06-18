@@ -71,3 +71,6 @@ Desktop.ini
 
 *.log
 npm-debug.log*
+
+# Hugo module vendor directory (local only)
+_vendor/
