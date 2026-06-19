@@ -1,9 +1,12 @@
 {{- define "main" -}}
   {{- if .Params.redirect_url -}}
-    <meta http-equiv="refresh" content="0; url={{ .Params.redirect_url | absURL }}" />
-    <link rel="canonical" href="{{ .Params.redirect_url | absURL }}" />
-    <script>window.location.replace("{{ .Params.redirect_url | absURL }}");</script>
-    <p>Redirecting to <a href="{{ .Params.redirect_url | absURL }}">{{ .Params.redirect_url | absURL }}</a>…</p>
+    {{- $target := .Params.redirect_url -}}
+    {{- $redirect_url := cond (eq $target "/") site.Home.RelPermalink ($target | relURL) -}}
+    {{- $canonical_url := cond (eq $target "/") site.Home.Permalink ($target | absURL) -}}
+    <meta http-equiv="refresh" content="0; url={{ $redirect_url }}" />
+    <link rel="canonical" href="{{ $canonical_url }}" />
+    <script>window.location.replace("{{ $redirect_url }}");</script>
+    <p>Redirecting to <a href="{{ $redirect_url }}">{{ $canonical_url }}</a>…</p>
   {{- else -}}
     {{ partial "docs_layout.html" . }}
   {{- end -}}
