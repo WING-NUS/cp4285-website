@@ -103,7 +103,7 @@ weight: 10
       <td>13</td>
       <td>Tue, 10 Nov 2026</td>
       <td>Final Project Presentations</td>
-      <td>Final project presentation</td>
+      <td>Final project presentation or report (depending on STePS participation)</td>
     </tr>
     <tr class="schedule-break-row">
       <td>Reading Week</td>
