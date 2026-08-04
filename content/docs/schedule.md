@@ -147,6 +147,10 @@ Learning outcomes:
 - Differentiate recommendation paradigms.
 - Analyze cold-start challenges.
 - Explain how recommendation objectives affect exposure.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/week01/week01.html" title="Week 1 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card >}}

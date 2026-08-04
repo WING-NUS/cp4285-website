@@ -37,7 +37,7 @@ For questions about lecture material, please use the relevant weekly discussion 
    Please refer to the [Assignments page](../assignments) for full details. In brief, your team will select a recommendation system dataset, implement classical and neural baselines, evaluate them rigorously, and conduct an ethical analysis.
 
 4. *How are project groups formed?*
-   You will first self-assemble into initial subgroups of 1–3 students via the Project Mini-team Declaration survey (due Week 5). Min will then assemble final groups of 5–6 students, taking project preferences and expertise into account.
+   Due to the small cohort size, groups will have **2 to 3 members** and are self-assembled. Declare your group via the Project Mini-team Declaration survey (due Week 5). No peer review is required — project grades are assessed directly by the teaching team.
 
 5. *Will my participation grade be visible on Canvas?*
    No. Your participation grade will not be available to you on Canvas until final grades are released.

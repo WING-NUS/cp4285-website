@@ -1,0 +1,18 @@
+{{/* slides shortcode: embeds a Quarto reveal.js HTML file in a responsive iframe
+     Usage: {{< slides src="/slides/week01/week01.html" height="520px" >}}
+*/}}
+{{ $src    := .Get "src" }}
+{{ $height := .Get "height" | default "520px" }}
+{{ $title  := .Get "title"  | default "Slide deck" }}
+<div class="slides-embed" style="position:relative;width:100%;margin:1.5rem 0;">
+  <iframe
+    src="{{ $src }}"
+    title="{{ $title }}"
+    style="width:100%;height:{{ $height }};border:1px solid #d1d5db;border-radius:8px;"
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
+  <p style="font-size:0.78rem;color:#6b7280;margin-top:0.4rem;">
+    <a href="{{ $src }}" target="_blank" rel="noopener">Open slides in full screen ↗</a>
+  </p>
+</div>

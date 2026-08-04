@@ -1,0 +1,272 @@
+---
+title: "Recommendation Problems and Classical Methods"
+subtitle: "CP4285 Modern Recommendation Systems — Week 1"
+author: "CP4285 Instruction Team"
+date: "11 Aug 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    show-slide-number: all
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 1 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Overview {background-color="#EF7C00"}
+
+## CP Pilot Course
+
+- CP4285 is part of the **CP428x Emerging Topics in Computer Science** series at NUS Computing
+- These are **pilot courses**, each run for a single semester, with the intention of eventually becoming a permanent offering
+- Students should expect the course is **not yet fully mature** — content, assessments, and delivery are actively evolving
+- The series exists to expose undergraduates to **emerging areas** before they become established curriculum
+
+::: notes
+<!-- TODO (students): What did Min say about the motivation for running CP4285 now? Were there any specific industry or research trends he cited? -->
+:::
+
+## Ethics Thread
+
+- Ethical issues are **not an afterthought** — they are woven throughout every week
+- Core themes we will revisit: **bias, fairness, privacy, exposure, transparency, stakeholder impact**
+- Recommendation systems shape everyday decisions: what people read, watch, buy, apply for, and who receives attention and opportunities
+
+::: {.callout-warning}
+These systems encode values and trade-offs. Understanding how they work means understanding what they optimise for — and at whose expense.
+:::
+
+::: notes
+<!-- TODO (students): What framing did Min use to introduce the ethics thread? Were any specific examples or incidents cited? -->
+:::
+
+---
+
+# 02 Schedule {background-color="#EF7C00"}
+
+## Weekly Topics
+
+| Week | Date | Topic |
+|------|------|-------|
+| 1 | 11 Aug | Recommendation Problems and Classical Methods |
+| 2 | 18 Aug | Latent Factor Models |
+| 3 | 25 Aug | Evaluation of Recommendation Systems |
+| 4 | 1 Sep | Neural Recommendation Models |
+| 5 | 8 Sep | Sequential and Session-Based Recommendation |
+| 6 | 15 Sep | Retrieval and Ranking Architectures |
+
+::: notes
+<!-- TODO (students): Did Min highlight any particular weeks as especially important or challenging? -->
+:::
+
+## Weekly Topics (cont.)
+
+| Week | Date | Topic |
+|------|------|-------|
+| — | 22 Sep | *Recess Week — No Class* |
+| 7 | 29 Sep | Project Design Critique Workshop |
+| 8 | 6 Oct | Learning-to-Rank |
+| 9 | 13 Oct | Graph-Based Recommendation |
+| 10 | 20 Oct | Multi-Objective Recommendation |
+| 11 | 27 Oct | Exploration and Online Learning |
+| 12 | 3 Nov | LLMs, Generative Recommendation, Research Frontiers |
+| 13 | 10 Nov | **Final Project Presentations** |
+
+::: notes
+<!-- TODO (students): Were there any changes or announcements to the schedule? -->
+:::
+
+## Class Meetings
+
+- Every **Tuesday, 10:00–12:00 SGT**
+- Venue: **Seminar Room 12, COM3-01-21**
+- Lectures will be recorded where technology permits — recordings are for **revision only**, not a substitute for attendance
+- There are **no tutorial sessions** for this course
+
+::: notes
+<!-- TODO (students): Any logistics or housekeeping Min mentioned about attendance or participation? -->
+:::
+
+---
+
+# 03 Assignments & Grading {background-color="#EF7C00"}
+
+## Grading Overview
+
+| Component | Weight |
+|-----------|--------|
+| Final Exam (Mon, 23 Nov 2026, 13:00–15:00) | 30% |
+| Group Project | 30% |
+| Essays | 20% |
+| Quizzes / Tests | 10% |
+| Class Participation | 10% |
+
+::: notes
+<!-- TODO (students): Did Min elaborate on how participation is tracked or what counts towards it? -->
+:::
+
+## Project
+
+- Groups of **2–3 students** due to the small cohort size — no peer review required
+- Each group is assigned a **project mentor** (TA) — it is your responsibility to meet with them
+- You will select a **recommendation system dataset** and define a clear problem around it
+
+**Milestones:**
+
+::: {.incremental}
+- **Week 4–5:** Project Mini-team Declaration
+- **Week 7:** Project Design Critique Workshop
+- **Week 13:** Final Project Presentation
+- **Exam Period:** Final Project Report
+:::
+
+::: notes
+<!-- TODO (students): Did Min give any guidance on what makes a good project topic or dataset choice? -->
+:::
+
+## Essays
+
+- **Two individual take-home essays**, each worth **10%**
+- Short written analyses of recommender-system methods, evaluation choices, and social implications
+- Approximately **2–3 week** turnaround between announcement and due date
+- AI tools are **permitted as a resource** — but an AI declaration is **mandatory** for each submission
+
+::: {.callout-note}
+Essays assess your own critical thinking. AI may assist but must not substitute your analysis.
+:::
+
+::: notes
+<!-- TODO (students): Were the essay topics or any example prompts discussed? -->
+:::
+
+## Quizzes
+
+- Combined worth **10%** of total marks
+- Includes the **Pre-Flight Survey** (due Week 2) and **Midterm Survey** (due Week 8)
+- Complete these on time — they are **free marks**
+
+::: {.callout-warning}
+Missing the Pre-Flight or Midterm Survey will directly reduce your participation grade. Don't forget!
+:::
+
+::: notes
+<!-- TODO (students): Were any other quizzes or in-class tests mentioned beyond the surveys? -->
+:::
+
+---
+
+# 04 Types of Recommendation Systems {background-color="#EF7C00"}
+
+## A Card-Suit Framework for User Types
+
+We can think about different **user archetypes** using a card-suit analogy:
+
+::: {.columns}
+::: {.column width="50%"}
+♠ **Spades — The Explorer**
+- Seeks novelty and diversity
+- Values serendipitous discovery
+- Dislikes filter bubbles
+
+♥ **Hearts — The Social Connector**
+- Influenced by friends and community
+- Trusts collaborative signals
+- Values shared tastes
+:::
+::: {.column width="50%"}
+♦ **Diamonds — The Pragmatist**
+- Goal-oriented, task-driven
+- Wants the most relevant result fast
+- Values precision over diversity
+
+♣ **Clubs — The Loyalist**
+- Sticks to known preferences
+- Values consistency and familiarity
+- Resistant to change
+:::
+:::
+
+::: notes
+<!-- TODO (students): How did Min introduce this framework? Was it from a specific paper or his own framing? Were there other user types discussed? -->
+:::
+
+## Matching Systems to User Types
+
+Different recommendation paradigms serve different user archetypes:
+
+| User Type | Best-Suited Approach | Key Objective |
+|-----------|---------------------|---------------|
+| ♠ Explorer | Diversity-aware / serendipity models | Novelty, coverage |
+| ♥ Social Connector | Collaborative filtering, social graphs | Community similarity |
+| ♦ Pragmatist | Retrieval-ranking pipelines | Precision, relevance |
+| ♣ Loyalist | Content-based filtering | Consistency, familiarity |
+
+::: notes
+<!-- TODO (students): Did Min discuss how real systems handle mixed user types, or how user types can shift over time? -->
+:::
+
+## Classical Recommendation Paradigms
+
+::: {.incremental}
+- **Popularity-based:** Recommend globally popular items — no personalisation
+- **Content-based filtering:** Recommend items similar to what the user has liked, based on item features
+- **Collaborative filtering (CF):** Leverage patterns across many users — no item features needed
+- **Hybrid approaches:** Combine multiple signals for robustness
+:::
+
+::: notes
+<!-- TODO (students): What specific examples or datasets did Min use to illustrate each paradigm? Were there any live demos? -->
+:::
+
+## The Cold-Start Problem
+
+::: {.incremental}
+- **New user cold-start:** No interaction history → cannot personalise
+- **New item cold-start:** No ratings → cannot appear in CF recommendations
+- **System cold-start:** Entirely new platform with no data
+:::
+
+**Strategies:**
+- Use content features (bypasses interaction requirement)
+- Ask users for explicit preferences onboarding
+- Fall back to popularity-based recommendations
+
+::: notes
+<!-- TODO (students): Were any specific industry solutions to cold-start discussed (e.g., onboarding surveys, zero-shot approaches)? -->
+:::
+
+## Ethics Thread: Popularity Bias and Exposure Inequality
+
+- Popular items get recommended → more interactions → even more popular (**feedback loop**)
+- Long-tail items receive little to no exposure
+- Who bears the cost? **Niche creators, minority preferences, new entrants**
+
+::: {.callout-warning}
+Recommendation objectives that optimise purely for engagement can systematically disadvantage underrepresented content.
+:::
+
+::: notes
+<!-- TODO (students): What real-world examples did Min give? Were any papers on fairness in recommendation cited? -->
+:::
+
+## Summary
+
+| Method | Personalised? | Needs Item Features? | Cold-Start Robust? |
+|--------|:---:|:---:|:---:|
+| Popularity | ✗ | ✗ | ✓ |
+| Content-Based | ✓ | ✓ | Partial |
+| User-Based CF | ✓ | ✗ | ✗ |
+| Item-Based CF | ✓ | ✗ | Partial |
+
+**Next week:** Latent Factor Models — matrix factorization, user/item embeddings, and Bayesian Personalized Ranking.
+
+::: notes
+<!-- TODO (students): Were there any additional nuances to this comparison table, or methods not listed here that were discussed? -->
+:::
