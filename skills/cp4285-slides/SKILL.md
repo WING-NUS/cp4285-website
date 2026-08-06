@@ -148,16 +148,49 @@ Final slide of each deck: titled **"Summary"**, contains a comparison table and 
 
 ---
 
+## Classroom PDF and RevealJS Review
+
+The slides are exported to **PDF for in-class markup**, so the PDF is a primary classroom artifact. Every slide must remain legible and useful as a static page for students annotating during the lecture:
+
+- use readable font sizes, strong contrast, generous spacing, and tables/code that do not become illegible when exported or printed;
+- keep essential definitions, labels, context, and conclusions visible without requiring an animation step;
+- verify that the exported PDF has no clipped content, overflow, broken links, missing fonts, or content hidden by a fragment; and
+- inspect representative PDF pages at their intended viewing/printing size before delivery.
+
+RevealJS fragments, incremental lists, and other animation features are primarily for **self-paced review** and optional pacing during the live lecture. They must not be the only way a student can access information needed to understand or annotate a slide. When fragments are used, ensure the PDF export contains the complete intended content or provide an equivalent static presentation of that content.
+
+---
+
 ## File Layout per Week
 
 ```
 static/slides/weekNN/
 ├── weekNN.qmd       ← Quarto source (author this)
 ├── weekNN.html      ← Rendered output (committed to repo)
+├── weekNN-timeline.md ← Lecture delivery timeline (keep synced with weekNN.qmd)
 └── custom.scss      ← Copy of templates/custom.scss
 ```
 
 Always commit both `.qmd` source and rendered `.html`.
+
+### Lecture Delivery Timeline
+
+Each week’s `weekNN-timeline.md` is a delivery companion to the slide deck, not a separate source of slide content. It **must be updated whenever the `.qmd` changes** so that it remains synced with the most current version of the slides. Before considering a deck update complete:
+
+- verify that every current section and slide appears in the timeline, with renamed or removed slides removed from the timeline;
+- update the timing and delivery mode when slide content or sequencing changes; and
+- verify that the individual slide times still add up to the stated lecture duration.
+
+Treat `weekNN.qmd` as the source of truth for slide order and titles. Do not modify the slides merely to make the timeline fit; revise the timeline to reflect the current deck.
+
+### In-Class Activity Delivery Mode
+
+The lecture timeline may assign a slide the **In-class activity** delivery mode. Every in-class activity must use one of these two formats:
+
+1. **Multiple-choice or response question:** Ask students to complete a quiz-style multiple-choice question or a short-response question. Collect or sample their answers, then go over the correct answer and the reasoning immediately in class. Address why plausible alternatives are wrong and resolve misconceptions before continuing.
+2. **Small-group discussion:** Put students into small groups for a few minutes to discuss a prompt and formulate an answer. Set a clear time limit and reporting expectation, then call on groups to share their answers. Synthesize the responses, correct inaccuracies, and connect the discussion back to the slide’s learning objective.
+
+For either format, state the task and expected output before starting, timebox the activity, and reserve time for the instructor’s immediate synthesis. Record the activity type in the lecture-delivery timeline so another instructor can run it without guessing which format is intended.
 
 ---
 
@@ -167,3 +200,14 @@ Always commit both `.qmd` source and rendered `.html`.
 cd static/slides/weekNN
 quarto render weekNN.qmd
 ```
+
+### Post-Change PDF Preview
+
+Whenever any slide source (`weekNN.qmd`) or slide styling (`custom.scss`) is modified:
+
+1. Run the deck’s PDF export workflow to generate a fresh PDF from the current slides.
+2. Open the PDF preview and navigate directly to every affected slide, including adjacent slides when a shared layout or style change could shift content.
+3. Check the affected pages for legibility, clipping, overflow, missing content, and static completeness for classroom markup.
+4. If the change affects a shared template or theme, inspect representative examples of every affected layout before delivery.
+
+The PDF preview is a required visual check after slide changes; an HTML render alone is not sufficient.
