@@ -217,6 +217,8 @@ Add these two framed slide types to create continuity between weekly sessions. T
 
 For both types, keep the frame and label inside the slide area, make the exercise or review prompt the visual focus, and include enough space for students to annotate the PDF. Record the slide’s placement, time, delivery mode, and expected student response in the lecture-delivery timeline.
 
+Use the responsive medium frame consistently for both types: `border: clamp(3px, 0.6vw, 6px) solid <contrast-colour>`. Keep the frame thickness proportional to the viewport so it remains visible on projected and printed/PDF versions without dominating the content.
+
 ---
 
 ## Classroom PDF and RevealJS Review
@@ -242,7 +244,7 @@ static/slides/weekNN/
 └── custom.scss      ← Copy of templates/custom.scss
 ```
 
-Always commit both `.qmd` source and rendered `.html`.
+Commit all per-week delivery artifacts together: the `.qmd` source, rendered `.html`, `custom.scss`, and `weekNN-timeline.md` when present. Keep the source, rendered output, styling, and delivery timeline synchronized in the same change.
 
 ### Lecture Delivery Timeline
 
@@ -269,11 +271,19 @@ Both in-class activity types use the following visual treatment:
 
 - Include a small countdown timer, occupying approximately one quarter of the slide area, using the same MM:SS SVG donut-bar pattern as the break slide.
 - Before designing an activity slide, prompt the user for the intended timer length. Do not silently assume the break-slide default; record the chosen duration in the timeline and configure it in the slide.
-- Surround the activity content with a medium-weight, high-contrast frame so the activity is visually distinct from ordinary lecture slides. Use a colour that contrasts with the slide background (NUS Orange `#EF7C00` is the default accent when appropriate).
+- Surround the activity content with a responsive medium-weight, high-contrast frame: use `border: clamp(3px, 0.6vw, 6px) solid <contrast-colour>` so it remains visible without becoming oversized on smaller screens. Use a colour that contrasts with the slide background (NUS Orange `#EF7C00` is the default accent when appropriate).
 - Put the exact label **“In Lecture Quiz”** inside the frame for multiple-choice or response questions.
 - Put the exact label **“In Lecture Activity”** inside the frame for small-group discussion activities.
 
 Keep the frame, label, prompt, and timer legible in the classroom PDF; the timer should support pacing without crowding out the activity prompt or response space.
+
+### Countdown Timer Expiration Cue
+
+Every countdown timer (break slides and in-lecture activity slides) must use the same shared timer state machine: **Start → Pause → Resume → Expire → Restart**. Pressing the timer button while counting down pauses it; pressing again resumes it. When it reaches `00:00`, it must play one audible ring for **0.5 seconds**, turn the donut ring green (`#00c875`), show a completion status, and expose a **Restart** action that resets the display and ring to the initial state without starting until pressed again. Start the audio from the user-initiated timer interaction so browser autoplay policies do not suppress it. Reuse one `AudioContext` per slide and call the cue exactly once per expiry.
+
+Use a short, non-startling oscillator envelope (for example, a sine tone around 880 Hz with a quick gain fade) and keep the text/status change available for students who cannot hear the audio.
+
+Implement this behavior through one reusable `createCountdownTimer` factory (or an equivalent shared helper) copied into every timer slide; do not maintain separate break/activity timer logic.
 
 ---
 
@@ -307,12 +317,12 @@ Insert a break slide whenever a mid-lecture break is planned (typically once per
 
 | Property | Value |
 |---|---|
-| Layout | Two-column split: relevant story or image on the left; timer panel on the right |
+| Layout | Two-column split: a fun fact, short story, anecdote, or image on the left; timer panel on the right |
 | Background | `#000000` (black) |
 | Text colour | White (`#ffffff`) |
-| Accent colour | NUS Orange `#EF7C00` (donut ring, anecdote highlights, button) |
+| Accent colour | NUS Orange `#EF7C00` (donut ring, item highlights, button) |
 | Timer default | 5 minutes (configurable per slide) |
-| Timer start | Manual — click **▶ Start Timer** button |
+| Timer controls | Manual — **▶ Start Timer**, **⏸ Pause**, **▶ Resume**, then **↻ Restart** after expiry |
 | Timer display | MM:SS countdown centred inside an SVG donut ring |
 | Ring behaviour | Drains clockwise; turns green (`#00c875`) when time is up |
 
@@ -321,30 +331,28 @@ Insert a break slide whenever a mid-lecture break is planned (typically once per
 The complete reusable snippet is in `templates/break-slide.qmd`. Copy it verbatim into the deck at the break point, then:
 
 1. **Replace every occurrence of `BREAKID`** with a short unique identifier (e.g. `wk1b1`) so that multiple break slides in the same HTML file do not share DOM IDs.
-2. **Replace the placeholder anecdote** inside the `<!-- TODO: insert a fun fact ... -->` block with a subject-relevant fun fact or anecdote for that week (see guidance below).
-3. **Adjust `TOTAL`** in the `<script>` block if a duration other than 5 minutes i3. **Add (e.g. `var TOTAL = 10 * 60;`).
+2. **Replace the placeholder** inside the `<!-- TODO: insert a fun fact, short story, anecdote, or image ... -->` block with a subject-relevant item for that week (see guidance below).
+3. **Adjust `TOTAL`** in the `<script>` block if a duration other than 5 minutes is needed (e.g. `var TOTAL = 10 * 60;`).
 
-### Anecdote / Fun Fact Guidelines
+### Fun Fact / Short Story / Anecdote / Image Guidelines
 
-The **left-hand pane** must contain one anecdote, fun fact, or relevant image for the week. The **right-hand pane** is reserved for the timer and its controls. The story or image must be visible without starting the timer.
+The **left-hand pane** must contain one fun fact, short story, anecdote, or image for the week. The **right-hand pane** is reserved for the timer and its controls. The item must be visible without starting the timer.
 
-The anecdote or fun fact must be:
+The fun fact, short story, anecdote, or image caption must be:
 - **Directly relevant** to the week's lecture topic or a concept covered that day.
 - **Concise** — two to four sentences maximum.
 - **Engaging** — a surprising statistic, a historical origin story, or a real-world consequence of the topic.
 - Written in the second person or impersonal voice ("Did you know…", "The first…", "In 2006…").
 - Key terms or names highlighted with `<strong style="color:#EF7C00">…</strong>`.
 
-When authoring a break slide for a specific week, generate the anecdote from the week's session learning outcomes and slide content. Do not reuse the GroupLens placeholder from the template.
+When authoring a break slide for a specific week, select the fun fact, short story, anecdote, or image from the week's session learning outcomes and slide content. Replace the generic placeholder before publishing; do not leave placeholder text in the delivered slide.
 
 ### Placement in the Deck
 
 ```markdown
 ---
 
-## {background-color="#000000"}
-
-[break slide HTML block — see templates/break-slide.qmd]
+[copy templates/break-slide.qmd here; it already includes its own slide heading]
 
 ---
 
@@ -357,6 +365,6 @@ Add a row to the lecture delivery timeline for the break slide:
 
 | Slide | Time | Mode | Delivery plan |
 |---|---:|---|---|
-| `Break` | 5 min | — | Click **▶ Start Timer** when announcing the break. Students return when the ring completes. |
+| `Break` | 5 min | — | Click **▶ Start Timer** when announcing the break; **⏸ Pause**/**▶ Resume** as needed; click **↻ Restart Timer** after expiry to reset. Students return when the ring completes. |
 
 The break duration counts against the total lecture time; adjust adjacent slide timings accordingly.
