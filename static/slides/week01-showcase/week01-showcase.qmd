@@ -1,0 +1,315 @@
+---
+title: "Recommendation Problems and Classical Methods"
+subtitle: "CP4285 Modern Recommendation Systems — Week 1 (Slide Type Showcase)"
+author: "CP4285 Instruction Team"
+date: "11 Aug 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    show-slide-number: all
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 1 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div style="border:clamp(3px,0.6vw,6px) solid #EF7C00;border-radius:6px;padding:1.4em 1.8em;height:90%;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+  <div style="display:inline-block;background:#EF7C00;color:#003D7C;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:1em;align-self:flex-start;">Previous Week Exercise Review</div>
+  <div style="font-size:1.3em;font-weight:bold;color:#003D7C;margin-bottom:0.6em;">Reflection: Your Experience with Recommendations</div>
+  <div style="font-size:0.95em;line-height:1.6;color:#333;">Before Week 1 you were asked to note <strong>one recommendation</strong> you received in the past week and ask yourself: <em>"Why did it show me this?"</em><br><br>Share your example with a neighbour. Was the recommendation helpful? Surprising? Unsettling? What signal do you think drove it?</div>
+</div>
+```
+
+::: notes
+Warm-up exercise review. Give pairs 2 minutes to share, then take 2–3 examples from the room.
+:::
+
+---
+
+# 01 Overview {background-color="#EF7C00"}
+
+## CP Pilot Course
+
+- CP4285 is part of the **CP428x Emerging Topics in Computer Science** series at NUS Computing
+- These are **pilot courses**, each run for a single semester, with the intention of eventually becoming a permanent offering
+- Students should expect the course is **not yet fully mature** — content, assessments, and delivery are actively evolving
+- The series exists to expose undergraduates to **emerging areas** before they become established curriculum
+
+::: notes
+<!-- TODO (students): What did Min say about the motivation for running CP4285 now? -->
+:::
+
+## Ethics Thread
+
+- Ethical issues are **not an afterthought** — they are woven throughout every week
+- Core themes we will revisit: **bias, fairness, privacy, exposure, transparency, stakeholder impact**
+- Recommendation systems shape everyday decisions: what people read, watch, buy, apply for, and who receives attention and opportunities
+
+::: {.callout-warning}
+These systems encode values and trade-offs. Understanding how they work means understanding what they optimise for — and at whose expense.
+:::
+
+::: notes
+<!-- TODO (students): What framing did Min use to introduce the ethics thread? -->
+:::
+
+---
+
+# 02 Schedule {background-color="#EF7C00"}
+
+## Weekly Topics
+
+| Week | Date | Topic |
+|------|------|-------|
+| 1 | 11 Aug | Recommendation Problems and Classical Methods |
+| 2 | 18 Aug | Latent Factor Models |
+| 3 | 25 Aug | Evaluation of Recommendation Systems |
+| 4 | 1 Sep | Neural Recommendation Models |
+| 5 | 8 Sep | Sequential and Session-Based Recommendation |
+| 6 | 15 Sep | Retrieval and Ranking Architectures |
+
+::: notes
+<!-- TODO (students): Did Min highlight any particular weeks as especially important or challenging? -->
+:::
+
+---
+
+# 03 Assignments & Grading {background-color="#EF7C00"}
+
+## Grading Overview
+
+| Component | Weight |
+|-----------|--------|
+| Final Exam (Mon, 23 Nov 2026, 13:00–15:00) | 30% |
+| Group Project | 30% |
+| Essays | 20% |
+| Quizzes / Tests | 10% |
+| Class Participation | 10% |
+
+::: notes
+<!-- TODO (students): Did Min elaborate on how participation is tracked? -->
+:::
+
+## Essays
+
+- **Two individual take-home essays**, each worth **10%**
+- Short written analyses of recommender-system methods, evaluation choices, and social implications
+- Approximately **2–3 week** turnaround between announcement and due date
+- AI tools are **permitted as a resource** — but an AI declaration is **mandatory** for each submission
+
+::: {.callout-note}
+Essays assess your own critical thinking. AI may assist but must not substitute your analysis.
+:::
+
+::: notes
+<!-- TODO (students): Were the essay topics or any example prompts discussed? -->
+:::
+
+---
+
+# 04 Types of Recommendation Systems {background-color="#EF7C00"}
+
+## A Card-Suit Framework for User Types
+
+::: {.columns}
+::: {.column width="50%"}
+♠ **Spades — The Explorer**
+- Seeks novelty and diversity
+- Values serendipitous discovery
+- Dislikes filter bubbles
+
+♥ **Hearts — The Social Connector**
+- Influenced by friends and community
+- Trusts collaborative signals
+:::
+::: {.column width="50%"}
+♦ **Diamonds — The Pragmatist**
+- Goal-oriented, task-driven
+- Wants the most relevant result fast
+- Values precision over diversity
+
+♣ **Clubs — The Loyalist**
+- Sticks to known preferences
+- Values consistency and familiarity
+:::
+:::
+
+::: notes
+<!-- TODO (students): How did Min introduce this framework? -->
+:::
+
+## Classical Recommendation Paradigms
+
+::: {.incremental}
+- **Popularity-based:** Recommend globally popular items — no personalisation
+- **Content-based filtering:** Recommend items similar to what the user has liked, based on item features
+- **Collaborative filtering (CF):** Leverage patterns across many users — no item features needed
+- **Hybrid approaches:** Combine multiple signals for robustness
+:::
+
+::: notes
+<!-- TODO (students): What specific examples or datasets did Min use? -->
+:::
+
+## What Is a Recommendation?
+
+> A recommendation system infers a user's latent preferences from observed behaviour and surfaces items the user is likely to value — items they would not have found on their own.
+
+- **Latent preferences** — we never observe preferences directly; we infer them
+- **Observed behaviour** — clicks, ratings, purchases, dwell time
+- **Items they would not have found** — the counterfactual value of recommendation
+
+::: notes
+The blockquote anchors the lecture's vocabulary before introducing the paradigms.
+:::
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div style="border:clamp(3px,0.6vw,6px) solid #EF7C00;border-radius:6px;padding:1.2em 1.6em;height:90%;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+  <div>
+    <div style="display:inline-block;background:#EF7C00;color:white;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:0.9em;">In Lecture Quiz</div>
+    <div style="font-size:1.15em;font-weight:bold;color:#003D7C;margin-bottom:0.8em;">Which paradigm requires <em>no item features</em> and <em>no interaction history for new users</em>?</div>
+    <div style="font-size:0.95em;line-height:1.8;"><strong>A.</strong> Content-based filtering<br><strong>B.</strong> Popularity-based recommendation<br><strong>C.</strong> User-based collaborative filtering<br><strong>D.</strong> Hybrid recommendation</div>
+    <div style="margin-top:1.2em;font-size:0.82em;color:#555;font-style:italic;">Choose your answer, then we will discuss as a class.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.4em;">
+    <svg width="120" height="120" viewBox="0 0 180 180"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle id="donut-ring-quiz1" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="timer-text-quiz1" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="#003D7C">02:00</text></svg>
+    <span id="timer-status-quiz1" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">02:00</span>
+    <button id="break-btn-quiz1" type="button" style="margin-top:0.8em;padding:0.4em 1.2em;font-size:0.85em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:white;border:none;border-radius:5px;cursor:pointer;">&#9654; Start</button>
+  </div>
+</div>
+<script>
+(function(){var TOTAL=2*60;function createCountdownTimer(o){var total=o.total,remaining=total,interval=null,state='idle',audioContext=null;var textEl=document.getElementById(o.textId),statusEl=document.getElementById(o.statusId),ringEl=document.getElementById(o.ringId),buttonEl=document.getElementById(o.buttonId);var circ=2*Math.PI*75,initColour=ringEl.getAttribute('stroke');function pad(n){return n<10?'0'+n:''+n;}function render(s){var d=pad(Math.floor(s/60))+':'+pad(s%60);textEl.textContent=d;statusEl.textContent=state==='complete'?"Time's up!":d;ringEl.setAttribute('stroke-dashoffset',circ*(1-s/total));}function ring(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!audioContext)audioContext=new AC();if(audioContext.state==='suspended')audioContext.resume();var osc=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;osc.type='sine';osc.frequency.value=880;gain.gain.setValueAtTime(0.18,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.5);osc.connect(gain);gain.connect(audioContext.destination);osc.start(now);osc.stop(now+0.5);}function ensureAudio(){var AC=window.AudioContext||window.webkitAudioContext;if(AC&&!audioContext)audioContext=new AC();if(audioContext&&audioContext.state==='suspended')audioContext.resume();}function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ringEl.setAttribute('stroke',initColour);buttonEl.textContent='&#9654; Start';buttonEl.disabled=false;render(remaining);}function tick(){remaining=Math.max(0,remaining-1);render(remaining);if(remaining===0){clearInterval(interval);interval=null;state='complete';ringEl.setAttribute('stroke','#00c875');buttonEl.textContent='&#8635; Restart';ring();}}buttonEl.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){clearInterval(interval);interval=null;state='paused';buttonEl.textContent='&#9654; Resume';return;}ensureAudio();state='running';buttonEl.textContent='&#9646;&#9646; Pause';interval=setInterval(tick,1000);});render(remaining);}createCountdownTimer({total:TOTAL,textId:'timer-text-quiz1',statusId:'timer-status-quiz1',ringId:'donut-ring-quiz1',buttonId:'break-btn-quiz1'});})();
+</script>
+```
+
+::: notes
+In Lecture Quiz. Answer is B. After the timer, take answers by show of hands, then explain why A and C fail for new users.
+:::
+
+---
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div style="border:clamp(3px,0.6vw,6px) solid #003D7C;border-radius:6px;padding:1.2em 1.6em;height:90%;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+  <div>
+    <div style="display:inline-block;background:#003D7C;color:white;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:0.9em;">In Lecture Activity</div>
+    <div style="font-size:1.15em;font-weight:bold;color:#003D7C;margin-bottom:0.8em;">Cold-Start Strategies: Small-Group Discussion</div>
+    <div style="font-size:0.95em;line-height:1.7;color:#333;">In groups of 2–3, discuss:<br><br><em>"You are launching a new music streaming service with zero users and zero ratings. Which cold-start strategy would you prioritise first — and why? What are the risks of your chosen approach?"</em><br><br>Be ready to share your group's reasoning with the class.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.4em;">
+    <svg width="120" height="120" viewBox="0 0 180 180"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle id="donut-ring-act1" cx="90" cy="90" r="75" fill="none" stroke="#003D7C" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="timer-text-act1" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="#003D7C">03:00</text></svg>
+    <span id="timer-status-act1" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
+    <button id="break-btn-act1" type="button" style="margin-top:0.8em;padding:0.4em 1.2em;font-size:0.85em;font-family:Arial,Helvetica,sans-serif;background:#003D7C;color:white;border:none;border-radius:5px;cursor:pointer;">&#9654; Start</button>
+  </div>
+</div>
+<script>
+(function(){var TOTAL=3*60;function createCountdownTimer(o){var total=o.total,remaining=total,interval=null,state='idle',audioContext=null;var textEl=document.getElementById(o.textId),statusEl=document.getElementById(o.statusId),ringEl=document.getElementById(o.ringId),buttonEl=document.getElementById(o.buttonId);var circ=2*Math.PI*75,initColour=ringEl.getAttribute('stroke');function pad(n){return n<10?'0'+n:''+n;}function render(s){var d=pad(Math.floor(s/60))+':'+pad(s%60);textEl.textContent=d;statusEl.textContent=state==='complete'?"Time's up!":d;ringEl.setAttribute('stroke-dashoffset',circ*(1-s/total));}function ring(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!audioContext)audioContext=new AC();if(audioContext.state==='suspended')audioContext.resume();var osc=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;osc.type='sine';osc.frequency.value=880;gain.gain.setValueAtTime(0.18,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.5);osc.connect(gain);gain.connect(audioContext.destination);osc.start(now);osc.stop(now+0.5);}function ensureAudio(){var AC=window.AudioContext||window.webkitAudioContext;if(AC&&!audioContext)audioContext=new AC();if(audioContext&&audioContext.state==='suspended')audioContext.resume();}function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ringEl.setAttribute('stroke',initColour);buttonEl.textContent='&#9654; Start';buttonEl.disabled=false;render(remaining);}function tick(){remaining=Math.max(0,remaining-1);render(remaining);if(remaining===0){clearInterval(interval);interval=null;state='complete';ringEl.setAttribute('stroke','#00c875');buttonEl.textContent='&#8635; Restart';ring();}}buttonEl.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){clearInterval(interval);interval=null;state='paused';buttonEl.textContent='&#9654; Resume';return;}ensureAudio();state='running';buttonEl.textContent='&#9646;&#9646; Pause';interval=setInterval(tick,1000);});render(remaining);}createCountdownTimer({total:TOTAL,textId:'timer-text-act1',statusId:'timer-status-act1',ringId:'donut-ring-act1',buttonId:'break-btn-act1'});})();
+</script>
+```
+
+::: notes
+In Lecture Activity — small-group discussion, 3 minutes. Synthesise: content-based features bypass the interaction requirement; popularity is fast but impersonal; onboarding surveys are explicit but add friction.
+:::
+
+---
+
+# Key Point {background-color="#003D7C"}
+
+## 🤞 <u>Recommendation objectives shape who gets exposure</u>
+
+Optimising purely for engagement creates a feedback loop: popular items attract more clicks, which generates more training signal, which makes them even more likely to be recommended.
+
+Long-tail items, niche creators, and new entrants bear the cost of this loop — not the platform.
+
+::: notes
+Key Point slide. Pause here before the Ethics Thread slide; let the statement land.
+:::
+
+---
+
+## Ethics Thread: Popularity Bias and Exposure Inequality
+
+- Popular items get recommended → more interactions → even more popular (**feedback loop**)
+- Long-tail items receive little to no exposure
+- Who bears the cost? **Niche creators, minority preferences, new entrants**
+
+::: {.callout-warning}
+Recommendation objectives that optimise purely for engagement can systematically disadvantage underrepresented content.
+:::
+
+::: notes
+<!-- TODO (students): What real-world examples did Min give? Were any papers on fairness in recommendation cited? -->
+:::
+
+---
+
+## {background-color="#000000"}
+
+```{=html}
+<style>#break-slide-wk1b1 .btsv{width:180px!important;height:180px!important;min-width:180px;min-height:180px;display:block;}@media(max-width:820px){#break-slide-wk1b1{grid-template-columns:1fr;gap:2em;padding:2em 6vw;text-align:center;overflow:auto;}#break-slide-wk1b1>div{margin-inline:auto;}}</style>
+<div id="break-slide-wk1b1" style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(220px,0.85fr);align-items:center;gap:5vw;height:100%;padding:0 6vw;color:white;font-family:Arial,Helvetica,sans-serif;">
+  <div style="max-width:620px;">
+    <div style="margin-bottom:0.8em;color:#EF7C00;font-size:0.8em;font-weight:bold;letter-spacing:0.12em;text-transform:uppercase;">While you pause</div>
+    <div style="font-size:1.45em;font-weight:bold;line-height:1.2;">&#9749; BREAK</div>
+    <div style="margin-top:1.2em;color:#cccccc;font-size:0.95em;line-height:1.55;font-style:italic;">Did you know? The <strong style="color:#EF7C00">Netflix Prize</strong> (2006–2009) offered $1 million to any team that could improve Netflix's recommendation accuracy by 10%. The winning team combined over <strong style="color:#EF7C00">100 different algorithms</strong> — a landmark demonstration that hybrid approaches consistently outperform any single method. Netflix never deployed the winning solution; by the time the prize was awarded, users had shifted from DVD ratings to streaming behaviour.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+    <svg class="btsv" width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="75" fill="none" stroke="#333" stroke-width="14"/><circle id="donut-ring-wk1b1" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="timer-text-wk1b1" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="white">05:00</text></svg>
+    <span id="timer-status-wk1b1" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">05:00</span>
+    <button id="break-btn-wk1b1" type="button" style="margin-top:1.2em;padding:0.5em 2em;font-size:1em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:white;border:none;border-radius:6px;cursor:pointer;letter-spacing:0.04em;">&#9654; Start Timer</button>
+  </div>
+</div>
+<script>
+(function(){var TOTAL=5*60;function createCountdownTimer(o){var total=o.total,remaining=total,interval=null,state='idle',audioContext=null;var textEl=document.getElementById(o.textId),statusEl=document.getElementById(o.statusId),ringEl=document.getElementById(o.ringId),buttonEl=document.getElementById(o.buttonId);var circ=2*Math.PI*75,initColour=ringEl.getAttribute('stroke');function pad(n){return n<10?'0'+n:''+n;}function render(s){var d=pad(Math.floor(s/60))+':'+pad(s%60);textEl.textContent=d;statusEl.textContent=state==='complete'?"Time's up!":d;ringEl.setAttribute('stroke-dashoffset',circ*(1-s/total));}function ring(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!audioContext)audioContext=new AC();if(audioContext.state==='suspended')audioContext.resume();var osc=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;osc.type='sine';osc.frequency.value=880;gain.gain.setValueAtTime(0.18,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.5);osc.connect(gain);gain.connect(audioContext.destination);osc.start(now);osc.stop(now+0.5);}function ensureAudio(){var AC=window.AudioContext||window.webkitAudioContext;if(AC&&!audioContext)audioContext=new AC();if(audioContext&&audioContext.state==='suspended')audioContext.resume();}function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ringEl.setAttribute('stroke',initColour);buttonEl.textContent='&#9654; Start Timer';buttonEl.disabled=false;render(remaining);}function tick(){remaining=Math.max(0,remaining-1);render(remaining);if(remaining===0){clearInterval(interval);interval=null;state='complete';ringEl.setAttribute('stroke','#00c875');buttonEl.textContent='&#8635; Restart Timer';ring();}}buttonEl.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){clearInterval(interval);interval=null;state='paused';buttonEl.textContent='&#9654; Resume';return;}ensureAudio();state='running';buttonEl.textContent='&#9646;&#9646; Pause';interval=setInterval(tick,1000);});render(remaining);}createCountdownTimer({total:TOTAL,textId:'timer-text-wk1b1',statusId:'timer-status-wk1b1',ringId:'donut-ring-wk1b1',buttonId:'break-btn-wk1b1'});})();
+</script>
+```
+
+::: notes
+Break slide. Click Start Timer when announcing the break. Fun fact: the Netflix Prize connects to today's hybrid approaches discussion.
+:::
+
+---
+
+# 05 Summary {background-color="#EF7C00"}
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div style="border:clamp(3px,0.6vw,6px) solid #003D7C;border-radius:6px;padding:1.4em 1.8em;height:90%;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+  <div style="display:inline-block;background:#003D7C;color:#EF7C00;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:1em;align-self:flex-start;">Next Week Pre-Lecture Exercise</div>
+  <div style="font-size:1.3em;font-weight:bold;color:#003D7C;margin-bottom:0.6em;">Before Week 2: Thinking About Latent Factors</div>
+  <div style="font-size:0.95em;line-height:1.6;color:#333;">Before next week's lecture on <strong>Latent Factor Models</strong>, try the following:<ol style="margin-top:0.6em;padding-left:1.4em;"><li>Open any streaming or shopping service you use. Find an item you rated or interacted with highly.</li><li>Look at what the system recommends next. Write down <strong>two features</strong> you think the system might have inferred about your taste from that interaction.</li><li>Come to class ready to share: what hidden dimension do you think the system is modelling?</li></ol></div>
+</div>
+```
+
+::: notes
+Next Week Pre-Lecture Exercise. Students spend 5–10 minutes on this before Week 2. Primes them to think about latent dimensions before matrix factorization is introduced formally.
+:::
+
+## Summary
+
+| Method | Personalised? | Needs Item Features? | Cold-Start Robust? |
+|--------|:---:|:---:|:---:|
+| Popularity | ✗ | ✗ | ✓ |
+| Content-Based | ✓ | ✓ | Partial |
+| User-Based CF | ✓ | ✗ | ✗ |
+| Item-Based CF | ✓ | ✗ | Partial |
+
+**Next week:** Latent Factor Models — matrix factorization, user/item embeddings, and Bayesian Personalized Ranking.
+
+::: notes
+<!-- TODO (students): Were there any additional nuances to this comparison table? -->
+:::
