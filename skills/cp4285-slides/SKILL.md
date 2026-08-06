@@ -188,6 +188,35 @@ Each week includes at least one slide titled **"Ethics Thread: \<Topic\>"** usin
 
 Final slide of each deck: titled **"Summary"**, contains a comparison table and a bold **"Next week:"** teaser.
 
+### Summary / Key Point Slide Type
+
+Use a **Summary** or **Key Point** slide to consolidate a section, mark a memorable takeaway, or bridge to the next concept. These slides must be visually distinct from both orange section-title slides and regular body slides:
+
+- Use the proposed contrastive scheme: NUS Navy `#003D7C` as the slide background, white body text, and NUS Orange `#EF7C00` for borders, labels, or emphasis.
+- Always feature at least one of these visual anchors in the slide content: crossed fingers `🤞` or key `🔑` emojis. Use the emoji as a prominent cue, not as an incidental footer decoration.
+- Keep the slide focused on one synthesis or takeaway. A Summary slide may retain the deck’s comparison table and **"Next week:"** teaser; a Key Point slide should use a short statement plus supporting evidence or implications.
+- Visually emphasize the main takeaway text. Underline the key statement by default (for example, with `<u>...</u>`); a comparably strong treatment such as a highlighted label or accent rule is acceptable when underlining is unsuitable. Do not leave the slide’s central message as unstyled body text.
+- Preserve the required speaker notes block and verify that the navy/white/orange treatment remains legible in the classroom PDF.
+
+Example:
+
+```markdown
+# Key Point {background-color="#003D7C"}
+
+## 🤞 <u>One takeaway</u>
+
+Popularity is a useful baseline, but its feedback loop can change who receives exposure.
+```
+
+### Pre-Lecture Exercise Slide Types
+
+Add these two framed slide types to create continuity between weekly sessions. They reuse the medium-weight, high-contrast frame convention from in-lecture activity slides, but each has its own frame treatment and exact label:
+
+1. **Next Week Pre-Lecture Exercise** — place at the end of the current lecture’s teaching sequence (immediately before the final Summary slide when Summary must remain last). Give students a short prompt, reading check, or preparatory question for the following week. Use a medium NUS Navy frame (`#003D7C`) with an NUS Orange label reading **“Next Week Pre-Lecture Exercise”**.
+2. **Previous Week Exercise Review** — place near the beginning of the current lecture, after opening context and before new material. Show the prior exercise prompt or a representative response, then guide a brief review of the expected reasoning. Use a medium NUS Orange frame (`#EF7C00`) with an NUS Navy label reading **“Previous Week Exercise Review”**.
+
+For both types, keep the frame and label inside the slide area, make the exercise or review prompt the visual focus, and include enough space for students to annotate the PDF. Record the slide’s placement, time, delivery mode, and expected student response in the lecture-delivery timeline.
+
 ---
 
 ## Classroom PDF and RevealJS Review
@@ -234,6 +263,18 @@ The lecture timeline may assign a slide the **In-class activity** delivery mode.
 
 For either format, state the task and expected output before starting, timebox the activity, and reserve time for the instructor’s immediate synthesis. Record the activity type in the lecture-delivery timeline so another instructor can run it without guessing which format is intended.
 
+#### Activity Slide Treatment
+
+Both in-class activity types use the following visual treatment:
+
+- Include a small countdown timer, occupying approximately one quarter of the slide area, using the same MM:SS SVG donut-bar pattern as the break slide.
+- Before designing an activity slide, prompt the user for the intended timer length. Do not silently assume the break-slide default; record the chosen duration in the timeline and configure it in the slide.
+- Surround the activity content with a medium-weight, high-contrast frame so the activity is visually distinct from ordinary lecture slides. Use a colour that contrasts with the slide background (NUS Orange `#EF7C00` is the default accent when appropriate).
+- Put the exact label **“In Lecture Quiz”** inside the frame for multiple-choice or response questions.
+- Put the exact label **“In Lecture Activity”** inside the frame for small-group discussion activities.
+
+Keep the frame, label, prompt, and timer legible in the classroom PDF; the timer should support pacing without crowding out the activity prompt or response space.
+
 ---
 
 ## Rendering
@@ -266,6 +307,7 @@ Insert a break slide whenever a mid-lecture break is planned (typically once per
 
 | Property | Value |
 |---|---|
+| Layout | Two-column split: relevant story or image on the left; timer panel on the right |
 | Background | `#000000` (black) |
 | Text colour | White (`#ffffff`) |
 | Accent colour | NUS Orange `#EF7C00` (donut ring, anecdote highlights, button) |
@@ -284,7 +326,9 @@ The complete reusable snippet is in `templates/break-slide.qmd`. Copy it verbati
 
 ### Anecdote / Fun Fact Guidelines
 
-Each break slide must contain one anecdote or fun fact that is:
+The **left-hand pane** must contain one anecdote, fun fact, or relevant image for the week. The **right-hand pane** is reserved for the timer and its controls. The story or image must be visible without starting the timer.
+
+The anecdote or fun fact must be:
 - **Directly relevant** to the week's lecture topic or a concept covered that day.
 - **Concise** — two to four sentences maximum.
 - **Engaging** — a surprising statistic, a historical origin story, or a real-world consequence of the topic.
