@@ -35,7 +35,7 @@ include-in-header:
 ## {background-color="#ffffff"}
 
 ```{=html}
-<div style="border:clamp(3px,0.6vw,6px) solid #EF7C00;border-radius:6px;padding:1.4em 1.8em;height:90%;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<div style="border:clamp(8px,1.2vw,14px) solid #EF7C00;border-radius:6px;padding:1.4em 1.8em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
   <div style="display:inline-block;background:#EF7C00;color:#003D7C;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:1em;align-self:flex-start;">Previous Week Exercise Review</div>
   <div style="font-size:1.3em;font-weight:bold;color:#003D7C;margin-bottom:0.6em;">Reflection: Your Experience with Recommendations</div>
   <div style="font-size:0.95em;line-height:1.6;color:#333;">Before Week 1 you were asked to note <strong>one recommendation</strong> you received in the past week and ask yourself: <em>"Why did it show me this?"</em><br><br>Share your example with a neighbour. Was the recommendation helpful? Surprising? Unsettling? What signal do you think drove it?</div>
@@ -188,7 +188,7 @@ The blockquote anchors the lecture's vocabulary before introducing the paradigms
 ## {background-color="#ffffff"}
 
 ```{=html}
-<div style="border:clamp(3px,0.6vw,6px) solid #EF7C00;border-radius:6px;padding:1.2em 1.6em;height:90%;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<div style="border:clamp(8px,1.2vw,14px) solid #EF7C00;border-radius:6px;padding:1.2em 1.6em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
   <div>
     <div style="display:inline-block;background:#EF7C00;color:white;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:0.9em;">In Lecture Quiz</div>
     <div style="font-size:1.15em;font-weight:bold;color:#003D7C;margin-bottom:0.8em;">Which paradigm requires <em>no item features</em> and <em>no interaction history for new users</em>?</div>
@@ -215,7 +215,7 @@ In Lecture Quiz. Answer is B. After the timer, take answers by show of hands, th
 ## {background-color="#ffffff"}
 
 ```{=html}
-<div style="border:clamp(3px,0.6vw,6px) solid #003D7C;border-radius:6px;padding:1.2em 1.6em;height:90%;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<div style="border:clamp(8px,1.2vw,14px) solid #003D7C;border-radius:6px;padding:1.2em 1.6em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
   <div>
     <div style="display:inline-block;background:#003D7C;color:white;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:0.9em;">In Lecture Activity</div>
     <div style="font-size:1.15em;font-weight:bold;color:#003D7C;margin-bottom:0.8em;">Cold-Start Strategies: Small-Group Discussion</div>
@@ -238,9 +238,9 @@ In Lecture Activity — small-group discussion, 3 minutes. Synthesise: content-b
 
 ---
 
-# Key Point {background-color="#003D7C"}
+## 🤞 Key Point {background-color="#003D7C"}
 
-## 🤞 <u>Recommendation objectives shape who gets exposure</u>
+<u>**Recommendation objectives shape who gets exposure.**</u>
 
 Optimising purely for engagement creates a feedback loop: popular items attract more clicks, which generates more training signal, which makes them even more likely to be recommended.
 
@@ -295,12 +295,10 @@ Break slide. Click Start Timer when announcing the break. Fun fact: the Netflix 
 
 ---
 
-# 05 Summary {background-color="#EF7C00"}
-
 ## {background-color="#ffffff"}
 
 ```{=html}
-<div style="border:clamp(3px,0.6vw,6px) solid #003D7C;border-radius:6px;padding:1.4em 1.8em;height:90%;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<div style="border:clamp(8px,1.2vw,14px) solid #003D7C;border-radius:6px;padding:1.4em 1.8em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
   <div style="display:inline-block;background:#003D7C;color:#EF7C00;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:1em;align-self:flex-start;">Next Week Pre-Lecture Exercise</div>
   <div style="font-size:1.3em;font-weight:bold;color:#003D7C;margin-bottom:0.6em;">Before Week 2: Thinking About Latent Factors</div>
   <div style="font-size:0.95em;line-height:1.6;color:#333;">Before next week's lecture on <strong>Latent Factor Models</strong>, try the following:<ol style="margin-top:0.6em;padding-left:1.4em;"><li>Open any streaming or shopping service you use. Find an item you rated or interacted with highly.</li><li>Look at what the system recommends next. Write down <strong>two features</strong> you think the system might have inferred about your taste from that interaction.</li><li>Come to class ready to share: what hidden dimension do you think the system is modelling?</li></ol></div>
