@@ -368,3 +368,189 @@ Add a row to the lecture delivery timeline for the break slide:
 | `Break` | 5 min | — | Click **▶ Start Timer** when announcing the break; **⏸ Pause**/**▶ Resume** as needed; click **↻ Restart Timer** after expiry to reset. Students return when the ring completes. |
 
 The break duration counts against the total lecture time; adjust adjacent slide timings accordingly.
+
+---
+
+## Frame System
+
+All framed slides use a **fixed-size background frame** implemented as a `position:absolute` element, independent of content. This ensures consistent, thick borders at every viewport size and in PDF thumbnails.
+
+### Frame Dimensions (1600×900 canvas)
+
+| Property | Value |
+|---|---|
+| Slide canvas | 1600 × 900 px |
+| Frame inset | 40 px on all sides |
+| Frame outer rect | 1520 × 820 px |
+| Frame border thickness | **20 px** solid |
+| Frame border radius | 8 px |
+| Content layer inset | matches frame (40 px all sides) |
+| Content padding | 32 px top, 36 px sides, 28 px bottom |
+
+### Required CSS Classes
+
+Include the following CSS in the deck's `include-in-header` block (or in `custom.scss`). Do not inline these styles per-slide.
+
+```css
+.cp-frame-bg {
+  position: absolute;
+  inset: 40px;
+  border-width: 20px;
+  border-style: solid;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 0;
+}
+.cp-frame-content {
+  position: absolute;
+  inset: 40px;
+  padding: 32px 36px 28px 36px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cp-frame-label {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.7em;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 0.28em 0.9em;
+  border-radius: 4px;
+  margin-bottom: 0.9em;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+.cp-frame-title  { font-size: 1.25em; font-weight: bold; margin-bottom: 0.55em; flex-shrink: 0; }
+.cp-frame-body   { font-size: 0.92em; line-height: 1.6; }
+/* Colour variants */
+.cp-frame-orange { border-color: #EF7C00; }
+.cp-frame-navy   { border-color: #003D7C; }
+.cp-frame-teal   { border-color: #00796B; }
+.cp-frame-purple { border-color: #5C2D91; }
+```
+
+### Framed Slide Markup Pattern
+
+```markdown
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-COLOUR"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:COLOUR;color:LABEL_TEXT;">LABEL</div>
+  <div class="cp-frame-title" style="color:TITLE_COLOUR;">Title</div>
+  <div class="cp-frame-body" style="color:#333;">Body content</div>
+</div>
+```
+```
+
+### Colour Variants by Slide Type
+
+| Slide Type | Frame class | Label bg | Label text | Slide bg |
+|---|---|---|---|---|
+| Previous Week Exercise Review | `cp-frame-orange` | `#EF7C00` | `#003D7C` | `#ffffff` |
+| Next Week Pre-Lecture Exercise | `cp-frame-navy` | `#003D7C` | `#EF7C00` | `#ffffff` |
+| In Lecture Quiz | `cp-frame-orange` | `#EF7C00` | `white` | `#ffffff` |
+| In Lecture Activity | `cp-frame-navy` | `#003D7C` | `white` | `#ffffff` |
+| **Next Week Preview** | `cp-frame-teal` | `#00796B` | `white` | `#002a26` |
+| **Previous Week 4-Summary** | `cp-frame-purple` | `#5C2D91` | `white` | `#1a0a2e` |
+
+---
+
+## Next Week Preview Slide
+
+### Purpose
+
+Placed at the end of the current lecture (after the Summary slide) to give students a conceptual hook for the following week before they encounter the formal material.
+
+### Design
+
+- Teal frame (`#00796B`), dark teal background (`#002a26`), white text
+- Label: **"Next Week Preview — Week N"**
+- Title: the next week's lecture title in light teal (`#80cbc4`)
+- Body: 3–5 bullet points covering the key ideas coming up, plus an optional italic reminder of the pre-lecture exercise
+
+### Markup
+
+```markdown
+## {background-color="#002a26"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-teal"></div>
+<div class="cp-frame-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#00796B;color:white;">Next Week Preview — Week N</div>
+  <div class="cp-frame-title" style="color:#80cbc4;">Lecture Title</div>
+  <div class="cp-frame-body" style="color:#cce8e5;">
+    [2–3 sentence framing of the conceptual shift]
+    <ul style="margin-top:0.5em;line-height:1.7;">
+      <li><strong>Key idea 1</strong> — one sentence</li>
+      <li><strong>Key idea 2</strong> — one sentence</li>
+      <li><strong>Key idea 3</strong> — one sentence</li>
+    </ul>
+    <em style="color:#aaa;font-size:0.88em;">Pre-lecture exercise reminder (optional)</em>
+  </div>
+</div>
+```
+```
+
+---
+
+## Previous Week 4-Summary Slide
+
+### Purpose
+
+Placed at the start of the current lecture (after the Previous Week Exercise Review, before new material) to anchor recall of the four most important concepts from the prior week.
+
+### Design
+
+- Purple frame (`#5C2D91`), dark purple background (`#1a0a2e`), white text
+- Label: **"Previous Week Summary — Week N–1 [Topic]"**
+- Title: "Four things to carry into today" (or equivalent)
+- Body: a 2×2 grid of four cells, each with a numbered heading in NUS Orange and 2–4 lines of white body text
+
+### Four-Quadrant Grid CSS
+
+```css
+.cp-quad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+.cp-quad-cell {
+  background: rgba(255,255,255,0.07);
+  border-radius: 5px;
+  padding: 14px 16px;
+  overflow: hidden;
+}
+.cp-quad-cell h4 { margin: 0 0 6px 0; font-size: 0.88em; font-weight: bold; color: #EF7C00; }
+.cp-quad-cell p, .cp-quad-cell ul { margin: 0; font-size: 0.8em; line-height: 1.45; color: #e0e0e0; }
+.cp-quad-cell ul { padding-left: 1.1em; }
+```
+
+### Markup
+
+```markdown
+## {background-color="#1a0a2e"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-purple"></div>
+<div class="cp-frame-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#5C2D91;color:white;">Previous Week Summary — Week N [Topic]</div>
+  <div class="cp-frame-title" style="color:#e0c8ff;">Four things to carry into today</div>
+  <div class="cp-quad-grid">
+    <div class="cp-quad-cell"><h4>① Concept one</h4><p>One or two sentences.</p></div>
+    <div class="cp-quad-cell"><h4>② Concept two</h4><ul><li>Point</li><li>Point</li></ul></div>
+    <div class="cp-quad-cell"><h4>③ Concept three</h4><ul><li>Point</li><li>Point</li></ul></div>
+    <div class="cp-quad-cell"><h4>④ Concept four</h4><p>One or two sentences.</p></div>
+  </div>
+</div>
+```
+```

@@ -986,6 +986,86 @@ margin-left: auto;
 margin-right: 0; }
 </style>
   <style>
+
+
+
+.cp-frame-bg {
+position: absolute;
+inset: 40px 40px 40px 40px; 
+border-width: 20px;
+border-style: solid;
+border-radius: 8px;
+pointer-events: none;
+z-index: 0;
+}
+.cp-frame-content {
+position: absolute;
+inset: 40px 40px 40px 40px;
+padding: 32px 36px 28px 36px;
+box-sizing: border-box;
+overflow-y: auto;
+z-index: 1;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+font-family: Arial, Helvetica, sans-serif;
+color: #1a1a1a;
+}
+.cp-frame-label {
+display: inline-block;
+font-weight: bold;
+font-size: 0.7em;
+letter-spacing: 0.13em;
+text-transform: uppercase;
+padding: 0.28em 0.9em;
+border-radius: 4px;
+margin-bottom: 0.9em;
+align-self: flex-start;
+flex-shrink: 0;
+}
+.cp-frame-title {
+font-size: 1.25em;
+font-weight: bold;
+margin-bottom: 0.55em;
+flex-shrink: 0;
+}
+.cp-frame-body {
+font-size: 0.92em;
+line-height: 1.6;
+}
+
+.cp-frame-orange { border-color: #EF7C00; }
+.cp-frame-navy { border-color: #003D7C; }
+.cp-frame-teal { border-color: #00796B; }
+.cp-frame-purple { border-color: #5C2D91; }
+
+.cp-quad-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr 1fr;
+gap: 16px;
+flex: 1;
+min-height: 0;
+}
+.cp-quad-cell {
+background: rgba(255,255,255,0.07);
+border-radius: 5px;
+padding: 14px 16px;
+overflow: hidden;
+}
+.cp-quad-cell h4 {
+margin: 0 0 6px 0;
+font-size: 0.88em;
+font-weight: bold;
+color: #EF7C00;
+}
+.cp-quad-cell p, .cp-quad-cell ul {
+margin: 0;
+font-size: 0.8em;
+line-height: 1.45;
+color: #e0e0e0;
+}
+.cp-quad-cell ul { padding-left: 1.1em; }
 @page { size: A4 landscape; margin: 0; }
 @media print {
 .reveal, .reveal .slides { width: 297mm !important; height: 210mm !important; }
@@ -1011,12 +1091,24 @@ CP4285 Instruction Team
 
   <p class="date">11 Aug 2026</p>
 </section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 1 — Previous Week Exercise Review
+     Orange frame (#EF7C00), orange label on navy text
+     ══════════════════════════════════════════════════════════════════════ -->
+</section>
 <section id="section" class="slide level2" data-background-color="#ffffff">
 <h2></h2>
-<div style="border:clamp(8px,1.2vw,14px) solid #EF7C00;border-radius:6px;padding:1.4em 1.8em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
-  <div style="display:inline-block;background:#EF7C00;color:#003D7C;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:1em;align-self:flex-start;">Previous Week Exercise Review</div>
-  <div style="font-size:1.3em;font-weight:bold;color:#003D7C;margin-bottom:0.6em;">Reflection: Your Experience with Recommendations</div>
-  <div style="font-size:0.95em;line-height:1.6;color:#333;">Before Week 1 you were asked to note <strong>one recommendation</strong> you received in the past week and ask yourself: <em>&quot;Why did it show me this?&quot;</em><br><br>Share your example with a neighbour. Was the recommendation helpful? Surprising? Unsettling? What signal do you think drove it?</div>
+<div class="cp-frame-bg cp-frame-orange"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#EF7C00;color:#003D7C;">Previous Week Exercise Review</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Reflection: Your Experience with Recommendations</div>
+  <div class="cp-frame-body" style="color:#333;">
+    Before Week 1 you were asked to note <strong>one recommendation</strong> you received in the past week and ask yourself: <em>&quot;Why did it show me this?&quot;</em>
+    <br><br>
+    Share your example with a neighbour. Was the recommendation helpful? Surprising? Unsettling? What signal do you think drove it?
+  </div>
 </div>
 <aside class="notes">
 <p>Warm-up exercise review. Give pairs 2 minutes to share, then take 2–3 examples from the room.</p>
@@ -1034,11 +1126,16 @@ display:block!important;
 </section>
 <section class="slide level2">
 
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 2 — Section Title (H1, orange background)
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section>
 <section id="overview" class="title-slide slide level1 center" data-background-color="#EF7C00">
 <h1>01 Overview</h1>
-
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 3 — Standard Content Slide (H2, bullet list)
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="cp-pilot-course" class="slide level2">
 <h2>CP Pilot Course</h2>
@@ -1061,13 +1158,16 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 4 — Content Slide with .callout-warning
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="ethics-thread" class="slide level2">
 <h2>Ethics Thread</h2>
 <ul>
 <li>Ethical issues are <strong>not an afterthought</strong> — they are woven throughout every week</li>
-<li>Core themes we will revisit: <strong>bias, fairness, privacy, exposure, transparency, stakeholder impact</strong></li>
-<li>Recommendation systems shape everyday decisions: what people read, watch, buy, apply for, and who receives attention and opportunities</li>
+<li>Core themes: <strong>bias, fairness, privacy, exposure, transparency, stakeholder impact</strong></li>
+<li>Recommendation systems shape everyday decisions: what people read, watch, buy, apply for</li>
 </ul>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -1102,7 +1202,9 @@ display:block!important;
 <section>
 <section id="schedule" class="title-slide slide level1 center" data-background-color="#EF7C00">
 <h1>02 Schedule</h1>
-
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 5 — Table Slide
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="weekly-topics" class="slide level2">
 <h2>Weekly Topics</h2>
@@ -1214,14 +1316,16 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 6 — Content Slide with .callout-note
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="essays" class="slide level2">
 <h2>Essays</h2>
 <ul>
 <li><strong>Two individual take-home essays</strong>, each worth <strong>10%</strong></li>
 <li>Short written analyses of recommender-system methods, evaluation choices, and social implications</li>
-<li>Approximately <strong>2–3 week</strong> turnaround between announcement and due date</li>
-<li>AI tools are <strong>permitted as a resource</strong> — but an AI declaration is <strong>mandatory</strong> for each submission</li>
+<li>Approximately <strong>2–3 week</strong> turnaround; AI tools permitted but an AI declaration is <strong>mandatory</strong></li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -1256,16 +1360,18 @@ display:block!important;
 <section>
 <section id="types-of-recommendation-systems" class="title-slide slide level1 center" data-background-color="#EF7C00">
 <h1>04 Types of Recommendation Systems</h1>
-
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 7 — Two-Column Layout
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="a-card-suit-framework-for-user-types" class="slide level2">
 <h2>A Card-Suit Framework for User Types</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>♠ <strong>Spades — The Explorer</strong> - Seeks novelty and diversity - Values serendipitous discovery - Dislikes filter bubbles</p>
+<p>♠ <strong>Spades — The Explorer</strong> - Seeks novelty and diversity - Values serendipitous discovery</p>
 <p>♥ <strong>Hearts — The Social Connector</strong> - Influenced by friends and community - Trusts collaborative signals</p>
 </div><div class="column" style="width:50%;">
-<p>♦ <strong>Diamonds — The Pragmatist</strong> - Goal-oriented, task-driven - Wants the most relevant result fast - Values precision over diversity</p>
+<p>♦ <strong>Diamonds — The Pragmatist</strong> - Goal-oriented, task-driven - Values precision over diversity</p>
 <p>♣ <strong>Clubs — The Loyalist</strong> - Sticks to known preferences - Values consistency and familiarity</p>
 </div></div>
 <aside class="notes">
@@ -1281,12 +1387,15 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 8 — Incremental Bullet List
+     ═════════════════════════════════════════════════════════════════     ═�══ -->
 </section>
 <section id="classical-recommendation-paradigms" class="slide level2">
 <h2>Classical Recommendation Paradigms</h2>
 <ul>
 <li class="fragment"><strong>Popularity-based:</strong> Recommend globally popular items — no personalisation</li>
-<li class="fragment"><strong>Content-based filtering:</strong> Recommend items similar to what the user has liked, based on item features</li>
+<li class="fragment"><strong>Content-based filtering:</strong> Items similar to what the user has liked, based on item features</li>
 <li class="fragment"><strong>Collaborative filtering (CF):</strong> Leverage patterns across many users — no item features needed</li>
 <li class="fragment"><strong>Hybrid approaches:</strong> Combine multiple signals for robustness</li>
 </ul>
@@ -1303,6 +1412,9 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 9 — Blockquote
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="what-is-a-recommendation" class="slide level2">
 <h2>What Is a Recommendation?</h2>
@@ -1312,10 +1424,10 @@ display:block!important;
 <ul>
 <li><strong>Latent preferences</strong> — we never observe preferences directly; we infer them</li>
 <li><strong>Observed behaviour</strong> — clicks, ratings, purchases, dwell time</li>
-<li><strong>Items they would not have found</strong> — the counterfactual value of recommendation</li>
+<li><strong>Counterfactual value</strong> — items they would not have found unaided</li>
 </ul>
 <aside class="notes">
-<p>The blockquote anchors the lecture’s vocabulary before introducing the paradigms.</p>
+<p>The blockquote anchors the lecture vocabulary before introducing the paradigms.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1327,27 +1439,36 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 10 — In Lecture Quiz (orange frame, timer)
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="section-1" class="slide level2" data-background-color="#ffffff">
 <h2></h2>
-<div style="border:clamp(8px,1.2vw,14px) solid #EF7C00;border-radius:6px;padding:1.2em 1.6em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<div class="cp-frame-bg cp-frame-orange"></div>
+<div class="cp-frame-content" style="display:grid;grid-template-columns:1fr 200px;gap:2em;align-items:start;">
   <div>
-    <div style="display:inline-block;background:#EF7C00;color:white;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:0.9em;">In Lecture Quiz</div>
-    <div style="font-size:1.15em;font-weight:bold;color:#003D7C;margin-bottom:0.8em;">Which paradigm requires <em>no item features</em> and <em>no interaction history for new users</em>?</div>
-    <div style="font-size:0.95em;line-height:1.8;"><strong>A.</strong> Content-based filtering<br><strong>B.</strong> Popularity-based recommendation<br><strong>C.</strong> User-based collaborative filtering<br><strong>D.</strong> Hybrid recommendation</div>
-    <div style="margin-top:1.2em;font-size:0.82em;color:#555;font-style:italic;">Choose your answer, then we will discuss as a class.</div>
+    <div class="cp-frame-label" style="background:#EF7C00;color:white;">In Lecture Quiz</div>
+    <div class="cp-frame-title" style="color:#003D7C;">Which paradigm requires <em>no item features</em> and <em>no interaction history for new users</em>?</div>
+    <div class="cp-frame-body" style="color:#333;line-height:1.8;">
+      <strong>A.</strong> Content-based filtering<br>
+      <strong>B.</strong> Popularity-based recommendation<br>
+      <strong>C.</strong> User-based collaborative filtering<br>
+      <strong>D.</strong> Hybrid recommendation
+    </div>
+    <div style="margin-top:1em;font-size:0.78em;color:#666;font-style:italic;">Choose your answer, then we will discuss as a class.</div>
   </div>
-  <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.4em;">
-    <svg width="120" height="120" viewbox="0 0 180 180"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="donut-ring-quiz1" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="timer-text-quiz1" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="#003D7C">02:00</text></svg>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.2em;">
+    <svg width="130" height="130" viewbox="0 0 180 180"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="donut-ring-quiz1" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="timer-text-quiz1" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="#003D7C">02:00</text></svg>
     <span id="timer-status-quiz1" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">02:00</span>
-    <button id="break-btn-quiz1" type="button" style="margin-top:0.8em;padding:0.4em 1.2em;font-size:0.85em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:white;border:none;border-radius:5px;cursor:pointer;">▶ Start</button>
+    <button id="break-btn-quiz1" type="button" style="margin-top:0.6em;padding:0.35em 1em;font-size:0.82em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:white;border:none;border-radius:5px;cursor:pointer;">▶ Start</button>
   </div>
 </div>
 <script>
 (function(){var TOTAL=2*60;function createCountdownTimer(o){var total=o.total,remaining=total,interval=null,state='idle',audioContext=null;var textEl=document.getElementById(o.textId),statusEl=document.getElementById(o.statusId),ringEl=document.getElementById(o.ringId),buttonEl=document.getElementById(o.buttonId);var circ=2*Math.PI*75,initColour=ringEl.getAttribute('stroke');function pad(n){return n<10?'0'+n:''+n;}function render(s){var d=pad(Math.floor(s/60))+':'+pad(s%60);textEl.textContent=d;statusEl.textContent=state==='complete'?"Time's up!":d;ringEl.setAttribute('stroke-dashoffset',circ*(1-s/total));}function ring(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!audioContext)audioContext=new AC();if(audioContext.state==='suspended')audioContext.resume();var osc=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;osc.type='sine';osc.frequency.value=880;gain.gain.setValueAtTime(0.18,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.5);osc.connect(gain);gain.connect(audioContext.destination);osc.start(now);osc.stop(now+0.5);}function ensureAudio(){var AC=window.AudioContext||window.webkitAudioContext;if(AC&&!audioContext)audioContext=new AC();if(audioContext&&audioContext.state==='suspended')audioContext.resume();}function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ringEl.setAttribute('stroke',initColour);buttonEl.textContent='▶ Start';buttonEl.disabled=false;render(remaining);}function tick(){remaining=Math.max(0,remaining-1);render(remaining);if(remaining===0){clearInterval(interval);interval=null;state='complete';ringEl.setAttribute('stroke','#00c875');buttonEl.textContent='↻ Restart';ring();}}buttonEl.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){clearInterval(interval);interval=null;state='paused';buttonEl.textContent='▶ Resume';return;}ensureAudio();state='running';buttonEl.textContent='⏸ Pause';interval=setInterval(tick,1000);});render(remaining);}createCountdownTimer({total:TOTAL,textId:'timer-text-quiz1',statusId:'timer-status-quiz1',ringId:'donut-ring-quiz1',buttonId:'break-btn-quiz1'});})();
 </script>
 <aside class="notes">
-<p>In Lecture Quiz. Answer is B. After the timer, take answers by show of hands, then explain why A and C fail for new users.</p>
+<p>In Lecture Quiz. Answer is B. After timer, take answers by show of hands, then explain why A and C fail for new users.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1360,25 +1481,36 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 11 — In Lecture Activity (navy frame, timer)
+     ══════════════════════════════════════════════════════════════════════ -->
+</section>
 <section id="section-2" class="slide level2" data-background-color="#ffffff">
 <h2></h2>
-<div style="border:clamp(8px,1.2vw,14px) solid #003D7C;border-radius:6px;padding:1.2em 1.6em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:grid;grid-template-columns:1fr auto;gap:2em;align-items:start;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content" style="display:grid;grid-template-columns:1fr 200px;gap:2em;align-items:start;">
   <div>
-    <div style="display:inline-block;background:#003D7C;color:white;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:0.9em;">In Lecture Activity</div>
-    <div style="font-size:1.15em;font-weight:bold;color:#003D7C;margin-bottom:0.8em;">Cold-Start Strategies: Small-Group Discussion</div>
-    <div style="font-size:0.95em;line-height:1.7;color:#333;">In groups of 2–3, discuss:<br><br><em>&quot;You are launching a new music streaming service with zero users and zero ratings. Which cold-start strategy would you prioritise first — and why? What are the risks of your chosen approach?&quot;</em><br><br>Be ready to share your group&#39;s reasoning with the class.</div>
+    <div class="cp-frame-label" style="background:#003D7C;color:white;">In Lecture Activity</div>
+    <div class="cp-frame-title" style="color:#003D7C;">Cold-Start Strategies: Small-Group Discussion</div>
+    <div class="cp-frame-body" style="color:#333;">
+      In groups of 2–3, discuss:<br><br>
+      <em>&quot;You are launching a new music streaming service with zero users and zero ratings. Which cold-start strategy would you prioritise first — and why? What are the risks?&quot;</em><br><br>
+      Be ready to share your group&#39;s reasoning.
+    </div>
   </div>
-  <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.4em;">
-    <svg width="120" height="120" viewbox="0 0 180 180"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="donut-ring-act1" cx="90" cy="90" r="75" fill="none" stroke="#003D7C" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="timer-text-act1" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="#003D7C">03:00</text></svg>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.2em;">
+    <svg width="130" height="130" viewbox="0 0 180 180"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="donut-ring-act1" cx="90" cy="90" r="75" fill="none" stroke="#003D7C" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="timer-text-act1" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="#003D7C">03:00</text></svg>
     <span id="timer-status-act1" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
-    <button id="break-btn-act1" type="button" style="margin-top:0.8em;padding:0.4em 1.2em;font-size:0.85em;font-family:Arial,Helvetica,sans-serif;background:#003D7C;color:white;border:none;border-radius:5px;cursor:pointer;">▶ Start</button>
+    <button id="break-btn-act1" type="button" style="margin-top:0.6em;padding:0.35em 1em;font-size:0.82em;font-family:Arial,Helvetica,sans-serif;background:#003D7C;color:white;border:none;border-radius:5px;cursor:pointer;">▶ Start</button>
   </div>
 </div>
 <script>
 (function(){var TOTAL=3*60;function createCountdownTimer(o){var total=o.total,remaining=total,interval=null,state='idle',audioContext=null;var textEl=document.getElementById(o.textId),statusEl=document.getElementById(o.statusId),ringEl=document.getElementById(o.ringId),buttonEl=document.getElementById(o.buttonId);var circ=2*Math.PI*75,initColour=ringEl.getAttribute('stroke');function pad(n){return n<10?'0'+n:''+n;}function render(s){var d=pad(Math.floor(s/60))+':'+pad(s%60);textEl.textContent=d;statusEl.textContent=state==='complete'?"Time's up!":d;ringEl.setAttribute('stroke-dashoffset',circ*(1-s/total));}function ring(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!audioContext)audioContext=new AC();if(audioContext.state==='suspended')audioContext.resume();var osc=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;osc.type='sine';osc.frequency.value=880;gain.gain.setValueAtTime(0.18,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.5);osc.connect(gain);gain.connect(audioContext.destination);osc.start(now);osc.stop(now+0.5);}function ensureAudio(){var AC=window.AudioContext||window.webkitAudioContext;if(AC&&!audioContext)audioContext=new AC();if(audioContext&&audioContext.state==='suspended')audioContext.resume();}function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ringEl.setAttribute('stroke',initColour);buttonEl.textContent='▶ Start';buttonEl.disabled=false;render(remaining);}function tick(){remaining=Math.max(0,remaining-1);render(remaining);if(remaining===0){clearInterval(interval);interval=null;state='complete';ringEl.setAttribute('stroke','#00c875');buttonEl.textContent='↻ Restart';ring();}}buttonEl.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){clearInterval(interval);interval=null;state='paused';buttonEl.textContent='▶ Resume';return;}ensureAudio();state='running';buttonEl.textContent='⏸ Pause';interval=setInterval(tick,1000);});render(remaining);}createCountdownTimer({total:TOTAL,textId:'timer-text-act1',statusId:'timer-status-act1',ringId:'donut-ring-act1',buttonId:'break-btn-act1'});})();
 </script>
 <aside class="notes">
-<p>In Lecture Activity — small-group discussion, 3 minutes. Synthesise: content-based features bypass the interaction requirement; popularity is fast but impersonal; onboarding surveys are explicit but add friction.</p>
+<p>In Lecture Activity — small-group discussion, 3 minutes. Synthesise after: content-based bypasses interaction requirement; popularity is fast but impersonal; onboarding surveys add friction.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1390,6 +1522,12 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+</section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 12 — Key Point (navy background, single H2 slide)
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="key-point" class="slide level2" data-background-color="#003D7C">
 <h2>🤞 Key Point</h2>
@@ -1397,7 +1535,7 @@ display:block!important;
 <p>Optimising purely for engagement creates a feedback loop: popular items attract more clicks, which generates more training signal, which makes them even more likely to be recommended.</p>
 <p>Long-tail items, niche creators, and new entrants bear the cost of this loop — not the platform.</p>
 <aside class="notes">
-<p>Key Point slide. Pause here before the Ethics Thread slide; let the statement land.</p>
+<p>Key Point slide. Pause here before the Ethics Thread slide.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1409,6 +1547,12 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+</section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 13 — Ethics Thread (content + callout-warning)
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="ethics-thread-popularity-bias-and-exposure-inequality" class="slide level2">
 <h2>Ethics Thread: Popularity Bias and Exposure Inequality</h2>
@@ -1431,7 +1575,7 @@ display:block!important;
 </div>
 </div>
 <aside class="notes">
-<!-- TODO (students): What real-world examples did Min give? Were any papers on fairness in recommendation cited? -->
+<!-- TODO (students): What real-world examples did Min give? Were any papers on fairness cited? -->
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1443,6 +1587,12 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+</section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 14 — Break Slide (black bg, two-column, donut timer)
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="section-3" class="slide level2" data-background-color="#000000">
 <h2></h2>
@@ -1463,7 +1613,7 @@ display:block!important;
 (function(){var TOTAL=5*60;function createCountdownTimer(o){var total=o.total,remaining=total,interval=null,state='idle',audioContext=null;var textEl=document.getElementById(o.textId),statusEl=document.getElementById(o.statusId),ringEl=document.getElementById(o.ringId),buttonEl=document.getElementById(o.buttonId);var circ=2*Math.PI*75,initColour=ringEl.getAttribute('stroke');function pad(n){return n<10?'0'+n:''+n;}function render(s){var d=pad(Math.floor(s/60))+':'+pad(s%60);textEl.textContent=d;statusEl.textContent=state==='complete'?"Time's up!":d;ringEl.setAttribute('stroke-dashoffset',circ*(1-s/total));}function ring(){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!audioContext)audioContext=new AC();if(audioContext.state==='suspended')audioContext.resume();var osc=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;osc.type='sine';osc.frequency.value=880;gain.gain.setValueAtTime(0.18,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.5);osc.connect(gain);gain.connect(audioContext.destination);osc.start(now);osc.stop(now+0.5);}function ensureAudio(){var AC=window.AudioContext||window.webkitAudioContext;if(AC&&!audioContext)audioContext=new AC();if(audioContext&&audioContext.state==='suspended')audioContext.resume();}function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ringEl.setAttribute('stroke',initColour);buttonEl.textContent='▶ Start Timer';buttonEl.disabled=false;render(remaining);}function tick(){remaining=Math.max(0,remaining-1);render(remaining);if(remaining===0){clearInterval(interval);interval=null;state='complete';ringEl.setAttribute('stroke','#00c875');buttonEl.textContent='↻ Restart Timer';ring();}}buttonEl.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){clearInterval(interval);interval=null;state='paused';buttonEl.textContent='▶ Resume';return;}ensureAudio();state='running';buttonEl.textContent='⏸ Pause';interval=setInterval(tick,1000);});render(remaining);}createCountdownTimer({total:TOTAL,textId:'timer-text-wk1b1',statusId:'timer-status-wk1b1',ringId:'donut-ring-wk1b1',buttonId:'break-btn-wk1b1'});})();
 </script>
 <aside class="notes">
-<p>Break slide. Click Start Timer when announcing the break. Fun fact: the Netflix Prize connects to today’s hybrid approaches discussion.</p>
+<p>Break slide. Click ▶ Start Timer when announcing the break.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1476,15 +1626,49 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="section-4" class="slide level2" data-background-color="#ffffff">
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 15 — Previous Week 4-Summary (purple frame, dark bg)
+     Four-quadrant grid summarising the prior week's key concepts.
+     ══════════════════════════════════════════════════════════════════════ -->
+</section>
+<section id="section-4" class="slide level2" data-background-color="#1a0a2e">
 <h2></h2>
-<div style="border:clamp(8px,1.2vw,14px) solid #003D7C;border-radius:6px;padding:1.4em 1.8em;box-sizing:border-box;max-height:86%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
-  <div style="display:inline-block;background:#003D7C;color:#EF7C00;font-weight:bold;font-size:0.72em;letter-spacing:0.12em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:1em;align-self:flex-start;">Next Week Pre-Lecture Exercise</div>
-  <div style="font-size:1.3em;font-weight:bold;color:#003D7C;margin-bottom:0.6em;">Before Week 2: Thinking About Latent Factors</div>
-  <div style="font-size:0.95em;line-height:1.6;color:#333;">Before next week&#39;s lecture on <strong>Latent Factor Models</strong>, try the following:<ol style="margin-top:0.6em;padding-left:1.4em;"><li>Open any streaming or shopping service you use. Find an item you rated or interacted with highly.</li><li>Look at what the system recommends next. Write down <strong>two features</strong> you think the system might have inferred about your taste from that interaction.</li><li>Come to class ready to share: what hidden dimension do you think the system is modelling?</li></ol></div>
+<div class="cp-frame-bg cp-frame-purple"></div>
+<div class="cp-frame-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#5C2D91;color:white;">Previous Week Summary — Week 0 Foundations</div>
+  <div class="cp-frame-title" style="color:#e0c8ff;">Four things to carry into today</div>
+  <div class="cp-quad-grid">
+    <div class="cp-quad-cell">
+      <h4>① What is a recommendation?</h4>
+      <p>Inferring latent preferences from observed behaviour to surface items a user would not have found alone.</p>
+    </div>
+    <div class="cp-quad-cell">
+      <h4>② The three cold-start cases</h4>
+      <ul>
+        <li>New user — no history</li>
+        <li>New item — no ratings</li>
+        <li>New system — no data at all</li>
+      </ul>
+    </div>
+    <div class="cp-quad-cell">
+      <h4>③ Four classical paradigms</h4>
+      <ul>
+        <li>Popularity-based</li>
+        <li>Content-based filtering</li>
+        <li>Collaborative filtering</li>
+        <li>Hybrid approaches</li>
+      </ul>
+    </div>
+    <div class="cp-quad-cell">
+      <h4>④ The feedback loop risk</h4>
+      <p>Optimising for engagement amplifies popular items, systematically reducing exposure for long-tail content.</p>
+    </div>
+  </div>
 </div>
 <aside class="notes">
-<p>Next Week Pre-Lecture Exercise. Students spend 5–10 minutes on this before Week 2. Primes them to think about latent dimensions before matrix factorization is introduced formally.</p>
+<p>Previous Week 4-Summary. Use at the start of Week 2 to anchor recall before introducing latent factor models.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1496,6 +1680,87 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+</section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 16 — Next Week Preview      SLIDE TYPE 16 — Next Week Pre═══════════════════════════════════════════════════════════════════ -->
+</section>
+<section id="section-5" class="slide level2" data-background-color="#002a26">
+<h2></h2>
+<div class="cp-frame-bg cp-frame-teal"></div>
+<div class="cp-frame-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#00796B;color:white;">Next Week Preview — Week 2</div>
+  <div class="cp-frame-title" style="color:#80cbc4;">Latent Factor Models</div>
+  <div class="cp-frame-body" style="color:#cce8e5;">
+    Next week we move from explicit item features to <strong style="color:#80cbc4;">learned representations</strong>.
+    We will ask: what if we let the data decide what the relevant dimensions are?
+    <br><br>
+    <strong style="color:#EF7C00;">Key ideas coming up:</strong>
+    <ul style="margin-top:0.5em;line-height:1.7;">
+      <li><strong>Matrix factorization</strong> — decompose the user–item rating matrix into low-rank embeddings</li>
+      <li><strong>User and item embeddings</strong> — dense vectors that encode latent taste and latent style</li>
+      <li><strong>Bayesian Personalized Ranking (BPR)</strong> — optimise for relative preference, not absolute rating</li>
+      <li><strong>Implicit vs explicit feedback</strong> — what clicks, views, and skips tell us that ratings do not</li>
+    </ul>
+    <br>
+    <em style="color:#aaa;font-size:0.88em;">Pre-lecture exercise: find one item you interacted with highly and write down two features you think the system inferred about your taste.</em>
+  </div>
+</div>
+<aside class="notes">
+<p>Next Week Preview. Place at the end of the lecture, after the Summary slide. Gives students a conceptual hook before they encounter the formal material.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 17 — Next Week Pre-Lecture Exercise (navy frame)
+     ══════════════════════════════════════════════════════════════════════ -->
+</section>
+<section id="section-6" class="slide level2" data-background-color="#ffffff">
+<h2></h2>
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Before Week 2: Thinking About Latent Factors</div>
+  <div class="cp-frame-body" style="color:#333;">
+    Before next week&#39;s lecture on <strong>Latent Factor Models</strong>, try the following:
+    <ol style="margin-top:0.6em;padding-left:1.4em;line-height:1.8;">
+      <li>Open any streaming or shopping service you use. Find an item you rated or interacted with highly.</li>
+      <li>Look at what the system recommends next. Write down <strong>two features</strong> you think the system might have inferred about your taste from that interaction.</li>
+      <li>Come to class ready to share: what hidden dimension do you think the system is modelling?</li>
+    </ol>
+  </div>
+</div>
+<aside class="notes">
+<p>Next Week Pre-Lecture Exercise. Students spend 5–10 minutes on this before Week 2.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section class="slide level2">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SLIDE TYPE 18 — Summary (comparison table + Next week teaser)
+     ══════════════════════════════════════════════════════════════════════ -->
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
