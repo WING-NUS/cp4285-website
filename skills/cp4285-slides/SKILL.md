@@ -63,7 +63,8 @@ These are NUS brand colours. **Do not substitute** other colours.
 - **Body font:** Arial, Helvetica, sans-serif
 - **Heading font:** Arial, Helvetica, sans-serif (same family)
 - Heading colour: `#003D7C` (navy)
-- H3 colour: `#EF7C00` (orang- H3 colour: `#EF7C00` (orang- H3 colour: `#EF7C00` (orom border
+- H3 colour: `#EF7C00` (orange)
+- All H1/H2 headings have a `3px solid #EF7C00` bottom border
 
 ---
 
