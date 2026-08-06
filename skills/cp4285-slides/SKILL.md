@@ -11,6 +11,47 @@ All CP4285 slide decks are authored in **Quarto Markdown (`.qmd`)** and rendered
 
 ---
 
+## Learning Outcomes Quick Reference
+
+Use these outcomes when planning, reviewing, or revising a deck. The authoritative course pages are `content/_index.md` (course outcomes) and `content/docs/schedule.md` (session outcomes).
+
+### Course Learning Outcomes
+
+By the end of the course, students should be able to:
+
+| CLO | Outcome |
+|---|---|
+| **CLO 1** | Explain and compare classical recommendation methods, including collaborative filtering, content-based filtering, and hybrid approaches. |
+| **CLO 2** | Implement matrix factorization and neural recommendation models using modern deep learning frameworks. |
+| **CLO 3** | Design and execute rigorous offline evaluation protocols using appropriate ranking metrics. |
+| **CLO 4** | Analyse the cold-start problem and propose strategies to address it. |
+| **CLO 5** | Critique recommender systems from fairness, privacy, transparency, and stakeholder impact perspectives. |
+| **CLO 6** | Explain advanced recommendation architectures including sequential, graph-based, multi-objective, and LLM-enhanced systems. |
+| **CLO 7** | Design and justify a complete recommendation system pipeline from problem formulation through evaluation and ethical analysis. |
+| **CLO 8** | Communicate and defend recommendation-system designs and results to a technical audience. |
+
+### Session Learning Outcomes
+
+| Session | Outcomes |
+|---|---|
+| **Week 1 — Recommendation Problems and Classical Methods** | Formulate recommendation problems; differentiate recommendation paradigms; Analyze cold-start challenges; explain how recommendation objectives affect exposure. |
+| **Week 2 — Latent Factor Models** | Explain latent-factor models; train embedding-based recommenders; compare prediction and ranking objectives; discuss risks of learning from historical behavior. |
+| **Week 3 — Evaluation of Recommendation Systems** | Design evaluation protocols; compute ranking metrics; critique metric selection; explain limitations of offline evaluation. |
+| **Week 4 — Neural Recommendation Models** | Build neural recommenders; compare neural and latent-factor approaches; Analyze explainability challenges; assess trade-offs between complexity and transparency. |
+| **Week 5 — Sequential and Session-Based Recommendation** | Model temporal preferences; implement next-item prediction; compare static and dynamic representations; critically assess engagement-driven objectives. |
+| **Week 6 — Retrieval and Ranking Architectures** | Explain industrial recommendation pipelines; design retrieval-ranking architectures; Analyze scalability trade-offs; evaluate how ranking affects different stakeholders. |
+| **Week 7 — Project Design Critique Workshop** | Defend recommendation-system designs; critique evaluation strategies; identify ethical risks early; refine project scope based on feedback. |
+| **Week 8 — Learning-to-Rank** | Formulate ranking objectives; compare ranking approaches; Analyze position bias; discuss fairness implications of ranking. |
+| **Week 9 — Graph-Based Recommendation** | Represent recommendations as graph problems; explain graph propagation; build graph-based recommenders; Analyze risks of graph-driven feedback loops. |
+| **Week 10 — Multi-Objective Recommendation** | Define non-accuracy objectives; measure diversity and novelty; design multi-objective recommenders; justify objective trade-offs. |
+| **Week 11 — Exploration and Online Learning** | Explain exploration strategies; design adaptive recommendation policies; Analyze recommendation feedback loops; discuss ethical implications of experimentation. |
+| **Week 12 — LLMs, Generative Recommendation, and Research Frontiers** | Explain modern recommendation research directions; evaluate LLM-based recommendation systems; critique emerging approaches; identify open research challenges. |
+| **Week 13 — Final Project Presentations** | Present recommendation-system designs professionally; defend technical decisions; interpret evaluation results critically; integrate technical, product, and societal considerations. |
+
+When slides are changed, offer to check their alignment with both the relevant CLOs and the specific session outcomes. An alignment check should map slide content and activities to outcomes, identify missing, weak, or redundant coverage, and suggest targeted revisions; do not silently modify the deck as part of the check.
+
+---
+
 ## YAML Front Matter Template
 
 ```yaml
