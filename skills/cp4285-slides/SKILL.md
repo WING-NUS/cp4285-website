@@ -253,3 +253,66 @@ Whenever any slide source (`weekNN.qmd`) or slide styling (`custom.scss`) is mod
 4. If the change affects a shared template or theme, inspect representative examples of every affected layout before delivery.
 
 The PDF preview is a required visual check after slide changes; an HTML render alone is not sufficient.
+
+---
+
+## Break Slides
+
+### When to Use
+
+Insert a break slide whenever a mid-lecture break is planned (typically once per 120-minute session). Place it between two `---` separators so it forms its own slide.
+
+### Design
+
+| Property | Value |
+|---|---|
+| Background | `#000000` (black) |
+| Text colour | White (`#ffffff`) |
+| Accent colour | NUS Orange `#EF7C00` (donut ring, anecdote highlights, button) |
+| Timer default | 5 minutes (configurable per slide) |
+| Timer start | Manual — click **▶ Start Timer** button |
+| Timer display | MM:SS countdown centred inside an SVG donut ring |
+| Ring behaviour | Drains clockwise; turns green (`#00c875`) when time is up |
+
+### Template
+
+The complete reusable snippet is in `templates/break-slide.qmd`. Copy it verbatim into the deck at the break point, then:
+
+1. **Replace every occurrence of `BREAKID`** with a short unique identifier (e.g. `wk1b1`) so that multiple break slides in the same HTML file do not share DOM IDs.
+2. **Replace the placeholder anecdote** inside the `<!-- TODO: insert a fun fact ... -->` block with a subject-relevant fun fact or anecdote for that week (see guidance below).
+3. **Adjust `TOTAL`** in the `<script>` block if a duration other than 5 minutes i3. **Add (e.g. `var TOTAL = 10 * 60;`).
+
+### Anecdote / Fun Fact Guidelines
+
+Each break slide must contain one anecdote or fun fact that is:
+- **Directly relevant** to the week's lecture topic or a concept covered that day.
+- **Concise** — two to four sentences maximum.
+- **Engaging** — a surprising statistic, a historical origin story, or a real-world consequence of the topic.
+- Written in the second person or impersonal voice ("Did you know…", "The first…", "In 2006…").
+- Key terms or names highlighted with `<strong style="color:#EF7C00">…</strong>`.
+
+When authoring a break slide for a specific week, generate the anecdote from the week's session learning outcomes and slide content. Do not reuse the GroupLens placeholder from the template.
+
+### Placement in the Deck
+
+```markdown
+---
+
+## {background-color="#000000"}
+
+[break slide HTML block — see templates/break-slide.qmd]
+
+---
+
+## Next Slide After Break
+```
+
+### Placement in the Timeline
+
+Add a row to the lecture delivery timeline for the break slide:
+
+| Slide | Time | Mode | Delivery plan |
+|---|---:|---|---|
+| `Break` | 5 min | — | Click **▶ Start Timer** when announcing the break. Students return when the ring completes. |
+
+The break duration counts against the total lecture time; adjust adjacent slide timings accordingly.
