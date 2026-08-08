@@ -294,7 +294,7 @@ Both in-class activity types use the following visual treatment:
 - Before designing an activity slide, prompt the user for the intended timer length. Do not silently assume the break-slide default; record the chosen duration in the timeline and configure it in the slide.
 - Surround the activity content with a responsive medium-weight, high-contrast frame: use `border: clamp(3px, 0.6vw, 6px) solid <contrast-colour>` so it remains visible without becoming oversized on smaller screens. Use a colour that contrasts with the slide background (NUS Orange `#EF7C00` is the default accent when appropriate).
 - Put the exact label **“In Lecture Quiz”** inside the frame for multiple-choice or response questions.
-- Put the exact label **“In Lecture Activity”** inside the frame for small-group discussion activities.
+- Put the exact label **“👥 In Lecture Activity”** inside the frame for small-group discussion activities. The people-together emoji is the required prefix and signals person-to-person discussion.
 
 Keep the frame, label, prompt, and timer legible in the classroom PDF; the timer should support pacing without crowding out the activity prompt or response space.
 
@@ -505,7 +505,7 @@ Include the following CSS in the deck's `include-in-header` block (or in `custom
 | Previous Week Exercise Review | `cp-frame-orange` | `#EF7C00` | `#003D7C` | `#ffffff` |
 | Next Week Pre-Lecture Exercise | `cp-frame-navy` | `#003D7C` | `#EF7C00` | `#ffffff` |
 | In Lecture Quiz | `cp-frame-orange` | `#EF7C00` | `white` | `#ffffff` |
-| In Lecture Activity | `cp-frame-navy` | `#003D7C` | `white` | `#ffffff` |
+| 👥 In Lecture Activity | `cp-frame-navy` | `#003D7C` | `white` | `#ffffff` |
 | **Next Week Preview** | `cp-frame-teal` | `#00796B` | `white` | `#002a26` |
 | **Previous Week 4-Summary** | `cp-frame-purple` | `#5C2D91` | `white` | `#1a0a2e` |
 
