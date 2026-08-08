@@ -22,29 +22,168 @@ format:
 
 # 01 Overview {background-color="#EF7C00"}
 
-## CP Pilot Course
+## Recommendations Everywhere
 
-- CP4285 is part of the **CP428x Emerging Topics in Computer Science** series at NUS Computing
-- These are **pilot courses**, each run for a single semester, with the intention of eventually becoming a permanent offering
-- Students should expect the course is **not yet fully mature** — content, assessments, and delivery are actively evolving
-- The series exists to expose undergraduates to **emerging areas** before they become established curriculum
+::: {.columns}
+::: {.column width="52%"}
+**Everyday surfaces**
+
+Video, music, shopping, news, jobs, dating, maps, social feeds, and course resources.
+:::
+::: {.column width="48%"}
+**Inputs** — behaviour, context, item attributes, social signals<br>
+**Outputs** — a shortlist, ranking, or exposure decision
+:::
+:::
+
+::: {.callout-warning}
+A recommender does not merely retrieve information. It helps decide what receives attention — and what remains unseen.
+:::
 
 ::: notes
-<!-- TODO (students): What did Min say about the motivation for running CP4285 now? Were there any specific industry or research trends he cited? -->
+Ask students to name one recommendation they acted on in the last 24 hours. Use the answers to establish that recommendation is a general pattern, not a feature of only one platform.
+:::
+
+## Video Sampler
+
+Play **one** short excerpt in class; keep the others as backups. These are external links and require a network connection.
+
+- **Default:** [How Spotify’s AI-Driven Recommendations Work — WSJ Tech Behind](https://www.youtube.com/watch?v=pGntmcy_HX8), 0:00–2:59 — personalised playlists, user data, and content signals.
+- **Technical backup:** [The Math Behind Recommender Systems — Art of the Problem](https://www.youtube.com/watch?v=n3RKsY2H-NE), 0:00–4:36 — content filtering versus collaborative filtering.
+
+::: notes
+Use the WSJ excerpt as the default choice. Pause once and ask students which signals they heard. Verify video availability and classroom playback before delivery.
+:::
+
+## Find the Recommender
+
+```{=html}
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;">
+  <div>
+    <div style="display:inline-block;background:#EF7C00;color:white;padding:.25em .7em;font-size:.82em;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;">In Lecture Activity</div>
+    <p style="font-size:1.35em;font-weight:bold;color:#EF7C00;margin:.35em 0;">Audit one recommendation</p>
+    <ol style="margin:.4em 0;padding-left:1.2em;line-height:1.35;">
+      <li>Name one recommendation you received recently.</li>
+      <li>What signals might the system have used?</li>
+      <li>What objective might it be optimising?</li>
+      <li>Who or what might be left unseen?</li>
+    </ol>
+    <p style="margin:.45em 0 0;"><strong>Compare with a partner; share one observation.</strong></p>
+  </div>
+  <div style="text-align:center;">
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle id="overview-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">03:00</text></svg>
+    <span id="overview-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
+    <button id="overview-activity-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+  </div>
+</div>
+<script>
+(function(){
+  function setup(){
+    var button=document.getElementById('overview-activity-btn');
+    if(!button||button.dataset.bound)return;
+    button.dataset.bound='true';
+    var total=180,remaining=total,interval=null,state='idle',audio=null,c=2*Math.PI*75;
+    var ring=document.getElementById('overview-activity-ring'),text=document.getElementById('overview-activity-text'),status=document.getElementById('overview-activity-status'),initial=ring.getAttribute('stroke');
+    function pad(n){return n<10?'0'+n:''+n;}
+    function render(){var d=pad(Math.floor(remaining/60))+':'+pad(remaining%60);text.textContent=d;status.textContent=state==='complete'?"Time's up!":d;ring.setAttribute('stroke-dashoffset',c*(1-remaining/total));}
+    function pause(){if(state==='running'){clearInterval(interval);interval=null;state='paused';button.textContent='▶ Resume';}}
+    function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ring.setAttribute('stroke',initial);button.textContent='▶ Start Timer';render();}
+    function ringEnd(){if(!audio)return;var o=audio.createOscillator(),g=audio.createGain(),n=audio.currentTime;o.frequency.value=880;g.gain.setValueAtTime(.18,n);g.gain.exponentialRampToValueAtTime(.001,n+.5);o.connect(g);g.connect(audio.destination);o.start(n);o.stop(n+.5);}
+    button.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){pause();return;}var A=window.AudioContext||window.webkitAudioContext;if(A&&!audio)audio=new A();if(audio&&audio.state==='suspended')audio.resume();state='running';button.textContent='⏸ Pause';interval=setInterval(function(){remaining=Math.max(0,remaining-1);render();if(!remaining){clearInterval(interval);interval=null;state='complete';ring.setAttribute('stroke','#00c875');button.textContent='↻ Restart Timer';ringEnd();}},1000);});
+    window._cpTimers=window._cpTimers||{};var slide=button.closest('section'),slideIndex=Reveal.getSlides().indexOf(slide);window._cpTimers[slideIndex]=pause;
+    if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(event){if(event.previousSlide){var i=Reveal.getSlides().indexOf(event.previousSlide);if(window._cpTimers[i])window._cpTimers[i]();}});window._cpTimerSlideListener=true;}
+    render();
+  }
+  function wait(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup);}else{setTimeout(wait,50);}}
+  wait();
+})();
+</script>
+```
+
+::: notes
+Give students 60–90 seconds individually, then have them compare answers in pairs. Invite one or two observations and connect them to the next slide’s discussion of course design and objectives.
+:::
+
+## CP Pilot Course
+
+- CP4285 is a **pilot** in the **CP428x Emerging Topics in Computer Science** series.
+- We test and improve content, assessment, labs, tutorials, and delivery for future cohorts.
+- Students help by self-learning, building **labs and tutorials**, and documenting processes, gaps, and improvements.
+
+::: notes
+Explain that student contributions are part of the pilot’s learning design, with staff retaining final review and course standards. Invite students to record reproducible steps, assumptions, failed attempts, and suggestions rather than only submitting a final answer.
+:::
+
+## MCQ: Objectives
+
+```{=html}
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;">
+  <div>
+    <div style="display:inline-block;background:#EF7C00;color:white;padding:.25em .7em;font-size:.82em;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;">In Lecture Quiz</div>
+    <p style="font-size:1.35em;font-weight:bold;color:#EF7C00;margin:.35em 0;">Same data, different objective</p>
+    <p style="margin:.4em 0;">Two systems use the same user data but optimise different objectives. What should we expect?</p>
+    <ol type="A" style="margin:.4em 0;padding-left:1.2em;line-height:1.3;columns:2;">
+      <li>They must produce the same recommendations.</li>
+      <li>They may rank different items and expose different creators.</li>
+      <li>The objective has no effect once the data is fixed.</li>
+      <li>Neither system can personalise.</li>
+    </ol>
+    <p style="margin:.45em 0 0;"><strong>Choose an answer; justify it in one sentence.</strong></p>
+  </div>
+  <div style="text-align:center;">
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Two minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle id="overview-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">02:00</text></svg>
+    <span id="overview-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">02:00</span>
+    <button id="overview-mcq-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+  </div>
+</div>
+<script>
+(function(){
+  function setup(){
+    var button=document.getElementById('overview-mcq-btn');
+    if(!button||button.dataset.bound)return;
+    button.dataset.bound='true';
+    var total=120,remaining=total,interval=null,state='idle',audio=null,c=2*Math.PI*75;
+    var ring=document.getElementById('overview-mcq-ring'),text=document.getElementById('overview-mcq-text'),status=document.getElementById('overview-mcq-status'),initial=ring.getAttribute('stroke');
+    function pad(n){return n<10?'0'+n:''+n;}
+    function render(){var d=pad(Math.floor(remaining/60))+':'+pad(remaining%60);text.textContent=d;status.textContent=state==='complete'?"Time's up!":d;ring.setAttribute('stroke-dashoffset',c*(1-remaining/total));}
+    function pause(){if(state==='running'){clearInterval(interval);interval=null;state='paused';button.textContent='▶ Resume';}}
+    function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ring.setAttribute('stroke',initial);button.textContent='▶ Start Timer';render();}
+    function ringEnd(){if(!audio)return;var o=audio.createOscillator(),g=audio.createGain(),n=audio.currentTime;o.frequency.value=880;g.gain.setValueAtTime(.18,n);g.gain.exponentialRampToValueAtTime(.001,n+.5);o.connect(g);g.connect(audio.destination);o.start(n);o.stop(n+.5);}
+    button.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){pause();return;}var A=window.AudioContext||window.webkitAudioContext;if(A&&!audio)audio=new A();if(audio&&audio.state==='suspended')audio.resume();state='running';button.textContent='⏸ Pause';interval=setInterval(function(){remaining=Math.max(0,remaining-1);render();if(!remaining){clearInterval(interval);interval=null;state='complete';ring.setAttribute('stroke','#00c875');button.textContent='↻ Restart Timer';ringEnd();}},1000);});
+    window._cpTimers=window._cpTimers||{};var slide=button.closest('section'),slideIndex=Reveal.getSlides().indexOf(slide);window._cpTimers[slideIndex]=pause;
+    if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(event){if(event.previousSlide){var i=Reveal.getSlides().indexOf(event.previousSlide);if(window._cpTimers[i])window._cpTimers[i]();}});window._cpTimerSlideListener=true;}
+    render();
+  }
+  function wait(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup);}else{setTimeout(wait,50);}}
+  wait();
+})();
+</script>
+```
+
+::: notes
+Allow students to vote individually, then take two justifications. Reveal that **B** is correct: the objective determines what the system prioritises and therefore what receives exposure. Keep the debrief to two minutes.
+:::
+
+## AI Voice Mode
+
+Ask the voice-mode agent:
+
+> Give one ordinary example of a recommendation a student might encounter today. Identify the user signal, item, likely objective, and one possible social or ethical consequence. Keep the answer under 45 seconds.
+
+Students compare the agent’s example with their own activity responses. Treat the agent as a conversation partner, not an authority.
+
+::: notes
+Start the voice-mode interaction and stop it after two minutes. Correct any claim that treats the agent’s example as a definitive description of a platform’s production system.
 :::
 
 ## Ethics Thread
 
-- Ethical issues are **not an afterthought** — they are woven throughout every week
-- Core themes we will revisit: **bias, fairness, privacy, exposure, transparency, stakeholder impact**
-- Recommendation systems shape everyday decisions: what people read, watch, buy, apply for, and who receives attention and opportunities
-
-::: {.callout-warning}
-These systems encode values and trade-offs. Understanding how they work means understanding what they optimise for — and at whose expense.
-:::
+- Recommendation systems allocate **attention, visibility, and opportunity**.
+- Historical data and engagement objectives can reproduce or amplify **bias**.
+- Personalisation raises questions about **privacy, transparency, exposure, fairness, and stakeholder impact**.
 
 ::: notes
-<!-- TODO (students): What framing did Min use to introduce the ethics thread? Were any specific examples or incidents cited? -->
+Frame ethics as a recurring motif rather than a standalone final topic. Ask students to listen for the same questions whenever a later lecture introduces a new model or metric. Keep the optional recommendation-algorithm video in the instructor’s delivery notes as a backup.
 :::
 
 ---

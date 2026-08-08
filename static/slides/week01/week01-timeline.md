@@ -4,6 +4,8 @@
 **Class time:** 120 minutes (Tuesday, 10:00–12:00 SGT)  
 **Deck:** [`week01.qmd`](./week01.qmd)
 
+**Scoped revision:** Section 01 now takes 20 minutes. Until time is reclaimed from a later section, the current run-of-show totals 126 minutes.
+
 This is a delivery run-of-show for the Week 1 slide deck. Times are target durations, including brief transitions between slides. The delivery mode is the primary mode for that slide; the instructor should still handle clarification, pacing, and accessibility throughout.
 
 ## Delivery modes
@@ -12,27 +14,37 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 |---|---|
 | **Instructor** | Explain the slide, connect it to the course framing, and check for quick questions before moving on. |
 | **Discussion** | Put the stated prompt to the room, invite multiple perspectives, and synthesise the responses into the slide takeaway. |
+| **Video** | Play the selected excerpt, pause for one observation, and connect it back to the slide’s learning objective. |
+| **In-class activity** | Timebox the stated task, have students produce the requested response, and synthesise one or two examples. |
+| **MCQ** | Have students answer individually, sample justifications, reveal the answer, and correct the central misconception. |
 | **Voice-mode AI agent** | Invite students to speak to an AI agent as a short, structured activity. The instructor sets the context and timebox, then debriefs the agent interaction and corrects inaccuracies. Students should treat the agent as a conversation partner, not as an authoritative source. |
 
 ## Section overview
 
 | Section | Slides | Time | Share of class |
 |---|---:|---:|---:|
-| 01 Overview | 3 | 14 min | 12% |
+| 01 Overview | 8 | 20 min | 17%* |
 | 02 Schedule | 4 | 18 min | 15% |
 | 03 Assignments & Grading | 5 | 30 min | 25% |
 | 04 Types of Recommendation Systems | 7 | 58 min | 48% |
-| **Total** | **19** | **120 min** | **100%** |
+| **Total (before rebalancing)** | **24** | **126 min** | — |
+
+\* Section 01 now targets 20 minutes in this scoped revision. The remaining section timings are intentionally unchanged, so the full run-of-show will require a later six-minute rebalancing.
 
 ## Detailed run-of-show
 
-### 01 Overview — 14 minutes
+### 01 Overview — 20 minutes
 
 | Slide | Time | Mode | Delivery plan |
 |---|---:|---|---|
-| `01 Overview` | 2 min | Instructor | Welcome the class, state the learning goals, and explain that this opening section establishes the course context and its ethics thread. |
-| `CP Pilot Course` | 6 min | Instructor | Explain the pilot-course rationale, what may evolve during the semester, and how students can give useful feedback. Reserve the final minute for questions. |
-| `Ethics Thread` | 6 min | Discussion | Ask: “Where do recommendation systems shape decisions in your daily life, and who might be disadvantaged?” Collect two or three examples, then connect them to bias, fairness, privacy, exposure, transparency, and stakeholder impact. |
+| `01 Overview` | 1 min | Instructor | Welcome the class, state the learning goals, and frame the section around recommendation systems, course co-development, and recurring ethics. |
+| `Recommendations Everywhere` | 2 min | Instructor | Establish recommendations as a general pattern across video, music, shopping, news, jobs, social feeds, and course resources. Distinguish inputs from outputs and emphasise that ranking affects attention. |
+| `Video Sampler` | 3 min | Video | Play one selected excerpt. Pause once to ask students which user signals and objectives they heard; keep the other link as a backup. |
+| `Find the Recommender` | 3 min | In-class activity | Students audit one recent recommendation, identify likely signals and objective, and name who or what might be left unseen. Use pairs, then take one or two observations. |
+| `CP Pilot Course` | 4 min | Instructor | Explain that students help shape future course delivery through self-learning, lab/tutorial development, process documentation, and constructive feedback. Clarify that staff retain final review and course standards. |
+| `MCQ: Objectives` | 2 min | MCQ | Ask: “Two systems use the same user data but optimise different objectives. What should we expect?” Correct answer: they may rank different items and expose different creators. |
+| `AI Voice Mode` | 2 min | Voice-mode AI agent | Ask the agent for one everyday recommendation example and have it identify the signal, item, objective, and one consequence. Stop after two minutes and correct oversimplifications. |
+| `Ethics Thread` | 3 min | Instructor | Establish ethics as a recurring motif: recommendations allocate attention and opportunity, encode values, and create risks involving bias, privacy, exposure, transparency, fairness, and stakeholder impact. |
 
 ### 02 Schedule — 18 minutes
 
