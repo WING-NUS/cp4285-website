@@ -285,6 +285,8 @@ Use a short, non-startling oscillator envelope (for example, a sine tone around 
 
 Implement this behavior through one reusable `createCountdownTimer` factory (or an equivalent shared helper) copied into every timer slide; do not maintain separate break/activity timer logic.
 
+**Auto-pause on slide exit is mandatory.** Every timer must register itself in the global `window._cpTimers` registry using its `slideIndex` (0-based index of its parent `<section>`). A single `Reveal.on("slidechanged", ...)` listener — injected once in `include-in-header` after the `</style>` tag — fires on every slide transition and calls the pause function for the departing slide if a timer is running. The timer must pause silently at its current value and switch its button label to **▶ Resume**. See the **Timer Auto-Pause on Slide Exit** section for the full implementation pattern.
+
 ---
 
 ## Rendering
