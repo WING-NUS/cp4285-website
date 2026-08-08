@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage soc-n.us Links"
+  short_description: "Create, inspect, edit, delete, and QR links"
+  default_prompt: "Use $manage-socn-links to create, inspect, edit, delete, or make a QR code for a soc-n.us link."
