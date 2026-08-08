@@ -150,7 +150,7 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/week01/week01.html" title="Week 1 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w01/w01.html" title="Week 1 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card >}}

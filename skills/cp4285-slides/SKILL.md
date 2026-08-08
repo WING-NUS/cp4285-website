@@ -1,6 +1,6 @@
 ---
 name: cp4285-slides
-description: Style guide and authoring conventions for CP4285 Quarto RevealJS slide decks. Use when creating, editing, or extending any weekly lecture slide deck for the CP4285 course. Covers YAML front matter, colour palette, typography, SCSS theme, structural patterns, and content conventions extracted from the week01 reference deck.
+description: Style guide and authoring conventions for CP4285 Quarto RevealJS slide decks. Use when creating, editing, or extending any weekly lecture slide deck for the CP4285 course. Covers YAML front matter, colour palette, typography, SCSS theme, structural patterns, and content conventions extracted from the w01 reference deck.
 ---
 
 # CP4285 Slides — Authoring Guide

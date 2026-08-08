@@ -2,7 +2,7 @@
 
 **Lecture:** Recommendation Problems and Classical Methods  
 **Class time:** 120 minutes (Tuesday, 10:00–12:00 SGT)  
-**Deck:** [`week01.qmd`](./week01.qmd)
+**Deck:** [`w01.qmd`](./w01.qmd)
 
 **Scoped revision:** Section 01 now takes 20 minutes. The run-of-show has been rebalanced to the 120-minute class and matches the rebuilt 16:9 deck.
 
@@ -38,13 +38,13 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 | Slide | Time | Mode | Delivery plan |
 |---|---:|---|---|
 | `01 Overview` | 1 min | Instructor | Welcome the class, state the learning goals, and frame the section around recommendation systems, course co-development, and recurring ethics. |
+| `🎥 Video: Spotify Recommendations` | 3 min | Video | Open the linked thumbnail, play the selected excerpt, and pause once to ask which user signals and objectives students heard. |
 | `Recommendations Everywhere` | 2 min | Instructor | Establish recommendations as a general pattern across video, music, shopping, news, jobs, social feeds, and course resources. Distinguish inputs from outputs and emphasise that ranking affects attention. |
-| `Video Sampler` | 3 min | Video | Play one selected excerpt. Pause once to ask students which user signals and objectives they heard; keep the other link as a backup. |
-| `👥 Find the Recommender` | 3 min | In-class activity | Students audit one recent recommendation, identify likely signals and objective, and name who or what might be left unseen. Use pairs, then take one or two observations. The title emoji identifies this as the small-group activity. |
 | `CP Pilot Course` | 4 min | Instructor | Explain that students help shape future course delivery through self-learning, lab/tutorial development, process documentation, and constructive feedback. Clarify that staff retain final review and course standards. |
 | `🎰 Bandit Time: Objectives` | 2 min | MCQ | Ask: “Two systems use the same user data but optimise different objectives. What should we expect?” Correct answer: they may rank different items and expose different creators. |
 | `📶 AI Voice Mode` | 2 min | Voice-mode AI agent | Ask the agent for one everyday recommendation example and have it identify the signal, item, objective, and one consequence. Stop after two minutes and correct oversimplifications. |
 | `Ethics Thread` | 3 min | Instructor | Establish ethics as a recurring motif: recommendations allocate attention and opportunity, encode values, and create risks involving bias, privacy, exposure, transparency, fairness, and stakeholder impact. |
+| `👥 Find the Recommender` | 3 min | In-class activity | Students audit one recent recommendation, identify likely signals and objective, and name who or what might be left unseen. Use pairs, then take one or two observations. The title emoji identifies this as the small-group activity. |
 
 ### 02 Schedule — 15 minutes
 

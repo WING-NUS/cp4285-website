@@ -1,6 +1,6 @@
 # Week 01 Reference Example
 
-Canonical YAML front matter and structural skeleton from week01.qmd.
+Canonical YAML front matter and structural skeleton from w01.qmd.
 
 ## Actual Front Matter
 
@@ -13,7 +13,7 @@ date: "11 Aug 2026"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, custom.scss]
+    theme: [default, w01-custom.scss]
     slide-number: true
     show-slide-number: all
     chalkboard: false
