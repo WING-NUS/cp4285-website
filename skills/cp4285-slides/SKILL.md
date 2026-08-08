@@ -298,6 +298,32 @@ Both in-class activity types use the following visual treatment:
 
 Keep the frame, label, prompt, and timer legible in the classroom PDF; the timer should support pacing without crowding out the activity prompt or response space.
 
+#### MCQ / Bandit Time Slide Treatment
+
+For every multiple-choice quiz, use the visible slide-title pattern **`🎰 Bandit Time: <short question>`**. The slot-machine emoji must be the first visible token, and `Bandit Time:` must appear verbatim; do not use a generic `MCQ:` heading instead. Keep the activity-frame label **“In Lecture Quiz”** as a separate element inside the frame so the delivery mode remains unambiguous.
+
+Render the answer choices as readable cards rather than a plain bullet list. Use a responsive two-column card grid for four choices (additional choices may continue on subsequent rows), with a clearly visible letter/number and the full answer text in every card. Give each option a different primary-colour outline; use this default accessible palette unless the user specifies another:
+
+- A — red `#D32F2F`
+- B — blue `#1976D2`
+- C — green `#388E3C`
+- D — purple `#7B1FA2`
+
+Use a medium-weight outline (for example, `border: 4px solid <option-colour>`), a light/neutral card fill, and enough padding for projection. Maintain strong text contrast and include the letter/number label so meaning never depends on colour alone. Keep the cards static and printable; do not hide choices behind animation or interaction. The shared countdown timer and its user-selected duration remain unchanged.
+
+Example structure:
+
+```markdown
+## 🎰 Bandit Time: Which signal should rank this item first?
+
+<div class="bandit-options">
+  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> ...</div>
+  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> ...</div>
+  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> ...</div>
+  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> ...</div>
+</div>
+```
+
 ### Countdown Timer Expiration Cue
 
 Every countdown timer (break slides and in-lecture activity slides) must use the same shared timer state machine: **Start → Pause → Resume → Expire → Restart**. Pressing the timer button while counting down pauses it; pressing again resumes it. When it reaches `00:00`, it must play one audible ring for **0.5 seconds**, turn the donut ring green (`#00c875`), show a completion status, and expose a **Restart** action that resets the display and ring to the initial state without starting until pressed again. Start the audio from the user-initiated timer interaction so browser autoplay policies do not suppress it. Reuse one `AudioContext` per slide and call the cue exactly once per expiry.
