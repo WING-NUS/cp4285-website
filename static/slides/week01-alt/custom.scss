@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: Arial, Helvetica, sans-serif;
+$presentation-heading-font: Arial, Helvetica, sans-serif;
+$presentation-heading-color: #003D7C;
+$link-color: #EF7C00;
+$selection-bg: #EF7C00;
+
+/*-- scss:rules --*/
+.reveal .slide-logo {
+  max-height: 40px !important;
+  bottom: 12px !important;
+  right: 12px !important;
+  opacity: 0.7;
+}
+
+.reveal h1, .reveal h2 {
+  color: #003D7C;
+  border-bottom: 3px solid #EF7C00;
+  padding-bottom: 0.2em;
+}
+
+.reveal h3 { color: #EF7C00; }
+.reveal .footer { font-size: 0.55em; color: #6b7280; }
+.reveal blockquote { border-left: 4px solid #EF7C00; background: rgba(239,124,0,0.07); padding: 0.5em 1em; font-style: italic; }
+.reveal table th { background: #003D7C; color: white; }
+.reveal .callout { font-size: 0.88em; }
+
+@media (max-width: 820px) {
+  [id^="break-slide-alt"] { grid-template-columns: 1fr !important; gap: 2em !important; padding: 2em 6vw !important; text-align: center; overflow: auto; }
+  [id^="break-slide-alt"] > div { margin-inline: auto; }
+}

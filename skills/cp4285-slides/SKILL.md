@@ -149,6 +149,27 @@ Every slide should have a speaker notes block, even if empty or a TODO:
 
 ## Content Patterns
 
+### Card-Suit User-Type Framework
+
+Use the following four user types when discussing how a recommendation system should treat different users. These are treatment lenses, not demographic or permanent personality labels; the same person may occupy different types across tasks or sessions.
+
+| Suit | User type | Treatment lens |
+|---|---|---|
+| **♣ Clubs** | **Adversarial / Shill user** | Attempts to manipulate the system into recommending or avoiding specific items or users. Consider coordinated behaviour, fake signals, robustness, abuse detection, and incentive-aware safeguards. |
+| **♥ Hearts** | **Social user** | Responds strongly to social signals. Consider friends, communities, social similarity, shared taste, influence, and the risks of conformity or social exposure. |
+| **♦ Diamonds** | **Novelty seeker** | Is governed by novelty and wants new objects, trends, and emerging items. Consider exploration, diversity, freshness, serendipity, and cold-start exposure for new items. |
+| **♠ Spades** | **Loyalist / metadata-driven user** | Relies on particular metadata factors and stable preferences. Consider content features, attribute matching, consistency, explainable filters, and avoiding unnecessary drift. |
+
+The suits should be kept meaningfully different in terms of recommendation treatment: Clubs stress adversarial robustness, Hearts social similarity, Diamonds novelty and diversity, and Spades metadata-based continuity.
+
+#### Per-topic inclusion prompt
+
+When creating slides for any lecture topic or major concept, prompt the user before drafting the topic-specific treatment:
+
+> For **[topic]**, should the slides include considerations for any of these user types: **♣ Clubs (adversarial/shill), ♥ Hearts (social), ♦ Diamonds (novelty), or ♠ Spades (loyalist/metadata-driven)**? Select any that are relevant, or choose “none”.
+
+Use the selected types to add a concrete example, design trade-off, evaluation consideration, ethical question, or activity prompt. Do not force all four types into every topic, and do not silently choose on the user's behalf when the inclusion would materially change the topic's emphasis. If the user selects “none”, proceed without a suit-specific treatment.
+
 ### Two-Column Layout
 
 ```markdown
