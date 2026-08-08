@@ -205,6 +205,10 @@ Use Markdown pipe tables. Comparison tables use ✓ / ✗ for boolean values wit
 
 Each week includes at least one slide titled **"Ethics Thread: \<Topic\>"** using `.callout-warning` for the key concern.
 
+### Ethics-Focused AI Voice Mode Slides
+
+When AI Voice Mode is used to investigate recommender ethics, prefix the slide title with the Wi-Fi/signal emoji: **`📶 AI Voice Mode`**. Keep the experiment’s purpose explicit: students are examining assumptions, uncertainty, omissions, and ethical reasoning in an AI-mediated conversation. The emoji is a visual cue for the live voice interaction; it does not imply that the agent is authoritative or connected to a production recommender.
+
 ### Summary Slide Convention
 
 Final slide of each deck: titled **"Summary"**, contains a comparison table and a bold **"Next week:"** teaser.
@@ -293,14 +297,14 @@ Both in-class activity types use the following visual treatment:
 - Include a small countdown timer, occupying approximately one quarter of the slide area, using the same MM:SS SVG donut-bar pattern as the break slide.
 - Before designing an activity slide, prompt the user for the intended timer length. Do not silently assume the break-slide default; record the chosen duration in the timeline and configure it in the slide.
 - Surround the activity content with a responsive medium-weight, high-contrast frame: use `border: clamp(3px, 0.6vw, 6px) solid <contrast-colour>` so it remains visible without becoming oversized on smaller screens. Use a colour that contrasts with the slide background (NUS Orange `#EF7C00` is the default accent when appropriate).
-- Put the exact label **“In Lecture Quiz”** inside the frame for multiple-choice or response questions.
+- Put the exact label **“🎰 Bandit Time”** inside the frame for multiple-choice or response questions.
 - Put the exact label **“👥 In Lecture Activity”** inside the frame for small-group discussion activities. The people-together emoji is the required prefix and signals person-to-person discussion.
 
 Keep the frame, label, prompt, and timer legible in the classroom PDF; the timer should support pacing without crowding out the activity prompt or response space.
 
 #### MCQ / Bandit Time Slide Treatment
 
-For every multiple-choice quiz, use the visible slide-title pattern **`🎰 Bandit Time: <short question>`**. The slot-machine emoji must be the first visible token, and `Bandit Time:` must appear verbatim; do not use a generic `MCQ:` heading instead. Keep the activity-frame label **“In Lecture Quiz”** as a separate element inside the frame so the delivery mode remains unambiguous.
+For every multiple-choice quiz, use the visible slide-title pattern **`🎰 Bandit Time: <short question>`** and the matching in-frame label **“🎰 Bandit Time”**. The slot-machine emoji must be the first visible token in both places, and `Bandit Time` must appear verbatim; do not use a generic `MCQ:` or `In Lecture Quiz` label. This merges the quiz delivery mode and the MCQ visual identity into one consistent treatment.
 
 Render the answer choices as readable cards rather than a plain bullet list. Use a responsive two-column card grid for four choices (additional choices may continue on subsequent rows), with a clearly visible letter/number and the full answer text in every card. Give each option a different primary-colour outline; use this default accessible palette unless the user specifies another:
 
@@ -504,7 +508,7 @@ Include the following CSS in the deck's `include-in-header` block (or in `custom
 |---|---|---|---|---|
 | Previous Week Exercise Review | `cp-frame-orange` | `#EF7C00` | `#003D7C` | `#ffffff` |
 | Next Week Pre-Lecture Exercise | `cp-frame-navy` | `#003D7C` | `#EF7C00` | `#ffffff` |
-| In Lecture Quiz | `cp-frame-orange` | `#EF7C00` | `white` | `#ffffff` |
+| 🎰 Bandit Time | `cp-frame-orange` | `#EF7C00` | `white` | `#ffffff` |
 | 👥 In Lecture Activity | `cp-frame-navy` | `#003D7C` | `white` | `#ffffff` |
 | **Next Week Preview** | `cp-frame-teal` | `#00796B` | `white` | `#002a26` |
 | **Previous Week 4-Summary** | `cp-frame-purple` | `#5C2D91` | `white` | `#1a0a2e` |

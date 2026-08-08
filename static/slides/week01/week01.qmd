@@ -9,6 +9,8 @@ format:
     theme: [default, custom.scss]
     slide-number: true
     show-slide-number: all
+    width: 1600
+    height: 900
     chalkboard: false
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 1 · NUS School of Computing"
@@ -48,6 +50,12 @@ Ask students to name one recommendation they acted on in the last 24 hours. Use 
 
 Play **one** short excerpt in class; keep the others as backups. These are external links and require a network connection.
 
+```{=html}
+<div style="width:100%;max-width:100%;aspect-ratio:16/9;margin:.55em 0 .7em;">
+  <iframe src="https://www.youtube.com/embed/pGntmcy_HX8?start=0&end=179&rel=0" title="How Spotify’s AI-Driven Recommendations Work" style="width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+```
+
 - **Default:** [How Spotify’s AI-Driven Recommendations Work — WSJ Tech Behind](https://www.youtube.com/watch?v=pGntmcy_HX8), 0:00–2:59 — personalised playlists, user data, and content signals.
 - **Technical backup:** [The Math Behind Recommender Systems — Art of the Problem](https://www.youtube.com/watch?v=n3RKsY2H-NE), 0:00–4:36 — content filtering versus collaborative filtering.
 
@@ -60,7 +68,7 @@ Use the WSJ excerpt as the default choice. Pause once and ask students which sig
 ```{=html}
 <div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;">
   <div>
-    <div style="display:inline-block;background:#EF7C00;color:white;padding:.25em .7em;font-size:.82em;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;">In Lecture Activity</div>
+    <div style="display:inline-block;background:#EF7C00;color:white;padding:.25em .7em;font-size:.82em;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;">👥 In Lecture Activity</div>
     <p style="font-size:1.35em;font-weight:bold;color:#EF7C00;margin:.35em 0;">Audit one recommendation</p>
     <ol style="margin:.4em 0;padding-left:1.2em;line-height:1.35;">
       <li>Name one recommendation you received recently.</li>
@@ -114,20 +122,20 @@ Give students 60–90 seconds individually, then have them compare answers in pa
 Explain that student contributions are part of the pilot’s learning design, with staff retaining final review and course standards. Invite students to record reproducible steps, assumptions, failed attempts, and suggestions rather than only submitting a final answer.
 :::
 
-## MCQ: Objectives
+## 🎰 Bandit Time: Objectives
 
 ```{=html}
 <div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;">
   <div>
-    <div style="display:inline-block;background:#EF7C00;color:white;padding:.25em .7em;font-size:.82em;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;">In Lecture Quiz</div>
+    <div style="display:inline-block;background:#EF7C00;color:white;padding:.25em .7em;font-size:.82em;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;">🎰 Bandit Time</div>
     <p style="font-size:1.35em;font-weight:bold;color:#EF7C00;margin:.35em 0;">Same data, different objective</p>
     <p style="margin:.4em 0;">Two systems use the same user data but optimise different objectives. What should we expect?</p>
-    <ol type="A" style="margin:.4em 0;padding-left:1.2em;line-height:1.3;columns:2;">
-      <li>They must produce the same recommendations.</li>
-      <li>They may rank different items and expose different creators.</li>
-      <li>The objective has no effect once the data is fixed.</li>
-      <li>Neither system can personalise.</li>
-    </ol>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55em;margin:.55em 0;">
+      <div style="border:4px solid #D32F2F;border-radius:10px;padding:.55em .7em;background:#fff;"><strong>A.</strong> They should agree if they observe the same users and items.</div>
+      <div style="border:4px solid #1976D2;border-radius:10px;padding:.55em .7em;background:#fff;"><strong>B.</strong> They may rank different items because the objective changes what gets exposed.</div>
+      <div style="border:4px solid #388E3C;border-radius:10px;padding:.55em .7em;background:#fff;"><strong>C.</strong> They can differ only when one system has more user history.</div>
+      <div style="border:4px solid #7B1FA2;border-radius:10px;padding:.55em .7em;background:#fff;"><strong>D.</strong> Different objectives change scores, but not the ordering of items.</div>
+    </div>
     <p style="margin:.45em 0 0;"><strong>Choose an answer; justify it in one sentence.</strong></p>
   </div>
   <div style="text-align:center;">
@@ -164,16 +172,20 @@ Explain that student contributions are part of the pilot’s learning design, wi
 Allow students to vote individually, then take two justifications. Reveal that **B** is correct: the objective determines what the system prioritises and therefore what receives exposure. Keep the debrief to two minutes.
 :::
 
-## AI Voice Mode
+## 📶 AI Voice Mode
+
+We are using AI Voice Mode experimentally to investigate the **ethics of recommenders**: how an interactive system explains trade-offs, frames uncertainty, and responds when we question who receives attention.
+
+It is a conversation partner for inquiry, not an authority or a production recommender. Listen for what it assumes, what it leaves out, and how its wording could shape our judgement.
 
 Ask the voice-mode agent:
 
 > Give one ordinary example of a recommendation a student might encounter today. Identify the user signal, item, likely objective, and one possible social or ethical consequence. Keep the answer under 45 seconds.
 
-Students compare the agent’s example with their own activity responses. Treat the agent as a conversation partner, not an authority.
+Students compare the agent’s example with their own activity responses, then identify one ethical question the exchange raises.
 
 ::: notes
-Start the voice-mode interaction and stop it after two minutes. Correct any claim that treats the agent’s example as a definitive description of a platform’s production system.
+Start the voice-mode interaction and stop it after two minutes. Explain that the experiment is about examining ethical reasoning in an AI-mediated conversation, not validating the agent’s claims about any platform’s production system. Correct unsupported claims and invite students to name assumptions or omissions.
 :::
 
 ## Ethics Thread
@@ -185,8 +197,6 @@ Start the voice-mode interaction and stop it after two minutes. Correct any clai
 ::: notes
 Frame ethics as a recurring motif rather than a standalone final topic. Ask students to listen for the same questions whenever a later lecture introduces a new model or metric. Keep the optional recommendation-algorithm video in the instructor’s delivery notes as a backup.
 :::
-
----
 
 # 02 Schedule {background-color="#EF7C00"}
 
@@ -232,8 +242,6 @@ Frame ethics as a recurring motif rather than a standalone final topic. Ask stud
 ::: notes
 <!-- TODO (students): Any logistics or housekeeping Min mentioned about attendance or participation? -->
 :::
-
----
 
 # 03 Assignments & Grading {background-color="#EF7C00"}
 
@@ -298,8 +306,6 @@ Missing the Pre-Flight or Midterm Survey will directly reduce your participation
 ::: notes
 <!-- TODO (students): Were any other quizzes or in-class tests mentioned beyond the surveys? -->
 :::
-
----
 
 # 04 Types of Recommendation Systems {background-color="#EF7C00"}
 
