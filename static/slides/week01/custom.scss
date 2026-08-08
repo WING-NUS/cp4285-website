@@ -19,6 +19,14 @@ $selection-bg: #EF7C00;
   padding-bottom: 0.2em;
 }
 
+.reveal section[data-background-color="#003D7C"] {
+  color: #ffffff;
+}
+
+.reveal section[data-background-color="#003D7C"] h2 {
+  color: #ffffff;
+}
+
 .reveal h3 {
   color: #EF7C00;
 }
