@@ -179,9 +179,11 @@ Give students 60–90 seconds individually, then have them compare answers in pa
 
 ## Ethics Thread
 
-- Recommendation systems allocate **attention, visibility, and opportunity**.
-- Historical data and engagement objectives can reproduce or amplify **bias**.
-- Personalisation raises questions about **privacy, transparency, exposure, fairness, and stakeholder impact**.
+Recommendation systems allocate **attention, visibility, and opportunity**.
+
+Historical data and engagement objectives can reproduce or amplify **bias**.
+
+Personalisation raises questions about **privacy, transparency, exposure, fairness, and stakeholder impact**.
 
 ::: notes
 Frame ethics as a recurring motif rather than a standalone final topic. Ask students to listen for the same questions whenever a later lecture introduces a new model or metric. Keep the optional recommendation-algorithm video in the instructor’s delivery notes as a backup.
@@ -189,16 +191,39 @@ Frame ethics as a recurring motif rather than a standalone final topic. Ask stud
 
 # 02 Schedule {background-color="#EF7C00"}
 
+## Course Learning Outcomes
+
+By the end of CP4285, you should be able to:
+
+::: {.columns}
+::: {.column width="50%"}
+- **CLO 1:** Compare classical, content-based, collaborative-filtering, and hybrid methods.
+- **CLO 2:** Implement matrix-factorization and neural recommenders.
+- **CLO 3:** Design rigorous offline evaluation using ranking metrics.
+- **CLO 4:** Analyse cold start and propose appropriate remedies.
+:::
+::: {.column width="50%"}
+- **CLO 5:** Critique systems through fairness, privacy, transparency, and stakeholder impact.
+- **CLO 6:** Explain sequential, graph-based, multi-objective, and LLM-enhanced systems.
+- **CLO 7:** Design and justify an end-to-end recommender pipeline.
+- **CLO 8:** Communicate and defend technical designs and results.
+:::
+:::
+
+::: notes
+Position the roadmap as the route to these eight outcomes. Emphasise that the project brings together CLOs 2, 3, 5, 7, and 8, while the weekly topics progressively develop the methods in CLOs 1, 4, and 6.
+:::
+
 ## Weekly Topics
 
 | Week | Date | Topic |
 |------|------|-------|
-| 1 | 11 Aug | Recommendation Problems and Classical Methods |
-| 2 | 18 Aug | Latent Factor Models |
-| 3 | 25 Aug | Evaluation of Recommendation Systems |
-| 4 | 1 Sep | Neural Recommendation Models |
-| 5 | 8 Sep | Sequential and Session-Based Recommendation |
-| 6 | 15 Sep | Retrieval and Ranking Architectures |
+| 01 | 11 Aug | Recommendation Problems and Classical Methods |
+| 02 | 18 Aug | Latent Factor Models |
+| 03 | 25 Aug | Evaluation of Recommendation Systems |
+| 04 | 1 Sep | Neural Recommendation Models |
+| 05 | 8 Sep | Sequential and Session-Based Recommendation |
+| 06 | 15 Sep | Retrieval and Ranking Architectures |
 
 ::: notes
 <!-- TODO (students): Did Min highlight any particular weeks as especially important or challenging? -->
@@ -209,13 +234,13 @@ Frame ethics as a recurring motif rather than a standalone final topic. Ask stud
 | Week | Date | Topic |
 |------|------|-------|
 | — | 22 Sep | *Recess Week — No Class* |
-| 7 | 29 Sep | Project Design Critique Workshop |
-| 8 | 6 Oct | Learning-to-Rank |
-| 9 | 13 Oct | Graph-Based Recommendation |
+| 07 | 29 Sep | Project Design Critique Workshop |
+| 08 | 6 Oct | Learning-to-Rank |
+| 09 | 13 Oct | Graph-Based Recommendation |
 | 10 | 20 Oct | Multi-Objective Recommendation |
 | 11 | 27 Oct | Exploration and Online Learning |
 | 12 | 3 Nov | LLMs, Generative Recommendation, Research Frontiers |
-| 13 | 10 Nov | **Final Project Presentations** |
+| 13 | 10 Nov | **Final Project Presentations** @ 29th STePS |
 
 ::: notes
 <!-- TODO (students): Were there any changes or announcements to the schedule? -->
@@ -223,10 +248,12 @@ Frame ethics as a recurring motif rather than a standalone final topic. Ask stud
 
 ## Class Meetings
 
-- Every **Tuesday, 10:00–12:00 SGT**
+- Time: Every **Tue, 10:00–12:00 SGT**
 - Venue: **Seminar Room 12, COM3-01-21**
-- Lectures will be recorded where technology permits — recordings are for **revision only**, not a substitute for attendance
-- There are **no tutorial sessions** for this course
+
+Lectures will be recorded where technology permits — recordings are for **revision only**, not a substitute for attendance
+
+There are **no tutorial sessions** for this course — We'll be building the materials for the next cohort.
 
 ::: notes
 <!-- TODO (students): Any logistics or housekeeping Min mentioned about attendance or participation? -->
@@ -238,36 +265,25 @@ Frame ethics as a recurring motif rather than a standalone final topic. Ask stud
 
 | Component | Weight |
 |-----------|--------|
-| Final Exam (Mon, 23 Nov 2026, 13:00–15:00) | 30% |
-| Group Project | 30% |
-| Essays | 20% |
-| Quizzes / Tests | 10% |
 | Class Participation | 10% |
+| Essays | 20% |
+| Group Project | 30% |
+| In-Class Quizzes| 10% |
+| Final Exam (Mon, 23 Nov 2026, 13:00–15:00) | 30% |
+
+## Class Participation (10%)
+- Includes the **Pre-Flight Survey** (due Week 02) and **Midterm Survey** (due Week 08)
+  - Complete these on time — they are **free marks**
+
+::: {.callout-warning}
+Missing the Pre-Flight or Midterm Survey will directly reduce your participation grade. Don't forget!
+:::
 
 ::: notes
 <!-- TODO (students): Did Min elaborate on how participation is tracked or what counts towards it? -->
 :::
 
-## Project
-
-- Groups of **2–3 students** due to the small cohort size — no peer review required
-- Each group is assigned a **project mentor** (TA) — it is your responsibility to meet with them
-- You will select a **recommendation system dataset** and define a clear problem around it
-
-**Milestones:**
-
-::: {.incremental}
-- **Week 4–5:** Project Mini-team Declaration
-- **Week 7:** Project Design Critique Workshop
-- **Week 13:** Final Project Presentation
-- **Exam Period:** Final Project Report
-:::
-
-::: notes
-<!-- TODO (students): Did Min give any guidance on what makes a good project topic or dataset choice? -->
-:::
-
-## Essays
+## Essays (20%)
 
 - **Two individual take-home essays**, each worth **10%**
 - Short written analyses of recommender-system methods, evaluation choices, and social implications
@@ -282,15 +298,27 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 <!-- TODO (students): Were the essay topics or any example prompts discussed? -->
 :::
 
+## Project (30%)
+
+- Groups of **2–3 students** due to the small cohort size — no intra-team peer review required
+- You will select a **recommendation system dataset** and define a clear problem around it
+
+**Milestones:**
+
+::: {.incremental}
+- **Week 04–05:** Project Mini-team Declaration
+- **Week 07:** Project Design Critique Workshop
+- **Week 13:** Final Project Presentation at 29th STePS: Wed, 11 Nov 
+:::
+
+::: notes
+<!-- TODO (students): Did Min give any guidance on what makes a good project topic or dataset choice? -->
+:::
+
 ## Quizzes
 
 - Combined worth **10%** of total marks
-- Includes the **Pre-Flight Survey** (due Week 2) and **Midterm Survey** (due Week 8)
-- Complete these on time — they are **free marks**
-
-::: {.callout-warning}
-Missing the Pre-Flight or Midterm Survey will directly reduce your participation grade. Don't forget!
-:::
+- Largely 
 
 ::: notes
 <!-- TODO (students): Were any other quizzes or in-class tests mentioned beyond the surveys? -->

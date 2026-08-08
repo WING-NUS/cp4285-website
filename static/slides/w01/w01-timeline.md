@@ -24,10 +24,10 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 | Section | Slides | Time | Share of class |
 |---|---:|---:|---:|
 | 01 Overview | 8 | 20 min | 17%* |
-| 02 Schedule | 4 | 15 min | 13% |
+| 02 Schedule | 5 | 15 min | 13% |
 | 03 Assignments & Grading | 5 | 27 min | 23% |
 | 04 Types of Recommendation Systems | 7 | 58 min | 48% |
-| **Total** | **24** | **120 min** | 100% |
+| **Total** | **25** | **120 min** | 100% |
 
 \* Section 01 now targets 20 minutes in this scoped revision. The remaining section timings are intentionally unchanged, so the full run-of-show will require a later six-minute rebalancing.
 
@@ -50,10 +50,11 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 
 | Slide | Time | Mode | Delivery plan |
 |---|---:|---|---|
-| `02 Schedule` | 2 min | Instructor | Signpost the course roadmap and explain how the next topics build from classical methods to modern recommendation systems. |
-| `Weekly Topics` | 5 min | Instructor | Walk through Weeks 1–6, highlighting the progression from recommendation problems and classical methods to retrieval and ranking architectures. |
+| `02 Schedule` | 1 min | Instructor | Signpost the course roadmap and explain how the next topics build from classical methods to modern recommendation systems. |
+| `Course Learning Outcomes` | 3 min | Instructor | Introduce the eight course outcomes and show how the weekly sequence and group project develop them. Highlight the project as the integration point for implementation, evaluation, ethics, and communication. |
+| `Weekly Topics` | 4 min | Instructor | Walk through Weeks 1–6, highlighting the progression from recommendation problems and classical methods to retrieval and ranking architectures. |
 | `Weekly Topics (cont.)` | 3 min | Discussion | Ask students to identify one later topic they are curious or uncertain about. Use responses to surface expectations and clarify the recess week and project workshop. |
-| `Class Meetings` | 5 min | Instructor | Cover meeting time, venue, recording expectations, attendance, and the absence of tutorials. Confirm that students know where course logistics will be posted. |
+| `Class Meetings` | 4 min | Instructor | Cover meeting time, venue, recording expectations, attendance, and the absence of tutorials. Confirm that students know where course logistics will be posted. |
 
 ### 03 Assignments & Grading — 27 minutes
 
