@@ -149,6 +149,24 @@ Every slide should have a speaker notes block, even if empty or a TODO:
 
 ## Content Patterns
 
+### YouTube Video Embed Slide Prototype
+
+Use this prototype when a lecture needs a dedicated video surface. The slide title must begin with the video-camera emoji and the slide must use a black background:
+
+````markdown
+## 🎥 Video: <short title> {background-color="#000000"}
+
+```{=html}
+<div style="display:flex;align-items:center;justify-content:center;width:100%;height:76vh;background:#000;">
+  <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener" aria-label="Open video: <short title>">
+    <img src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg" alt="YouTube thumbnail for <short title>" style="display:block;width:100%;max-width:1280px;height:auto;max-height:76vh;object-fit:contain;border:4px solid #EF7C00;">
+  </a>
+</div>
+```
+````
+
+Replace `VIDEO_ID` and the title/alt text with the selected video. Use the thumbnail as the visible preview rather than relying on an autoplaying iframe; clicking it opens the YouTube watch page in a new tab. Keep the thumbnail large enough for projection, preserve its 16:9 aspect ratio, and verify that it loads before delivery. Add the video URL and thumbnail source to the slide’s speaker notes `[Sources]` block.
+
 ### Card-Suit User-Type Framework
 
 Use the following four user types when discussing how a recommendation system should treat different users. These are treatment lenses, not demographic or permanent personality labels; the same person may occupy different types across tasks or sessions.
