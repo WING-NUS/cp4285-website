@@ -300,6 +300,8 @@ Both in-class activity types use the following visual treatment:
 - Surround the activity content with a responsive medium-weight, high-contrast frame: use `border: clamp(3px, 0.6vw, 6px) solid #EF7C00` so it remains visible without becoming oversized on smaller screens.
 - Put the format emoji in the slide title: **`🎰 Bandit Time: <short question>`** for multiple-choice/response questions and **`👥 <short activity title>`** for small-group discussion.
 - Do not add a reverse-contrast “In Lecture …” label box inside the frame. The title prefix is the activity-format cue; keep the frame for the prompt, response content, and timer.
+- Set foreground colours explicitly on every nested element; do not rely on inherited white text. White answer cards must set a dark text colour (for example, `color:#003D7C`), and prompts/controls on the navy background must set `color:#fff`.
+- Make the timer self-contained and visible on navy slides: give the donut a visible stroke, place an opaque white centre circle behind the MM:SS text, set the timer text to navy (`#003D7C`), and keep the orange start/pause control visible. Never use `display:none`, transparent text, or a transparent timer centre for the classroom/PDF version.
 
 Keep the frame, title, prompt, and timer legible in the classroom PDF; the timer should support pacing without crowding out the activity prompt or response space.
 
@@ -314,7 +316,7 @@ Render the answer choices as readable cards rather than a plain bullet list. Use
 - C — green `#388E3C`
 - D — purple `#7B1FA2`
 
-Use a medium-weight outline (for example, `border: 4px solid <option-colour>`), a light/neutral card fill, and enough padding for projection. Maintain strong text contrast and include the letter/number label so meaning never depends on colour alone. Keep the cards static and printable; do not hide choices behind animation or interaction. The shared countdown timer and its user-selected duration remain unchanged.
+Use a medium-weight outline (for example, `border: 4px solid <option-colour>`), a light/neutral card fill, explicit dark card text (for example, `color:#003D7C`), and enough padding for projection. Maintain strong text contrast and include the letter/number label so meaning never depends on colour alone. Keep the cards static and printable; do not hide choices behind animation or interaction. The shared countdown timer and its user-selected duration remain unchanged.
 
 Example structure:
 
