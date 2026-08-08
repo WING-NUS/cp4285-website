@@ -554,3 +554,72 @@ Placed at the start of the current lecture (after the Previous Week Exercise Rev
 </div>
 ```
 ```
+
+---
+
+## Timer Auto-Pause on Slide Exit
+
+### Behaviour
+
+When the presenter navigates away from a slide that contains a running timer, the timer **automatically pauses** at its current value. The button label switches to **▶ Resume**. The timer does not reset; it resumes from where it left off when the presenter returns to the slide and clicks Resume.
+
+### Implementation
+
+Two additions are required in every deck that uses timers:
+
+**1. Global registry + Reveal listener** — add once in `include-in-header`, after the `</style>` tag:
+
+```html
+<script>
+window._cpTimers = window._cpTimers || {};
+document.addEventListener('DOMContentLoaded', function() {
+  function tryBind() {
+    if (typeof Reveal === 'undefined' || !Reveal.isReady || !Reveal.isReady()) {
+      setTimeout(tryBind, 200); return;
+    }
+    Reveal.on('slidechanged', function(e) {
+      var prev = e.previousSlide;
+      if (!prev) return;
+      var all = Array.prototype.slice.call(
+        document.querySelectorAll('.reveal .slides > section'));
+      var idx = all.indexOf(prev);
+      if (idx >= 0 && window._cpTimers[idx]) window._cpTimers[idx]();
+    });
+  }
+  tryBind();
+});
+</script>
+```
+
+**2. `slideIndex` option in `createCountdownTimer`** — each timer factory must:
+- Accept `o.slideIndex` (0-based index of the slide `<section>` that owns the timer)
+- Register a pause function in `window._cpTimers[o.slideIndex]` immediately after the `audioContext=null` declaration:
+
+```js
+if (typeof o.slideIndex === 'number') {
+  window._cpTimers = window._cpTimers || {};
+  window._cpTimers[o.slideIndex] = function() {
+    if (state === 'running') {
+      clearInterval(interval); interval = null; state = 'paused';
+      buttonEl.textContent = '▶ Resume';
+    }
+  };
+}
+```
+
+**3. Pass `slideIndex` in the call:**
+
+```js
+createCountdownTimer({
+  total: TOTAL,
+  textId: 'timer-text-XXXX',
+  statusId: 'timer-status-XXXX',
+  ringId: 'donut-ring-XXXX',
+  buttonId: 'break-btn-XXXX',
+  slideIndex: N   // ← 0-based index of this slide's <section>
+});
+```
+
+### Determining `slideIndex`
+
+Count all top-level `<section>` elements in `.reveal .slides` (i.e., every `## ` or `# ` heading in the `.qmd`, plus the implicit title slide at index 0). The title slide is index 0; each subsequent `---`-separated slide increments the index by 1.
