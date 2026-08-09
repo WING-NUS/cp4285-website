@@ -64,7 +64,7 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 | `Grading Overview` | 5 min | Instructor | Walk through each assessment weight, key dates, and how the components collectively assess technical understanding and critical judgement. Take clarification questions. |
 | `Project` | 9 min | Discussion | In small groups, ask students to propose a recommendation dataset and a problem statement that could be investigated. Invite one or two examples and distinguish a researchable question from a broad product idea. |
 | `Essays` | 6 min | Voice-mode AI agent | Ask the agent: “What would count as original critical analysis in an essay about a recommender system, and where could AI assistance become inappropriate?” Have students compare the response with the slide’s AI-declaration requirement, then debrief the limits. |
-| `Quizzes` | 5 min | Instructor | Explain the Pre-Flight Survey, Midterm Survey, deadlines, and participation impact. End with a concrete reminder of the Week 2 deadline. |
+| `Quizzes` | 5 min | Instructor | Explain that quizzes are jointly created by peers and instructors: peers contribute concepts, examples, and distractors; instructors verify and finalise the questions for fairness and learning-outcome alignment. |
 
 ### 04 Types of Recommendation Systems — 58 minutes
 

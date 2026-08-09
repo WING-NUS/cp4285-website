@@ -320,10 +320,16 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 ## Quizzes
 
 - Combined worth **10%** of total marks
-- Largely 
+- Quizzes are **jointly created by peers and instructors**
+- Peers contribute candidate concepts, examples, and plausible distractors from their self-learning
+- **Min** will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
+
+::: {.callout-note}
+Co-creation makes quizzes part of the pilot course: students help build better learning materials for this cohort and future cohorts.
+:::
 
 ::: notes
-<!-- TODO (students): Were any other quizzes or in-class tests mentioned beyond the surveys? -->
+Explain that peer input helps make questions reflect genuine misconceptions and useful examples, while instructors retain responsibility for quality, accuracy, and assessment standards.
 :::
 
 # 04 Types of Recommendation Systems {background-color="#EF7C00"}
