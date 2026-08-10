@@ -66,7 +66,7 @@ sections:
       text: |
         CP4285: Modern Recommendation Systems examines the algorithms, data, and design trade-offs behind contemporary recommender systems. The course connects classical recommendation methods with modern neural approaches, and emphasizes practical implementation, careful evaluation, and responsible deployment in real-world settings.
 
-        CP4285 covers classical methods, neural architectures, ranking and retrieval pipelines, sequential models, graph-based recommendation, online learning, and emerging LLM-based approaches. Ethical issues are interwoven throughout, including bias, fairness, privacy, exposure, transparency, and stakeholder impact. Students apply these ideas in a hands-on group project requiring problem formulation, dataset work, baselines, model design, evaluation, critique, and final presentation.
+        CP4285 covers classical methods, neural architectures, ranking and retrieval pipelines, sequential models, graph-based recommendation, online learning, and emerging LLM-based approaches. Ethical issues are interwoven throughout, including bias, fairness, privacy, exposure, transparency, and stakeholder impact. Students apply these ideas in a hands-on group project requiring problem formulation, dataset work, baselines, model design, evaluation, critique, and either a final presentation or report.
 
         The course is hosted by [WING.NUS](https://wing.comp.nus.edu.sg/), the Web IR / NLP research group at NUS led by Min.
 
@@ -92,7 +92,7 @@ sections:
           description: Learning-to-rank, graph recommendation, multi-objective systems, online learning, LLMs, and research frontiers.
         - name: "Week 13: Project Showcase"
           icon: presentation-chart-bar
-          description: Final project presentations integrate technical design, evaluation results, error analysis, and ethical analysis.
+          description: Teams present at STePS or submit a project report, integrating technical design, evaluation results, error analysis, and ethical analysis.
     design:
       css_class: "bg-white dark:bg-gray-950"
   - block: markdown

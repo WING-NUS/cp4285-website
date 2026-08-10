@@ -3,6 +3,8 @@ title: Assignments
 weight: 20
 changelog:
   - date: 10 Aug 2026
+    text: Clarified quiz AI restrictions and the alternative final project deliverables.
+  - date: 10 Aug 2026
     text: Default assignment deadlines are Mon, 23:59 SGT.
   - date: 10 Aug 2026
     text: Project teams are 2–4 students, with Min able to adjust membership to support diversity.
@@ -18,10 +20,10 @@ Coursework is organized around steady participation, written critique, project w
 
 | Component | Weightage | Description |
 | --- | ---: | --- |
-| Class Participation | 10% | Active contribution to seminars, project critique, peer feedback, and in-class discussion. |
+| Class Participation | 10% | Active contribution to classes, project critique, peer feedback, and in-class discussion. |
 | Essays | 20% | Short written analyses of recommender-system methods, evaluation choices, and social implications. |
-| Project / Group Project | 30% | Team project covering problem formulation, dataset preparation, baselines, model design, evaluation, error analysis, ethical analysis, and final presentation. |
-| Quizzes / Tests | 10% | Short checks on foundational concepts, metrics, and model design choices. |
+| Project / Group Project | 30% | Team project covering problem formulation, dataset preparation, baselines, model design, evaluation, error analysis, ethical analysis, and either a final presentation or a report. |
+| Quizzes / Tests | 10% | Short in-class checks on foundational concepts, metrics, and model design choices. AI tools are not permitted during quizzes. |
 | Final Exam | 30% | Individual final examination covering the full course. |
 
 ## Submission Notes
@@ -52,8 +54,8 @@ Note that performance on macroscopic metrics alone is not the critical factor in
 | --- | --- | --- | --- |
 | Project Mini-team Declaration | Week 03 — Mon, 24 Aug 2026, 23:59 SGT | Submit a self-formed team (2–4 students) or indicate that you need instructor placement; Min may adjust groups to support diversity. | — |
 | Project Design Critique | Week 7 | In-class workshop. Each team presents their application domain, dataset, user problem, recommendation objective, baselines, evaluation plan, and ethical risks for peer critique. | Part of Participation |
-| Final Project Presentation | Week 13 — Wed, 11 Nov 2026 | Teams present their implemented recommender, evaluation results, error analysis, ethical analysis, and future improvements. | Part of Project (30%) |
-| Final Project Report | Exam Period | Written report covering problem formulation, dataset preparation, baselines, model design, evaluation, error analysis, and ethical analysis. | Part of Project (30%) |
+| Final Project Presentation | Week 13 — Wed, 11 Nov 2026 | Teams selected to present at 29th STePS present their implemented recommender, evaluation results, error analysis, ethical analysis, and future improvements. They do not submit a project report. | Part of Project (30%) |
+| Final Project Report | Exam Period | Teams not presenting at 29th STePS submit a written report covering problem formulation, dataset preparation, baselines, model design, evaluation, error analysis, and ethical analysis. They do not give a final project presentation. | Part of Project (30%) |
 
 ### Project Topics and Datasets
 
@@ -72,7 +74,7 @@ You may use the SoC Compute Cluster for your project work. Details on how to acc
 
 ### Peer Assessment
 
-Due to the small cohort size, **no peer review is required** for this course. Project grades will be assessed directly by the teaching team based on the final presentation and report.
+Due to the small cohort size, **no peer review is required** for this course. Project grades will be assessed directly by the teaching team based on the applicable final deliverable: the STePS presentation or the project report.
 
 ### Academic Honesty for Projects
 

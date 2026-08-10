@@ -323,6 +323,7 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
   - Submit a self-formed team or indicate that you need instructor placement.
 - **Week 07:** Project Design Critique Workshop
 - **Week 13:** Final Project Presentation at 29th STePS: Wed, 11 Nov 
+  - Teams presenting at 29th STePS do **not** submit a project report; other teams submit a report instead.
 :::
 
 ::: notes
@@ -332,6 +333,7 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 ## Quizzes
 
 - Combined worth **10%** of total marks
+- **AI tools must not be used during in-class quizzes.**
 - Quizzes are **jointly created by peers and instructors**
 - Peers contribute candidate concepts, examples, and plausible distractors from their self-learning
   - **Min** will assign peers randomly to a week and section responsible.

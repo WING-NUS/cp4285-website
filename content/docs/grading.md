@@ -3,6 +3,8 @@ title: Grading
 weight: 30
 changelog:
   - date: 10 Aug 2026
+    text: Clarified quiz AI restrictions and the alternative final project deliverables.
+  - date: 10 Aug 2026
     text: Added the default Mon, 23:59 SGT assignment-deadline policy.
   - date: 17 Jun 2026
     text: Clarified AI use and declaration requirements for individual essays.
@@ -16,15 +18,15 @@ changelog:
 
 | S/N | CA Component | Weightage | Notes |
 | ---: | --- | ---: | --- |
-| 1 | Class Participation | 10% | Participation in seminars, project critique, peer feedback, and class discussion. |
+| 1 | Class Participation | 10% | Participation in classes, project critique, peer feedback, and class discussion. |
 | 2 | Essays | 20% | Written analysis and critique assignments. |
-| 3 | Project / Group Project | 30% | Group project with design critique, implementation, evaluation, final presentation, and report components. |
+| 3 | Project / Group Project | 30% | Group project with design critique, implementation, evaluation, and one final deliverable: a STePS presentation or a report. |
 | 4 | Quizzes / Tests | 10% | Short checks on course concepts and methods. |
 | 10 | Final Exam | 30% | Final examination on 23 Nov 2026, 13:00–15:00 SGT. Venue to be announced. |
 
 Total: 100%.
 
-Attendance at seminars is mandatory and participation is part of your overall mark. The participation grade will be marked as a combination of your in-seminar participation, your project critique contributions, peer feedback, and your participation in class surveys (e.g., pre-flight and midterm surveys).
+Attendance at classes is mandatory and participation is part of your overall mark. The participation grade will be marked as a combination of your in-class participation, your project critique contributions, peer feedback, and your participation in class surveys (e.g., pre-flight and midterm surveys).
 
 ## Academic Honesty Policy
 
@@ -51,7 +53,8 @@ This course follows the [NUS Policy for Use of AI in Teaching and Learning](http
 | Component | AI Permitted? | Conditions |
 | --- | --- | --- |
 | Group Project | **Yes** | AI use is permitted and encouraged where appropriate. You must document all AI use in your submission. Share your AI usage approach with your group and document it collectively. |
-| In-seminar participation | **Yes** | AI use is permitted. You must be able to explain and justify any AI-assisted contributions in your own words. |
+| In-class participation | **Yes** | AI use is permitted. You must be able to explain and justify any AI-assisted contributions in your own words. |
+| In-class quizzes | **No** | AI tools must not be used during in-class quizzes. |
 | Individual Essays (take-home, individual) | **Yes** (with declaration) | AI tools are permitted as a resource. However, no collaboration with other students is allowed. You **must** submit an AI declaration with each essay. Where requested by Min, you must provide full documentation of your AI use (e.g., prompts, outputs, and how they were incorporated). The essay remains an assessment of your own critical thinking; AI may assist but must not substitute your analysis. |
 | Final Examination | **No** | The examination is conducted on Examplify in a closed, supervised environment. No AI tools are permitted. |
 

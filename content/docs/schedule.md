@@ -402,6 +402,8 @@ Learning outcomes:
 {{< week-card >}}
 ### Week 13: Final Project Presentations (10 Nov 2026)
 
+Teams selected to present at 29th STePS complete the presentation below and do **not** submit a project report. Teams not presenting at STePS submit a project report instead.
+
 Required presentation components:
 
 1. Problem formulation
