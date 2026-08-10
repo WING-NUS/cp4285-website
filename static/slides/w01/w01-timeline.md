@@ -9,7 +9,7 @@
 **Lecture:** Recommendation Problems and Classical Methods  
 **Scheduled class time:** 120 minutes (Tuesday, 10:00–12:00 SGT)
 
-**Current run-of-show:** 129 minutes
+**Current run-of-show:** 131 minutes
 **Deck:** [`w01.qmd`](./w01.qmd)
 
 **Scoped revision:** Section 01 now takes 24 minutes, including a 10-minute in-class activity with an AI Voice Mode critique. The current run-of-show deliberately exceeds the scheduled class time so the delivery implications remain visible.
@@ -31,14 +31,14 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 
 | Section | Slides | Time | Running total | Share of run-of-show |
 |---|---:|---:|---:|---:|
-| 01 Overview | 8 | 24 min | 24 min | 18.6% |
-| 02 Schedule | 5 | 15 min | 39 min | 11.6% |
-| 03 Assignments & Grading | 7 | 27 min | 66 min | 20.9% |
-| Break | 1 | 5 min | 71 min | 3.9% |
-| 04 Types of Recommendation Systems | 7 | 58 min | 129 min | 45.0% |
-| **Total** | **28** | **129 min** | **129 min** | **100%** |
+| 01 Overview | 8 | 24 min | 24 min | 18.3% |
+| 02 Schedule | 6 | 17 min | 41 min | 13.0% |
+| 03 Assignments & Grading | 7 | 27 min | 68 min | 20.6% |
+| Break | 1 | 5 min | 73 min | 3.8% |
+| 04 Types of Recommendation Systems | 7 | 58 min | 131 min | 44.3% |
+| **Total** | **29** | **131 min** | **131 min** | **100%** |
 
-The run-of-show is **9 minutes over** the scheduled class time. Preserve this visible overrun until a later pacing decision is made.
+The run-of-show is **11 minutes over** the scheduled class time. Preserve this visible overrun until a later pacing decision is made.
 
 ## Detailed run-of-show
 
@@ -55,45 +55,46 @@ The run-of-show is **9 minutes over** the scheduled class time. Preserve this vi
 | `👥 Find the Recommender` | 10 min | 23 min | **Student activity — small-group discussion** | **Student activity:** in pairs, audit one recent recommendation, identify likely signals and objective, and name who or what might be left unseen. Take one or two observations and synthesise them. |
 | `📶 Ethics Thread` | 1 min | 24 min | **AI Voice Mode** | **AI Voice Mode:** briefly ask the agent to name one stakeholder affected by a recommendation decision, then identify one assumption or omission in its response. |
 
-### 02 Schedule — 15 minutes (running total: 39 minutes)
+### 02 Schedule — 17 minutes (running total: 41 minutes)
 
 | Slide | Time | Running total | Mode | Delivery plan |
 |---|---:|---:|---|---|
 | `02 Schedule` | 1 min | 25 min | Instructor | Signpost the course roadmap and explain how the next topics build from classical methods to modern recommendation systems. |
 | `🛣️ Roadmap: Course Learning Outcomes` | 3 min | 28 min | Instructor | Introduce the eight course outcomes and show how the weekly sequence and group project develop them. Highlight the project as the integration point for implementation, evaluation, ethics, and communication. |
-| `Weekly Topics` | 4 min | 32 min | Instructor | Walk through Weeks 1–6, highlighting the progression from recommendation problems and classical methods to retrieval and ranking architectures. |
-| `Weekly Topics (cont.)` | 3 min | 35 min | **Student activity — discussion** | **Student activity:** ask students to identify one later topic they are curious or uncertain about. Use responses to surface expectations and clarify the recess week and project workshop. |
-| `Class Meetings` | 4 min | 39 min | Instructor | Cover meeting time, venue, recording expectations, attendance, and the absence of tutorials. Confirm that students know where course logistics will be posted. |
+| `Course Library` | 2 min | 30 min | Instructor | Introduce Aggarwal's *Recommender Systems: The Textbook* as the core text, then briefly show the specialist books students can consult for ethics, sessions, groups, industry, LLMs, and personalized learning. |
+| `Weekly Topics` | 4 min | 34 min | Instructor | Walk through Weeks 1–6, highlighting the progression from recommendation problems and classical methods to retrieval and ranking architectures. |
+| `Weekly Topics (cont.)` | 3 min | 37 min | **Student activity — discussion** | **Student activity:** ask students to identify one later topic they are curious or uncertain about. Use responses to surface expectations and clarify the recess week and project workshop. |
+| `Class Meetings` | 4 min | 41 min | Instructor | Cover meeting time, venue, recording expectations, attendance, and the absence of tutorials. Confirm that students know where course logistics will be posted. |
 
-### 03 Assignments & Grading — 27 minutes (running total: 66 minutes)
-
-| Slide | Time | Running total | Mode | Delivery plan |
-|---|---:|---:|---|---|
-| `03 Assignments & Grading` | 2 min | 41 min | Instructor | Explain why assessment information comes before the technical material and preview the balance between exam, project, essays, quizzes, and participation. |
-| `Grading Overview` | 3 min | 44 min | Instructor | Walk through the assessment weights and the relationship between individual work, group work, peer review, and the final examination. |
-| `Class Participation (10%)` | 3 min | 47 min | Instructor | Explain the pre-flight and midterm surveys, in-lecture and pre-lecture activities, and the direct participation consequences of missing required surveys. |
-| `Essays (20%)` | 5 min | 52 min | Instructor | Explain the two individual essays, the 8% written-analysis and 2% randomized-peer-review split, AI declaration, and deadlines: Mon, 24 Aug and Mon, 5 Oct 2026 at 23:59 SGT. |
-| `Project (30%)` | 7 min | 59 min | Instructor | Explain that students may form 2–4-person teams, but Min has final authority and may override groups for diversity. Cover the declaration due Mon, 24 Aug 2026, 23:59 SGT, the Week 07 design critique, and the mutually exclusive final deliverables: teams presenting at 29th STePS on Wed, 11 Nov do not submit a report; other teams submit a report instead. |
-| `Quizzes` | 4 min | 63 min | Instructor | Explain that AI tools are not permitted during in-class quizzes, then describe the peer-and-instructor co-creation workflow, including random assignment of peers to a week and section and instructor curation of final questions. |
-| `Authority Chain` | 3 min | 66 min | Instructor | Establish the lecture slides as the authoritative course record, explain how Canvas and the public website support it, and state the default assignment deadline: Mon, 23:59 SGT unless otherwise announced. |
-
-### Break — 5 minutes (running total: 71 minutes)
+### 03 Assignments & Grading — 27 minutes (running total: 68 minutes)
 
 | Slide | Time | Running total | Mode | Delivery plan |
 |---|---:|---:|---|---|
-| `☕ Break` | 5 min | 71 min | Break | Announce the break, start the five-minute timer, and resume with Section 04 when the timer completes. |
+| `03 Assignments & Grading` | 2 min | 43 min | Instructor | Explain why assessment information comes before the technical material and preview the balance between exam, project, essays, quizzes, and participation. |
+| `Grading Overview` | 3 min | 46 min | Instructor | Walk through the assessment weights and the relationship between individual work, group work, peer review, and the final examination. |
+| `Class Participation (10%)` | 3 min | 49 min | Instructor | Explain the pre-flight and midterm surveys, in-lecture and pre-lecture activities, and the direct participation consequences of missing required surveys. |
+| `Essays (20%)` | 5 min | 54 min | Instructor | Explain the two individual essays, the 8% written-analysis and 2% randomized-peer-review split, AI declaration, and deadlines: Mon, 24 Aug and Mon, 5 Oct 2026 at 23:59 SGT. |
+| `Project (30%)` | 7 min | 61 min | Instructor | Explain that students may form 2–4-person teams, but Min has final authority and may override groups for diversity. Cover the declaration due Mon, 24 Aug 2026, 23:59 SGT, the Week 07 design critique, and the mutually exclusive final deliverables: teams presenting at 29th STePS on Wed, 11 Nov do not submit a report; other teams submit a report instead. |
+| `Quizzes` | 4 min | 65 min | Instructor | Explain that AI tools are not permitted during in-class quizzes, then describe the peer-and-instructor co-creation workflow, including random assignment of peers to a week and section and instructor curation of final questions. |
+| `Authority Chain` | 3 min | 68 min | Instructor | Establish the lecture slides as the authoritative course record, explain how Canvas and the public website support it, and state the default assignment deadline: Mon, 23:59 SGT unless otherwise announced. |
 
-### 04 Types of Recommendation Systems — 58 minutes (running total: 129 minutes)
+### Break — 5 minutes (running total: 73 minutes)
 
 | Slide | Time | Running total | Mode | Delivery plan |
 |---|---:|---:|---|---|
-| `04 Types of Recommendation Systems` | 2 min | 73 min | Instructor | Introduce the technical core of the lecture and state that the class will compare paradigms by user need, available data, and objective. |
-| `A Card-Suit Framework for User Types` | 12 min | 85 min | **Student activity — discussion** | **Student activity:** ask students to choose the card-suit archetype that best describes their behaviour on a familiar platform. Discuss disagreements and emphasise that user types can be mixed and can change by context. |
-| `Matching Systems to User Types` | 8 min | 93 min | Instructor | Explain the mapping from archetype to diversity-aware, social, retrieval-ranking, and content-based approaches. Point out that this is a heuristic, not a fixed taxonomy. |
-| `Classical Recommendation Paradigms` | 10 min | 103 min | Instructor | Teach popularity-based, content-based, collaborative-filtering, and hybrid approaches. For each, name the signal it uses, the personalisation it provides, and one limitation. |
-| `The Cold-Start Problem` | 10 min | 113 min | Instructor | Explain new-user, new-item, and new-system cold start, then compare content features, preference onboarding, and popularity fallbacks. |
-| `Ethics Thread: Popularity Bias and Exposure Inequality` | 10 min | 123 min | Instructor | Explain the popularity feedback loop, identify affected stakeholders, and connect engagement optimisation to long-tail exposure inequality. |
-| `Summary` | 6 min | 129 min | **Student activity — discussion** | **Student activity:** have students use the comparison table to choose methods for a new user, a feature-rich catalogue, and a mature platform. Collect answers, correct misconceptions, and preview latent factor models for Week 2. |
+| `☕ Break` | 5 min | 73 min | Break | Announce the break, start the five-minute timer, and resume with Section 04 when the timer completes. |
+
+### 04 Types of Recommendation Systems — 58 minutes (running total: 131 minutes)
+
+| Slide | Time | Running total | Mode | Delivery plan |
+|---|---:|---:|---|---|
+| `04 Types of Recommendation Systems` | 2 min | 75 min | Instructor | Introduce the technical core of the lecture and state that the class will compare paradigms by user need, available data, and objective. |
+| `A Card-Suit Framework for User Types` | 12 min | 87 min | **Student activity — discussion** | **Student activity:** ask students to choose the card-suit archetype that best describes their behaviour on a familiar platform. Discuss disagreements and emphasise that user types can be mixed and can change by context. |
+| `Matching Systems to User Types` | 8 min | 95 min | Instructor | Explain the mapping from archetype to diversity-aware, social, retrieval-ranking, and content-based approaches. Point out that this is a heuristic, not a fixed taxonomy. |
+| `Classical Recommendation Paradigms` | 10 min | 105 min | Instructor | Teach popularity-based, content-based, collaborative-filtering, and hybrid approaches. For each, name the signal it uses, the personalisation it provides, and one limitation. |
+| `The Cold-Start Problem` | 10 min | 115 min | Instructor | Explain new-user, new-item, and new-system cold start, then compare content features, preference onboarding, and popularity fallbacks. |
+| `Ethics Thread: Popularity Bias and Exposure Inequality` | 10 min | 125 min | Instructor | Explain the popularity feedback loop, identify affected stakeholders, and connect engagement optimisation to long-tail exposure inequality. |
+| `Summary` | 6 min | 131 min | **Student activity — discussion** | **Student activity:** have students use the comparison table to choose methods for a new user, a feature-rich catalogue, and a mature platform. Collect answers, correct misconceptions, and preview latent factor models for Week 2. |
 
 ## Pacing and facilitation notes
 

@@ -224,6 +224,38 @@ By the end of CP4285, you should be able to:
 ::: notes
 :::
 
+## Course Library
+
+```{=html}
+<div style="display:grid;grid-template-columns:minmax(250px,1fr) minmax(0,2.6fr);gap:1.3em;align-items:center;height:67vh;">
+  <figure style="margin:0;text-align:center;">
+    <img src="assets/book-covers/textbook.jpg" alt="Cover of Charu C. Aggarwal's Recommender Systems: The Textbook" style="display:block;height:min(55vh,560px);max-width:100%;margin:0 auto;object-fit:contain;box-shadow:0 8px 24px rgba(0,0,0,.24);">
+    <figcaption style="margin-top:.45em;color:#003D7C;font-size:.62em;"><strong>Core textbook</strong><br>Charu C. Aggarwal, <em>Recommender Systems: The Textbook</em></figcaption>
+  </figure>
+  <div style="min-width:0;">
+    <p style="margin:0 0 .55em;color:#003D7C;font-size:.72em;font-weight:bold;">A course library for going deeper</p>
+    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.45em;align-items:start;">
+      <img src="assets/book-covers/handbook-third.jpg" alt="Recommender Systems Handbook, Third Edition" title="Recommender Systems Handbook, Third Edition" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/handbook-second.jpg" alt="Recommender Systems Handbook, Second Edition" title="Recommender Systems Handbook, Second Edition" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/medicine-music.jpg" alt="Recommender Systems for Medicine and Music" title="Recommender Systems for Medicine and Music" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/legal-ethical.jpg" alt="Recommender Systems: Legal and Ethical Issues" title="Recommender Systems: Legal and Ethical Issues" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/session-deep-learning.jpg" alt="Session-Based Recommender Systems Using Deep Learning" title="Session-Based Recommender Systems Using Deep Learning" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/group-recommender.jpg" alt="Group Recommender Systems" title="Group Recommender Systems" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/llm-recommender.jpg" alt="Building Recommender Systems Using Large Language Models" title="Building Recommender Systems Using Large Language Models" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/industrial-recommender.jpg" alt="Industrial Recommender System" title="Industrial Recommender System" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/frontiers-practices.jpg" alt="Recommender Systems: Frontiers and Practices" title="Recommender Systems: Frontiers and Practices" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/personalized-ml.jpg" alt="Personalized Machine Learning" title="Personalized Machine Learning" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+    </div>
+  </div>
+</div>
+```
+
+::: notes
+[Sources]
+- Charu C. Aggarwal, *Recommender Systems: The Textbook* (`../../../../books/textbook.pdf`).
+- Additional course-library PDFs in `../../../../books/`.
+:::
+
 ## Weekly Topics
 
 | Week | Date | Topic |
@@ -279,10 +311,12 @@ There are **no tutorial sessions** for this course — We'll be building the mat
 | Final Exam (Mon, 23 Nov 2026, 13:00–15:00) | 30% |
 
 ## Class Participation (10%)
-- Includes the **Pre-Flight Survey** (due Week 02) and **Midterm Survey** (due Week 08)
-  - Complete these on time — they are **free marks**
-- In-lecture activities 
-- and Pre-lecture activities
+1. **In-lecture activities**
+2. **Pre-lecture activities**
+3. *Pre-Flight Survey* and *Midterm Survey*
+  - **Pre-Flight Survey** (due Week 02; Mon, 17 Aug 2026 23:59 SGT)
+  - **Midterm Survey** (due Week 08; Mon, 5 Aug 2026 23:59 SGT)
+  Complete these on time — they are **free marks**
 
 ::: {.callout-warning}
 Missing the Pre-Flight or Midterm Survey will directly reduce your participation grade. Don't forget to do them!
@@ -332,12 +366,12 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 
 ## Quizzes
 
-- Combined worth **10%** of total marks
-- **AI tools must not be used during in-class quizzes.**
 - Quizzes are **jointly created by peers and instructors**
 - Peers contribute candidate concepts, examples, and plausible distractors from their self-learning
   - **Min** will assign peers randomly to a week and section responsible.
-- **Min** will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
+  - **Min** will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
+- Combined worth **10%** of total marks
+- **AI tools must not be used during in-class quizzes.**
 
 ::: {.callout-note}
 Co-creation makes quizzes part of the pilot course: students help build better learning materials for this cohort and future cohorts.  
