@@ -283,12 +283,14 @@ Missing the Pre-Flight or Midterm Survey will directly reduce your participation
 
 ## Essays (20%)
 
-- **Two individual take-home essays**, each worth **10%**
-- Short written analyses of recommender-system methods, evaluation choices, and social implications (8%)
-- Approximately **1-2 week** turnaround between announcement and due date
-- AI tools are **permitted as a resource** — but an AI declaration is **mandatory** for each submission
-- Randomised peer review counts towards the remaining 2%.
-- **Essay 1:** Mon, 24 Aug 2026, 23:59 SGT · **Essay 2:** Mon, 5 Oct 2026, 23:59 SGT
+**Two individual take-home essays**, each worth **10%**
+  - Short written analyses of recommender-system methods, evaluation choices, and social implications (8%)
+  - Approximately **1-2 week** turnaround between announcement and due date
+  - AI tools are **permitted as a resource** — but an AI declaration is **mandatory** for each submission
+  - Randomised peer review counts towards the remaining 2%.
+
+- **Essay 1:** Mon, 24 Aug 2026, 23:59 SGT (Week 03) 
+- **Essay 2:** Mon, 5 Oct 2026, 23:59 SGT (Week 08)
 
 ::: {.callout-note}
 Essays assess your own critical thinking. AI may assist but must not substitute your analysis.  So do them on your own, and don't let AI do the hard work of understanding; the process is more important than the outcome.
@@ -300,7 +302,7 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 
 ## Project (30%)
 
-- Groups have **2–4 students**. Students may form teams themselves; **Min has final decision on group formation and may override student-formed groups to support diversity.**
+- Groups have **2–4 students**. Students may form teams themselves; **Min** has the final decision on group formation (may override student-formed groups)
 - You will select a **recommendation system dataset** and define a clear problem around it
 
 **Milestones:**
@@ -323,7 +325,6 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 - Peers contribute candidate concepts, examples, and plausible distractors from their self-learning
   - **Min** will assign peers randomly to a week and section responsible.
 - **Min** will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
-- Unless stated otherwise, assignment submissions are due **Mondays, 23:59 SGT**.
 
 ::: {.callout-note}
 Co-creation makes quizzes part of the pilot course: students help build better learning materials for this cohort and future cohorts.  
