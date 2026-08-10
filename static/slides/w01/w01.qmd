@@ -28,9 +28,9 @@ format:
 <div aria-labelledby="w01-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
   <h5 id="w01-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
-    <li><strong>10 Aug 2026</strong> — Default assignment deadlines are Mon, 23:59 SGT.</li>
-    <li><strong>10 Aug 2026</strong> — Project teams are 2–4 students; Min may adjust teams to support diversity.</li>
-    <li><strong>10 Aug 2026</strong> — Added essay and Project Mini-team Declaration deadlines.</li>
+    <li><strong style="color:#00796B;">10 Aug 2026</strong> — Default assignment deadlines are <span style="color:#00796B;">Mon, 23:59 SGT</span>.</li>
+    <li><strong style="color:#00796B;">10 Aug 2026</strong> — Project teams are 2–4 students; Min may adjust teams to support diversity.</li>
+    <li><strong style="color:#00796B;">10 Aug 2026</strong> — Added essay and Project Mini-team Declaration deadlines.</li>
   </ul>
 </div>
 ```
@@ -100,7 +100,7 @@ This means that your class notes will rarely be ready before class.  We have to 
     <p style="margin:.45em 0 0;"><strong>Choose an answer; justify it in one sentence.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">00:20</text></svg>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:20</text></svg>
     <span id="overview-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">00:20</span>
     <button id="overview-mcq-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
@@ -156,7 +156,7 @@ It is a conversation partner for inquiry, not an authority or a production recom
     <p style="margin:.45em 0 0;"><strong>Compare with a partner; share one observation.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">03:00</text></svg>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
     <span id="overview-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
     <button id="overview-activity-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
@@ -230,7 +230,7 @@ By the end of CP4285, you should be able to:
 <div style="display:grid;grid-template-columns:minmax(250px,1fr) minmax(0,2.6fr);gap:1.3em;align-items:center;height:67vh;">
   <figure style="margin:0;text-align:center;">
     <img src="assets/book-covers/textbook.jpg" alt="Cover of Charu C. Aggarwal's Recommender Systems: The Textbook" style="display:block;height:min(55vh,560px);max-width:100%;margin:0 auto;object-fit:contain;box-shadow:0 8px 24px rgba(0,0,0,.24);">
-    <figcaption style="margin-top:.45em;color:#003D7C;font-size:.62em;"><strong>Core textbook</strong><br>Charu C. Aggarwal, <em>Recommender Systems: The Textbook</em></figcaption>
+    <figcaption style="margin-top:.45em;color:#003D7C;font-size:.62em;"><strong>Core textbook</strong><br>Charu C. Aggarwal, <em>Recommender Systems: The Textbook</em><br/>Focus of the first third of the course.</figcaption>
   </figure>
   <div style="min-width:0;">
     <p style="margin:0 0 .55em;color:#003D7C;font-size:.72em;font-weight:bold;">A course library for going deeper</p>
@@ -251,44 +251,41 @@ By the end of CP4285, you should be able to:
 ```
 
 ::: notes
-[Sources]
-- Charu C. Aggarwal, *Recommender Systems: The Textbook* (`../../../../books/textbook.pdf`).
-- Additional course-library PDFs in `../../../../books/`.
 :::
 
 ## Weekly Topics
 
-| Week | Date | Topic |
+| Week | <span style="color:#00796B;">Date</span> | Topic |
 |------|------|-------|
-| 01 | 11 Aug | Recommendation Problems and Classical Methods |
-| 02 | 18 Aug | Latent Factor Models |
-| 03 | 25 Aug | Evaluation of Recommendation Systems |
-| 04 | 1 Sep | Neural Recommendation Models |
-| 05 | 8 Sep | Sequential and Session-Based Recommendation |
-| 06 | 15 Sep | Retrieval and Ranking Architectures |
+| 01 | <span style="color:#00796B;">11 Aug</span> | Recommendation Problems and Classical Methods |
+| 02 | <span style="color:#00796B;">18 Aug</span> | Latent Factor Models |
+| 03 | <span style="color:#00796B;">25 Aug</span> | Evaluation of Recommendation Systems |
+| 04 | <span style="color:#00796B;">1 Sep</span> | Neural Recommendation Models |
+| 05 | <span style="color:#00796B;">8 Sep</span> | Sequential and Session-Based Recommendation |
+| 06 | <span style="color:#00796B;">15 Sep</span> | Retrieval and Ranking Architectures |
 
 ::: notes
 :::
 
 ## Weekly Topics (cont.)
 
-| Week | Date | Topic |
+| Week | <span style="color:#00796B;">Date</span> | Topic |
 |------|------|-------|
-| — | 22 Sep | *Recess Week — No Class* |
-| 07 | 29 Sep | Project Design Critique Workshop |
-| 08 | 6 Oct | Learning-to-Rank |
-| 09 | 13 Oct | Graph-Based Recommendation |
-| 10 | 20 Oct | Multi-Objective Recommendation |
-| 11 | 27 Oct | Exploration and Online Learning |
-| 12 | 3 Nov | LLMs, Generative Recommendation, Research Frontiers |
-| 13 | 10 Nov | **Final Project Presentations** @ 29th STePS |
+| — | <span style="color:#00796B;">22 Sep</span> | *Recess Week — No Class* |
+| 07 | <span style="color:#00796B;">29 Sep</span> | Project Design Critique Workshop |
+| 08 | <span style="color:#00796B;">6 Oct</span> | Learning-to-Rank |
+| 09 | <span style="color:#00796B;">13 Oct</span> | Graph-Based Recommendation |
+| 10 | <span style="color:#00796B;">20 Oct</span> | Multi-Objective Recommendation |
+| 11 | <span style="color:#00796B;">27 Oct</span> | Exploration and Online Learning |
+| 12 | <span style="color:#00796B;">3 Nov</span> | LLMs, Generative Recommendation, Research Frontiers |
+| 13 | <span style="color:#00796B;">10 Nov</span> | **Final Project Presentations** @ 29th STePS |
 
 ::: notes
 :::
 
 ## Class Meetings
 
-- Time: Every **Tue, 10:00–12:00 SGT**
+- Time: Every <strong style="color:#00796B;">Tue, 10:00–12:00 SGT</strong>
 - Venue: **Seminar Room 12, COM3-01-21**
 
 Lectures will be recorded where technology permits — recordings are for **revision only**, not a substitute for attendance
@@ -308,15 +305,16 @@ There are **no tutorial sessions** for this course — We'll be building the mat
 | Essays | 20% |
 | Group Project | 30% |
 | In-Class Quizzes| 10% |
-| Final Exam (Mon, 23 Nov 2026, 13:00–15:00) | 30% |
+| Final Exam (<span style="color:#00796B;">Mon, 23 Nov 2026, 13:00–15:00</span>) | 30% |
 
 ## Class Participation (10%)
 1. **In-lecture activities**
 2. **Pre-lecture activities**
 3. **Pre-Flight Survey** and **Midterm Survey**
-  - *Pre-Flight Survey* (due Week 02; Mon, 17 Aug 2026 23:59 SGT)
-  - *Midterm Survey* (due Week 08; Mon, 5 Aug 2026 23:59 SGT)
-  Complete these on time — they are **free marks**
+    - *Pre-Flight Survey* (due Week 02; <span style="color:#00796B;">Mon, 17 Aug 2026 23:59 SGT</span>)
+    - *Midterm Survey* (due Week 08; <span style="color:#00796B;">Mon, 5 Oct 2026 23:59 SGT</span>)
+
+    Complete these on time — they are **free marks**
 
 ::: {.callout-warning}
 Missing the Pre-Flight or Midterm Survey will directly reduce your participation grade. Don't forget to do them!
@@ -329,13 +327,13 @@ Missing the Pre-Flight or Midterm Survey will directly reduce your participation
 ## Essays (20%)
 
 **Two individual take-home essays**, each worth **10%**
-  - Short written analyses of recommender-system methods, evaluation choices, and social implications (8%)
-  - Approximately **1-2 week** turnaround between announcement and due date
-  - AI tools are **permitted as a resource** — but an AI declaration is **mandatory** for each submission
-  - Randomised peer review counts towards the remaining 2%.
 
-- **Essay 1:** Mon, 24 Aug 2026, 23:59 SGT (Week 03) 
-- **Essay 2:** Mon, 5 Oct 2026, 23:59 SGT (Week 08)
+  - **Essay 1:** Due Week 03; <span style="color:#00796B;">Mon, 24 Aug 2026 23:59 SGT</span>
+  - **Essay 2:** Due Week 08; <span style="color:#00796B;">Mon 5 Oct 2026 23:59 SGT</span>
+
+Short written analyses of recommender-system methods, evaluation choices, and social implications (8%).  Randomised peer review counts towards the remaining 2%.
+
+AI tools are **permitted as a resource** — but an AI declaration is **mandatory** for each submission
 
 ::: {.callout-note}
 Essays assess your own critical thinking. AI may assist but must not substitute your analysis.  So do them on your own, and don't let AI do the hard work of understanding; the process is more important than the outcome.
@@ -347,29 +345,47 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 
 ## Project (30%)
 
-- Groups have **2–4 students**. Students may form teams themselves; **Min** has the final decision on group formation (may override student-formed groups)
-- You will select a **recommendation system dataset** and define a clear problem around it
+- Groups have **2–4 students**
+- Define a clear problem anchored on a selected **recommendation system dataset**
 
 **Milestones:**
 
 ::: {.incremental}
-- **Week 03:** Project Mini-team Declaration — Mon, 24 Aug 2026, 23:59 SGT
-  - Submit a self-formed team or indicate that you need instructor placement.
+- **Week 03:** Project Mini-team Declaration — <span style="color:#00796B;">Mon, 24 Aug 2026 23:59 SGT</span>
+  - Submit a self-formed team or indicate that you need instructor placement
+  - Min has the final decision on group formation (may override student-formed groups)
 - **Week 07:** Project Design Critique Workshop
-- **Week 13:** Final Project Presentation at 29th STePS: Wed, 11 Nov 
-  - Teams presenting at 29th STePS do **not** submit a project report; other teams submit a report instead.
+- **Week 13:** Final Project Presentation at 29th STePS: <span style="color:#00796B;">Wed, 11 Nov</span>
+  - Teams presenting at 29th STePS do **not** submit a project report; other teams submit a report instead, due same <span style="color:#00796B;">Wed, 11 Nov 2026 23:59 SGT</span>
 :::
 
 ::: notes
 <!-- TODO (students): Did Min give any guidance on what makes a good project topic or dataset choice? -->
 :::
 
-## Quizzes
+## Recommendation Dataset Catalogue
+
+<div style="height:68vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+  <a href="https://github.com/RUCAIBox/RecSysDatasets" target="_blank" rel="noopener" style="display:block;width:min(1120px,88%);">
+    <img src="../../uploads/recsysdatasets-github.png" alt="Screenshot of the RUCAIBox RecSysDatasets GitHub repository, a public catalogue of recommender-system data sources." style="display:block;width:100%;border:4px solid #003D7C;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.2);">
+  </a>
+  <p style="margin:.7em 0 0;font-size:.68em;color:#00796B;font-weight:bold;">Click the screenshot to open the live dataset catalogue.</p>
+  <p style="margin:.22em 0 0;font-size:.45em;color:#6b7280;">RUCAIBox. (n.d.). <em>RecSysDatasets</em> [GitHub repository]. <a href="https://github.com/RUCAIBox/RecSysDatasets" target="_blank" rel="noopener" style="color:#00796B;">github.com/RUCAIBox/RecSysDatasets</a></p>
+</div>
+
+::: notes
+Click the screenshot to open the repository live. It is a useful starting point—not a recommendation to use any dataset without checking its documentation, licence, provenance, and representation risks.
+
+[Sources]
+- RUCAIBox. (n.d.). *RecSysDatasets* [GitHub repository]. https://github.com/RUCAIBox/RecSysDatasets
+:::
+
+## Quizzes (10%)
 
 - Quizzes are **jointly created by peers and instructors**
-- Peers contribute candidate concepts, examples, and plausible distractors from their self-learning
-  - **Min** will assign peers randomly to a week and section responsible.
-  - **Min** will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
+- Peers contribute candidate questions, answers, and plausible distractors from their self-learning
+  - Min will assign peers randomly to a week and section responsible.
+  - Min will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
 - Combined worth **10%** of total marks
 - **AI tools must not be used during in-class quizzes.**
 
@@ -386,9 +402,9 @@ Our slides will be the most authoritative source of truth.
 
 While the we will try to get the slides synced with the website or Canvas, use information introduced in lecture as **the definitive source**.
 
-There will likely be errors in the lecture, so check any doubts or questions with **Min**. 
+There will likely be errors in the lecture, so check any doubts or questions with Min.
 
-Unless a slide or Canvas announcement specifies otherwise, assignment deadlines are **Mondays, 23:59 SGT**.
+Unless a slide or Canvas announcement specifies otherwise, assignment deadlines are <strong style="color:#00796B;">Mondays, 23:59 SGT</strong>.
 
 ::: {.callout-note}
 The slide deck built in Quarto and rendered through `reveal.js`.  The website is also built Hugo and served using Github Pages.  This means any student, member of the public, or AI can inspect all details of the course.  Use this to your advantage.
@@ -410,7 +426,7 @@ The slide deck built in Quarto and rendered through `reveal.js`.  The website is
       <circle cx="90" cy="90" r="75" fill="none" stroke="#444" stroke-width="14"/>
       <circle cx="90" cy="90" r="62" fill="#fff"/>
       <circle id="w01-break-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/>
-      <text id="w01-break-text" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="bold" fill="#003D7C">05:00</text>
+      <text id="w01-break-text" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="bold" fill="#00796B">05:00</text>
     </svg>
     <span id="w01-break-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">05:00</span>
     <button id="w01-break-button" type="button" style="margin-top:1em;padding:.55em 1.6em;font-size:.9em;background:#EF7C00;color:#fff;border:0;border-radius:6px;cursor:pointer;">▶ Start Timer</button>
@@ -572,10 +588,13 @@ Use the treemap as a compact taxonomy of inputs. On the right, reprise the disti
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1 and 5.
 :::
 
-## 👥 Signal Hunt {background-color="#003D7C"}
+## {background-color="#003D7C"}
 
 ```{=html}
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 190px;gap:1.15em;align-items:center;color:#fff;">
+<div class="cp-frame-bg cp-frame-orange"></div>
+<div class="cp-frame-content" style="color:#fff;">
+  <div class="cp-frame-title" style="color:#EF7C00;">👥 Signal Hunt</div>
+  <div class="cp-frame-body" style="font-size:.72em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 190px;gap:1.15em;align-items:center;color:#fff;">
   <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:.35em;color:#fff;font-size:.92em;line-height:1.2;">
     <div style="grid-row:span 2;padding:.85em;border-radius:8px;background:#003D7C;border:1px solid rgba(255,255,255,.5);"><strong>Interaction signals</strong><br><span style="font-size:.85em">ratings · clicks · saves · purchases</span></div>
     <div style="padding:.65em;border-radius:8px;background:#EF7C00;"><strong>Item signals</strong><br><span style="font-size:.85em">metadata · text · images</span></div>
@@ -592,10 +611,11 @@ Use the treemap as a compact taxonomy of inputs. On the right, reprise the disti
     <p style="margin:.4em 0 0;"><strong>Pairs: prepare one signal to report.<br/>📶 to critique ethical standpoint.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Two minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="signal-hunt-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="signal-hunt-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">02:00</text></svg>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Two minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="signal-hunt-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="signal-hunt-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">02:00</text></svg>
     <span id="signal-hunt-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">02:00</span>
     <button id="signal-hunt-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
+</div>
 </div>
 <script>
 (function(){function setup(){var b=document.getElementById('signal-hunt-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=120,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('signal-hunt-ring'),e=document.getElementById('signal-hunt-text'),z=document.getElementById('signal-hunt-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
@@ -606,10 +626,13 @@ Use the treemap as a compact taxonomy of inputs. On the right, reprise the disti
 Small-group activity, 2-minute timer plus two minutes for sharing and synthesis. Expected examples include skips, dwell time, completion rate, search queries or reformulations, repeated views, price sensitivity, stock or availability, reports/blocks, creator relationships, and accessibility preferences. Ask students to distinguish what is technically collectable from what is appropriate to collect or infer.
 :::
 
-## 👥 Complete the Classical Methods Table {background-color="#003D7C"}
+## {background-color="#003D7C"}
 
 ```{=html}
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.65em;line-height:1.28;color:#fff;">
+<div class="cp-frame-bg cp-frame-orange"></div>
+<div class="cp-frame-content" style="color:#fff;">
+  <div class="cp-frame-title" style="color:#EF7C00;">👥 Complete the Classical Methods Table</div>
+  <div class="cp-frame-body" style="font-size:.75em;line-height:1.28;color:#fff;">
   <p style="font-size:1.15em;font-weight:bold;color:#EF7C00;margin:.2em 0 .55em;">In pairs, complete the four orange cells. Be ready to justify one answer from the evidence each method uses.</p>
   <table style="width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;background:#fff;color:#003D7C;font-size:.92em;">
     <thead><tr style="background:#fff;color:#003D7C;"><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Approach</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Main evidence</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Useful when</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Early limitation</th></tr></thead>
@@ -620,7 +643,7 @@ Small-group activity, 2-minute timer plus two minutes for sharing and synthesis.
       <tr><td style="padding:.48em .65em;"><strong>Knowledge-based</strong></td><td style="padding:.48em .65em;">requirements and constraints</td><td style="padding:.48em .65em;">history is weak</td><td style="padding:.48em .65em;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td></tr>
     </tbody>
   </table>
-  <p style="margin:.55em 0 .1em;color:#fff;"><strong>Expected output:</strong> four short completions and one evidence-based justification. <span style="color:#dbeafe;">Untimed by instructor direction.</span></p>
+</div>
 </div>
 ```
 
@@ -686,10 +709,9 @@ Treat cold start as an information problem rather than a bug. The response chang
       <div style="border:4px solid #388E3C;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>C.</strong> Show the globally most-borrowed books.</div>
       <div style="border:4px solid #7B1FA2;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>D.</strong> Remove every item with little interaction history.</div>
     </div>
-    <p style="margin:.45em 0 0;"><strong>Choose one answer and name one trade-off.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">00:20</text></svg>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:20</text></svg>
     <span id="section04-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">00:20</span>
     <button id="section04-mcq-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
@@ -706,11 +728,21 @@ MCQ. Allow 20 seconds for an individual response, then ask for one justification
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 5.
 :::
 
-## 🃏 Treatment Lenses Change With the Task
+## {background-color="#003D7C"}
 
-We'll use **card suits** as treatment lenses to reason about the outcomes. These are not demographic labels or permanent personalities. They are **situational lenses** for asking what a recommender should protect or provide.
+<div style="height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;">
+  <p style="max-width:1100px;margin:0;font-size:2.05em;line-height:1.18;font-weight:bold;color:#fff;">“What types of users are there?”</p>
+</div>
 
-| Lens | Ask the system to consider |
+::: notes
+Pause before introducing the treatment lenses. Let the question hang briefly; do not solicit demographic labels or assume that a person has one fixed recommender identity. The next slides reframe the answer as situational treatment lenses.
+:::
+
+## 🃏 Key Users to Consider
+
+We'll use **card suits** as *User Archetypes* (treatment lenses) to reason about the outcomes. These are not demographic labels or permanent personalities. They are **situational lenses** for asking what a recommender should protect or provide.
+
+| User Archetype | Ask the system to consider |
 |---|---|
 | ♣ **Clubs — adversarial / shill** | manipulation, coordinated abuse, robustness |
 | <span style="color:#D32F2F;">♥</span> **Hearts — social** | social evidence, influence, conformity risk |
@@ -750,25 +782,28 @@ Can the user keep an important attribute fixed and understand why an item appear
 Combine the prior mapping and safeguards slide. Keep the examples concrete but do not suggest that a method maps permanently to one user type. These lenses are carried forward into later technical sections.
 :::
 
-## 👥 Reprise: Find the Recommender {background-color="#003D7C"}
+## {background-color="#003D7C"}
 
 ```{=html}
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.60em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
+<div class="cp-frame-bg cp-frame-orange"></div>
+<div class="cp-frame-content" style="color:#fff;">
+  <div class="cp-frame-title" style="color:#EF7C00;">👥 Reprise: Find the Recommender</div>
+  <div class="cp-frame-body" style="font-size:.70em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
   <div>
     <p style="font-size:1.18em;font-weight:bold;color:#EF7C00;margin:.25em 0;">Return to the recommendation you audited in Section 01.</p>
     <ol style="margin:.35em 0;padding-left:1.2em;line-height:1.35;">
       <li>Name the likely signal and objective.</li>
       <li>Is it predicting a response or ranking a shortlist?</li>
-      <li>In a catalogue where a small <strong>heavy head</strong> receives most interactions, who is less likely to be shown?</li>
-      <li>Choose one safeguard: a requirement, diversity/coverage target, explanation, or abuse check.</li>
+      <li>Choose one user archetype to critique: a requirement, diversity/coverage target, explanation, or abuse check.</li>
     </ol>
     <p style="margin:.4em 0 0;"><strong>Pairs: write a four-line audit.<BR/>📶 critique one omitted stakeholder or assumption; challenge its answer.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">03:00</text></svg>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
     <span id="section04-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
     <button id="section04-activity-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
+</div>
 </div>
 <script>
 (function(){function setup(){var b=document.getElementById('section04-activity-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=180,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-activity-ring'),e=document.getElementById('section04-activity-text'),z=document.getElementById('section04-activity-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
@@ -912,7 +947,7 @@ $$
 $$
 
 ::: {.columns}
-::: {.column width="56%"}
+::: {.column width="61%"}
 
 <div style="font-size:.78em;line-height:1.35;">
 <p><span style="color:#EF7C00;font-weight:bold;">Overlap:</span> only mutually rated items contribute.</p>
@@ -1154,6 +1189,57 @@ Work from the Section 04 user-item matrix. The three users who rated both items 
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.14 and Section 2.3.2, pp. 40-41.
 :::
 
+## From Item Neighbours to a Prediction
+
+<div style="font-size:.82em;">
+
+$$
+\widehat{r}_{ut}=
+\frac{\sum_{\color{orange}{i\in Q_t(u)}} \color{navy}{\operatorname{sim}(t,i)}\,\color{teal}{r_{ui}}}
+{\sum_{\color{orange}{i\in Q_t(u)}}\left|\color{navy}{\operatorname{sim}(t,i)}\right|}
+$$
+
+</div>
+
+::: {.columns}
+::: {.column width="45%"}
+
+[$Q_t(u)$ — valid item neighbours]{style="color:#EF7C00;font-weight:bold;"}<br>
+of target $t$ that user $u$ rated
+
+[Similarity $\operatorname{sim}(t,i)$]{style="color:#003D7C;font-weight:bold;"}<br>
+adjusted-cosine similarity between target and neighbour item
+
+[Observed rating $r_{ui}$]{style="color:#00796B;font-weight:bold;"}<br>
+the user's rating of that neighbour item
+
+::: {.callout-note}
+The neighbourhood changes with the target item and with the ratings that the user has actually supplied.
+:::
+:::
+::: {.column width="55%"}
+
+### Target: recommend $i_5$ to $u_1$
+
+<div style="font-size:.95em;line-height:1.3;">
+<p style="margin:.25em 0;"><span style="color:#EF7C00;font-weight:bold;">Valid evidence:</span></p>
+
+$$\color{orange}{Q_{i_5}(u_1)}=\{i_1,i_3,i_4\}$$
+
+<p style="margin:.5em 0 0;">These are items that <strong>both</strong> resemble target item $i_5$ and have an observed rating from $u_1$.</p>
+
+<p style="margin:.55em 0 0;color:#003D7C;font-weight:bold;">Weight $u_1$'s rating of each item by its similarity to $i_5$.</p>
+</div>
+:::
+:::
+
+::: notes
+This is the corresponding item-based prediction step. Start with the target item i5 and user u1: use only item neighbours of i5 that u1 has rated. Unlike the mean-centred user-based form, the textbook presents this baseline item-based prediction as a weighted average of u1's raw neighbour-item ratings. Emphasise that adjusted cosine was used to construct the item-to-item similarities; the prediction then weights the user's own evidence.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.15 and Section 2.3.2, pp. 40-41.
+:::
+
 ## Similarity IV: Significance Weighting
 
 $$
@@ -1221,10 +1307,70 @@ Advance through the fragments. Emphasise that significance weighting does not ca
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.7, p. 38.
 :::
 
-## <span style="color:#ffffff;">👥 Discussion: Which Similarity Axis?</span> {background-color="#003D7C"}
+## User–User KNN in RecBole
+
+::: {.columns}
+::: {.column width="56%"}
+
+~~~~python
+from recbole.quick_start import run_recbole
+
+run_recbole(
+    model="ItemKNN",
+    dataset="ml-100k",
+    config_dict={
+        "knn_method": "user",
+        "k": 50,
+        "shrink": 100,
+    },
+)
+~~~~
+
+<p style="margin:.3em 0 .18em;font-size:.8em;color:#00796B;font-weight:bold;">After training: score user 196 on item 242</p>
+
+~~~~python
+user = dataset.token2id["user_id"]["196"]
+item = dataset.token2id["item_id"]["242"]
+query = Interaction({
+    "user_id": torch.tensor([user]),
+    "item_id": torch.tensor([item]),
+}).to(config["device"])
+score = model.predict(query)
+~~~~
+
+::: {.callout-note}
+`196` and `242` are MovieLens 100K raw IDs. Convert them to RecBole's internal IDs before prediction.
+:::
+:::
+::: {.column width="39%"}
+
+**`knn_method: user`**<br>
+Compare user rows, instead of its default items.
+
+**`k: 50`**<br>
+Retain 50 neighbours.
+
+**`shrink: 100`**<br>
+Regularise thin overlap.
+
+`model.predict(query)` returns the estimated score for that one user–item pair. A recommender would repeat this over candidate items, then rank them.
+:::
+:::
+
+::: notes
+This is deliberately a minimal invocation, not a full experiment recipe. The class is called ItemKNN in RecBole, but its `knn_method` configuration controls whether the interaction matrix is compared by item columns or user rows. The source builds a user-by-user similarity matrix for `knn_method="user"` and then multiplies it by the interaction matrix to form scores. `shrink` is an additive denominator regulariser in RecBole's cosine calculation; do not conflate it exactly with the textbook's significance-weighting formula, though both address overconfidence from weak evidence. The prediction snippet assumes a trained `model`, `dataset`, and `config` are available and illustrates RecBole's required conversion from raw MovieLens IDs to internal IDs.
+[Sources]
+- RecBole documentation: *ItemKNN* (v1.2.1). https://recbole.io/docs/recbole/recbole.model.general_recommender.itemknn.html
+- RUCAIBox. (n.d.). *itemknn.py* [Source code]. https://github.com/RUCAIBox/RecBole/blob/master/recbole/model/general_recommender/itemknn.py
+:::
+
+## {background-color="#003D7C"}
 
 ```{=html}
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1.1em 1.45em;color:#fff;font-size:.69em;line-height:1.28;display:grid;grid-template-columns:minmax(0,1fr) 185px;gap:1.25em;align-items:center;">
+<div class="cp-frame-bg cp-frame-orange"></div>
+<div class="cp-frame-content" style="color:#fff;">
+  <div class="cp-frame-title" style="color:#EF7C00;">👥 Discussion: Which Similarity Axis?</div>
+  <div class="cp-frame-body" style="font-size:.79em;line-height:1.28;display:grid;grid-template-columns:minmax(0,1fr) 185px;gap:1.25em;align-items:center;color:#fff;">
   <div>
     <p style="font-size:1.22em;font-weight:bold;color:#EF7C00;margin:0 0 .6em;">When would user-based or item-based similarity be more effective?</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.15em;">
@@ -1239,15 +1385,15 @@ Advance through the fragments. Emphasise that significance weighting does not ca
     </div>
     <div style="margin-top:.8em;padding:.68em .9em;background:#fff;color:#293241;border-radius:8px;">
       <strong style="color:#003D7C;">Pairs:</strong> choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br/>
-      <strong style="color:#003D7C;">Suit lenses:</strong> ♣ robustness/shill · <span style="color:#D32F2F;">♥</span> social · <span style="color:#D32F2F;">♦</span> novelty/exposure · ♠ metadata/constraints.<br/>
-      Which lens would change your choice or confidence?
+      <strong style="color:#003D7C;">Optional:</strong> Consider User Archetypes ♣ · <span style="color:#D32F2F;">♥</span> · <span style="color:#D32F2F;">♦</span> · ♠
     </div>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="similarity-axis-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="similarity-axis-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">03:00</text></svg>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="similarity-axis-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="similarity-axis-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
     <span id="similarity-axis-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
     <button id="similarity-axis-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
+</div>
 </div>
 <script>
 (function(){function setup(){var b=document.getElementById('similarity-axis-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=180,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('similarity-axis-ring'),e=document.getElementById('similarity-axis-text'),z=document.getElementById('similarity-axis-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
@@ -1284,10 +1430,53 @@ Use this key slide to contrast methods rather than declare one universal winner.
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.3.1.1-2.3.2, pp. 37-41.
 :::
 
+## Neighbourhood Choices
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Who enters the neighbourhood?
+
+**Top-$k$**<br>
+Keep the closest fixed number of valid neighbours.
+
+**Similarity threshold**<br>
+Keep everyone above a meaningful score; the neighbourhood size can vary.
+
+**Filter weak or negative scores**<br>
+Avoid letting low-confidence or oppositional evidence dominate an estimate.
+
+:::
+::: {.column width="50%"}
+
+### How should their evidence count?
+
+**Mean-centred prediction**<br>
+Account for different user rating baselines.
+
+**Z-score normalisation** <span style="color:#00796B;font-style:italic;">(not covered)</span><br>
+Also account for how widely each user uses the rating scale.
+
+**Other variants**<br>
+Amplify stronger similarities or aggregate votes for categorical ratings.
+
+::: {.callout-tip .to-think-about title="To think about"}
+Which choice changes *who* is eligible, and which changes *how* their evidence is aggregated?
+:::
+:::
+:::
+
+::: notes
+Make the distinction explicit. Top-k, thresholds, and filters construct the peer group; centring, z-score normalisation, similarity exponentiation, and categorical voting alter aggregation or representation. The textbook also notes that negative or low correlations can be omitted. This is a map of the variants, not a derivation of each equation.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.3.1.2-2.3.1.3, pp. 38-39.
+:::
+
 ## From Neighbours to a Prediction
 
 $$
-\hat{r}_{uj}=\color{teal}{\mu_u}+
+\widehat{r}_{uj}=\color{teal}{\mu_u}+
 \frac{\sum_{\color{orange}{v\in P_u(j)}} \color{navy}{\operatorname{sim}(u,v)}\,\bigl(\color{teal}{r_{vj}-\mu_v}\bigr)}
 {\sum_{\color{orange}{v\in P_u(j)}}\left|\color{navy}{\operatorname{sim}(u,v)}\right|}
 $$
@@ -1308,7 +1497,7 @@ $$
 1. choose a similarity
 2. select valid top-$k$ neighbours
 3. aggregate their evidence
-4. rank candidate items by $\hat{r}_{uj}$
+4. rank candidate items by $\widehat{r}_{uj}$
 :::
 :::
 
@@ -1319,16 +1508,126 @@ Return to the coloured scheme. The equation is the mean-centred user-based predi
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.4 and Section 2.3, pp. 35-36.
 :::
 
-## 🔑 Key Point: A Neighbourhood Is a Choice {background-color="#003D7C"}
+## Practicality: Making Neighbourhoods Work
 
-<div style="color:#fff;font-size:1.05em;line-height:1.35;margin-top:.8em;">
-<p><u>Collaborative filtering turns partial overlaps into a local estimate — and every choice of overlap, normalisation, threshold, and top-$k$ changes that estimate.</u></p>
-<p style="margin-top:1.2em;color:#EF7C00;font-weight:bold;">🤞 Before trusting a neighbour, ask: what evidence made it close?</p>
+::: {.columns}
+::: {.column width="50%"}
+
+### Offline: prepare the neighbourhoods
+
+- Compute user-user or item-item similarities.
+- Store selected peer groups rather than every possible comparison when appropriate.
+- Refresh them as ratings, users, and items change.
+
+::: {.callout-note}
+User-based similarity scales with user pairs; item-based similarity scales with item pairs.
+:::
+:::
+::: {.column width="50%"}
+
+### Online: serve a recommendation
+
+- Combine the target's valid neighbours to make one prediction.
+- Score many candidate items to produce a ranked top-$k$ list.
+- Balance latency, memory, freshness, and coverage—not accuracy alone.
+
+::: {.callout-tip .to-think-about title="To think about"}
+Which work can be done before a request arrives, and which work must wait for the target user and item?
+:::
+:::
+:::
+
+::: notes
+Contrast offline similarity construction and peer-group maintenance with online prediction. The textbook gives pairwise complexity in terms of the number of users, items, and average observed ratings, and notes that ranking many candidates is more expensive than making a single prediction. Avoid treating this as a fixed implementation recipe: exact costs depend on sparsity, cached neighbours, updates, and candidate generation.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Section 2.3.3, pp. 41-42.
+:::
+
+## Section 05 Summary: Neighbourhood CF
+
+<div style="font-size:.92em;line-height:1.32;">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1em;">
+  <div style="padding:.8em 1em;border-left:6px solid #003D7C;background:#F2F6FA;"><strong style="color:#003D7C;">1. Represent</strong><br/>Start with sparse user-item evidence and make missingness visible.</div>
+  <div style="padding:.8em 1em;border-left:6px solid #00796B;background:#F0F8F6;"><strong style="color:#00796B;">2. Compare</strong><br/>Choose an axis, similarity, centring rule, and confidence treatment.</div>
+  <div style="padding:.8em 1em;border-left:6px solid #EF7C00;background:#FFF6ED;"><strong style="color:#B85F00;">3. Predict &amp; rank</strong><br/>Select valid neighbours, aggregate evidence, then rank candidates.</div>
+</div>
+<p style="margin:1.2em 0 .35em;font-size:1.12em;"><u>Neighbourhood CF is transparent and local—but its outputs inherit the data's sparsity, exposure patterns, and modelling choices.</u></p>
 </div>
 
 ::: notes
-Close the section by making the modelling choices visible: overlap, centring, the reliability discount, and neighbour selection each shape the result. The next section can examine requirements and knowledge-based methods as a different response to missing or insufficient collaborative evidence.
+Use this as the section close. Ask students to say the three verbs: represent, compare, predict and rank. Reconnect the constraints: sparsity limits overlap, the long tail limits evidence and exposure, and practical deployments must make the method timely as well as accurate.
 
 [Sources]
-- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 2, pp. 31-43.
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.3.1-2.3.5, pp. 34-44.
+:::
+
+## 🔑 Summary {background-color="#003D7C"}
+
+```{=html}
+<div style="color:#fff;font-size:.96em;line-height:1.32;">
+  <p style="margin:.05em 0 .75em;font-size:1.12em;"><u>A recommender is never only an algorithm: it is a choice about evidence, objectives, and consequences.</u></p>
+  <div style="padding:.9em 1.05em;border-left:6px solid #EF7C00;background:#174F88;">
+    <p style="margin:0 0 .45em;color:#EF7C00;font-weight:bold;">🔑 Three ideas to carry forward</p>
+    <ul style="margin:.1em 0 0 1.1em;padding:0;">
+      <li><strong>Frame:</strong> define users, items, evidence, and usefulness.</li>
+      <li><strong>Compare:</strong> neighbourhood CF turns sparse overlap into a local estimate.</li>
+      <li><strong>Question:</strong> ask who is missing and whose outcome is served.</li>
+    </ul>
+  </div>
+</div>
+```
+
+::: notes
+This is the course-level close for Week 01. It bridges the problem framing from Section 04 and the method from Section 05. Do not imply that neighbourhood methods resolve missingness or long-tail issues on their own; they make the assumptions and evidence demands explicit.
+:::
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Look for Hidden Structure</div>
+  <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span style="color:#00796B;">Mon, 23:59 SGT</span></p>
+    <p style="margin:.15em 0 .65em;">Post a short, concrete response to this question; then reply constructively to one classmate.</p>
+    <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
+      Name one latent dimension that could explain several ratings—but is not an item metadata label.
+    </div>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user-item matrix.</p>
+  </div>
+</div>
+```
+
+::: notes
+Direct students to Canvas and state the deadline: Monday, 23:59 SGT. Students answer the single displayed prompt with one concrete latent dimension and distinguish it from an observed metadata label, then make one constructive reply. This is a pre-lecture activation task, not an assessment of prior technical knowledge. The distinction matters: a latent factor is inferred from patterns of ratings, whereas metadata is an observed item attribute.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.5-2.5.2, pp. 47-50.
+:::
+
+## {background-color="#002a26"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-teal"></div>
+<div class="cp-frame-content" style="color:#fff;">
+  <div class="cp-frame-label" style="background:#00796B;color:#fff;">Next Week Preview — Week 02</div>
+  <div class="cp-frame-title" style="color:#80cbc4;">Latent Factor Models</div>
+  <div class="cp-frame-body" style="color:#cce8e5;">
+    <p style="font-size:1.08em;margin:0 0 .55em;"><u>What if useful similarities are not directly visible in a sparse matrix?</u></p>
+    <ul style="margin:.3em 0 0;line-height:1.55;">
+      <li><strong>Move beyond local overlap</strong> — infer compact user and item representations from many ratings together.</li>
+      <li><strong>Interpret sparse evidence</strong> — ask which hidden preferences may explain observed patterns.</li>
+      <li><strong>Keep the same questions</strong> — what evidence is represented, what does the model optimise, and who might it leave unseen?</li>
+    </ul>
+  </div>
+</div>
+```
+
+::: notes
+Preview Week 02 without teaching factorisation yet. The contrast is local visible overlap versus inferred latent structure. Carry forward the course's problem-framing questions so the transition is conceptual, not merely mathematical.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.5-2.5.2, pp. 47-50.
 :::

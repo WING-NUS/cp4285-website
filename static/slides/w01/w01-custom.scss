@@ -19,6 +19,10 @@ $selection-bg: #EF7C00;
   padding-bottom: 0.2em;
 }
 
+.reveal .slides section > h2:empty {
+  display: none;
+}
+
 .reveal section[data-background-color="#003D7C"] {
   color: #ffffff;
 }
@@ -34,6 +38,10 @@ $selection-bg: #EF7C00;
 .reveal .footer {
   font-size: 0.55em;
   color: #6b7280;
+}
+
+.reveal .quarto-title-block .date {
+  color: #00796B;
 }
 
 .reveal blockquote {
@@ -115,3 +123,57 @@ $selection-bg: #EF7C00;
   font-size: 1.35em;
   line-height: 1;
 }
+
+/* Shared custom frame templates */
+.cp-frame-bg {
+  position: absolute;
+  inset: 40px;
+  border-width: 20px;
+  border-style: solid;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cp-frame-content {
+  position: absolute;
+  inset: 40px;
+  padding: 32px 36px 28px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cp-frame-label {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.7em;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 0.28em 0.9em;
+  border-radius: 4px;
+  margin-bottom: 0.9em;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+.cp-frame-title {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 0.55em;
+  flex-shrink: 0;
+}
+
+.cp-frame-body {
+  font-size: 0.92em;
+  line-height: 1.6;
+}
+
+.cp-frame-orange { border-color: #EF7C00; }
+.cp-frame-navy { border-color: #003D7C; }
+.cp-frame-teal { border-color: #00796B; }
+.cp-frame-purple { border-color: #5C2D91; }
