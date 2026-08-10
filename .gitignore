@@ -74,3 +74,6 @@ npm-debug.log*
 
 # Hugo module vendor directory (local only)
 _vendor/
+
+# Personal working notes derived from local course materials (never commit)
+local-notes/
