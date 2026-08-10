@@ -43,7 +43,7 @@ sections:
       css_class: "bg-white dark:bg-gray-950"
   - block: course-notice
     content:
-      text: This website is provided for external and public reference. Course materials and any timely course information are communicated only within Canvas.
+      text: This website is provided for external and public reference. Lecture slides are the definitive course record; Canvas and this website are supporting references. If information appears inconsistent, follow the slides and check with Min.
     design:
       css_class: "bg-white dark:bg-gray-950"
   - block: markdown

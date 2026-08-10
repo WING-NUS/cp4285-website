@@ -55,7 +55,7 @@ Note that performance on macroscopic metrics alone is not the critical factor in
 | Project Mini-team Declaration | Week 03 — Mon, 24 Aug 2026, 23:59 SGT | Submit a self-formed team (2–4 students) or indicate that you need instructor placement; Min may adjust groups to support diversity. | — |
 | Project Design Critique | Week 7 | In-class workshop. Each team presents their application domain, dataset, user problem, recommendation objective, baselines, evaluation plan, and ethical risks for peer critique. | Part of Participation |
 | Final Project Presentation | Week 13 — Wed, 11 Nov 2026 | Teams selected to present at 29th STePS present their implemented recommender, evaluation results, error analysis, ethical analysis, and future improvements. They do not submit a project report. | Part of Project (30%) |
-| Final Project Report | Exam Period | Teams not presenting at 29th STePS submit a written report covering problem formulation, dataset preparation, baselines, model design, evaluation, error analysis, and ethical analysis. They do not give a final project presentation. | Part of Project (30%) |
+| Final Project Report | Wed, 11 Nov 2026, 23:59 SGT | Teams not presenting at 29th STePS submit a written report covering problem formulation, dataset preparation, baselines, model design, evaluation, error analysis, and ethical analysis. They do not give a final project presentation. | Part of Project (30%) |
 
 ### Project Topics and Datasets
 

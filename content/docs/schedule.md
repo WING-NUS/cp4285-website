@@ -152,10 +152,12 @@ Ethics thread: popularity bias, exposure inequality, and platform incentives.
 
 Learning outcomes:
 
-- Formulate recommendation problems.
-- Differentiate recommendation paradigms.
-- Analyze cold-start challenges.
-- Explain how recommendation objectives affect exposure.
+- Formulate a recommendation task using a user-item matrix, available signals, and either a prediction or top-*k* ranking objective.
+- Compare popularity-based, content-based, collaborative-filtering, and knowledge-based recommendation in terms of their evidence, suitable use cases, and limitations.
+- Explain cold-start and sparse-data challenges, and justify an appropriate response.
+- Compute and interpret user-user or item-item similarity using appropriate neighborhood-based collaborative-filtering measures.
+- Explain how neighborhood selection, similarity weighting, and ranking objectives affect prediction quality, exposure, and long-tail visibility.
+- Critique recommendation choices in terms of privacy, fairness, robustness, novelty, and stakeholder impact.
 
 **Slides:**
 
