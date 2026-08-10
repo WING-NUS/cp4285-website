@@ -109,6 +109,22 @@ These are NUS brand colours. **Do not substitute** other colours.
 
 ---
 
+## Mathematical Notation
+
+Use Quarto's MathJax display math for every non-trivial equation. Write display equations with `$$ ... $$`, not hand-built HTML fractions or `\[ ... \]`, so they retain correct typesetting in the rendered RevealJS deck.
+
+```markdown
+$$
+\operatorname{Sim}(u,v)=
+\frac{\sum_{\color{orange}{k\in I_u\cap I_v}} \color{teal}{r_{uk}r_{vk}}}
+{\color{navy}{\sqrt{\sum_{k\in I_u\cap I_v}r_{uk}^{2}}\;\sqrt{\sum_{k\in I_u\cap I_v}r_{vk}^{2}}}}
+$$
+```
+
+When teaching an equation, colour-code the meaningful components in the MathJax expression and immediately provide a plain-language key in the same colours. Use the supported named TeX colours `orange`, `teal`, and `navy` inside `\color{...}{...}`; do not use hexadecimal values in MathJax colour commands. Explain what each coloured quantity represents and why it matters, rather than narrating symbols mechanically. Keep the notation and the colour key together on the same slide, and visually inspect the rendered slide after changes.
+
+---
+
 ## SCSS Theme
 
 Copy `templates/custom.scss` verbatim into each new `static/slides/weekNN/` directory alongside the `.qmd` file. Do not modify it unless a deliberate style change is intended for the whole course.
