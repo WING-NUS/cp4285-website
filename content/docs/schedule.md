@@ -37,7 +37,7 @@ weight: 10
       <td>3</td>
       <td>Tue, 25 Aug 2026</td>
       <td>Evaluation of Recommendation Systems</td>
-      <td></td>
+      <td>Essay 1 + Project Mini-team Declaration — Mon, 24 Aug, 23:59 SGT</td>
     </tr>
     <tr>
       <td>4</td>
@@ -73,7 +73,7 @@ weight: 10
       <td>8</td>
       <td>Tue, 6 Oct 2026</td>
       <td>Learning-to-Rank</td>
-      <td></td>
+      <td>Essay 2 — Mon, 5 Oct, 23:59 SGT</td>
     </tr>
     <tr>
       <td>9</td>
@@ -101,7 +101,7 @@ weight: 10
     </tr>
     <tr>
       <td>13</td>
-      <td>Tue, 10 Nov 2026</td>
+      <td>Wed, 11 Nov 2026</td>
       <td>Final Project Presentations</td>
       <td>Final project presentation or report (depending on STePS participation)</td>
     </tr>

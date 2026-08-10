@@ -283,12 +283,12 @@ Missing the Pre-Flight or Midterm Survey will directly reduce your participation
 
 ## Essays (20%)
 
-- **Two individual take-home essays**, each worth **10%** in total 
+- **Two individual take-home essays**, each worth **10%**
 - Short written analyses of recommender-system methods, evaluation choices, and social implications (8%)
 - Approximately **1-2 week** turnaround between announcement and due date
 - AI tools are **permitted as a resource** — but an AI declaration is **mandatory** for each submission
-- Randomised peer review will be applied. Peer review will count towards the remaining 2%.  
-- Due on Week 03 and Week 08, on the off-peak periods.
+- Randomised peer review counts towards the remaining 2%.
+- **Essay 1:** Mon, 24 Aug 2026, 23:59 SGT · **Essay 2:** Mon, 5 Oct 2026, 23:59 SGT
 
 ::: {.callout-note}
 Essays assess your own critical thinking. AI may assist but must not substitute your analysis.  So do them on your own, and don't let AI do the hard work of understanding; the process is more important than the outcome.
@@ -300,12 +300,14 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 
 ## Project (30%)
 
-- Groups of **2–4 students** due to the small cohort size — no intra-team peer review required
+- Groups have **2–4 students**. Students may form teams themselves; **Min has final decision on group formation and may override student-formed groups to support diversity.**
 - You will select a **recommendation system dataset** and define a clear problem around it
 
 **Milestones:**
 
 ::: {.incremental}
+- **Week 03:** Project Mini-team Declaration — Mon, 24 Aug 2026, 23:59 SGT
+  - Submit a self-formed team or indicate that you need instructor placement.
 - **Week 07:** Project Design Critique Workshop
 - **Week 13:** Final Project Presentation at 29th STePS: Wed, 11 Nov 
 :::
@@ -321,6 +323,7 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 - Peers contribute candidate concepts, examples, and plausible distractors from their self-learning
   - **Min** will assign peers randomly to a week and section responsible.
 - **Min** will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
+- Unless stated otherwise, assignment submissions are due **Mondays, 23:59 SGT**.
 
 ::: {.callout-note}
 Co-creation makes quizzes part of the pilot course: students help build better learning materials for this cohort and future cohorts.  
@@ -336,6 +339,8 @@ Our slides will be the most authoritative source of truth.
 While the we will try to get the slides synced with the website or Canvas, use information introduced in lecture as **the definitive source**.
 
 There will likely be errors in the lecture, so check any doubts or questions with **Min**. 
+
+Unless a slide or Canvas announcement specifies otherwise, assignment deadlines are **Mondays, 23:59 SGT**.
 
 ::: {.callout-note}
 The slide deck built in Quarto and rendered through `reveal.js`.  The website is also built Hugo and served using Github Pages.  This means any student, member of the public, or AI can inspect all details of the course.  Use this to your advantage.

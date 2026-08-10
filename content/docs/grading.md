@@ -52,4 +52,6 @@ Where in doubt, please raise your concerns with Min **before** attempting any po
 
 ## Late Submissions
 
+Unless stated otherwise, assignment deadlines are **Mon, 23:59 SGT**. Deadline exceptions will be announced in the relevant slide or Canvas item.
+
 We do not accept late submissions for essays or project milestones unless you have a valid reason (e.g., medical certificate). Please contact Min as early as possible if you anticipate difficulties meeting a deadline. Extensions will be granted at Min's discretion.

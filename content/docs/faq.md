@@ -31,19 +31,25 @@ For questions about lecture material, please use the relevant weekly discussion 
    Please refer to the [Grading page](../grading) for the full breakdown: Final Exam (30%), Group Project (30%), Essays (20%), Quizzes/Tests (10%), Class Participation (10%).
 
 2. *Are essays individual or group work?*
-   Essays are individual take-home assignments (each worth 10%). AI tools are permitted as a resource, but no collaboration with other students is allowed. You must submit an AI declaration with each essay; where requested by Min, you must provide full documentation of your AI use. Please refer to the [Grading page](../grading) for the full AI use policy.
+   Essays are individual take-home assignments. Each is worth 10%: 8% for the written analysis and 2% for randomized peer review. Essay 1 is due **Mon, 24 Aug 2026, 23:59 SGT**; Essay 2 is due **Mon, 5 Oct 2026, 23:59 SGT**. AI tools are permitted as a resource, but no collaboration with other students is allowed. You must submit an AI declaration with each essay; where requested by Min, you must provide full documentation of your AI use. Please refer to the [Grading page](../grading) for the full AI use policy.
 
 3. *What is the group project about?*
-   Please refer to the [Assignments page](../assignments) for full details. In brief, your team will select a recommendation system dataset, implement classical and neural baselines, evaluate them rigorously, and conduct an ethical analysis.
+   Please refer to the [Assignments page](../assignments) for full details. In brief, your team will select a recommendation system dataset, implement classical and neural baselines, evaluate them rigorously, and conduct an ethical analysis. The final project presentations are scheduled for **Wed, 11 Nov 2026**.
 
 4. *How are project groups formed?*
-   Due to the small cohort size, groups will have **2 to 3 members** and are self-assembled. Declare your group via the Project Mini-team Declaration survey (due Week 5). No peer review is required — project grades are assessed directly by the teaching team.
+   Teams have **2 to 4 members**. Students may form teams themselves, but Min has final decision on group formation and may override student-formed groups to support diversity. Submit a self-formed team or indicate that you need instructor placement through the Project Mini-team Declaration by **Mon, 24 Aug 2026, 23:59 SGT**. No peer review is required — project grades are assessed directly by the teaching team.
 
 5. *Will my participation grade be visible on Canvas?*
    No. Your participation grade will not be available to you on Canvas until final grades are released.
 
 6. *What happens if I miss the pre-flight or midterm survey?*
    These surveys contribute to your participation marks. Missing them will result in a loss of those marks. Please complete them by their due dates.
+
+7. *Which course information is authoritative?*
+   The lecture slides are the authoritative course record. Canvas and this website are supporting references; if information appears inconsistent, follow the slides and check with Min.
+
+8. *When are assignments due?*
+   Unless stated otherwise, assignment deadlines are **Mon, 23:59 SGT**. Any exception will be announced in the relevant slide or Canvas item.
 
 ## Exam
 
