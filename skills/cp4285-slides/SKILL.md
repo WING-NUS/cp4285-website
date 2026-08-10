@@ -123,6 +123,8 @@ $$
 
 When teaching an equation, colour-code the meaningful components in the MathJax expression and immediately provide a plain-language key in the same colours. Use the supported named TeX colours `orange`, `teal`, and `navy` inside `\color{...}{...}`; do not use hexadecimal values in MathJax colour commands. Explain what each coloured quantity represents and why it matters, rather than narrating symbols mechanically. Keep the notation and the colour key together on the same slide, and visually inspect the rendered slide after changes.
 
+For multiword function identifiers in equations, prefer lowercase dashed notation over camel case: write `\operatorname{raw\text{-}cosine}(u,v)`, not `RawCosine(u,v)`.
+
 ---
 
 ## SCSS Theme
@@ -340,16 +342,16 @@ For either format, state the task and expected output before starting, timebox t
 
 Both in-class activity types use the following visual treatment:
 
-- Include a small countdown timer, occupying approximately one quarter of the slide area, using the same MM:SS SVG donut-bar pattern as the break slide.
-- Before designing an activity slide, prompt the user for the intended timer length. Do not silently assume the break-slide default; record the chosen duration in the timeline and configure it in the slide.
-- Use a shared NUS Navy slide background (`#003D7C`) with white body text and NUS Orange (`#EF7C00`) for the frame, timer, and emphasis. Apply the same treatment to quizzes and small-group activities so they read as parallel formats.
+- A countdown timer is optional. Before designing an activity slide, ask the user: **“Should this activity use the default three-minute countdown timer?”** If they decline, omit the timer and record the untimed timebox in the timeline. If they choose a timer, use their specified duration or the three-minute default and configure it in the slide.
+- For timer-enabled activities, use a small countdown timer occupying approximately one quarter of the slide area, using the same MM:SS SVG donut-bar pattern as the break slide.
+- Use a shared NUS Navy slide background (`#003D7C`) with white body text and NUS Orange (`#EF7C00`) for the frame and emphasis; apply the timer treatment when one is enabled.
 - Surround the activity content with a responsive medium-weight, high-contrast frame: use `border: clamp(3px, 0.6vw, 6px) solid #EF7C00` so it remains visible without becoming oversized on smaller screens.
 - Put the format emoji in the slide title: **`🎰 Bandit Time: <short question>`** for multiple-choice/response questions and **`👥 <short activity title>`** for small-group discussion.
-- Do not add a reverse-contrast “In Lecture …” label box inside the frame. The title prefix is the activity-format cue; keep the frame for the prompt, response content, and timer.
+- Do not add a reverse-contrast “In Lecture …” label box inside the frame. The title prefix is the activity-format cue; keep the frame for the prompt, response content, and timer when present.
 - Set foreground colours explicitly on every nested element; do not rely on inherited white text. White answer cards must set a dark text colour (for example, `color:#003D7C`), and prompts/controls on the navy background must set `color:#fff`.
-- Make the timer self-contained and visible on navy slides: give the donut a visible stroke, place an opaque white centre circle behind the MM:SS text, set the timer text to navy (`#003D7C`), and keep the orange start/pause control visible. Never use `display:none`, transparent text, or a transparent timer centre for the classroom/PDF version.
+- For timer-enabled slides, make the timer self-contained and visible on navy slides: give the donut a visible stroke, place an opaque white centre circle behind the MM:SS text, set the timer text to navy (`#003D7C`), and keep the orange start/pause control visible. Never use `display:none`, transparent text, or a transparent timer centre for the classroom/PDF version.
 
-Keep the frame, title, prompt, and timer legible in the classroom PDF; the timer should support pacing without crowding out the activity prompt or response space.
+Keep the frame, title, prompt, and any timer legible in the classroom PDF; a timer should support pacing without crowding out the activity prompt or response space.
 
 #### MCQ / Bandit Time Slide Treatment
 
@@ -362,7 +364,7 @@ Render the answer choices as readable cards rather than a plain bullet list. Use
 - C — green `#388E3C`
 - D — purple `#7B1FA2`
 
-Use a medium-weight outline (for example, `border: 4px solid <option-colour>`), a light/neutral card fill, explicit dark card text (for example, `color:#003D7C`), and enough padding for projection. Maintain strong text contrast and include the letter/number label so meaning never depends on colour alone. Keep the cards static and printable; do not hide choices behind animation or interaction. The shared countdown timer and its user-selected duration remain unchanged.
+Use a medium-weight outline (for example, `border: 4px solid <option-colour>`), a light/neutral card fill, explicit dark card text (for example, `color:#003D7C`), and enough padding for projection. Maintain strong text contrast and include the letter/number label so meaning never depends on colour alone. Keep the cards static and printable; do not hide choices behind animation or interaction. Add a countdown timer only when the user has opted in under the activity treatment above.
 
 Example structure:
 

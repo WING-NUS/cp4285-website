@@ -1,6 +1,6 @@
 ---
 title: "Recommendation Problems and Classical Methods"
-subtitle: "CP4285 Modern Recommendation Systems — Week 1"
+subtitle: "CP4285 Modern Recommendation Systems — Week 01"
 author: "CP4285 Instruction Team"
 date: "11 Aug 2026"
 date-format: "DD MMM YYYY"
@@ -13,7 +13,7 @@ format:
     height: 900
     chalkboard: false
     logo: "../../uploads/recommendation-social-media.png"
-    footer: "CP4285 · Week 1 · NUS School of Computing"
+    footer: "CP4285 · Week 01 · NUS School of Computing"
     self-contained: true
     transition: slide
     highlight-style: github
@@ -462,7 +462,7 @@ Orient students to the decision problem before introducing methods. This section
 ::: {.columns}
 ::: {.column width="60%"}
 
-<div style="font-size:.98em;line-height:1.18;">
+<div style="font-size:.84em;line-height:1.1;">
 
 | $R$ | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
 |---|:---:|:---:|:---:|:---:|:---:|
@@ -471,6 +471,9 @@ Orient students to the decision problem before introducing methods. This section
 | $u_3$ | ? | ? | ? | ? | ? |
 | $u_4$ | 3 | ? | 4 | ? | 2 |
 | $u_5$ | ? | 2 | ? | 5 | ? |
+| $u_6$ | 5 | 4 | 5 | 2 | 4 |
+| $u_7$ | 5 | 1 | 5 | 1 | 5 |
+| $u_8$ | ? | ? | 4 | ? | ? |
 
 </div>
 
@@ -488,16 +491,50 @@ A `?` is usually **unobserved**, not a negative rating.
 :::
 
 ::: {.callout-tip .to-think-about title="To think about"}
-What forms can “ratings” take?
+What user types might be represented in the matrix? <BR/>
+What other forms can “ratings” take?
 :::
 :::
 :::
 
 ::: notes
-Introduce the standard user–item notation now, because it anchors later neighbourhood and latent-factor models. Point to the social user, new user, and new item as different reasons entries may be absent or interpreted differently. Ask for examples of explicit and implicit ratings; make clear that missing feedback is ambiguous.
+Introduce the standard user–item notation now, because it anchors later neighbourhood and latent-factor models. Use the added rows as hypotheses, not diagnoses: a dense row may be a power rater; an extreme patterned row may warrant a shill/robustness question; a sparse row may reflect occasional use rather than dislike. Explain that a static rating row cannot establish a social, novelty, or metadata-driven treatment need by itself.
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1–2.
+:::
+
+## Rating Types
+
+::: {.columns}
+::: {.column width="50%"}
+
+- Continuous ratings
+- Forced-choice ratings
+- Ordinal ratings
+- Binary ratings
+:::
+::: {.column width="50%"}
+
+- Unary ratings
+- Explicit ratings
+- Implicit ratings
+:::
+:::
+
+::: {.callout-note}
+**Missing-value imputation:** do not treat an unobserved explicit rating as a default score; pre-substitution can introduce bias.
+:::
+
+::: {.callout-tip .to-think-about title="To think about"}
+How do missing values impact training and testing in recommendation systems?
+:::
+
+::: notes
+Keep this slide to the textbook's terms only; do not explain each type here. Link it back to the matrix: the scale and observation process change what a missing entry means. For unary/implicit data, a zero substitution is sometimes used as a practical initial assumption, but it remains a modelling choice rather than an observed dislike.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Section 1.3.1.1–1.3.1.2, pp. 10–13.
 :::
 
 ## From a Score to a Useful List
@@ -773,4 +810,276 @@ Combine the prior mapping and safeguards slide. Keep the examples concrete but d
 
 ::: notes
 Small-group activity, 5 minutes. Students reprise the Section 01 audit with a more precise vocabulary: signal, objective, prediction/ranking, heavy head/long tail, and a safeguard. Invite the AI Voice agent only after pairs have written their own audit. Ask it: “Whose interests might this recommendation overlook, and what assumption are you making?” Treat its reply as an object of critique, not an answer. Reserve one minute for two groups to report and correct the idea that a missing interaction is a negative preference.
+:::
+
+# 05 Neighborhood-Based Collaborative Filtering {background-color="#EF7C00"}
+
+- From sparse overlap to a local neighbourhood
+- Similarity: Pearson, cosine, adjustment, and confidence
+- From neighbours to a prediction
+
+::: notes
+Introduce collaborative filtering as a way to use patterns in observed entries rather than item descriptions or stated rules. This section deliberately sets aside the card-suit treatment lenses; the focus is the mechanics and assumptions of neighbourhood methods.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 2, pp. 31-43.
+:::
+
+## From a Sparse Matrix to a Neighborhood
+
+::: {.columns}
+::: {.column width="52%"}
+| User | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
+|---|:---:|:---:|:---:|:---:|:---:|
+| $u_5$ ($u$) | ? | 2 | ? | 5 | ? |
+| $u_2$ ($v$) | ? | 4 | ? | 1 | 3 |
+
+<div style="font-size:.82em;line-height:1.35;margin-top:.5em;">
+<p><span style="color:#EF7C00;font-weight:bold;">Mutual evidence</span></p>
+</div>
+
+$$
+I_u \cap I_v = \{i_2,i_4\}
+$$
+
+<div style="font-size:.82em;line-height:1.35;">
+<p><span style="color:#00796B;font-weight:bold;">User-based CF</span><br/>
+Find users who rate overlapping items similarly.</p>
+<p><span style="color:#003D7C;font-weight:bold;">Item-based CF</span><br/>
+Transpose the question: find items that receive similar patterns of ratings.</p>
+</div>
+:::
+::: {.column width="48%"}
+
+### Standard notation
+
+- $I_u$: items observed for user $u$
+- $U_i$: users who observed item $i$
+- $I_u \cap I_v$: shared evidence for a user pair
+- $P_u(j)$: the neighbours of $u$ who rated target item $j$
+
+::: {.callout-warning}
+### Similarity is not a fact
+
+It is an estimate from a partial overlap. With sparse data, two users may have no common ratings at all.
+:::
+:::
+:::
+
+::: notes
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 2, Section 2.3, pp. 33-35.
+:::
+
+## Similarity I: Pearson Correlation
+
+$$
+\operatorname{Pearson}(u,v)=
+\frac{\sum_{\color{orange}{k\in I_u\cap I_v}}\!\bigl(\color{teal}{r_{uk}-\mu_u}\bigr)\bigl(\color{teal}{r_{vk}-\mu_v}\bigr)}
+{\color{navy}{\sqrt{\sum_{\color{orange}{k\in I_u\cap I_v}}\!\bigl(r_{uk}-\mu_u\bigr)^2}\;\sqrt{\sum_{\color{orange}{k\in I_u\cap I_v}}\!\bigl(r_{vk}-\mu_v\bigr)^2}}}
+$$
+
+::: {.columns}
+::: {.column width="56%"}
+
+<div style="font-size:.78em;line-height:1.35;">
+<p><span style="color:#EF7C00;font-weight:bold;">Overlap:</span> only mutually rated items contribute.</p>
+<p><span style="color:#00796B;font-weight:bold;">Centred Rating:</span> rating minus that user's mean, so generous and harsh raters are put on a comparable baseline.</p>
+<p><span style="color:#003D7C;font-weight:bold;">Normalisation:</span> turns aligned variation into a bounded correlation-like score.</p>
+</div>
+:::
+::: {.column width="44%"}
+
+### Use it when
+
+Rating-scale differences matter.
+
+### Watch for
+
+Very small overlap can create an unstable correlation.
+:::
+:::
+
+::: notes
+Read the equation by colour, not symbol by symbol. Orange selects comparable evidence; teal removes each user's baseline; navy normalises the result. Pearson is usually preferable to raw cosine in explicit-rating settings because mean-centering adjusts for different levels of rating generosity.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.2 and Section 2.3.1.1, pp. 35, 37.
+:::
+
+## Similarity II: Raw Cosine
+
+$$
+\operatorname{raw\text{-}cosine}(u,v)=
+\frac{\sum_{\color{orange}{k\in I_u\cap I_v}} \color{teal}{r_{uk}\,r_{vk}}}
+{\color{navy}{\sqrt{\sum_{\color{orange}{k\in I_u\cap I_v}}r_{uk}^{2}}\;\sqrt{\sum_{\color{orange}{k\in I_u\cap I_v}}r_{vk}^{2}}}}
+$$
+
+::: {.columns}
+::: {.column width="56%"}
+
+<div style="font-size:.78em;line-height:1.35;">
+<p><span style="color:#EF7C00;font-weight:bold;">Overlap:</span> compare only entries both users supplied.</p>
+<p><span style="color:#00796B;font-weight:bold;">Dot Product:</span> large ratings in the same positions increase similarity.</p>
+<p><span style="color:#003D7C;font-weight:bold;">Vector Length:</span> corrects for the overall magnitude of each observed rating vector.</p>
+</div>
+:::
+::: {.column width="44%"}
+
+### Use it when
+
+Raw magnitude is meaningful or ratings are already on a comparable scale.
+
+### Watch for
+
+It does not remove a user's tendency to rate high or low.
+:::
+:::
+
+::: notes
+Cosine asks whether two observed rating vectors point in a similar direction. Unlike Pearson, it uses raw ratings. Make the limitation concrete: two generous raters may look close partly because both values are high. The textbook describes Pearson as generally preferable when this generosity bias is relevant.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.5 and Section 2.3.1.1, pp. 37-38.
+:::
+
+## Similarity III: Adjusted Cosine for Items
+
+$$
+\operatorname{adjusted\text{-}cosine}(i,j)=
+\frac{\sum_{\color{orange}{u\in U_i\cap U_j}} \color{teal}{s_{ui}\,s_{uj}}}
+{\color{navy}{\sqrt{\sum_{\color{orange}{u\in U_i\cap U_j}}s_{ui}^{2}}\;\sqrt{\sum_{\color{orange}{u\in U_i\cap U_j}}s_{uj}^{2}}}}
+\qquad \color{teal}{s_{ui}=r_{ui}-\mu_u}
+$$
+
+::: {.columns}
+::: {.column width="56%"}
+
+<div style="font-size:.78em;line-height:1.35;">
+<p><span style="color:#EF7C00;font-weight:bold;">Shared Raters:</span> users who rated both items.</p>
+<p><span style="color:#00796B;font-weight:bold;">User-Centred Values:</span> remove each rater's personal baseline before comparing item columns.</p>
+<p><span style="color:#003D7C;font-weight:bold;">Normalisation:</span> compare the centred item vectors fairly.</p>
+</div>
+:::
+::: {.column width="44%"}
+
+### Use it when
+
+Building item-to-item neighbourhoods from explicit ratings.
+
+### Watch for
+
+It still needs sufficient shared raters; centring does not solve sparse overlap.
+:::
+:::
+
+::: notes
+The change is conceptual as well as notational: compare columns, so the overlap is now users, U_i intersection U_j. The textbook calls this adjusted cosine because each user's ratings are mean-centred before item similarity is calculated, and notes that it generally outperforms Pearson on item columns.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.14 and Section 2.3.2, pp. 40-41.
+:::
+
+## Similarity IV: Significance Weighting
+
+$$
+\operatorname{discounted\text{-}sim}(u,v)=
+\color{navy}{\operatorname{sim}(u,v)}\;\cdot\;
+\frac{\min\!\left\{\color{orange}{|I_u\cap I_v|},\,\color{teal}{\beta}\right\}}{\color{teal}{\beta}}
+$$
+
+::: {.columns}
+::: {.column width="56%"}
+
+<div style="font-size:.78em;line-height:1.35;">
+<p><span style="color:#003D7C;font-weight:bold;">Base Similarity:</span> Pearson, cosine, or another chosen score.</p>
+<p><span style="color:#EF7C00;font-weight:bold;">Evidence Count:</span> how many items both users rated.</p>
+<p><span style="color:#00796B;font-weight:bold;">Threshold \($\beta$\):</span> the overlap at which no further discount applies.</p>
+</div>
+:::
+::: {.column width="44%"}
+
+### Interpretation
+
+One striking shared rating should not carry the same weight as twenty.
+
+### Role
+
+This is a confidence modifier, not a replacement for the underlying similarity measure.
+:::
+:::
+
+::: notes
+Significance weighting multiplies an existing similarity by a discount based on the number of common ratings. State the boundary: once overlap reaches beta, the factor is one. This is a direct response to an otherwise high but unreliable score from very thin evidence.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.7 and Section 2.3.1.1, p. 38.
+:::
+
+## 🔑 Key Point: Similarity Is a Modelling Choice {background-color="#003D7C"}
+
+<div style="color:#fff;font-size:.92em;line-height:1.35;margin-top:.55em;">
+<p style="font-size:1.16em;"><u>Choose similarity for the evidence you have—not because one metric is universally best.</u></p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.1em;margin-top:1em;">
+  <div><p style="margin:0;color:#EF7C00;font-weight:bold;">Pearson</p><p style="margin:.25em 0 0;">Corrects for rating generosity; thin overlap is still unstable.</p></div>
+  <div><p style="margin:0;color:#EF7C00;font-weight:bold;">Raw cosine</p><p style="margin:.25em 0 0;">Keeps raw magnitude; it also keeps scale bias.</p></div>
+  <div><p style="margin:0;color:#EF7C00;font-weight:bold;">Adjusted cosine + weighting</p><p style="margin:.25em 0 0;">Changes the comparison axis or discounts weak overlap.</p></div>
+</div>
+<p style="margin-top:1.25em;color:#EF7C00;font-weight:bold;">🤞 Ask which entries, baselines, and confidence assumptions shape the neighbours.</p>
+</div>
+
+::: notes
+Use this key slide to contrast methods rather than declare one universal winner. Pearson and adjusted cosine both centre ratings but on different comparison axes; raw cosine preserves the original scale; significance weighting adjusts confidence in any base similarity.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.3.1.1-2.3.2, pp. 37-41.
+:::
+
+## From Neighbours to a Prediction
+
+$$
+\hat r_{uj}=\color{teal}{\mu_u}+
+\frac{\sum_{\color{orange}{v\in P_u(j)}} \color{navy}{\operatorname{sim}(u,v)}\,\bigl(\color{teal}{r_{vj}-\mu_v}\bigr)}
+{\sum_{\color{orange}{v\in P_u(j)}}\left|\color{navy}{\operatorname{sim}(u,v)}\right|}
+$$
+
+::: {.columns}
+::: {.column width="55%"}
+
+[Neighbourhood $P_u(j)$]{style="color:#EF7C00;font-weight:bold;"}: the top-$k$ similar users who rated item $j$.
+
+[Similarity weight]{style="color:#003D7C;font-weight:bold;"}: closer neighbours contribute more.
+
+[Baseline and deviation]{style="color:#00796B;font-weight:bold;"}: predict a deviation, then add the target user's own mean back.
+:::
+::: {.column width="45%"}
+
+### Pipeline
+
+1. choose a similarity
+2. select valid top-$k$ neighbours
+3. aggregate their evidence
+4. rank candidate items by $\hat r_{uj}$
+:::
+:::
+
+::: notes
+Return to the coloured scheme. The equation is the mean-centred user-based prediction in the textbook. Stress that P_u(j) is item-specific: it includes only the k closest users who actually rated j, so the valid neighbours can change with the target item. The hat identifies a prediction rather than an observed rating.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.4 and Section 2.3, pp. 35-36.
+:::
+
+## 🔑 Key Point: A Neighbourhood Is a Choice {background-color="#003D7C"}
+
+<div style="color:#fff;font-size:1.05em;line-height:1.35;margin-top:.8em;">
+<p><u>Collaborative filtering turns partial overlaps into a local estimate — and every choice of overlap, normalisation, threshold, and top-\(k\) changes that estimate.</u></p>
+<p style="margin-top:1.2em;color:#EF7C00;font-weight:bold;">🤞 Before trusting a neighbour, ask: what evidence made it close?</p>
+</div>
+
+::: notes
+Close the section by making the modelling choices visible: overlap, centring, the reliability discount, and neighbour selection each shape the result. The next section can examine requirements and knowledge-based methods as a different response to missing or insufficient collaborative evidence.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 2, pp. 31-43.
 :::
