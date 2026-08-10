@@ -444,11 +444,11 @@ Start the five-minute timer when announcing the break.
 
 # 04 Recommendation Problems and Decision Goals {background-color="#EF7C00"}
 
-- Users, items, and feedback
-- Prediction versus top-*k* ranking
-- What makes a list useful
-- Signals, model families, and cold start
-- Treatment lenses for different situations
+- User–item matrices, feedback, and missingness
+- Prediction, top-*k* ranking, and useful lists
+- Signals and classical recommendation strategies
+- Cold start and heavy-head/long-tail exposure
+- Treatment lenses and safeguards
 
 ::: notes
 Orient students to the decision problem before introducing methods. This section draws on Chapters 1, 2, and 5 of Aggarwal (2016).
@@ -502,39 +502,6 @@ Introduce the standard user–item notation now, because it anchors later neighb
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1–2.
-:::
-
-## Rating Types
-
-::: {.columns}
-::: {.column width="50%"}
-
-- Continuous ratings
-- Forced-choice ratings
-- Ordinal ratings
-- Binary ratings
-:::
-::: {.column width="50%"}
-
-- Unary ratings
-- Explicit ratings
-- Implicit ratings
-:::
-:::
-
-::: {.callout-note}
-**Missing-value imputation:** do not treat an unobserved explicit rating as a default score; pre-substitution can introduce bias.
-:::
-
-::: {.callout-tip .to-think-about title="To think about"}
-How do missing values impact training and testing in recommendation systems?
-:::
-
-::: notes
-Keep this slide to the textbook's terms only; do not explain each type here. Link it back to the matrix: the scale and observation process change what a missing entry means. For unary/implicit data, a zero substitution is sometimes used as a practical initial assumption, but it remains a modelling choice rather than an observed dislike.
-
-[Sources]
-- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Section 1.3.1.1–1.3.1.2, pp. 10–13.
 :::
 
 ## From a Score to a Useful List
@@ -812,17 +779,82 @@ Combine the prior mapping and safeguards slide. Keep the examples concrete but d
 Small-group activity, 5 minutes. Students reprise the Section 01 audit with a more precise vocabulary: signal, objective, prediction/ranking, heavy head/long tail, and a safeguard. Invite the AI Voice agent only after pairs have written their own audit. Ask it: “Whose interests might this recommendation overlook, and what assumption are you making?” Treat its reply as an object of critique, not an answer. Reserve one minute for two groups to report and correct the idea that a missing interaction is a negative preference.
 :::
 
-# 05 Neighborhood-Based Collaborative Filtering {background-color="#EF7C00"}
+# 05 Neighborhood-Based Collaborative Filtering (CF) {background-color="#EF7C00"}
 
-- From sparse overlap to a local neighbourhood
-- Similarity: Pearson, cosine, adjustment, and confidence
-- From neighbours to a prediction
+- Rating types, sparse matrices, and long-tail evidence
+- User–user and item–item neighbourhoods
+- Similarity measures: Pearson, raw cosine, adjusted cosine, and confidence
+- Worked examples: from shared evidence to a similarity score
+- From a chosen neighbourhood to a prediction
 
 ::: notes
-Introduce collaborative filtering as a way to use patterns in observed entries rather than item descriptions or stated rules. This section deliberately sets aside the card-suit treatment lenses; the focus is the mechanics and assumptions of neighbourhood methods.
+Introduce collaborative filtering as a way to use patterns in observed entries rather than item descriptions or stated rules. Focus first on the mechanics and assumptions of neighbourhood methods; the suit lenses return in the closing discussion to test how a context changes the modelling choice.
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 2, pp. 31-43.
+:::
+
+## Rating Types
+
+::: {.columns}
+::: {.column width="50%"}
+
+- Continuous ratings
+- Forced-choice ratings
+- Ordinal ratings
+- Binary ratings
+:::
+::: {.column width="50%"}
+
+- Unary ratings
+- Explicit ratings
+- Implicit ratings
+:::
+:::
+
+::: {.callout-note}
+**Missing-value imputation:** do not treat an unobserved explicit rating as a default score; pre-substitution can introduce bias.
+:::
+
+::: {.callout-tip .to-think-about title="To think about"}
+How do missing values impact training and testing in recommendation systems?
+:::
+
+::: notes
+Open Chapter 2 by recalling what an observed entry can mean. Keep this slide to the textbook's terms only; do not explain each type here. The scale and observation process determine what a missing entry means. For unary/implicit data, a zero substitution is sometimes used as a practical initial assumption, but it remains a modelling choice rather than an observed dislike.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Section 1.3.1.1-1.3.1.2, pp. 10-13.
+:::
+
+## The Long Tail
+
+::: {.columns}
+::: {.column width="39%"}
+
+<div style="font-size:.82em;line-height:1.32;">
+<ul>
+<li>A small heavy head receives most ratings.</li>
+<li>The long tail holds many items with little evidence.</li>
+<li>Thin overlap makes neighbourhood similarity uncertain.</li>
+<li>Head-only ranking can reinforce what is already visible.</li>
+</ul>
+<p style="margin:.65em 0 0;color:#EF7C00;font-weight:bold;">The tail is under-observed, not empty.</p>
+</div>
+:::
+::: {.column width="61%"}
+
+<img src="../../uploads/textbook-figure-2-1-long-tail.png" alt="Figure 2.1 from Aggarwal: a frequency distribution with a steep rating head and a long tail across items ordered by decreasing frequency." style="display:block;width:100%;max-height:59vh;object-fit:contain;">
+
+<p style="margin:.25em 0 0;text-align:center;font-size:.48em;color:#6b7280;">Source: Aggarwal (2016), p. 33.</p>
+:::
+:::
+
+::: notes
+Read the figure literally: item frequency falls sharply, then extends across a long tail of lightly rated items. Connect this to the matrix: rare items and sparse users reduce overlap, while a head-only ranking policy can concentrate exposure further. Do not imply that every tail item is good; the point is that a lack of ratings is not a lack of catalogue value.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Figure 2.1, p. 33.
 :::
 
 ## From a Sparse Matrix to a Neighborhood
@@ -831,15 +863,15 @@ Introduce collaborative filtering as a way to use patterns in observed entries r
 ::: {.column width="52%"}
 | User | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
 |---|:---:|:---:|:---:|:---:|:---:|
-| $u_5$ ($u$) | ? | 2 | ? | 5 | ? |
-| $u_2$ ($v$) | ? | 4 | ? | 1 | 3 |
+| $u_1$ ($u$) | 5 | ? | 2 | 4 | ? |
+| $u_6$ ($v$) | 5 | 4 | 5 | 2 | 4 |
 
 <div style="font-size:.82em;line-height:1.35;margin-top:.5em;">
 <p><span style="color:#EF7C00;font-weight:bold;">Mutual evidence</span></p>
 </div>
 
 $$
-I_u \cap I_v = \{i_2,i_4\}
+I_u \cap I_v = \{i_1,i_3,i_4\}
 $$
 
 <div style="font-size:.82em;line-height:1.35;">
@@ -907,6 +939,48 @@ Read the equation by colour, not symbol by symbol. Orange selects comparable evi
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.2 and Section 2.3.1.1, pp. 35, 37.
 :::
 
+## Worked Example I: Pearson Correlation
+
+### User–user example: users 1 and 6
+
+::: {.columns}
+::: {.column width="45%"}
+**Excerpt from the user-item matrix $R$**
+
+| User | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
+|---|:---:|:---:|:---:|:---:|:---:|
+| $u_1$ | 5 | ? | 2 | 4 | ? |
+| $u_6$ | 5 | 4 | 5 | 2 | 4 |
+:::
+::: {.column width="55%"}
+::: {style="font-size:.78em;line-height:1.15;"}
+**Step 1 — begin with the same overlap**
+
+$$I_{u_1}\cap I_{u_6}=\{i_1,i_3,i_4\}$$
+
+::: {.fragment}
+**Step 2 — subtract each user's own mean**
+
+$$\mu_1=\frac{11}{3},\quad \mu_6=4$$
+$$\mathbf s_1=\left(\frac{4}{3},-\frac{5}{3},\frac{1}{3}\right),\quad \mathbf s_6=(1,1,-2)$$
+:::
+
+::: {.fragment}
+**Step 3 — correlate the centred vectors**
+
+$$\operatorname{Pearson}(u_1,u_6)=\frac{-1}{\sqrt{14/3}\sqrt{6}}=-0.189$$
+:::
+:::
+:::
+:::
+
+::: notes
+Advance through the fragments. The overlap is $\{i_1,i_3,i_4\}$; Pearson's adjustment is the centring step. Compare the negative Pearson score with raw cosine on the next pair of slides: centring reveals that the users' deviations from their own baselines do not align.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.2 and Section 2.3.1.1, pp. 35, 37.
+:::
+
 ## Similarity II: Raw Cosine
 
 $$
@@ -943,6 +1017,49 @@ Cosine asks whether two observed rating vectors point in a similar direction. Un
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.5 and Section 2.3.1.1, pp. 37-38.
 :::
 
+## Worked Example II: Raw Cosine
+
+### Users 1 and 6
+
+::: {.columns}
+::: {.column width="45%"}
+**Excerpt from the user-item matrix $R$**
+
+| User | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
+|---|:---:|:---:|:---:|:---:|:---:|
+| $u_1$ | 5 | ? | 2 | 4 | ? |
+| $u_6$ | 5 | 4 | 5 | 2 | 4 |
+
+::: {.callout-tip .to-think-about title="To think about"}
+What are the differences between cosine and Pearson here?
+:::
+:::
+::: {.column width="55%"}
+**Step 1 — keep only shared ratings**
+
+$$I_{u_1}\cap I_{u_6}=\{i_1,i_3,i_4\}$$
+
+::: {.fragment}
+**Step 2 — form the two rating vectors**
+
+$$\mathbf r_1=(5,2,4)\qquad \mathbf r_6=(5,5,2)$$
+:::
+
+::: {.fragment}
+**Step 3 — normalise their dot product**
+
+$$\operatorname{raw\text{-}cosine}(u_1,u_6)=\frac{43}{\sqrt{45}\sqrt{54}}=0.872$$
+:::
+:::
+:::
+
+::: notes
+Advance through the three fragments. The important simplification is that the raw cosine is applied only to the three shared ratings, not to missing entries. Point out that the numerator is the dot product 43 and the denominator normalises the two vector lengths.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.5 and Section 2.3.1.1, pp. 37-38.
+:::
+
 ## Similarity III: Adjusted Cosine for Items
 
 $$
@@ -957,7 +1074,7 @@ $$
 
 <div style="font-size:.78em;line-height:1.35;">
 <p><span style="color:#EF7C00;font-weight:bold;">Shared Raters:</span> users who rated both items.</p>
-<p><span style="color:#00796B;font-weight:bold;">User-Centred Values:</span> remove each rater's personal baseline before comparing item columns.</p>
+<p><span style="color:#00796B;font-weight:bold;">User-Centred Rating $s_{ui}$:</span> remove each rater's personal baseline before comparing item columns.</p>
 <p><span style="color:#003D7C;font-weight:bold;">Normalisation:</span> compare the centred item vectors fairly.</p>
 </div>
 :::
@@ -973,8 +1090,65 @@ It still needs sufficient shared raters; centring does not solve sparse overlap.
 :::
 :::
 
+::: {.callout-tip .to-think-about title="To think about"}
+What makes this an “adjusted” metric? Why don't we need a similar adjustment for user-based cosine?
+:::
+
 ::: notes
 The change is conceptual as well as notational: compare columns, so the overlap is now users, U_i intersection U_j. The textbook calls this adjusted cosine because each user's ratings are mean-centred before item similarity is calculated, and notes that it generally outperforms Pearson on item columns.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.14 and Section 2.3.2, pp. 40-41.
+:::
+
+## Worked Example III: Item–Item
+
+### Items $i_1$ and $i_5$ after user mean-centring
+
+::: {.columns}
+::: {.column width="35%"}
+**Original user-item matrix $R$**
+
+```{=html}
+<table style="width:100%;border-collapse:collapse;text-align:center;font-size:.72em;line-height:1.12;">
+  <thead style="background:#003D7C;color:#fff;"><tr><th style="padding:.28em;"><i>R</i></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;"><i>i</i><sub>3</sub></th><th style="padding:.28em;"><i>i</i><sub>4</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>5</sub></th></tr></thead>
+  <tbody>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td><td>?</td><td>2</td><td>4</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>2</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td><td>4</td><td>?</td><td>1</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">3</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>3</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td><td>?</td><td>?</td><td>?</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>4</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">3</td><td>?</td><td>4</td><td>?</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">2</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>5</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td><td>2</td><td>?</td><td>5</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td><td>4</td><td>5</td><td>2</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">4</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>7</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td><td>1</td><td>5</td><td>1</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>8</sub></th><td style="border:3px solid #D32F2F;border-top:0;">?</td><td>?</td><td>4</td><td>?</td><td style="border:3px solid #D32F2F;border-top:0;">?</td></tr>
+  </tbody>
+</table>
+```
+
+:::
+::: {.column width="15%"}
+:::
+::: {.column width="50%"}
+| User | $\mathbf{s}_{i_1}$ | $\mathbf{s}_{i_5}$ |
+|---|---:|---:|
+| 4 | $0$ | $-1$ |
+| 6 | $1$ | $0$ |
+| 7 | $1.6$ | $1.6$ |
+
+<div style="font-size:.88em;">
+
+$$\operatorname{adjusted\text{-}cosine}(\mathbf{s}_{i_1},\mathbf{s}_{i_5})=\frac{2.56}{\sqrt{3.56}\sqrt{3.56}}=0.719$$
+
+</div>
+
+::: {.callout-note}
+The item vectors are $\mathbf{s}_{i_1}$ and $\mathbf{s}_{i_5}$; their entries are user-centred ratings for the shared raters. This is the same cosine operation, but across item columns rather than user rows.
+:::
+:::
+:::
+
+::: notes
+Work from the Section 04 user-item matrix. The three users who rated both items provide the centred item vectors. Their dot product is 2.56 and both vector lengths are square root 3.56, giving adjusted cosine 0.719. Contrast the axis with the previous slide: user-user similarity compares rows; item-item similarity compares columns.
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.14 and Section 2.3.2, pp. 40-41.
@@ -1014,6 +1188,61 @@ Significance weighting multiplies an existing similarity by a discount based on 
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.7 and Section 2.3.1.1, p. 38.
+:::
+
+## Worked Example IV: Significance Weighting
+
+### User–user example: users 1 and 6
+
+**Step 1 — start from the user-user Pearson score**
+
+$$\operatorname{Pearson}(u_1,u_6)=-0.189$$
+
+::: {.fragment}
+**Step 2 — count the overlap and set a threshold**
+
+$$|I_{u_1}\cap I_{u_6}|=3\qquad \beta=10$$
+:::
+
+::: {.fragment}
+**Step 3 — apply the confidence discount**
+
+$$\operatorname{discounted\text{-}sim}_{\beta=10}=-0.189\left(\frac{3}{10}\right)=-0.057$$
+:::
+
+::: notes
+Advance through the fragments. Emphasise that significance weighting does not calculate a different pattern of taste: it shrinks confidence in the base Pearson score. Beta equal to 10 is only an illustrative design choice; it makes the three-overlap multiplier 0.3.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.7, p. 38.
+:::
+
+## <span style="color:#ffffff;">👥 Discussion: Which Similarity Axis?</span> {background-color="#003D7C"}
+
+```{=html}
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1.1em 1.45em;color:#fff;font-size:.72em;line-height:1.3;">
+  <p style="font-size:1.34em;font-weight:bold;color:#EF7C00;margin:0 0 .6em;">When would user-based or item-based similarity be more effective?</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6em;">
+    <div style="padding:.8em 1em;border:1px solid rgba(255,255,255,.55);border-radius:8px;">
+      <p style="font-size:1.13em;font-weight:bold;margin:0 0 .35em;color:#fff;">User-based: compare rows</p>
+      <p style="margin:0;">When might a person's nearest neighbours be reliable enough to recommend from?</p>
+    </div>
+    <div style="padding:.8em 1em;border:1px solid rgba(255,255,255,.55);border-radius:8px;">
+      <p style="font-size:1.13em;font-weight:bold;margin:0 0 .35em;color:#fff;">Item-based: compare columns</p>
+      <p style="margin:0;">When might relationships between items be more stable or useful?</p>
+    </div>
+  </div>
+  <div style="margin-top:1em;padding:.75em 1em;background:#fff;color:#293241;border-radius:8px;">
+    <strong style="color:#003D7C;">Pairs — 3 minutes:</strong> choose a setting (e.g., films, groceries, music, courses). Make a claim for one axis, then give one data-pattern or product reason that could reverse your choice.<br/><strong style="color:#003D7C;">Suit lens:</strong> which treatment lens would change your choice or your confidence in it?
+  </div>
+</div>
+```
+
+::: notes
+Untimed discussion slide. Give pairs roughly three minutes, but do not start a countdown timer. Invite one user-based and one item-based argument. Productive reasons include the number and stability of items, changing user tastes, repeatability of item relationships, sparsity patterns, and computational update costs. Close by asking which card-suit treatment lens would alter the conclusion or its confidence. Make clear that “more effective” depends on the data and use case, not a universal rule.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.3.1–2.3.2, pp. 37–41.
 :::
 
 ## 🔑 Key Point: Similarity Is a Modelling Choice {background-color="#003D7C"}

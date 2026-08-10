@@ -35,11 +35,11 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 | 02 Schedule | 6 | 17 min | 41 min | 13.0% |
 | 03 Assignments & Grading | 7 | 27 min | 68 min | 20.6% |
 | Break | 1 | 5 min | 73 min | 3.8% |
-| 04 Recommendation Problems and Decision Goals | 13 | 51 min | 124 min | 41.1% |
-| 05 Neighborhood-Based Collaborative Filtering | 9 | 32 min | 156 min | 20.5% |
-| **Total** | **44** | **156 min** | **156 min** | **100%** |
+| 04 Recommendation Problems and Decision Goals | 12 | 49 min | 122 min | 39.9% |
+| 05 Neighborhood-Based Collaborative Filtering | 16 | 57 min | 179 min | 31.8% |
+| **Total** | **50** | **179 min** | **179 min** | **100%** |
 
-The run-of-show is **36 minutes over** the scheduled class time. The 120-minute limit is intentionally not being used as a constraint while this extended sequence is developed.
+The run-of-show is **56 minutes over** the scheduled class time. The 120-minute limit is intentionally not being used as a constraint while this extended sequence is developed.
 
 ## Detailed run-of-show
 
@@ -85,37 +85,43 @@ The run-of-show is **36 minutes over** the scheduled class time. The 120-minute 
 |---|---:|---:|---|---|
 | `☕ Break` | 5 min | 73 min | Break | Announce the break, start the five-minute timer, and resume with Section 04 when the timer completes. |
 
-### 04 Recommendation Problems and Decision Goals — 51 minutes (running total: 124 minutes)
+### 04 Recommendation Problems and Decision Goals — 49 minutes (running total: 122 minutes)
 
 | Slide | Time | Running total | Mode | Delivery plan |
 |---|---:|---:|---|---|
-| `04 Recommendation Problems and Decision Goals` | 1 min | 74 min | Instructor | Preview the user–item matrix, decision goals, available signals, classical starting points, and situational treatment lenses. |
+| `04 Recommendation Problems and Decision Goals` | 1 min | 74 min | Instructor | Preview user–item matrices and missingness; prediction, ranking, and useful lists; signals and classical strategies; cold start and long-tail exposure; and situational treatment lenses. |
 | `The User–Item Matrix` | 5 min | 79 min | Instructor | Introduce $U$, $I$, $R$, $r_{ui}$, and the observed set $\Omega$. Use dense, sparse, new, and possible-shill rows as evidence situations, not as diagnoses of permanent user type. |
-| `Rating Types` | 2 min | 81 min | Instructor | Name the textbook's rating types and state that scale and observation process change what a missing entry means. Emphasise the explicit-rating imputation caution. |
-| `From a Score to a Useful List` | 4 min | 85 min | Instructor | Contrast response prediction with top-k ranking and explain why the latter is normally the product decision surface. |
-| `Signals and Usefulness` | 4 min | 89 min | Instructor | Use the left-hand taxonomy to distinguish interaction, item, context, and social/operational signals; use the right-hand list to show that evaluation follows usefulness, not merely data availability. |
-| `👥 Signal Hunt` | 4 min | 93 min | **Student activity — small-group discussion** | **Student activity:** start the two-minute timer. Pairs name three additional signals, classify them or propose a new category, and identify one benefit and one privacy, fairness, or manipulation risk. Take two reports and distinguish collectable from appropriate data. |
-| `👥 Complete the Classical Methods Table` | 3 min | 96 min | **Student activity — small-group discussion (untimed)** | **Student activity:** pairs complete the four highlighted cells and prepare one evidence-based justification. This activity intentionally has no timer, per instructor direction. Probe the relationship between evidence and blind spots, then advance to the debrief. |
-| `Four Classical Starting Points` | 2 min | 98 min | Instructor | Reveal the complete cloned table, correct the four answers, and connect popularity to heavy-head exposure and knowledge-based recommendation to stated requirements. |
-| `When the Matrix Has No Answer` | 4 min | 102 min | Instructor | Treat new users, items, and systems as information gaps. Contrast requirement elicitation, metadata, transparent fallbacks, and long-tail exposure reserves. |
-| `🎰 Bandit Time: What should this system optimise?` | 3 min | 105 min | **Student activity — MCQ** | **Student activity:** give 30 seconds for an individual response, collect justifications, then explain why stated requirements and an explanation best serve the library task while acknowledging trade-offs. |
-| `🃏 Treatment Lenses Change With the Task` | 4 min | 109 min | Instructor | Introduce Clubs, Hearts, Diamonds, and Spades as situational treatment lenses, not fixed or demographic user types. |
-| `🃏 Four Different Safeguards` | 4 min | 113 min | Instructor | Show how the same catalogue produces different robustness, social, novelty/exposure, and metadata/explanation questions. |
-| `👥 Reprise: Find the Recommender 📶` | 11 min | 124 min | **Student activity — small-group discussion + AI Voice critique** | **Student activity:** pairs write a four-line audit of their Section 01 recommendation, including the heavy-head/long-tail exposure consequence and one safeguard. Start the 5-minute timer. Then let the AI Voice agent critique one omitted stakeholder or assumption; students challenge its response. Take two reports and correct misconceptions. |
+| `From a Score to a Useful List` | 4 min | 83 min | Instructor | Contrast response prediction with top-k ranking and explain why the latter is normally the product decision surface. |
+| `Signals and Usefulness` | 4 min | 87 min | Instructor | Use the left-hand taxonomy to distinguish interaction, item, context, and social/operational signals; use the right-hand list to show that evaluation follows usefulness, not merely data availability. |
+| `👥 Signal Hunt` | 4 min | 91 min | **Student activity — small-group discussion** | **Student activity:** start the two-minute timer. Pairs name three additional signals, classify them or propose a new category, and identify one benefit and one privacy, fairness, or manipulation risk. Take two reports and distinguish collectable from appropriate data. |
+| `👥 Complete the Classical Methods Table` | 3 min | 94 min | **Student activity — small-group discussion (untimed)** | **Student activity:** pairs complete the four highlighted cells and prepare one evidence-based justification. This activity intentionally has no timer, per instructor direction. Probe the relationship between evidence and blind spots, then advance to the debrief. |
+| `Four Classical Starting Points` | 2 min | 96 min | Instructor | Reveal the complete cloned table, correct the four answers, and connect popularity to heavy-head exposure and knowledge-based recommendation to stated requirements. |
+| `When the Matrix Has No Answer` | 4 min | 100 min | Instructor | Treat new users, items, and systems as information gaps. Contrast requirement elicitation, metadata, transparent fallbacks, and long-tail exposure reserves. |
+| `🎰 Bandit Time: What should this system optimise?` | 3 min | 103 min | **Student activity — MCQ** | **Student activity:** give 30 seconds for an individual response, collect justifications, then explain why stated requirements and an explanation best serve the library task while acknowledging trade-offs. |
+| `🃏 Treatment Lenses Change With the Task` | 4 min | 107 min | Instructor | Introduce Clubs, Hearts, Diamonds, and Spades as situational treatment lenses, not fixed or demographic user types. |
+| `🃏 Four Different Safeguards` | 4 min | 111 min | Instructor | Show how the same catalogue produces different robustness, social, novelty/exposure, and metadata/explanation questions. |
+| `👥 Reprise: Find the Recommender 📶` | 11 min | 122 min | **Student activity — small-group discussion + AI Voice critique** | **Student activity:** pairs write a four-line audit of their Section 01 recommendation, including the heavy-head/long-tail exposure consequence and one safeguard. Start the 5-minute timer. Then let the AI Voice agent critique one omitted stakeholder or assumption; students challenge its response. Take two reports and correct misconceptions. |
 
-### 05 Neighborhood-Based Collaborative Filtering — 32 minutes (running total: 156 minutes)
+### 05 Neighborhood-Based Collaborative Filtering — 57 minutes (running total: 179 minutes)
 
 | Slide | Time | Running total | Mode | Delivery plan |
 |---|---:|---:|---|---|
-| `05 Neighborhood-Based Collaborative Filtering` | 1 min | 125 min | Instructor | Frame neighbourhood collaborative filtering as estimating from observed overlaps. State that card-suit lenses are deliberately set aside in this mechanics-focused sequence. |
-| `From a Sparse Matrix to a Neighborhood` | 4 min | 129 min | Instructor | Combine the previous matrix, user/item-neighbourhood, and evidence caveat material. Define $I_u$, $U_i$, overlap, and $P_u(j)$ before equations. |
-| `Similarity I: Pearson Correlation` | 5 min | 134 min | Instructor | Decode the orange overlap, teal centred ratings, and navy normalisation. Relate centring to generous versus harsh rating habits. |
-| `Similarity II: Raw Cosine` | 4 min | 138 min | Instructor | Contrast the raw dot product with Pearson. State explicitly that cosine retains scale bias when raw ratings differ in generosity. |
-| `Similarity III: Adjusted Cosine for Items` | 4 min | 142 min | Instructor | Swap the comparison axis from user rows to item columns and show why shared raters are centred before item similarity. |
-| `Similarity IV: Significance Weighting` | 4 min | 146 min | Instructor | Explain the discount factor and beta. Use the one-versus-twenty shared-rating contrast to make reliability tangible. |
-| `🔑 Key Point: Similarity Is a Modelling Choice` | 4 min | 150 min | Instructor | Consolidate the evidence, baseline, and confidence trade-offs without declaring a universal winner. |
-| `From Neighbours to a Prediction` | 4 min | 154 min | Instructor | Decode the mean-centred prediction equation and explain target-item-specific valid top-k neighbours. |
-| `🔑 Key Point: A Neighbourhood Is a Choice` | 2 min | 156 min | Instructor | Synthesize the modelling choices: overlap, centring, discounting, and top-k selection. |
+| `05 Neighborhood-Based Collaborative Filtering (CF)` | 1 min | 123 min | Instructor | Frame neighbourhood collaborative filtering around rating types, sparse and long-tail evidence, user/item neighbourhoods, similarity measures, worked examples, and prediction. Reserve the suit lenses for the closing modelling-choice discussion. |
+| `Rating Types` | 2 min | 125 min | Instructor | Name the textbook's rating types before treating Chapter 2's observed rating matrix; state that scale and observation process change what a missing entry means. |
+| `The Point of the Long Tail` | 4 min | 129 min | Instructor | Use Figure 2.1 to contrast the heavily rated head with the under-observed tail. Connect thin tail evidence to sparse overlap and exposure concentration. |
+| `From a Sparse Matrix to a Neighborhood` | 4 min | 133 min | Instructor | Combine the previous matrix, user/item-neighbourhood, and evidence caveat material. Define $I_u$, $U_i$, overlap, and $P_u(j)$ before equations. |
+| `Similarity I: Pearson Correlation` | 5 min | 138 min | Instructor | Decode the orange overlap, teal centred ratings, and navy normalisation. Relate centring to generous versus harsh rating habits. |
+| `Worked Example I: Pearson Correlation` | 4 min | 142 min | Instructor | Reveal the shared ratings, user means, centred vectors, and Pearson correlation step by step. |
+| `Similarity II: Raw Cosine` | 4 min | 146 min | Instructor | Contrast the raw dot product with Pearson. State explicitly that cosine retains scale bias when raw ratings differ in generosity. |
+| `Worked Example II: Raw Cosine` | 4 min | 150 min | Instructor | Reveal the shared ratings, raw vectors, and normalised dot product step by step. |
+| `Similarity III: Adjusted Cosine for Items` | 4 min | 154 min | Instructor | Swap the comparison axis from user rows to item columns and show why shared raters are centred before item similarity. |
+| `Worked Example III: Item–Item` | 4 min | 158 min | Instructor | Use the Section 04 matrix's mean-centred item columns to calculate adjusted cosine. |
+| `Similarity IV: Significance Weighting` | 4 min | 162 min | Instructor | Explain the discount factor and beta. Use the one-versus-twenty shared-rating contrast to make reliability tangible. |
+| `Worked Example IV: Significance Weighting` | 4 min | 166 min | Instructor | Reveal the base score, overlap count, threshold, and confidence discount step by step. |
+| `👥 Discussion: Which Similarity Axis?` | 3 min | 169 min | **Student activity — paired discussion (untimed)** | **Student activity:** pairs choose a setting, argue for user- or item-based similarity, then name a data or product condition that could reverse their decision. Close by asking which card-suit treatment lens would change their choice or confidence. No countdown timer; use the three-minute prompt as a facilitation guide. |
+| `🔑 Key Point: Similarity Is a Modelling Choice` | 4 min | 173 min | Instructor | Consolidate the evidence, baseline, and confidence trade-offs without declaring a universal winner. |
+| `From Neighbours to a Prediction` | 4 min | 177 min | Instructor | Decode the mean-centred prediction equation and explain target-item-specific valid top-k neighbours. |
+| `🔑 Key Point: A Neighbourhood Is a Choice` | 2 min | 179 min | Instructor | Synthesize the modelling choices: overlap, centring, discounting, and top-k selection. |
 
 ## Pacing and facilitation notes
 
