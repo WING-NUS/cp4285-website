@@ -51,3 +51,30 @@ $selection-bg: #EF7C00;
 .reveal .callout {
   font-size: 0.88em;
 }
+
+.reveal .callout.to-think-about {
+  margin-top: 0.7em;
+  border-left: 5px solid #00796B;
+  border-radius: 0 6px 6px 0;
+  color: #003D7C;
+  font-size: 0.72em;
+  line-height: 1.25;
+}
+
+.reveal .callout.to-think-about .callout-header {
+  padding: 0.42em 0.75em;
+  background: #CFE8E2;
+  color: #00796B;
+}
+
+.reveal .callout.to-think-about .callout-title-container {
+  color: #00796B;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.reveal .callout.to-think-about .callout-body {
+  padding: 0.45em 0.75em;
+  background: #E4F2EF;
+  color: #003D7C;
+}

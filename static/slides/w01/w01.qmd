@@ -313,9 +313,9 @@ There are **no tutorial sessions** for this course — We'll be building the mat
 ## Class Participation (10%)
 1. **In-lecture activities**
 2. **Pre-lecture activities**
-3. *Pre-Flight Survey* and *Midterm Survey*
-  - **Pre-Flight Survey** (due Week 02; Mon, 17 Aug 2026 23:59 SGT)
-  - **Midterm Survey** (due Week 08; Mon, 5 Aug 2026 23:59 SGT)
+3. **Pre-Flight Survey** and **Midterm Survey**
+  - *Pre-Flight Survey* (due Week 02; Mon, 17 Aug 2026 23:59 SGT)
+  - *Midterm Survey* (due Week 08; Mon, 5 Aug 2026 23:59 SGT)
   Complete these on time — they are **free marks**
 
 ::: {.callout-warning}
@@ -442,111 +442,298 @@ Start the five-minute timer when announcing the break.
 - Digital Public Library of America. (n.d.). *Photograph of a librarian at the Dunbar Branch Library, Athens, Georgia, 1944–1948* [Photograph]. https://dp.la/item/622d044817a76960015abe2bb69673f4
 :::
 
-# 04 Types of Recommendation Systems {background-color="#EF7C00"}
+# 04 Recommendation Problems and Decision Goals {background-color="#EF7C00"}
 
-## A Card-Suit Framework for User Types
+- Users, items, and feedback
+- Prediction versus top-*k* ranking
+- What makes a list useful
+- Signals, model families, and cold start
+- Treatment lenses for different situations
 
-We can think about different **user archetypes** using a card-suit analogy:
+::: notes
+Orient students to the decision problem before introducing methods. This section draws on Chapters 1, 2, and 5 of Aggarwal (2016).
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*. Springer. Chapters 1, 2, 5.
+:::
+
+## The User–Item Matrix
+
+::: {.columns}
+::: {.column width="60%"}
+
+<div style="font-size:.98em;line-height:1.18;">
+
+| $R$ | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
+|---|:---:|:---:|:---:|:---:|:---:|
+| $u_1$ | 5 | ? | 2 | 4 | ? |
+| $u_2$ | ? | 4 | ? | 1 | 3 |
+| $u_3$ | ? | ? | ? | ? | ? |
+| $u_4$ | 3 | ? | 4 | ? | 2 |
+| $u_5$ | ? | 2 | ? | 5 | ? |
+
+</div>
+
+<p style="margin:.35em 0 0;font-size:.66em;line-height:1.25;color:#6b7280;">♥ social user &nbsp;·&nbsp; 🆕 new user &nbsp;·&nbsp; 🆕 new item</p>
+
+:::
+::: {.column width="40%"}
+
+$$R \in \mathbb{R}^{|U|\times|I|}$$
+
+- $u \in U$: user; $i \in I$: item
+- $r_{ui}$: observed feedback
+- $\Omega$: observed $(u,i)$ pairs
+
+::: {.callout-warning}
+A `?` is usually **unobserved**, not a negative rating.
+:::
+
+::: {.callout-tip .to-think-about title="🤔 To think about"}
+What forms can “ratings” take?
+:::
+:::
+:::
+
+::: notes
+Introduce the standard user–item notation now, because it anchors later neighbourhood and latent-factor models. Point to the social user, new user, and new item as different reasons entries may be absent or interpreted differently. Ask for examples of explicit and implicit ratings; make clear that missing feedback is ambiguous.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1–2.
+:::
+
+## From a Score to a Useful List
+
+::: {.columns}
+::: {.column width="45%"}
+### Prediction
+
+Estimate a value such as $\widehat{r}_{ui}$ for one user–item pair.
+
+*Question:* “Will this user rate this film highly?”
+:::
+::: {.column width="10%"}
+&nbsp;
+:::
+::: {.column width="45%"}
+### Top-*k* ranking
+
+Order candidate items and present a short list.
+
+*Question:* “Which five films should appear first, now?”
+:::
+:::
+
+::: {.callout-tip .to-think-about title="🤔 To think about"}
+Does top-*k* apply to users as well as items?
+:::
+
+<u>Accurate scores do not automatically make a useful list.</u>
+
+::: notes
+Combine the earlier prediction-versus-ranking distinction with usefulness. Explain that ranking is the usual product surface: users see a small, ordered set rather than a score for every item.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 1.
+:::
+
+## Signals and Usefulness
+
+::: {.columns}
+::: {.column width="52%"}
+<div style="display:grid;grid-template-columns:1.35fr 1fr;gap:.35em;color:#fff;font-size:.73em;line-height:1.2;">
+  <div style="grid-row:span 2;padding:.85em;border-radius:8px;background:#003D7C;"><strong>Interaction signals</strong><br><span style="font-size:.85em">ratings · clicks · saves · purchases</span></div>
+  <div style="padding:.65em;border-radius:8px;background:#EF7C00;"><strong>Item signals</strong><br><span style="font-size:.85em">metadata · text · images</span></div>
+  <div style="padding:.65em;border-radius:8px;background:#6b7280;"><strong>Context</strong><br><span style="font-size:.85em">time · device · place</span></div>
+  <div style="grid-column:span 2;padding:.65em;border-radius:8px;background:#4b7f52;"><strong>Social and operational signals</strong><br><span style="font-size:.85em">friends · availability · constraints</span></div>
+</div>
+
+::: {.callout-note}
+The right evaluation follows the intended usefulness — not just the available data.
+:::
+:::
+::: {.column width="48%"}
+### A useful recommendation can be …
+
+- **relevant** to the task
+- **novel** or serendipitous
+- **diverse** across the list
+- **well covered** across a catalogue
+- **explainable** and constraint-respecting
+:::
+:::
+
+::: notes
+Use the treemap as a compact taxonomy of inputs. On the right, reprise the distinction between system signals and the properties by which a list should be judged. Avoid presenting any single objective as universally correct.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1 and 5.
+:::
+
+## 👥 Signal Hunt {background-color="#003D7C"}
+
+```{=html}
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 190px;gap:1.15em;align-items:center;color:#fff;">
+  <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:.35em;color:#fff;font-size:.92em;line-height:1.2;">
+    <div style="grid-row:span 2;padding:.85em;border-radius:8px;background:#003D7C;border:1px solid rgba(255,255,255,.5);"><strong>Interaction signals</strong><br><span style="font-size:.85em">ratings · clicks · saves · purchases</span></div>
+    <div style="padding:.65em;border-radius:8px;background:#EF7C00;"><strong>Item signals</strong><br><span style="font-size:.85em">metadata · text · images</span></div>
+    <div style="padding:.65em;border-radius:8px;background:#6b7280;"><strong>Context</strong><br><span style="font-size:.85em">time · device · place</span></div>
+    <div style="grid-column:span 2;padding:.65em;border-radius:8px;background:#4b7f52;"><strong>Social and operational signals</strong><br><span style="font-size:.85em">friends · availability · constraints</span></div>
+  </div>
+  <div>
+    <p style="font-size:1.18em;font-weight:bold;color:#EF7C00;margin:.25em 0;">What else could a recommender capture?</p>
+    <ol style="margin:.45em 0;padding-left:1.15em;line-height:1.38;">
+      <li>Name <strong>three</strong> additional signals.</li>
+      <li>Place each in a box at left — or argue for a new box.</li>
+      <li>For one signal, name a benefit and a privacy, fairness, or manipulation risk.</li>
+    </ol>
+    <p style="margin:.4em 0 0;"><strong>Pairs: prepare one signal to report.<br/>📶 to critique ethical standpoint.</strong></p>
+  </div>
+  <div style="text-align:center;">
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Two minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="signal-hunt-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="signal-hunt-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">02:00</text></svg>
+    <span id="signal-hunt-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">02:00</span>
+    <button id="signal-hunt-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+  </div>
+</div>
+<script>
+(function(){function setup(){var b=document.getElementById('signal-hunt-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=120,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('signal-hunt-ring'),e=document.getElementById('signal-hunt-text'),z=document.getElementById('signal-hunt-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
+</script>
+```
+
+::: notes
+Small-group activity, 2-minute timer plus two minutes for sharing and synthesis. Expected examples include skips, dwell time, completion rate, search queries or reformulations, repeated views, price sensitivity, stock or availability, reports/blocks, creator relationships, and accessibility preferences. Ask students to distinguish what is technically collectable from what is appropriate to collect or infer.
+:::
+
+## Four Classical Starting Points
+
+| Approach | Main evidence | Useful when | Early limitation |
+|---|---|---|---|
+| Popularity | aggregate interactions | little personal data | reinforces the head |
+| Content-based | item attributes + one user | features are meaningful | narrow, familiar lists |
+| Collaborative filtering | patterns across users | history is available | sparse or cold data |
+| Knowledge-based | requirements and constraints | history is weak | needs elicitation |
+
+::: notes
+Give students a practical map, not a full algorithmic treatment. Position knowledge-based recommendation as a requirements-driven alternative, preparing for Section 06.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1, 2, and 5.
+:::
+
+## When the Matrix Has No Answer
 
 ::: {.columns}
 ::: {.column width="50%"}
-♠ **Spades — The Explorer**
-- Seeks novelty and diversity
-- Values serendipitous discovery
-- Dislikes filter bubbles
+### Cold start
 
-♥ **Hearts — The Social Connector**
-- Influenced by friends and community
-- Trusts collaborative signals
-- Values shared tastes
+- **New user:** no observed preferences
+- **New item:** no interaction evidence
+- **New system:** few observations overall
 :::
 ::: {.column width="50%"}
-♦ **Diamonds — The Pragmatist**
-- Goal-oriented, task-driven
-- Wants the most relevant result fast
-- Values precision over diversity
+### A response is a design choice
 
-♣ **Clubs — The Loyalist**
-- Sticks to known preferences
-- Values consistency and familiarity
-- Resistant to change
+- ask for requirements or examples
+- use item metadata
+- use a transparent popularity fallback
+- reserve exposure for new or long-tail items
 :::
 :::
 
 ::: notes
-<!-- TODO (students): How did Min introduce this framework? Was it from a specific paper or his own framing? Were there other user types discussed? -->
+Treat cold start as an information problem rather than a bug. The response changes what the system learns and which items can become visible.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1 and 5.
 :::
 
-## Matching Systems to User Types
+## 🎰 Bandit Time: What should this system optimise? {background-color="#003D7C"}
 
-Different recommendation paradigms serve different user archetypes:
-
-| User Type | Best-Suited Approach | Key Objective |
-|-----------|---------------------|---------------|
-| ♠ Explorer | Diversity-aware / serendipity models | Novelty, coverage |
-| ♥ Social Connector | Collaborative filtering, social graphs | Community similarity |
-| ♦ Pragmatist | Retrieval-ranking pipelines | Precision, relevance |
-| ♣ Loyalist | Content-based filtering | Consistency, familiarity |
+```{=html}
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
+  <div>
+    <p style="font-size:1.2em;font-weight:bold;color:#EF7C00;margin:.25em 0;">A campus library has sparse borrowing history and a student asks for “a short, accessible book on climate migration.”</p>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55em;margin:.55em 0;">
+      <div style="border:4px solid #D32F2F;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>A.</strong> Maximise predicted rating from the sparse matrix only.</div>
+      <div style="border:4px solid #1976D2;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>B.</strong> Use stated requirements and explain the match.</div>
+      <div style="border:4px solid #388E3C;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>C.</strong> Show the globally most-borrowed books.</div>
+      <div style="border:4px solid #7B1FA2;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>D.</strong> Remove every item with little interaction history.</div>
+    </div>
+    <p style="margin:.45em 0 0;"><strong>Choose one answer and name one trade-off.</strong></p>
+  </div>
+  <div style="text-align:center;">
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Thirty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">00:30</text></svg>
+    <span id="section04-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">00:30</span>
+    <button id="section04-mcq-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+  </div>
+</div>
+<script>
+(function(){function setup(){var b=document.getElementById('section04-mcq-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=30,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-mcq-ring'),e=document.getElementById('section04-mcq-text'),z=document.getElementById('section04-mcq-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
+</script>
+```
 
 ::: notes
-<!-- TODO (students): Did Min discuss how real systems handle mixed user types, or how user types can shift over time? -->
+MCQ. Allow 30 seconds for an individual response, then ask for one justification. Best answer: B. It responds to stated requirements and can explain the match; it still needs careful handling of the student’s terms and catalogue coverage. A, C, and D are plausible fallbacks but do not answer the stated task well.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapter 5.
 :::
 
-## Classical Recommendation Paradigms
+## 🃏 Treatment Lenses Change With the Task
 
-::: {.incremental}
-- **Popularity-based:** Recommend globally popular items — no personalisation
-- **Content-based filtering:** Recommend items similar to what the user has liked, based on item features
-- **Collaborative filtering (CF):** Leverage patterns across many users — no item features needed
-- **Hybrid approaches:** Combine multiple signals for robustness
-:::
+The suits are not demographic labels or permanent personalities. They are **situational lenses** for asking what a recommender should protect or provide.
+
+| Lens | Ask the system to consider |
+|---|---|
+| ♣ **Clubs — adversarial / shill** | manipulation, coordinated abuse, robustness |
+| ♥ **Hearts — social** | social evidence, influence, conformity risk |
+| ♦ **Diamonds — novelty seeker** | freshness, diversity, serendipity, new-item exposure |
+| ♠ **Spades — loyalist / metadata-driven** | stable attributes, filters, consistency, explanation |
 
 ::: notes
-<!-- TODO (students): What specific examples or datasets did Min use to illustrate each paradigm? Were there any live demos? -->
+This combines the introduction and definition of the card-suit lenses. Stress that a student can shift lenses between a routine purchase, a social discovery task, and a high-stakes requirement-driven search.
 :::
 
-## The Cold-Start Problem
+## One Catalogue, Four Different Safeguards
 
-::: {.incremental}
-- **New user cold-start:** No interaction history → cannot personalise
-- **New item cold-start:** No ratings → cannot appear in CF recommendations
-- **System cold-start:** Entirely new platform with no data
-:::
+| Lens | A different design or evaluation question |
+|---|---|
+| ♣ Clubs | Can coordinated ratings force a target item into the list? |
+| ♥ Hearts | Does a social cue inform the user without creating unwanted exposure or conformity? |
+| ♦ Diamonds | Does the list include genuinely new, long-tail, or emerging options? |
+| ♠ Spades | Can the user keep an important attribute fixed and understand why an item appears? |
 
-**Strategies:**
-- Use content features (bypasses interaction requirement)
-- Ask users for explicit preferences onboarding
-- Fall back to popularity-based recommendations
+<u>“Good recommendation” changes when the risk, task, and user situation change.</u>
 
 ::: notes
-<!-- TODO (students): Were any specific industry solutions to cold-start discussed (e.g., onboarding surveys, zero-shot approaches)? -->
+Combine the prior mapping and safeguards slide. Keep the examples concrete but do not suggest that a method maps permanently to one user type. These lenses are carried forward into later technical sections.
 :::
 
-## Ethics Thread: Popularity Bias and Exposure Inequality
+## 👥 Reprise: Find the Recommender <span style="color:#EF7C00;">📶</span> {background-color="#003D7C"}
 
-- Popular items get recommended → more interactions → even more popular (**feedback loop**)
-- Long-tail items receive little to no exposure
-- Who bears the cost? **Niche creators, minority preferences, new entrants**
-
-::: {.callout-warning}
-Recommendation objectives that optimise purely for engagement can systematically disadvantage underrepresented content.
-:::
+```{=html}
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.60em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
+  <div>
+    <p style="font-size:1.18em;font-weight:bold;color:#EF7C00;margin:.25em 0;">Return to the recommendation you audited in Section 01.</p>
+    <ol style="margin:.35em 0;padding-left:1.2em;line-height:1.35;">
+      <li>Name the likely signal and objective.</li>
+      <li>Is it predicting a response or ranking a shortlist?</li>
+      <li>In a catalogue where a small <strong>heavy head</strong> receives most interactions, who is less likely to be shown?</li>
+      <li>Choose one safeguard: a requirement, diversity/coverage target, explanation, or abuse check.</li>
+    </ol>
+    <p style="margin:.4em 0 0;"><strong>Pairs: write a four-line audit. Then ask the AI Voice agent to critique one omitted stakeholder or assumption; challenge its answer.</strong></p>
+  </div>
+  <div style="text-align:center;">
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Five minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">05:00</text></svg>
+    <span id="section04-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">05:00</span>
+    <button id="section04-activity-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+  </div>
+</div>
+<script>
+(function(){function setup(){var b=document.getElementById('section04-activity-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=300,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-activity-ring'),e=document.getElementById('section04-activity-text'),z=document.getElementById('section04-activity-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
+</script>
+```
 
 ::: notes
-<!-- TODO (students): What real-world examples did Min give? Were any papers on fairness in recommendation cited? -->
-:::
-
-## Summary
-
-| Method | Personalised? | Needs Item Features? | Cold-Start Robust? |
-|--------|:---:|:---:|:---:|
-| Popularity | ✗ | ✗ | ✓ |
-| Content-Based | ✓ | ✓ | Partial |
-| User-Based CF | ✓ | ✗ | ✗ |
-| Item-Based CF | ✓ | ✗ | Partial |
-
-**Next week:** Latent Factor Models — matrix factorization, user/item embeddings, and Bayesian Personalized Ranking.
-
-::: notes
-<!-- TODO (students): Were there any additional nuances to this comparison table, or methods not listed here that were discussed? -->
+Small-group activity, 5 minutes. Students reprise the Section 01 audit with a more precise vocabulary: signal, objective, prediction/ranking, heavy head/long tail, and a safeguard. Invite the AI Voice agent only after pairs have written their own audit. Ask it: “Whose interests might this recommendation overlook, and what assumption are you making?” Treat its reply as an object of critique, not an answer. Reserve one minute for two groups to report and correct the idea that a missing interaction is a negative preference.
 :::

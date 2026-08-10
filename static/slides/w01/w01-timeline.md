@@ -9,10 +9,10 @@
 **Lecture:** Recommendation Problems and Classical Methods  
 **Scheduled class time:** 120 minutes (Tuesday, 10:00–12:00 SGT)
 
-**Current run-of-show:** 131 minutes
+**Current run-of-show:** 121 minutes
 **Deck:** [`w01.qmd`](./w01.qmd)
 
-**Scoped revision:** Section 01 now takes 24 minutes, including a 10-minute in-class activity with an AI Voice Mode critique. The current run-of-show deliberately exceeds the scheduled class time so the delivery implications remain visible.
+**Scoped revision:** Section 04 is now a 48-minute sequence that introduces notation, decision goals, signals, classical starting points, and situational treatment lenses. It includes a two-minute signal-hunt activity, a 30-second MCQ, and a five-minute small-group reprise with an AI Voice ethical critique.
 
 This is a delivery run-of-show for the Week 1 slide deck. Times are target durations, including brief transitions between slides. The delivery mode is the primary mode for that slide; the instructor should still handle clarification, pacing, and accessibility throughout.
 
@@ -35,10 +35,10 @@ This is a delivery run-of-show for the Week 1 slide deck. Times are target durat
 | 02 Schedule | 6 | 17 min | 41 min | 13.0% |
 | 03 Assignments & Grading | 7 | 27 min | 68 min | 20.6% |
 | Break | 1 | 5 min | 73 min | 3.8% |
-| 04 Types of Recommendation Systems | 7 | 58 min | 131 min | 44.3% |
-| **Total** | **29** | **131 min** | **131 min** | **100%** |
+| 04 Recommendation Problems and Decision Goals | 11 | 48 min | 121 min | 39.7% |
+| **Total** | **33** | **121 min** | **121 min** | **100%** |
 
-The run-of-show is **11 minutes over** the scheduled class time. Preserve this visible overrun until a later pacing decision is made.
+The run-of-show is **1 minute over** the scheduled class time. Preserve this visible overrun until a later pacing decision is made.
 
 ## Detailed run-of-show
 
@@ -84,22 +84,26 @@ The run-of-show is **11 minutes over** the scheduled class time. Preserve this v
 |---|---:|---:|---|---|
 | `☕ Break` | 5 min | 73 min | Break | Announce the break, start the five-minute timer, and resume with Section 04 when the timer completes. |
 
-### 04 Types of Recommendation Systems — 58 minutes (running total: 131 minutes)
+### 04 Recommendation Problems and Decision Goals — 48 minutes (running total: 121 minutes)
 
 | Slide | Time | Running total | Mode | Delivery plan |
 |---|---:|---:|---|---|
-| `04 Types of Recommendation Systems` | 2 min | 75 min | Instructor | Introduce the technical core of the lecture and state that the class will compare paradigms by user need, available data, and objective. |
-| `A Card-Suit Framework for User Types` | 12 min | 87 min | **Student activity — discussion** | **Student activity:** ask students to choose the card-suit archetype that best describes their behaviour on a familiar platform. Discuss disagreements and emphasise that user types can be mixed and can change by context. |
-| `Matching Systems to User Types` | 8 min | 95 min | Instructor | Explain the mapping from archetype to diversity-aware, social, retrieval-ranking, and content-based approaches. Point out that this is a heuristic, not a fixed taxonomy. |
-| `Classical Recommendation Paradigms` | 10 min | 105 min | Instructor | Teach popularity-based, content-based, collaborative-filtering, and hybrid approaches. For each, name the signal it uses, the personalisation it provides, and one limitation. |
-| `The Cold-Start Problem` | 10 min | 115 min | Instructor | Explain new-user, new-item, and new-system cold start, then compare content features, preference onboarding, and popularity fallbacks. |
-| `Ethics Thread: Popularity Bias and Exposure Inequality` | 10 min | 125 min | Instructor | Explain the popularity feedback loop, identify affected stakeholders, and connect engagement optimisation to long-tail exposure inequality. |
-| `Summary` | 6 min | 131 min | **Student activity — discussion** | **Student activity:** have students use the comparison table to choose methods for a new user, a feature-rich catalogue, and a mature platform. Collect answers, correct misconceptions, and preview latent factor models for Week 2. |
+| `04 Recommendation Problems and Decision Goals` | 1 min | 74 min | Instructor | Preview the user–item matrix, decision goals, available signals, classical starting points, and situational treatment lenses. |
+| `The User–Item Matrix` | 5 min | 79 min | Instructor | Introduce $U$, $I$, $R$, $r_{ui}$, and the observed set $\Omega$. Emphasise that an unobserved entry is not a negative preference. |
+| `From a Score to a Useful List` | 4 min | 83 min | Instructor | Contrast response prediction with top-k ranking and explain why the latter is normally the product decision surface. |
+| `Signals and Usefulness` | 4 min | 87 min | Instructor | Use the left-hand taxonomy to distinguish interaction, item, context, and social/operational signals; use the right-hand list to show that evaluation follows usefulness, not merely data availability. |
+| `👥 Signal Hunt` | 4 min | 91 min | **Student activity — small-group discussion** | **Student activity:** start the two-minute timer. Pairs name three additional signals, classify them or propose a new category, and identify one benefit and one privacy, fairness, or manipulation risk. Take two reports and distinguish collectable from appropriate data. |
+| `Four Classical Starting Points` | 4 min | 95 min | Instructor | Compare popularity, content-based, collaborative-filtering, and knowledge-based approaches by evidence, suitable context, and early limitation. |
+| `When the Matrix Has No Answer` | 4 min | 99 min | Instructor | Treat new users, items, and systems as information gaps. Contrast requirement elicitation, metadata, transparent fallbacks, and long-tail exposure reserves. |
+| `🎰 Bandit Time: What should this system optimise?` | 3 min | 102 min | **Student activity — MCQ** | **Student activity:** give 30 seconds for an individual response, collect justifications, then explain why stated requirements and an explanation best serve the library task while acknowledging trade-offs. |
+| `🃏 Treatment Lenses Change With the Task` | 4 min | 106 min | Instructor | Introduce Clubs, Hearts, Diamonds, and Spades as situational treatment lenses, not fixed or demographic user types. |
+| `One Catalogue, Four Different Safeguards` | 4 min | 110 min | Instructor | Show how the same catalogue produces different robustness, social, novelty/exposure, and metadata/explanation questions. |
+| `👥 Reprise: Find the Recommender 📶` | 11 min | 121 min | **Student activity — small-group discussion + AI Voice critique** | **Student activity:** pairs write a four-line audit of their Section 01 recommendation, including the heavy-head/long-tail exposure consequence and one safeguard. Start the 5-minute timer. Then let the AI Voice agent critique one omitted stakeholder or assumption; students challenge its response. Take two reports and correct misconceptions. |
 
 ## Pacing and facilitation notes
 
 - Keep the three section-title slides short; they are orientation points, not content lectures.
 - Protect the 10-minute `👥 Find the Recommender` small-group activity: timebox the pairs, then reserve time for synthesis.
-- If discussion runs long, shorten the `Weekly Topics (cont.)` discussion first, then the `Summary` discussion.
+- If discussion runs long, shorten the `Weekly Topics (cont.)` discussion first, then reduce the report-out after `👥 Reprise: Find the Recommender 📶`.
 - If the class is quiet, use pairs for 60–90 seconds before taking responses from the room.
 - The instructor remains responsible for factual accuracy, course policy, and the final synthesis after every AI interaction.

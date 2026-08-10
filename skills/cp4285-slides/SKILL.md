@@ -215,6 +215,18 @@ Right content
 - `.callout-warning` — ethical issues, caveats, risks
 - `.callout-note` — supplementary information, reminders
 
+### To Think About Callout
+
+Use a titled Quarto callout, rather than a raw HTML block, for a short reflective question. It follows the warning/note callout convention while using the deck's teal `to-think-about` visual treatment. Keep it to one concise question and place it only where there is sufficient vertical space.
+
+```markdown
+::: {.callout-tip .to-think-about title="🤔 To think about"}
+Does top-*k* apply to users as well as items?
+:::
+```
+
+Define the `.callout.to-think-about`, `.callout-header`, `.callout-title-container`, and `.callout-body` styles in the week theme. Do not recreate the callout shell with an inline `<div>`.
+
 ### Tables
 
 Use Markdown pipe tables. Comparison tables use ✓ / ✗ for boolean values with `:---:` centre-alignment.
