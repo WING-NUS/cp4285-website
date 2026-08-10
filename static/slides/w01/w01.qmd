@@ -1,6 +1,14 @@
 ---
 title: "Recommendation Problems and Classical Methods"
-subtitle: "CP4285 Modern Recommendation Systems — Week 01"
+subtitle: |
+  <span class="w01-title-subtitle">CP4285 Modern Recommendation Systems — Week 01</span>
+  <a class="w01-title-qr" href="https://soc-n.us/cp4285-t2610-w01" target="_blank" rel="noopener" aria-label="Open the Week 01 slide deck">
+    <picture>
+      <source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w01-8a651148bb.svg">
+      <img class="w01-title-qr-image" src="../../uploads/cp4285-t2610-w01-8a651148bb.png" alt="QR code for the Week 01 slide deck">
+    </picture>
+    <span class="w01-title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w01</span></span>
+  </a>
 author: "CP4285 Instruction Team"
 date: "11 Aug 2026"
 date-format: "DD MMM YYYY"
