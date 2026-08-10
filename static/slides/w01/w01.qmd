@@ -474,8 +474,6 @@ Orient students to the decision problem before introducing methods. This section
 
 </div>
 
-<p style="margin:.35em 0 0;font-size:.66em;line-height:1.25;color:#6b7280;">♥ social user &nbsp;·&nbsp; 🆕 new user &nbsp;·&nbsp; 🆕 new item</p>
-
 :::
 ::: {.column width="40%"}
 
@@ -489,7 +487,7 @@ $$R \in \mathbb{R}^{|U|\times|I|}$$
 A `?` is usually **unobserved**, not a negative rating.
 :::
 
-::: {.callout-tip .to-think-about title="🤔 To think about"}
+::: {.callout-tip .to-think-about title="To think about"}
 What forms can “ratings” take?
 :::
 :::
@@ -521,14 +519,14 @@ Estimate a value such as $\widehat{r}_{ui}$ for one user–item pair.
 Order candidate items and present a short list.
 
 *Question:* “Which five films should appear first, now?”
-:::
-:::
-
-::: {.callout-tip .to-think-about title="🤔 To think about"}
-Does top-*k* apply to users as well as items?
-:::
 
 <u>Accurate scores do not automatically make a useful list.</u>
+:::
+:::
+
+::: {.callout-tip .to-think-about title="To think about"}
+Does top-*k* apply to users as well as items?
+:::
 
 ::: notes
 Combine the earlier prediction-versus-ranking distinction with usefulness. Explain that ranking is the usual product surface: users see a small, ordered set rather than a score for every item.
@@ -604,6 +602,31 @@ Use the treemap as a compact taxonomy of inputs. On the right, reprise the disti
 Small-group activity, 2-minute timer plus two minutes for sharing and synthesis. Expected examples include skips, dwell time, completion rate, search queries or reformulations, repeated views, price sensitivity, stock or availability, reports/blocks, creator relationships, and accessibility preferences. Ask students to distinguish what is technically collectable from what is appropriate to collect or infer.
 :::
 
+## 👥 Complete the Classical Methods Table {background-color="#003D7C"}
+
+```{=html}
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.65em;line-height:1.28;color:#fff;">
+  <p style="font-size:1.15em;font-weight:bold;color:#EF7C00;margin:.2em 0 .55em;">In pairs, complete the four orange cells. Be ready to justify one answer from the evidence each method uses.</p>
+  <table style="width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;background:#fff;color:#003D7C;font-size:.92em;">
+    <thead><tr style="background:#fff;color:#003D7C;"><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Approach</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Main evidence</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Useful when</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Early limitation</th></tr></thead>
+    <tbody>
+      <tr><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;"><strong>Popularity</strong></td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">aggregate interactions</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">reinforces the head</td></tr>
+      <tr><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;"><strong>Content-based</strong></td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">item attributes + one user</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">features are meaningful</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td></tr>
+      <tr><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;"><strong>Collaborative filtering</strong></td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">patterns across users</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">sparse or cold data</td></tr>
+      <tr><td style="padding:.48em .65em;"><strong>Knowledge-based</strong></td><td style="padding:.48em .65em;">requirements and constraints</td><td style="padding:.48em .65em;">history is weak</td><td style="padding:.48em .65em;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td></tr>
+    </tbody>
+  </table>
+  <p style="margin:.55em 0 .1em;color:#fff;"><strong>Expected output:</strong> four short completions and one evidence-based justification. <span style="color:#dbeafe;">Untimed by instructor direction.</span></p>
+</div>
+```
+
+::: notes
+Small-group table-completion activity, deliberately untimed at the instructor's direction. Ask students to complete the two missing "Useful when" cells and the two missing "Early limitation" cells before advancing. Prompt: what evidence does each approach need, and what does it systematically fail to see? Take one justification before advancing to the debrief.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1, 2, and 5.
+:::
+
 ## Four Classical Starting Points
 
 | Approach | Main evidence | Useful when | Early limitation |
@@ -614,7 +637,7 @@ Small-group activity, 2-minute timer plus two minutes for sharing and synthesis.
 | Knowledge-based | requirements and constraints | history is weak | needs elicitation |
 
 ::: notes
-Give students a practical map, not a full algorithmic treatment. Position knowledge-based recommendation as a requirements-driven alternative, preparing for Section 06.
+Discussion debrief. Reveal the complete table, draw out why popularity can be a sensible fallback but reinforces the heavy head, and position knowledge-based recommendation as a requirements-driven alternative for Section 06.
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Chapters 1, 2, and 5.
@@ -624,7 +647,7 @@ Give students a practical map, not a full algorithmic treatment. Position knowle
 
 ::: {.columns}
 ::: {.column width="50%"}
-### Cold start
+### ❄️ Cold start
 
 - **New user:** no observed preferences
 - **New item:** no interaction evidence
@@ -681,27 +704,41 @@ MCQ. Allow 30 seconds for an individual response, then ask for one justification
 
 ## 🃏 Treatment Lenses Change With the Task
 
-The suits are not demographic labels or permanent personalities. They are **situational lenses** for asking what a recommender should protect or provide.
+We'll use **card suits** as treatment lenses to reason about the outcomes. These are not demographic labels or permanent personalities. They are **situational lenses** for asking what a recommender should protect or provide.
 
 | Lens | Ask the system to consider |
 |---|---|
 | ♣ **Clubs — adversarial / shill** | manipulation, coordinated abuse, robustness |
-| ♥ **Hearts — social** | social evidence, influence, conformity risk |
-| ♦ **Diamonds — novelty seeker** | freshness, diversity, serendipity, new-item exposure |
+| <span style="color:#D32F2F;">♥</span> **Hearts — social** | social evidence, influence, conformity risk |
+| <span style="color:#D32F2F;">♦</span> **Diamonds — novelty seeker** | freshness, diversity, serendipity, new-item exposure |
 | ♠ **Spades — loyalist / metadata-driven** | stable attributes, filters, consistency, explanation |
 
 ::: notes
 This combines the introduction and definition of the card-suit lenses. Stress that a student can shift lenses between a routine purchase, a social discovery task, and a high-stakes requirement-driven search.
 :::
 
-## One Catalogue, Four Different Safeguards
+## 🃏 Four Different Safeguards
 
-| Lens | A different design or evaluation question |
-|---|---|
-| ♣ Clubs | Can coordinated ratings force a target item into the list? |
-| ♥ Hearts | Does a social cue inform the user without creating unwanted exposure or conformity? |
-| ♦ Diamonds | Does the list include genuinely new, long-tail, or emerging options? |
-| ♠ Spades | Can the user keep an important attribute fixed and understand why an item appears? |
+::: {.columns}
+::: {.column width="50%"}
+### <span style="color:#000000;">♣</span> Clubs
+
+Can coordinated ratings force a target item into the list?
+
+### <span style="color:#D32F2F;">♥</span> Hearts
+
+Does a social cue inform the user without creating unwanted exposure or conformity?
+:::
+::: {.column width="50%"}
+### <span style="color:#D32F2F;">♦</span> Diamonds
+
+Does the list include genuinely new, long-tail, or emerging options?
+
+### <span style="color:#000000;">♠</span> Spades
+
+Can the user keep an important attribute fixed and understand why an item appears?
+:::
+:::
 
 <u>“Good recommendation” changes when the risk, task, and user situation change.</u>
 
@@ -709,7 +746,7 @@ This combines the introduction and definition of the card-suit lenses. Stress th
 Combine the prior mapping and safeguards slide. Keep the examples concrete but do not suggest that a method maps permanently to one user type. These lenses are carried forward into later technical sections.
 :::
 
-## 👥 Reprise: Find the Recommender <span style="color:#EF7C00;">📶</span> {background-color="#003D7C"}
+## 👥 Reprise: Find the Recommender {background-color="#003D7C"}
 
 ```{=html}
 <div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.60em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
@@ -721,7 +758,7 @@ Combine the prior mapping and safeguards slide. Keep the examples concrete but d
       <li>In a catalogue where a small <strong>heavy head</strong> receives most interactions, who is less likely to be shown?</li>
       <li>Choose one safeguard: a requirement, diversity/coverage target, explanation, or abuse check.</li>
     </ol>
-    <p style="margin:.4em 0 0;"><strong>Pairs: write a four-line audit. Then ask the AI Voice agent to critique one omitted stakeholder or assumption; challenge its answer.</strong></p>
+    <p style="margin:.4em 0 0;"><strong>Pairs: write a four-line audit.<BR/>📶 critique one omitted stakeholder or assumption; challenge its answer.</strong></p>
   </div>
   <div style="text-align:center;">
     <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Five minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">05:00</text></svg>

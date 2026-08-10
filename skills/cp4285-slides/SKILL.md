@@ -220,12 +220,12 @@ Right content
 Use a titled Quarto callout, rather than a raw HTML block, for a short reflective question. It follows the warning/note callout convention while using the deck's teal `to-think-about` visual treatment. Keep it to one concise question and place it only where there is sufficient vertical space.
 
 ```markdown
-::: {.callout-tip .to-think-about title="🤔 To think about"}
+::: {.callout-tip .to-think-about title="To think about"}
 Does top-*k* apply to users as well as items?
 :::
 ```
 
-Define the `.callout.to-think-about`, `.callout-header`, `.callout-title-container`, and `.callout-body` styles in the week theme. Do not recreate the callout shell with an inline `<div>`.
+Quarto places the custom class on a wrapper around the generated callout. Define `.to-think-about .callout`, `.callout-body`, `.callout-title`, `.callout-title-container`, and `.callout-content` styles in the week theme. Match the standard callout convention: use a teal title band and a white content area, with the same dark neutral text (`#333333`) used by Warning and Note callouts; reset paragraph margins and `min-height` so the callout has no surplus vertical space. Hide the default tip icon and use `.to-think-about .callout-icon-container::before { content: "🤔"; }`; make the title a flex row with a `0.35em` gap so the thinker and title have one clear space. Do not recreate the callout shell with an inline `<div>`.
 
 ### Tables
 

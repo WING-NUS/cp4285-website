@@ -14,7 +14,7 @@ $selection-bg: #EF7C00;
 }
 
 .reveal h1, .reveal h2 {
-  color: #003D7C;
+  color: #333333;
   border-bottom: 3px solid #EF7C00;
   padding-bottom: 0.2em;
 }
@@ -52,29 +52,66 @@ $selection-bg: #EF7C00;
   font-size: 0.88em;
 }
 
-.reveal .callout.to-think-about {
+.reveal .to-think-about .callout {
   margin-top: 0.7em;
   border-left: 5px solid #00796B;
   border-radius: 0 6px 6px 0;
+  background: #ffffff;
   color: #003D7C;
   font-size: 0.72em;
   line-height: 1.25;
+  overflow: hidden;
 }
 
-.reveal .callout.to-think-about .callout-header {
+.reveal .to-think-about .callout-body {
+  display: block;
+  min-height: 0 !important;
+  padding: 0 !important;
+  background: #ffffff;
+}
+
+.reveal .to-think-about .callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 !important;
   padding: 0.42em 0.75em;
-  background: #CFE8E2;
-  color: #00796B;
+  background: #CFE8E2 !important;
+  color: #333333 !important;
 }
 
-.reveal .callout.to-think-about .callout-title-container {
-  color: #00796B;
+.reveal .to-think-about .callout-title-container {
+  color: #333333 !important;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.reveal .callout.to-think-about .callout-body {
-  padding: 0.45em 0.75em;
-  background: #E4F2EF;
-  color: #003D7C;
+.reveal .to-think-about .callout-content {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0.45em 0.75em !important;
+  background: #ffffff;
+  color: #333333;
+}
+
+.reveal .to-think-about .callout-content p,
+.reveal .to-think-about .callout-title p {
+  margin: 0 !important;
+  color: #333333 !important;
+}
+
+.reveal .to-think-about .callout-title p,
+.reveal .to-think-about .callout-title strong {
+  color: #333333 !important;
+}
+
+.reveal .to-think-about .callout-icon {
+  display: none;
+}
+
+.reveal .to-think-about .callout-icon-container::before {
+  content: "🤔";
+  display: inline-block;
+  font-size: 1.35em;
+  line-height: 1;
 }
