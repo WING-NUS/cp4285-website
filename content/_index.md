@@ -28,6 +28,19 @@ sections:
       css_class: "nus-hero"
       background:
         color: "#061323"
+  - block: markdown
+    content:
+      text: |
+        <section class="page-changelog" aria-labelledby="home-changelog-title">
+          <h5 id="home-changelog-title">Changelog</h5>
+          <ul>
+            <li><strong>17 Jun 2026</strong> — Clarified the CP428x pilot-course context.</li>
+            <li><strong>17 Jun 2026</strong> — Added course rhythm, learning outcomes, and course-page links.</li>
+            <li><strong>17 Jun 2026</strong> — Updated the course overview and WING.NUS information.</li>
+          </ul>
+        </section>
+    design:
+      css_class: "bg-white dark:bg-gray-950"
   - block: course-notice
     content:
       text: This website is provided for external and public reference. Course materials and any timely course information are communicated only within Canvas.

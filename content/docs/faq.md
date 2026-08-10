@@ -1,7 +1,16 @@
 ---
 title: Frequently Asked Questions (FAQ)
 weight: 25
+changelog:
+  - date: 10 Aug 2026
+    text: Added the default Mon, 23:59 SGT assignment-deadline policy.
+  - date: 10 Aug 2026
+    text: Updated project-group formation and the Week 03 declaration deadline.
+  - date: 10 Aug 2026
+    text: Added exact essay and final-presentation dates.
 ---
+
+{{< changelog >}}
 
 For questions about lecture material, please use the relevant weekly discussion thread.
 

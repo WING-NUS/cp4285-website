@@ -1,7 +1,16 @@
 ---
 title: Assignments
 weight: 20
+changelog:
+  - date: 10 Aug 2026
+    text: Default assignment deadlines are Mon, 23:59 SGT.
+  - date: 10 Aug 2026
+    text: Project teams are 2–4 students, with Min able to adjust membership to support diversity.
+  - date: 10 Aug 2026
+    text: Added essay and Project Mini-team Declaration deadlines.
 ---
+
+{{< changelog >}}
 
 Coursework is organized around steady participation, written critique, project work, and short checks on core concepts. The final exam assesses individual understanding across the semester.
 

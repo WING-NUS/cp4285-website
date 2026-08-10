@@ -1,7 +1,16 @@
 ---
 title: Grading
 weight: 30
+changelog:
+  - date: 10 Aug 2026
+    text: Added the default Mon, 23:59 SGT assignment-deadline policy.
+  - date: 17 Jun 2026
+    text: Clarified AI use and declaration requirements for individual essays.
+  - date: 17 Jun 2026
+    text: Consolidated assessment, academic-honesty, and late-submission guidance.
 ---
+
+{{< changelog >}}
 
 ## Assessment Breakdown
 

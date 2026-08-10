@@ -32,6 +32,44 @@ a {
   text-underline-offset: 0.18em;
 }
 
+.page-changelog {
+  margin: 0 0 1.75rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #ef7c00;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: rgba(0, 61, 124, 0.05);
+  color: #4b5563;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.page-changelog h5 {
+  margin: 0 0 0.3rem;
+  color: #003d7c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.page-changelog ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.page-changelog li + li {
+  margin-top: 0.15rem;
+}
+
+.dark .page-changelog {
+  background: rgba(96, 165, 250, 0.12);
+  color: #d1d5db;
+}
+
+.dark .page-changelog h5 {
+  color: #93c5fd;
+}
+
 .nav-link[href="https://canvas.nus.edu.sg/courses/98339"] {
   display: inline-flex;
   align-items: center;

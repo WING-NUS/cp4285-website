@@ -1,0 +1,10 @@
+{{- with .Page.Params.changelog -}}
+<section class="page-changelog" aria-labelledby="page-changelog-title">
+  <h5 id="page-changelog-title">Changelog</h5>
+  <ul>
+    {{- range first 3 . -}}
+      <li><strong>{{ .date }}</strong> — {{ .text }}</li>
+    {{- end -}}
+  </ul>
+</section>
+{{- end -}}

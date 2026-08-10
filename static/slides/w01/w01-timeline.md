@@ -1,5 +1,11 @@
 # CP4285 Week 1 Lecture Timeline
 
+##### Changelog
+
+- **10 Aug 2026** — Added the Mon, 23:59 SGT default-deadline policy and exact assessment deadlines.
+- **10 Aug 2026** — Updated project-team formation: Min may adjust teams to support diversity.
+- **10 Aug 2026** — Synced the delivery plan to the authoritative Week 01 slide order and activity treatment.
+
 **Lecture:** Recommendation Problems and Classical Methods  
 **Scheduled class time:** 120 minutes (Tuesday, 10:00–12:00 SGT)
 
