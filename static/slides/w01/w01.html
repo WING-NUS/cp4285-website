@@ -2198,16 +2198,16 @@ display:block!important;
     <p style="margin:.45em 0 0;"><strong>Choose one answer and name one trade-off.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewbox="0 0 180 180" aria-label="Thirty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle cx="90" cy="90" r="62" fill="#fff"></circle><circle id="section04-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="section04-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">00:30</text></svg>
-    <span id="section04-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">00:30</span>
+    <svg width="140" height="140" viewbox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle cx="90" cy="90" r="62" fill="#fff"></circle><circle id="section04-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="section04-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">00:20</text></svg>
+    <span id="section04-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">00:20</span>
     <button id="section04-mcq-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
 </div>
 <script>
-(function(){function setup(){var b=document.getElementById('section04-mcq-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=30,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-mcq-ring'),e=document.getElementById('section04-mcq-text'),z=document.getElementById('section04-mcq-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
+(function(){function setup(){var b=document.getElementById('section04-mcq-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=20,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-mcq-ring'),e=document.getElementById('section04-mcq-text'),z=document.getElementById('section04-mcq-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
 </script>
 <aside class="notes">
-<p>MCQ. Allow 30 seconds for an individual response, then ask for one justification. Best answer: B. It responds to stated requirements and can explain the match; it still needs careful handling of the student’s terms and catalogue coverage. A, C, and D are plausible fallbacks but do not answer the stated task well.</p>
+<p>MCQ. Allow 20 seconds for an individual response, then ask for one justification. Best answer: B. It responds to stated requirements and can explain the match; it still needs careful handling of the student’s terms and catalogue coverage. A, C, and D are plausible fallbacks but do not answer the stated task well.</p>
 <p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender systems: The textbook</em>, Chapter 5.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -2311,16 +2311,16 @@ display:block!important;
     <p style="margin:.4em 0 0;"><strong>Pairs: write a four-line audit.<br>📶 critique one omitted stakeholder or assumption; challenge its answer.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewbox="0 0 180 180" aria-label="Five minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle cx="90" cy="90" r="62" fill="#fff"></circle><circle id="section04-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="section04-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">05:00</text></svg>
-    <span id="section04-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">05:00</span>
+    <svg width="140" height="140" viewbox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle cx="90" cy="90" r="62" fill="#fff"></circle><circle id="section04-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="section04-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">03:00</text></svg>
+    <span id="section04-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
     <button id="section04-activity-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
 </div>
 <script>
-(function(){function setup(){var b=document.getElementById('section04-activity-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=300,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-activity-ring'),e=document.getElementById('section04-activity-text'),z=document.getElementById('section04-activity-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
+(function(){function setup(){var b=document.getElementById('section04-activity-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=180,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-activity-ring'),e=document.getElementById('section04-activity-text'),z=document.getElementById('section04-activity-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
 </script>
 <aside class="notes">
-<p>Small-group activity, 5 minutes. Students reprise the Section 01 audit with a more precise vocabulary: signal, objective, prediction/ranking, heavy head/long tail, and a safeguard. Invite the AI Voice agent only after pairs have written their own audit. Ask it: “Whose interests might this recommendation overlook, and what assumption are you making?” Treat its reply as an object of critique, not an answer. Reserve one minute for two groups to report and correct the idea that a missing interaction is a negative preference.</p>
+<p>Small-group activity, 3-minute timer. Students reprise the Section 01 audit with a more precise vocabulary: signal, objective, prediction/ranking, heavy head/long tail, and a safeguard. Invite the AI Voice agent only after pairs have written their own audit. Ask it: “Whose interests might this recommendation overlook, and what assumption are you making?” Treat its reply as an object of critique, not an answer. Reserve one minute for two groups to report and correct the idea that a missing interaction is a negative preference.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2995,6 +2995,21 @@ display:block!important;
 <span style="color:#00796B;font-weight:bold;">Threshold (<span class="math inline">\(\beta\)</span>):</span> the overlap at which no further discount applies.
 </p>
 </div>
+<div class="to-think-about" title="To think about">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>To think about</strong></p>
+</div>
+<div class="callout-content">
+<p>This is a discount factor for users. Does it make sense for items?</p>
+</div>
+</div>
+</div>
+</div>
 </div><div class="column" style="width:44%;">
 <h3 id="interpretation">Interpretation</h3>
 <p>One striking shared rating should not carry the same weight as twenty.</p>
@@ -3046,24 +3061,36 @@ display:block!important;
 </section>
 <section id="discussion-which-similarity-axis" class="slide level2" data-background-color="#003D7C">
 <h2><span style="color:#ffffff;">👥 Discussion: Which Similarity Axis?</span></h2>
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1.1em 1.45em;color:#fff;font-size:.72em;line-height:1.3;">
-  <p style="font-size:1.34em;font-weight:bold;color:#EF7C00;margin:0 0 .6em;">When would user-based or item-based similarity be more effective?</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6em;">
-    <div style="padding:.8em 1em;border:1px solid rgba(255,255,255,.55);border-radius:8px;">
-      <p style="font-size:1.13em;font-weight:bold;margin:0 0 .35em;color:#fff;">User-based: compare rows</p>
-      <p style="margin:0;">When might a person&#39;s nearest neighbours be reliable enough to recommend from?</p>
+<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1.1em 1.45em;color:#fff;font-size:.69em;line-height:1.28;display:grid;grid-template-columns:minmax(0,1fr) 185px;gap:1.25em;align-items:center;">
+  <div>
+    <p style="font-size:1.22em;font-weight:bold;color:#EF7C00;margin:0 0 .6em;">When would user-based or item-based similarity be more effective?</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.15em;">
+      <div style="padding:.75em .9em;border:1px solid rgba(255,255,255,.55);border-radius:8px;">
+        <p style="font-size:1.1em;font-weight:bold;margin:0 0 .3em;color:#fff;">User-based: compare rows</p>
+        <p style="margin:0;">When might a person&#39;s nearest neighbours be reliable enough to recommend from?</p>
+      </div>
+      <div style="padding:.75em .9em;border:1px solid rgba(255,255,255,.55);border-radius:8px;">
+        <p style="font-size:1.1em;font-weight:bold;margin:0 0 .3em;color:#fff;">Item-based: compare columns</p>
+        <p style="margin:0;">When might relationships between items be more stable or useful?</p>
+      </div>
     </div>
-    <div style="padding:.8em 1em;border:1px solid rgba(255,255,255,.55);border-radius:8px;">
-      <p style="font-size:1.13em;font-weight:bold;margin:0 0 .35em;color:#fff;">Item-based: compare columns</p>
-      <p style="margin:0;">When might relationships between items be more stable or useful?</p>
+    <div style="margin-top:.8em;padding:.68em .9em;background:#fff;color:#293241;border-radius:8px;">
+      <strong style="color:#003D7C;">Pairs:</strong> choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br>
+      <strong style="color:#003D7C;">Suit lenses:</strong> ♣ robustness/shill · <span style="color:#D32F2F;">♥</span> social · <span style="color:#D32F2F;">♦</span> novelty/exposure · ♠ metadata/constraints.<br>
+      Which lens would change your choice or confidence?
     </div>
   </div>
-  <div style="margin-top:1em;padding:.75em 1em;background:#fff;color:#293241;border-radius:8px;">
-    <strong style="color:#003D7C;">Pairs — 3 minutes:</strong> choose a setting (e.g., films, groceries, music, courses). Make a claim for one axis, then give one data-pattern or product reason that could reverse your choice.<br><strong style="color:#003D7C;">Suit lens:</strong> which treatment lens would change your choice or your confidence in it?
+  <div style="text-align:center;">
+    <svg width="140" height="140" viewbox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle cx="90" cy="90" r="62" fill="#fff"></circle><circle id="similarity-axis-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="similarity-axis-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#003D7C">03:00</text></svg>
+    <span id="similarity-axis-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
+    <button id="similarity-axis-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
   </div>
 </div>
+<script>
+(function(){function setup(){var b=document.getElementById('similarity-axis-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=180,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('similarity-axis-ring'),e=document.getElementById('similarity-axis-text'),z=document.getElementById('similarity-axis-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
+</script>
 <aside class="notes">
-<p>Untimed discussion slide. Give pairs roughly three minutes, but do not start a countdown timer. Invite one user-based and one item-based argument. Productive reasons include the number and stability of items, changing user tastes, repeatability of item relationships, sparsity patterns, and computational update costs. Close by asking which card-suit treatment lens would alter the conclusion or its confidence. Make clear that “more effective” depends on the data and use case, not a universal rule.</p>
+<p>Start the three-minute timer. Invite one user-based and one item-based argument. Productive reasons include the number and stability of items, changing user tastes, repeatability of item relationships, sparsity patterns, and computational update costs. Make the suit lenses concrete: Clubs foreground robustness and shills; Hearts social evidence and conformity; Diamonds novelty and long-tail exposure; Spades metadata, constraints, and explanation. Make clear that “more effective” depends on the data and use case, not a universal rule.</p>
 <p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender systems: The textbook</em>, Sections 2.3.1–2.3.2, pp. 37–41.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -3113,8 +3140,23 @@ Changes the comparison axis or discounts weak overlap.
 🤞 Ask which entries, baselines, and confidence assumptions shape the neighbours.
 </p>
 </div>
+<div class="to-think-about" title="To think about">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>To think about</strong></p>
+</div>
+<div class="callout-content">
+<p>We can use similarity thresholds to calculate a neighbourhood instead of truncating to top <span class="math inline">\(k\)</span>. When is that a good idea?</p>
+</div>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>Use this key slide to contrast methods rather than declare one universal winner. Pearson and adjusted cosine both centre ratings but on different comparison axes; raw cosine preserves the original scale; significance weighting adjusts confidence in any base similarity.</p>
+<p>Use this key slide to contrast methods rather than declare one universal winner. Pearson and adjusted cosine both centre ratings but on different comparison axes; raw cosine preserves the original scale; significance weighting adjusts confidence in any base similarity. Ask when a similarity threshold is preferable to a fixed top-<span class="math inline">\(k\)</span>: for example, when a score has a meaningful quality boundary, while noting that the number of neighbours can then vary sharply across users or items.</p>
 <p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender systems: The textbook</em>, Sections 2.3.1.1-2.3.2, pp. 37-41.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -3131,7 +3173,7 @@ display:block!important;
 <section id="from-neighbours-to-a-prediction" class="slide level2">
 <h2>From Neighbours to a Prediction</h2>
 <p><span class="math display">\[
-\hat r_{uj}=\color{teal}{\mu_u}+
+\hat{r}_{uj}=\color{teal}{\mu_u}+
 \frac{\sum_{\color{orange}{v\in P_u(j)}} \color{navy}{\operatorname{sim}(u,v)}\,\bigl(\color{teal}{r_{vj}-\mu_v}\bigr)}
 {\sum_{\color{orange}{v\in P_u(j)}}\left|\color{navy}{\operatorname{sim}(u,v)}\right|}
 \]</span></p>
@@ -3146,7 +3188,7 @@ display:block!important;
 <li>choose a similarity</li>
 <li>select valid top-<span class="math inline">\(k\)</span> neighbours</li>
 <li>aggregate their evidence</li>
-<li>rank candidate items by <span class="math inline">\(\hat r_{uj}\)</span></li>
+<li>rank candidate items by <span class="math inline">\(\hat{r}_{uj}\)</span></li>
 </ol>
 </div></div>
 <aside class="notes">
@@ -3168,7 +3210,7 @@ display:block!important;
 <h2>🔑 Key Point: A Neighbourhood Is a Choice</h2>
 <div style="color:#fff;font-size:1.05em;line-height:1.35;margin-top:.8em;">
 <p>
-<u>Collaborative filtering turns partial overlaps into a local estimate — and every choice of overlap, normalisation, threshold, and top-(k) changes that estimate.</u>
+<u>Collaborative filtering turns partial overlaps into a local estimate — and every choice of overlap, normalisation, threshold, and top-<span class="math inline">\(k\)</span> changes that estimate.</u>
 </p>
 <p style="margin-top:1.2em;color:#EF7C00;font-weight:bold;">
 🤞 Before trusting a neighbour, ask: what evidence made it close?
