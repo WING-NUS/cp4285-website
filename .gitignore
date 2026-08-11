@@ -77,3 +77,6 @@ _vendor/
 
 # Personal working notes derived from local course materials (never commit)
 local-notes/
+
+# Local lecture delivery timelines
+static/slides/**/*-timeline.md
