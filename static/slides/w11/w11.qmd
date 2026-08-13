@@ -1,0 +1,52 @@
+---
+title: "Exploration and Online Learning"
+subtitle: |
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 11</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w11" target="_blank" rel="noopener"><picture><source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w11-f11a7d892a.svg"><img class="title-qr-image" src="../../uploads/cp4285-t2610-w11-f11a7d892a.png" alt="QR code for the Week 11 slide deck"></picture><span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w11</span></span></a>
+author: "CP4285 Instruction Team"
+date: "27 Oct 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../w01/w01-custom.scss]
+    include-in-header: ../shared-title-qr-style.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 11 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Overview {background-color="#EF7C00"}
+## Week 11: Exploration and Online Learning
+## Learning outcomes
+- Explain exploration strategies.
+- Design adaptive recommendation policies.
+- Analyze recommendation feedback loops.
+- Discuss ethical implications of experimentation.
+---
+
+# 02 Adaptive Policies {background-color="#EF7C00"}
+## Multi-armed and contextual bandits
+> TODO: add exploration-exploitation examples.
+## Ethics Thread: Online experimentation
+::: {.callout-warning}
+TODO: examine fair exposure and experimental risk.
+:::
+---
+
+# Summary {background-color="#003D7C"}
+## 🔑 <u>Learning online changes what the system chooses to observe.</u>
+**Next week:** LLMs, generative recommendation, and research frontiers.
+
+::: notes
+TODO (instructor): close with the stated transition.
+:::

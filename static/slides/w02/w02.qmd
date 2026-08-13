@@ -1,0 +1,131 @@
+---
+title: "Latent Factor Models"
+subtitle: |
+  <span class="w02-title-subtitle">CP4285 Modern Recommendation Systems — Week 02</span>
+  <a class="w02-title-qr" href="https://soc-n.us/cp4285-t2610-w02" target="_blank" rel="noopener" aria-label="Open the Week 02 slide deck">
+    <picture>
+      <source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w02-5c5eae8c39.svg">
+      <img class="w02-title-qr-image" src="../../uploads/cp4285-t2610-w02-5c5eae8c39.png" alt="QR code for the Week 02 slide deck">
+    </picture>
+    <span class="w02-title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w02</span></span>
+  </a>
+author: "CP4285 Instruction Team"
+date: "18 Aug 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../w01/w01-custom.scss]
+    include-in-header: w02-title-style.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 02 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Overview {background-color="#EF7C00"}
+
+## Week 2: Latent Factor Models
+
+This stub establishes the structure for the Week 2 lecture. Detailed examples, activities, delivery notes, and selected user-type treatments will be added in the content-authoring pass.
+
+::: notes
+TODO (instructor): introduce the shift from local neighbourhood overlap to learned latent representations.
+:::
+
+## Learning outcomes
+
+By the end of this session, students should be able to:
+
+- Explain latent-factor models.
+- Train embedding-based recommenders.
+- Compare prediction and ranking objectives.
+- Discuss risks of learning from historical behavior.
+
+::: notes
+TODO (instructor): connect these outcomes to the Week 1 distinction between sparse local evidence and inferred structure.
+:::
+
+---
+
+# 02 From Neighbours to Latent Structure {background-color="#EF7C00"}
+
+## Why local overlap is not always enough
+
+> TODO: Add a motivating sparse user-item example and the limitations of neighborhood-based collaborative filtering.
+
+::: notes
+TODO (author): develop the transition from Week 1. Before adding topic-specific user-type treatment, ask which of Clubs, Hearts, Diamonds, and Spades should be included.
+:::
+
+## Matrix factorization intuition
+
+> TODO: Introduce user and item embeddings, latent dimensions, and the dot-product prediction intuitively before formal notation.
+
+::: notes
+TODO (author): add one compact visual and one worked example. Use MathJax for the formal model.
+:::
+
+## Training a latent-factor model
+
+> TODO: Add the learning objective, regularization, and an implementation pathway using the selected course framework.
+
+::: notes
+TODO (author): distinguish explicit-feedback prediction from implicit-feedback ranking.
+:::
+
+---
+
+# 03 Objectives, Evidence, and Consequences {background-color="#EF7C00"}
+
+## Prediction and ranking objectives
+
+> TODO: Compare rating prediction with ranking-oriented objectives and evaluation consequences.
+
+::: notes
+TODO (author): add an activity only after confirming whether it should use the default three-minute countdown timer.
+:::
+
+## Ethics Thread: Historical Behaviour
+
+::: {.callout-warning}
+TODO: Explain how representations learned from historical interactions can encode uneven exposure, feedback loops, and past inequities.
+:::
+
+::: notes
+TODO (author): add a concrete case and explicit stakeholder question. Confirm relevant user-type treatments before drafting this material.
+:::
+
+## Implementation laboratory
+
+> TODO: Add a reproducible embedding-based recommender exercise, dataset choice, and expected outputs.
+
+::: notes
+TODO (author): align the exercise with the session outcome on training embedding-based recommenders.
+:::
+
+---
+
+# 04 Summary {background-color="#003D7C"}
+
+## 🔑 <u>Latent factors infer shared structure from sparse interactions.</u>
+
+| Week 1: Neighborhood CF | Week 2: Latent-factor models |
+|---|---|
+| Uses observed local overlap | TODO: describe learned global structure |
+| Similarity is specified directly | TODO: describe learned representations |
+| Sparse overlap is a central constraint | TODO: describe the intended mitigation and its limits |
+
+**Next week:** evaluate recommendation systems using ranking metrics and realistic offline protocols.
+
+::: notes
+TODO (instructor): replace remaining TODOs before delivering the lecture; retain this final summary slide as the close.
+:::

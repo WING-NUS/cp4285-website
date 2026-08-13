@@ -1,0 +1,52 @@
+---
+title: "Learning-to-Rank"
+subtitle: |
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 08</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w08" target="_blank" rel="noopener"><picture><source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w08-875e6e2de2.svg"><img class="title-qr-image" src="../../uploads/cp4285-t2610-w08-875e6e2de2.png" alt="QR code for the Week 08 slide deck"></picture><span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w08</span></span></a>
+author: "CP4285 Instruction Team"
+date: "06 Oct 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../w01/w01-custom.scss]
+    include-in-header: ../shared-title-qr-style.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 08 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Overview {background-color="#EF7C00"}
+## Week 8: Learning-to-Rank
+## Learning outcomes
+- Formulate ranking objectives.
+- Compare ranking approaches.
+- Analyze position bias.
+- Discuss fairness implications of ranking.
+---
+
+# 02 Ranking Objectives {background-color="#EF7C00"}
+## Pointwise, pairwise, and listwise learning
+> TODO: add LambdaRank intuition and worked examples.
+## Ethics Thread: Position bias
+::: {.callout-warning}
+TODO: examine fair ranking under biased feedback.
+:::
+---
+
+# Summary {background-color="#003D7C"}
+## 🔑 <u>A ranking objective encodes which errors matter most.</u>
+**Next week:** graph-based recommendation.
+
+::: notes
+TODO (instructor): close with the stated transition.
+:::

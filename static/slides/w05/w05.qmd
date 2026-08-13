@@ -1,0 +1,75 @@
+---
+title: "Sequential and Session-Based Recommendation"
+subtitle: |
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 05</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w05" target="_blank" rel="noopener"><picture><source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w05-6a94f6fcd9.svg"><img class="title-qr-image" src="../../uploads/cp4285-t2610-w05-6a94f6fcd9.png" alt="QR code for the Week 05 slide deck"></picture><span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w05</span></span></a>
+author: "CP4285 Instruction Team"
+date: "08 Sep 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../w01/w01-custom.scss]
+    include-in-header: ../shared-title-qr-style.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 05 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Overview {background-color="#EF7C00"}
+
+## Week 5: Sequential and Session-Based Recommendation
+
+## Learning outcomes
+
+- Model temporal preferences.
+- Implement next-item prediction.
+- Compare static and dynamic representations.
+- Critically assess engagement-driven objectives.
+
+::: notes
+TODO (instructor): connect the outcomes to the lecture sequence.
+:::
+
+---
+
+# 02 Sequence Models {background-color="#EF7C00"}
+
+## From sessions to next-item prediction
+
+> TODO: add GRU4Rec, SASRec, and Transformer recommender material.
+
+::: notes
+TODO (author): develop this concept with a worked example.
+:::
+
+## Ethics Thread: Engagement objectives
+
+::: {.callout-warning}
+TODO: examine manipulation risks in engagement optimization.
+:::
+
+::: notes
+TODO (author): add a concrete stakeholder question.
+:::
+
+---
+
+# Summary {background-color="#003D7C"}
+
+## 🔑 <u>Time changes what a preference signal means.</u>
+
+**Next week:** retrieval and ranking architectures.
+
+::: notes
+TODO (instructor): close with the stated transition.
+:::

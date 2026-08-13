@@ -1,0 +1,85 @@
+---
+title: "Evaluation of Recommendation Systems"
+subtitle: |
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 03</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w03" target="_blank" rel="noopener"><picture><source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w03-8c8ed9b2aa.svg"><img class="title-qr-image" src="../../uploads/cp4285-t2610-w03-8c8ed9b2aa.png" alt="QR code for the Week 03 slide deck"></picture><span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w03</span></span></a>
+author: "CP4285 Instruction Team"
+date: "25 Aug 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../w01/w01-custom.scss]
+    include-in-header: ../shared-title-qr-style.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 03 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Overview {background-color="#EF7C00"}
+
+## Week 3: Evaluation of Recommendation Systems
+
+This stub will develop offline protocols, ranking metrics, and their limitations.
+
+::: notes
+TODO: add examples, activities, and delivery notes.
+:::
+
+## Learning outcomes
+
+- Design evaluation protocols.
+- Compute ranking metrics.
+- Critique metric selection.
+- Explain limitations of offline evaluation.
+
+::: notes
+TODO (instructor): connect the outcomes to the lecture sequence.
+:::
+
+---
+
+# 02 Evaluation Design {background-color="#EF7C00"}
+
+## Offline evaluation protocols
+
+> TODO: introduce splits, candidate sets, and leakage safeguards.
+
+::: notes
+TODO (author): develop this concept with a worked example.
+:::
+
+## Ethics Thread: What metrics omit
+
+::: {.callout-warning}
+TODO: examine whose outcomes may be invisible in an accuracy-only evaluation.
+:::
+
+::: notes
+TODO (author): add a concrete stakeholder question.
+:::
+
+---
+
+# Summary {background-color="#003D7C"}
+
+## 🔑 <u>Evaluation choices define what counts as a good recommendation.</u>
+
+| Measure | TODO |
+|---|---|
+| Ranking quality | Add metric and interpretation |
+
+**Next week:** neural recommendation models.
+
+::: notes
+TODO (instructor): close with the stated transition.
+:::

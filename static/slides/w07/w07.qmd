@@ -1,0 +1,52 @@
+---
+title: "Project Design Critique Workshop"
+subtitle: |
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 07</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w07" target="_blank" rel="noopener"><picture><source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w07-127339c4dd.svg"><img class="title-qr-image" src="../../uploads/cp4285-t2610-w07-127339c4dd.png" alt="QR code for the Week 07 slide deck"></picture><span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w07</span></span></a>
+author: "CP4285 Instruction Team"
+date: "29 Sep 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../w01/w01-custom.scss]
+    include-in-header: ../shared-title-qr-style.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 07 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Workshop {background-color="#EF7C00"}
+## Week 7: Project Design Critique Workshop
+## Learning outcomes
+- Defend recommendation-system designs.
+- Critique evaluation strategies.
+- Identify ethical risks early.
+- Refine project scope based on feedback.
+---
+
+# 02 Peer Critique {background-color="#EF7C00"}
+## Project design review
+> TODO: add critique prompts, timing, and submission workflow.
+## Ethics Thread: Scope and feasibility
+::: {.callout-warning}
+TODO: connect design choices to bias and stakeholder risks.
+:::
+---
+
+# Summary {background-color="#003D7C"}
+## 🔑 <u>A defensible project starts with a well-specified recommendation problem.</u>
+**Next week:** learning-to-rank.
+
+::: notes
+TODO (instructor): close with the stated transition.
+:::

@@ -1,0 +1,52 @@
+---
+title: "Final Project Presentations"
+subtitle: |
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 13</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w13" target="_blank" rel="noopener"><picture><source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w13-17c61cd00b.svg"><img class="title-qr-image" src="../../uploads/cp4285-t2610-w13-17c61cd00b.png" alt="QR code for the Week 13 slide deck"></picture><span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w13</span></span></a>
+author: "CP4285 Instruction Team"
+date: "10 Nov 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../w01/w01-custom.scss]
+    include-in-header: ../shared-title-qr-style.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 13 · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 01 Showcase {background-color="#EF7C00"}
+## Week 13: Final Project Presentations
+## Learning outcomes
+- Present recommendation-system designs professionally.
+- Defend technical decisions.
+- Interpret evaluation results critically.
+- Integrate technical, product, and societal considerations.
+---
+
+# 02 Presentation Guide {background-color="#EF7C00"}
+## Evidence, error analysis, and ethical analysis
+> TODO: add presentation sequence, peer feedback, and assessment guidance.
+## Ethics Thread: Technical, product, and societal consequences
+::: {.callout-warning}
+TODO: prepare closing synthesis prompts.
+:::
+---
+
+# Summary {background-color="#003D7C"}
+## 🔑 <u>A recommender project is complete only when its evidence and impacts are communicated.</u>
+**Next:** reading week and final assessment.
+
+::: notes
+TODO (instructor): close with the stated transition.
+:::
