@@ -84,6 +84,68 @@ Key rules:
 - Footer format: `CP4285 · Week N · NUS School of Computing`.
 - Never enable `chalkboard`.
 
+### Title Slide: QR Access Panel
+
+When a published deck has a course shortlink, make the QR code a prominent, clickable **right-hand title-slide panel**. Keep the lecture title, subtitle, instruction team, and date left aligned on the remaining space. Do not use a small inline QR code beneath the subtitle.
+
+Create and verify the shortlink before creating its QR code. Use the `manage-socn-links` skill for soc-n.us operations. Generate both SVG and PNG QR assets locally in `static/uploads/`: use SVG as the preferred source and PNG as the fallback. Put the exact, verified shortlink in the panel label. The whole panel must link to the shortlink in a new tab.
+
+Place the following metadata in the deck YAML, substituting the verified URL and asset filenames:
+
+```yaml
+subtitle: |
+  <span class="wNN-title-subtitle">CP4285 Modern Recommendation Systems — Week N</span>
+  <a class="wNN-title-qr" href="https://soc-n.us/cp4285-tNN-wNN" target="_blank" rel="noopener" aria-label="Open the Week N slide deck">
+    <picture>
+      <source type="image/svg+xml" srcset="../../uploads/cp4285-tNN-wNN-HASH.svg">
+      <img class="wNN-title-qr-image" src="../../uploads/cp4285-tNN-wNN-HASH.png" alt="QR code for the Week N slide deck">
+    </picture>
+    <span class="wNN-title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-tNN-wNN</span></span>
+  </a>
+```
+
+Add matching theme CSS, changing `wNN` to the week identifier. Keep the panel at least 205 px square on the 1600×900 canvas, with a white background, teal (`#00796B`) border, navy (`#003D7C`) label, and teal shortlink. The title, subtitle, author, and date must all be left aligned.
+
+```scss
+.reveal #title-slide {
+  box-sizing: border-box;
+  padding-right: 340px;
+  text-align: left;
+}
+.reveal #title-slide .quarto-title-authors,
+.reveal #title-slide .quarto-title-author {
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+.reveal #title-slide .wNN-title-subtitle { display: block; }
+.reveal #title-slide .wNN-title-qr {
+  position: absolute;
+  top: 50%; right: 1.5em;
+  width: 255px;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  display: block;
+  padding: 16px 16px 14px;
+  border: 4px solid #00796B;
+  border-radius: 12px;
+  background: #fff;
+  color: #003D7C;
+  text-align: center;
+  text-decoration: none;
+}
+.reveal #title-slide .wNN-title-qr-image {
+  display: block;
+  width: 205px; height: 205px;
+  margin: 0 auto 9px;
+}
+```
+
+**RevealJS guardrail:** Never set `position: relative`, `display`, `top`, `left`, or a transform on `#title-slide` itself. Reveal positions title and content slides; overriding its positioning can place every later slide in normal document flow and cause navigation to land far below the viewport. Scope absolute positioning only to `.wNN-title-qr`.
+
+After changing the title panel, render the deck and navigate from Slide 1 to Slide 2 in the browser. Verify that the next slide begins at the normal top position, not below the viewport.
+
 ---
 
 ## Colour Palette
