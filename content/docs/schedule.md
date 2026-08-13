@@ -63,6 +63,10 @@ Learning outcomes:
 - Train embedding-based recommenders.
 - Compare prediction and ranking objectives.
 - Discuss risks of learning from historical behavior.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w02/w02.html" title="Week 2 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 3" date="25-31 Aug 2026" focus="Evaluation of Recommendation Systems" due="Essay 1 + Project Mini-team Declaration — Mon, 24 Aug, 23:59 SGT" >}}
@@ -84,6 +88,10 @@ Learning outcomes:
 - Compute ranking metrics.
 - Critique metric selection.
 - Explain limitations of offline evaluation.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w03/w03.html" title="Week 3 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 4" date="1-7 Sep 2026" focus="Neural Recommendation Models" >}}
@@ -102,6 +110,10 @@ Learning outcomes:
 - Compare neural and latent-factor approaches.
 - Analyze explainability challenges.
 - Assess trade-offs between complexity and transparency.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w04/w04.html" title="Week 4 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 5" date="8-14 Sep 2026" focus="Sequential and Session-Based Recommendation" >}}
@@ -121,6 +133,10 @@ Learning outcomes:
 - Implement next-item prediction.
 - Compare static and dynamic representations.
 - Critically assess engagement-driven objectives.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w05/w05.html" title="Week 5 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 6" date="15-21 Sep 2026" focus="Retrieval and Ranking Architectures" >}}
@@ -141,6 +157,10 @@ Learning outcomes:
 - Design retrieval-ranking architectures.
 - Analyze scalability trade-offs.
 - Evaluate how ranking affects different stakeholders.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w06/w06.html" title="Week 6 Slides" height="520px" >}}
 {{< /week-card >}}
 
 <aside class="course-schedule-notice course-schedule-notice--break"><strong>Recess Week</strong><span>Tue, 22 Sep 2026 · No class</span></aside>
@@ -174,6 +194,10 @@ Learning outcomes:
 - Refine project scope based on feedback.
 
 Suggested weight: 5-10% participation or milestone grade.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w07/w07.html" title="Week 7 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 8" date="6-12 Oct 2026" focus="Learning-to-Rank" due="Essay 2 — Mon, 5 Oct, 23:59 SGT" >}}
@@ -193,6 +217,10 @@ Learning outcomes:
 - Compare ranking approaches.
 - Analyze position bias.
 - Discuss fairness implications of ranking.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w08/w08.html" title="Week 8 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 9" date="13-19 Oct 2026" focus="Graph-Based Recommendation" >}}
@@ -212,6 +240,10 @@ Learning outcomes:
 - Explain graph propagation.
 - Build graph-based recommenders.
 - Analyze risks of graph-driven feedback loops.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w09/w09.html" title="Week 9 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 10" date="20-26 Oct 2026" focus="Multi-Objective Recommendation" >}}
@@ -232,6 +264,10 @@ Learning outcomes:
 - Measure diversity and novelty.
 - Design multi-objective recommenders.
 - Justify objective trade-offs.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w10/w10.html" title="Week 10 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 11" date="27 Oct-2 Nov 2026" focus="Exploration and Online Learning" >}}
@@ -251,6 +287,10 @@ Learning outcomes:
 - Design adaptive recommendation policies.
 - Analyze recommendation feedback loops.
 - Discuss ethical implications of experimentation.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w11/w11.html" title="Week 11 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 12" date="3-9 Nov 2026" focus="LLMs, Generative Recommendation, and Research Frontiers" >}}
@@ -272,6 +312,10 @@ Learning outcomes:
 - Evaluate LLM-based recommendation systems.
 - Critique emerging approaches.
 - Identify open research challenges.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w12/w12.html" title="Week 12 Slides" height="520px" >}}
 {{< /week-card >}}
 
 {{< week-card week="Week 13" date="10 Nov 2026" focus="Final Project Presentations" due="Final project presentation or report, depending on STePS participation" >}}
@@ -297,6 +341,10 @@ Learning outcomes:
 - Defend technical decisions.
 - Interpret evaluation results critically.
 - Integrate technical, product, and societal considerations.
+
+**Slides:**
+
+{{< slides src="/cp4285-website/slides/w13/w13.html" title="Week 13 Slides" height="520px" >}}
 {{< /week-card >}}
 
 <aside class="course-schedule-notice course-schedule-notice--break"><strong>Reading Week</strong><span>Sat, 14 Nov-Fri, 20 Nov 2026 · Reading week</span></aside>
