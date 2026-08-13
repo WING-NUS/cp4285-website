@@ -20,125 +20,7 @@ changelog:
 
 ## Weekly Schedule
 
-<table class="course-schedule-table">
-  <thead>
-    <tr>
-      <th>Week</th>
-      <th>Date / Period</th>
-      <th>Focus</th>
-      <th>Assessment Due</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Tue, 11 Aug 2026</td>
-      <td>Recommendation Problems and Classical Methods</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Tue, 18 Aug 2026</td>
-      <td>Latent Factor Models</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Tue, 25 Aug 2026</td>
-      <td>Evaluation of Recommendation Systems</td>
-      <td>Essay 1 + Project Mini-team Declaration — Mon, 24 Aug, 23:59 SGT</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Tue, 1 Sep 2026</td>
-      <td>Neural Recommendation Models</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Tue, 8 Sep 2026</td>
-      <td>Sequential and Session-Based Recommendation</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Tue, 15 Sep 2026</td>
-      <td>Retrieval and Ranking Architectures</td>
-      <td></td>
-    </tr>
-    <tr class="schedule-break-row">
-      <td>Recess Week</td>
-      <td>Tue, 22 Sep 2026</td>
-      <td>No class</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>Tue, 29 Sep 2026</td>
-      <td>Project Design Critique Workshop</td>
-      <td>Project design critique</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>Tue, 6 Oct 2026</td>
-      <td>Learning-to-Rank</td>
-      <td>Essay 2 — Mon, 5 Oct, 23:59 SGT</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>Tue, 13 Oct 2026</td>
-      <td>Graph-Based Recommendation</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>Tue, 20 Oct 2026</td>
-      <td>Multi-Objective Recommendation</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>Tue, 27 Oct 2026</td>
-      <td>Exploration and Online Learning</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>Tue, 3 Nov 2026</td>
-      <td>LLMs, Generative Recommendation, and Research Frontiers</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>Wed, 11 Nov 2026</td>
-      <td>Final Project Presentations</td>
-      <td>Final project presentation or report (depending on STePS participation)</td>
-    </tr>
-    <tr class="schedule-break-row">
-      <td>Reading Week</td>
-      <td>Sat, 14 Nov 2026-Fri, 20 Nov 2026</td>
-      <td>Reading week</td>
-      <td></td>
-    </tr>
-    <tr class="schedule-exam-row">
-      <td>Examination Week 1</td>
-      <td>Mon, 23 Nov 2026</td>
-      <td>Examination period</td>
-      <td>Final exam, 13:00-15:00 SGT, venue to be announced</td>
-    </tr>
-    <tr class="schedule-exam-row">
-      <td>Examination Week 2</td>
-      <td>Sat, 28 Nov 2026-Sat, 5 Dec 2026</td>
-      <td>Examination period</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-## Weekly Details
-
-{{< week-card >}}
-### Week 1: Recommendation Problems and Classical Methods (11-17 Aug 2026)
+{{< week-card week="Week 1" date="11-17 Aug 2026" focus="Recommendation Problems and Classical Methods" >}}
 
 Topics:
 
@@ -164,8 +46,7 @@ Learning outcomes:
 {{< slides src="/cp4285-website/slides/w01/w01.html" title="Week 1 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 2: Latent Factor Models (18-24 Aug 2026)
+{{< week-card week="Week 2" date="18-24 Aug 2026" focus="Latent Factor Models" >}}
 
 Topics:
 
@@ -184,8 +65,7 @@ Learning outcomes:
 - Discuss risks of learning from historical behavior.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 3: Evaluation of Recommendation Systems (25-31 Aug 2026)
+{{< week-card week="Week 3" date="25-31 Aug 2026" focus="Evaluation of Recommendation Systems" due="Essay 1 + Project Mini-team Declaration — Mon, 24 Aug, 23:59 SGT" >}}
 
 Topics:
 
@@ -206,8 +86,7 @@ Learning outcomes:
 - Explain limitations of offline evaluation.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 4: Neural Recommendation Models (1-7 Sep 2026)
+{{< week-card week="Week 4" date="1-7 Sep 2026" focus="Neural Recommendation Models" >}}
 
 Topics:
 
@@ -225,8 +104,7 @@ Learning outcomes:
 - Assess trade-offs between complexity and transparency.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 5: Sequential and Session-Based Recommendation (8-14 Sep 2026)
+{{< week-card week="Week 5" date="8-14 Sep 2026" focus="Sequential and Session-Based Recommendation" >}}
 
 Topics:
 
@@ -245,8 +123,7 @@ Learning outcomes:
 - Critically assess engagement-driven objectives.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 6: Retrieval and Ranking Architectures (15-21 Sep 2026)
+{{< week-card week="Week 6" date="15-21 Sep 2026" focus="Retrieval and Ranking Architectures" >}}
 
 Topics:
 
@@ -266,8 +143,9 @@ Learning outcomes:
 - Evaluate how ranking affects different stakeholders.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 7: Project Design Critique Workshop (29 Sep-5 Oct 2026)
+<aside class="course-schedule-notice course-schedule-notice--break"><strong>Recess Week</strong><span>Tue, 22 Sep 2026 · No class</span></aside>
+
+{{< week-card week="Week 7" date="29 Sep-5 Oct 2026" focus="Project Design Critique Workshop" due="Project design critique" >}}
 
 Student deliverables:
 
@@ -298,8 +176,7 @@ Learning outcomes:
 Suggested weight: 5-10% participation or milestone grade.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 8: Learning-to-Rank (6-12 Oct 2026)
+{{< week-card week="Week 8" date="6-12 Oct 2026" focus="Learning-to-Rank" due="Essay 2 — Mon, 5 Oct, 23:59 SGT" >}}
 
 Topics:
 
@@ -318,8 +195,7 @@ Learning outcomes:
 - Discuss fairness implications of ranking.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 9: Graph-Based Recommendation (13-19 Oct 2026)
+{{< week-card week="Week 9" date="13-19 Oct 2026" focus="Graph-Based Recommendation" >}}
 
 Topics:
 
@@ -338,8 +214,7 @@ Learning outcomes:
 - Analyze risks of graph-driven feedback loops.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 10: Multi-Objective Recommendation (20-26 Oct 2026)
+{{< week-card week="Week 10" date="20-26 Oct 2026" focus="Multi-Objective Recommendation" >}}
 
 Topics:
 
@@ -359,8 +234,7 @@ Learning outcomes:
 - Justify objective trade-offs.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 11: Exploration and Online Learning (27 Oct-2 Nov 2026)
+{{< week-card week="Week 11" date="27 Oct-2 Nov 2026" focus="Exploration and Online Learning" >}}
 
 Topics:
 
@@ -379,8 +253,7 @@ Learning outcomes:
 - Discuss ethical implications of experimentation.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 12: LLMs, Generative Recommendation, and Research Frontiers (3-9 Nov 2026)
+{{< week-card week="Week 12" date="3-9 Nov 2026" focus="LLMs, Generative Recommendation, and Research Frontiers" >}}
 
 Topics:
 
@@ -401,8 +274,7 @@ Learning outcomes:
 - Identify open research challenges.
 {{< /week-card >}}
 
-{{< week-card >}}
-### Week 13: Final Project Presentations (10 Nov 2026)
+{{< week-card week="Week 13" date="10 Nov 2026" focus="Final Project Presentations" due="Final project presentation or report, depending on STePS participation" >}}
 
 Teams selected to present at 29th STePS complete the presentation below and do **not** submit a project report. Teams not presenting at STePS submit a project report instead.
 
@@ -426,3 +298,9 @@ Learning outcomes:
 - Interpret evaluation results critically.
 - Integrate technical, product, and societal considerations.
 {{< /week-card >}}
+
+<aside class="course-schedule-notice course-schedule-notice--break"><strong>Reading Week</strong><span>Sat, 14 Nov-Fri, 20 Nov 2026 · Reading week</span></aside>
+
+<aside class="course-schedule-notice course-schedule-notice--exam"><strong>Examination Week 1</strong><span>Mon, 23 Nov 2026 · Final exam, 13:00-15:00 SGT · Venue to be announced</span></aside>
+
+<aside class="course-schedule-notice course-schedule-notice--exam"><strong>Examination Week 2</strong><span>Sat, 28 Nov-Sat, 5 Dec 2026 · Examination period</span></aside>

@@ -1,3 +1,14 @@
-<section class="weekly-detail-card">
-  {{ .Inner | markdownify }}
-</section>
+<details class="weekly-detail-card"{{ with .Get "open" }} open{{ end }}>
+  <summary class="weekly-detail-card__summary">
+    <span class="weekly-detail-card__week">{{ .Get "week" }}</span>
+    <span class="weekly-detail-card__overview">
+      <span class="weekly-detail-card__focus">{{ .Get "focus" }}</span>
+      <span class="weekly-detail-card__date">{{ .Get "date" }}</span>
+    </span>
+    {{ with .Get "due" }}<span class="weekly-detail-card__due">Due: {{ . }}</span>{{ end }}
+    <span class="weekly-detail-card__toggle" aria-hidden="true"></span>
+  </summary>
+  <div class="weekly-detail-card__content">
+    {{ .Inner | markdownify }}
+  </div>
+</details>

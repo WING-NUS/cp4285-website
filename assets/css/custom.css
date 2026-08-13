@@ -228,46 +228,6 @@ a {
   color: #fecdd3;
 }
 
-.course-schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.course-schedule-table th,
-.course-schedule-table td {
-  border-bottom: 1px solid color-mix(in srgb, var(--hb-color-border, #d1d5db) 74%, transparent);
-  padding: 0.78rem 0.9rem;
-  vertical-align: top;
-}
-
-.course-schedule-table th {
-  background: color-mix(in srgb, var(--hb-color-primary-50, #eff6ff) 62%, transparent);
-  color: var(--hb-color-heading, #111827);
-  font-weight: 800;
-  text-align: left;
-}
-
-.course-schedule-table .schedule-break-row td {
-  background: color-mix(in srgb, #fef3c7 72%, var(--hb-color-background, #fff));
-}
-
-.course-schedule-table .schedule-exam-row td {
-  background: color-mix(in srgb, #dbeafe 76%, var(--hb-color-background, #fff));
-}
-
-.dark .course-schedule-table th {
-  background: color-mix(in srgb, #1e3a8a 32%, var(--hb-color-background, #030712));
-  color: #f8fafc;
-}
-
-.dark .course-schedule-table .schedule-break-row td {
-  background: color-mix(in srgb, #78350f 34%, var(--hb-color-background, #030712));
-}
-
-.dark .course-schedule-table .schedule-exam-row td {
-  background: color-mix(in srgb, #1e3a8a 38%, var(--hb-color-background, #030712));
-}
-
 .weekly-detail-card {
   margin: 1.35rem 0;
   border: 1px solid color-mix(in srgb, var(--hb-color-border, #d1d5db) 70%, transparent);
@@ -276,22 +236,91 @@ a {
   background:
     linear-gradient(135deg, rgba(239, 124, 0, 0.08), transparent 34%),
     color-mix(in srgb, var(--hb-color-background, #fff) 94%, #f8fafc);
-  padding: 1.1rem 1.25rem;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
 }
 
-.weekly-detail-card > :first-child {
-  margin-top: 0;
+.weekly-detail-card__summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 1.1rem 1.25rem;
 }
 
-.weekly-detail-card > :last-child {
-  margin-bottom: 0;
+.weekly-detail-card__summary::-webkit-details-marker {
+  display: none;
 }
 
-.weekly-detail-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.85rem;
+.weekly-detail-card__summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, #003d7c 60%, transparent);
+  outline-offset: 3px;
+  border-radius: 5px;
+}
+
+.weekly-detail-card__week {
+  min-width: 4.6rem;
+  color: #003d7c;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.weekly-detail-card__overview {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.weekly-detail-card__focus {
   color: color-mix(in srgb, #003d7c 86%, var(--hb-color-heading, #111827));
+  font-weight: 800;
+}
+
+.weekly-detail-card__date,
+.weekly-detail-card__due {
+  color: var(--hb-color-foreground, #4b5563);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.weekly-detail-card__due {
+  max-width: 19rem;
+  color: color-mix(in srgb, #9a3412 85%, var(--hb-color-foreground, #4b5563));
+  font-weight: 700;
+}
+
+.weekly-detail-card__toggle::before {
+  content: "+";
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  background: #003d7c;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.weekly-detail-card[open] .weekly-detail-card__toggle::before {
+  content: "−";
+  background: #ef7c00;
+}
+
+.weekly-detail-card__content {
+  border-top: 1px solid color-mix(in srgb, var(--hb-color-border, #d1d5db) 70%, transparent);
+  padding: 0.25rem 1.25rem 1.1rem;
+}
+
+.weekly-detail-card__content > :first-child {
+  margin-top: 0.9rem;
+}
+
+.weekly-detail-card__content > :last-child {
+  margin-bottom: 0;
 }
 
 .weekly-detail-card:nth-of-type(even) {
@@ -301,17 +330,13 @@ a {
     color-mix(in srgb, var(--hb-color-background, #fff) 94%, #f8fafc);
 }
 
-.weekly-detail-card:nth-of-type(even) h3 {
-  color: color-mix(in srgb, #ef7c00 84%, var(--hb-color-heading, #111827));
-}
-
-.weekly-detail-card p {
+.weekly-detail-card__content p {
   margin-top: 0.9rem;
   margin-bottom: 0.45rem;
 }
 
-.weekly-detail-card ul,
-.weekly-detail-card ol {
+.weekly-detail-card__content ul,
+.weekly-detail-card__content ol {
   margin-top: 0.35rem;
 }
 
@@ -324,7 +349,11 @@ a {
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.26);
 }
 
-.dark .weekly-detail-card h3 {
+.dark .weekly-detail-card__week {
+  color: #93c5fd;
+}
+
+.dark .weekly-detail-card__focus {
   color: #fed7aa;
 }
 
@@ -335,8 +364,67 @@ a {
     color-mix(in srgb, var(--hb-color-background, #030712) 88%, #0f172a);
 }
 
-.dark .weekly-detail-card:nth-of-type(even) h3 {
+.dark .weekly-detail-card:nth-of-type(even) .weekly-detail-card__focus {
   color: #bfdbfe;
+}
+
+.dark .weekly-detail-card__date {
+  color: #d1d5db;
+}
+
+.dark .weekly-detail-card__due {
+  color: #fdba74;
+}
+
+.course-schedule-notice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  margin: 1.35rem 0;
+  border-radius: 8px;
+  padding: 0.95rem 1.25rem;
+}
+
+.course-schedule-notice strong {
+  color: var(--hb-color-heading, #111827);
+}
+
+.course-schedule-notice--break {
+  background: color-mix(in srgb, #fef3c7 72%, var(--hb-color-background, #fff));
+}
+
+.course-schedule-notice--exam {
+  background: color-mix(in srgb, #dbeafe 76%, var(--hb-color-background, #fff));
+}
+
+.dark .course-schedule-notice--break {
+  background: color-mix(in srgb, #78350f 34%, var(--hb-color-background, #030712));
+}
+
+.dark .course-schedule-notice--exam {
+  background: color-mix(in srgb, #1e3a8a 38%, var(--hb-color-background, #030712));
+}
+
+.dark .course-schedule-notice strong {
+  color: #f8fafc;
+}
+
+@media (max-width: 700px) {
+  .weekly-detail-card__summary {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.45rem 0.75rem;
+    padding: 0.95rem 1rem;
+  }
+
+  .weekly-detail-card__due {
+    grid-column: 2 / -1;
+    max-width: none;
+  }
+
+  .weekly-detail-card__content {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
 }
 
 .hb-card,
