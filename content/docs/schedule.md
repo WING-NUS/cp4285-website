@@ -44,6 +44,8 @@ Learning outcomes:
 **Slides:**
 
 {{< slides src="/cp4285-website/slides/w01/w01.html" title="Week 1 Slides" height="520px" >}}
+
+**Lecture video:** [Watch the Week 01 lecture recording](https://soc-n.us/cp4285-t2610-w01-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
 {{< week-card week="Week 2" date="18-24 Aug 2026" focus="Latent Factor Models" >}}

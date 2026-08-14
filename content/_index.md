@@ -68,6 +68,8 @@ sections:
 
         CP4285 covers classical methods, neural architectures, ranking and retrieval pipelines, sequential models, graph-based recommendation, online learning, and emerging LLM-based approaches. Ethical issues are interwoven throughout, including bias, fairness, privacy, exposure, transparency, and stakeholder impact. Students apply these ideas in a hands-on group project requiring problem formulation, dataset work, baselines, model design, evaluation, critique, and either a final presentation or report.
 
+        The lecture slides for this course are openly shared with the public. If you use these materials for learning, teaching, or another purpose, Min would be delighted to hear about your experience—please [share it by email](mailto:knmnyn@nus.edu.sg?subject=%5BCP4285%5D%20slides%20feedback).
+
         The course is hosted by [WING.NUS](https://wing.comp.nus.edu.sg/), the Web IR / NLP research group at NUS led by Min.
 
         **Prerequisites:** [CS2109S](https://nusmods.com/courses/CS2109S/introduction-to-ai-and-machine-learning) (Introduction to AI and Machine Learning) or equivalent, and completion of at least 120 units. Students without CS2109S but with equivalent background may seek approval from Min.
