@@ -2,6 +2,8 @@
 title: Schedule
 weight: 10
 changelog:
+  - date: 14 Aug 2026
+    text: Added the Week 01 lecture recording link (NUSNet authentication required).
   - date: 10 Aug 2026
     text: Added Week 03 and Week 08 assessment deadlines.
   - date: 10 Aug 2026
