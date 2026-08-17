@@ -666,60 +666,45 @@ Placed at the end of the current lecture (after the Summary slide) to give stude
 
 ---
 
-## Previous Week 4-Summary Slide
+## Previous Week 4-Concept Recap Slide (Quarto Reveal)
 
-### Purpose
+### Purpose and Placement
 
-Placed at the start of the current lecture (after the Previous Week Exercise Review, before new material) to anchor recall of the four most important concepts from the prior week.
+Use this screenshot-based recap after the Previous Week Exercise Review and before new material. Use the original slides that introduced four consequential concepts from Week N–1 to reactivate the conceptual sequence students need for the current lecture.
 
-### Design
+### Why Use One Unified Graphic
 
-- Purple frame (`#5C2D91`), dark purple background (`#1a0a2e`), white text
-- Label: **"Previous Week Summary — Week N–1 [Topic]"**
-- Title: "Four things to carry into today" (or equivalent)
-- Body: a 2×2 grid of four cells, each with a numbered heading in NUS Orange and 2–4 lines of white body text
+Build the four thumbnails into **one 16:9 recap composite** before inserting it into Quarto. Do not embed four separate image elements in the slide. A single composite prevents visual seams, inconsistent scaling, stale per-image references, and partial replacement errors when one source thumbnail changes.
 
-### Four-Quadrant Grid CSS
+### Prepare the Recap Asset
 
-```css
-.cp-quad-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 16px;
-  flex: 1;
-  min-height: 0;
-}
-.cp-quad-cell {
-  background: rgba(255,255,255,0.07);
-  border-radius: 5px;
-  padding: 14px 16px;
-  overflow: hidden;
-}
-.cp-quad-cell h4 { margin: 0 0 6px 0; font-size: 0.88em; font-weight: bold; color: #EF7C00; }
-.cp-quad-cell p, .cp-quad-cell ul { margin: 0; font-size: 0.8em; line-height: 1.45; color: #e0e0e0; }
-.cp-quad-cell ul { padding-left: 1.1em; }
-```
+1. Select four **non-overlapping**, technically central source slides in reading order: representation or premise; goal or decision; method choice or trade-off; and procedure, limitation, or bridge to the current lecture.
+2. Capture each source slide at 16:9 without cropping, browser controls, or presenter overlays.
+3. Build the unified graphic with the reusable builder. The command below retains complete source slides and gives every quadrant a 1px purple outline (`#5C2D91`):
 
-### Markup
+   ```bash
+   python skills/cp4285-slides/scripts/build_recap_composite.py \
+     static/slides/weekNN/assets/recap/week-n-minus-1-four-concept-recap.png \
+     static/slides/weekNN/assets/recap/01.png \
+     static/slides/weekNN/assets/recap/02.png \
+     static/slides/weekNN/assets/recap/03.png \
+     static/slides/weekNN/assets/recap/04.png
+   ```
 
-```markdown
-## {background-color="#1a0a2e"}
+4. Use descriptive `alt` text that names the four source concepts, not merely the week number.
+5. For Week 01, use: **The User–Item Matrix → From a Score to a Useful List → Similarity I: Pearson Correlation → From Neighbours to a Prediction**.
 
-```{=html}
-<div class="cp-frame-bg cp-frame-purple"></div>
-<div class="cp-frame-content" style="color:white;">
-  <div class="cp-frame-label" style="background:#5C2D91;color:white;">Previous Week Summary — Week N [Topic]</div>
-  <div class="cp-frame-title" style="color:#e0c8ff;">Four things to carry into today</div>
-  <div class="cp-quad-grid">
-    <div class="cp-quad-cell"><h4>① Concept one</h4><p>One or two sentences.</p></div>
-    <div class="cp-quad-cell"><h4>② Concept two</h4><ul><li>Point</li><li>Point</li></ul></div>
-    <div class="cp-quad-cell"><h4>③ Concept three</h4><ul><li>Point</li><li>Point</li></ul></div>
-    <div class="cp-quad-cell"><h4>④ Concept four</h4><p>One or two sentences.</p></div>
-  </div>
-</div>
-```
-```
+### Quarto Source Template
+
+Copy `templates/previous-week-recap.qmd` into the destination lecture’s `.qmd` source. Replace the standard all-caps label and the single composite-image path. This is Quarto Reveal syntax, not standalone Markdown or HTML. The template includes the required speaker-notes block.
+
+### Styling Rules
+
+- Use a dark-purple background (`#1a0a2e`) and a purple frame (`#5C2D91`).
+- Use the standard `.cp-frame-label` as one compact, boxed, all-caps label, for example **"WEEK 01 RECAP"**. Do not add the prior lecture title or a secondary title such as "Four things to carry into today".
+- Preserve the composite’s zero-gap 2×2 layout and 1px purple quadrant outlines. Do not recreate outlines with four separate HTML image boxes.
+- Do not overlay explanatory text, icons, tables, or animations on the composite. Use speaker notes to supply the recall prompt and bridge to the current lecture.
+- Use `.cp-thumbnail-recap-content`, `.cp-thumbnail-composite-wrap`, and `.cp-thumbnail-composite` from `templates/custom.scss`. Copy the full stylesheet into a new deck’s local `custom.scss`.
 
 ---
 

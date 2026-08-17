@@ -1,0 +1,15 @@
+## {background-color="#1a0a2e"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-purple"></div>
+<div class="cp-frame-content cp-thumbnail-recap-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#5C2D91;color:white;margin-bottom:0;">WEEK N–1 RECAP</div>
+  <div class="cp-thumbnail-composite-wrap">
+    <img class="cp-thumbnail-composite" src="assets/recap/week-n-minus-1-four-concept-recap.png" alt="Previous-week four-concept recap composite" loading="eager">
+  </div>
+</div>
+```
+
+::: notes
+Use the unified four-quadrant graphic as a recall prompt. Ask students to name the sequence represented by the four source slides and state how it motivates the first new concept in the current lecture.
+:::
