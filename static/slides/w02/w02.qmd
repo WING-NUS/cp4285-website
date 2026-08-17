@@ -14,8 +14,7 @@ date: "18 Aug 2026"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, ../w01/w01-custom.scss]
-    include-in-header: w02-title-style.html
+    theme: [default, w02-custom.scss]
     slide-number: true
     show-slide-number: all
     width: 1600
@@ -31,101 +30,574 @@ format:
     scrollable: false
 ---
 
-# 01 Overview {background-color="#EF7C00"}
+# 01 Announcements and Context {background-color="#EF7C00"}
 
-## Week 2: Latent Factor Models
+## {background-color="#1a0a2e"}
 
-This stub establishes the structure for the Week 2 lecture. Detailed examples, activities, delivery notes, and selected user-type treatments will be added in the content-authoring pass.
-
-::: notes
-TODO (instructor): introduce the shift from local neighbourhood overlap to learned latent representations.
-:::
-
-## Learning outcomes
-
-By the end of this session, students should be able to:
-
-- Explain latent-factor models.
-- Train embedding-based recommenders.
-- Compare prediction and ranking objectives.
-- Discuss risks of learning from historical behavior.
+```{=html}
+<div class="cp-frame-bg cp-frame-purple"></div>
+<div class="cp-frame-content cp-thumbnail-recap-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#5C2D91;color:white;margin-bottom:0;">WEEK 01 RECAP</div>
+  <div class="cp-thumbnail-composite-wrap">
+    <img class="cp-thumbnail-composite" src="assets/w01-recap-four-quadrant.png" alt="Week 01 recap: User–Item Matrix, From a Score to a Useful List, Similarity I: Pearson Correlation, and From Neighbours to a Prediction" loading="eager">
+  </div>
+</div>
+```
 
 ::: notes
-TODO (instructor): connect these outcomes to the Week 1 distinction between sparse local evidence and inferred structure.
 :::
 
----
+## Pre-Flight Survey: Response Snapshot {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame survey-frame">
+  <div class="cp-frame-bg cp-frame-navy"></div>
+  <div class="cp-frame-content">
+    <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Pre-Flight Survey Results · Placeholder</div>
+    <div class="cp-frame-title" style="color:#003D7C;">Insert verified cohort snapshot before class</div>
+    <div class="placeholder-panel">
+      <div class="placeholder-card"><strong>Response coverage</strong><span>Insert the number and share of enrolled students represented. State the collection window and any non-response caveat.</span></div>
+      <div class="placeholder-card"><strong>Background mix</strong><span>Insert only anonymised, aggregate indicators that help calibrate examples and pace.</span></div>
+      <div class="placeholder-card"><strong>Prior experience</strong><span>Summarise relevant foundations, for example Python, linear algebra, or recommender exposure.</span></div>
+      <div class="placeholder-card"><strong>Learning priorities</strong><span>Surface one or two recurring expectations that can be revisited during the course.</span></div>
+    </div>
+  </div>
+</div>
+```
+
+::: notes
+Placeholder only. Do not display fabricated values. Replace with a verified, anonymised aggregate summary before delivery.
+:::
+
+## Pre-Flight Survey: What We Will Do With It {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame survey-frame">
+  <div class="cp-frame-bg cp-frame-navy"></div>
+  <div class="cp-frame-content">
+    <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Pre-Flight Survey Results · Placeholder</div>
+    <div class="cp-frame-title" style="color:#003D7C;">Use survey evidence to calibrate—not label—the cohort</div>
+    <div class="cp-frame-body survey-action-body" style="color:#333;">
+      <ol>
+        <li>State two verified findings from the aggregate results.</li>
+        <li>Explain one teaching response: pace, vocabulary, worked examples, or support resources.</li>
+        <li>Name one limitation: the survey is a partial, self-reported snapshot—not a profile of any individual student.</li>
+      </ol>
+      <div class="activity-output">Replace this placeholder with the final instructor talking points after the verified results are available.</div>
+    </div>
+  </div>
+</div>
+```
+
+::: notes
+Placeholder only. Use the final version to make the course responsive without presenting survey responses as fixed ability labels.
+:::
+
+## Essay 1: Micro Case Study: Designing a Production Recommender Surface
+
+<div class="factor-flow">
+  <div class="factor-card"><strong>Focus</strong><br>One approved user-facing recommendation surface.</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Reason</strong><br>One or two consequential Week 01–02 choices.</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Defend</strong><br>Evidence, limits, and a substantive suit lens.</div>
+</div>
+
+- ⚠️ (Short) **1,500 words** · Due **Mon, 24 Aug 2026, 23:59 SGT**.
+- Use no more than **two external sources**; distinguish platform facts from your reasoned proposal.
+- Feature a card-suit lens in the technical design, objective, constraint, or evaluation criterion.
+- Include an AI-use declaration; AI may assist inquiry but you need to own the argument.
 
 # 02 From Neighbours to Latent Structure {background-color="#EF7C00"}
 
-## Why local overlap is not always enough
+## 🎰 Bandit Time: Which statement best describes a latent factor? {background-color="#003D7C"}
 
-> TODO: Add a motivating sparse user-item example and the limitations of neighborhood-based collaborative filtering.
-
-::: notes
-TODO (author): develop the transition from Week 1. Before adding topic-specific user-type treatment, ask which of Clubs, Hearts, Diamonds, and Spades should be included.
-:::
-
-## Matrix factorization intuition
-
-> TODO: Introduce user and item embeddings, latent dimensions, and the dot-product prediction intuitively before formal notation.
+<div class="bandit-options">
+  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> An item attribute recorded directly by the platform.</div>
+  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> An inferred interaction pattern represented by a learned embedding coordinate.</div>
+  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> A verified demographic fact about a user.</div>
+  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> A manually fixed value shared by every user.</div>
+</div>
 
 ::: notes
-TODO (author): add one compact visual and one worked example. Use MathJax for the formal model.
 :::
 
-## Training a latent-factor model
+## Sparse Neighbourhoods Can Fall Silent
 
-> TODO: Add the learning objective, regularization, and an implementation pathway using the selected course framework.
+<div class="matrix-grid">
+  <div class="matrix-head"></div><div class="matrix-head">Item A</div><div class="matrix-head">Item B</div><div class="matrix-head">Item C</div><div class="matrix-head">Item D</div>
+  <div class="matrix-head">User 1</div><div class="matrix-rated">5</div><div class="matrix-rated">4</div><div class="matrix-missing">—</div><div class="matrix-missing">—</div>
+  <div class="matrix-head">User 2</div><div class="matrix-missing">—</div><div class="matrix-rated">5</div><div class="matrix-rated">4</div><div class="matrix-missing">—</div>
+  <div class="matrix-head">User 3</div><div class="matrix-rated">4</div><div class="matrix-missing">—</div><div class="matrix-missing">—</div><div class="matrix-rated">5</div>
+  <div class="matrix-head">Target user</div><div class="matrix-rated">5</div><div class="matrix-missing">—</div><div class="matrix-target">?</div><div class="matrix-missing">—</div>
+</div>
+
 
 ::: notes
-TODO (author): distinguish explicit-feedback prediction from implicit-feedback ranking.
+Ask students to identify the Week 01 bottleneck: few co-rated items can make a local similarity estimate unstable or unavailable. Do not claim that factorisation removes missingness.
 :::
 
----
+## Global Patterns Remain in the Matrix
 
-# 03 Objectives, Evidence, and Consequences {background-color="#EF7C00"}
+::: {.columns}
+::: {.column width="48%"}
+### Neighbourhood CF
 
-## Prediction and ranking objectives
+- Starts with local overlap.
+- Compares named rows or columns.
+- Can be silent when overlap is thin.
+:::
+::: {.column width="48%"}
+### Latent-factor model
 
-> TODO: Compare rating prediction with ranking-oriented objectives and evaluation consequences.
+- Learns shared coordinates from many interactions.
+- Uses global patterns to score a user–item pair.
+- Still inherits the limits of its evidence.
+:::
+:::
+
+::: {.callout-tip .to-think-about title="To think about"}
+Does a learned representation make a missing interaction more trustworthy—or only make a prediction possible?
+:::
 
 ::: notes
-TODO (author): add an activity only after confirming whether it should use the default three-minute countdown timer.
+The intended answer: it makes a prediction possible by exploiting patterns elsewhere; it does not convert a missing observation into ground truth.
 :::
 
-## Ethics Thread: Historical Behaviour
+## Factorisation Learns Shared Coordinates
 
-::: {.callout-warning}
-TODO: Explain how representations learned from historical interactions can encode uneven exposure, feedback loops, and past inequities.
-:::
+$$
+R \approx P Q^\top
+$$
+
+<div class="factor-flow">
+  <div class="factor-card"><strong>Interaction matrix \(R\)</strong><br>Observed user–item feedback with many blanks.</div>
+  <div class="factor-arrow">≈</div>
+  <div class="factor-card"><strong>User matrix \(P\)</strong><br>One learned vector per user.</div>
+  <div class="factor-arrow">×</div>
+  <div class="factor-card"><strong>Item matrix \(Q\)</strong><br>One learned vector per item.</div>
+</div>
+
+A small number of learned coordinates can capture recurring interaction patterns more compactly than the full sparse matrix.
 
 ::: notes
-TODO (author): add a concrete case and explicit stakeholder question. Confirm relevant user-type treatments before drafting this material.
+Introduce factorisation intuitively first. \(P\) and \(Q\) are parameter matrices; individual dimensions are useful for scoring even when they do not have a stable human-readable name.
+[Sources]
+- Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems. *Computer*, 42(8), 30–37.
 :::
 
-## Implementation laboratory
+## Factors Are Patterns, Not Personal Facts
 
-> TODO: Add a reproducible embedding-based recommender exercise, dataset choice, and expected outputs.
-
-::: notes
-TODO (author): align the exercise with the session outcome on training embedding-based recommenders.
-:::
-
----
-
-# 04 Summary {background-color="#003D7C"}
-
-## 🔑 <u>Latent factors infer shared structure from sparse interactions.</u>
-
-| Week 1: Neighborhood CF | Week 2: Latent-factor models |
+| Tempting shortcut | Better statement |
 |---|---|
-| Uses observed local overlap | TODO: describe learned global structure |
-| Similarity is specified directly | TODO: describe learned representations |
-| Sparse overlap is a central constraint | TODO: describe the intended mitigation and its limits |
-
-**Next week:** evaluate recommendation systems using ranking metrics and realistic offline protocols.
+| “Dimension 3 is this user’s identity.” | Dimension 3 is a learned coordinate associated with interaction patterns. |
+| “The factor is a hidden genre tag.” | A factor may correlate with metadata, but it is inferred rather than recorded. |
+| “The factor explains the person.” | The factor helps the model score candidates under particular data and objectives. |
 
 ::: notes
-TODO (instructor): replace remaining TODOs before delivering the lecture; retain this final summary slide as the close.
+This slide sets the language discipline for the rest of the lecture. Do not reify embeddings as psychological or demographic truth.
+:::
+
+## A Dot Product Turns Embeddings into a Score
+
+$$
+\hat r_{ui} = p_u^\top q_i
+$$
+
+::: {.columns}
+::: {.column width="48%"}
+### User vector
+
+$$p_u=[p_{u1},p_{u2},\ldots,p_{uk}]$$
+
+Captures a learned location in the model’s coordinate system.
+:::
+::: {.column width="48%"}
+### Item vector
+
+$$q_i=[q_{i1},q_{i2},\ldots,q_{ik}]$$
+
+Captures how the item aligns with those learned patterns.
+:::
+:::
+
+The dot product is high when the vectors align along dimensions the model has learned to reward.
+
+::: notes
+Make the transition from visual alignment to the compact scoring rule. A score is not the entire recommendation policy: it may later be filtered, re-ranked, or evaluated differently.
+:::
+
+## Worked Calculation: Two Items, One Current Score
+
+$$
+p_u=[0.8,0.2], \qquad q_A=[0.9,0.1], \qquad q_B=[0.4,0.8]
+$$
+
+::: {.columns}
+::: {.column width="48%"}
+### Item A
+
+$$
+\hat r_{uA}=0.8(0.9)+0.2(0.1)=\mathbf{0.74}
+$$
+:::
+::: {.column width="48%"}
+### Item B
+
+$$
+\hat r_{uB}=0.8(0.4)+0.2(0.8)=\mathbf{0.48}
+$$
+:::
+:::
+
+**Current model verdict:** Item A is higher scoring.
+
+**Still unresolved:** diversity, constraints, exposure, uncertainty, and the rest of the candidate list.
+
+::: notes
+This is the required worked calculation. Ask students to verify each product before revealing the totals. State clearly that this is a score comparison, not a complete ranking policy.
+:::
+
+## Training Adjusts Both Sides of the Match
+
+<div class="factor-flow">
+  <div class="factor-card"><strong>Observed interaction</strong><br>User watches, clicks, rates, or purchases.</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Model score</strong><br>Apply \(p_u^\top q_i\).</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Loss and update</strong><br>Move both user and item vectors.</div>
+</div>
+
+- **Explicit feedback:** a rating can support a prediction-error loss.
+- **Implicit feedback:** a positive interaction can be compared against sampled alternatives.
+- Repeated updates create embeddings that reflect the selected learning signal.
+
+::: notes
+Connect the loss to the type of evidence, not simply to an implementation preference. This prepares the contrast between rating prediction and ranking.
+:::
+
+## Regularisation Limits Convenient Stories
+
+$$
+\begin{aligned}
+\min_{P,Q}\; \mathcal{L}
+&= \sum_{(u,i)\in\Omega}(r_{ui}-p_u^\top q_i)^2 \\
+&\quad + \lambda\left(\lVert P\rVert_F^2+\lVert Q\rVert_F^2\right)
+\end{aligned}
+$$
+
+- The first term fits observed interactions.
+- The regularisation term discourages overly flexible parameter values.
+- The design question is not “fit or regularise”; it is how to generalise beyond the interactions already seen.
+
+::: notes
+Explain the two terms qualitatively. \(\lambda\) controls a trade-off and should not be treated as a universal constant.
+[Sources]
+- Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems. *Computer*, 42(8), 30–37.
+:::
+
+## Worked RecBole Example: BPR on MovieLens 100K
+
+::: {.columns}
+::: {.column width="56%"}
+<div class="code-panel"><pre style="margin:0;color:inherit;"># test.yaml
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+load_col:
+  inter: [user_id, item_id]
+embedding_size: 64
+epochs: 500
+metrics: ['Recall', 'MRR', 'NDCG']
+topk: 10
+
+# run.py
+from recbole.quick_start import run_recbole
+run_recbole(model='BPR', dataset='ml-100k',
+            config_file_list=['test.yaml'])</pre></div>
+:::
+::: {.column width="39%"}
+### What is happening?
+
+- **BPR** is a matrix-factorisation model trained pairwise for personalised ranking.
+- RecBole loads user–item interaction columns, learns user/item embeddings, and evaluates a ranked list.
+- `embedding_size` selects the dimension of both learned vectors.
+:::
+:::
+
+::: notes
+This is the required worked RecBole example. Present it as a compact, reproducible configuration—not a live installation task. The official quick start uses BPR with `ml-100k`, interaction columns, 64-dimensional embeddings, and ranking metrics including Recall, MRR, and NDCG.
+[Sources]
+- RecBole documentation, “Quick Start: General Recommendation.” https://recbole.io/docs/get_started/started/general.html
+- RecBole documentation, “BPR.” https://recbole.io/docs/user_guide/model/general/bpr.html
+:::
+
+## Read the RecBole Output as a Design Claim
+
+| Output artefact | What it can support | What it cannot establish alone |
+|---|---|---|
+| Training loss | Whether the stated loss changes during optimisation. | Real-world user value or fairness. |
+| Recall@10 / NDCG@10 | A ranking comparison under the declared held-out protocol. | A production outcome without further evaluation. |
+| Top-*k* candidates | A concrete prompt for inspection and error analysis. | A causal explanation of a user’s preference. |
+| Learned embeddings | A representation used by the model. | A human identity or a verified metadata field. |
+
+::: notes
+Ask: “What would you inspect before making a claim about this model?” Expected answers include split protocol, held-out metric, candidate set, examples of failures, and the source of interaction data.
+[Sources]
+- RecBole documentation, “Quick Start: General Recommendation.” https://recbole.io/docs/get_started/started/general.html
+:::
+
+# 03 Objectives, Continuity, Novelty, and Consequences {background-color="#EF7C00"}
+
+## Prediction Rewards Accurate Numbers
+
+::: {.columns}
+::: {.column width="48%"}
+### Question
+
+How close is \(\hat r_{ui}\) to an observed rating or score?
+:::
+::: {.column width="48%"}
+### Typical evidence
+
+An explicit rating, a known score, or another numeric target.
+:::
+:::
+
+A prediction objective is useful when a numeric estimate itself drives a decision. Error measures such as RMSE summarise how close estimates are to observed values.
+
+::: notes
+Do not say that RMSE is always the right metric. It is aligned with a prediction target, not necessarily with a top-k recommendation experience.
+:::
+
+## Ranking Rewards Useful Order
+
+::: {.columns}
+::: {.column width="48%"}
+### Question
+
+Do useful items appear above less useful alternatives in the visible list?
+:::
+::: {.column width="48%"}
+### Typical evidence
+
+Implicit interactions, held-out positives, and candidate ordering.
+:::
+:::
+
+Ranking measures, such as **NDCG@10**, reward useful items placed nearer the top of a displayed list.
+
+::: notes
+Make the positional idea concrete: a user cannot benefit much from a relevant item buried well below the visible top-k.
+:::
+
+## 🎰 Bandit Time: What should the home screen optimise? {background-color="#003D7C"}
+
+<p class="bandit-question"><strong>A home screen must order ten candidate items for immediate display.</strong> Which measure most directly tests whether useful items appear near the top?</p>
+
+<div class="bandit-options">
+  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> RMSE over predicted ratings.</div>
+  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> NDCG@10.</div>
+  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> The number of metadata tags per item.</div>
+  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> The age of the user account.</div>
+</div>
+
+<p style="margin-top:.7em;color:#80cbc4;font-size:.73em;">Answer: <strong style="color:#ffffff;">B</strong>. NDCG@10 is position-sensitive; it tests the ordering of useful candidates in the displayed top-*k*.</p>
+
+::: notes
+This is MCQ 2 of 2. Invite a quick comparison with A: RMSE is meaningful for a numeric prediction task but does not directly assess top-k order.
+:::
+
+## 👥 Activity 1: Choose an Objective, Then Defend It {background-color="#003D7C"}
+
+<p class="activity-question"><strong>Work in pairs.</strong> Choose one case. Write a single line: <em>task → objective → metric → one assumption</em>.</p>
+
+<div class="activity-grid">
+  <div class="activity-card"><h3>Restaurant rating</h3>Predict a score after a meal. What is the target? What would count as a close estimate?</div>
+  <div class="activity-card"><h3>Personalised feed</h3>Order a visible list now. What does “near the top” mean?</div>
+  <div class="activity-card"><h3>Job retrieval</h3>Surface plausible jobs from a large candidate set. Whose relevance definition is being used?</div>
+</div>
+
+<div class="activity-output"><strong>Produce:</strong> one defensible objective/metric pair and one assumption you would want to test. Be ready to compare it with a pair using a different case.</div>
+
+::: notes
+This is student activity 1 of 2. Give pairs time to formulate the line; take two contrasting examples and point out that an objective is a product decision with distributional consequences.
+:::
+
+## ♠ Spades: Stable Preferences Need More Than One Tag
+
+- A loyal, metadata-oriented user may return to durable interests: familiar creators, formats, categories, or constraints.
+- One static tag is too coarse: it misses interaction history, combinations of features, and changing context.
+- A latent-factor model can represent stable patterns, while metadata helps make an explanation or constraint legible.
+
+::: {.callout-tip .to-think-about title="To think about"}
+How could a system preserve continuity without treating last year’s interaction history as a permanent identity?
+:::
+
+::: notes
+Introduce the Spades treatment as a situational design lens, not a fixed kind of person. It should guide the case study’s continuity question.
+:::
+
+## ♠ Observed Metadata Meets Learned Continuity
+
+| Layer | What it contains | Appropriate use |
+|---|---|---|
+| **Observed metadata** | Creator, category, format, duration, or an explicit constraint. | Interpretability, filtering, feature-based comparison. |
+| **Latent embedding** | Inferred coordinates from interaction patterns. | Candidate scoring and learned associations. |
+| **Case design** | A deliberate combination of both. | Preserve meaningful continuity while monitoring drift and blind spots. |
+
+**Guardrail:** *latent metadata* is a teaching bridge for the case—not a claim that an embedding coordinate is a recorded field.
+
+::: notes
+State the guardrail explicitly. Students can use this distinction in E1: explain how metadata and a latent model might jointly serve a surface without conflating them.
+:::
+
+## ♦ Diamonds: Novelty Should Be Relevant, Not Random
+
+- Feature-based novelty identifies candidates that differ in meaningful, declared attributes from the familiar set.
+- The objective is not surprise for its own sake; it is a credible opportunity for discovery.
+- A novelty mechanism needs a definition of difference, an exposure policy, and an evaluation consequence.
+
+::: notes
+Make Diamonds distinct from Spades: Diamonds foreground diversity, long-tail exposure, and discovery; they should not be presented as a generic preference for “more random” items.
+:::
+
+## ♠ + ♦ Re-rank With a Familiar Anchor
+
+<div class="factor-flow">
+  <div class="factor-card"><strong>Latent score</strong><br>Generate plausible candidates from interaction patterns.</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Spades anchor</strong><br>Keep credible continuity for the user’s stable context.</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Diamonds re-rank</strong><br>Reserve selected positions for feature-different discovery.</div>
+</div>
+
+Possible checks: top-*k* relevance, feature coverage, long-tail exposure, repeat engagement, and who is not receiving discovery.
+
+::: notes
+This is the core case-study design pattern. Ask students which control belongs in the model objective and which can appear in a downstream re-ranking rule. Both can be legitimate, but the rationale and evaluation must be explicit.
+:::
+
+## 📶 AI Voice Mode: Whose Discovery Is Missing? {background-color="#003D7C"}
+
+<div class="voice-prompt">
+<strong>Live prompt for the voice agent</strong><br><br>
+A recommender’s interaction logs are dominated by popular titles. Independent and long-tail items had far less initial exposure, so they have fewer observed interactions. The system adds feature-based novelty for some users. Explain why low interaction may not mean low preference; identify one risk if exposure history is treated as preference; and propose one measurement that could test whether the novelty mechanism broadens meaningful discovery rather than merely lowering relevance.
+</div>
+
+<p style="margin-top:.65em;color:#ffffff;font-size:.72em;"><strong>Listen for:</strong> assumptions about exposure, missing stakeholders, and a measurable distinction between opportunity and preference.</p>
+
+::: notes
+This is the required ethics voice-agent example. The title follows the course AI Voice Mode convention. The agent is a conversation partner, not an authority: pause to distinguish supported reasoning, assumptions, omissions, and claims requiring evidence.
+:::
+
+## 👥 Activity 2: Audit the Agent’s Explanation {background-color="#003D7C"}
+
+<p class="activity-question"><strong>Small groups.</strong> Audit the voice-agent response instead of accepting its fluency.</p>
+
+<div class="activity-grid">
+  <div class="activity-card"><h3>One assumption</h3>What did the agent assume about interaction logs, users, or items?</div>
+  <div class="activity-card"><h3>One omission</h3>Which stakeholder or under-exposed group could be harmed or overlooked?</div>
+  <div class="activity-card"><h3>One measurement</h3>What observable quantity would help separate exposure from preference?</div>
+</div>
+
+<div class="activity-output"><strong>Produce:</strong> one three-part audit. Be ready to state why the proposed measurement changes the design decision.</div>
+
+::: notes
+This is student activity 2 of 2. Collect two groups’ audits. Emphasise that an apparently convincing explanation is not evidence; the instructor remains responsible for accuracy and synthesis after the AI interaction.
+:::
+
+## 🔑 <u>Historical Behaviour Becomes Model Geometry</u> {background-color="#003D7C"}
+
+| Historical process | Model consequence | Design question |
+|---|---|---|
+| Uneven exposure | Sparse or distorted interaction evidence | Who had a genuine chance to interact? |
+| Popularity reinforcement | Well-exposed items gain stronger learned signals | Who receives repeated visibility? |
+| Feature-based novelty | A re-ranking decision changes what becomes observable next | Who receives credible discovery—and who does not? |
+
+<p style="margin-top:.85em;color:#EF7C00;font-weight:bold;">🤞 Use history as evidence with limits, not as a neutral record of preference.</p>
+
+::: notes
+Use this navy key-point slide to close the ethics section. Tie together objective, representation, exposure, and the difference between continuity and lock-in.
+:::
+
+# 04 From Model to Case Study {background-color="#EF7C00"}
+
+## From Interaction Data to a Ranked Candidate List
+
+<div class="factor-flow">
+  <div class="factor-card"><strong>Collect & inspect</strong><br>Understand feedback, missingness, and exposure.</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Learn & score</strong><br>Train embeddings under an explicit objective.</div>
+  <div class="factor-arrow">→</div>
+  <div class="factor-card"><strong>Re-rank & evaluate</strong><br>Apply continuity, novelty, and responsible checks.</div>
+</div>
+
+A production recommender is a chain of technical and product decisions—not just a latent-factor score.
+
+::: notes
+This is the conceptual implementation laboratory. Avoid presenting it as a complete production architecture; it provides the chain students can narrow for E1.
+:::
+
+## E1 Bridge: Choose the Consequential Decision
+
+For one approved recommendation surface, make a focused argument around a choice such as:
+
+| Choice | Example question |
+|---|---|
+| Representation | Why use an embedding-based model rather than only local neighbourhood evidence? |
+| Objective | Why should the surface optimise top-*k* order rather than numeric prediction? |
+| Continuity | How should observed metadata and learned preferences support a Spades-oriented need? |
+| Novelty | Which feature-based difference should create Diamonds-style discovery, and how will it be evaluated? |
+| Risk | How could historical exposure bias distort the evidence used by the model? |
+
+::: notes
+Invite students to select one or two rows that could form a coherent argument. Do not encourage a catalogue of every possible model component.
+[Sources]
+- CP4285 Essay 1 brief, `static/essays/e1.md`.
+:::
+
+## 🔑 <u>Representation Enables; Objectives and Constraints Decide</u> {background-color="#003D7C"}
+
+- **Latent factors** make distributed interaction patterns usable when local overlap is weak.
+- **Objectives** decide what the model is rewarded for predicting or ranking.
+- **Spades and Diamonds** make continuity and discovery explicit design choices.
+- **Ethical scrutiny** asks how past exposure shaped the evidence in the first place.
+
+<p style="margin-top:.8em;color:#EF7C00;font-weight:bold;">🔑 A better score is not automatically a better recommendation.</p>
+
+::: notes
+This key-point slide is the end-of-lecture synthesis before the pre-lecture task and final summary.
+:::
+
+## {background-color="#ffffff"}
+
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title" style="color:#003D7C;">When two lists predict similarly, what should decide?</div>
+  <div class="cp-frame-body" style="color:#333;">
+    <p>Suppose two ranked lists have similar rating-prediction error, but one concentrates attention on already popular items while the other broadens credible discovery.</p>
+    <p style="margin-top:.7em;font-weight:bold;color:#003D7C;">Post one metric or diagnostic you would use, explain what it reveals, and reply constructively to one classmate.</p>
+  </div>
+</div>
+
+::: notes
+Direct students to Canvas and insert the verified deadline at delivery time. This exercise activates the Week 03 transition to ranking metrics and realistic offline evaluation.
+:::
+
+# Summary {background-color="#003D7C"}
+
+## 🔑 <u>Latent Factors Learn Structure; Responsible Systems Learn Limits</u>
+
+| Week 01: neighbourhood CF | Week 02: latent-factor models |
+|---|---|
+| Uses observed local overlap | Learns global user/item representations |
+| Similarity is specified directly | Representation is learned from interaction patterns |
+| Thin overlap can make neighbours unreliable | Distributed patterns can support a score—but not create ground truth |
+| Main question: who counts as a neighbour? | Main questions: what is optimised, who receives continuity or novelty, and how did history shape the evidence? |
+
+**Next week:** evaluate ranked lists with realistic offline protocols, position-sensitive metrics, and careful assumptions.
+
+::: notes
+End with the comparison table and the Week 03 teaser. Reiterate that the full 90-minute timeline preserves two activities, two MCQs, a worked calculation, a RecBole example, the voice-agent ethics audit, and the protected opening recap/logistics/assignment/survey segment.
 :::

@@ -86,6 +86,10 @@ Key rules:
 
 ### Title Slide: QR Access Panel
 
+Treat `static/slides/w01/w01.qmd` and `static/slides/w01/w01-custom.scss` as the **canonical CP4285 title-slide reference**. Preserve the standard RevealJS title treatment: white field, default dark course title, orange rule, and left-aligned subtitle, instruction team, and date. Let the default title sizing and wrapping respond naturally to the lecture title; a short title may occupy one line.
+
+Do **not** add a course/week eyebrow, title-card gradient, bespoke title font size, title width cap, or title-specific colour override. Do **not** create an `include-in-header` title-style file: keep all title-panel CSS in the deck’s `custom.scss` theme.
+
 When a published deck has a course shortlink, make the QR code a prominent, clickable **right-hand title-slide panel**. Keep the lecture title, subtitle, instruction team, and date left aligned on the remaining space. Do not use a small inline QR code beneath the subtitle.
 
 Create and verify the shortlink before creating its QR code. Use the `manage-socn-links` skill for soc-n.us operations. Generate both SVG and PNG QR assets locally in `static/uploads/`: use SVG as the preferred source and PNG as the fallback. Put the exact, verified shortlink in the panel label. The whole panel must link to the shortlink in a new tab.
@@ -111,6 +115,12 @@ Add matching theme CSS, changing `wNN` to the week identifier. Keep the panel at
   box-sizing: border-box;
   padding-right: 340px;
   text-align: left;
+}
+.reveal #title-slide .title,
+.reveal #title-slide .subtitle,
+.reveal #title-slide .quarto-title-authors,
+.reveal #title-slide .date {
+  max-width: 100%;
 }
 .reveal #title-slide .quarto-title-authors,
 .reveal #title-slide .quarto-title-author {
@@ -144,7 +154,7 @@ Add matching theme CSS, changing `wNN` to the week identifier. Keep the panel at
 
 **RevealJS guardrail:** Never set `position: relative`, `display`, `top`, `left`, or a transform on `#title-slide` itself. Reveal positions title and content slides; overriding its positioning can place every later slide in normal document flow and cause navigation to land far below the viewport. Scope absolute positioning only to `.wNN-title-qr`.
 
-After changing the title panel, render the deck and navigate from Slide 1 to Slide 2 in the browser. Verify that the next slide begins at the normal top position, not below the viewport.
+After changing the title panel, render the deck and compare Slide 1 against the Week 01 reference. Verify the standard dark title, orange rule, left-aligned metadata, QR clearance, and compact QR label. Then navigate from Slide 1 to Slide 2 in the browser and verify that the next slide begins at the normal top position, not below the viewport.
 
 ---
 
