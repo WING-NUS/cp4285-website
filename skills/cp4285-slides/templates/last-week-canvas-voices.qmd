@@ -1,0 +1,24 @@
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content canvas-voices-frame">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Latent dimensions students noticed</div>
+  <div class="voice-bubble-grid" aria-label="Anonymised student quotations and same-theme Canvas replies">
+    <article class="voice-bubble voice-theme-one">
+      <img src="assets/canvas-avatars/theme-one.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
+      <p>“Primary student quotation …”</p>
+      <p class="voice-reply"><span>Reply</span> “A genuine follow-up reply that develops the same theme …”</p>
+      <span class="voice-theme">Theme one</span>
+    </article>
+    <!-- Repeat three times with distinct themes, avatar assets, and actual reply text only when available. -->
+  </div>
+  <p class="canvas-voices-note">Anonymised Canvas excerpts and thematic follow-up replies · avatars retained without names · quotes shortened only for fit</p>
+</div>
+```
+
+::: notes
+State how these student ideas bridge into the current lecture. Do not expose identities or describe abbreviated excerpts as numerical evidence.
+:::
+

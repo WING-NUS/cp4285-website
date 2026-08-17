@@ -47,50 +47,75 @@ format:
 ::: notes
 :::
 
-## Pre-Flight Survey: Response Snapshot {background-color="#ffffff"}
+## Pre-Flight Survey · Metadata Summary {background-color="#ffffff" .preflight-alt .preflight-metadata-a}
 
-```{=html}
-<div class="cp-frame survey-frame">
-  <div class="cp-frame-bg cp-frame-navy"></div>
-  <div class="cp-frame-content">
-    <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Pre-Flight Survey Results · Placeholder</div>
-    <div class="cp-frame-title" style="color:#003D7C;">Insert verified cohort snapshot before class</div>
-    <div class="placeholder-panel">
-      <div class="placeholder-card"><strong>Response coverage</strong><span>Insert the number and share of enrolled students represented. State the collection window and any non-response caveat.</span></div>
-      <div class="placeholder-card"><strong>Background mix</strong><span>Insert only anonymised, aggregate indicators that help calibrate examples and pace.</span></div>
-      <div class="placeholder-card"><strong>Prior experience</strong><span>Summarise relevant foundations, for example Python, linear algebra, or recommender exposure.</span></div>
-      <div class="placeholder-card"><strong>Learning priorities</strong><span>Surface one or two recurring expectations that can be revisited during the course.</span></div>
-    </div>
-  </div>
-</div>
-```
-
-::: notes
-Placeholder only. Do not display fabricated values. Replace with a verified, anonymised aggregate summary before delivery.
+::: {.preflight-kicker}
+**Pre-flight survey · 26 submissions**  —  cohort signals
 :::
 
-## Pre-Flight Survey: What We Will Do With It {background-color="#ffffff"}
-
 ```{=html}
-<div class="cp-frame survey-frame">
-  <div class="cp-frame-bg cp-frame-navy"></div>
-  <div class="cp-frame-content">
-    <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Pre-Flight Survey Results · Placeholder</div>
-    <div class="cp-frame-title" style="color:#003D7C;">Use survey evidence to calibrate—not label—the cohort</div>
-    <div class="cp-frame-body survey-action-body" style="color:#333;">
-      <ol>
-        <li>State two verified findings from the aggregate results.</li>
-        <li>Explain one teaching response: pace, vocabulary, worked examples, or support resources.</li>
-        <li>Name one limitation: the survey is a partial, self-reported snapshot—not a profile of any individual student.</li>
-      </ol>
-      <div class="activity-output">Replace this placeholder with the final instructor talking points after the verified results are available.</div>
-    </div>
-  </div>
+<div class="metadata-chip-grid">
+  <div class="metadata-chip"><span class="chip-label">Computer Sciences</span><strong>85%</strong><span>22 of 26</span></div>
+  <div class="metadata-chip"><span class="chip-label">Balance / practice</span><strong>81%</strong><span>lecture preference</span></div>
+  <div class="metadata-chip highlight"><span class="chip-label">IR knowledge</span><strong>15%</strong><span>4 of 26</span></div>
+  <div class="metadata-chip highlight"><span class="chip-label">Embeddings exposure</span><strong>73%</strong><span>19 of 26</span></div>
+  <div class="metadata-chip"><span class="chip-label">DSA knowledge</span><strong>92%</strong><span>strong / decent</span></div>
+  <div class="metadata-chip"><span class="chip-label">AI knowledge</span><strong>100%</strong><span>strong / decent</span></div>
+  <div class="metadata-chip"><span class="chip-label">Industry cases</span><strong>42%</strong><span>10 of 24 responses</span></div>
+  <div class="metadata-chip"><span class="chip-label">Retrieval / architectures</span><strong>38%</strong><span>9 of 24 responses</span></div>
+  <div class="metadata-chip"><span class="chip-label">Build / deploy</span><strong>33%</strong><span>8 of 24 responses</span></div>
 </div>
 ```
 
+::: {.preflight-source}
+Source: Canvas pre-flight survey. Programme selections were multi-select; learning-expectation themes were coded from 24 substantive answers.
+:::
+
 ::: notes
-Placeholder only. Use the final version to make the course responsive without presenting survey responses as fixed ability labels.
+Slide 4 compact survey-signal grid with percentage-led labels.
+:::
+
+## Pre-Flight Survey · Voices in the Room {background-color="#ffffff" .preflight-alt .preflight-quotes-a}
+
+::: {.preflight-kicker}
+**Open responses · representative anonymous phrases**  —  larger phrases indicate central themes, not frequency
+:::
+
+```{=html}
+<div class="quote-cloud quote-cloud-a fit-safe-cloud expanded-cloud">
+  <span class="quote q-xxl">“retrieval and ranking architectures”</span>
+  <span class="quote q-md orange-quote">“more application based”</span>
+  <span class="quote q-xxl teal-quote">“deployment and productionization”</span>
+  <span class="quote q-xl">“TikTok / Instagram … real-world case studies”</span>
+  <span class="quote q-xl">“YouTube and Spotify”</span>
+  <span class="quote q-lg">“modern search alongside recommendation”</span>
+  <span class="quote q-xl">“recommendation algorithms … real-world datasets”</span>
+  <span class="quote q-xxl">“end-to-end recommender … project”</span>
+  <span class="quote q-lg">“Two Tower Model”</span>
+  <span class="quote q-lg">“LLMs for recommendation … RAG or fine-tuning”</span>
+  <span class="quote q-md">“replicate papers”</span>
+  <span class="quote q-md">“create and deploy MCP server”</span>
+  <span class="quote q-md orange-quote">“Heavy workload”</span>
+  <span class="quote q-lg">“system design … production”</span>
+  <span class="quote q-xl teal-quote">“PyTorch … building and training”</span>
+  <span class="quote q-lg">“latest research and progress”</span>
+  <span class="quote q-md orange-quote">“form our own groups”</span>
+  <span class="quote q-md orange-quote">“ethics … history and context”</span>
+</div>
+<p></p>
+<p></p>
+<div class="phrase-legend" aria-label="Phrase cloud colour legend">
+  <span class="legend-item legend-navy">Systems and concepts</span>
+  <span class="legend-item legend-teal">Building and deployment</span>
+  <span class="legend-item legend-orange">Expectations and concerns</span>
+</div>
+```
+::: {.preflight-source}
+Source: Canvas pre-flight survey, anonymous open responses. Phrases are abbreviated from representative excerpts for slide readability.
+:::
+
+::: notes
+Expanded weighted phrase cloud. Font size represents thematic centrality in the open responses, not a quantitative count. Colour distinguishes systems/concepts, building/deployment, and expectations/concerns.
 :::
 
 ## Essay 1: Micro Case Study: Designing a Production Recommender Surface
@@ -108,18 +133,74 @@ Placeholder only. Use the final version to make the course responsive without pr
 - Feature a card-suit lens in the technical design, objective, constraint, or evaluation criterion.
 - Include an AI-use declaration; AI may assist inquiry but you need to own the argument.
 
-# 02 From Neighbours to Latent Structure {background-color="#EF7C00"}
-
-## 🎰 Bandit Time: Which statement best describes a latent factor? {background-color="#003D7C"}
-
-<div class="bandit-options">
-  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> An item attribute recorded directly by the platform.</div>
-  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> An inferred interaction pattern represented by a learned embedding coordinate.</div>
-  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> A verified demographic fact about a user.</div>
-  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> A manually fixed value shared by every user.</div>
-</div>
+# 02 From Neighbours to Features to Latent Structure {background-color="#EF7C00"}
 
 ::: notes
+:::
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Look for Hidden Structure</div>
+  <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span style="color:#00796B;">Mon, 23:59 SGT</span></p>
+    <p style="margin:.15em 0 .65em;">Post a short, concrete response to this question; then reply constructively to one classmate.</p>
+    <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
+      Name one latent dimension that could explain several ratings—but is not an item metadata label.
+    </div>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user-item matrix.</p>
+  </div>
+</div>
+```
+
+::: notes
+Direct students to Canvas and state the deadline: Monday, 23:59 SGT. Students answer the single displayed prompt with one concrete latent dimension and distinguish it from an observed metadata label, then make one constructive reply. This is a pre-lecture activation task, not an assessment of prior technical knowledge. The distinction matters: a latent factor is inferred from patterns of ratings, whereas metadata is an observed item attribute.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.5-2.5.2, pp. 47-50.
+:::
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content canvas-voices-frame">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Latent dimensions students noticed</div>
+  <div class="voice-bubble-grid" aria-label="Four anonymised student quotations and relevant replies from the Canvas discussion">
+    <article class="voice-bubble voice-quality">
+      <img src="assets/canvas-avatars/quality.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
+      <p>“Quality: Unlike a metadata like price or like count, you can't really quantify quality from the item itself.”</p>
+      <p class="voice-reply"><span>Reply</span> “Quality is also subjective and can potentially be influenced by trendiness.”</p>
+      <span class="voice-theme">Quality</span>
+    </article>
+    <article class="voice-bubble voice-nostalgia">
+      <img src="assets/canvas-avatars/nostalgia.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
+      <p>“Nostalgia. It's a property of the relationship between a user and an item which is driven by the user's personal history …”</p>
+      <p class="voice-reply"><span>Reply</span> “Could it be modelled by grouping users into distinct age groups?”</p>
+      <span class="voice-theme">Nostalgia</span>
+    </article>
+    <article class="voice-bubble voice-trust">
+      <img src="assets/canvas-avatars/trust.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
+      <p>“Trust: It is not an item metadata label because it is an underlying, subjective perception that is not directly observable.”</p>
+      <p class="voice-reply"><span>Reply</span> “The degree of trust cannot be readily quantified and it may vary widely …”</p>
+      <span class="voice-theme">Trust</span>
+    </article>
+    <article class="voice-bubble voice-emotion">
+      <img src="assets/canvas-avatars/emotion.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
+      <p>“One latent dimension is how emotionally provocative an item is? Some items naturally stimulate our excitement, motivation or pleasure …”</p>
+      <p class="voice-reply"><span>Reply</span> “Psychological emotions are subjective … and it is tough to quantify.”</p>
+      <span class="voice-theme">Emotion</span>
+    </article>
+  </div>
+</div>
+```
+
+::: notes
+Use the replies to show that students did not only name possible latent dimensions; they also tested subjectivity, measurement, segmentation, and variability. Bridge from this discussion to how latent-factor models represent interaction patterns rather than simply relabel item metadata.
 :::
 
 ## Sparse Neighbourhoods Can Fall Silent

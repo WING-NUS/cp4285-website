@@ -718,6 +718,41 @@ Copy `templates/previous-week-recap.qmd` into the destination lecture’s `.qmd`
 
 ---
 
+## Last Week Pre-Lecture Exercise: Canvas Voices
+
+Use this recap when a prior Canvas pre-lecture discussion should become evidence for the current lecture. Place it in an empty **Last Week Pre-Lecture Exercise** navy frame after the exercise prompt and before the new technical content.
+
+### Select Evidence
+
+1. Expand the complete Canvas discussion thread before selecting material.
+2. Select three or four primary student contributions that illustrate distinct, instructionally useful latent dimensions or reasoning moves.
+3. Add a direct reply only when a real follow-up response exists and extends the same theme, such as subjectivity, measurement, segmentation, variability, or a counterexample.
+4. Quote faithfully. Shorten only for fit with an ellipsis; do not rewrite student meaning or treat excerpts as quantitative evidence.
+
+### Protect Student Privacy
+
+- Omit names, initials, usernames, timestamps, and reply counts.
+- Use a participant avatar only when the instructor explicitly requests it. Save it locally under `assets/canvas-avatars/`, use the alt text `Anonymous Canvas participant avatar`, and never include the identity-to-asset mapping in the deck.
+- Label the slide as anonymised and state that quotations are shortened only for fit.
+
+### Build the Frame
+
+Copy `templates/last-week-canvas-voices.qmd` into the target deck. Use one `voice-bubble` per theme, with an avatar, a primary quotation, an optional `voice-reply`, and a terse theme label. Use a two-by-two `voice-bubble-grid` inside `.canvas-voices-frame`.
+
+### Layout Rules
+
+- Keep bubbles compact but spread them across the usable frame area with staggered vertical offsets.
+- Position each avatar just outside the lower-left edge of its bubble. Aim the bubble tail toward the avatar so the text reads as emitted by that participant.
+- Keep the primary quotation visually dominant. Render the actual follow-up reply as a smaller `Reply` line separated by a fine rule.
+- Scope all additions below `.canvas-voices-frame` in the deck's local `custom.scss`. Append overrides; do not alter shared `.cp-frame-*` rules.
+- Use course colours subtly to distinguish themes and preserve the navy frame treatment.
+
+### Validate
+
+Before delivery, confirm that every reply is thematically linked to the displayed quotation, names are absent, avatar files resolve locally, all bubbles fit in the frame, and `quarto render wNN.qmd` succeeds. Run `git diff --check` on the `.qmd` and `.scss` files.
+
+---
+
 ## Timer Auto-Pause on Slide Exit
 
 ### Behaviour
