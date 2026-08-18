@@ -1373,6 +1373,488 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+</section></section>
+<section>
+<section id="information-retrieval-fundamentals" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>02 Information Retrieval Fundamentals</h1>
+
+</section>
+<section id="text-becomes-searchable-as-a-vector" class="slide level2">
+<h2>Text Becomes Searchable as a Vector</h2>
+<div class="columns">
+<div class="column" style="width:47%;">
+<h3 id="query">Query</h3>
+<p><code>feline care</code></p>
+<p>A query is a short text representation of an information need.</p>
+</div><div class="column" style="width:6%;">
+<div style="font-size:2.2em;text-align:center;padding-top:1.1em;color:#EF7C00;">
+→
+</div>
+</div><div class="column" style="width:47%;">
+<h3 id="item-description">Item description</h3>
+<p><code>cat health guide</code></p>
+<p>An item can be represented in the same feature space for comparison.</p>
+</div></div>
+<blockquote>
+<p><strong>Information retrieval (IR)</strong> asks which available documents or items best satisfy a text-based need.</p>
+</blockquote>
+<aside class="notes">
+<p>Bridge from the protected neighbourhood-CF slides: both retrieval and recommendation need a representation before they can compute a score. The evidence differs: words for IR, interaction history for collaborative filtering. [Sources] - Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>, Chapter 6.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="a-bag-of-words-is-sparse-and-literal" class="slide level2">
+<h2>A Bag of Words Is Sparse and Literal</h2>
+<div class="matrix-grid" style="grid-template-columns:1.4fr repeat(5, .8fr);font-size:.82em;">
+<div class="matrix-head">
+text / term
+</div>
+<div class="matrix-head">
+cat
+</div>
+<div class="matrix-head">
+feline
+</div>
+<div class="matrix-head">
+health
+</div>
+<div data-lass="matrix-head">
+care
+</div>
+<div class="matrix-head">
+guide
+</div>
+<div class="matrix-head">
+query: feline care
+</div>
+<div class="matrix-missing">
+0
+</div>
+<div class="matrix-target">
+1
+</div>
+<div class="matrix-missing">
+0
+</div>
+<div class="matrix-target">
+1
+</div>
+<div class="matrix-missing">
+0
+</div>
+<div class="matrix-head">
+doc: cat health guide
+</div>
+<div class="matrix-target">
+1
+</div>
+<div class="matrix-missing">
+0
+</div>
+<div class="matrix-target">
+1
+</div>
+<div class="matrix-missing">
+0
+</div>
+<div class="matrix-target">
+1
+</div>
+</div>
+<ul>
+<li>One coordinate per vocabulary term; most coordinates are zero.</li>
+<li>Word order is discarded, but exact lexical evidence is retained.</li>
+<li><code>cat</code> and <code>feline</code> occupy different coordinates unless we add another mechanism.</li>
+</ul>
+<aside class="notes">
+<p>Use the grid to make sparsity visible. This is intentionally a representation, not yet a claim that it understands meaning. [Sources] - Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>, Chapters 1 and 6.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="tf-and-idf-signal-different-things" class="slide level2">
+<h2>TF and IDF Signal Different Things</h2>
+<div class="columns">
+<div class="column" style="width:47%;">
+<h3 id="tf-local-evidence">TF: local evidence</h3>
+<p><span class="math display">\[
+\operatorname{tf}(t,d)=\text{count of term }t\text{ in document }d
+\]</span></p>
+<p>Repeated occurrence can strengthen a term’s contribution <strong>within one document</strong>.</p>
+</div><div class="column" style="width:47%;">
+<h3 id="idf-collection-discrimination">IDF: collection discrimination</h3>
+<p><span class="math display">\[
+\operatorname{idf}(t)=\log\frac{N}{df_t}
+\]</span></p>
+<p>A term found in almost every document contributes less to distinguishing documents.</p>
+</div></div>
+<p><span class="math display">\[
+\operatorname{tf\!\mbox{-}\!idf}(t,d)=\operatorname{tf}(t,d)\times\operatorname{idf}(t)
+\]</span></p>
+<aside class="notes">
+<p>Emphasise that IDF is a collection-level property while TF is document-specific. Do not say a high frequency word is always irrelevant; it is simply less discriminative if it appears everywhere. [Sources] - Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>, Chapter 6.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="worked-tfidf-rank-a-query-match" class="slide level2">
+<h2>Worked TF–IDF: Rank a Query Match</h2>
+<p><strong>Query:</strong> <code>machine learning</code></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Term</th>
+<th style="text-align: right;">TF in guide A</th>
+<th style="text-align: right;">IDF</th>
+<th style="text-align: right;">Weight in guide A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>machine</code></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">2.4</td>
+</tr>
+<tr class="even">
+<td><code>learning</code></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.6</td>
+<td style="text-align: right;">1.6</td>
+</tr>
+</tbody>
+</table>
+<div class="factor-flow" style="margin-top:.6em;">
+<div class="factor-card">
+<strong>Query vector</strong><br>Weights the terms that express the need.
+</div>
+<div class="factor-arrow">
+·
+</div>
+<div class="factor-card">
+<strong>Document vector</strong><br>Weights the same vocabulary coordinates.
+</div>
+<div class="factor-arrow">
+→
+</div>
+<div class="factor-card">
+<strong>Cosine score</strong><br>Ranks documents by directional alignment.
+</div>
+</div>
+<p>A vector-space retriever ranks <strong>lexical evidence</strong>; it has not yet inferred that different words can express a similar idea.</p>
+<aside class="notes">
+<p>Do not calculate a full cosine normalisation by hand. The goal is to identify what determines a contribution to the score, then introduce cosine as a scale-aware comparison. [Sources] - Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>, Chapter 6.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="dense-word-embeddings-learn-neighbourhoods" class="slide level2">
+<h2>Dense Word Embeddings Learn Neighbourhoods</h2>
+<div class="factor-flow">
+<div class="factor-card">
+<strong>Training contexts</strong><br>Words that occur in related contexts provide a learning signal.
+</div>
+<div class="factor-arrow">
+→
+</div>
+<div class="factor-card">
+<strong>Dense vectors</strong><br>Each word receives a short, continuous learned representation.
+</div>
+<div class="factor-arrow">
+→
+</div>
+<div class="factor-card">
+<strong>Neighbourhoods</strong><br>Related usage can place vectors closer together.
+</div>
+</div>
+<ul>
+<li>Dense vectors have far fewer dimensions than a vocabulary-sized bag-of-words vector.</li>
+<li>They can support semantic generalisation such as related wording.</li>
+<li>Their coordinates are learned patterns, <strong>not human-readable facts or ground truth</strong>.</li>
+</ul>
+<aside class="notes">
+<p>Introduce word2vec as an historically influential example, not as the only embedding approach. State the limitation: a single static vector cannot solve every context, phrase, ambiguity, or bias issue. [Sources] - Mikolov, T. et al. (2013). “Efficient Estimation of Word Representations in Vector Space.” - Mikolov, T. et al. (2013). “Distributed Representations of Words and Phrases and their Compositionality.”</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="sparse-and-dense-make-different-trade-offs" class="slide level2">
+<h2>Sparse and Dense Make Different Trade-offs</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>TF–IDF</th>
+<th>Dense word embedding</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What is represented?</td>
+<td>Exact vocabulary-term evidence</td>
+<td>Learned continuous coordinates</td>
+</tr>
+<tr class="even">
+<td>Main strength</td>
+<td>Transparent lexical matching</td>
+<td>Can generalise across related usage</td>
+</tr>
+<tr class="odd">
+<td>Main limitation</td>
+<td>Synonyms remain separate terms</td>
+<td>Learned proximity can be opaque or misleading</td>
+</tr>
+<tr class="even">
+<td>Typical score</td>
+<td>Cosine similarity over sparse vectors</td>
+<td>Cosine/dot-product similarity over dense vectors</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Bridge:</strong> IR turns <strong>text into comparable vectors</strong>. LFM will turn <strong>interaction history into comparable user and item vectors</strong>.</p>
+</blockquote>
+<aside class="notes">
+<p>This comparison is the central bridge. Avoid presenting dense embeddings as a universal upgrade: retrieval systems commonly combine sparse and dense signals. [Sources] - Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. - Mikolov, T. et al. (2013). “Efficient Estimation of Word Representations in Vector Space.”</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="bandit-time-where-does-tfidf-struggle" class="slide level2" data-background-color="#003D7C">
+<h2>🎰 Bandit Time: Where Does TF–IDF Struggle?</h2>
+<p class="bandit-question">
+<strong>A query is “feline care”. A useful document says “cat health”. Why can a conventional TF–IDF cosine score under-rank it?</strong>
+</p>
+<div class="bandit-options">
+<div class="bandit-option" style="border-color:#D32F2F">
+<strong>A.</strong> TF–IDF forbids any document from receiving more than one score.
+</div>
+<div class="bandit-option" style="border-color:#1976D2">
+<strong>B.</strong> <code>feline</code> and <code>cat</code> are separate vocabulary dimensions unless a mechanism connects them.
+</div>
+<div class="bandit-option" style="border-color:#388E3C">
+<strong>C.</strong> Cosine similarity can only compare dense vectors.
+</div>
+<div class="bandit-option" style="border-color:#7B1FA2">
+<strong>D.</strong> IDF removes every rare word from the query.
+</div>
+</div>
+<p style="margin-top:.7em;color:#80cbc4;font-size:.73em;">
+Answer: <strong style="color:#ffffff;">B</strong>. TF–IDF rewards shared lexical coordinates; embeddings can help relate wording, but they introduce a different modelling assumption.
+</p>
+<aside class="notes">
+<p>MCQ. Invite individual answers first, then ask for one rationale. The key distinction is lexical mismatch, not a claim that dense embeddings are always correct.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="break-5-minutes" class="slide level2" data-background-color="#000000">
+<h2>Break — 5 minutes</h2>
+
+<div style="display:grid;grid-template-columns:1.25fr .75fr;gap:3em;align-items:center;min-height:62vh;color:#fff;">
+  <div>
+    <div style="color:#EF7C00;font-size:.76em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8em;">IR history · 1958</div>
+    <h2 style="color:#fff;margin:.1em 0 .45em;">Keyword search predates the Web</h2>
+    <p style="font-size:1.08em;line-height:1.42;margin:0;">At IBM, <strong style="color:#EF7C00;">Hans Peter Luhn</strong> demonstrated <strong style="color:#EF7C00;">Key Word in Context (KWIC)</strong>: an automatic index that rearranged keywords while preserving their textual context.</p>
+    <p style="font-size:.86em;line-height:1.35;color:#d8d8d8;margin-top:1em;">By the early 1960s, KWIC had become central to hundreds of computerised indexing systems—a useful reminder that retrieval began with finding useful words, not with the Web.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+    <svg width="180" height="180" viewbox="0 0 180 180" aria-label="Five-minute break timer">
+      <circle cx="90" cy="90" r="75" fill="none" stroke="#333" stroke-width="14"></circle>
+      <circle id="donut-ring-w02ir" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle>
+      <text id="timer-text-w02ir" x="90" y="98" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="white">05:00</text>
+    </svg>
+    <span id="timer-status-w02ir" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">05:00</span>
+    <button id="break-btn-w02ir" type="button" style="margin-top:1.2em;padding:.5em 2em;font-size:1em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:#fff;border:none;border-radius:6px;cursor:pointer;letter-spacing:.04em;">▶ Start Timer</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var TOTAL = 5 * 60, remaining = TOTAL, interval = null, state = 'idle', audioContext = null;
+  var textEl = document.getElementById('timer-text-w02ir');
+  var statusEl = document.getElementById('timer-status-w02ir');
+  var ringEl = document.getElementById('donut-ring-w02ir');
+  var buttonEl = document.getElementById('break-btn-w02ir');
+  var circumference = 2 * Math.PI * 75;
+  function pad(v) { return v < 10 ? '0' + v : '' + v; }
+  function render() {
+    var display = pad(Math.floor(remaining / 60)) + ':' + pad(remaining % 60);
+    textEl.textContent = display;
+    statusEl.textContent = state === 'complete' ? "Time's up!" : display;
+    ringEl.setAttribute('stroke-dashoffset', circumference * (1 - remaining / TOTAL));
+  }
+  function ring() {
+    if (!audioContext) return;
+    var oscillator = audioContext.createOscillator(), gain = audioContext.createGain(), now = audioContext.currentTime;
+    oscillator.type = 'sine'; oscillator.frequency.value = 880;
+    gain.gain.setValueAtTime(.18, now); gain.gain.exponentialRampToValueAtTime(.001, now + .5);
+    oscillator.connect(gain); gain.connect(audioContext.destination); oscillator.start(now); oscillator.stop(now + .5);
+  }
+  function pause() {
+    if (state !== 'running') return;
+    clearInterval(interval); interval = null; state = 'paused'; buttonEl.textContent = '▶ Resume';
+  }
+  function reset() {
+    clearInterval(interval); interval = null; remaining = TOTAL; state = 'idle';
+    ringEl.setAttribute('stroke', '#EF7C00'); buttonEl.textContent = '▶ Start Timer'; render();
+  }
+  function tick() {
+    remaining = Math.max(0, remaining - 1); render();
+    if (remaining === 0) { clearInterval(interval); interval = null; state = 'complete'; ringEl.setAttribute('stroke', '#00c875'); buttonEl.textContent = '↻ Restart Timer'; ring(); }
+  }
+  buttonEl.addEventListener('click', function () {
+    if (state === 'complete') { reset(); return; }
+    if (state === 'running') { pause(); return; }
+    var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass && !audioContext) audioContext = new AudioContextClass();
+    if (audioContext && audioContext.state === 'suspended') audioContext.resume();
+    state = 'running'; buttonEl.textContent = '⏸ Pause'; interval = setInterval(tick, 1000);
+  });
+  render();
+  window._cpTimers = window._cpTimers || {};
+  document.addEventListener('DOMContentLoaded', function () {
+    function bindReveal() {
+      if (typeof Reveal === 'undefined' || !Reveal.isReady || !Reveal.isReady()) { setTimeout(bindReveal, 200); return; }
+      var slideEl = buttonEl.closest('section');
+      var allSlides = Array.prototype.slice.call(document.querySelectorAll('.reveal .slides > section'));
+      var slideIndex = allSlides.indexOf(slideEl);
+      if (slideIndex >= 0) window._cpTimers[slideIndex] = pause;
+      Reveal.on('slidechanged', function (event) {
+        var previousIndex = allSlides.indexOf(event.previousSlide);
+        if (previousIndex >= 0 && window._cpTimers[previousIndex]) window._cpTimers[previousIndex]();
+      });
+    }
+    bindReveal();
+  });
+})();
+
+</script>
+<aside class="notes">
+<p>Break slide. Start the timer when announcing the break. KWIC fact source: Hallam Stevens, “Hans Peter Luhn and the Birth of the Hashing Algorithm,” <em>IEEE Spectrum</em> (2018).</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section></section>
+<section>
+<section id="latent-factor-models" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>03 Latent Factor Models</h1>
+
+</section>
+<section id="one-vector-space-idea-two-evidence-sources" class="slide level2">
+<h2>One Vector-Space Idea, Two Evidence Sources</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Retrieval</th>
+<th>Latent-factor recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Query and document vectors</td>
+<td>User and item vectors</td>
+</tr>
+<tr class="even">
+<td>Evidence: words in text</td>
+<td>Evidence: observed interactions</td>
+</tr>
+<tr class="odd">
+<td>Score: lexical/semantic match</td>
+<td>Score: predicted affinity</td>
+</tr>
+<tr class="even">
+<td>Goal: rank relevant documents</td>
+<td>Goal: rank plausible items</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Analogy, not equivalence:</strong> a latent factor is not a word, a recorded metadata field, or a fact about a person.</p>
+</blockquote>
+<aside class="notes">
+<p>Use the preceding IR section to make LFM less mysterious. The geometry is analogous: represent objects in a common vector space, then score a relationship. The data-generating processes and interpretations are different.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="factorisation-learns-shared-coordinates" class="slide level2">
 <h2>Factorisation Learns Shared Coordinates</h2>
@@ -1396,9 +1878,9 @@ R \approx P Q^\top
 <strong>Item matrix (Q)</strong><br>One learned vector per item.
 </div>
 </div>
-<p>A small number of learned coordinates can capture recurring interaction patterns more compactly than the full sparse matrix.</p>
+<p>A compact set of learned coordinates can capture recurring interaction patterns that local neighbourhoods may miss.</p>
 <aside class="notes">
-<p>Introduce factorisation intuitively first. (P) and (Q) are parameter matrices; individual dimensions are useful for scoring even when they do not have a stable human-readable name. [Sources] - Koren, Y., Bell, R., &amp; Volinsky, C. (2009). Matrix factorization techniques for recommender systems. <em>Computer</em>, 42(8), 30–37.</p>
+<p>Re-use the distinction from the protected slides: LFM makes a prediction possible from distributed patterns; it does not turn a missing interaction into ground truth. [Sources] - Koren, Y., Bell, R., &amp; Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.” <em>Computer</em>, 42(8), 30–37.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1435,12 +1917,12 @@ display:block!important;
 </tr>
 <tr class="odd">
 <td>“The factor explains the person.”</td>
-<td>The factor helps the model score candidates under particular data and objectives.</td>
+<td>The factor supports a score under a particular dataset and objective.</td>
 </tr>
 </tbody>
 </table>
 <aside class="notes">
-<p>This slide sets the language discipline for the rest of the lecture. Do not reify embeddings as psychological or demographic truth.</p>
+<p>Retain this language discipline. It applies equally to dense word embeddings: a useful coordinate system is not an ontological truth.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1453,24 +1935,26 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="a-dot-product-turns-embeddings-into-a-score" class="slide level2">
-<h2>A Dot Product Turns Embeddings into a Score</h2>
+<section id="a-dot-product-turns-factors-into-a-score" class="slide level2">
+<h2>A Dot Product Turns Factors into a Score</h2>
 <p><span class="math display">\[
-\hat r_{ui} = p_u^\top q_i
+\hat r_{ui}=p_u^\top q_i
 \]</span></p>
 <div class="columns">
 <div class="column" style="width:48%;">
 <h3 id="user-vector">User vector</h3>
-<p><span class="math display">\[p_u=[p_{u1},p_{u2},\ldots,p_{uk}]\]</span></p>
-<p>Captures a learned location in the model’s coordinate system.</p>
+<p><span class="math display">\[
+p_u=[p_{u1},p_{u2},\ldots,p_{uk}]
+\]</span> A learned location in the model’s preference space.</p>
 </div><div class="column" style="width:48%;">
 <h3 id="item-vector">Item vector</h3>
-<p><span class="math display">\[q_i=[q_{i1},q_{i2},\ldots,q_{ik}]\]</span></p>
-<p>Captures how the item aligns with those learned patterns.</p>
+<p><span class="math display">\[
+q_i=[q_{i1},q_{i2},\ldots,q_{ik}]
+\]</span> How an item aligns with the learned interaction patterns.</p>
 </div></div>
-<p>The dot product is high when the vectors align along dimensions the model has learned to reward.</p>
+<p>The dot product produces a <strong>model score</strong>. A production recommender can still filter, diversify, or re-rank the resulting candidates.</p>
 <aside class="notes">
-<p>Make the transition from visual alignment to the compact scoring rule. A score is not the entire recommendation policy: it may later be filtered, re-ranked, or evaluated differently.</p>
+<p>Make the bridge to cosine from IR carefully: both use vector geometry, but the factor score is learned from interactions and need not be normalised like a retrieval cosine.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1483,8 +1967,8 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="worked-calculation-two-items-one-current-score" class="slide level2">
-<h2>Worked Calculation: Two Items, One Current Score</h2>
+<section id="worked-calculation-two-items-one-score" class="slide level2">
+<h2>Worked Calculation: Two Items, One Score</h2>
 <p><span class="math display">\[
 p_u=[0.8,0.2], \qquad q_A=[0.9,0.1], \qquad q_B=[0.4,0.8]
 \]</span></p>
@@ -1500,10 +1984,9 @@ p_u=[0.8,0.2], \qquad q_A=[0.9,0.1], \qquad q_B=[0.4,0.8]
 \hat r_{uB}=0.8(0.4)+0.2(0.8)=\mathbf{0.48}
 \]</span></p>
 </div></div>
-<p><strong>Current model verdict:</strong> Item A is higher scoring.</p>
-<p><strong>Still unresolved:</strong> diversity, constraints, exposure, uncertainty, and the rest of the candidate list.</p>
+<p><strong>Current model verdict:</strong> Item A scores higher. <strong>Still unresolved:</strong> diversity, constraints, uncertainty, exposure, and the rest of the candidate list.</p>
 <aside class="notes">
-<p>This is the required worked calculation. Ask students to verify each product before revealing the totals. State clearly that this is a score comparison, not a complete ranking policy.</p>
+<p>Ask students to verify each product before showing the totals. Reiterate that score comparison is not a full ranking policy.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1516,60 +1999,156 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="training-adjusts-both-sides-of-the-match" class="slide level2">
-<h2>Training Adjusts Both Sides of the Match</h2>
-<div class="factor-flow">
-<div class="factor-card">
-<strong>Observed interaction</strong><br>User watches, clicks, rates, or purchases.
-</div>
-<div class="factor-arrow">
-→
-</div>
-<div class="factor-card">
-<strong>Model score</strong><br>Apply (p_u^q_i).
-</div>
-<div class="factor-arrow">
-→
-</div>
-<div class="factor-card">
-<strong>Loss and update</strong><br>Move both user and item vectors.
-</div>
-</div>
-<ul>
-<li><strong>Explicit feedback:</strong> a rating can support a prediction-error loss.</li>
-<li><strong>Implicit feedback:</strong> a positive interaction can be compared against sampled alternatives.</li>
-<li>Repeated updates create embeddings that reflect the selected learning signal.</li>
-</ul>
-<aside class="notes">
-<p>Connect the loss to the type of evidence, not simply to an implementation preference. This prepares the contrast between rating prediction and ranking.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="regularisation-limits-convenient-stories" class="slide level2">
-<h2>Regularisation Limits Convenient Stories</h2>
+<section id="training-fits-evidence-regularisation-limits-it" class="slide level2">
+<h2>Training Fits Evidence, Regularisation Limits It</h2>
 <p><span class="math display">\[
-\begin{aligned}
-\min_{P,Q}\; \mathcal{L}
-&amp;= \sum_{(u,i)\in\Omega}(r_{ui}-p_u^\top q_i)^2 \\
-&amp;\quad + \lambda\left(\lVert P\rVert_F^2+\lVert Q\rVert_F^2\right)
-\end{aligned}
+\min_{P,Q}\; \sum_{(u,i)\in\Omega}(r_{ui}-p_u^\top q_i)^2 + \lambda\left(\lVert P\rVert_F^2+\lVert Q\rVert_F^2\right)
 \]</span></p>
 <ul>
-<li>The first term fits observed interactions.</li>
-<li>The regularisation term discourages overly flexible parameter values.</li>
-<li>The design question is not “fit or regularise”; it is how to generalise beyond the interactions already seen.</li>
+<li><strong>Explicit feedback:</strong> a rating can support a prediction-error loss.</li>
+<li><strong>Implicit feedback:</strong> an interaction supports relative or binary preference evidence.</li>
+<li><strong>Regularisation:</strong> discourages a model that memorises the observed matrix too conveniently.</li>
 </ul>
 <aside class="notes">
-<p>Explain the two terms qualitatively. () controls a trade-off and should not be treated as a universal constant. [Sources] - Koren, Y., Bell, R., &amp; Volinsky, C. (2009). Matrix factorization techniques for recommender systems. <em>Computer</em>, 42(8), 30–37.</p>
+<p>Explain the equation qualitatively. The objective and sampling scheme are design choices, not generic facts about user preference. [Sources] - Koren, Y., Bell, R., &amp; Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.”</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="bpr-makes-lfm-ranking-aware" class="slide level2">
+<h2>BPR Makes LFM Ranking-Aware</h2>
+<p><span class="math display">\[
+\log \sigma\big(s(u,i)-s(u,j)\big)
+\]</span></p>
+<div class="factor-flow">
+<div class="factor-card">
+<strong>Observed item (i)</strong><br>User (u) watched, clicked, or purchased it.
+</div>
+<div class="factor-arrow">
+&gt;
+</div>
+<div class="factor-card">
+<strong>Sampled item (j)</strong><br>An unobserved alternative for that user.
+</div>
+<div class="factor-arrow">
+→
+</div>
+<div class="factor-card">
+<strong>Pairwise loss</strong><br>Reward (i) being ranked above (j).
+</div>
+</div>
+<blockquote>
+<p><strong>BPR is not a neural architecture.</strong> It is a pairwise ranking objective commonly used with LFM-style user and item factors.</p>
+</blockquote>
+<aside class="notes">
+<p>Name BPR in full: Bayesian Personalized Ranking. Contrast the same latent-factor representation with a different learning objective: numeric prediction versus relative ranking under implicit feedback. [Sources] - Rendle, S. et al. (2009). “BPR: Bayesian Personalized Ranking from Implicit Feedback.”</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="choose-code-that-matches-the-evidence" class="slide level2">
+<h2>Choose Code That Matches the Evidence</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Library</th>
+<th>Evidence and pedagogical role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Regularised MF / SVD</strong></td>
+<td>Surprise <code>SVD</code></td>
+<td>Explicit ratings; prediction-style factor baseline.</td>
+</tr>
+<tr class="even">
+<td><strong>BPR-MF</strong></td>
+<td>RecBole <code>BPR</code></td>
+<td>Implicit interactions; <strong>primary worked example</strong> for top-<em>K</em> ranking.</td>
+</tr>
+<tr class="odd">
+<td><strong>Implicit ALS</strong></td>
+<td><code>implicit</code></td>
+<td>Confidence-weighted sparse implicit feedback; comparison extension.</td>
+</tr>
+<tr class="even">
+<td><strong>NMF</strong></td>
+<td>scikit-learn or Surprise <code>NMF</code></td>
+<td>Non-negative-factorisation constraint; extension code.</td>
+</tr>
+<tr class="odd">
+<td><strong>NeuMF</strong></td>
+<td>RecBole <code>NeuMF</code></td>
+<td>Neural interaction model; preview only, not BPR itself.</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Explain that “SVD” in practical recommender libraries normally means a regularised latent-factor model trained iteratively, not applying one literal SVD to a sparse ratings matrix. RecBole supports BPR and NeuMF; classic SVD and NMF should use a separate library.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="activity-1-choose-the-baseline-defend-the-match" class="slide level2" data-background-color="#003D7C">
+<h2>👥 Activity 1: Choose the Baseline, Defend the Match</h2>
+<p class="activity-question">
+<strong>Work in pairs.</strong> For one of the cases, choose a first LFM-related baseline. Produce: <em>evidence → method → ranking/prediction metric → one limitation</em>.
+</p>
+<div class="activity-grid">
+<div class="activity-card">
+<h3>
+Movie ratings
+</h3>
+Users give 1–5 star ratings. Is the score itself the target?
+</div>
+<div class="activity-card">
+<h3>
+Podcast listens
+</h3>
+Users either listened or did not. Which ranked-list outcome matters?
+</div>
+<div class="activity-card">
+<h3>
+Music discovery
+</h3>
+Interactions are implicit and exposure is uneven. What needs monitoring beyond relevance?
+</div>
+</div>
+<div class="activity-output">
+<strong>Produce:</strong> one defensible method/metric pair and one assumption that could make the baseline misleading.
+</div>
+<aside class="notes">
+<p>Student activity. Invite two contrasting reports. One correct family of answers: explicit ratings → regularised MF/SVD → RMSE/MAE; implicit listens → BPR-MF → NDCG@K/Recall@K. Ask why neither metric establishes causal user value.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1605,13 +2184,14 @@ run_recbole(model=&#39;BPR&#39;, dataset=&#39;ml-100k&#39;,
 </div><div class="column" style="width:39%;">
 <h3 id="what-is-happening">What is happening?</h3>
 <ul>
-<li><strong>BPR</strong> is a matrix-factorisation model trained pairwise for personalised ranking.</li>
-<li>RecBole loads user–item interaction columns, learns user/item embeddings, and evaluates a ranked list.</li>
-<li><code>embedding_size</code> selects the dimension of both learned vectors.</li>
+<li>RecBole loads user–item interactions.</li>
+<li><code>BPR</code> learns user/item factors with a pairwise ranking loss.</li>
+<li><code>embedding_size</code> sets the factor dimension.</li>
+<li>Ranking metrics evaluate the declared held-out protocol.</li>
 </ul>
 </div></div>
 <aside class="notes">
-<p>This is the required worked RecBole example. Present it as a compact, reproducible configuration—not a live installation task. The official quick start uses BPR with <code>ml-100k</code>, interaction columns, 64-dimensional embeddings, and ranking metrics including Recall, MRR, and NDCG. [Sources] - RecBole documentation, “Quick Start: General Recommendation.” https://recbole.io/docs/get_started/started/general.html - RecBole documentation, “BPR.” https://recbole.io/docs/user_guide/model/general/bpr.html</p>
+<p>Present this as a compact reproducible configuration—not a live installation exercise. Ask students to identify the evidence used (interactions, not text or explicit ratings) and the objective (ranked-list quality). [Sources] - RecBole documentation, “BPR.” https://recbole.io/docs/user_guide/model/general/bpr.html</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1624,8 +2204,8 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="read-the-recbole-output-as-a-design-claim" class="slide level2">
-<h2>Read the RecBole Output as a Design Claim</h2>
+<section id="read-model-output-as-limited-evidence" class="slide level2">
+<h2>Read Model Output as Limited Evidence</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -1652,18 +2232,18 @@ display:block!important;
 </tr>
 <tr class="odd">
 <td>Top-<em>k</em> candidates</td>
-<td>A concrete prompt for inspection and error analysis.</td>
-<td>A causal explanation of a user’s preference.</td>
+<td>A prompt for inspection and error analysis.</td>
+<td>A causal account of a person’s preference.</td>
 </tr>
 <tr class="even">
-<td>Learned embeddings</td>
+<td>Learned factors</td>
 <td>A representation used by the model.</td>
-<td>A human identity or a verified metadata field.</td>
+<td>A verified identity, need, or metadata field.</td>
 </tr>
 </tbody>
 </table>
 <aside class="notes">
-<p>Ask: “What would you inspect before making a claim about this model?” Expected answers include split protocol, held-out metric, candidate set, examples of failures, and the source of interaction data. [Sources] - RecBole documentation, “Quick Start: General Recommendation.” https://recbole.io/docs/get_started/started/general.html</p>
+<p>Ask: “What would you inspect before making a claim about this model?” Listen for split protocol, candidate set, negative sampling, missing exposure, and examples of failure.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1675,25 +2255,22 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
-</section></section>
-<section>
-<section id="objectives-continuity-novelty-and-consequences" class="title-slide slide level1 center" data-background-color="#EF7C00">
-<h1>03 Objectives, Continuity, Novelty, and Consequences</h1>
-
 </section>
-<section id="prediction-rewards-accurate-numbers" class="slide level2">
-<h2>Prediction Rewards Accurate Numbers</h2>
+<section id="scores-need-objectives" class="slide level2">
+<h2>Scores Need Objectives</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<h3 id="question">Question</h3>
-<p>How close is (r_{ui}) to an observed rating or score?</p>
+<h3 id="prediction">Prediction</h3>
+<p>How close is (r_{ui}) to a numeric target?</p>
+<p>Use when a score itself drives a decision; measures can include RMSE or MAE.</p>
 </div><div class="column" style="width:48%;">
-<h3 id="typical-evidence">Typical evidence</h3>
-<p>An explicit rating, a known score, or another numeric target.</p>
+<h3 id="ranking">Ranking</h3>
+<p>Do useful items appear near the top of the visible list?</p>
+<p>Use top-<em>k</em> measures such as NDCG@10 or Recall@10 for the declared task.</p>
 </div></div>
-<p>A prediction objective is useful when a numeric estimate itself drives a decision. Error measures such as RMSE summarise how close estimates are to observed values.</p>
+<p>A latent-factor score is not enough: the <strong>objective and metric decide what “better” means</strong>.</p>
 <aside class="notes">
-<p>Do not say that RMSE is always the right metric. It is aligned with a prediction target, not necessarily with a top-k recommendation experience.</p>
+<p>This compresses the former objectives section. Do not frame either prediction or ranking as universally superior; match the metric to the decision surface.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1706,33 +2283,8 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="ranking-rewards-useful-order" class="slide level2">
-<h2>Ranking Rewards Useful Order</h2>
-<div class="columns">
-<div class="column" style="width:48%;">
-<h3 id="question-1">Question</h3>
-<p>Do useful items appear above less useful alternatives in the visible list?</p>
-</div><div class="column" style="width:48%;">
-<h3 id="typical-evidence-1">Typical evidence</h3>
-<p>Implicit interactions, held-out positives, and candidate ordering.</p>
-</div></div>
-<p>Ranking measures, such as <strong>NDCG@10</strong>, reward useful items placed nearer the top of a displayed list.</p>
-<aside class="notes">
-<p>Make the positional idea concrete: a user cannot benefit much from a relevant item buried well below the visible top-k.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="bandit-time-what-should-the-home-screen-optimise" class="slide level2" data-background-color="#003D7C">
-<h2>🎰 Bandit Time: What should the home screen optimise?</h2>
+<section id="bandit-time-what-should-a-home-screen-optimise" class="slide level2" data-background-color="#003D7C">
+<h2>🎰 Bandit Time: What Should a Home Screen Optimise?</h2>
 <p class="bandit-question">
 <strong>A home screen must order ten candidate items for immediate display.</strong> Which measure most directly tests whether useful items appear near the top?
 </p>
@@ -1751,10 +2303,10 @@ display:block!important;
 </div>
 </div>
 <p style="margin-top:.7em;color:#80cbc4;font-size:.73em;">
-Answer: <strong style="color:#ffffff;">B</strong>. NDCG@10 is position-sensitive; it tests the ordering of useful candidates in the displayed top-<em>k</em>.
+Answer: <strong style="color:#ffffff;">B</strong>. NDCG@10 is position-sensitive; it assesses useful ordering in a displayed top-<em>k</em>.
 </p>
 <aside class="notes">
-<p>This is MCQ 2 of 2. Invite a quick comparison with A: RMSE is meaningful for a numeric prediction task but does not directly assess top-k order.</p>
+<p>Re-use the familiar activity treatment for an objective/metric check. Contrast A: it can be meaningful for a numeric prediction task but does not directly measure top-k order.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1767,253 +2319,8 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="activity-1-choose-an-objective-then-defend-it" class="slide level2" data-background-color="#003D7C">
-<h2>👥 Activity 1: Choose an Objective, Then Defend It</h2>
-<p class="activity-question">
-<strong>Work in pairs.</strong> Choose one case. Write a single line: <em>task → objective → metric → one assumption</em>.
-</p>
-<div class="activity-grid">
-<div class="activity-card">
-<h3>
-Restaurant rating
-</h3>
-Predict a score after a meal. What is the target? What would count as a close estimate?
-</div>
-<div class="activity-card">
-<h3>
-Personalised feed
-</h3>
-Order a visible list now. What does “near the top” mean?
-</div>
-<div class="activity-card">
-<h3>
-Job retrieval
-</h3>
-Surface plausible jobs from a large candidate set. Whose relevance definition is being used?
-</div>
-</div>
-<div class="activity-output">
-<strong>Produce:</strong> one defensible objective/metric pair and one assumption you would want to test. Be ready to compare it with a pair using a different case.
-</div>
-<aside class="notes">
-<p>This is student activity 1 of 2. Give pairs time to formulate the line; take two contrasting examples and point out that an objective is a product decision with distributional consequences.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="spades-stable-preferences-need-more-than-one-tag" class="slide level2">
-<h2>♠ Spades: Stable Preferences Need More Than One Tag</h2>
-<ul>
-<li>A loyal, metadata-oriented user may return to durable interests: familiar creators, formats, categories, or constraints.</li>
-<li>One static tag is too coarse: it misses interaction history, combinations of features, and changing context.</li>
-<li>A latent-factor model can represent stable patterns, while metadata helps make an explanation or constraint legible.</li>
-</ul>
-<div class="to-think-about" title="To think about">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>To think about</strong></p>
-</div>
-<div class="callout-content">
-<p>How could a system preserve continuity without treating last year’s interaction history as a permanent identity?</p>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes">
-<p>Introduce the Spades treatment as a situational design lens, not a fixed kind of person. It should guide the case study’s continuity question.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="observed-metadata-meets-learned-continuity" class="slide level2">
-<h2>♠ Observed Metadata Meets Learned Continuity</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Layer</th>
-<th>What it contains</th>
-<th>Appropriate use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Observed metadata</strong></td>
-<td>Creator, category, format, duration, or an explicit constraint.</td>
-<td>Interpretability, filtering, feature-based comparison.</td>
-</tr>
-<tr class="even">
-<td><strong>Latent embedding</strong></td>
-<td>Inferred coordinates from interaction patterns.</td>
-<td>Candidate scoring and learned associations.</td>
-</tr>
-<tr class="odd">
-<td><strong>Case design</strong></td>
-<td>A deliberate combination of both.</td>
-<td>Preserve meaningful continuity while monitoring drift and blind spots.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Guardrail:</strong> <em>latent metadata</em> is a teaching bridge for the case—not a claim that an embedding coordinate is a recorded field.</p>
-<aside class="notes">
-<p>State the guardrail explicitly. Students can use this distinction in E1: explain how metadata and a latent model might jointly serve a surface without conflating them.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="diamonds-novelty-should-be-relevant-not-random" class="slide level2">
-<h2>♦ Diamonds: Novelty Should Be Relevant, Not Random</h2>
-<ul>
-<li>Feature-based novelty identifies candidates that differ in meaningful, declared attributes from the familiar set.</li>
-<li>The objective is not surprise for its own sake; it is a credible opportunity for discovery.</li>
-<li>A novelty mechanism needs a definition of difference, an exposure policy, and an evaluation consequence.</li>
-</ul>
-<aside class="notes">
-<p>Make Diamonds distinct from Spades: Diamonds foreground diversity, long-tail exposure, and discovery; they should not be presented as a generic preference for “more random” items.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="re-rank-with-a-familiar-anchor" class="slide level2">
-<h2>♠ + ♦ Re-rank With a Familiar Anchor</h2>
-<div class="factor-flow">
-<div class="factor-card">
-<strong>Latent score</strong><br>Generate plausible candidates from interaction patterns.
-</div>
-<div class="factor-arrow">
-→
-</div>
-<div class="factor-card">
-<strong>Spades anchor</strong><br>Keep credible continuity for the user’s stable context.
-</div>
-<div class="factor-arrow">
-→
-</div>
-<div class="factor-card">
-<strong>Diamonds re-rank</strong><br>Reserve selected positions for feature-different discovery.
-</div>
-</div>
-<p>Possible checks: top-<em>k</em> relevance, feature coverage, long-tail exposure, repeat engagement, and who is not receiving discovery.</p>
-<aside class="notes">
-<p>This is the core case-study design pattern. Ask students which control belongs in the model objective and which can appear in a downstream re-ranking rule. Both can be legitimate, but the rationale and evaluation must be explicit.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="ai-voice-mode-whose-discovery-is-missing" class="slide level2" data-background-color="#003D7C">
-<h2>📶 AI Voice Mode: Whose Discovery Is Missing?</h2>
-<div class="voice-prompt">
-<p><strong>Live prompt for the voice agent</strong><br><br> A recommender’s interaction logs are dominated by popular titles. Independent and long-tail items had far less initial exposure, so they have fewer observed interactions. The system adds feature-based novelty for some users. Explain why low interaction may not mean low preference; identify one risk if exposure history is treated as preference; and propose one measurement that could test whether the novelty mechanism broadens meaningful discovery rather than merely lowering relevance.</p>
-</div>
-<p style="margin-top:.65em;color:#ffffff;font-size:.72em;">
-<strong>Listen for:</strong> assumptions about exposure, missing stakeholders, and a measurable distinction between opportunity and preference.
-</p>
-<aside class="notes">
-<p>This is the required ethics voice-agent example. The title follows the course AI Voice Mode convention. The agent is a conversation partner, not an authority: pause to distinguish supported reasoning, assumptions, omissions, and claims requiring evidence.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="activity-2-audit-the-agents-explanation" class="slide level2" data-background-color="#003D7C">
-<h2>👥 Activity 2: Audit the Agent’s Explanation</h2>
-<p class="activity-question">
-<strong>Small groups.</strong> Audit the voice-agent response instead of accepting its fluency.
-</p>
-<div class="activity-grid">
-<div class="activity-card">
-<h3>
-One assumption
-</h3>
-What did the agent assume about interaction logs, users, or items?
-</div>
-<div class="activity-card">
-<h3>
-One omission
-</h3>
-Which stakeholder or under-exposed group could be harmed or overlooked?
-</div>
-<div class="activity-card">
-<h3>
-One measurement
-</h3>
-What observable quantity would help separate exposure from preference?
-</div>
-</div>
-<div class="activity-output">
-<strong>Produce:</strong> one three-part audit. Be ready to state why the proposed measurement changes the design decision.
-</div>
-<aside class="notes">
-<p>This is student activity 2 of 2. Collect two groups’ audits. Emphasise that an apparently convincing explanation is not evidence; the instructor remains responsible for accuracy and synthesis after the AI interaction.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="historical-behaviour-becomes-model-geometry" class="slide level2" data-background-color="#003D7C">
-<h2>🔑 <u>Historical Behaviour Becomes Model Geometry</u></h2>
+<section id="history-is-evidence-not-preference" class="slide level2">
+<h2>History Is Evidence, Not Preference</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -2024,7 +2331,7 @@ display:block!important;
 <tr class="header">
 <th>Historical process</th>
 <th>Model consequence</th>
-<th>Design question</th>
+<th>Question to ask</th>
 </tr>
 </thead>
 <tbody>
@@ -2035,60 +2342,21 @@ display:block!important;
 </tr>
 <tr class="even">
 <td>Popularity reinforcement</td>
-<td>Well-exposed items gain stronger learned signals</td>
+<td>Popular items receive stronger learned signals</td>
 <td>Who receives repeated visibility?</td>
 </tr>
 <tr class="odd">
-<td>Feature-based novelty</td>
-<td>A re-ranking decision changes what becomes observable next</td>
-<td>Who receives credible discovery—and who does not?</td>
+<td>Re-ranking for discovery</td>
+<td>Today’s policy changes tomorrow’s data</td>
+<td>Who gets a credible opportunity to be seen?</td>
 </tr>
 </tbody>
 </table>
-<p style="margin-top:.85em;color:#EF7C00;font-weight:bold;">
-🤞 Use history as evidence with limits, not as a neutral record of preference.
+<p style="margin-top:.8em;color:#EF7C00;font-weight:bold;">
+Use historical behaviour as evidence with limits—not as a neutral record of preference.
 </p>
 <aside class="notes">
-<p>Use this navy key-point slide to close the ethics section. Tie together objective, representation, exposure, and the difference between continuity and lock-in.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section></section>
-<section>
-<section id="from-model-to-case-study" class="title-slide slide level1 center" data-background-color="#EF7C00">
-<h1>04 From Model to Case Study</h1>
-
-</section>
-<section id="from-interaction-data-to-a-ranked-candidate-list" class="slide level2">
-<h2>From Interaction Data to a Ranked Candidate List</h2>
-<div class="factor-flow">
-<div class="factor-card">
-<strong>Collect &amp; inspect</strong><br>Understand feedback, missingness, and exposure.
-</div>
-<div class="factor-arrow">
-→
-</div>
-<div class="factor-card">
-<strong>Learn &amp; score</strong><br>Train embeddings under an explicit objective.
-</div>
-<div class="factor-arrow">
-→
-</div>
-<div class="factor-card">
-<strong>Re-rank &amp; evaluate</strong><br>Apply continuity, novelty, and responsible checks.
-</div>
-</div>
-<p>A production recommender is a chain of technical and product decisions—not just a latent-factor score.</p>
-<aside class="notes">
-<p>This is the conceptual implementation laboratory. Avoid presenting it as a complete production architecture; it provides the chain students can narrow for E1.</p>
+<p>Retain the core ethical guardrail from the previous deck in a concise form. This supports the E1 bridge without attempting to reproduce the full former ethics activity.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2103,7 +2371,7 @@ display:block!important;
 </section>
 <section id="e1-bridge-choose-the-consequential-decision" class="slide level2">
 <h2>E1 Bridge: Choose the Consequential Decision</h2>
-<p>For one approved recommendation surface, make a focused argument around a choice such as:</p>
+<p>For one approved recommendation surface, make a focused argument around one connected choice:</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -2118,53 +2386,24 @@ display:block!important;
 <tbody>
 <tr class="odd">
 <td>Representation</td>
-<td>Why use an embedding-based model rather than only local neighbourhood evidence?</td>
+<td>Why use lexical features, latent factors, or both?</td>
 </tr>
 <tr class="even">
 <td>Objective</td>
-<td>Why should the surface optimise top-<em>k</em> order rather than numeric prediction?</td>
+<td>Why optimise a ranked list rather than numeric prediction?</td>
 </tr>
 <tr class="odd">
-<td>Continuity</td>
-<td>How should observed metadata and learned preferences support a Spades-oriented need?</td>
+<td>Method</td>
+<td>Why is BPR-MF, explicit MF, ALS, or another baseline appropriate?</td>
 </tr>
 <tr class="even">
-<td>Novelty</td>
-<td>Which feature-based difference should create Diamonds-style discovery, and how will it be evaluated?</td>
-</tr>
-<tr class="odd">
 <td>Risk</td>
-<td>How could historical exposure bias distort the evidence used by the model?</td>
+<td>How could missing exposure distort the interaction evidence?</td>
 </tr>
 </tbody>
 </table>
 <aside class="notes">
-<p>Invite students to select one or two rows that could form a coherent argument. Do not encourage a catalogue of every possible model component. [Sources] - CP4285 Essay 1 brief, <code>static/essays/e1.md</code>.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="representation-enables-objectives-and-constraints-decide" class="slide level2" data-background-color="#003D7C">
-<h2>🔑 <u>Representation Enables; Objectives and Constraints Decide</u></h2>
-<ul>
-<li><strong>Latent factors</strong> make distributed interaction patterns usable when local overlap is weak.</li>
-<li><strong>Objectives</strong> decide what the model is rewarded for predicting or ranking.</li>
-<li><strong>Spades and Diamonds</strong> make continuity and discovery explicit design choices.</li>
-<li><strong>Ethical scrutiny</strong> asks how past exposure shaped the evidence in the first place.</li>
-</ul>
-<p style="margin-top:.8em;color:#EF7C00;font-weight:bold;">
-🔑 A better score is not automatically a better recommendation.
-</p>
-<aside class="notes">
-<p>This key-point slide is the end-of-lecture synthesis before the pre-lecture task and final summary.</p>
+<p>Invite a focused technical argument, not a catalogue of all possible recommender components. Ask students to name the evidence that would support their choice.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2187,15 +2426,15 @@ display:block!important;
 Next Week Pre-Lecture Exercise
 </div>
 <div class="cp-frame-title" style="color:#003D7C;">
-When two lists predict similarly, what should decide?
+When two lists rank similarly, what should decide?
 </div>
 <div class="cp-frame-body" style="color:#333;">
-<pre><code>&lt;p&gt;Suppose two ranked lists have similar rating-prediction error, but one concentrates attention on already popular items while the other broadens credible discovery.&lt;/p&gt;
-&lt;p style=&quot;margin-top:.7em;font-weight:bold;color:#003D7C;&quot;&gt;Post one metric or diagnostic you would use, explain what it reveals, and reply constructively to one classmate.&lt;/p&gt;</code></pre>
+<pre><code>&lt;p&gt;Suppose two ranked lists have similar NDCG@10, but one concentrates attention on already popular items while the other broadens credible discovery.&lt;/p&gt;
+&lt;p style=&quot;margin-top:.7em;font-weight:bold;color:#003D7C;&quot;&gt;Post one diagnostic you would use, explain what it reveals, and reply constructively to one classmate.&lt;/p&gt;</code></pre>
 </div>
 </div>
 <aside class="notes">
-<p>Direct students to Canvas and insert the verified deadline at delivery time. This exercise activates the Week 03 transition to ranking metrics and realistic offline evaluation.</p>
+<p>Direct students to Canvas and insert the verified deadline at delivery time. This prepares the next session’s treatment of evaluation and recommendation beyond a single offline score.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2213,41 +2452,19 @@ display:block!important;
 <h1>Summary</h1>
 
 </section>
-<section id="latent-factors-learn-structure-responsible-systems-learn-limits" class="slide level2">
-<h2>🔑 <u>Latent Factors Learn Structure; Responsible Systems Learn Limits</u></h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Week 01: neighbourhood CF</th>
-<th>Week 02: latent-factor models</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Uses observed local overlap</td>
-<td>Learns global user/item representations</td>
-</tr>
-<tr class="even">
-<td>Similarity is specified directly</td>
-<td>Representation is learned from interaction patterns</td>
-</tr>
-<tr class="odd">
-<td>Thin overlap can make neighbours unreliable</td>
-<td>Distributed patterns can support a score—but not create ground truth</td>
-</tr>
-<tr class="even">
-<td>Main question: who counts as a neighbour?</td>
-<td>Main questions: what is optimised, who receives continuity or novelty, and how did history shape the evidence?</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Next week:</strong> evaluate ranked lists with realistic offline protocols, position-sensitive metrics, and careful assumptions.</p>
+<section id="representations-enable-objectives-decide" class="slide level2">
+<h2>🔑 <u>Representations Enable; Objectives Decide</u></h2>
+<ul>
+<li><strong>TF–IDF</strong> represents lexical evidence; <strong>dense embeddings</strong> can generalise across learned contextual patterns.</li>
+<li><strong>LFM</strong> represents user–item interaction patterns as learned factors—not identities or recorded metadata.</li>
+<li><strong>BPR</strong> keeps the latent-factor idea but trains it for relative ranking under implicit feedback.</li>
+<li>A score or offline metric is useful evidence, never a complete account of user value or fairness.</li>
+</ul>
+<p style="margin-top:.8em;color:#EF7C00;font-weight:bold;">
+🔑 Better representation helps; responsible objectives and evaluation determine what the system actually delivers.
+</p>
 <aside class="notes">
-<p>End with the comparison table and the Week 03 teaser. Reiterate that the full 90-minute timeline preserves two activities, two MCQs, a worked calculation, a RecBole example, the voice-agent ethics audit, and the protected opening recap/logistics/assignment/survey segment.</p>
+<p>Close by restating the lecture’s through-line: representations make scoring possible, while evidence, objectives, and constraints decide whether a score is useful.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
