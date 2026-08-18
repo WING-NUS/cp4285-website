@@ -876,3 +876,239 @@ $selection-bg: #EF7C00;
 .reveal .canvas-voices-frame .voice-nostalgia .voice-reply span { color: #5C2D91; }
 .reveal .canvas-voices-frame .voice-trust .voice-reply span { color: #00796B; }
 .reveal .canvas-voices-frame .voice-emotion .voice-reply span { color: #A24B00; }
+
+/* Final Week 3 preview: four-suit evaluation lens */
+.reveal .week3-preview-frame { padding-top: 28px; }
+.reveal .week3-preview-frame .cp-frame-title { margin-bottom: 0.24em; }
+.reveal .week3-preview-lede {
+  margin: 0.05em 0 0.42em;
+  color: #405066;
+  font-size: 0.55em;
+  line-height: 1.22;
+}
+.reveal .suit-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.44em 0.58em;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0.05em 0 0.24em;
+}
+.reveal .suit-preview-card {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 0.34em;
+  align-items: start;
+  min-width: 0;
+  padding: 0.38em 0.48em;
+  border: 2px solid #D5DEE9;
+  border-radius: 10px;
+  background: #F8FAFD;
+  color: #273244;
+}
+.reveal .suit-preview-card .suit-symbol {
+  font-size: 1.18em;
+  line-height: 0.93;
+  font-weight: 800;
+  text-align: center;
+}
+.reveal .suit-preview-card strong,
+.reveal .suit-preview-card span:not(.suit-symbol) {
+  display: block;
+}
+.reveal .suit-preview-card strong {
+  margin-bottom: 0.10em;
+  color: #003D7C;
+  font-size: 0.42em;
+  line-height: 1.05;
+}
+.reveal .suit-preview-card span:not(.suit-symbol) {
+  font-size: 0.31em;
+  line-height: 1.17;
+}
+.reveal .suit-clubs .suit-symbol,
+.reveal .suit-spades .suit-symbol { color: #1F2937; }
+.reveal .suit-hearts .suit-symbol,
+.reveal .suit-diamonds .suit-symbol { color: #D32F2F; }
+.reveal .suit-hearts { border-color: #F1C2C8; background: #FFF7F7; }
+.reveal .suit-diamonds { border-color: #F1C2C8; background: #FFF9F7; }
+.reveal .suit-preview-path {
+  margin: 0.10em 0 0;
+  color: #003D7C;
+  font-size: 0.43em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+.reveal .suit-preview-path span { color: #EF7C00; margin: 0 0.28em; }
+.reveal .week3-preview-prompt {
+  margin: 0.16em 0 0;
+  color: #A24B00;
+  font-size: 0.49em;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Larger type and fuller card use for the Week 3 four-suit preview */
+.reveal .week3-preview-frame .week3-preview-lede {
+  font-size: 0.60em;
+  line-height: 1.24;
+  margin-bottom: 0.50em;
+}
+.reveal .week3-preview-frame .suit-preview-grid {
+  gap: 0.56em 0.72em;
+  margin-bottom: 0.30em;
+}
+.reveal .week3-preview-frame .suit-preview-card {
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 0.42em;
+  padding: 0.52em 0.62em;
+}
+.reveal .week3-preview-frame .suit-preview-card .suit-symbol {
+  font-size: 1.48em;
+  line-height: 0.92;
+}
+.reveal .week3-preview-frame .suit-preview-card strong {
+  margin-bottom: 0.14em;
+  font-size: 0.54em;
+  line-height: 1.08;
+}
+.reveal .week3-preview-frame .suit-preview-card span:not(.suit-symbol) {
+  font-size: 0.40em;
+  line-height: 1.20;
+}
+.reveal .week3-preview-frame .suit-preview-path { font-size: 0.48em; }
+.reveal .week3-preview-frame .week3-preview-prompt { font-size: 0.54em; }
+
+/* Compact S15 two-title TF–IDF comparison */
+.reveal .s15-compact {
+  color: #273244;
+  font-size: 1.08em;
+}
+.reveal .s15-context {
+  margin: 0.04em 0 0.30em;
+  color: #003D7C;
+  font-size: 0.58em;
+  line-height: 1.28;
+}
+.reveal .s15-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.78em;
+  align-items: stretch;
+}
+.reveal .s15-grid h3 {
+  margin: 0 0 0.20em;
+  color: #003D7C;
+  font-size: 0.58em;
+  line-height: 1.05;
+}
+.reveal .s15-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 0.52em;
+  line-height: 1.18;
+  text-align: center;
+}
+.reveal .s15-table th,
+.reveal .s15-table td {
+  padding: 0.30em 0.42em;
+  border-bottom: 1px solid #D8E0EA;
+}
+.reveal .s15-table th { background: #003D7C; color: #ffffff; font-weight: 800; }
+.reveal .s15-table td:first-child { text-align: left; color: #003D7C; font-weight: 700; }
+.reveal .s15-table code,
+.reveal .s15-token-note code,
+.reveal .s15-score-panel code {
+  font-size: 0.96em;
+  color: #5C2D91;
+}
+.reveal .s15-token-note {
+  margin: 0.22em 0 0;
+  color: #657286;
+  font-size: 0.42em;
+  line-height: 1.22;
+}
+.reveal .s15-score-panel {
+  padding: 0.48em 0.55em;
+  border-left: 5px solid #00796B;
+  background: #F0F8F6;
+}
+.reveal .s15-score {
+  margin: 0 0 0.34em;
+  padding: 0.30em 0.34em;
+  border: 1px solid #CFE4DF;
+  background: #ffffff;
+  color: #003D7C;
+}
+.reveal .s15-score strong,
+.reveal .s15-score span { display: block; }
+.reveal .s15-score strong { font-size: 0.54em; line-height: 1.15; }
+.reveal .s15-score strong b { float: right; color: #A24B00; font-size: 1.22em; }
+.reveal .s15-score span { margin-top: 0.10em; color: #657286; font-size: 0.42em; line-height: 1.15; }
+.reveal .s15-score-winner { border-color: #00796B; }
+.reveal .s15-score-panel > p { margin: 0.28em 0 0; font-size: 0.43em; line-height: 1.22; }
+
+/* S15: make cosine normalisation visible without expanding the slide */
+.reveal .s15-score-panel h3 { margin-bottom: 0.14em; }
+.reveal .s15-cosine-rule {
+  margin: 0 0 0.24em;
+  padding: 0.22em 0.30em;
+  background: #E6F3F0;
+  color: #003D7C;
+  font-size: 0.46em;
+  line-height: 1.18;
+  text-align: center;
+}
+.reveal .s15-score { margin-bottom: 0.24em; }
+.reveal .s15-score span {
+  margin-top: 0.05em;
+  font-size: 0.42em;
+  line-height: 1.18;
+}
+.reveal .s15-score .s15-final-calc {
+  color: #A24B00;
+  font-weight: 800;
+}
+
+/* SVD/NMF mini-sequence: group discussion activity */
+.reveal section[data-background-color="#003D7C"] .svd-nmf-activity-intro {
+  margin: 0.18em 0 0.65em;
+  color: #FFFFFF;
+  font-size: 0.58em;
+  line-height: 1.25;
+}
+.reveal .svd-nmf-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55em;
+  margin: 0.15em 0 0.65em;
+}
+.reveal .svd-nmf-case {
+  min-height: 5.9em;
+  box-sizing: border-box;
+  padding: 0.58em 0.64em;
+  border: 2px solid rgba(255,255,255,0.62);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.10);
+  color: #FFFFFF;
+  font-size: 0.48em;
+  line-height: 1.23;
+}
+.reveal .svd-nmf-case strong {
+  display: block;
+  margin-bottom: 0.25em;
+  color: #EF7C00;
+  font-size: 1.07em;
+}
+.reveal .svd-nmf-case em { color: #BCE9DD; font-weight: 700; }
+.reveal .svd-nmf-activity-output {
+  padding: 0.48em 0.65em;
+  border-left: 6px solid #00796B;
+  background: #F0F8F6;
+  color: #003D7C;
+  font-size: 0.51em;
+  line-height: 1.22;
+}

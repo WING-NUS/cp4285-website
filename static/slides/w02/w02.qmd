@@ -169,7 +169,7 @@ Direct students to Canvas and state the deadline: Monday, 23:59 SGT. Students an
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content canvas-voices-frame">
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
-  <div class="cp-frame-title" style="color:#003D7C;">Latent dimensions students noticed</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Latent dimensions students noticed 📶</div>
   <div class="voice-bubble-grid" aria-label="Four anonymised student quotations and relevant replies from the Canvas discussion">
     <article class="voice-bubble voice-quality">
       <img src="assets/canvas-avatars/quality.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
@@ -203,91 +203,151 @@ Direct students to Canvas and state the deadline: Monday, 23:59 SGT. Students an
 Use the replies to show that students did not only name possible latent dimensions; they also tested subjectivity, measurement, segmentation, and variability. Bridge from this discussion to how latent-factor models represent interaction patterns rather than simply relabel item metadata.
 :::
 
-## Sparse Neighbourhoods Can Fall Silent
+## Three Routes to a Recommendation
 
-<div class="matrix-grid">
-  <div class="matrix-head"></div><div class="matrix-head">Item A</div><div class="matrix-head">Item B</div><div class="matrix-head">Item C</div><div class="matrix-head">Item D</div>
-  <div class="matrix-head">User 1</div><div class="matrix-rated">5</div><div class="matrix-rated">4</div><div class="matrix-missing">—</div><div class="matrix-missing">—</div>
-  <div class="matrix-head">User 2</div><div class="matrix-missing">—</div><div class="matrix-rated">5</div><div class="matrix-rated">4</div><div class="matrix-missing">—</div>
-  <div class="matrix-head">User 3</div><div class="matrix-rated">4</div><div class="matrix-missing">—</div><div class="matrix-missing">—</div><div class="matrix-rated">5</div>
-  <div class="matrix-head">Target user</div><div class="matrix-rated">5</div><div class="matrix-missing">—</div><div class="matrix-target">?</div><div class="matrix-missing">—</div>
+::: {.columns}
+::: {.column width="31%"}
+<div class="factor-card" style="height:100%;">
+  <strong style="color:#003D7C;">Collaborative filtering<br>(CF; last week)</strong><br><br>
+  <strong>Evidence</strong><br>User–item interactions<br><br>
+  <strong>Mechanism</strong><br>Borrow from similar users or items<br><br>
+  <strong>Watch</strong><br>Thin local overlap can leave a neighbourhood silent.
 </div>
-
-
-::: notes
-Ask students to identify the Week 01 bottleneck: few co-rated items can make a local similarity estimate unstable or unavailable. Do not claim that factorisation removes missingness.
+:::
+::: {.column width="3%"}
+<div class="factor-arrow" style="padding-top:3.6em;">|</div>
+:::
+::: {.column width="32%"}
+<div class="factor-card" style="height:100%;">
+  <strong style="color:#EF7C00;">Content-based filtering<br>(CBF)</strong><br><br>
+  <strong>Evidence</strong><br>Explicit item, user, or context features<br><br>
+  <strong>IR mechanism</strong><br>Encode and match genres, tags, and text<br><br>
+  <strong>Watch</strong><br>Feature coverage and encoding quality set the limit.
+</div>
+:::
+::: {.column width="3%"}
+<div class="factor-arrow" style="padding-top:3.6em;">|</div>
+:::
+::: {.column width="31%"}
+<div class="factor-card" style="height:100%;">
+  <strong style="color:#5C2D91;">Latent-factor model<br>(LFM)</strong><br><br>
+  <strong>Evidence</strong><br>User–item interactions<br><br>
+  <strong>Mechanism</strong><br>Learn shared hidden coordinates from many interactions<br><br>
+  <strong>Watch</strong><br>A factor is a learned pattern, not a personal fact.
+</div>
+:::
 :::
 
-## Global Patterns Remain in the Matrix
+## Explicit Features Can Be Weighted
+
+**Observed or stated fields** can enter a recommender score before any latent factors are learned.
 
 ::: {.columns}
-::: {.column width="48%"}
-### Neighbourhood CF
+::: {.column width="32%"}
+### User / context fields
 
-- Starts with local overlap.
-- Compares named rows or columns.
-- Can be silent when overlap is thin.
-:::
-::: {.column width="48%"}
-### Latent-factor model
+`student` · `Singapore` · `vegetarian`<br>
+`weekday evening` · `budget: low`
 
-- Learns shared coordinates from many interactions.
-- Uses global patterns to score a user–item pair.
-- Still inherits the limits of its evidence.
+Supplied, measured, or declared—not inferred from interaction patterns.
+:::
+::: {.column width="5%"}
+<div style="font-size:2em;text-align:center;padding-top:1.25em;color:#EF7C00;">+</div>
+:::
+::: {.column width="32%"}
+### Item fields
+
+`cuisine: Thai` · `price: $$`<br>
+`genre: comedy` · `duration: 90 min`
+
+Observed descriptions of a candidate item.
+:::
+::: {.column width="5%"}
+<div style="font-size:2em;text-align:center;padding-top:1.25em;color:#EF7C00;">→</div>
+:::
+::: {.column width="26%"}
+### Weighted score
+
+$$
+\color{navy}{\operatorname{score}(u,i,c)}=\color{teal}{\mathbf{w}^{\top}}\color{orange}{\mathbf{x}(u,i,c)}
+$$
+
+Vector **_x_** represents an item or a user.  Use a similarity metric (Week 01) to define similarities.
 :::
 :::
 
-::: {.callout-tip .to-think-about title="To think about"}
-Does a learned representation make a missing interaction more trustworthy—or only make a prediction possible?
+::: {.callout-tip .to-think-about title="Features as explicit and implict"}
+An explicit field is an input we choose to represent.  They can be fed as features to create latent factors later.
 :::
 
 ::: notes
-The intended answer: it makes a prediction possible by exploiting patterns elsewhere; it does not convert a missing observation into ground truth.
+Bridge from global patterns to feature-aware recommendation. Separate observed/stated properties from learned latent factors: the former are supplied as model inputs; the latter are inferred from interaction evidence. Explain that $c$ can denote context. The point is not that a single linear score is universally sufficient, but that models need a representation and may weight observed fields. Text is the next example of a field that must be encoded before it can contribute.
+[Sources]
+- Ricci, F., Rokach, L., & Shapira, B. (eds.). *Recommender Systems Handbook*, 3rd ed., Chapters 4 and 12.
 :::
 
-# 02 Information Retrieval Fundamentals {background-color="#EF7C00"}
+## Text Is One Possible Feature Source
 
-## Text Becomes Searchable as a Vector
+Text can be an **item field**, **user field**, or **contextual need**.
+
 ::: {.columns}
-::: {.column width="47%"}
-### Query
-`feline care`
+::: {.column width="31%"}
+### User / context text
 
-A query is a short text representation of an information need.
+`“animated family film”`<br>
+`“a light comedy tonight”`
+
+Profiles, reviews, queries, and session descriptions can express a need.
 :::
 ::: {.column width="6%"}
-<div style="font-size:2.2em;text-align:center;padding-top:1.1em;color:#EF7C00;">→</div>
+<div style="font-size:2.1em;text-align:center;padding-top:1.25em;color:#EF7C00;">↔</div>
 :::
-::: {.column width="47%"}
-### Item description
-`cat health guide`
+::: {.column width="31%"}
+### Movie item text
 
-An item can be represented in the same feature space for comparison.
+`Toy Story (1995)`<br>
+`Animation · Children’s · Comedy`
+
+Titles, genres, tags, synopses, and reviews can describe a candidate.
+:::
+::: {.column width="6%"}
+<div style="font-size:2.1em;text-align:center;padding-top:1.25em;color:#EF7C00;">→</div>
+:::
+::: {.column width="24%"}
+### Encoded feature
+
+$$
+\color{teal}{\mathbf{x}_{\text{text}}}=\operatorname{encode}(\color{orange}{\text{text}})
+$$
+
+Encoding maps words to coordinates for comparison or combination.
 :::
 :::
 
-> **Information retrieval (IR)** asks which available documents or items best satisfy a text-based need.
+> **IR** matches text representations; the same encoding can furnish recommender features.
 
 ::: notes
-Bridge from the protected neighbourhood-CF slides: both retrieval and recommendation need a representation before they can compute a score. The evidence differs: words for IR, interaction history for collaborative filtering.
+Use the familiar MovieLens-style fields to make text a recommender input rather than a special-purpose retrieval object. A query is only one possible source of text; item text can also be represented and compared. Do not imply that every recommender needs text or that item text establishes a preference.
 [Sources]
+- Harper, F. M., & Konstan, J. A. (2015). “The MovieLens Datasets: History and Context.” *ACM Transactions on Interactive Intelligent Systems*, 5(4).
 - Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to Information Retrieval*, Chapter 6.
 :::
 
 ## A Bag of Words Is Sparse and Literal
 
-<div class="matrix-grid" style="grid-template-columns:1.4fr repeat(5, .8fr);font-size:.82em;">
-  <div class="matrix-head">text / term</div><div class="matrix-head">cat</div><div class="matrix-head">feline</div><div class="matrix-head">health</div><div  lass="matrix-head">care</div><div class="matrix-head">guide</div>
-  <div class="matrix-head">query: feline care</div><div class="matrix-missing">0</div><div class="matrix-target">1</div><div class="matrix-missing">0</div><div class="matrix-target">1</div><div class="matrix-missing">0</div>
-  <div class="matrix-head">doc: cat health guide</div><div class="matrix-target">1</div><div class="matrix-missing">0</div><div class="matrix-target">1</div><div class="matrix-missing">0</div><div class="matrix-target">1</div>
+<div class="matrix-grid" style="grid-template-columns:1.8fr repeat(6, .66fr);font-size:.70em;">
+  <div class="matrix-head">text / term</div><div class="matrix-head">animated</div><div class="matrix-head">family</div><div class="matrix-head">light</div><div class="matrix-head">comedy</div><div class="matrix-head">animation</div><div class="matrix-head">children</div>
+  <div class="matrix-head">need: animated family film</div><div class="matrix-target">1</div><div class="matrix-target">1</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div>
+  <div class="matrix-head">need: light comedy tonight</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-target">1</div><div class="matrix-target">1</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div>
+  <div class="matrix-head">item: Toy Story (1995)</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-target">1</div><div class="matrix-target">1</div><div class="matrix-target">1</div>
 </div>
 
 - One coordinate per vocabulary term; most coordinates are zero.
-- Word order is discarded, but exact lexical evidence is retained.
-- `cat` and `feline` occupy different coordinates unless we add another mechanism.
+- The second need shares `comedy`; the first shares no exact coordinate with the listed movie genres.
+- `animated` and `animation`, and `family` and `children`, remain separate until another mechanism relates them.
 
 ::: notes
-Use the grid to make sparsity visible. This is intentionally a representation, not yet a claim that it understands meaning.
+Keep the exact two user/context needs and the Toy Story item text from the previous slide. First show that “a light comedy tonight” shares the exact word *comedy*. Then contrast it with “animated family film”: its words are semantically related to the movie’s genre terms, but a bag of words records no shared coordinate. This prepares the need for TF–IDF and later dense embeddings.
 [Sources]
 - Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to Information Retrieval*, Chapters 1 and 6.
 :::
@@ -296,54 +356,69 @@ Use the grid to make sparsity visible. This is intentionally a representation, n
 
 ::: {.columns}
 ::: {.column width="47%"}
-### TF: local evidence
+### <span style="color:#EF7C00;">TF: local evidence</span>
+
 $$
-\operatorname{tf}(t,d)=\text{count of term }t\text{ in document }d
+\color{orange}{\operatorname{tf}(t,d)}=\text{count of term }t\text{ in document }d
 $$
 
 Repeated occurrence can strengthen a term's contribution **within one document**.
 :::
 ::: {.column width="47%"}
-### IDF: collection discrimination
+### <span style="color:#003D7C;">IDF: collection discrimination</span>
+
 $$
-\operatorname{idf}(t)=\log\frac{N}{df_t}
+\color{navy}{\operatorname{idf}(t)}=\log\frac{N}{df_t}
 $$
 
 A term found in almost every document contributes less to distinguishing documents.
 :::
 :::
 
-$$
-\operatorname{tf\!\mbox{-}\!idf}(t,d)=\operatorname{tf}(t,d)\times\operatorname{idf}(t)
-$$
+::: {.tfidf-equation style="text-align:center;font-size:1.22em;margin-top:.55em;"}
+[$\operatorname{tf}$]{style="color:#EF7C00;font-weight:700;"}[$\!\mbox{ - }\!$]{style="color:#6b6b6b;"}[$\operatorname{idf}(t,d)$]{style="color:#003D7C;font-weight:700;"}
+[$=$]{style="color:#6b6b6b;"}
+[$\operatorname{tf}(t,d)$]{style="color:#EF7C00;font-weight:700;"} [$\times$]{style="color:#6b6b6b;"} [$\operatorname{idf}(t)$]{style="color:#003D7C;font-weight:700;"}
+:::
 
 ::: notes
-Emphasise that IDF is a collection-level property while TF is document-specific. Do not say a high frequency word is always irrelevant; it is simply less discriminative if it appears everywhere.
+First identify the two signals, then read the combined expression left to right: document-local occurrence times collection-level discrimination. The notation distinguishes the two contributions without changing the definition. Do not say a high-frequency word is always irrelevant; it is less discriminative when it appears everywhere.
 [Sources]
 - Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to Information Retrieval*, Chapter 6.
 :::
 
-## Worked TF–IDF: Rank a Query Match
+## Worked TF–IDF: Two Titles, One Interest Profile
 
-**Query:** `machine learning`
-
-| Term | TF in guide A | IDF | Weight in guide A |
-|---|---:|---:|---:|
-| `machine` | 2 | 1.2 | 2.4 |
-| `learning` | 1 | 1.6 | 1.6 |
-
-<div class="factor-flow" style="margin-top:.6em;">
-  <div class="factor-card"><strong>Query vector</strong><br>Weights the terms that express the need.</div>
-  <div class="factor-arrow">·</div>
-  <div class="factor-card"><strong>Document vector</strong><br>Weights the same vocabulary coordinates.</div>
-  <div class="factor-arrow">→</div>
-  <div class="factor-card"><strong>Cosine score</strong><br>Ranks documents by directional alignment.</div>
+```{=html}
+<div class="s15-compact">
+  <p class="s15-context"><strong>User interest:</strong> <code>animated family comedy</code><br><strong>A:</strong> <em>Toy Story</em> · Animation · Children’s · Comedy &nbsp; <strong>B:</strong> <em>Mrs. Doubtfire</em> · Family · Comedy</p>
+  <div class="s15-grid">
+    <div>
+      <h3>Vocabulary coordinates</h3>
+      <table class="s15-table">
+        <thead><tr><th>term</th><th>IDF</th><th>U</th><th>A</th><th>B</th></tr></thead>
+        <tbody>
+          <tr><td><code>animated</code></td><td>1.8</td><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td><code>animation</code></td><td>1.8</td><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td><code>family</code></td><td>1.4</td><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td><code>children</code></td><td>1.4</td><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td><code>comedy</code></td><td>1.2</td><td>1</td><td>1</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <p class="s15-token-note"><code>animated</code> ≠ <code>animation</code>; <code>family</code> ≠ <code>children</code>.</p>
+    </div>
+    <div class="s15-score-panel">
+      <h3>Cosine = dot product ÷ (two vector norms)</h3>
+      <p class="s15-cosine-rule">\(\cos(\mathbf{u},\mathbf{t})=\dfrac{\mathbf{u}\cdot\mathbf{t}}{\lVert\mathbf{u}\rVert\,\lVert\mathbf{t}\rVert}\)</p>
+      <div class="s15-score"><strong>A · Toy Story <b>0.217</b></strong><span>dot: 1.2 × 1.2 = 1.44</span><span>norms: ‖U‖ = 2.577; ‖A‖ = 2.577</span><span class="s15-final-calc">1.44 ÷ (2.577 × 2.577)</span></div>
+      <div class="s15-score s15-score-winner"><strong>B · Mrs. Doubtfire <b>0.716</b></strong><span>dot: 1.4² + 1.2² = 3.40</span><span>norms: ‖U‖ = 2.577; ‖B‖ = 1.844</span><span class="s15-final-calc">3.40 ÷ (2.577 × 1.844)</span></div>
+    </div>
+  </div>
 </div>
-
-A vector-space retriever ranks **lexical evidence**; it has not yet inferred that different words can express a similar idea.
+```
 
 ::: notes
-Do not calculate a full cosine normalisation by hand. The goal is to identify what determines a contribution to the score, then introduce cosine as a scale-aware comparison.
+This is a deliberately small, illustrative vocabulary with TF equal to one for each displayed tag. Compute each present TF–IDF coordinate from the IDF table. First identify the dot product as the sum of shared-coordinate products, then divide by the two vector lengths: normalisation prevents a longer vector from receiving an advantage merely because it has more nonzero coordinates. Toy Story’s `animation` and `children` remain separate from the user’s `animated` and `family`; the resulting contrast motivates the next dense-embedding slide.
 [Sources]
 - Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to Information Retrieval*, Chapter 6.
 :::
@@ -358,8 +433,9 @@ Do not calculate a full cosine normalisation by hand. The goal is to identify wh
   <div class="factor-card"><strong>Neighbourhoods</strong><br>Related usage can place vectors closer together.</div>
 </div>
 
-- Dense vectors have far fewer dimensions than a vocabulary-sized bag-of-words vector.
-- They can support semantic generalisation such as related wording.
+- A sparse document–term vector has dimension \(\color{navy}{V}\): one coordinate per vocabulary term, with most coordinates equal to zero.
+  - **Typical scale:** $\color{navy}{V} = \sim50,000{–}100,000$ terms after tokenisation and filtering.
+- Dense word embeddings use a much smaller learned dimension $\color{teal}{d} \ll \color{navy}{V}$, while retaining continuous coordinates for semantic similarity.
 - Their coordinates are learned patterns, **not human-readable facts or ground truth**.
 
 ::: notes
@@ -385,20 +461,6 @@ This comparison is the central bridge. Avoid presenting dense embeddings as a un
 [Sources]
 - Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to Information Retrieval*.
 - Mikolov, T. et al. (2013). “Efficient Estimation of Word Representations in Vector Space.”
-:::
-
-## 🎰 Bandit Time: Where Does TF–IDF Struggle? {background-color="#003D7C"}
-
-<p class="bandit-question"><strong>A query is “feline care”. A useful document says “cat health”. Why can a conventional TF–IDF cosine score under-rank it?</strong></p>
-<div class="bandit-options">
-  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> TF–IDF forbids any document from receiving more than one score.</div>
-  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> <code>feline</code> and <code>cat</code> are separate vocabulary dimensions unless a mechanism connects them.</div>
-  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> Cosine similarity can only compare dense vectors.</div>
-  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> IDF removes every rare word from the query.</div>
-</div>
-<p style="margin-top:.7em;color:#80cbc4;font-size:.73em;">Answer: <strong style="color:#ffffff;">B</strong>. TF–IDF rewards shared lexical coordinates; embeddings can help relate wording, but they introduce a different modelling assumption.</p>
-::: notes
-MCQ. Invite individual answers first, then ask for one rationale. The key distinction is lexical mismatch, not a claim that dense embeddings are always correct.
 :::
 
 ## Break — 5 minutes {background-color="#000000"}
@@ -508,58 +570,179 @@ Break slide. Start the timer when announcing the break. KWIC fact source: Hallam
 Use the preceding IR section to make LFM less mysterious. The geometry is analogous: represent objects in a common vector space, then score a relationship. The data-generating processes and interpretations are different.
 :::
 
-## Factorisation Learns Shared Coordinates
+## 🎥 Video: SVD for Movie Recommendations {background-color="#000000"}
 
-$$
-R \approx P Q^\top
-$$
-
-<div class="factor-flow">
-  <div class="factor-card"><strong>Interaction matrix \(R\)</strong><br>Observed user–item feedback with many blanks.</div>
-  <div class="factor-arrow">≈</div>
-  <div class="factor-card"><strong>User matrix \(P\)</strong><br>One learned vector per user.</div>
-  <div class="factor-arrow">×</div>
-  <div class="factor-card"><strong>Item matrix \(Q\)</strong><br>One learned vector per item.</div>
+```{=html}
+<div style="display:flex;align-items:center;justify-content:center;width:100%;height:76vh;background:#000;">
+  <a href="https://www.youtube.com/watch?v=8wLKuscyO9I" target="_blank" rel="noopener" aria-label="Open video: SVD for Movie Recommendations">
+    <img src="https://img.youtube.com/vi/8wLKuscyO9I/maxresdefault.jpg" alt="YouTube thumbnail for Using Singular Value Decomposition for Movie Recommendations by Sundog Education" style="display:block;width:100%;max-width:1280px;height:auto;max-height:76vh;object-fit:contain;border:4px solid #EF7C00;">
+  </a>
 </div>
-
-A compact set of learned coordinates can capture recurring interaction patterns that local neighbourhoods may miss.
+```
 
 ::: notes
-Re-use the distinction from the protected slides: LFM makes a prediction possible from distributed patterns; it does not turn a missing interaction into ground truth.
+Use this as a short applied bridge from the two factorisation lenses to the worked signed-residual example. Ask students to listen for the move from a sparse movie-rating matrix to compact user and movie coordinates; the following slide supplies the precise signed-matrix lens. Do not let the clip substitute for the distinction between a mathematical SVD and the regularised matrix-factorisation models used later in the lecture.
 [Sources]
-- Koren, Y., Bell, R., & Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.” *Computer*, 42(8), 30–37.
+- Video: Sundog Education with Frank Kane, “Using Singular Value Decomposition (SVD) for Movie Recommendations.” https://www.youtube.com/watch?v=8wLKuscyO9I
+- Thumbnail: https://img.youtube.com/vi/8wLKuscyO9I/maxresdefault.jpg
 :::
 
-## Factors Are Patterns, Not Personal Facts
+## Two Factorisation Lenses: Signed or Additive?
 
-| Tempting shortcut | Better statement |
-|---|---|
-| “Dimension 3 is this user’s identity.” | Dimension 3 is a learned coordinate associated with interaction patterns. |
-| “The factor is a hidden genre tag.” | A factor may correlate with metadata, but it is inferred rather than recorded. |
-| “The factor explains the person.” | The factor supports a score under a particular dataset and objective. |
+Both methods approximate a matrix with fewer factors, but their **constraints change the meaning** of those factors.
+
+::: {.columns}
+::: {.column width="47%"}
+
+### SVD-style lens
+
+$$
+R \approx U_k\Sigma_kV_k^{\top}
+$$
+
+- Factors may be **positive or negative**.
+- Natural for centred residuals: above- and below-baseline evidence can offset.
+- The singular values in \(\Sigma_k\) scale the retained directions.
+
+:::
+::: {.column width="47%"}
+
+### NMF lens
+
+$$
+X \approx WH, \qquad W,H\geq0
+$$
+
+- Factors are **nonnegative and additive**.
+- Natural for counts, intensities, or “parts” interpretations.
+- Components combine; they do not cancel one another.
+
+:::
+:::
+
+> **Shared goal:** compress matrix structure. **Different question:** may a factor subtract, or must it add?
 
 ::: notes
-Retain this language discipline. It applies equally to dense word embeddings: a useful coordinate system is not an ontological truth.
+Position this after the general regularised matrix-factorisation objective. SVD is a decomposition with orthogonality and signed directions; NMF is a constrained factorisation whose factors remain nonnegative. Neither description makes a factor a personal trait. Keep the distinction operational: centred deviations invite signed values, while counts and additive signals invite nonnegative factors.
+[Sources]
+- Trefethen, L. N., & Bau, D. (1997). *Numerical Linear Algebra*, Chapters 1–2.
+- Lee, D. D., & Seung, H. S. (1999). “Learning the parts of objects by non-negative matrix factorization.”
+:::
+
+## Worked SVD Lens: Signed Residual Directions
+
+**Toy centred residual matrix** — positive means “above this user’s baseline”; negative means “below it.”
+
+$$
+R=
+\begin{bmatrix}
+\phantom{-}1.414 & -1.414\\
+-1.414 & \phantom{-}1.414
+\end{bmatrix}
+=
+\underbrace{\begin{bmatrix}1\\-1\end{bmatrix}}_{U_1}
+\underbrace{\begin{bmatrix}2\end{bmatrix}}_{\Sigma_1}
+\underbrace{\begin{bmatrix}0.707 & -0.707\end{bmatrix}}_{V_1^{\top}}
+$$
+
+::: {.columns}
+::: {.column width="47%"}
+
+### Read the signs
+
+- User 1: Item A above baseline; Item B below.
+- User 2: the reverse pattern.
+- One signed direction captures the contrast.
+
+:::
+::: {.column width="47%"}
+
+### Why SVD fits this view
+
+The negative entries are meaningful **residual directions**, not impossible ratings. A nonnegative-only factorisation could not reproduce this signed residual matrix directly.
+
+:::
+:::
+
+::: notes
+Treat this as an exact rank-one example. The left vector gives the user-side sign pattern, the singular value gives magnitude, and the right vector gives the item-side contrast. Do not confuse the residual values with original ratings; they are values after a baseline has been removed.
+[Sources]
+- Trefethen, L. N., & Bau, D. (1997). *Numerical Linear Algebra*, Chapters 1–2.
+:::
+
+## Worked NMF Lens: Additive Intensity Components
+
+**Toy nonnegative interaction matrix** — every entry is an intensity, so components are required to add rather than subtract.
+
+$$
+X=
+\begin{bmatrix}2 & 1\\4 & 2\end{bmatrix}
+=
+\underbrace{\begin{bmatrix}1\\2\end{bmatrix}}_{W}
+\underbrace{\begin{bmatrix}2 & 1\end{bmatrix}}_{H}
+$$
+
+::: {.columns}
+::: {.column width="47%"}
+
+### Read the factors
+
+- \(W\): User 2 has twice the component intensity of User 1.
+- \(H\): Item A expresses twice as much of the component as Item B.
+- Their product reconstructs every entry without negative values.
+
+:::
+::: {.column width="47%"}
+
+### Why NMF fits this view
+
+For counts or accumulated activity, a factor can be interpreted as an **additive amount**. There is no “minus 3 clicks” component to cancel another one.
+
+:::
+:::
+
+::: notes
+Emphasise that this is an exact rank-one toy example, not a claim that one NMF component is always sufficient. The multiplication makes the additive reading concrete: 2×2=4 for User 2 and Item A. Interpretability remains tentative and context-dependent.
+[Sources]
+- Lee, D. D., & Seung, H. S. (1999). “Learning the parts of objects by non-negative matrix factorization.”
+:::
+
+
+## 🎰 Bandit Time: What Does Factorisation Learn? {background-color="#003D7C"}
+
+<p class="bandit-question"><strong>A restaurant app has a sparse matrix of diner ratings. Which description best matches latent-factor factorisation?</strong></p>
+
+<div class="bandit-options">
+  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> It sorts restaurants only by their recorded cuisine label.</div>
+  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> It learns compact vectors for diners and restaurants from many observed interactions, then uses their alignment to estimate affinity.</div>
+  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> It treats every unvisited restaurant as a one-star rating.</div>
+  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> It copies the rating of the geographically nearest diner.</div>
+</div>
+
+::: notes
+MCQ. The correct answer is **B**. Invite an individual choice, then ask pairs to identify the evidence and representation implied by their selected answer. Reveal verbally: factorisation approximates the interaction matrix with learned user and item coordinates. Cuisine can be useful metadata, but it is not what the latent vectors are restricted to represent. Do not display the answer or an answer explanation on the student-facing slide.
+[Sources]
+- Koren, Y., Bell, R., & Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.” *Computer*, 42(8), 30–37.
 :::
 
 ## A Dot Product Turns Factors into a Score
 
 $$
-\hat r_{ui}=p_u^\top q_i
+\color{navy}{\hat r_{ui}}=\color{teal}{\mathbf{u}_u^\top}\color{orange}{\mathbf{v}_i}
 $$
 
 ::: {.columns}
 ::: {.column width="48%"}
 ### User vector
 $$
-p_u=[p_{u1},p_{u2},\ldots,p_{uk}]
+\color{teal}{\mathbf{u}_u}=[\color{teal}{u_{u1}},\color{teal}{u_{u2}},\ldots,\color{teal}{u_{uk}}]
 $$
 A learned location in the model’s preference space.
 :::
 ::: {.column width="48%"}
 ### Item vector
 $$
-q_i=[q_{i1},q_{i2},\ldots,q_{ik}]
+\color{orange}{\mathbf{v}_i}=[\color{orange}{v_{i1}},\color{orange}{v_{i2}},\ldots,\color{orange}{v_{ik}}]
 $$
 How an item aligns with the learned interaction patterns.
 :::
@@ -574,20 +757,20 @@ Make the bridge to cosine from IR carefully: both use vector geometry, but the f
 ## Worked Calculation: Two Items, One Score
 
 $$
-p_u=[0.8,0.2], \qquad q_A=[0.9,0.1], \qquad q_B=[0.4,0.8]
+\color{teal}{\mathbf{u}_u}=[\color{teal}{0.8},\color{teal}{0.2}], \qquad \color{orange}{\mathbf{v}_A}=[\color{orange}{0.9},\color{orange}{0.1}], \qquad \color{orange}{\mathbf{v}_B}=[\color{orange}{0.4},\color{orange}{0.8}]
 $$
 
 ::: {.columns}
 ::: {.column width="48%"}
 ### Item A
 $$
-\hat r_{uA}=0.8(0.9)+0.2(0.1)=\mathbf{0.74}
+\color{navy}{\hat r_{uA}}=\color{teal}{0.8}\color{orange}{(0.9)}+\color{teal}{0.2}\color{orange}{(0.1)}=\color{navy}{\mathbf{0.74}}
 $$
 :::
 ::: {.column width="48%"}
 ### Item B
 $$
-\hat r_{uB}=0.8(0.4)+0.2(0.8)=\mathbf{0.48}
+\color{navy}{\hat r_{uB}}=\color{teal}{0.8}\color{orange}{(0.4)}+\color{teal}{0.2}\color{orange}{(0.8)}=\color{navy}{\mathbf{0.48}}
 $$
 :::
 :::
@@ -602,207 +785,113 @@ Ask students to verify each product before showing the totals. Reiterate that sc
 ## Training Fits Evidence, Regularisation Limits It
 
 $$
-\min_{P,Q}\; \sum_{(u,i)\in\Omega}(r_{ui}-p_u^\top q_i)^2 + \lambda\left(\lVert P\rVert_F^2+\lVert Q\rVert_F^2\right)
+\min_{\color{teal}{U},\color{orange}{V}}\; \sum_{\color{navy}{(u,i)\in\Omega}}\left(\color{navy}{r_{ui}}-\color{teal}{\mathbf{u}_u^\top}\color{orange}{\mathbf{v}_i}\right)^2 + \color{navy}{\lambda}\left(\lVert \color{teal}{U}\rVert_F^2+\lVert \color{orange}{V}\rVert_F^2\right)
 $$
 
-- **Explicit feedback:** a rating can support a prediction-error loss.
-- **Implicit feedback:** an interaction supports relative or binary preference evidence.
-- **Regularisation:** discourages a model that memorises the observed matrix too conveniently.
+- <span style="color:#003D7C;"><strong>Observed interaction set Ω:</strong></span> explicit ratings or implicit events select the evidence the objective fits.
+- <span style="color:#00796B;"><strong>User factors U and their row vectors:</strong></span> are adjusted together with the item factors to explain the selected evidence.
+- <span style="color:#EF7C00;"><strong>Item factors V and their row vectors:</strong></span> align with user factors to produce the model score.
+- <span style="color:#003D7C;"><strong>Regularisation strength λ:</strong></span> limits convenient memorisation by penalising excessively large factor values.
 
 ::: notes
-Explain the equation qualitatively. The objective and sampling scheme are design choices, not generic facts about user preference.
+Read the term key before narrating the equation: distinguish observed evidence, user factors, item factors, and the regularisation control. The objective and sampling scheme are design choices, not generic facts about user preference.
 [Sources]
 - Koren, Y., Bell, R., & Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.”
 :::
 
-## BPR Makes LFM Ranking-Aware
+## Group Discussion · Choose the Lens {background-color="#003D7C"}
 
-$$
-\log \sigma\big(s(u,i)-s(u,j)\big)
-$$
-
-<div class="factor-flow">
-  <div class="factor-card"><strong>Observed item \(i\)</strong><br>User \(u\) watched, clicked, or purchased it.</div>
-  <div class="factor-arrow">&gt;</div>
-  <div class="factor-card"><strong>Sampled item \(j\)</strong><br>An unobserved alternative for that user.</div>
-  <div class="factor-arrow">→</div>
-  <div class="factor-card"><strong>Pairwise loss</strong><br>Reward \(i\) being ranked above \(j\).</div>
+```{=html}
+<div class="svd-nmf-activity-layout" style="display:grid;grid-template-columns:minmax(0,1fr) 188px;gap:1.0em;align-items:center;min-height:0;">
+  <div>
+    <div class="svd-nmf-activity-intro">In groups of 3–4, assign a lens, state the evidence, and name one caveat. <strong>Time: 5 minutes.</strong></div>
+    <div class="svd-nmf-activity-grid">
+      <div class="svd-nmf-case"><strong>Case A · Centred ratings</strong><br>Each value is a deviation from the user’s own average rating: some are positive, some negative.<br><em>Choose SVD or NMF. Why?</em></div>
+      <div class="svd-nmf-case"><strong>Case B · Watch counts</strong><br>Entries are nonnegative counts of completed views across topic groups.<br><em>Choose SVD or NMF. Why?</em></div>
+      <div class="svd-nmf-case"><strong>Case C · Missing ratings</strong><br>Most user–item pairs were never observed; they are not zero ratings.<br><em>What must both approaches avoid?</em></div>
+    </div>
+    <div class="svd-nmf-activity-output"><strong>Report back:</strong> one choice, one data property that justifies it, and one interpretation or missing-data caveat.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+    <svg width="156" height="156" viewBox="0 0 180 180" aria-label="Five-minute group discussion timer">
+      <circle cx="90" cy="90" r="75" fill="none" stroke="#27476F" stroke-width="14"/>
+      <circle id="donut-ring-s28" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/>
+      <text id="timer-text-s28" x="90" y="98" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="white">05:00</text>
+    </svg>
+    <span id="timer-status-s28" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">05:00</span>
+    <button id="timer-btn-s28" type="button" style="margin-top:.72em;padding:.45em 1.15em;font-size:.78em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:#fff;border:none;border-radius:6px;cursor:pointer;letter-spacing:.04em;">▶ Start 5 min</button>
+  </div>
 </div>
-
-> **BPR is not a neural architecture.** It is a pairwise ranking objective commonly used with LFM-style user and item factors.
-
-::: notes
-Name BPR in full: Bayesian Personalized Ranking. Contrast the same latent-factor representation with a different learning objective: numeric prediction versus relative ranking under implicit feedback.
-[Sources]
-- Rendle, S. et al. (2009). “BPR: Bayesian Personalized Ranking from Implicit Feedback.”
-:::
-
-## Choose Code That Matches the Evidence
-
-| Method | Library | Evidence and pedagogical role |
-|---|---|---|
-| **Regularised MF / SVD** | Surprise `SVD` | Explicit ratings; prediction-style factor baseline. |
-| **BPR-MF** | RecBole `BPR` | Implicit interactions; **primary worked example** for top-*K* ranking. |
-| **Implicit ALS** | `implicit` | Confidence-weighted sparse implicit feedback; comparison extension. |
-| **NMF** | scikit-learn or Surprise `NMF` | Non-negative-factorisation constraint; extension code. |
-| **NeuMF** | RecBole `NeuMF` | Neural interaction model; preview only, not BPR itself. |
-
-::: notes
-Explain that “SVD” in practical recommender libraries normally means a regularised latent-factor model trained iteratively, not applying one literal SVD to a sparse ratings matrix. RecBole supports BPR and NeuMF; classic SVD and NMF should use a separate library.
-:::
-
-## 👥 Activity 1: Choose the Baseline, Defend the Match {background-color="#003D7C"}
-
-<p class="activity-question"><strong>Work in pairs.</strong> For one of the cases, choose a first LFM-related baseline. Produce: <em>evidence → method → ranking/prediction metric → one limitation</em>.</p>
-<div class="activity-grid">
-  <div class="activity-card"><h3>Movie ratings</h3>Users give 1–5 star ratings. Is the score itself the target?</div>
-  <div class="activity-card"><h3>Podcast listens</h3>Users either listened or did not. Which ranked-list outcome matters?</div>
-  <div class="activity-card"><h3>Music discovery</h3>Interactions are implicit and exposure is uneven. What needs monitoring beyond relevance?</div>
-</div>
-<div class="activity-output"><strong>Produce:</strong> one defensible method/metric pair and one assumption that could make the baseline misleading.</div>
-
-::: notes
-Student activity. Invite two contrasting reports. One correct family of answers: explicit ratings → regularised MF/SVD → RMSE/MAE; implicit listens → BPR-MF → NDCG@K/Recall@K. Ask why neither metric establishes causal user value.
-:::
-
-## Worked RecBole Example: BPR on MovieLens 100K
-
-::: {.columns}
-::: {.column width="56%"}
-<div class="code-panel"><pre style="margin:0;color:inherit;"># test.yaml
-USER_ID_FIELD: user_id
-ITEM_ID_FIELD: item_id
-load_col:
-  inter: [user_id, item_id]
-embedding_size: 64
-epochs: 500
-metrics: ['Recall', 'MRR', 'NDCG']
-topk: 10
-
-# run.py
-from recbole.quick_start import run_recbole
-run_recbole(model='BPR', dataset='ml-100k',
-            config_file_list=['test.yaml'])</pre></div>
-:::
-::: {.column width="39%"}
-### What is happening?
-- RecBole loads user–item interactions.
-- `BPR` learns user/item factors with a pairwise ranking loss.
-- `embedding_size` sets the factor dimension.
-- Ranking metrics evaluate the declared held-out protocol.
-:::
-:::
+<script>
+(function () {
+  var TOTAL = 5 * 60, remaining = TOTAL, interval = null, state = 'idle', audioContext = null;
+  var textEl = document.getElementById('timer-text-s28');
+  var statusEl = document.getElementById('timer-status-s28');
+  var ringEl = document.getElementById('donut-ring-s28');
+  var buttonEl = document.getElementById('timer-btn-s28');
+  var circumference = 2 * Math.PI * 75;
+  function pad(v) { return v < 10 ? '0' + v : '' + v; }
+  function render() {
+    var display = pad(Math.floor(remaining / 60)) + ':' + pad(remaining % 60);
+    textEl.textContent = display;
+    statusEl.textContent = state === 'complete' ? "Time's up!" : display;
+    ringEl.setAttribute('stroke-dashoffset', circumference * (1 - remaining / TOTAL));
+  }
+  function chime() {
+    if (!audioContext) return;
+    var oscillator = audioContext.createOscillator(), gain = audioContext.createGain(), now = audioContext.currentTime;
+    oscillator.type = 'sine'; oscillator.frequency.value = 880;
+    gain.gain.setValueAtTime(.18, now); gain.gain.exponentialRampToValueAtTime(.001, now + .5);
+    oscillator.connect(gain); gain.connect(audioContext.destination); oscillator.start(now); oscillator.stop(now + .5);
+  }
+  function pause() { if (state === 'running') { clearInterval(interval); interval = null; state = 'paused'; buttonEl.textContent = '▶ Resume'; } }
+  function reset() { clearInterval(interval); interval = null; remaining = TOTAL; state = 'idle'; ringEl.setAttribute('stroke', '#EF7C00'); buttonEl.textContent = '▶ Start 5 min'; render(); }
+  function tick() {
+    remaining = Math.max(0, remaining - 1); render();
+    if (remaining === 0) { clearInterval(interval); interval = null; state = 'complete'; ringEl.setAttribute('stroke', '#00c875'); buttonEl.textContent = '↻ Restart'; chime(); }
+  }
+  buttonEl.addEventListener('click', function () {
+    if (state === 'complete') { reset(); return; }
+    if (state === 'running') { pause(); return; }
+    var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass && !audioContext) audioContext = new AudioContextClass();
+    if (audioContext && audioContext.state === 'suspended') audioContext.resume();
+    state = 'running'; buttonEl.textContent = '⏸ Pause'; interval = setInterval(tick, 1000);
+  });
+  render();
+  document.addEventListener('DOMContentLoaded', function () {
+    function bindReveal() {
+      if (typeof Reveal === 'undefined' || !Reveal.isReady || !Reveal.isReady()) { setTimeout(bindReveal, 200); return; }
+      var slideEl = buttonEl.closest('section');
+      Reveal.on('slidechanged', function (event) { if (event.previousSlide === slideEl) pause(); });
+    }
+    bindReveal();
+  });
+})();
+</script>
+```
 
 ::: notes
-Present this as a compact reproducible configuration—not a live installation exercise. Ask students to identify the evidence used (interactions, not text or explicit ratings) and the objective (ranked-list quality).
-[Sources]
-- RecBole documentation, “BPR.” https://recbole.io/docs/user_guide/model/general/bpr.html
-:::
-
-## Read Model Output as Limited Evidence
-
-| Output artefact | What it can support | What it cannot establish alone |
-|---|---|---|
-| Training loss | Whether the stated loss changes during optimisation. | Real-world user value or fairness. |
-| Recall@10 / NDCG@10 | A ranking comparison under the declared held-out protocol. | A production outcome without further evaluation. |
-| Top-*k* candidates | A prompt for inspection and error analysis. | A causal account of a person’s preference. |
-| Learned factors | A representation used by the model. | A verified identity, need, or metadata field. |
-
-::: notes
-Ask: “What would you inspect before making a claim about this model?” Listen for split protocol, candidate set, negative sampling, missing exposure, and examples of failure.
-:::
-
-## Scores Need Objectives
-
-::: {.columns}
-::: {.column width="48%"}
-### Prediction
-How close is \(\hat r_{ui}\) to a numeric target?
-
-Use when a score itself drives a decision; measures can include RMSE or MAE.
-:::
-::: {.column width="48%"}
-### Ranking
-Do useful items appear near the top of the visible list?
-
-Use top-*k* measures such as NDCG@10 or Recall@10 for the declared task.
-:::
-:::
-
-A latent-factor score is not enough: the **objective and metric decide what “better” means**.
-
-::: notes
-This compresses the former objectives section. Do not frame either prediction or ranking as universally superior; match the metric to the decision surface.
-:::
-
-## 🎰 Bandit Time: What Should a Home Screen Optimise? {background-color="#003D7C"}
-
-<p class="bandit-question"><strong>A home screen must order ten candidate items for immediate display.</strong> Which measure most directly tests whether useful items appear near the top?</p>
-<div class="bandit-options">
-  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> RMSE over predicted ratings.</div>
-  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> NDCG@10.</div>
-  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> The number of metadata tags per item.</div>
-  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> The age of the user account.</div>
-</div>
-<p style="margin-top:.7em;color:#80cbc4;font-size:.73em;">Answer: <strong style="color:#ffffff;">B</strong>. NDCG@10 is position-sensitive; it assesses useful ordering in a displayed top-*k*.</p>
-
-::: notes
-Re-use the familiar activity treatment for an objective/metric check. Contrast A: it can be meaningful for a numeric prediction task but does not directly measure top-k order.
-:::
-
-## History Is Evidence, Not Preference
-
-| Historical process | Model consequence | Question to ask |
-|---|---|---|
-| Uneven exposure | Sparse or distorted interaction evidence | Who had a genuine chance to interact? |
-| Popularity reinforcement | Popular items receive stronger learned signals | Who receives repeated visibility? |
-| Re-ranking for discovery | Today’s policy changes tomorrow’s data | Who gets a credible opportunity to be seen? |
-
-<p style="margin-top:.8em;color:#EF7C00;font-weight:bold;">Use historical behaviour as evidence with limits—not as a neutral record of preference.</p>
-
-::: notes
-Retain the core ethical guardrail from the previous deck in a concise form. This supports the E1 bridge without attempting to reproduce the full former ethics activity.
-:::
-
-## E1 Bridge: Choose the Consequential Decision
-
-For one approved recommendation surface, make a focused argument around one connected choice:
-
-| Choice | Example question |
-|---|---|
-| Representation | Why use lexical features, latent factors, or both? |
-| Objective | Why optimise a ranked list rather than numeric prediction? |
-| Method | Why is BPR-MF, explicit MF, ALS, or another baseline appropriate? |
-| Risk | How could missing exposure distort the interaction evidence? |
-
-::: notes
-Invite a focused technical argument, not a catalogue of all possible recommender components. Ask students to name the evidence that would support their choice.
+Expected direction: Case A supports a signed SVD-style residual view; Case B supports NMF’s nonnegative additive components; Case C requires both groups to state that unobserved interactions should not be silently treated as zero evidence. Invite a short report from one group per case, then bridge back to fitting only the observed set Ω. Start the five-minute timer after reading the report-back prompt; it pauses automatically when moving to the next slide.
 :::
 
 ## {background-color="#ffffff"}
+
+```{=html}
 <div class="cp-frame-bg cp-frame-navy"></div>
-<div class="cp-frame-content">
-  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
-  <div class="cp-frame-title" style="color:#003D7C;">When two lists rank similarly, what should decide?</div>
-  <div class="cp-frame-body" style="color:#333;">
-    <p>Suppose two ranked lists have similar NDCG@10, but one concentrates attention on already popular items while the other broadens credible discovery.</p>
-    <p style="margin-top:.7em;font-weight:bold;color:#003D7C;">Post one diagnostic you would use, explain what it reveals, and reply constructively to one classmate.</p>
+<div class="cp-frame-content week3-preview-frame">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week · Preview</div>
+  <div class="cp-frame-title" style="color:#003D7C;">Week 03 — Evaluation of Recommendation Systems</div>
+  <p class="week3-preview-lede">An offline metric tells us how a list performed. We ask with our four-suit lenses whether it performs well under a scenario.</p>
+  <div class="suit-preview-grid" aria-label="Four evaluation lenses for Week 3">
+    <div class="suit-preview-card suit-clubs"><span class="suit-symbol">♣</span><div><strong>Robustness</strong><span>Can the protocol resist distorted or manipulated evidence?</span></div></div>
+    <div class="suit-preview-card suit-hearts"><span class="suit-symbol">♥</span><div><strong>Social impact</strong><span>Does the ranking inform without unwanted exposure or conformity?</span></div></div>
+    <div class="suit-preview-card suit-diamonds"><span class="suit-symbol">♦</span><div><strong>Discovery</strong><span>Does the list surface genuinely new, long-tail, or emerging choices?</span></div></div>
+    <div class="suit-preview-card suit-spades"><span class="suit-symbol">♠</span><div><strong>Constraints &amp; explanation</strong><span>Can users hold important attributes fixed and understand why an item appears?</span></div></div>
   </div>
 </div>
+```
+
 ::: notes
-Direct students to Canvas and insert the verified deadline at delivery time. This prepares the next session’s treatment of evaluation and recommendation beyond a single offline score.
-:::
-
-# Summary {background-color="#003D7C"}
-
-## 🔑 <u>Representations Enable; Objectives Decide</u>
-
-- **TF–IDF** represents lexical evidence; **dense embeddings** can generalise across learned contextual patterns.
-- **LFM** represents user–item interaction patterns as learned factors—not identities or recorded metadata.
-- **BPR** keeps the latent-factor idea but trains it for relative ranking under implicit feedback.
-- A score or offline metric is useful evidence, never a complete account of user value or fairness.
-
-<p style="margin-top:.8em;color:#EF7C00;font-weight:bold;">🔑 Better representation helps; responsible objectives and evaluation determine what the system actually delivers.</p>
-::: notes
-Close by restating the lecture’s through-line: representations make scoring possible, while evidence, objectives, and constraints decide whether a score is useful.
+Preview the move from modelling and ranking to evaluation. Reactivate the Week 01 card-suit lens: Clubs foreground robustness and manipulation; Hearts social evidence and conformity; Diamonds novelty and long-tail discovery; Spades user constraints and explanation. State that Week 03 will examine evaluation protocols, ranking metrics, and what accuracy-only evaluation can miss.
 :::
