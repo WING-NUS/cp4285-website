@@ -939,7 +939,7 @@ Read the equation by colour, not symbol by symbol. Orange selects comparable evi
   </thead>
   <tbody>
     <tr style="color:#00796B;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td class="cp-divider--red">5</td><td>?</td><td class="cp-divider--red">2</td><td class="cp-divider--red">4</td><td>?</td></tr>
-    <tr style="color:#A24B00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td>4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">2</td><td>4</td></tr>
+    <tr style="color:#A24B00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;color:#EF7C00;">5</td><td style="color:#EF7C00;">4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;color:#EF7C00;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;color:#EF7C00;">2</td><td style="color:#EF7C00;">4</td></tr>
   </tbody>
 </table>
 ```
@@ -1024,7 +1024,7 @@ Cosine asks whether two observed rating vectors point in a similar direction. Un
   </thead>
   <tbody>
     <tr style="color:#00796B;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td class="cp-divider--red">5</td><td>?</td><td class="cp-divider--red">2</td><td class="cp-divider--red">4</td><td>?</td></tr>
-    <tr style="color:#A24B00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td>4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">2</td><td>4</td></tr>
+    <tr style="color:#EF7C00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;color:#EF7C00;">5</td><td style="color:#EF7C00;">4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;color:#EF7C00;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;color:#EF7C00;">2</td><td style="color:#EF7C00;">4</td></tr>
   </tbody>
 </table>
 ```
