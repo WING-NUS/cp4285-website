@@ -63,7 +63,7 @@ date: "DD MMM YYYY"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, custom.scss]
+    theme: [default, ../cp4285-common.scss, weekNN-custom.scss]
     slide-number: true
     show-slide-number: all
     chalkboard: false
@@ -98,61 +98,19 @@ Place the following metadata in the deck YAML, substituting the verified URL and
 
 ```yaml
 subtitle: |
-  <span class="wNN-title-subtitle">CP4285 Modern Recommendation Systems — Week N</span>
-  <a class="wNN-title-qr" href="https://soc-n.us/cp4285-tNN-wNN" target="_blank" rel="noopener" aria-label="Open the Week N slide deck">
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week N</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-tNN-wNN" target="_blank" rel="noopener" aria-label="Open the Week N slide deck">
     <picture>
       <source type="image/svg+xml" srcset="../../uploads/cp4285-tNN-wNN-HASH.svg">
-      <img class="wNN-title-qr-image" src="../../uploads/cp4285-tNN-wNN-HASH.png" alt="QR code for the Week N slide deck">
+      <img class="title-qr-image" src="../../uploads/cp4285-tNN-wNN-HASH.png" alt="QR code for the Week N slide deck">
     </picture>
-    <span class="wNN-title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-tNN-wNN</span></span>
+    <span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-tNN-wNN</span></span>
   </a>
 ```
 
-Add matching theme CSS, changing `wNN` to the week identifier. Keep the panel at least 205 px square on the 1600×900 canvas, with a white background, teal (`#00796B`) border, navy (`#003D7C`) label, and teal shortlink. The title, subtitle, author, and date must all be left aligned.
+The shared `../cp4285-common.scss` theme provides the title-panel CSS. Keep the panel at least 205 px square on the 1600×900 canvas, with a white background, teal (`#00796B`) border, navy (`#003D7C`) label, and teal shortlink. The title, subtitle, author, and date must all be left aligned. Do not duplicate the title-panel rules in a week overlay.
 
-```scss
-.reveal #title-slide {
-  box-sizing: border-box;
-  padding-right: 340px;
-  text-align: left;
-}
-.reveal #title-slide .title,
-.reveal #title-slide .subtitle,
-.reveal #title-slide .quarto-title-authors,
-.reveal #title-slide .date {
-  max-width: 100%;
-}
-.reveal #title-slide .quarto-title-authors,
-.reveal #title-slide .quarto-title-author {
-  justify-content: flex-start;
-  margin-left: 0;
-  margin-right: 0;
-  text-align: left;
-}
-.reveal #title-slide .wNN-title-subtitle { display: block; }
-.reveal #title-slide .wNN-title-qr {
-  position: absolute;
-  top: 50%; right: 1.5em;
-  width: 255px;
-  transform: translateY(-50%);
-  box-sizing: border-box;
-  display: block;
-  padding: 16px 16px 14px;
-  border: 4px solid #00796B;
-  border-radius: 12px;
-  background: #fff;
-  color: #003D7C;
-  text-align: center;
-  text-decoration: none;
-}
-.reveal #title-slide .wNN-title-qr-image {
-  display: block;
-  width: 205px; height: 205px;
-  margin: 0 auto 9px;
-}
-```
-
-**RevealJS guardrail:** Never set `position: relative`, `display`, `top`, `left`, or a transform on `#title-slide` itself. Reveal positions title and content slides; overriding its positioning can place every later slide in normal document flow and cause navigation to land far below the viewport. Scope absolute positioning only to `.wNN-title-qr`.
+**RevealJS guardrail:** Never set `position: relative`, `display`, `top`, `left`, or a transform on `#title-slide` itself. Reveal positions title and content slides; overriding its positioning can place every later slide in normal document flow and cause navigation to land far below the viewport. Scope absolute positioning only to `.title-qr`.
 
 After changing the title panel, render the deck and compare Slide 1 against the Week 01 reference. Verify the standard dark title, orange rule, left-aligned metadata, QR clearance, and compact QR label. Then navigate from Slide 1 to Slide 2 in the browser and verify that the next slide begins at the normal top position, not below the viewport.
 
@@ -201,7 +159,7 @@ For multiword function identifiers in equations, prefer lowercase dashed notatio
 
 ## SCSS Theme
 
-Copy `templates/custom.scss` verbatim into each new `static/slides/weekNN/` directory alongside the `.qmd` file. Do not modify it unless a deliberate style change is intended for the whole course.
+Load `../cp4285-common.scss` before the per-week overlay in every new deck. Copy `templates/custom.scss` as `weekNN-custom.scss`; use it only for a genuinely week-specific exception. Keep W01-style one-off visual layouts page-local with inline styles rather than growing a deck-wide custom stylesheet. Make a deliberate shared-theme change only when it applies across the course.
 
 ---
 
@@ -382,14 +340,16 @@ RevealJS fragments, incremental lists, and other animation features are primaril
 ## File Layout per Week
 
 ```
-static/slides/weekNN/
-├── weekNN.qmd       ← Quarto source (author this)
-├── weekNN.html      ← Rendered output (committed to repo)
-├── weekNN-timeline.md ← Lecture delivery timeline (keep synced with weekNN.qmd)
-└── custom.scss      ← Copy of templates/custom.scss
+static/slides/
+├── cp4285-common.scss  ← Shared course theme
+└── weekNN/
+    ├── weekNN.qmd       ← Quarto source (author this)
+    ├── weekNN.html      ← Rendered output (committed to repo)
+    ├── weekNN-timeline.md ← Lecture delivery timeline (keep synced with weekNN.qmd)
+    └── weekNN-custom.scss ← Thin local overlay copied from templates/custom.scss
 ```
 
-Commit all per-week delivery artifacts together: the `.qmd` source, rendered `.html`, `custom.scss`, and `weekNN-timeline.md` when present. Keep the source, rendered output, styling, and delivery timeline synchronized in the same change.
+Commit all per-week delivery artifacts together: the `.qmd` source, rendered `.html`, `weekNN-custom.scss`, and `weekNN-timeline.md` when present. When shared styles change, commit `../cp4285-common.scss` and the updated generated outputs in the same change. Keep the source, rendered output, styling, and delivery timeline synchronized.
 
 ### Lecture Delivery Timeline
 

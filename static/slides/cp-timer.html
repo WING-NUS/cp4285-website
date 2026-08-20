@@ -1,0 +1,121 @@
+<script>
+(function () {
+  function byId(id) {
+    return id ? document.getElementById(id) : null;
+  }
+
+  function format(seconds) {
+    var minutes = Math.floor(seconds / 60);
+    var remainder = seconds % 60;
+    return (minutes < 10 ? '0' + minutes : String(minutes)) + ':' + (remainder < 10 ? '0' + remainder : String(remainder));
+  }
+
+  function setupTimer(button) {
+    if (button.dataset.cpTimerBound === 'true') return;
+    var duration = Number(button.dataset.seconds || 0);
+    var ring = byId(button.dataset.ring);
+    var text = byId(button.dataset.text);
+    var status = byId(button.dataset.status);
+    if (!duration || !ring || !text || !status) return;
+
+    button.dataset.cpTimerBound = 'true';
+    var remaining = duration;
+    var interval = null;
+    var state = 'idle';
+    var audio = null;
+    var circumference = 2 * Math.PI * Number(ring.getAttribute('r') || 75);
+    var originalStroke = ring.getAttribute('stroke') || '#EF7C00';
+
+    function update() {
+      text.textContent = format(remaining);
+      status.textContent = state === 'complete' ? "Time's up!" : format(remaining);
+      ring.setAttribute('stroke-dashoffset', circumference * (1 - remaining / duration));
+    }
+
+    function pause() {
+      if (state !== 'running') return;
+      window.clearInterval(interval);
+      interval = null;
+      state = 'paused';
+      button.textContent = '▶ Resume';
+    }
+
+    function reset() {
+      window.clearInterval(interval);
+      interval = null;
+      remaining = duration;
+      state = 'idle';
+      ring.setAttribute('stroke', originalStroke);
+      button.textContent = '▶ Start Timer';
+      update();
+    }
+
+    function chime() {
+      var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      if (!audio) audio = new AudioContextClass();
+      if (audio.state === 'suspended') audio.resume();
+      var oscillator = audio.createOscillator();
+      var gain = audio.createGain();
+      var now = audio.currentTime;
+      oscillator.type = 'sine';
+      oscillator.frequency.value = 880;
+      gain.gain.setValueAtTime(0.18, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+      oscillator.connect(gain);
+      gain.connect(audio.destination);
+      oscillator.start(now);
+      oscillator.stop(now + 0.5);
+    }
+
+    button.addEventListener('click', function () {
+      if (state === 'complete') {
+        reset();
+        return;
+      }
+      if (state === 'running') {
+        pause();
+        return;
+      }
+      state = 'running';
+      button.textContent = '⏸ Pause';
+      interval = window.setInterval(function () {
+        remaining = Math.max(0, remaining - 1);
+        update();
+        if (remaining === 0) {
+          window.clearInterval(interval);
+          interval = null;
+          state = 'complete';
+          ring.setAttribute('stroke', '#00C875');
+          button.textContent = '↻ Restart Timer';
+          chime();
+        }
+      }, 1000);
+    });
+
+    var slide = button.closest('section');
+    if (slide) slide.dataset.cpTimerPause = 'true';
+    update();
+  }
+
+  function setupAll() {
+    document.querySelectorAll('button[data-cp-timer]').forEach(setupTimer);
+    if (!window.Reveal || window.__cpTimerSlideListener) return;
+    window.__cpTimerSlideListener = true;
+    window.Reveal.on('slidechanged', function (event) {
+      if (!event.previousSlide || event.previousSlide.dataset.cpTimerPause !== 'true') return;
+      event.previousSlide.querySelectorAll('button[data-cp-timer]').forEach(function (button) {
+        if (button.textContent === '⏸ Pause') button.click();
+      });
+    });
+  }
+
+  if (window.Reveal && window.Reveal.isReady && window.Reveal.isReady()) {
+    setupAll();
+  } else if (window.Reveal) {
+    window.Reveal.on('ready', setupAll);
+  } else {
+    window.addEventListener('load', setupAll);
+  }
+}());
+</script>

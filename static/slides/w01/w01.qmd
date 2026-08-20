@@ -1,20 +1,20 @@
 ---
 title: "Recommendation Problems and Classical Methods"
 subtitle: |
-  <span class="w01-title-subtitle">CP4285 Modern Recommendation Systems — Week 01</span>
-  <a class="w01-title-qr" href="https://soc-n.us/cp4285-t2610-w01" target="_blank" rel="noopener" aria-label="Open the Week 01 slide deck">
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 01</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w01" target="_blank" rel="noopener" aria-label="Open the Week 01 slide deck">
     <picture>
       <source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w01-8a651148bb.svg">
-      <img class="w01-title-qr-image" src="../../uploads/cp4285-t2610-w01-8a651148bb.png" alt="QR code for the Week 01 slide deck">
+      <img class="title-qr-image" src="../../uploads/cp4285-t2610-w01-8a651148bb.png" alt="QR code for the Week 01 slide deck">
     </picture>
-    <span class="w01-title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w01</span></span>
+    <span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w01</span></span>
   </a>
 author: "CP4285 Instruction Team"
 date: "11 Aug 2026"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, w01-custom.scss]
+    theme: [default, ../cp4285-common.scss, w01-custom.scss]
     slide-number: true
     show-slide-number: all
     width: 1600
@@ -22,6 +22,7 @@ format:
     chalkboard: false
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 01 · NUS School of Computing"
+    include-after-body: ../cp-timer.html
     self-contained: true
     transition: slide
     highlight-style: github
@@ -36,9 +37,7 @@ format:
 <div aria-labelledby="w01-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
   <h5 id="w01-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
-    <li><strong style="color:#00796B;">10 Aug 2026</strong> — Default assignment deadlines are <span style="color:#00796B;">Mon, 23:59 SGT</span>.</li>
-    <li><strong style="color:#00796B;">10 Aug 2026</strong> — Project teams are 2–4 students; Min may adjust teams to support diversity.</li>
-    <li><strong style="color:#00796B;">10 Aug 2026</strong> — Added essay and Project Mini-team Declaration deadlines.</li>
+    <li><strong class="cp-text--teal">20 Aug 2026</strong> — Refined content and classroom layouts for this release.</li>
   </ul>
 </div>
 ```
@@ -95,46 +94,25 @@ This means that your class notes will rarely be ready before class.  We have to 
 ## <span style="color:#ffffff;">🎰 Bandit Time: Objectives</span> {background-color="#003D7C"}
 
 ```{=html}
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
   <div>
     <p style="font-size:1.35em;font-weight:bold;color:#EF7C00;margin:.35em 0;">Same data, different objective</p>
     <p style="margin:.4em 0;">Two systems use the same user data but optimise different objectives. What should we expect?</p>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55em;margin:.55em 0;">
-      <div style="border:4px solid #D32F2F;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>A.</strong> They should agree if they observe the same users and items.</div>
-      <div style="border:4px solid #1976D2;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>B.</strong> They may rank different items because the objective changes what gets exposed.</div>
-      <div style="border:4px solid #388E3C;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>C.</strong> They can differ only when one system has more user history.</div>
-      <div style="border:4px solid #7B1FA2;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>D.</strong> Different objectives change scores, but not the ordering of items.</div>
+    <div class="cp-choice-grid">
+      <div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> They should agree if they observe the same users and items.</div>
+      <div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> They may rank different items because the objective changes what gets exposed.</div>
+      <div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> They can differ only when one system has more user history.</div>
+      <div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> Different objectives change scores, but not the ordering of items.</div>
     </div>
     <p style="margin:.45em 0 0;"><strong>Choose an answer; justify it in one sentence.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:20</text></svg>
-    <span id="overview-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">00:20</span>
-    <button id="overview-mcq-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-mcq-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-mcq-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:20</text></svg>
+    <span id="overview-mcq-status" role="timer" aria-live="polite" class="cp-sr-only">00:20</span>
+    <button id="overview-mcq-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="20" data-ring="overview-mcq-ring" data-text="overview-mcq-text" data-status="overview-mcq-status">▶ Start Timer</button>
   </div>
 </div>
-<script>
-(function(){
-  function setup(){
-    var button=document.getElementById('overview-mcq-btn');
-    if(!button||button.dataset.bound)return;
-    button.dataset.bound='true';
-    var total=20,remaining=total,interval=null,state='idle',audio=null,c=2*Math.PI*75;
-    var ring=document.getElementById('overview-mcq-ring'),text=document.getElementById('overview-mcq-text'),status=document.getElementById('overview-mcq-status'),initial=ring.getAttribute('stroke');
-    function pad(n){return n<10?'0'+n:''+n;}
-    function render(){var d=pad(Math.floor(remaining/60))+':'+pad(remaining%60);text.textContent=d;status.textContent=state==='complete'?"Time's up!":d;ring.setAttribute('stroke-dashoffset',c*(1-remaining/total));}
-    function pause(){if(state==='running'){clearInterval(interval);interval=null;state='paused';button.textContent='▶ Resume';}}
-    function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ring.setAttribute('stroke',initial);button.textContent='▶ Start Timer';render();}
-    function ringEnd(){if(!audio)return;var o=audio.createOscillator(),g=audio.createGain(),n=audio.currentTime;o.frequency.value=880;g.gain.setValueAtTime(.18,n);g.gain.exponentialRampToValueAtTime(.001,n+.5);o.connect(g);g.connect(audio.destination);o.start(n);o.stop(n+.5);}
-    button.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){pause();return;}var A=window.AudioContext||window.webkitAudioContext;if(A&&!audio)audio=new A();if(audio&&audio.state==='suspended')audio.resume();state='running';button.textContent='⏸ Pause';interval=setInterval(function(){remaining=Math.max(0,remaining-1);render();if(!remaining){clearInterval(interval);interval=null;state='complete';ring.setAttribute('stroke','#00c875');button.textContent='↻ Restart Timer';ringEnd();}},1000);});
-    window._cpTimers=window._cpTimers||{};var slide=button.closest('section'),slideIndex=Reveal.getSlides().indexOf(slide);window._cpTimers[slideIndex]=pause;
-    if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(event){if(event.previousSlide){var i=Reveal.getSlides().indexOf(event.previousSlide);if(window._cpTimers[i])window._cpTimers[i]();}});window._cpTimerSlideListener=true;}
-    render();
-  }
-  function wait(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup);}else{setTimeout(wait,50);}}
-  wait();
-})();
-</script>
+
 ```
 
 ::: notes
@@ -152,7 +130,7 @@ It is a conversation partner for inquiry, not an authority or a production recom
 ## <span style="color:#ffffff;">👥 Find the Recommender</span> {background-color="#003D7C"}
 
 ```{=html}
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
   <div>
     <p style="font-size:1.35em;font-weight:bold;color:#EF7C00;margin:.35em 0;">Audit one recommendation</p>
     <ol style="margin:.4em 0;padding-left:1.2em;line-height:1.35;">
@@ -164,33 +142,12 @@ It is a conversation partner for inquiry, not an authority or a production recom
     <p style="margin:.45em 0 0;"><strong>Compare with a partner; share one observation.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
-    <span id="overview-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
-    <button id="overview-activity-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="overview-activity-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="overview-activity-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
+    <span id="overview-activity-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span>
+    <button id="overview-activity-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="overview-activity-ring" data-text="overview-activity-text" data-status="overview-activity-status">▶ Start Timer</button>
   </div>
 </div>
-<script>
-(function(){
-  function setup(){
-    var button=document.getElementById('overview-activity-btn');
-    if(!button||button.dataset.bound)return;
-    button.dataset.bound='true';
-    var total=180,remaining=total,interval=null,state='idle',audio=null,c=2*Math.PI*75;
-    var ring=document.getElementById('overview-activity-ring'),text=document.getElementById('overview-activity-text'),status=document.getElementById('overview-activity-status'),initial=ring.getAttribute('stroke');
-    function pad(n){return n<10?'0'+n:''+n;}
-    function render(){var d=pad(Math.floor(remaining/60))+':'+pad(remaining%60);text.textContent=d;status.textContent=state==='complete'?"Time's up!":d;ring.setAttribute('stroke-dashoffset',c*(1-remaining/total));}
-    function pause(){if(state==='running'){clearInterval(interval);interval=null;state='paused';button.textContent='▶ Resume';}}
-    function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ring.setAttribute('stroke',initial);button.textContent='▶ Start Timer';render();}
-    function ringEnd(){if(!audio)return;var o=audio.createOscillator(),g=audio.createGain(),n=audio.currentTime;o.frequency.value=880;g.gain.setValueAtTime(.18,n);g.gain.exponentialRampToValueAtTime(.001,n+.5);o.connect(g);g.connect(audio.destination);o.start(n);o.stop(n+.5);}
-    button.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){pause();return;}var A=window.AudioContext||window.webkitAudioContext;if(A&&!audio)audio=new A();if(audio&&audio.state==='suspended')audio.resume();state='running';button.textContent='⏸ Pause';interval=setInterval(function(){remaining=Math.max(0,remaining-1);render();if(!remaining){clearInterval(interval);interval=null;state='complete';ring.setAttribute('stroke','#00c875');button.textContent='↻ Restart Timer';ringEnd();}},1000);});
-    window._cpTimers=window._cpTimers||{};var slide=button.closest('section'),slideIndex=Reveal.getSlides().indexOf(slide);window._cpTimers[slideIndex]=pause;
-    if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(event){if(event.previousSlide){var i=Reveal.getSlides().indexOf(event.previousSlide);if(window._cpTimers[i])window._cpTimers[i]();}});window._cpTimerSlideListener=true;}
-    render();
-  }
-  function wait(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup);}else{setTimeout(wait,50);}}
-  wait();
-})();
-</script>
+
 ```
 
 ::: notes
@@ -243,16 +200,16 @@ By the end of CP4285, you should be able to:
   <div style="min-width:0;">
     <p style="margin:0 0 .55em;color:#003D7C;font-size:.72em;font-weight:bold;">A course library for going deeper</p>
     <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.45em;align-items:start;">
-      <img src="assets/book-covers/handbook-third.jpg" alt="Recommender Systems Handbook, Third Edition" title="Recommender Systems Handbook, Third Edition" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/handbook-second.jpg" alt="Recommender Systems Handbook, Second Edition" title="Recommender Systems Handbook, Second Edition" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/medicine-music.jpg" alt="Recommender Systems for Medicine and Music" title="Recommender Systems for Medicine and Music" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/legal-ethical.jpg" alt="Recommender Systems: Legal and Ethical Issues" title="Recommender Systems: Legal and Ethical Issues" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/session-deep-learning.jpg" alt="Session-Based Recommender Systems Using Deep Learning" title="Session-Based Recommender Systems Using Deep Learning" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/group-recommender.jpg" alt="Group Recommender Systems" title="Group Recommender Systems" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/llm-recommender.jpg" alt="Building Recommender Systems Using Large Language Models" title="Building Recommender Systems Using Large Language Models" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/industrial-recommender.jpg" alt="Industrial Recommender System" title="Industrial Recommender System" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/frontiers-practices.jpg" alt="Recommender Systems: Frontiers and Practices" title="Recommender Systems: Frontiers and Practices" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
-      <img src="assets/book-covers/personalized-ml.jpg" alt="Personalized Machine Learning" title="Personalized Machine Learning" style="width:100%;height:auto;box-shadow:0 3px 10px rgba(0,0,0,.18);">
+      <img src="assets/book-covers/handbook-third.jpg" alt="Recommender Systems Handbook, Third Edition" title="Recommender Systems Handbook, Third Edition" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/handbook-second.jpg" alt="Recommender Systems Handbook, Second Edition" title="Recommender Systems Handbook, Second Edition" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/medicine-music.jpg" alt="Recommender Systems for Medicine and Music" title="Recommender Systems for Medicine and Music" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/legal-ethical.jpg" alt="Recommender Systems: Legal and Ethical Issues" title="Recommender Systems: Legal and Ethical Issues" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/session-deep-learning.jpg" alt="Session-Based Recommender Systems Using Deep Learning" title="Session-Based Recommender Systems Using Deep Learning" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/group-recommender.jpg" alt="Group Recommender Systems" title="Group Recommender Systems" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/llm-recommender.jpg" alt="Building Recommender Systems Using Large Language Models" title="Building Recommender Systems Using Large Language Models" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/industrial-recommender.jpg" alt="Industrial Recommender System" title="Industrial Recommender System" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/frontiers-practices.jpg" alt="Recommender Systems: Frontiers and Practices" title="Recommender Systems: Frontiers and Practices" class="cp-image cp-image--shadow">
+      <img src="assets/book-covers/personalized-ml.jpg" alt="Personalized Machine Learning" title="Personalized Machine Learning" class="cp-image cp-image--shadow">
     </div>
   </div>
 </div>
@@ -263,37 +220,37 @@ By the end of CP4285, you should be able to:
 
 ## Weekly Topics
 
-| Week | <span style="color:#00796B;">Date</span> | Topic |
+| Week | <span class="cp-text--teal">Date</span> | Topic |
 |------|------|-------|
-| 01 | <span style="color:#00796B;">11 Aug</span> | Recommendation Problems and Classical Methods |
-| 02 | <span style="color:#00796B;">18 Aug</span> | Latent Factor Models |
-| 03 | <span style="color:#00796B;">25 Aug</span> | Evaluation of Recommendation Systems |
-| 04 | <span style="color:#00796B;">1 Sep</span> | Neural Recommendation Models |
-| 05 | <span style="color:#00796B;">8 Sep</span> | Sequential and Session-Based Recommendation |
-| 06 | <span style="color:#00796B;">15 Sep</span> | Retrieval and Ranking Architectures |
+| 01 | <span class="cp-text--teal">11 Aug</span> | Recommendation Problems and Classical Methods |
+| 02 | <span class="cp-text--teal">18 Aug</span> | Latent Factor Models |
+| 03 | <span class="cp-text--teal">25 Aug</span> | Evaluation of Recommendation Systems |
+| 04 | <span class="cp-text--teal">1 Sep</span> | Neural Recommendation Models |
+| 05 | <span class="cp-text--teal">8 Sep</span> | Sequential and Session-Based Recommendation |
+| 06 | <span class="cp-text--teal">15 Sep</span> | Retrieval and Ranking Architectures |
 
 ::: notes
 :::
 
 ## Weekly Topics (cont.)
 
-| Week | <span style="color:#00796B;">Date</span> | Topic |
+| Week | <span class="cp-text--teal">Date</span> | Topic |
 |------|------|-------|
-| — | <span style="color:#00796B;">22 Sep</span> | *Recess Week — No Class* |
-| 07 | <span style="color:#00796B;">29 Sep</span> | Project Design Critique Workshop |
-| 08 | <span style="color:#00796B;">6 Oct</span> | Learning-to-Rank |
-| 09 | <span style="color:#00796B;">13 Oct</span> | Graph-Based Recommendation |
-| 10 | <span style="color:#00796B;">20 Oct</span> | Multi-Objective Recommendation |
-| 11 | <span style="color:#00796B;">27 Oct</span> | Exploration and Online Learning |
-| 12 | <span style="color:#00796B;">3 Nov</span> | LLMs, Generative Recommendation, Research Frontiers |
-| 13 | <span style="color:#00796B;">10 Nov</span> | **Final Project Presentations** @ 29th STePS |
+| — | <span class="cp-text--teal">22 Sep</span> | *Recess Week — No Class* |
+| 07 | <span class="cp-text--teal">29 Sep</span> | Project Design Critique Workshop |
+| 08 | <span class="cp-text--teal">6 Oct</span> | Learning-to-Rank |
+| 09 | <span class="cp-text--teal">13 Oct</span> | Graph-Based Recommendation |
+| 10 | <span class="cp-text--teal">20 Oct</span> | Multi-Objective Recommendation |
+| 11 | <span class="cp-text--teal">27 Oct</span> | Exploration and Online Learning |
+| 12 | <span class="cp-text--teal">3 Nov</span> | LLMs, Generative Recommendation, Research Frontiers |
+| 13 | <span class="cp-text--teal">10 Nov</span> | **Final Project Presentations** @ 29th STePS |
 
 ::: notes
 :::
 
 ## Class Meetings
 
-- Time: Every <strong style="color:#00796B;">Tue, 10:00–12:00 SGT</strong>
+- Time: Every <strong class="cp-text--teal">Tue, 10:00–12:00 SGT</strong>
 - Venue: **Seminar Room 12, COM3-01-21**
 
 Lectures will be recorded where technology permits — recordings are for **revision only**, not a substitute for attendance
@@ -313,14 +270,14 @@ There are **no tutorial sessions** for this course — We'll be building the mat
 | Essays | 20% |
 | Group Project | 30% |
 | In-Class Quizzes| 10% |
-| Final Exam (<span style="color:#00796B;">Mon, 23 Nov 2026, 13:00–15:00</span>) | 30% |
+| Final Exam (<span class="cp-text--teal">Mon, 23 Nov 2026, 13:00–15:00</span>) | 30% |
 
 ## Class Participation (10%)
 1. **In-lecture activities**
 2. **Pre-lecture activities**
 3. **Pre-Flight Survey** and **Midterm Survey**
-    - *Pre-Flight Survey* (due Week 02; <span style="color:#00796B;">Mon, 17 Aug 2026 23:59 SGT</span>)
-    - *Midterm Survey* (due Week 08; <span style="color:#00796B;">Mon, 5 Oct 2026 23:59 SGT</span>)
+    - *Pre-Flight Survey* (due Week 02; <span class="cp-text--teal">Mon, 17 Aug 2026 23:59 SGT</span>)
+    - *Midterm Survey* (due Week 08; <span class="cp-text--teal">Mon, 5 Oct 2026 23:59 SGT</span>)
 
     Complete these on time — they are **free marks**
 
@@ -336,8 +293,8 @@ Missing the Pre-Flight or Midterm Survey will directly reduce your participation
 
 **Two individual take-home essays**, each worth **10%**
 
-  - **Essay 1:** Due Week 03; <span style="color:#00796B;">Mon, 24 Aug 2026 23:59 SGT</span>
-  - **Essay 2:** Due Week 08; <span style="color:#00796B;">Mon 5 Oct 2026 23:59 SGT</span>
+  - **Essay 1:** Due Week 03; <span class="cp-text--teal">Mon, 24 Aug 2026 23:59 SGT</span>
+  - **Essay 2:** Due Week 08; <span class="cp-text--teal">Mon 5 Oct 2026 23:59 SGT</span>
 
 Short written analyses of recommender-system methods, evaluation choices, and social implications (8%).  Randomised peer review counts towards the remaining 2%.
 
@@ -359,12 +316,12 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 **Milestones:**
 
 ::: {.incremental}
-- **Week 03:** Project Mini-team Declaration — <span style="color:#00796B;">Mon, 24 Aug 2026 23:59 SGT</span>
+- **Week 03:** Project Mini-team Declaration — <span class="cp-text--teal">Mon, 24 Aug 2026 23:59 SGT</span>
   - Submit a self-formed team or indicate that you need instructor placement
   - Min has the final decision on group formation (may override student-formed groups)
 - **Week 07:** Project Design Critique Workshop
-- **Week 13:** Final Project Presentation at 29th STePS: <span style="color:#00796B;">Wed, 11 Nov</span>
-  - Teams presenting at 29th STePS do **not** submit a project report; other teams submit a report instead, due same <span style="color:#00796B;">Wed, 11 Nov 2026 23:59 SGT</span>
+- **Week 13:** Final Project Presentation at 29th STePS: <span class="cp-text--teal">Wed, 11 Nov</span>
+  - Teams presenting at 29th STePS do **not** submit a project report; other teams submit a report instead, due same <span class="cp-text--teal">Wed, 11 Nov 2026 23:59 SGT</span>
 :::
 
 ::: notes
@@ -378,7 +335,7 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
     <img src="../../uploads/recsysdatasets-github.png" alt="Screenshot of the RUCAIBox RecSysDatasets GitHub repository, a public catalogue of recommender-system data sources." style="display:block;width:100%;border:4px solid #003D7C;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.2);">
   </a>
   <p style="margin:.7em 0 0;font-size:.68em;color:#00796B;font-weight:bold;">Click the screenshot to open the live dataset catalogue.</p>
-  <p style="margin:.22em 0 0;font-size:.45em;color:#6b7280;">RUCAIBox. (n.d.). <em>RecSysDatasets</em> [GitHub repository]. <a href="https://github.com/RUCAIBox/RecSysDatasets" target="_blank" rel="noopener" style="color:#00796B;">github.com/RUCAIBox/RecSysDatasets</a></p>
+  <p style="margin:.22em 0 0;font-size:.45em;color:#6b7280;">RUCAIBox. (n.d.). <em>RecSysDatasets</em> [GitHub repository]. <a href="https://github.com/RUCAIBox/RecSysDatasets" target="_blank" rel="noopener" class="cp-text--teal">github.com/RUCAIBox/RecSysDatasets</a></p>
 </div>
 
 ::: notes
@@ -412,7 +369,7 @@ While the we will try to get the slides synced with the website or Canvas, use i
 
 There will likely be errors in the lecture, so check any doubts or questions with Min.
 
-Unless a slide or Canvas announcement specifies otherwise, assignment deadlines are <strong style="color:#00796B;">Mondays, 23:59 SGT</strong>.
+Unless a slide or Canvas announcement specifies otherwise, assignment deadlines are <strong class="cp-text--teal">Mondays, 23:59 SGT</strong>.
 
 ::: {.callout-note}
 The slide deck built in Quarto and rendered through `reveal.js`.  The website is also built Hugo and served using Github Pages.  This means any student, member of the public, or AI can inspect all details of the course.  Use this to your advantage.
@@ -427,36 +384,20 @@ The slide deck built in Quarto and rendered through `reveal.js`.  The website is
     <p style="margin:0 0 .45em;color:#EF7C00;font-size:.72em;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;">☕ Break · the recommendation desk</p>
     <img src="../../uploads/dunbar-branch-library-1944-1948.jpg" alt="Librarian Arabella Murray at her desk while five girls read at a nearby table in the Dunbar Branch Library, Athens, Georgia, between 1944 and 1948." style="display:block;width:100%;max-height:48vh;object-fit:cover;object-position:center;border:3px solid #EF7C00;">
     <p style="margin:.55em 0 0;color:#d1d5db;font-size:.56em;line-height:1.35;">Mrs. Arabella Murray, librarian, works at her desk while five girls read at a nearby table.</p>
-    <p style="margin:.45em 0 0;color:#aeb6c2;font-size:.34em;line-height:1.2;">Digital Public Library of America. (n.d.). <em>Photograph of a librarian at the Dunbar Branch Library, Athens, Georgia, 1944–1948</em> [Photograph]. <a href="https://dp.la/item/622d044817a76960015abe2bb69673f4" target="_blank" rel="noopener" style="color:#EF7C00;">Source</a></p>
+    <p style="margin:.45em 0 0;color:#aeb6c2;font-size:.34em;line-height:1.2;">Digital Public Library of America. (n.d.). <em>Photograph of a librarian at the Dunbar Branch Library, Athens, Georgia, 1944–1948</em> [Photograph]. <a href="https://dp.la/item/622d044817a76960015abe2bb69673f4" target="_blank" rel="noopener" class="cp-text--orange">Source</a></p>
   </div>
   <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
     <svg width="210" height="210" viewBox="0 0 180 180" aria-label="Five minute break countdown timer">
       <circle cx="90" cy="90" r="75" fill="none" stroke="#444" stroke-width="14"/>
       <circle cx="90" cy="90" r="62" fill="#fff"/>
-      <circle id="w01-break-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/>
-      <text id="w01-break-text" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="bold" fill="#00796B">05:00</text>
+      <circle id="w01-break-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/>
+      <text id="w01-break-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="bold" fill="#00796B">05:00</text>
     </svg>
-    <span id="w01-break-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">05:00</span>
-    <button id="w01-break-button" type="button" style="margin-top:1em;padding:.55em 1.6em;font-size:.9em;background:#EF7C00;color:#fff;border:0;border-radius:6px;cursor:pointer;">▶ Start Timer</button>
+    <span id="w01-break-status" role="timer" aria-live="polite" class="cp-sr-only">05:00</span>
+    <button id="w01-break-button" type="button" class="cp-timer__button" data-cp-timer data-seconds="300" data-ring="w01-break-ring" data-text="w01-break-text" data-status="w01-break-status">▶ Start Timer</button>
   </div>
 </div>
-<script>
-(function(){
-  function setup(){
-    var button=document.getElementById('w01-break-button'); if(!button||button.dataset.bound)return; button.dataset.bound='true';
-    var total=300,remaining=total,interval=null,state='idle',audio=null,c=2*Math.PI*75;
-    var ring=document.getElementById('w01-break-ring'),text=document.getElementById('w01-break-text'),status=document.getElementById('w01-break-status'),initial=ring.getAttribute('stroke');
-    function pad(n){return n<10?'0'+n:''+n;}
-    function render(){var d=pad(Math.floor(remaining/60))+':'+pad(remaining%60);text.textContent=d;status.textContent=state==='complete'?"Time's up!":d;ring.setAttribute('stroke-dashoffset',c*(1-remaining/total));}
-    function pause(){if(state==='running'){clearInterval(interval);interval=null;state='paused';button.textContent='▶ Resume';}}
-    function reset(){clearInterval(interval);interval=null;remaining=total;state='idle';ring.setAttribute('stroke',initial);button.textContent='▶ Start Timer';render();}
-    function cue(){if(!audio)return;var o=audio.createOscillator(),g=audio.createGain(),n=audio.currentTime;o.type='sine';o.frequency.value=880;g.gain.setValueAtTime(.18,n);g.gain.exponentialRampToValueAtTime(.001,n+.5);o.connect(g);g.connect(audio.destination);o.start(n);o.stop(n+.5);}
-    button.addEventListener('click',function(){if(state==='complete'){reset();return;}if(state==='running'){pause();return;}var A=window.AudioContext||window.webkitAudioContext;if(A&&!audio)audio=new A();if(audio&&audio.state==='suspended')audio.resume();state='running';button.textContent='⏸ Pause';interval=setInterval(function(){remaining=Math.max(0,remaining-1);render();if(!remaining){clearInterval(interval);interval=null;state='complete';ring.setAttribute('stroke','#00c875');button.textContent='↻ Restart Timer';cue();}},1000);});
-    window._cpTimers=window._cpTimers||{};var slide=button.closest('section'),slideIndex=Reveal.getSlides().indexOf(slide);window._cpTimers[slideIndex]=pause;render();
-  }
-  function wait(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup);}else{setTimeout(wait,50);}} wait();
-})();
-</script>
+
 ```
 
 ::: notes
@@ -601,7 +542,7 @@ Use the treemap as a compact taxonomy of inputs. On the right, reprise the disti
 ```{=html}
 <div class="cp-frame-bg cp-frame-orange"></div>
 <div class="cp-frame-content" style="color:#fff;">
-  <div class="cp-frame-title" style="color:#EF7C00;">👥 Signal Hunt</div>
+  <div class="cp-frame-title" class="cp-text--orange">👥 Signal Hunt</div>
   <div class="cp-frame-body" style="font-size:.72em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 190px;gap:1.15em;align-items:center;color:#fff;">
   <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:.35em;color:#fff;font-size:.92em;line-height:1.2;">
     <div style="grid-row:span 2;padding:.85em;border-radius:8px;background:#003D7C;border:1px solid rgba(255,255,255,.5);"><strong>Interaction signals</strong><br><span style="font-size:.85em">ratings · clicks · saves · purchases</span></div>
@@ -619,15 +560,13 @@ Use the treemap as a compact taxonomy of inputs. On the right, reprise the disti
     <p style="margin:.4em 0 0;"><strong>Pairs: prepare one signal to report.<br/>📶 to critique ethical standpoint.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Two minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="signal-hunt-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="signal-hunt-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">02:00</text></svg>
-    <span id="signal-hunt-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">02:00</span>
-    <button id="signal-hunt-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Two minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="signal-hunt-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="signal-hunt-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">02:00</text></svg>
+    <span id="signal-hunt-status" role="timer" aria-live="polite" class="cp-sr-only">02:00</span>
+    <button id="signal-hunt-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="120" data-ring="signal-hunt-ring" data-text="signal-hunt-text" data-status="signal-hunt-status">▶ Start Timer</button>
   </div>
 </div>
 </div>
-<script>
-(function(){function setup(){var b=document.getElementById('signal-hunt-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=120,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('signal-hunt-ring'),e=document.getElementById('signal-hunt-text'),z=document.getElementById('signal-hunt-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
-</script>
+
 ```
 
 ::: notes
@@ -639,15 +578,15 @@ Small-group activity, 2-minute timer plus two minutes for sharing and synthesis.
 ```{=html}
 <div class="cp-frame-bg cp-frame-orange"></div>
 <div class="cp-frame-content" style="color:#fff;">
-  <div class="cp-frame-title" style="color:#EF7C00;">👥 Complete the Classical Methods Table</div>
+  <div class="cp-frame-title" class="cp-text--orange">👥 Complete the Classical Methods Table</div>
   <div class="cp-frame-body" style="font-size:.75em;line-height:1.28;color:#fff;">
   <p style="font-size:1.15em;font-weight:bold;color:#EF7C00;margin:.2em 0 .55em;">In pairs, complete the four orange cells. Be ready to justify one answer from the evidence each method uses.</p>
   <table style="width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;background:#fff;color:#003D7C;font-size:.92em;">
-    <thead><tr style="background:#fff;color:#003D7C;"><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Approach</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Main evidence</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Useful when</th><th style="padding:.5em .65em;text-align:left;border-bottom:3px solid #EF7C00;">Early limitation</th></tr></thead>
+    <thead><tr style="background:#fff;color:#003D7C;"><th class="cp-table__cell--section">Approach</th><th class="cp-table__cell--section">Main evidence</th><th class="cp-table__cell--section">Useful when</th><th class="cp-table__cell--section">Early limitation</th></tr></thead>
     <tbody>
-      <tr><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;"><strong>Popularity</strong></td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">aggregate interactions</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">reinforces the head</td></tr>
-      <tr><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;"><strong>Content-based</strong></td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">item attributes + one user</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">features are meaningful</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td></tr>
-      <tr><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;"><strong>Collaborative filtering</strong></td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">patterns across users</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td><td style="padding:.48em .65em;border-bottom:1px solid #d1d5db;">sparse or cold data</td></tr>
+      <tr><td class="cp-table__cell"><strong>Popularity</strong></td><td class="cp-table__cell">aggregate interactions</td><td class="cp-table__cell cp-table__cell--highlight">________</td><td class="cp-table__cell">reinforces the head</td></tr>
+      <tr><td class="cp-table__cell"><strong>Content-based</strong></td><td class="cp-table__cell">item attributes + one user</td><td class="cp-table__cell">features are meaningful</td><td class="cp-table__cell cp-table__cell--highlight">________</td></tr>
+      <tr><td class="cp-table__cell"><strong>Collaborative filtering</strong></td><td class="cp-table__cell">patterns across users</td><td class="cp-table__cell cp-table__cell--highlight">________</td><td class="cp-table__cell">sparse or cold data</td></tr>
       <tr><td style="padding:.48em .65em;"><strong>Knowledge-based</strong></td><td style="padding:.48em .65em;">requirements and constraints</td><td style="padding:.48em .65em;">history is weak</td><td style="padding:.48em .65em;background:#fff3e0;color:#9a4d00;font-weight:bold;">________</td></tr>
     </tbody>
   </table>
@@ -708,25 +647,23 @@ Treat cold start as an information problem rather than a bug. The response chang
 ## 🎰 Bandit Time: What should this system optimise? {background-color="#003D7C"}
 
 ```{=html}
-<div style="border:clamp(3px,.6vw,6px) solid #EF7C00;padding:1em 1.4em;font-size:.62em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
   <div>
     <p style="font-size:1.2em;font-weight:bold;color:#EF7C00;margin:.25em 0;">A campus library has sparse borrowing history and a student asks for “a short, accessible book on climate migration.”</p>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55em;margin:.55em 0;">
-      <div style="border:4px solid #D32F2F;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>A.</strong> Maximise predicted rating from the sparse matrix only.</div>
-      <div style="border:4px solid #1976D2;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>B.</strong> Use stated requirements and explain the match.</div>
-      <div style="border:4px solid #388E3C;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>C.</strong> Show the globally most-borrowed books.</div>
-      <div style="border:4px solid #7B1FA2;border-radius:10px;padding:.55em .7em;background:#fff;color:#003D7C;"><strong>D.</strong> Remove every item with little interaction history.</div>
+    <div class="cp-choice-grid">
+      <div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> Maximise predicted rating from the sparse matrix only.</div>
+      <div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> Use stated requirements and explain the match.</div>
+      <div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> Show the globally most-borrowed books.</div>
+      <div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> Remove every item with little interaction history.</div>
     </div>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-mcq-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-mcq-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:20</text></svg>
-    <span id="section04-mcq-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">00:20</span>
-    <button id="section04-mcq-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-mcq-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-mcq-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:20</text></svg>
+    <span id="section04-mcq-status" role="timer" aria-live="polite" class="cp-sr-only">00:20</span>
+    <button id="section04-mcq-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="20" data-ring="section04-mcq-ring" data-text="section04-mcq-text" data-status="section04-mcq-status">▶ Start Timer</button>
   </div>
 </div>
-<script>
-(function(){function setup(){var b=document.getElementById('section04-mcq-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=20,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-mcq-ring'),e=document.getElementById('section04-mcq-text'),z=document.getElementById('section04-mcq-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
-</script>
+
 ```
 
 ::: notes
@@ -795,7 +732,7 @@ Combine the prior mapping and safeguards slide. Keep the examples concrete but d
 ```{=html}
 <div class="cp-frame-bg cp-frame-orange"></div>
 <div class="cp-frame-content" style="color:#fff;">
-  <div class="cp-frame-title" style="color:#EF7C00;">👥 Reprise: Find the Recommender</div>
+  <div class="cp-frame-title" class="cp-text--orange">👥 Reprise: Find the Recommender</div>
   <div class="cp-frame-body" style="font-size:.70em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
   <div>
     <p style="font-size:1.18em;font-weight:bold;color:#EF7C00;margin:.25em 0;">Return to the recommendation you audited in Section 01.</p>
@@ -807,15 +744,13 @@ Combine the prior mapping and safeguards slide. Keep the examples concrete but d
     <p style="margin:.4em 0 0;"><strong>Pairs: write a four-line audit.<BR/>📶 critique one omitted stakeholder or assumption; challenge its answer.</strong></p>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-activity-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-activity-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
-    <span id="section04-activity-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
-    <button id="section04-activity-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="section04-activity-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="section04-activity-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
+    <span id="section04-activity-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span>
+    <button id="section04-activity-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="section04-activity-ring" data-text="section04-activity-text" data-status="section04-activity-status">▶ Start Timer</button>
   </div>
 </div>
 </div>
-<script>
-(function(){function setup(){var b=document.getElementById('section04-activity-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=180,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('section04-activity-ring'),e=document.getElementById('section04-activity-text'),z=document.getElementById('section04-activity-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
-</script>
+
 ```
 
 ::: notes
@@ -904,23 +839,30 @@ Read the figure literally: item frequency falls sharply, then extends across a l
 
 ::: {.columns}
 ::: {.column width="52%"}
-| User | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
-|---|:---:|:---:|:---:|:---:|:---:|
-| $u_1$ ($u$) | 5 | ? | 2 | 4 | ? |
-| $u_6$ ($v$) | 5 | 4 | 5 | 2 | 4 |
+```{=html}
+<table style="width:100%;border-collapse:collapse;text-align:center;">
+  <thead style="background:#003D7C;color:#fff;">
+    <tr><th style="padding:.28em;text-align:left;">User</th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>3</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>4</sub></th><th style="padding:.28em;"><i>i</i><sub>5</sub></th></tr>
+  </thead>
+  <tbody>
+    <tr style="background:#F0F8F6;color:#00796B;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub> (<i>u</i>)</th><td class="cp-divider--red">5</td><td>?</td><td class="cp-divider--red">2</td><td class="cp-divider--red">4</td><td>?</td></tr>
+    <tr style="background:#FFF5EA;color:#A24B00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub> (<i>v</i>)</th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td>4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">2</td><td>4</td></tr>
+  </tbody>
+</table>
+```
 
 <div style="font-size:.82em;line-height:1.35;margin-top:.5em;">
-<p><span style="color:#EF7C00;font-weight:bold;">Mutual evidence</span></p>
+<p><span class="cp-text--orange cp-text--strong">Mutual evidence</span></p>
 </div>
 
 $$
-I_u \cap I_v = \{i_1,i_3,i_4\}
+I_{\color{teal}{u_1}} \cap I_{\color{orange}{u_6}} = \{i_1,i_3,i_4\}
 $$
 
 <div style="font-size:.82em;line-height:1.35;">
-<p><span style="color:#00796B;font-weight:bold;">User-based CF</span><br/>
+<p><span class="cp-text--teal cp-text--strong">User-based CF</span><br/>
 Find users who rate overlapping items similarly.</p>
-<p><span style="color:#003D7C;font-weight:bold;">Item-based CF</span><br/>
+<p><span class="cp-text--navy cp-text--strong">Item-based CF</span><br/>
 Transpose the question: find items that receive similar patterns of ratings.</p>
 </div>
 :::
@@ -958,9 +900,9 @@ $$
 ::: {.column width="61%"}
 
 <div style="font-size:.78em;line-height:1.35;">
-<p><span style="color:#EF7C00;font-weight:bold;">Overlap:</span> only mutually rated items contribute.</p>
-<p><span style="color:#00796B;font-weight:bold;">Centred Rating:</span> rating minus that user's mean, so generous and harsh raters are put on a comparable baseline.</p>
-<p><span style="color:#003D7C;font-weight:bold;">Normalisation:</span> turns aligned variation into a bounded correlation-like score.</p>
+<p><span class="cp-text--orange cp-text--strong">Overlap:</span> only mutually rated items contribute.</p>
+<p><span class="cp-text--teal cp-text--strong">Centred Rating:</span> rating minus that user's mean, so generous and harsh raters are put on a comparable baseline.</p>
+<p><span class="cp-text--navy cp-text--strong">Normalisation:</span> turns aligned variation into a bounded correlation-like score.</p>
 </div>
 :::
 ::: {.column width="44%"}
@@ -1036,9 +978,9 @@ $$
 ::: {.column width="56%"}
 
 <div style="font-size:.78em;line-height:1.35;">
-<p><span style="color:#EF7C00;font-weight:bold;">Overlap:</span> compare only entries both users supplied.</p>
-<p><span style="color:#00796B;font-weight:bold;">Dot Product:</span> large ratings in the same positions increase similarity.</p>
-<p><span style="color:#003D7C;font-weight:bold;">Vector Length:</span> corrects for the overall magnitude of each observed rating vector.</p>
+<p><span class="cp-text--orange cp-text--strong">Overlap:</span> compare only entries both users supplied.</p>
+<p><span class="cp-text--teal cp-text--strong">Dot Product:</span> large ratings in the same positions increase similarity.</p>
+<p><span class="cp-text--navy cp-text--strong">Vector Length:</span> corrects for the overall magnitude of each observed rating vector.</p>
 </div>
 :::
 ::: {.column width="44%"}
@@ -1116,9 +1058,9 @@ $$
 ::: {.column width="56%"}
 
 <div style="font-size:.78em;line-height:1.35;">
-<p><span style="color:#EF7C00;font-weight:bold;">Shared Raters:</span> users who rated both items.</p>
-<p><span style="color:#00796B;font-weight:bold;">User-Centred Rating $s_{ui}$:</span> remove each rater's personal baseline before comparing item columns.</p>
-<p><span style="color:#003D7C;font-weight:bold;">Normalisation:</span> compare the centred item vectors fairly.</p>
+<p><span class="cp-text--orange cp-text--strong">Shared Raters:</span> users who rated both items.</p>
+<p><span class="cp-text--teal cp-text--strong">User-Centred Rating $s_{ui}$:</span> remove each rater's personal baseline before comparing item columns.</p>
+<p><span class="cp-text--navy cp-text--strong">Normalisation:</span> compare the centred item vectors fairly.</p>
 </div>
 :::
 ::: {.column width="44%"}
@@ -1156,13 +1098,13 @@ The change is conceptual as well as notational: compare columns, so the overlap 
 <table style="width:100%;border-collapse:collapse;text-align:center;font-size:.72em;line-height:1.12;">
   <thead style="background:#003D7C;color:#fff;"><tr><th style="padding:.28em;"><i>R</i></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;"><i>i</i><sub>3</sub></th><th style="padding:.28em;"><i>i</i><sub>4</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>5</sub></th></tr></thead>
   <tbody>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td><td>?</td><td>2</td><td>4</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>2</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td><td>4</td><td>?</td><td>1</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">3</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>3</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td><td>?</td><td>?</td><td>?</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>4</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">3</td><td>?</td><td>4</td><td>?</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">2</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>5</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td><td>2</td><td>?</td><td>5</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">?</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td><td>4</td><td>5</td><td>2</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">4</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>7</sub></th><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td><td>1</td><td>5</td><td>1</td><td style="border-left:3px solid #D32F2F;border-right:3px solid #D32F2F;">5</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td class="cp-divider--red">5</td><td>?</td><td>2</td><td>4</td><td class="cp-divider--red">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>2</sub></th><td class="cp-divider--red">?</td><td>4</td><td>?</td><td>1</td><td class="cp-divider--red">3</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>3</sub></th><td class="cp-divider--red">?</td><td>?</td><td>?</td><td>?</td><td class="cp-divider--red">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>4</sub></th><td class="cp-divider--red">3</td><td>?</td><td>4</td><td>?</td><td class="cp-divider--red">2</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>5</sub></th><td class="cp-divider--red">?</td><td>2</td><td>?</td><td>5</td><td class="cp-divider--red">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red">5</td><td>4</td><td>5</td><td>2</td><td class="cp-divider--red">4</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>7</sub></th><td class="cp-divider--red">5</td><td>1</td><td>5</td><td>1</td><td class="cp-divider--red">5</td></tr>
     <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>8</sub></th><td style="border:3px solid #D32F2F;border-top:0;">?</td><td>?</td><td>4</td><td>?</td><td style="border:3px solid #D32F2F;border-top:0;">?</td></tr>
   </tbody>
 </table>
@@ -1212,13 +1154,13 @@ $$
 ::: {.columns}
 ::: {.column width="45%"}
 
-[$Q_t(u)$ — valid item neighbours]{style="color:#EF7C00;font-weight:bold;"}<br>
+[$Q_t(u)$ — valid item neighbours]{class="cp-text--orange cp-text--strong"}<br>
 of target $t$ that user $u$ rated
 
-[Similarity $\operatorname{sim}(t,i)$]{style="color:#003D7C;font-weight:bold;"}<br>
+[Similarity $\operatorname{sim}(t,i)$]{class="cp-text--navy cp-text--strong"}<br>
 adjusted-cosine similarity between target and neighbour item
 
-[Observed rating $r_{ui}$]{style="color:#00796B;font-weight:bold;"}<br>
+[Observed rating $r_{ui}$]{class="cp-text--teal cp-text--strong"}<br>
 the user's rating of that neighbour item
 
 ::: {.callout-note}
@@ -1230,7 +1172,7 @@ The neighbourhood changes with the target item and with the ratings that the use
 ### Target: recommend $i_5$ to $u_1$
 
 <div style="font-size:.95em;line-height:1.3;">
-<p style="margin:.25em 0;"><span style="color:#EF7C00;font-weight:bold;">Valid evidence:</span></p>
+<p style="margin:.25em 0;"><span class="cp-text--orange cp-text--strong">Valid evidence:</span></p>
 
 $$\color{orange}{Q_{i_5}(u_1)}=\{i_1,i_3,i_4\}$$
 
@@ -1260,9 +1202,9 @@ $$
 ::: {.column width="56%"}
 
 <div style="font-size:.78em;line-height:1.35;">
-<p><span style="color:#003D7C;font-weight:bold;">Base Similarity:</span> Pearson, cosine, or another chosen score.</p>
-<p><span style="color:#EF7C00;font-weight:bold;">Evidence Count:</span> how many items both users rated.</p>
-<p><span style="color:#00796B;font-weight:bold;">Threshold \($\beta$\):</span> the overlap at which no further discount applies.</p>
+<p><span class="cp-text--navy cp-text--strong">Base Similarity:</span> Pearson, cosine, or another chosen score.</p>
+<p><span class="cp-text--orange cp-text--strong">Evidence Count:</span> how many items both users rated.</p>
+<p><span class="cp-text--teal cp-text--strong">Threshold \($\beta$\):</span> the overlap at which no further discount applies.</p>
 </div>
 
 ::: {.callout-tip .to-think-about title="To think about"}
@@ -1377,7 +1319,7 @@ This is deliberately a minimal invocation, not a full experiment recipe. The cla
 ```{=html}
 <div class="cp-frame-bg cp-frame-orange"></div>
 <div class="cp-frame-content" style="color:#fff;">
-  <div class="cp-frame-title" style="color:#EF7C00;">👥 Discussion: Which Similarity Axis?</div>
+  <div class="cp-frame-title" class="cp-text--orange">👥 Discussion: Which Similarity Axis?</div>
   <div class="cp-frame-body" style="font-size:.79em;line-height:1.28;display:grid;grid-template-columns:minmax(0,1fr) 185px;gap:1.25em;align-items:center;color:#fff;">
   <div>
     <p style="font-size:1.22em;font-weight:bold;color:#EF7C00;margin:0 0 .6em;">When would user-based or item-based similarity be more effective?</p>
@@ -1392,20 +1334,18 @@ This is deliberately a minimal invocation, not a full experiment recipe. The cla
       </div>
     </div>
     <div style="margin-top:.8em;padding:.68em .9em;background:#fff;color:#293241;border-radius:8px;">
-      <strong style="color:#003D7C;">Pairs:</strong> choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br/>
-      <strong style="color:#003D7C;">Optional:</strong> Consider User Archetypes ♣ · <span style="color:#D32F2F;">♥</span> · <span style="color:#D32F2F;">♦</span> · ♠
+      <strong class="cp-text--navy">Pairs:</strong> choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br/>
+      <strong class="cp-text--navy">Optional:</strong> Consider User Archetypes ♣ · <span style="color:#D32F2F;">♥</span> · <span style="color:#D32F2F;">♦</span> · ♠
     </div>
   </div>
   <div style="text-align:center;">
-    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="similarity-axis-ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="similarity-axis-text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
-    <span id="similarity-axis-status" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">03:00</span>
-    <button id="similarity-axis-btn" type="button" style="padding:.45em .9em;font-size:.9em;background:#EF7C00;color:white;border:0;border-radius:6px;">▶ Start Timer</button>
+    <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="similarity-axis-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="similarity-axis-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
+    <span id="similarity-axis-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span>
+    <button id="similarity-axis-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="similarity-axis-ring" data-text="similarity-axis-text" data-status="similarity-axis-status">▶ Start Timer</button>
   </div>
 </div>
 </div>
-<script>
-(function(){function setup(){var b=document.getElementById('similarity-axis-btn');if(!b||b.dataset.bound)return;b.dataset.bound='true';var t=180,r=t,x=null,s='idle',a=null,c=2*Math.PI*75,g=document.getElementById('similarity-axis-ring'),e=document.getElementById('similarity-axis-text'),z=document.getElementById('similarity-axis-status'),q=g.getAttribute('stroke');function p(n){return n<10?'0'+n:''+n}function d(){var v=p(Math.floor(r/60))+':'+p(r%60);e.textContent=v;z.textContent=s==='complete'?"Time's up!":v;g.setAttribute('stroke-dashoffset',c*(1-r/t))}function h(){if(s==='running'){clearInterval(x);x=null;s='paused';b.textContent='▶ Resume'}}function y(){clearInterval(x);x=null;r=t;s='idle';g.setAttribute('stroke',q);b.textContent='▶ Start Timer';d()}function n(){if(!a)return;var o=a.createOscillator(),k=a.createGain(),v=a.currentTime;o.type='sine';o.frequency.value=880;k.gain.setValueAtTime(.18,v);k.gain.exponentialRampToValueAtTime(.001,v+.5);o.connect(k);k.connect(a.destination);o.start(v);o.stop(v+.5)}b.addEventListener('click',function(){if(s==='complete'){y();return}if(s==='running'){h();return}var A=window.AudioContext||window.webkitAudioContext;if(A&&!a)a=new A;if(a&&a.state==='suspended')a.resume();s='running';b.textContent='⏸ Pause';x=setInterval(function(){r=Math.max(0,r-1);d();if(!r){clearInterval(x);x=null;s='complete';g.setAttribute('stroke','#00c875');b.textContent='↻ Restart Timer';n()}},1000)});window._cpTimers=window._cpTimers||{};var l=b.closest('section'),i=Reveal.getSlides().indexOf(l);window._cpTimers[i]=h;if(!window._cpTimerSlideListener){Reveal.on('slidechanged',function(v){if(v.previousSlide){var j=Reveal.getSlides().indexOf(v.previousSlide);if(window._cpTimers[j])window._cpTimers[j]()}});window._cpTimerSlideListener=true}d()}function w(){if(window.Reveal&&typeof Reveal.on==='function'){if(Reveal.isReady&&Reveal.isReady())setup();else Reveal.on('ready',setup)}else setTimeout(w,50)}w()})();
-</script>
+
 ```
 
 ::: notes
@@ -1492,11 +1432,11 @@ $$
 ::: {.columns}
 ::: {.column width="55%"}
 
-[Neighbourhood $P_u(j)$]{style="color:#EF7C00;font-weight:bold;"}: the top-$k$ similar users who rated item $j$.
+[Neighbourhood $P_u(j)$]{class="cp-text--orange cp-text--strong"}: the top-$k$ similar users who rated item $j$.
 
-[Similarity weight]{style="color:#003D7C;font-weight:bold;"}: closer neighbours contribute more.
+[Similarity weight]{class="cp-text--navy cp-text--strong"}: closer neighbours contribute more.
 
-[Baseline and deviation]{style="color:#00796B;font-weight:bold;"}: predict a deviation, then add the target user's own mean back.
+[Baseline and deviation]{class="cp-text--teal cp-text--strong"}: predict a deviation, then add the target user's own mean back.
 :::
 ::: {.column width="45%"}
 
@@ -1556,8 +1496,8 @@ Contrast offline similarity construction and peer-group maintenance with online 
 
 <div style="font-size:.92em;line-height:1.32;">
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1em;">
-  <div style="padding:.8em 1em;border-left:6px solid #003D7C;background:#F2F6FA;"><strong style="color:#003D7C;">1. Represent</strong><br/>Start with sparse user-item evidence and make missingness visible.</div>
-  <div style="padding:.8em 1em;border-left:6px solid #00796B;background:#F0F8F6;"><strong style="color:#00796B;">2. Compare</strong><br/>Choose an axis, similarity, centring rule, and confidence treatment.</div>
+  <div style="padding:.8em 1em;border-left:6px solid #003D7C;background:#F2F6FA;"><strong class="cp-text--navy">1. Represent</strong><br/>Start with sparse user-item evidence and make missingness visible.</div>
+  <div style="padding:.8em 1em;border-left:6px solid #00796B;background:#F0F8F6;"><strong class="cp-text--teal">2. Compare</strong><br/>Choose an axis, similarity, centring rule, and confidence treatment.</div>
   <div style="padding:.8em 1em;border-left:6px solid #EF7C00;background:#FFF6ED;"><strong style="color:#B85F00;">3. Predict &amp; rank</strong><br/>Select valid neighbours, aggregate evidence, then rank candidates.</div>
 </div>
 <p style="margin:1.2em 0 .35em;font-size:1.12em;"><u>Neighbourhood CF is transparent and local—but its outputs inherit the data's sparsity, exposure patterns, and modelling choices.</u></p>
@@ -1596,9 +1536,9 @@ This is the course-level close for Week 01. It bridges the problem framing from 
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
-  <div class="cp-frame-title" style="color:#003D7C;">Look for Hidden Structure</div>
+  <div class="cp-frame-title" class="cp-text--navy">Look for Hidden Structure</div>
   <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
-    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span style="color:#00796B;">Mon, 23:59 SGT</span></p>
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 17 Aug 23:59 SGT</span></p>
     <p style="margin:.15em 0 .65em;">Post a short, concrete response to this question; then reply constructively to one classmate.</p>
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       Name one latent dimension that could explain several ratings—but is not an item metadata label.

@@ -1,20 +1,20 @@
 ---
 title: "Latent Factor Models"
 subtitle: |
-  <span class="w02-title-subtitle">CP4285 Modern Recommendation Systems — Week 02</span>
-  <a class="w02-title-qr" href="https://soc-n.us/cp4285-t2610-w02" target="_blank" rel="noopener" aria-label="Open the Week 02 slide deck">
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 02</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w02" target="_blank" rel="noopener" aria-label="Open the Week 02 slide deck">
     <picture>
       <source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w02-5c5eae8c39.svg">
-      <img class="w02-title-qr-image" src="../../uploads/cp4285-t2610-w02-5c5eae8c39.png" alt="QR code for the Week 02 slide deck">
+      <img class="title-qr-image" src="../../uploads/cp4285-t2610-w02-5c5eae8c39.png" alt="QR code for the Week 02 slide deck">
     </picture>
-    <span class="w02-title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w02</span></span>
+    <span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w02</span></span>
   </a>
 author: "CP4285 Instruction Team"
 date: "18 Aug 2026"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, w02-custom.scss]
+    theme: [default, ../cp4285-common.scss, w02-custom.scss]
     slide-number: true
     show-slide-number: all
     width: 1600
@@ -22,6 +22,7 @@ format:
     chalkboard: false
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 02 · NUS School of Computing"
+    include-after-body: ../cp-timer.html
     self-contained: true
     transition: slide
     highlight-style: github
@@ -31,6 +32,15 @@ format:
 ---
 
 # 01 Announcements and Context {background-color="#EF7C00"}
+
+```{=html}
+<div aria-labelledby="w02-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
+  <h5 id="w02-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
+  <ul style="margin:0;padding-left:1.2em;">
+    <li><strong class="cp-text--teal">20 Aug 2026</strong> — Refined content and classroom layouts for this release.</li>
+  </ul>
+</div>
+```
 
 ## {background-color="#1a0a2e"}
 
@@ -47,72 +57,41 @@ format:
 ::: notes
 :::
 
-## Pre-Flight Survey · Metadata Summary {background-color="#ffffff" .preflight-alt .preflight-metadata-a}
+## Pre-Flight Survey · Metadata Summary {background-color="#ffffff"}
 
-::: {.preflight-kicker}
-**Pre-flight survey · 26 submissions**  —  cohort signals
-:::
+<p style="margin:0 0 .5em;color:#A24B00;font-size:.62em;letter-spacing:.04em;"><strong style="text-transform:uppercase;">Pre-flight survey · 26 submissions</strong> — cohort signals</p>
 
 ```{=html}
-<div class="metadata-chip-grid">
-  <div class="metadata-chip"><span class="chip-label">Computer Sciences</span><strong>85%</strong><span>22 of 26</span></div>
-  <div class="metadata-chip"><span class="chip-label">Balance / practice</span><strong>81%</strong><span>lecture preference</span></div>
-  <div class="metadata-chip highlight"><span class="chip-label">IR knowledge</span><strong>15%</strong><span>4 of 26</span></div>
-  <div class="metadata-chip highlight"><span class="chip-label">Embeddings exposure</span><strong>73%</strong><span>19 of 26</span></div>
-  <div class="metadata-chip"><span class="chip-label">DSA knowledge</span><strong>92%</strong><span>strong / decent</span></div>
-  <div class="metadata-chip"><span class="chip-label">AI knowledge</span><strong>100%</strong><span>strong / decent</span></div>
-  <div class="metadata-chip"><span class="chip-label">Industry cases</span><strong>42%</strong><span>10 of 24 responses</span></div>
-  <div class="metadata-chip"><span class="chip-label">Retrieval / architectures</span><strong>38%</strong><span>9 of 24 responses</span></div>
-  <div class="metadata-chip"><span class="chip-label">Build / deploy</span><strong>33%</strong><span>8 of 24 responses</span></div>
+<div class="cp-grid cp-grid--3">
+  <div class="cp-metric"><span class="cp-metric__label">Computer Sciences</span><strong class="cp-metric__value">85%</strong><span class="cp-metric__meta">22 of 26</span></div>
+  <div class="cp-metric"><span class="cp-metric__label">Balance / practice</span><strong class="cp-metric__value">81%</strong><span class="cp-metric__meta">lecture preference</span></div>
+  <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">IR knowledge</span><strong class="cp-metric__value">15%</strong><span class="cp-metric__meta">4 of 26</span></div>
+  <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Embeddings exposure</span><strong class="cp-metric__value">73%</strong><span class="cp-metric__meta">19 of 26</span></div>
+  <div class="cp-metric"><span class="cp-metric__label">DSA knowledge</span><strong class="cp-metric__value">92%</strong><span class="cp-metric__meta">strong / decent</span></div>
+  <div class="cp-metric"><span class="cp-metric__label">AI knowledge</span><strong class="cp-metric__value">100%</strong><span class="cp-metric__meta">strong / decent</span></div>
+  <div class="cp-metric"><span class="cp-metric__label">Industry cases</span><strong class="cp-metric__value">42%</strong><span class="cp-metric__meta">10 of 24 responses</span></div>
+  <div class="cp-metric"><span class="cp-metric__label">Retrieval / architectures</span><strong class="cp-metric__value">38%</strong><span class="cp-metric__meta">9 of 24 responses</span></div>
+  <div class="cp-metric"><span class="cp-metric__label">Build / deploy</span><strong class="cp-metric__value">33%</strong><span class="cp-metric__meta">8 of 24 responses</span></div>
 </div>
 ```
 
-::: {.preflight-source}
-Source: Canvas pre-flight survey. Programme selections were multi-select; learning-expectation themes were coded from 24 substantive answers.
-:::
+<p style="margin-top:.38em;color:#5F6B7A;font-size:.40em;line-height:1.18;">Source: Canvas pre-flight survey. Programme selections were multi-select; learning-expectation themes were coded from 24 substantive answers.</p>
 
 ::: notes
 Slide 4 compact survey-signal grid with percentage-led labels.
 :::
 
-## Pre-Flight Survey · Voices in the Room {background-color="#ffffff" .preflight-alt .preflight-quotes-a}
+## Pre-Flight Survey · Voices in the Room {background-color="#ffffff"}
 
-::: {.preflight-kicker}
-**Open responses · representative anonymous phrases**  —  larger phrases indicate central themes, not frequency
-:::
+<p style="margin:0 0 .5em;color:#A24B00;font-size:.62em;letter-spacing:.04em;"><strong style="text-transform:uppercase;">Open responses · representative anonymous phrases</strong> — larger phrases indicate central themes, not frequency</p>
 
 ```{=html}
-<div class="quote-cloud quote-cloud-a fit-safe-cloud expanded-cloud">
-  <span class="quote q-xxl">“retrieval and ranking architectures”</span>
-  <span class="quote q-md orange-quote">“more application based”</span>
-  <span class="quote q-xxl teal-quote">“deployment and productionization”</span>
-  <span class="quote q-xl">“TikTok / Instagram … real-world case studies”</span>
-  <span class="quote q-xl">“YouTube and Spotify”</span>
-  <span class="quote q-lg">“modern search alongside recommendation”</span>
-  <span class="quote q-xl">“recommendation algorithms … real-world datasets”</span>
-  <span class="quote q-xxl">“end-to-end recommender … project”</span>
-  <span class="quote q-lg">“Two Tower Model”</span>
-  <span class="quote q-lg">“LLMs for recommendation … RAG or fine-tuning”</span>
-  <span class="quote q-md">“replicate papers”</span>
-  <span class="quote q-md">“create and deploy MCP server”</span>
-  <span class="quote q-md orange-quote">“Heavy workload”</span>
-  <span class="quote q-lg">“system design … production”</span>
-  <span class="quote q-xl teal-quote">“PyTorch … building and training”</span>
-  <span class="quote q-lg">“latest research and progress”</span>
-  <span class="quote q-md orange-quote">“form our own groups”</span>
-  <span class="quote q-md orange-quote">“ethics … history and context”</span>
+<div style="display:flex;min-height:8.55em;max-width:94%;margin:.20em auto .14em;padding:.54em .66em;align-content:space-evenly;justify-content:center;flex-wrap:wrap;gap:.22em .42em;border-top:2px solid #D8E0EA;border-bottom:2px solid #D8E0EA;">
+  <span style="width:100%;color:#003D7C;font-size:.82em;font-weight:600;line-height:1.13;text-align:center;">“retrieval and ranking architectures”</span><span style="color:#B45200;font-size:.42em;font-weight:600;">“more application based”</span><span style="width:100%;color:#00796B;font-size:.82em;font-weight:600;line-height:1.13;text-align:center;">“deployment and productionization”</span><span style="width:47%;color:#003D7C;font-size:.66em;font-weight:600;line-height:1.13;text-align:center;">“TikTok / Instagram … real-world case studies”</span><span style="width:47%;color:#003D7C;font-size:.66em;font-weight:600;line-height:1.13;text-align:center;">“YouTube and Spotify”</span><span style="max-width:46%;color:#003D7C;font-size:.52em;font-weight:600;line-height:1.13;text-align:center;">“modern search alongside recommendation”</span><span style="width:47%;color:#003D7C;font-size:.66em;font-weight:600;line-height:1.13;text-align:center;">“recommendation algorithms … real-world datasets”</span><span style="width:100%;color:#003D7C;font-size:.82em;font-weight:600;line-height:1.13;text-align:center;">“end-to-end recommender … project”</span><span style="max-width:46%;color:#003D7C;font-size:.52em;font-weight:600;">“Two Tower Model”</span><span style="max-width:46%;color:#003D7C;font-size:.52em;font-weight:600;">“LLMs for recommendation … RAG or fine-tuning”</span><span style="color:#003D7C;font-size:.42em;font-weight:600;">“replicate papers”</span><span style="color:#003D7C;font-size:.42em;font-weight:600;">“create and deploy MCP server”</span><span style="color:#B45200;font-size:.42em;font-weight:600;">“Heavy workload”</span><span style="max-width:46%;color:#003D7C;font-size:.52em;font-weight:600;">“system design … production”</span><span style="width:47%;color:#00796B;font-size:.66em;font-weight:600;line-height:1.13;text-align:center;">“PyTorch … building and training”</span><span style="max-width:46%;color:#003D7C;font-size:.52em;font-weight:600;">“latest research and progress”</span><span style="color:#B45200;font-size:.42em;font-weight:600;">“form our own groups”</span><span style="color:#B45200;font-size:.42em;font-weight:600;">“ethics … history and context”</span>
 </div>
-<p></p>
-<p></p>
-<div class="phrase-legend" aria-label="Phrase cloud colour legend">
-  <span class="legend-item legend-navy">Systems and concepts</span>
-  <span class="legend-item legend-teal">Building and deployment</span>
-  <span class="legend-item legend-orange">Expectations and concerns</span>
-</div>
+<div aria-label="Phrase cloud colour legend" style="display:flex;justify-content:center;flex-wrap:wrap;gap:.22em .80em;margin:.08em auto .22em;max-width:94%;font-size:.37em;font-weight:700;letter-spacing:.025em;line-height:1.15;"><span class="cp-text--navy">● Systems and concepts</span><span class="cp-text--teal">● Building and deployment</span><span style="color:#B45200;">● Expectations and concerns</span></div>
 ```
-::: {.preflight-source}
-Source: Canvas pre-flight survey, anonymous open responses. Phrases are abbreviated from representative excerpts for slide readability.
-:::
+<p style="margin-top:.38em;color:#5F6B7A;font-size:.40em;line-height:1.18;">Source: Canvas pre-flight survey, anonymous open responses. Phrases are abbreviated from representative excerpts for slide readability.</p>
 
 ::: notes
 Expanded weighted phrase cloud. Font size represents thematic centrality in the open responses, not a quantitative count. Colour distinguishes systems/concepts, building/deployment, and expectations/concerns.
@@ -120,12 +99,12 @@ Expanded weighted phrase cloud. Font size represents thematic centrality in the 
 
 ## Essay 1: Micro Case Study: Designing a Production Recommender Surface
 
-<div class="factor-flow">
-  <div class="factor-card"><strong>Focus</strong><br>One approved user-facing recommendation surface.</div>
-  <div class="factor-arrow">→</div>
-  <div class="factor-card"><strong>Reason</strong><br>One or two consequential Week 01–02 choices.</div>
-  <div class="factor-arrow">→</div>
-  <div class="factor-card"><strong>Defend</strong><br>Evidence, limits, and a substantive suit lens.</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 2.2em minmax(0,1fr) 2.2em minmax(0,1fr);gap:.35em;align-items:stretch;margin:.55em 0;">
+  <div class="cp-flow-card"><strong>Focus</strong><br>One approved user-facing recommendation surface.</div>
+  <div class="cp-flow-arrow">→</div>
+  <div class="cp-flow-card"><strong>Reason</strong><br>One or two consequential Week 01–02 choices.</div>
+  <div class="cp-flow-arrow">→</div>
+  <div class="cp-flow-card"><strong>Defend</strong><br>Evidence, limits, and a substantive suit lens.</div>
 </div>
 
 - ⚠️ (Short) **1,500 words** · Due **Mon, 24 Aug 2026, 23:59 SGT**.
@@ -144,9 +123,9 @@ Expanded weighted phrase cloud. Font size represents thematic centrality in the 
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise</div>
-  <div class="cp-frame-title" style="color:#003D7C;">Look for Hidden Structure</div>
+  <div class="cp-frame-title" class="cp-text--navy">Look for Hidden Structure</div>
   <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
-    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span style="color:#00796B;">Mon, 23:59 SGT</span></p>
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 24 Aug 23:59 SGT</span></p>
     <p style="margin:.15em 0 .65em;">Post a short, concrete response to this question; then reply constructively to one classmate.</p>
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       Name one latent dimension that could explain several ratings—but is not an item metadata label.
@@ -167,33 +146,33 @@ Direct students to Canvas and state the deadline: Monday, 23:59 SGT. Students an
 
 ```{=html}
 <div class="cp-frame-bg cp-frame-navy"></div>
-<div class="cp-frame-content canvas-voices-frame">
+<div class="cp-frame-content" style="padding-top:28px;">
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
-  <div class="cp-frame-title" style="color:#003D7C;">Latent dimensions students noticed 📶</div>
-  <div class="voice-bubble-grid" aria-label="Four anonymised student quotations and relevant replies from the Canvas discussion">
-    <article class="voice-bubble voice-quality">
-      <img src="assets/canvas-avatars/quality.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
-      <p>“Quality: Unlike a metadata like price or like count, you can't really quantify quality from the item itself.”</p>
-      <p class="voice-reply"><span>Reply</span> “Quality is also subjective and can potentially be influenced by trendiness.”</p>
-      <span class="voice-theme">Quality</span>
+  <div class="cp-frame-title" style="margin-bottom:.30em;color:#003D7C;">Latent dimensions students noticed 📶</div>
+  <div aria-label="Four anonymised student quotations and relevant replies from the Canvas discussion" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);align-content:stretch;align-items:start;gap:1.55em 2.05em;flex:1 1 auto;min-height:0;padding:.66em .62em .95em .88em;margin:.08em 0 .18em;">
+    <article style="position:relative;display:block;justify-self:end;width:82%;min-width:0;padding:.38em .48em .38em .56em;border:2px solid #D8E0EA;border-radius:13px;background:#F8FAFD;color:#273244;overflow:visible;transform:translate(-.16em,-.22em);">
+      <img src="assets/canvas-avatars/quality.png" alt="Anonymous Canvas participant avatar" style="position:absolute;z-index:2;left:-37px;bottom:-20px;width:34px;height:34px;border:2px solid #003D7C;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+      <p style="margin:0;font-size:.36em;font-style:italic;line-height:1.12;">“Quality: Unlike a metadata like price or like count, you can't really quantify quality from the item itself.”</p>
+      <p style="margin:.24em 0 0;padding-top:.18em;border-top:1px solid rgba(0,61,124,.18);color:#516175;font-size:.30em;font-style:normal;line-height:1.12;"><span style="margin-right:.22em;color:#003D7C;font-size:.90em;font-weight:800;letter-spacing:.07em;text-transform:uppercase;">Reply</span>“Quality is also subjective and can potentially be influenced by trendiness.”</p>
+      <span style="display:block;margin-top:.12em;color:#003D7C;font-size:.27em;font-weight:800;letter-spacing:.08em;line-height:1.05;text-transform:uppercase;">Quality</span>
     </article>
-    <article class="voice-bubble voice-nostalgia">
-      <img src="assets/canvas-avatars/nostalgia.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
-      <p>“Nostalgia. It's a property of the relationship between a user and an item which is driven by the user's personal history …”</p>
-      <p class="voice-reply"><span>Reply</span> “Could it be modelled by grouping users into distinct age groups?”</p>
-      <span class="voice-theme">Nostalgia</span>
+    <article style="position:relative;display:block;justify-self:end;width:82%;min-width:0;padding:.38em .48em .38em .56em;border:2px solid #D6C8E8;border-radius:13px;background:#F4F0FA;color:#273244;overflow:visible;transform:translate(.38em,.48em);">
+      <img src="assets/canvas-avatars/nostalgia.png" alt="Anonymous Canvas participant avatar" style="position:absolute;z-index:2;left:-37px;bottom:-20px;width:34px;height:34px;border:2px solid #5C2D91;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+      <p style="margin:0;font-size:.36em;font-style:italic;line-height:1.12;">“Nostalgia. It's a property of the relationship between a user and an item which is driven by the user's personal history …”</p>
+      <p style="margin:.24em 0 0;padding-top:.18em;border-top:1px solid rgba(0,61,124,.18);color:#516175;font-size:.30em;font-style:normal;line-height:1.12;"><span style="margin-right:.22em;color:#5C2D91;font-size:.90em;font-weight:800;letter-spacing:.07em;text-transform:uppercase;">Reply</span>“Could it be modelled by grouping users into distinct age groups?”</p>
+      <span style="display:block;margin-top:.12em;color:#5C2D91;font-size:.27em;font-weight:800;letter-spacing:.08em;line-height:1.05;text-transform:uppercase;">Nostalgia</span>
     </article>
-    <article class="voice-bubble voice-trust">
-      <img src="assets/canvas-avatars/trust.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
-      <p>“Trust: It is not an item metadata label because it is an underlying, subjective perception that is not directly observable.”</p>
-      <p class="voice-reply"><span>Reply</span> “The degree of trust cannot be readily quantified and it may vary widely …”</p>
-      <span class="voice-theme">Trust</span>
+    <article style="position:relative;display:block;justify-self:end;width:82%;min-width:0;padding:.38em .48em .38em .56em;border:2px solid #B9DDD4;border-radius:13px;background:#F0F8F6;color:#273244;overflow:visible;transform:translate(-.42em,-.36em);">
+      <img src="assets/canvas-avatars/trust.png" alt="Anonymous Canvas participant avatar" style="position:absolute;z-index:2;left:-37px;bottom:-20px;width:34px;height:34px;border:2px solid #00796B;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+      <p style="margin:0;font-size:.36em;font-style:italic;line-height:1.12;">“Trust: It is not an item metadata label because it is an underlying, subjective perception that is not directly observable.”</p>
+      <p style="margin:.24em 0 0;padding-top:.18em;border-top:1px solid rgba(0,61,124,.18);color:#516175;font-size:.30em;font-style:normal;line-height:1.12;"><span style="margin-right:.22em;color:#00796B;font-size:.90em;font-weight:800;letter-spacing:.07em;text-transform:uppercase;">Reply</span>“The degree of trust cannot be readily quantified and it may vary widely …”</p>
+      <span style="display:block;margin-top:.12em;color:#00796B;font-size:.27em;font-weight:800;letter-spacing:.08em;line-height:1.05;text-transform:uppercase;">Trust</span>
     </article>
-    <article class="voice-bubble voice-emotion">
-      <img src="assets/canvas-avatars/emotion.png" alt="Anonymous Canvas participant avatar" class="voice-avatar">
-      <p>“One latent dimension is how emotionally provocative an item is? Some items naturally stimulate our excitement, motivation or pleasure …”</p>
-      <p class="voice-reply"><span>Reply</span> “Psychological emotions are subjective … and it is tough to quantify.”</p>
-      <span class="voice-theme">Emotion</span>
+    <article style="position:relative;display:block;justify-self:end;width:82%;min-width:0;padding:.38em .48em .38em .56em;border:2px solid #F1C78E;border-radius:13px;background:#FFF5EA;color:#273244;overflow:visible;transform:translate(.52em,.42em);">
+      <img src="assets/canvas-avatars/emotion.png" alt="Anonymous Canvas participant avatar" style="position:absolute;z-index:2;left:-37px;bottom:-20px;width:34px;height:34px;border:2px solid #EF7C00;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+      <p style="margin:0;font-size:.36em;font-style:italic;line-height:1.12;">“One latent dimension is how emotionally provocative an item is? Some items naturally stimulate our excitement, motivation or pleasure …”</p>
+      <p style="margin:.24em 0 0;padding-top:.18em;border-top:1px solid rgba(0,61,124,.18);color:#516175;font-size:.30em;font-style:normal;line-height:1.12;"><span style="margin-right:.22em;color:#A24B00;font-size:.90em;font-weight:800;letter-spacing:.07em;text-transform:uppercase;">Reply</span>“Psychological emotions are subjective … and it is tough to quantify.”</p>
+      <span style="display:block;margin-top:.12em;color:#A24B00;font-size:.27em;font-weight:800;letter-spacing:.08em;line-height:1.05;text-transform:uppercase;">Emotion</span>
     </article>
   </div>
 </div>
@@ -207,29 +186,29 @@ Use the replies to show that students did not only name possible latent dimensio
 
 ::: {.columns}
 ::: {.column width="31%"}
-<div class="factor-card" style="height:100%;">
-  <strong style="color:#003D7C;">Collaborative filtering<br>(CF; last week)</strong><br><br>
+<div style="height:100%;box-sizing:border-box;display:flex;flex-direction:column;min-height:5.4em;align-items:center;justify-content:center;border:3px solid #003D7C;border-radius:8px;padding:.6em .7em;background:#fff;color:#003D7C;font-size:.70em;line-height:1.22;text-align:center;">
+  <strong class="cp-text--navy">Collaborative filtering<br>(CF; last week)</strong><br><br>
   <strong>Evidence</strong><br>User–item interactions<br><br>
   <strong>Mechanism</strong><br>Borrow from similar users or items<br><br>
   <strong>Watch</strong><br>Thin local overlap can leave a neighbourhood silent.
 </div>
 :::
 ::: {.column width="3%"}
-<div class="factor-arrow" style="padding-top:3.6em;">|</div>
+<div style="padding-top:3.6em;display:flex;align-items:center;justify-content:center;color:#EF7C00;font-size:2.05em;font-weight:700;line-height:1;">|</div>
 :::
 ::: {.column width="32%"}
-<div class="factor-card" style="height:100%;">
-  <strong style="color:#EF7C00;">Content-based filtering<br>(CBF)</strong><br><br>
+<div style="height:100%;box-sizing:border-box;display:flex;flex-direction:column;min-height:5.4em;align-items:center;justify-content:center;border:3px solid #003D7C;border-radius:8px;padding:.6em .7em;background:#fff;color:#003D7C;font-size:.70em;line-height:1.22;text-align:center;">
+  <strong class="cp-text--orange">Content-based filtering<br>(CBF)</strong><br><br>
   <strong>Evidence</strong><br>Explicit item, user, or context features<br><br>
   <strong>IR mechanism</strong><br>Encode and match genres, tags, and text<br><br>
   <strong>Watch</strong><br>Feature coverage and encoding quality set the limit.
 </div>
 :::
 ::: {.column width="3%"}
-<div class="factor-arrow" style="padding-top:3.6em;">|</div>
+<div style="padding-top:3.6em;display:flex;align-items:center;justify-content:center;color:#EF7C00;font-size:2.05em;font-weight:700;line-height:1;">|</div>
 :::
 ::: {.column width="31%"}
-<div class="factor-card" style="height:100%;">
+<div style="height:100%;box-sizing:border-box;display:flex;flex-direction:column;min-height:5.4em;align-items:center;justify-content:center;border:3px solid #003D7C;border-radius:8px;padding:.6em .7em;background:#fff;color:#003D7C;font-size:.70em;line-height:1.22;text-align:center;">
   <strong style="color:#5C2D91;">Latent-factor model<br>(LFM)</strong><br><br>
   <strong>Evidence</strong><br>User–item interactions<br><br>
   <strong>Mechanism</strong><br>Learn shared hidden coordinates from many interactions<br><br>
@@ -335,11 +314,11 @@ Use the familiar MovieLens-style fields to make text a recommender input rather 
 
 ## A Bag of Words Is Sparse and Literal
 
-<div class="matrix-grid" style="grid-template-columns:1.8fr repeat(6, .66fr);font-size:.70em;">
-  <div class="matrix-head">text / term</div><div class="matrix-head">animated</div><div class="matrix-head">family</div><div class="matrix-head">light</div><div class="matrix-head">comedy</div><div class="matrix-head">animation</div><div class="matrix-head">children</div>
-  <div class="matrix-head">need: animated family film</div><div class="matrix-target">1</div><div class="matrix-target">1</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div>
-  <div class="matrix-head">need: light comedy tonight</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-target">1</div><div class="matrix-target">1</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div>
-  <div class="matrix-head">item: Toy Story (1995)</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-missing">0</div><div class="matrix-target">1</div><div class="matrix-target">1</div><div class="matrix-target">1</div>
+<div style="display:grid;grid-template-columns:1.8fr repeat(6,.66fr);gap:4px;width:86%;margin:.1em auto .2em;font-size:.70em;text-align:center;">
+  <div class="cp-chip cp-chip--navy">text / term</div><div class="cp-chip cp-chip--navy">animated</div><div class="cp-chip cp-chip--navy">family</div><div class="cp-chip cp-chip--navy">light</div><div class="cp-chip cp-chip--navy">comedy</div><div class="cp-chip cp-chip--navy">animation</div><div class="cp-chip cp-chip--navy">children</div>
+  <div class="cp-chip cp-chip--navy">need: animated family film</div><div class="cp-chip cp-chip--warning">1</div><div class="cp-chip cp-chip--warning">1</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--muted">0</div>
+  <div class="cp-chip cp-chip--navy">need: light comedy tonight</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--warning">1</div><div class="cp-chip cp-chip--warning">1</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--muted">0</div>
+  <div class="cp-chip cp-chip--navy">item: Toy Story (1995)</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--muted">0</div><div class="cp-chip cp-chip--warning">1</div><div class="cp-chip cp-chip--warning">1</div><div class="cp-chip cp-chip--warning">1</div>
 </div>
 
 - One coordinate per vocabulary term; most coordinates are zero.
@@ -356,7 +335,7 @@ Keep the exact two user/context needs and the Toy Story item text from the previ
 
 ::: {.columns}
 ::: {.column width="47%"}
-### <span style="color:#EF7C00;">TF: local evidence</span>
+### <span class="cp-text--orange">TF: local evidence</span>
 
 $$
 \color{orange}{\operatorname{tf}(t,d)}=\text{count of term }t\text{ in document }d
@@ -365,7 +344,7 @@ $$
 Repeated occurrence can strengthen a term's contribution **within one document**.
 :::
 ::: {.column width="47%"}
-### <span style="color:#003D7C;">IDF: collection discrimination</span>
+### <span class="cp-text--navy">IDF: collection discrimination</span>
 
 $$
 \color{navy}{\operatorname{idf}(t)}=\log\frac{N}{df_t}
@@ -390,47 +369,44 @@ First identify the two signals, then read the combined expression left to right:
 ## Worked TF–IDF: Two Titles, One Interest Profile
 
 ```{=html}
-<div class="s15-compact">
-  <p class="s15-context"><strong>User interest:</strong> <code>animated family comedy</code><br><strong>A:</strong> <em>Toy Story</em> · Animation · Children’s · Comedy &nbsp; <strong>B:</strong> <em>Mrs. Doubtfire</em> · Family · Comedy</p>
-  <div class="s15-grid">
+<div style="color:#273244;font-size:1.08em;">
+  <p style="margin:.04em 0 .30em;color:#003D7C;font-size:.58em;line-height:1.28;"><strong>User interest:</strong> <code style="color:#5C2D91;">animated family comedy</code><br><strong>A:</strong> <em>Toy Story</em> · Animation · Children’s · Comedy &nbsp; <strong>B:</strong> <em>The Lego Movie</em> · Animation · Family · Comedy</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.78em;align-items:stretch;">
     <div>
-      <h3>Vocabulary coordinates</h3>
-      <table class="s15-table">
-        <thead><tr><th>term</th><th>IDF</th><th>U</th><th>A</th><th>B</th></tr></thead>
-        <tbody>
-          <tr><td><code>animated</code></td><td>1.8</td><td>1</td><td>0</td><td>0</td></tr>
-          <tr><td><code>animation</code></td><td>1.8</td><td>0</td><td>1</td><td>0</td></tr>
-          <tr><td><code>family</code></td><td>1.4</td><td>1</td><td>0</td><td>1</td></tr>
-          <tr><td><code>children</code></td><td>1.4</td><td>0</td><td>1</td><td>0</td></tr>
-          <tr><td><code>comedy</code></td><td>1.2</td><td>1</td><td>1</td><td>1</td></tr>
-        </tbody>
-      </table>
-      <p class="s15-token-note"><code>animated</code> ≠ <code>animation</code>; <code>family</code> ≠ <code>children</code>.</p>
+      <h3 style="margin:0 0 .20em;color:#003D7C;font-size:.58em;line-height:1.05;">Vocabulary coordinates</h3>
+      <table style="width:100%;margin:0;border-collapse:collapse;font-size:.52em;line-height:1.18;text-align:center;"><thead><tr><th class="cp-table__cell cp-table--compact cp-table__cell--head">term</th><th class="cp-table__cell cp-table--compact cp-table__cell--head">IDF</th><th class="cp-table__cell cp-table--compact cp-table__cell--head">U</th><th class="cp-table__cell cp-table--compact cp-table__cell--head">A</th><th class="cp-table__cell cp-table--compact cp-table__cell--head">B</th></tr></thead><tbody>
+        <tr><td class="cp-table__cell cp-table--compact cp-table__cell--label"><code style="color:#5C2D91;">animated</code></td><td class="cp-table__cell cp-table--compact">1.8</td><td class="cp-table__cell cp-table--compact">1</td><td class="cp-table__cell cp-table--compact">0</td><td class="cp-table__cell cp-table--compact">0</td></tr>
+        <tr><td class="cp-table__cell cp-table--compact cp-table__cell--label"><code style="color:#5C2D91;">animation</code></td><td class="cp-table__cell cp-table--compact">1.8</td><td class="cp-table__cell cp-table--compact">0</td><td class="cp-table__cell cp-table--compact">1</td><td class="cp-table__cell cp-table--compact">1</td></tr>
+        <tr><td class="cp-table__cell cp-table--compact cp-table__cell--label"><code style="color:#5C2D91;">family</code></td><td class="cp-table__cell cp-table--compact">1.4</td><td class="cp-table__cell cp-table--compact">1</td><td class="cp-table__cell cp-table--compact">0</td><td class="cp-table__cell cp-table--compact">1</td></tr>
+        <tr><td class="cp-table__cell cp-table--compact cp-table__cell--label"><code style="color:#5C2D91;">children</code></td><td class="cp-table__cell cp-table--compact">1.4</td><td class="cp-table__cell cp-table--compact">0</td><td class="cp-table__cell cp-table--compact">1</td><td class="cp-table__cell cp-table--compact">0</td></tr>
+        <tr><td class="cp-table__cell cp-table--compact cp-table__cell--label"><code style="color:#5C2D91;">comedy</code></td><td class="cp-table__cell cp-table--compact">1.2</td><td class="cp-table__cell cp-table--compact">1</td><td class="cp-table__cell cp-table--compact">1</td><td class="cp-table__cell cp-table--compact">1</td></tr>
+      </tbody></table>
+      <p style="margin:.22em 0 0;color:#657286;font-size:.42em;line-height:1.22;"><code style="color:#5C2D91;">animated</code> ≠ <code style="color:#5C2D91;">animation</code>; <code style="color:#5C2D91;">family</code> ≠ <code style="color:#5C2D91;">children</code>.</p>
     </div>
-    <div class="s15-score-panel">
-      <h3>Cosine = dot product ÷ (two vector norms)</h3>
-      <p class="s15-cosine-rule">\(\cos(\mathbf{u},\mathbf{t})=\dfrac{\mathbf{u}\cdot\mathbf{t}}{\lVert\mathbf{u}\rVert\,\lVert\mathbf{t}\rVert}\)</p>
-      <div class="s15-score"><strong>A · Toy Story <b>0.217</b></strong><span>dot: 1.2 × 1.2 = 1.44</span><span>norms: ‖U‖ = 2.577; ‖A‖ = 2.577</span><span class="s15-final-calc">1.44 ÷ (2.577 × 2.577)</span></div>
-      <div class="s15-score s15-score-winner"><strong>B · Mrs. Doubtfire <b>0.716</b></strong><span>dot: 1.4² + 1.2² = 3.40</span><span>norms: ‖U‖ = 2.577; ‖B‖ = 1.844</span><span class="s15-final-calc">3.40 ÷ (2.577 × 1.844)</span></div>
+    <div style="padding:.48em .55em;border-left:5px solid #00796B;background:#F0F8F6;">
+      <h3 style="margin:0 0 .14em;color:#003D7C;font-size:.58em;line-height:1.05;">Cosine = dot product ÷ (two vector norms)</h3>
+      <p style="margin:0 0 .24em;padding:.22em .30em;background:#E6F3F0;color:#003D7C;font-size:.46em;line-height:1.18;text-align:center;">\(\cos(\mathbf{u},\mathbf{t})=\dfrac{\mathbf{u}\cdot\mathbf{t}}{\lVert\mathbf{u}\rVert\,\lVert\mathbf{t}\rVert}\)</p>
+      <div style="margin:0 0 .24em;padding:.30em .34em;border:1px solid #CFE4DF;background:#fff;color:#003D7C;"><strong style="display:block;font-size:.54em;line-height:1.15;">A · Toy Story <b style="float:right;color:#A24B00;font-size:1.22em;">0.217</b></strong><span style="display:block;margin-top:.05em;color:#657286;font-size:.42em;line-height:1.18;">dot: 1.2 × 1.2 = 1.44</span><span style="display:block;margin-top:.05em;color:#657286;font-size:.42em;line-height:1.18;">norms: ‖U‖ = 2.577; ‖A‖ = 2.577</span><span style="display:block;margin-top:.05em;color:#A24B00;font-size:.42em;font-weight:800;line-height:1.18;">1.44 ÷ (2.577 × 2.577)</span></div>
+      <div style="margin:0;padding:.30em .34em;border:1px solid #00796B;background:#fff;color:#003D7C;"><strong style="display:block;font-size:.54em;line-height:1.15;">B · The Lego Movie <b style="float:right;color:#A24B00;font-size:1.22em;">0.512</b></strong><span style="display:block;margin-top:.05em;color:#657286;font-size:.42em;line-height:1.18;">dot: 1.4² + 1.2² = 3.40</span><span style="display:block;margin-top:.05em;color:#657286;font-size:.42em;line-height:1.18;">norms: ‖U‖ = 2.577; ‖B‖ = 2.577</span><span style="display:block;margin-top:.05em;color:#A24B00;font-size:.42em;font-weight:800;line-height:1.18;">3.40 ÷ (2.577 × 2.577)</span></div>
     </div>
   </div>
 </div>
 ```
 
 ::: notes
-This is a deliberately small, illustrative vocabulary with TF equal to one for each displayed tag. Compute each present TF–IDF coordinate from the IDF table. First identify the dot product as the sum of shared-coordinate products, then divide by the two vector lengths: normalisation prevents a longer vector from receiving an advantage merely because it has more nonzero coordinates. Toy Story’s `animation` and `children` remain separate from the user’s `animated` and `family`; the resulting contrast motivates the next dense-embedding slide.
+This is a deliberately small, illustrative vocabulary with TF equal to one for each displayed tag. Compute each present TF–IDF coordinate from the IDF table. First identify the dot product as the sum of shared-coordinate products, then divide by the two vector lengths: normalisation prevents a longer vector from receiving an advantage merely because it has more nonzero coordinates. Both candidates use the stored token `animation`, but it remains separate from the user’s `animated`; The Lego Movie still wins because it shares the exact `family` and `comedy` tokens. The contrast motivates the next dense-embedding slide.
 [Sources]
 - Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to Information Retrieval*, Chapter 6.
 :::
 
 ## Dense Word Embeddings Learn Neighbourhoods
 
-<div class="factor-flow">
-  <div class="factor-card"><strong>Training contexts</strong><br>Words that occur in related contexts provide a learning signal.</div>
-  <div class="factor-arrow">→</div>
-  <div class="factor-card"><strong>Dense vectors</strong><br>Each word receives a short, continuous learned representation.</div>
-  <div class="factor-arrow">→</div>
-  <div class="factor-card"><strong>Neighbourhoods</strong><br>Related usage can place vectors closer together.</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 2.2em minmax(0,1fr) 2.2em minmax(0,1fr);gap:.35em;align-items:stretch;margin:.55em 0;">
+  <div class="cp-flow-card"><strong>Training contexts</strong><br>Words that occur in related contexts provide a learning signal.</div>
+  <div class="cp-flow-arrow">→</div>
+  <div class="cp-flow-card"><strong>Dense vectors</strong><br>Each word receives a short, continuous learned representation.</div>
+  <div class="cp-flow-arrow">→</div>
+  <div class="cp-flow-card"><strong>Neighbourhoods</strong><br>Related usage can place vectors closer together.</div>
 </div>
 
 - A sparse document–term vector has dimension \(\color{navy}{V}\): one coordinate per vocabulary term, with most coordinates equal to zero.
@@ -471,81 +447,21 @@ This comparison is the central bridge. Avoid presenting dense embeddings as a un
   <div>
     <div style="color:#EF7C00;font-size:.76em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8em;">IR history · 1958</div>
     <h2 style="color:#fff;margin:.1em 0 .45em;">Keyword search predates the Web</h2>
-    <p style="font-size:1.08em;line-height:1.42;margin:0;">At IBM, <strong style="color:#EF7C00;">Hans Peter Luhn</strong> demonstrated <strong style="color:#EF7C00;">Key Word in Context (KWIC)</strong>: an automatic index that rearranged keywords while preserving their textual context.</p>
+    <p style="font-size:1.08em;line-height:1.42;margin:0;">At IBM, <strong class="cp-text--orange">Hans Peter Luhn</strong> demonstrated <strong class="cp-text--orange">Key Word in Context (KWIC)</strong>: an automatic index that rearranged keywords while preserving their textual context.</p>
     <p style="font-size:.86em;line-height:1.35;color:#d8d8d8;margin-top:1em;">By the early 1960s, KWIC had become central to hundreds of computerised indexing systems—a useful reminder that retrieval began with finding useful words, not with the Web.</p>
   </div>
   <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
     <svg width="180" height="180" viewBox="0 0 180 180" aria-label="Five-minute break timer">
       <circle cx="90" cy="90" r="75" fill="none" stroke="#333" stroke-width="14"/>
-      <circle id="donut-ring-w02ir" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/>
-      <text id="timer-text-w02ir" x="90" y="98" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="white">05:00</text>
+      <circle id="donut-ring-w02ir" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/>
+      <text id="timer-text-w02ir" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="white">05:00</text>
     </svg>
-    <span id="timer-status-w02ir" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">05:00</span>
-    <button id="break-btn-w02ir" type="button" style="margin-top:1.2em;padding:.5em 2em;font-size:1em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:#fff;border:none;border-radius:6px;cursor:pointer;letter-spacing:.04em;">▶ Start Timer</button>
+    <span id="timer-status-w02ir" role="timer" aria-live="polite" class="cp-sr-only">05:00</span>
+    <button id="break-btn-w02ir" type="button" class="cp-timer__button" data-cp-timer data-seconds="300" data-ring="donut-ring-w02ir" data-text="timer-text-w02ir" data-status="timer-status-w02ir">▶ Start Timer</button>
   </div>
 </div>
 
-<script>
-(function () {
-  var TOTAL = 5 * 60, remaining = TOTAL, interval = null, state = 'idle', audioContext = null;
-  var textEl = document.getElementById('timer-text-w02ir');
-  var statusEl = document.getElementById('timer-status-w02ir');
-  var ringEl = document.getElementById('donut-ring-w02ir');
-  var buttonEl = document.getElementById('break-btn-w02ir');
-  var circumference = 2 * Math.PI * 75;
-  function pad(v) { return v < 10 ? '0' + v : '' + v; }
-  function render() {
-    var display = pad(Math.floor(remaining / 60)) + ':' + pad(remaining % 60);
-    textEl.textContent = display;
-    statusEl.textContent = state === 'complete' ? "Time's up!" : display;
-    ringEl.setAttribute('stroke-dashoffset', circumference * (1 - remaining / TOTAL));
-  }
-  function ring() {
-    if (!audioContext) return;
-    var oscillator = audioContext.createOscillator(), gain = audioContext.createGain(), now = audioContext.currentTime;
-    oscillator.type = 'sine'; oscillator.frequency.value = 880;
-    gain.gain.setValueAtTime(.18, now); gain.gain.exponentialRampToValueAtTime(.001, now + .5);
-    oscillator.connect(gain); gain.connect(audioContext.destination); oscillator.start(now); oscillator.stop(now + .5);
-  }
-  function pause() {
-    if (state !== 'running') return;
-    clearInterval(interval); interval = null; state = 'paused'; buttonEl.textContent = '▶ Resume';
-  }
-  function reset() {
-    clearInterval(interval); interval = null; remaining = TOTAL; state = 'idle';
-    ringEl.setAttribute('stroke', '#EF7C00'); buttonEl.textContent = '▶ Start Timer'; render();
-  }
-  function tick() {
-    remaining = Math.max(0, remaining - 1); render();
-    if (remaining === 0) { clearInterval(interval); interval = null; state = 'complete'; ringEl.setAttribute('stroke', '#00c875'); buttonEl.textContent = '↻ Restart Timer'; ring(); }
-  }
-  buttonEl.addEventListener('click', function () {
-    if (state === 'complete') { reset(); return; }
-    if (state === 'running') { pause(); return; }
-    var AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (AudioContextClass && !audioContext) audioContext = new AudioContextClass();
-    if (audioContext && audioContext.state === 'suspended') audioContext.resume();
-    state = 'running'; buttonEl.textContent = '⏸ Pause'; interval = setInterval(tick, 1000);
-  });
-  render();
-  window._cpTimers = window._cpTimers || {};
-  document.addEventListener('DOMContentLoaded', function () {
-    function bindReveal() {
-      if (typeof Reveal === 'undefined' || !Reveal.isReady || !Reveal.isReady()) { setTimeout(bindReveal, 200); return; }
-      var slideEl = buttonEl.closest('section');
-      var allSlides = Array.prototype.slice.call(document.querySelectorAll('.reveal .slides > section'));
-      var slideIndex = allSlides.indexOf(slideEl);
-      if (slideIndex >= 0) window._cpTimers[slideIndex] = pause;
-      Reveal.on('slidechanged', function (event) {
-        var previousIndex = allSlides.indexOf(event.previousSlide);
-        if (previousIndex >= 0 && window._cpTimers[previousIndex]) window._cpTimers[previousIndex]();
-      });
-    }
-    bindReveal();
-  });
-})();
 
-</script>
 ```
 
 
@@ -629,94 +545,109 @@ Position this after the general regularised matrix-factorisation objective. SVD 
 - Lee, D. D., & Seung, H. S. (1999). “Learning the parts of objects by non-negative matrix factorization.”
 :::
 
-## Worked SVD Lens: Signed Residual Directions
+## Worked SVD: One Signed Contrast
 
-**Toy centred residual matrix** — positive means “above this user’s baseline”; negative means “below it.”
+**Centred diner–restaurant residuals** — $+$ means above a diner’s baseline; $-$ means below it.
 
+::: {.factor-example-math style="font-size:.86em;margin-top:-.25em;"}
 $$
 R=
 \begin{bmatrix}
-\phantom{-}1.414 & -1.414\\
--1.414 & \phantom{-}1.414
+1&1&-2\\
+1&1&-2\\
+-2&-2&4
 \end{bmatrix}
 =
-\underbrace{\begin{bmatrix}1\\-1\end{bmatrix}}_{U_1}
-\underbrace{\begin{bmatrix}2\end{bmatrix}}_{\Sigma_1}
-\underbrace{\begin{bmatrix}0.707 & -0.707\end{bmatrix}}_{V_1^{\top}}
+\underbrace{\frac{1}{\sqrt6}\begin{bmatrix}1\\1\\-2\end{bmatrix}}_{U_1}
+\underbrace{[6]}_{\Sigma_1}
+\underbrace{\frac{1}{\sqrt6}\begin{bmatrix}1&1&-2\end{bmatrix}}_{V_1^\top}
 $$
 
-::: {.columns}
+$$
+\text{Exact rank 1:}\quad U_1\in\mathbb{R}^{3\times1},\quad \Sigma_1\in\mathbb{R}^{1\times1},\quad V_1^\top\in\mathbb{R}^{1\times3}.
+$$
+:::
+
+::: {.columns style="font-size:.78em;line-height:1.18;margin-top:-.45em;"}
 ::: {.column width="47%"}
+### Read the direction
 
-### Read the signs
-
-- User 1: Item A above baseline; Item B below.
-- User 2: the reverse pattern.
-- One signed direction captures the contrast.
-
+- Diners 1–2 load positively; Diner 3 loads negatively at twice the magnitude.
+- Restaurants 1–2 lie on one side of the contrast; Restaurant 3 lies on the other.
 :::
 ::: {.column width="47%"}
+### Why this is an SVD
 
-### Why SVD fits this view
-
-The negative entries are meaningful **residual directions**, not impossible ratings. A nonnegative-only factorisation could not reproduce this signed residual matrix directly.
-
+- $U_1$ and $V_1$ are unit-length directions; $\Sigma_1=6$ carries the scale.
+- Signed residuals are baseline deviations, not negative ratings.
 :::
 :::
 
 ::: notes
-Treat this as an exact rank-one example. The left vector gives the user-side sign pattern, the singular value gives magnitude, and the right vector gives the item-side contrast. Do not confuse the residual values with original ratings; they are values after a baseline has been removed.
+Treat this as an exact rank-one SVD. The normalization is deliberate: both vectors have norm one, so the singular value is 6. Read the sign pattern as a contrast in centred residuals, never as an identity label or observed rating. For example, entry (3,3) is 4 because the two negative loadings reinforce each other.
 [Sources]
 - Trefethen, L. N., & Bau, D. (1997). *Numerical Linear Algebra*, Chapters 1–2.
 :::
 
-## Worked NMF Lens: Additive Intensity Components
+## Worked NMF: Two Additive Components
 
-**Toy nonnegative interaction matrix** — every entry is an intensity, so components are required to add rather than subtract.
+**Nonnegative diner–restaurant intensities** — components add; they never cancel.
 
+::: {.factor-example-math style="font-size:.86em;margin-top:-.25em;"}
 $$
 X=
-\begin{bmatrix}2 & 1\\4 & 2\end{bmatrix}
+\begin{bmatrix}
+2&2&2\\
+2&3&4\\
+4&3&2
+\end{bmatrix}
 =
-\underbrace{\begin{bmatrix}1\\2\end{bmatrix}}_{W}
-\underbrace{\begin{bmatrix}2 & 1\end{bmatrix}}_{H}
+\underbrace{\begin{bmatrix}
+1&1\\
+1&2\\
+2&1
+\end{bmatrix}}_{W}
+\underbrace{\begin{bmatrix}
+2&1&0\\
+0&1&2
+\end{bmatrix}}_{H}
 $$
 
-::: {.columns}
+$$
+\text{Exact rank 2:}\quad W\in\mathbb{R}_{\ge0}^{3\times2},\qquad H\in\mathbb{R}_{\ge0}^{2\times3}.
+$$
+:::
+
+::: {.columns style="font-size:.78em;line-height:1.18;margin-top:-.45em;"}
 ::: {.column width="47%"}
+### Components in $H$
 
-### Read the factors
-
-- \(W\): User 2 has twice the component intensity of User 1.
-- \(H\): Item A expresses twice as much of the component as Item B.
-- Their product reconstructs every entry without negative values.
-
+- Component 1 is strongest at Restaurant 1: $[2,1,0]$.
+- Component 2 is strongest at Restaurant 3: $[0,1,2]$.
 :::
 ::: {.column width="47%"}
+### Mixtures in $W$
 
-### Why NMF fits this view
-
-For counts or accumulated activity, a factor can be interpreted as an **additive amount**. There is no “minus 3 clicks” component to cancel another one.
-
+- Diner mixtures are $[1,1]$, $[1,2]$, and $[2,1]$.
+- $X_{23}=1\times0+2\times2=4$: nonnegative contributions add.
 :::
 :::
 
 ::: notes
-Emphasise that this is an exact rank-one toy example, not a claim that one NMF component is always sufficient. The multiplication makes the additive reading concrete: 2×2=4 for User 2 and Item A. Interpretability remains tentative and context-dependent.
+This is an exact rank-two NMF reconstruction. Use it to teach additive structure, not parameter compression at this tiny 3×3 scale: the factor matrices display 12 numbers for 9 entries. The point is that multiple nonnegative components combine to produce the observed intensity. Mention that practical compression emerges as the original matrix grows.
 [Sources]
 - Lee, D. D., & Seung, H. S. (1999). “Learning the parts of objects by non-negative matrix factorization.”
 :::
 
-
 ## 🎰 Bandit Time: What Does Factorisation Learn? {background-color="#003D7C"}
 
-<p class="bandit-question"><strong>A restaurant app has a sparse matrix of diner ratings. Which description best matches latent-factor factorisation?</strong></p>
+<p style="color:#fff;"><strong>A restaurant app has a sparse matrix of diner ratings. Which description best matches latent-factor factorisation?</strong></p>
 
-<div class="bandit-options">
-  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> It sorts restaurants only by their recorded cuisine label.</div>
-  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> It learns compact vectors for diners and restaurants from many observed interactions, then uses their alignment to estimate affinity.</div>
-  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> It treats every unvisited restaurant as a one-star rating.</div>
-  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> It copies the rating of the geographically nearest diner.</div>
+<div class="cp-choice-grid">
+  <div class="cp-choice-card cp-choice-card--a"><strong style="display:inline-block;min-width:1.35em;">A.</strong> It sorts restaurants only by their recorded cuisine label.</div>
+  <div class="cp-choice-card cp-choice-card--b"><strong style="display:inline-block;min-width:1.35em;">B.</strong> It learns compact vectors for diners and restaurants from many observed interactions, then uses their alignment to estimate affinity.</div>
+  <div class="cp-choice-card cp-choice-card--c"><strong style="display:inline-block;min-width:1.35em;">C.</strong> It treats every unvisited restaurant as a one-star rating.</div>
+  <div class="cp-choice-card cp-choice-card--d"><strong style="display:inline-block;min-width:1.35em;">D.</strong> It copies the rating of the geographically nearest diner.</div>
 </div>
 
 ::: notes
@@ -788,10 +719,10 @@ $$
 \min_{\color{teal}{U},\color{orange}{V}}\; \sum_{\color{navy}{(u,i)\in\Omega}}\left(\color{navy}{r_{ui}}-\color{teal}{\mathbf{u}_u^\top}\color{orange}{\mathbf{v}_i}\right)^2 + \color{navy}{\lambda}\left(\lVert \color{teal}{U}\rVert_F^2+\lVert \color{orange}{V}\rVert_F^2\right)
 $$
 
-- <span style="color:#003D7C;"><strong>Observed interaction set Ω:</strong></span> explicit ratings or implicit events select the evidence the objective fits.
-- <span style="color:#00796B;"><strong>User factors U and their row vectors:</strong></span> are adjusted together with the item factors to explain the selected evidence.
-- <span style="color:#EF7C00;"><strong>Item factors V and their row vectors:</strong></span> align with user factors to produce the model score.
-- <span style="color:#003D7C;"><strong>Regularisation strength λ:</strong></span> limits convenient memorisation by penalising excessively large factor values.
+- <span class="cp-text--navy"><strong>Observed interaction set Ω:</strong></span> explicit ratings or implicit events select the evidence the objective fits.
+- <span class="cp-text--teal"><strong>User factors U and their row vectors:</strong></span> are adjusted together with the item factors to explain the selected evidence.
+- <span class="cp-text--orange"><strong>Item factors V and their row vectors:</strong></span> align with user factors to produce the model score.
+- <span class="cp-text--navy"><strong>Regularisation strength λ:</strong></span> limits convenient memorisation by penalising excessively large factor values.
 
 ::: notes
 Read the term key before narrating the equation: distinguish observed evidence, user factors, item factors, and the regularisation control. The objective and sampling scheme are design choices, not generic facts about user preference.
@@ -799,99 +730,103 @@ Read the term key before narrating the equation: distinguish observed evidence, 
 - Koren, Y., Bell, R., & Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.”
 :::
 
-## Group Discussion · Choose the Lens {background-color="#003D7C"}
+## {background-color="#003D7C"}
 
-```{=html}
-<div class="svd-nmf-activity-layout" style="display:grid;grid-template-columns:minmax(0,1fr) 188px;gap:1.0em;align-items:center;min-height:0;">
-  <div>
-    <div class="svd-nmf-activity-intro">In groups of 3–4, assign a lens, state the evidence, and name one caveat. <strong>Time: 5 minutes.</strong></div>
-    <div class="svd-nmf-activity-grid">
-      <div class="svd-nmf-case"><strong>Case A · Centred ratings</strong><br>Each value is a deviation from the user’s own average rating: some are positive, some negative.<br><em>Choose SVD or NMF. Why?</em></div>
-      <div class="svd-nmf-case"><strong>Case B · Watch counts</strong><br>Entries are nonnegative counts of completed views across topic groups.<br><em>Choose SVD or NMF. Why?</em></div>
-      <div class="svd-nmf-case"><strong>Case C · Missing ratings</strong><br>Most user–item pairs were never observed; they are not zero ratings.<br><em>What must both approaches avoid?</em></div>
-    </div>
-    <div class="svd-nmf-activity-output"><strong>Report back:</strong> one choice, one data property that justifies it, and one interpretation or missing-data caveat.</div>
-  </div>
-  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-    <svg width="156" height="156" viewBox="0 0 180 180" aria-label="Five-minute group discussion timer">
-      <circle cx="90" cy="90" r="75" fill="none" stroke="#27476F" stroke-width="14"/>
-      <circle id="donut-ring-s28" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/>
-      <text id="timer-text-s28" x="90" y="98" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="white">05:00</text>
-    </svg>
-    <span id="timer-status-s28" role="timer" aria-live="polite" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">05:00</span>
-    <button id="timer-btn-s28" type="button" style="margin-top:.72em;padding:.45em 1.15em;font-size:.78em;font-family:Arial,Helvetica,sans-serif;background:#EF7C00;color:#fff;border:none;border-radius:6px;cursor:pointer;letter-spacing:.04em;">▶ Start 5 min</button>
-  </div>
+<div style="height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;">
+  <p style="max-width:1100px;margin:0;font-size:2.05em;line-height:1.18;font-weight:bold;color:#fff;">👥 “Which factorisation lens fits the evidence?”<br><span style="display:block;margin-top:.62em;font-size:.38em;line-height:1.35;font-weight:normal;">In groups of 3–4: choose <strong>SVD</strong> or <strong>NMF</strong>, name the data property that supports the choice, and state one caveat. <strong>Time: 5 minutes.</strong></span></p>
 </div>
-<script>
-(function () {
-  var TOTAL = 5 * 60, remaining = TOTAL, interval = null, state = 'idle', audioContext = null;
-  var textEl = document.getElementById('timer-text-s28');
-  var statusEl = document.getElementById('timer-status-s28');
-  var ringEl = document.getElementById('donut-ring-s28');
-  var buttonEl = document.getElementById('timer-btn-s28');
-  var circumference = 2 * Math.PI * 75;
-  function pad(v) { return v < 10 ? '0' + v : '' + v; }
-  function render() {
-    var display = pad(Math.floor(remaining / 60)) + ':' + pad(remaining % 60);
-    textEl.textContent = display;
-    statusEl.textContent = state === 'complete' ? "Time's up!" : display;
-    ringEl.setAttribute('stroke-dashoffset', circumference * (1 - remaining / TOTAL));
-  }
-  function chime() {
-    if (!audioContext) return;
-    var oscillator = audioContext.createOscillator(), gain = audioContext.createGain(), now = audioContext.currentTime;
-    oscillator.type = 'sine'; oscillator.frequency.value = 880;
-    gain.gain.setValueAtTime(.18, now); gain.gain.exponentialRampToValueAtTime(.001, now + .5);
-    oscillator.connect(gain); gain.connect(audioContext.destination); oscillator.start(now); oscillator.stop(now + .5);
-  }
-  function pause() { if (state === 'running') { clearInterval(interval); interval = null; state = 'paused'; buttonEl.textContent = '▶ Resume'; } }
-  function reset() { clearInterval(interval); interval = null; remaining = TOTAL; state = 'idle'; ringEl.setAttribute('stroke', '#EF7C00'); buttonEl.textContent = '▶ Start 5 min'; render(); }
-  function tick() {
-    remaining = Math.max(0, remaining - 1); render();
-    if (remaining === 0) { clearInterval(interval); interval = null; state = 'complete'; ringEl.setAttribute('stroke', '#00c875'); buttonEl.textContent = '↻ Restart'; chime(); }
-  }
-  buttonEl.addEventListener('click', function () {
-    if (state === 'complete') { reset(); return; }
-    if (state === 'running') { pause(); return; }
-    var AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (AudioContextClass && !audioContext) audioContext = new AudioContextClass();
-    if (audioContext && audioContext.state === 'suspended') audioContext.resume();
-    state = 'running'; buttonEl.textContent = '⏸ Pause'; interval = setInterval(tick, 1000);
-  });
-  render();
-  document.addEventListener('DOMContentLoaded', function () {
-    function bindReveal() {
-      if (typeof Reveal === 'undefined' || !Reveal.isReady || !Reveal.isReady()) { setTimeout(bindReveal, 200); return; }
-      var slideEl = buttonEl.closest('section');
-      Reveal.on('slidechanged', function (event) { if (event.previousSlide === slideEl) pause(); });
-    }
-    bindReveal();
-  });
-})();
-</script>
-```
-
 ::: notes
-Expected direction: Case A supports a signed SVD-style residual view; Case B supports NMF’s nonnegative additive components; Case C requires both groups to state that unobserved interactions should not be silently treated as zero evidence. Invite a short report from one group per case, then bridge back to fitting only the observed set Ω. Start the five-minute timer after reading the report-back prompt; it pauses automatically when moving to the next slide.
+Expected direction: Case A supports a signed SVD-style residual view; Case B supports NMF’s nonnegative additive components; Case C requires groups to state that unobserved interactions should not be silently treated as zero evidence. Put the three cases on the board or read them aloud before displaying this prompt. Invite one short report per case, then bridge back to fitting only the observed set Ω.
 :::
 
 ## {background-color="#ffffff"}
 
 ```{=html}
 <div class="cp-frame-bg cp-frame-navy"></div>
-<div class="cp-frame-content week3-preview-frame">
-  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week · Preview</div>
-  <div class="cp-frame-title" style="color:#003D7C;">Week 03 — Evaluation of Recommendation Systems</div>
-  <p class="week3-preview-lede">An offline metric tells us how a list performed. We ask with our four-suit lenses whether it performs well under a scenario.</p>
-  <div class="suit-preview-grid" aria-label="Four evaluation lenses for Week 3">
-    <div class="suit-preview-card suit-clubs"><span class="suit-symbol">♣</span><div><strong>Robustness</strong><span>Can the protocol resist distorted or manipulated evidence?</span></div></div>
-    <div class="suit-preview-card suit-hearts"><span class="suit-symbol">♥</span><div><strong>Social impact</strong><span>Does the ranking inform without unwanted exposure or conformity?</span></div></div>
-    <div class="suit-preview-card suit-diamonds"><span class="suit-symbol">♦</span><div><strong>Discovery</strong><span>Does the list surface genuinely new, long-tail, or emerging choices?</span></div></div>
-    <div class="suit-preview-card suit-spades"><span class="suit-symbol">♠</span><div><strong>Constraints &amp; explanation</strong><span>Can users hold important attributes fixed and understand why an item appears?</span></div></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title" class="cp-text--navy">What Should Evaluation Be Responsible For?</div>
+  <div class="cp-frame-body" style="color:#333;display:grid;grid-template-columns:minmax(270px,.82fr) minmax(0,1.48fr);gap:1em;align-items:stretch;">
+    <section aria-label="Assigned reading" style="padding:.46em;border:2px solid #D5DEE9;background:#F8FAFD;">
+      <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener" aria-label="Open the assigned Straits Times article">
+        <img src="assets/article-thumbnails/st-social-media-safety-2026.png" alt="A young person looking at a phone while lying on a bed" style="display:block;width:100%;height:230px;object-fit:contain;background:#E9EFF6;">
+      </a>
+      <p style="margin-top:.22em;color:#657286;font-size:.54em;letter-spacing:.06em;">PHOTO: ST FILE</p>
+      <p><strong>Read:</strong> <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener">“S’pore studying restrictions on direct messaging, auto-play on social media to protect kids”</a></p>
+      <p style="color:#4B5563;">Use one detail about auto-play, direct messaging, or age assurance as evidence in your comment.</p>
+    </section>
+    <section aria-label="Canvas comment task">
+      <p><strong class="cp-text--navy">Canvas discussion board</strong> · post one individual comment before <strong class="cp-text--teal">Mon, 23:59 SGT</strong></p>
+      <div style="margin:0 0 .62em;padding:.72em .82em;border-left:7px solid #00796B;background:#F0F8F6;color:#003D7C;font-weight:bold;line-height:1.28;">A recommender may be evaluated using whether people watch, click, or continue interacting with suggested content. What is <strong>one responsibility</strong> that evaluation should include for younger users, beyond predicting continued engagement?</div>
+      <p>In <strong>120–160 words</strong>, choose and name <strong>one card-suit lens</strong>, cite one article detail, and propose one piece of evidence, safeguard, or user control the platform should examine.</p>
+      <div aria-label="Choose one card-suit lens" style="display:grid;grid-template-columns:1fr 1fr;gap:.32em .55em;margin:.12em 0 .62em;">
+        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b class="cp-text--navy">♣ Robustness</b> · narrow or harmful incentives?</span>
+        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b style="color:#C62828;">♥ Social impact</b> · safety, well-being, or exposure?</span>
+        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b style="color:#C62828;">♦ Discovery</b> · variety or more of the same?</span>
+        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b class="cp-text--navy">♠ Control &amp; explanation</b> · adjust or challenge the feed?</span>
+      </div>
+      <p style="margin-bottom:0;color:#A24B00;font-weight:bold;text-align:center;"><strong>No classmate reply this week.</strong> Next week: protocols, ranking metrics, and what a score leaves out.</p>
+    </section>
   </div>
 </div>
 ```
 
 ::: notes
-Preview the move from modelling and ranking to evaluation. Reactivate the Week 01 card-suit lens: Clubs foreground robustness and manipulation; Hearts social evidence and conformity; Diamonds novelty and long-tail discovery; Spades user constraints and explanation. State that Week 03 will examine evaluation protocols, ranking metrics, and what accuracy-only evaluation can miss.
+Use the Week 01 Slide 59 treatment directly: white field, navy frame, orange-on-navy label, and the standard shared CP4285 frame typography. The image is a local PNG copy of the article’s lead image so that it can render reliably; credit it as “PHOTO: ST FILE.” Direct students to the linked article and Canvas discussion board. State the deadline clearly. The task is an individual comment only; explicitly state that no reply is required because of the assignment deadline. Remind students to name their selected suit in the first sentence.
+
+[Sources]
+- Koh, S. (2026, 31 March). “S’pore studying restrictions on direct messaging, auto-play on social media to protect kids.” *The Straits Times*. Photo: ST FILE.
+:::
+
+## {background-color="#002a26"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-teal"></div>
+<div class="cp-frame-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#00796B;color:white;">Next Week Preview — Week 03</div>
+  <div class="cp-frame-title" style="color:#80cbc4;">Evaluation of Recommendation Systems</div>
+  <div class="cp-frame-body" style="color:#cce8e5;">
+    <section>
+      <p style="font-size:1.08em;line-height:1.35;">An offline metric tells us how a list performed. Next, we ask whether the recommendation process performs well under a scenario.</p>
+      <p><strong style="color:#ffffff;">In Week 3:</strong></p>
+      <ul>
+        <li>design an evaluation protocol;</li>
+        <li>interpret ranked-list quality; and</li>
+        <li>identify what a score does not capture.</li>
+      </ul>
+    </section>
+    <section aria-label="The Week 01 four-suit evaluation lens" style="padding-left:.92em;border-left:5px solid #80cbc4;">
+      <p><strong style="color:#80cbc4;">Bring the Week 01 four-suit lens</strong></p>
+      <p><b>♣ ♥ ♦ ♠</b></p>
+    </section>
+  </div>
+</div>
+```
+
+::: notes
+:::
+
+## {background-color="#002a26"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-teal"></div>
+<div class="cp-frame-content" style="color:#fff;">
+  <div class="cp-frame-label" style="background:#00796B;color:#fff;">Next Week Preview — Week 02</div>
+  <div class="cp-frame-title" style="color:#80cbc4;">Latent Factor Models</div>
+  <div class="cp-frame-body" style="color:#cce8e5;">
+    <p style="font-size:1.08em;margin:0 0 .55em;"><u>What if useful similarities are not directly visible in a sparse matrix?</u></p>
+    <ul style="margin:.3em 0 0;line-height:1.55;">
+      <li><strong>Move beyond local overlap</strong> — infer compact user and item representations from many ratings together.</li>
+      <li><strong>Interpret sparse evidence</strong> — ask which hidden preferences may explain observed patterns.</li>
+      <li><strong>Keep the same questions</strong> — what evidence is represented, what does the model optimise, and who might it leave unseen?</li>
+    </ul>
+  </div>
+</div>
+```
+
+::: notes
+Preview Week 02 without teaching factorisation yet. The contrast is local visible overlap versus inferred latent structure. Carry forward the course's problem-framing questions so the transition is conceptual, not merely mathematical.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.5-2.5.2, pp. 47-50.
 :::
