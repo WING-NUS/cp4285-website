@@ -845,8 +845,8 @@ Read the figure literally: item frequency falls sharply, then extends across a l
     <tr><th style="padding:.28em;text-align:left;">User</th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>3</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>4</sub></th><th style="padding:.28em;"><i>i</i><sub>5</sub></th></tr>
   </thead>
   <tbody>
-    <tr style="background:#F0F8F6;color:#00796B;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub> (<i>u</i>)</th><td class="cp-divider--red">5</td><td>?</td><td class="cp-divider--red">2</td><td class="cp-divider--red">4</td><td>?</td></tr>
-    <tr style="background:#FFF5EA;color:#A24B00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub> (<i>v</i>)</th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td>4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">2</td><td>4</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub> (<i>u</i>)</th><td class="cp-divider--red">5</td><td>?</td><td class="cp-divider--red">2</td><td class="cp-divider--red">4</td><td>?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub> (<i>v</i>)</th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td>4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">2</td><td>4</td></tr>
   </tbody>
 </table>
 ```
@@ -856,7 +856,7 @@ Read the figure literally: item frequency falls sharply, then extends across a l
 </div>
 
 $$
-I_{\color{teal}{u_1}} \cap I_{\color{orange}{u_6}} = \{i_1,i_3,i_4\}
+I_u \cap I_v = \{i_1,i_3,i_4\}
 $$
 
 <div style="font-size:.82em;line-height:1.35;">
