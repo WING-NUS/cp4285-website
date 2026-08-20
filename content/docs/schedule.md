@@ -63,10 +63,10 @@ Ethics thread: bias encoded in historical interactions, representation, and inte
 
 Learning outcomes:
 
-- Explain latent-factor models.
-- Train embedding-based recommenders.
-- Compare prediction and ranking objectives.
-- Discuss risks of learning from historical behavior.
+- Distinguish explicit features, text representations, and learned latent factors as ways to represent recommendation evidence.
+- Explain how latent-factor models use user and item vectors, dot-product scores, and regularised fitting on observed interactions.
+- Compare signed SVD-style factorisation with nonnegative matrix factorisation, and justify which lens suits a given kind of evidence.
+- Critique the limits of latent-factor scores, including sparse and unobserved interactions, exposure, diversity, and interpretation.
 
 **Slides:**
 
