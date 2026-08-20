@@ -130,7 +130,7 @@ Expanded weighted phrase cloud. Font size represents thematic centrality in the 
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       Name one latent dimension that could explain several ratings—but is not an item metadata label.
     </div>
-    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user-item matrix.</p>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user–item matrix.</p>
   </div>
 </div>
 ```

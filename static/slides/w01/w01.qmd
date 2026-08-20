@@ -926,34 +926,41 @@ Read the equation by colour, not symbol by symbol. Orange selects comparable evi
 
 ## Worked Example I: Pearson Correlation
 
-### User–user example: users 1 and 6
+### User–user example: <span style="color:#00796B;">$u_1$</span> and <span style="color:#A24B00;">$u_6$</span>
 
 ::: {.columns}
 ::: {.column width="45%"}
-**Excerpt from the user-item matrix $R$**
+**Excerpt from the user–item matrix $R$**
 
-| User | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
-|---|:---:|:---:|:---:|:---:|:---:|
-| $u_1$ | 5 | ? | 2 | 4 | ? |
-| $u_6$ | 5 | 4 | 5 | 2 | 4 |
+```{=html}
+<table style="width:100%;border-collapse:collapse;text-align:center;">
+  <thead style="background:#003D7C;color:#fff;">
+    <tr><th style="padding:.28em;text-align:left;">User</th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>3</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>4</sub></th><th style="padding:.28em;"><i>i</i><sub>5</sub></th></tr>
+  </thead>
+  <tbody>
+    <tr style="color:#00796B;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td class="cp-divider--red">5</td><td>?</td><td class="cp-divider--red">2</td><td class="cp-divider--red">4</td><td>?</td></tr>
+    <tr style="color:#A24B00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td>4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">2</td><td>4</td></tr>
+  </tbody>
+</table>
+```
 :::
 ::: {.column width="55%"}
 ::: {style="font-size:.78em;line-height:1.15;"}
 **Step 1 — begin with the same overlap**
 
-$$I_{u_1}\cap I_{u_6}=\{i_1,i_3,i_4\}$$
+$$I_{\color{teal}{u_1}}\cap I_{\color{orange}{u_6}}=\{i_1,i_3,i_4\}$$
 
 ::: {.fragment}
 **Step 2 — subtract each user's own mean**
 
-$$\mu_1=\frac{11}{3},\quad \mu_6=4$$
-$$\mathbf s_1=\left(\frac{4}{3},-\frac{5}{3},\frac{1}{3}\right),\quad \mathbf s_6=(1,1,-2)$$
+$$\mu_{\color{teal}{1}}=\color{teal}{\frac{11}{3}},\quad \mu_{\color{orange}{6}}=\color{orange}{4}$$
+$$\mathbf s_{\color{teal}{1}}=\color{teal}{\left(\frac{4}{3},-\frac{5}{3},\frac{1}{3}\right)},\quad \mathbf s_{\color{orange}{6}}=\color{orange}{(1,1,-2)}$$
 :::
 
 ::: {.fragment}
 **Step 3 — correlate the centred vectors**
 
-$$\operatorname{Pearson}(u_1,u_6)=\frac{-1}{\sqrt{14/3}\sqrt{6}}=-0.189$$
+$$\operatorname{Pearson}(\color{teal}{u_1},\color{orange}{u_6})=\frac{-1}{\color{teal}{\sqrt{14/3}}\color{orange}{\sqrt{6}}}=-0.189$$
 :::
 :::
 :::
@@ -1004,16 +1011,23 @@ Cosine asks whether two observed rating vectors point in a similar direction. Un
 
 ## Worked Example II: Raw Cosine
 
-### Users 1 and 6
+### <span style="color:#00796B;">$u_1$</span> and <span style="color:#A24B00;">$u_6$</span>
 
 ::: {.columns}
 ::: {.column width="45%"}
-**Excerpt from the user-item matrix $R$**
+**Excerpt from the user–item matrix $R$**
 
-| User | $i_1$ | $i_2$ | $i_3$ | $i_4$ | $i_5$ |
-|---|:---:|:---:|:---:|:---:|:---:|
-| $u_1$ | 5 | ? | 2 | 4 | ? |
-| $u_6$ | 5 | 4 | 5 | 2 | 4 |
+```{=html}
+<table style="width:100%;border-collapse:collapse;text-align:center;">
+  <thead style="background:#003D7C;color:#fff;">
+    <tr><th style="padding:.28em;text-align:left;">User</th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>3</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>4</sub></th><th style="padding:.28em;"><i>i</i><sub>5</sub></th></tr>
+  </thead>
+  <tbody>
+    <tr style="color:#00796B;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td class="cp-divider--red">5</td><td>?</td><td class="cp-divider--red">2</td><td class="cp-divider--red">4</td><td>?</td></tr>
+    <tr style="color:#A24B00;font-weight:700;"><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td>4</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">5</td><td class="cp-divider--red" style="border-bottom:3px solid #D32F2F;">2</td><td>4</td></tr>
+  </tbody>
+</table>
+```
 
 ::: {.callout-tip .to-think-about title="To think about"}
 What are the differences between cosine and Pearson here?
@@ -1022,18 +1036,18 @@ What are the differences between cosine and Pearson here?
 ::: {.column width="55%"}
 **Step 1 — keep only shared ratings**
 
-$$I_{u_1}\cap I_{u_6}=\{i_1,i_3,i_4\}$$
+$$I_{\color{teal}{u_1}}\cap I_{\color{orange}{u_6}}=\{i_1,i_3,i_4\}$$
 
 ::: {.fragment}
 **Step 2 — form the two rating vectors**
 
-$$\mathbf r_1=(5,2,4)\qquad \mathbf r_6=(5,5,2)$$
+$$\mathbf r_{\color{teal}{1}}=\color{teal}{(5,2,4)}\qquad \mathbf r_{\color{orange}{6}}=\color{orange}{(5,5,2)}$$
 :::
 
 ::: {.fragment}
 **Step 3 — normalise their dot product**
 
-$$\operatorname{raw\text{-}cosine}(u_1,u_6)=\frac{43}{\sqrt{45}\sqrt{54}}=0.872$$
+$$\operatorname{raw\text{-}cosine}(\color{teal}{u_1},\color{orange}{u_6})=\frac{43}{\color{teal}{\sqrt{45}}\color{orange}{\sqrt{54}}}=0.872$$
 :::
 :::
 :::
@@ -1088,24 +1102,24 @@ The change is conceptual as well as notational: compare columns, so the overlap 
 
 ## Worked Example III: Item–Item
 
-### Items $i_1$ and $i_5$ after user mean-centring
+### Items <span style="color:#00796B;">$i_1$</span> and <span style="color:#A24B00;">$i_5$</span> after user mean-centring
 
 ::: {.columns}
 ::: {.column width="35%"}
-**Original user-item matrix $R$**
+**Original user–item matrix $R$**
 
 ```{=html}
 <table style="width:100%;border-collapse:collapse;text-align:center;font-size:.72em;line-height:1.12;">
-  <thead style="background:#003D7C;color:#fff;"><tr><th style="padding:.28em;"><i>R</i></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;"><i>i</i><sub>3</sub></th><th style="padding:.28em;"><i>i</i><sub>4</sub></th><th style="padding:.28em;border:3px solid #D32F2F;"><i>i</i><sub>5</sub></th></tr></thead>
+  <thead style="background:#003D7C;color:#fff;"><tr><th style="padding:.28em;"><i>R</i></th><th style="padding:.28em;border:3px solid #D32F2F;color:#80CBC4;"><i>i</i><sub>1</sub></th><th style="padding:.28em;"><i>i</i><sub>2</sub></th><th style="padding:.28em;"><i>i</i><sub>3</sub></th><th style="padding:.28em;"><i>i</i><sub>4</sub></th><th style="padding:.28em;border:3px solid #D32F2F;color:#FFCC80;"><i>i</i><sub>5</sub></th></tr></thead>
   <tbody>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td class="cp-divider--red">5</td><td>?</td><td>2</td><td>4</td><td class="cp-divider--red">?</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>2</sub></th><td class="cp-divider--red">?</td><td>4</td><td>?</td><td>1</td><td class="cp-divider--red">3</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>3</sub></th><td class="cp-divider--red">?</td><td>?</td><td>?</td><td>?</td><td class="cp-divider--red">?</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>4</sub></th><td class="cp-divider--red">3</td><td>?</td><td>4</td><td>?</td><td class="cp-divider--red">2</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>5</sub></th><td class="cp-divider--red">?</td><td>2</td><td>?</td><td>5</td><td class="cp-divider--red">?</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red">5</td><td>4</td><td>5</td><td>2</td><td class="cp-divider--red">4</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>7</sub></th><td class="cp-divider--red">5</td><td>1</td><td>5</td><td>1</td><td class="cp-divider--red">5</td></tr>
-    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>8</sub></th><td style="border:3px solid #D32F2F;border-top:0;">?</td><td>?</td><td>4</td><td>?</td><td style="border:3px solid #D32F2F;border-top:0;">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>1</sub></th><td class="cp-divider--red" style="color:#00796B;font-weight:700;">5</td><td>?</td><td>2</td><td>4</td><td class="cp-divider--red" style="color:#A24B00;font-weight:700;">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>2</sub></th><td class="cp-divider--red" style="color:#00796B;font-weight:700;">?</td><td>4</td><td>?</td><td>1</td><td class="cp-divider--red" style="color:#A24B00;font-weight:700;">3</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>3</sub></th><td class="cp-divider--red" style="color:#00796B;font-weight:700;">?</td><td>?</td><td>?</td><td>?</td><td class="cp-divider--red" style="color:#A24B00;font-weight:700;">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>4</sub></th><td class="cp-divider--red" style="color:#00796B;font-weight:700;">3</td><td>?</td><td>4</td><td>?</td><td class="cp-divider--red" style="color:#A24B00;font-weight:700;">2</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>5</sub></th><td class="cp-divider--red" style="color:#00796B;font-weight:700;">?</td><td>2</td><td>?</td><td>5</td><td class="cp-divider--red" style="color:#A24B00;font-weight:700;">?</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>6</sub></th><td class="cp-divider--red" style="color:#00796B;font-weight:700;">5</td><td>4</td><td>5</td><td>2</td><td class="cp-divider--red" style="color:#A24B00;font-weight:700;">4</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>7</sub></th><td class="cp-divider--red" style="color:#00796B;font-weight:700;">5</td><td>1</td><td>5</td><td>1</td><td class="cp-divider--red" style="color:#A24B00;font-weight:700;">5</td></tr>
+    <tr><th style="padding:.24em;text-align:left;"><i>u</i><sub>8</sub></th><td style="border:3px solid #D32F2F;border-top:0;color:#00796B;font-weight:700;">?</td><td>?</td><td>4</td><td>?</td><td style="border:3px solid #D32F2F;border-top:0;color:#A24B00;font-weight:700;">?</td></tr>
   </tbody>
 </table>
 ```
@@ -1114,15 +1128,15 @@ The change is conceptual as well as notational: compare columns, so the overlap 
 ::: {.column width="15%"}
 :::
 ::: {.column width="50%"}
-| User | $\mathbf{s}_{i_1}$ | $\mathbf{s}_{i_5}$ |
+| User | $\color{teal}{\mathbf{s}_{i_1}}$ | $\color{orange}{\mathbf{s}_{i_5}}$ |
 |---|---:|---:|
-| 4 | $0$ | $-1$ |
-| 6 | $1$ | $0$ |
-| 7 | $1.6$ | $1.6$ |
+| 4 | $\color{teal}{0}$ | $\color{orange}{-1}$ |
+| 6 | $\color{teal}{1}$ | $\color{orange}{0}$ |
+| 7 | $\color{teal}{1.6}$ | $\color{orange}{1.6}$ |
 
 <div style="font-size:.88em;">
 
-$$\operatorname{adjusted\text{-}cosine}(\mathbf{s}_{i_1},\mathbf{s}_{i_5})=\frac{2.56}{\sqrt{3.56}\sqrt{3.56}}=0.719$$
+$$\operatorname{adjusted\text{-}cosine}(\color{teal}{\mathbf{s}_{i_1}},\color{orange}{\mathbf{s}_{i_5}})=\frac{2.56}{\color{teal}{\sqrt{3.56}}\color{orange}{\sqrt{3.56}}}=0.719$$
 
 </div>
 
@@ -1133,7 +1147,7 @@ The item vectors are $\mathbf{s}_{i_1}$ and $\mathbf{s}_{i_5}$; their entries ar
 :::
 
 ::: notes
-Work from the Section 04 user-item matrix. The three users who rated both items provide the centred item vectors. Their dot product is 2.56 and both vector lengths are square root 3.56, giving adjusted cosine 0.719. Contrast the axis with the previous slide: user-user similarity compares rows; item-item similarity compares columns.
+Work from the Section 04 user–item matrix. The three users who rated both items provide the centred item vectors. Their dot product is 2.56 and both vector lengths are square root 3.56, giving adjusted cosine 0.719. Contrast the axis with the previous slide: user–user similarity compares rows; item–item similarity compares columns.
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.14 and Section 2.3.2, pp. 40-41.
@@ -1184,7 +1198,7 @@ $$\color{orange}{Q_{i_5}(u_1)}=\{i_1,i_3,i_4\}$$
 :::
 
 ::: notes
-This is the corresponding item-based prediction step. Start with the target item i5 and user u1: use only item neighbours of i5 that u1 has rated. Unlike the mean-centred user-based form, the textbook presents this baseline item-based prediction as a weighted average of u1's raw neighbour-item ratings. Emphasise that adjusted cosine was used to construct the item-to-item similarities; the prediction then weights the user's own evidence.
+This is the corresponding item-based prediction step. Start with the target item i5 and user u1: use only item neighbours of i5 that u1 has rated. Unlike the mean-centred user-based form, the textbook presents this baseline item-based prediction as a weighted average of u1's raw neighbour–item ratings. Emphasise that adjusted cosine was used to construct the item-to-item similarities; the prediction then weights the user's own evidence.
 
 [Sources]
 - Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Equation 2.15 and Section 2.3.2, pp. 40-41.
@@ -1232,22 +1246,22 @@ Significance weighting multiplies an existing similarity by a discount based on 
 
 ## Worked Example IV: Significance Weighting
 
-### User–user example: users 1 and 6
+### User–user example: <span style="color:#00796B;">$u_1$</span> and <span style="color:#A24B00;">$u_6$</span>
 
-**Step 1 — start from the user-user Pearson score**
+**Step 1 — start from the user–user Pearson score**
 
-$$\operatorname{Pearson}(u_1,u_6)=-0.189$$
+$$\operatorname{Pearson}(\color{teal}{u_1},\color{orange}{u_6})=-0.189$$
 
 ::: {.fragment}
 **Step 2 — count the overlap and set a threshold**
 
-$$|I_{u_1}\cap I_{u_6}|=3\qquad \beta=10$$
+$$|I_{\color{teal}{u_1}}\cap I_{\color{orange}{u_6}}|=3\qquad \color{navy}{\beta}=10$$
 :::
 
 ::: {.fragment}
 **Step 3 — apply the confidence discount**
 
-$$\operatorname{discounted\text{-}sim}_{\beta=10}=-0.189\left(\frac{3}{10}\right)=-0.057$$
+$$\operatorname{discounted\text{-}sim}_{\color{navy}{\beta}=10}(\color{teal}{u_1},\color{orange}{u_6})=-0.189\left(\frac{3}{\color{navy}{10}}\right)=-0.057$$
 :::
 
 ::: notes
@@ -1334,7 +1348,7 @@ This is deliberately a minimal invocation, not a full experiment recipe. The cla
       </div>
     </div>
     <div style="margin-top:.8em;padding:.68em .9em;background:#fff;color:#293241;border-radius:8px;">
-      <strong class="cp-text--navy">Pairs:</strong> choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br/>
+      <strong class="cp-text--navy">Pairs:</strong> Choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br/>
       <strong class="cp-text--navy">Optional:</strong> Consider User Archetypes ♣ · <span style="color:#D32F2F;">♥</span> · <span style="color:#D32F2F;">♦</span> · ♠
     </div>
   </div>
@@ -1463,7 +1477,7 @@ Return to the coloured scheme. The equation is the mean-centred user-based predi
 
 ### Offline: prepare the neighbourhoods
 
-- Compute user-user or item-item similarities.
+- Compute user–user or item–item similarities.
 - Store selected peer groups rather than every possible comparison when appropriate.
 - Refresh them as ratings, users, and items change.
 
@@ -1496,7 +1510,7 @@ Contrast offline similarity construction and peer-group maintenance with online 
 
 <div style="font-size:.92em;line-height:1.32;">
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1em;">
-  <div style="padding:.8em 1em;border-left:6px solid #003D7C;background:#F2F6FA;"><strong class="cp-text--navy">1. Represent</strong><br/>Start with sparse user-item evidence and make missingness visible.</div>
+  <div style="padding:.8em 1em;border-left:6px solid #003D7C;background:#F2F6FA;"><strong class="cp-text--navy">1. Represent</strong><br/>Start with sparse user–item evidence and make missingness visible.</div>
   <div style="padding:.8em 1em;border-left:6px solid #00796B;background:#F0F8F6;"><strong class="cp-text--teal">2. Compare</strong><br/>Choose an axis, similarity, centring rule, and confidence treatment.</div>
   <div style="padding:.8em 1em;border-left:6px solid #EF7C00;background:#FFF6ED;"><strong style="color:#B85F00;">3. Predict &amp; rank</strong><br/>Select valid neighbours, aggregate evidence, then rank candidates.</div>
 </div>
@@ -1543,7 +1557,7 @@ This is the course-level close for Week 01. It bridges the problem framing from 
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       Name one latent dimension that could explain several ratings—but is not an item metadata label.
     </div>
-    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user-item matrix.</p>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user–item matrix.</p>
   </div>
 </div>
 ```

@@ -2665,51 +2665,51 @@ display:block!important;
 </section>
 <section id="worked-example-i-pearson-correlation" class="slide level2">
 <h2>Worked Example I: Pearson Correlation</h2>
-<h3 id="useruser-example-users-1-and-6">User–user example: users 1 and 6</h3>
+<h3 id="useruser-example-u_1-and-u_6">User–user example: <span style="color:#00796B;"><span class="math inline">\(u_1\)</span></span> and <span style="color:#A24B00;"><span class="math inline">\(u_6\)</span></span></h3>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p><strong>Excerpt from the user-item matrix <span class="math inline">\(R\)</span></strong></p>
-<table class="caption-top">
-<thead>
+<p><strong>Excerpt from the user–item matrix <span class="math inline">\(R\)</span></strong></p>
+<table class="caption-top" style="width:100%;border-collapse:collapse;text-align:center;">
+<thead style="background:#003D7C;color:#fff;">
 <tr class="header">
-<th>User</th>
-<th style="text-align: center;"><span class="math inline">\(i_1\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_2\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_3\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_4\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_5\)</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: left; padding: .28em;">User</th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>1</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em"><em>i</em><sub>2</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>3</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>4</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em"><em>i</em><sub>5</sub></th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><span class="math inline">\(u_1\)</span></td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">?</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">?</td>
+<tr class="odd" style="color:#00796B;font-weight:700;">
+<th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>1</sub></th>
+<td class="cp-divider--red">5</td>
+<td>?</td>
+<td class="cp-divider--red">2</td>
+<td class="cp-divider--red">4</td>
+<td>?</td>
 </tr>
-<tr class="even">
-<td><span class="math inline">\(u_6\)</span></td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">4</td>
+<tr class="even" style="color:#A24B00;font-weight:700;">
+<th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>6</sub></th>
+<td class="cp-divider--red" style="border-bottom: 3px solid #D32F2F">5</td>
+<td>4</td>
+<td class="cp-divider--red" style="border-bottom: 3px solid #D32F2F">5</td>
+<td class="cp-divider--red" style="border-bottom: 3px solid #D32F2F">2</td>
+<td>4</td>
 </tr>
 </tbody>
 </table>
 </div><div class="column" style="width:55%;">
 <div style="font-size:.78em;line-height:1.15;">
 <p><strong>Step 1 — begin with the same overlap</strong></p>
-<p><span class="math display">\[I_{u_1}\cap I_{u_6}=\{i_1,i_3,i_4\}\]</span></p>
+<p><span class="math display">\[I_{\color{teal}{u_1}}\cap I_{\color{orange}{u_6}}=\{i_1,i_3,i_4\}\]</span></p>
 <div class="fragment">
 <p><strong>Step 2 — subtract each user’s own mean</strong></p>
-<p><span class="math display">\[\mu_1=\frac{11}{3},\quad \mu_6=4\]</span> <span class="math display">\[\mathbf s_1=\left(\frac{4}{3},-\frac{5}{3},\frac{1}{3}\right),\quad \mathbf s_6=(1,1,-2)\]</span></p>
+<p><span class="math display">\[\mu_{\color{teal}{1}}=\color{teal}{\frac{11}{3}},\quad \mu_{\color{orange}{6}}=\color{orange}{4}\]</span> <span class="math display">\[\mathbf s_{\color{teal}{1}}=\color{teal}{\left(\frac{4}{3},-\frac{5}{3},\frac{1}{3}\right)},\quad \mathbf s_{\color{orange}{6}}=\color{orange}{(1,1,-2)}\]</span></p>
 </div>
 <div class="fragment">
 <p><strong>Step 3 — correlate the centred vectors</strong></p>
-<p><span class="math display">\[\operatorname{Pearson}(u_1,u_6)=\frac{-1}{\sqrt{14/3}\sqrt{6}}=-0.189\]</span></p>
+<p><span class="math display">\[\operatorname{Pearson}(\color{teal}{u_1},\color{orange}{u_6})=\frac{-1}{\color{teal}{\sqrt{14/3}}\color{orange}{\sqrt{6}}}=-0.189\]</span></p>
 </div>
 </div>
 </div></div>
@@ -2771,37 +2771,37 @@ display:block!important;
 </section>
 <section id="worked-example-ii-raw-cosine" class="slide level2">
 <h2>Worked Example II: Raw Cosine</h2>
-<h3 id="users-1-and-6">Users 1 and 6</h3>
+<h3 id="u_1-and-u_6"><span style="color:#00796B;"><span class="math inline">\(u_1\)</span></span> and <span style="color:#A24B00;"><span class="math inline">\(u_6\)</span></span></h3>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p><strong>Excerpt from the user-item matrix <span class="math inline">\(R\)</span></strong></p>
-<table class="caption-top">
-<thead>
+<p><strong>Excerpt from the user–item matrix <span class="math inline">\(R\)</span></strong></p>
+<table class="caption-top" style="width:100%;border-collapse:collapse;text-align:center;">
+<thead style="background:#003D7C;color:#fff;">
 <tr class="header">
-<th>User</th>
-<th style="text-align: center;"><span class="math inline">\(i_1\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_2\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_3\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_4\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(i_5\)</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: left; padding: .28em;">User</th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>1</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em"><em>i</em><sub>2</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>3</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>4</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em"><em>i</em><sub>5</sub></th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><span class="math inline">\(u_1\)</span></td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">?</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">?</td>
+<tr class="odd" style="color:#00796B;font-weight:700;">
+<th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>1</sub></th>
+<td class="cp-divider--red">5</td>
+<td>?</td>
+<td class="cp-divider--red">2</td>
+<td class="cp-divider--red">4</td>
+<td>?</td>
 </tr>
-<tr class="even">
-<td><span class="math inline">\(u_6\)</span></td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">4</td>
+<tr class="even" style="color:#A24B00;font-weight:700;">
+<th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>6</sub></th>
+<td class="cp-divider--red" style="border-bottom: 3px solid #D32F2F">5</td>
+<td>4</td>
+<td class="cp-divider--red" style="border-bottom: 3px solid #D32F2F">5</td>
+<td class="cp-divider--red" style="border-bottom: 3px solid #D32F2F">2</td>
+<td>4</td>
 </tr>
 </tbody>
 </table>
@@ -2822,14 +2822,14 @@ display:block!important;
 </div>
 </div><div class="column" style="width:55%;">
 <p><strong>Step 1 — keep only shared ratings</strong></p>
-<p><span class="math display">\[I_{u_1}\cap I_{u_6}=\{i_1,i_3,i_4\}\]</span></p>
+<p><span class="math display">\[I_{\color{teal}{u_1}}\cap I_{\color{orange}{u_6}}=\{i_1,i_3,i_4\}\]</span></p>
 <div class="fragment">
 <p><strong>Step 2 — form the two rating vectors</strong></p>
-<p><span class="math display">\[\mathbf r_1=(5,2,4)\qquad \mathbf r_6=(5,5,2)\]</span></p>
+<p><span class="math display">\[\mathbf r_{\color{teal}{1}}=\color{teal}{(5,2,4)}\qquad \mathbf r_{\color{orange}{6}}=\color{orange}{(5,5,2)}\]</span></p>
 </div>
 <div class="fragment">
 <p><strong>Step 3 — normalise their dot product</strong></p>
-<p><span class="math display">\[\operatorname{raw\text{-}cosine}(u_1,u_6)=\frac{43}{\sqrt{45}\sqrt{54}}=0.872\]</span></p>
+<p><span class="math display">\[\operatorname{raw\text{-}cosine}(\color{teal}{u_1},\color{orange}{u_6})=\frac{43}{\color{teal}{\sqrt{45}}\color{orange}{\sqrt{54}}}=0.872\]</span></p>
 </div>
 </div></div>
 <aside class="notes">
@@ -2906,85 +2906,85 @@ display:block!important;
 </section>
 <section id="worked-example-iii-itemitem" class="slide level2">
 <h2>Worked Example III: Item–Item</h2>
-<h3 id="items-i_1-and-i_5-after-user-mean-centring">Items <span class="math inline">\(i_1\)</span> and <span class="math inline">\(i_5\)</span> after user mean-centring</h3>
+<h3 id="items-i_1-and-i_5-after-user-mean-centring">Items <span style="color:#00796B;"><span class="math inline">\(i_1\)</span></span> and <span style="color:#A24B00;"><span class="math inline">\(i_5\)</span></span> after user mean-centring</h3>
 <div class="columns">
 <div class="column" style="width:35%;">
-<p><strong>Original user-item matrix <span class="math inline">\(R\)</span></strong></p>
+<p><strong>Original user–item matrix <span class="math inline">\(R\)</span></strong></p>
 <table class="caption-top" style="width:100%;border-collapse:collapse;text-align:center;font-size:.72em;line-height:1.12;">
 <thead style="background:#003D7C;color:#fff;">
 <tr class="header">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .28em;"><em>R</em></th>
-<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>1</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F; color: #80CBC4"><em>i</em><sub>1</sub></th>
 <th data-quarto-table-cell-role="th" style="padding: .28em"><em>i</em><sub>2</sub></th>
 <th data-quarto-table-cell-role="th" style="padding: .28em"><em>i</em><sub>3</sub></th>
 <th data-quarto-table-cell-role="th" style="padding: .28em"><em>i</em><sub>4</sub></th>
-<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F"><em>i</em><sub>5</sub></th>
+<th data-quarto-table-cell-role="th" style="padding: .28em; border: 3px solid #D32F2F; color: #FFCC80"><em>i</em><sub>5</sub></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>1</sub></th>
-<td class="cp-divider--red">5</td>
+<td class="cp-divider--red" style="color: #00796B; font-weight: 700">5</td>
 <td>?</td>
 <td>2</td>
 <td>4</td>
-<td class="cp-divider--red">?</td>
+<td class="cp-divider--red" style="color: #A24B00; font-weight: 700">?</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>2</sub></th>
-<td class="cp-divider--red">?</td>
+<td class="cp-divider--red" style="color: #00796B; font-weight: 700">?</td>
 <td>4</td>
 <td>?</td>
 <td>1</td>
-<td class="cp-divider--red">3</td>
+<td class="cp-divider--red" style="color: #A24B00; font-weight: 700">3</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>3</sub></th>
-<td class="cp-divider--red">?</td>
+<td class="cp-divider--red" style="color: #00796B; font-weight: 700">?</td>
 <td>?</td>
 <td>?</td>
 <td>?</td>
-<td class="cp-divider--red">?</td>
+<td class="cp-divider--red" style="color: #A24B00; font-weight: 700">?</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>4</sub></th>
-<td class="cp-divider--red">3</td>
+<td class="cp-divider--red" style="color: #00796B; font-weight: 700">3</td>
 <td>?</td>
 <td>4</td>
 <td>?</td>
-<td class="cp-divider--red">2</td>
+<td class="cp-divider--red" style="color: #A24B00; font-weight: 700">2</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>5</sub></th>
-<td class="cp-divider--red">?</td>
+<td class="cp-divider--red" style="color: #00796B; font-weight: 700">?</td>
 <td>2</td>
 <td>?</td>
 <td>5</td>
-<td class="cp-divider--red">?</td>
+<td class="cp-divider--red" style="color: #A24B00; font-weight: 700">?</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>6</sub></th>
-<td class="cp-divider--red">5</td>
+<td class="cp-divider--red" style="color: #00796B; font-weight: 700">5</td>
 <td>4</td>
 <td>5</td>
 <td>2</td>
-<td class="cp-divider--red">4</td>
+<td class="cp-divider--red" style="color: #A24B00; font-weight: 700">4</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>7</sub></th>
-<td class="cp-divider--red">5</td>
+<td class="cp-divider--red" style="color: #00796B; font-weight: 700">5</td>
 <td>1</td>
 <td>5</td>
 <td>1</td>
-<td class="cp-divider--red">5</td>
+<td class="cp-divider--red" style="color: #A24B00; font-weight: 700">5</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th" style="text-align: left; padding: .24em;"><em>u</em><sub>8</sub></th>
-<td style="border: 3px solid #D32F2F; border-top: 0">?</td>
+<td style="border: 3px solid #D32F2F; border-top: 0; color: #00796B; font-weight: 700">?</td>
 <td>?</td>
 <td>4</td>
 <td>?</td>
-<td style="border: 3px solid #D32F2F; border-top: 0">?</td>
+<td style="border: 3px solid #D32F2F; border-top: 0; color: #A24B00; font-weight: 700">?</td>
 </tr>
 </tbody>
 </table>
@@ -2992,33 +2992,38 @@ display:block!important;
 
 </div><div class="column" style="width:50%;">
 <table class="caption-top">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>User</th>
-<th style="text-align: right;"><span class="math inline">\(\mathbf{s}_{i_1}\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(\mathbf{s}_{i_5}\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\color{teal}{\mathbf{s}_{i_1}}\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\color{orange}{\mathbf{s}_{i_5}}\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>4</td>
-<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(-1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\color{teal}{0}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\color{orange}{-1}\)</span></td>
 </tr>
 <tr class="even">
 <td>6</td>
-<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\color{teal}{1}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\color{orange}{0}\)</span></td>
 </tr>
 <tr class="odd">
 <td>7</td>
-<td style="text-align: right;"><span class="math inline">\(1.6\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(1.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\color{teal}{1.6}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\color{orange}{1.6}\)</span></td>
 </tr>
 </tbody>
 </table>
 <div style="font-size:.88em;">
-<p><span class="math display">\[\operatorname{adjusted\text{-}cosine}(\mathbf{s}_{i_1},\mathbf{s}_{i_5})=\frac{2.56}{\sqrt{3.56}\sqrt{3.56}}=0.719\]</span></p>
+<p><span class="math display">\[\operatorname{adjusted\text{-}cosine}(\color{teal}{\mathbf{s}_{i_1}},\color{orange}{\mathbf{s}_{i_5}})=\frac{2.56}{\color{teal}{\sqrt{3.56}}\color{orange}{\sqrt{3.56}}}=0.719\]</span></p>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -3035,7 +3040,7 @@ display:block!important;
 </div>
 </div></div>
 <aside class="notes">
-<p>Work from the Section 04 user-item matrix. The three users who rated both items provide the centred item vectors. Their dot product is 2.56 and both vector lengths are square root 3.56, giving adjusted cosine 0.719. Contrast the axis with the previous slide: user-user similarity compares rows; item-item similarity compares columns.</p>
+<p>Work from the Section 04 user–item matrix. The three users who rated both items provide the centred item vectors. Their dot product is 2.56 and both vector lengths are square root 3.56, giving adjusted cosine 0.719. Contrast the axis with the previous slide: user–user similarity compares rows; item–item similarity compares columns.</p>
 <p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender systems: The textbook</em>, Equation 2.14 and Section 2.3.2, pp. 40-41.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -3092,7 +3097,7 @@ Weight <span class="math inline">\(u_1\)</span>’s rating of each item by its s
 </div>
 </div></div>
 <aside class="notes">
-<p>This is the corresponding item-based prediction step. Start with the target item i5 and user u1: use only item neighbours of i5 that u1 has rated. Unlike the mean-centred user-based form, the textbook presents this baseline item-based prediction as a weighted average of u1’s raw neighbour-item ratings. Emphasise that adjusted cosine was used to construct the item-to-item similarities; the prediction then weights the user’s own evidence.</p>
+<p>This is the corresponding item-based prediction step. Start with the target item i5 and user u1: use only item neighbours of i5 that u1 has rated. Unlike the mean-centred user-based form, the textbook presents this baseline item-based prediction as a weighted average of u1’s raw neighbour–item ratings. Emphasise that adjusted cosine was used to construct the item-to-item similarities; the prediction then weights the user’s own evidence.</p>
 <p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender systems: The textbook</em>, Equation 2.15 and Section 2.3.2, pp. 40-41.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -3164,16 +3169,16 @@ display:block!important;
 </section>
 <section id="worked-example-iv-significance-weighting" class="slide level2">
 <h2>Worked Example IV: Significance Weighting</h2>
-<h3 id="useruser-example-users-1-and-6-1">User–user example: users 1 and 6</h3>
-<p><strong>Step 1 — start from the user-user Pearson score</strong></p>
-<p><span class="math display">\[\operatorname{Pearson}(u_1,u_6)=-0.189\]</span></p>
+<h3 id="useruser-example-u_1-and-u_6-1">User–user example: <span style="color:#00796B;"><span class="math inline">\(u_1\)</span></span> and <span style="color:#A24B00;"><span class="math inline">\(u_6\)</span></span></h3>
+<p><strong>Step 1 — start from the user–user Pearson score</strong></p>
+<p><span class="math display">\[\operatorname{Pearson}(\color{teal}{u_1},\color{orange}{u_6})=-0.189\]</span></p>
 <div class="fragment">
 <p><strong>Step 2 — count the overlap and set a threshold</strong></p>
-<p><span class="math display">\[|I_{u_1}\cap I_{u_6}|=3\qquad \beta=10\]</span></p>
+<p><span class="math display">\[|I_{\color{teal}{u_1}}\cap I_{\color{orange}{u_6}}|=3\qquad \color{navy}{\beta}=10\]</span></p>
 </div>
 <div class="fragment">
 <p><strong>Step 3 — apply the confidence discount</strong></p>
-<p><span class="math display">\[\operatorname{discounted\text{-}sim}_{\beta=10}=-0.189\left(\frac{3}{10}\right)=-0.057\]</span></p>
+<p><span class="math display">\[\operatorname{discounted\text{-}sim}_{\color{navy}{\beta}=10}(\color{teal}{u_1},\color{orange}{u_6})=-0.189\left(\frac{3}{\color{navy}{10}}\right)=-0.057\]</span></p>
 </div>
 <aside class="notes">
 <p>Advance through the fragments. Emphasise that significance weighting does not calculate a different pattern of taste: it shrinks confidence in the base Pearson score. Beta equal to 10 is only an illustrative design choice; it makes the three-overlap multiplier 0.3.</p>
@@ -3267,7 +3272,7 @@ display:block!important;
       </div>
     </div>
     <div style="margin-top:.8em;padding:.68em .9em;background:#fff;color:#293241;border-radius:8px;">
-      <strong class="cp-text--navy">Pairs:</strong> choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br>
+      <strong class="cp-text--navy">Pairs:</strong> Choose a setting, make a claim for one axis, then give one condition that could reverse your choice.<br>
       <strong class="cp-text--navy">Optional:</strong> Consider User Archetypes ♣ · <span style="color:#D32F2F;">♥</span> · <span style="color:#D32F2F;">♦</span> · ♠
     </div>
   </div>
@@ -3446,7 +3451,7 @@ display:block!important;
 <div class="column" style="width:50%;">
 <h3 id="offline-prepare-the-neighbourhoods">Offline: prepare the neighbourhoods</h3>
 <ul>
-<li>Compute user-user or item-item similarities.</li>
+<li>Compute user–user or item–item similarities.</li>
 <li>Store selected peer groups rather than every possible comparison when appropriate.</li>
 <li>Refresh them as ratings, users, and items change.</li>
 </ul>
@@ -3506,7 +3511,7 @@ display:block!important;
 <div style="font-size:.92em;line-height:1.32;">
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1em;">
 <div style="padding:.8em 1em;border-left:6px solid #003D7C;background:#F2F6FA;">
-<strong class="cp-text--navy">1. Represent</strong><br>Start with sparse user-item evidence and make missingness visible.
+<strong class="cp-text--navy">1. Represent</strong><br>Start with sparse user–item evidence and make missingness visible.
 </div>
 <div style="padding:.8em 1em;border-left:6px solid #00796B;background:#F0F8F6;">
 <strong class="cp-text--teal">2. Compare</strong><br>Choose an axis, similarity, centring rule, and confidence treatment.
@@ -3573,7 +3578,7 @@ display:block!important;
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       Name one latent dimension that could explain several ratings—but is not an item metadata label.
     </div>
-    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user-item matrix.</p>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: turn this intuition into latent-factor representations of the user–item matrix.</p>
   </div>
 </div>
 <aside class="notes">
