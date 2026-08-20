@@ -52,6 +52,8 @@ Learning outcomes:
 
 {{< week-card week="Week 2" date="18-24 Aug 2026" focus="Latent Factor Models" >}}
 
+**Essay 1 release:** Tue, 18 Aug 2026.
+
 Topics:
 
 - Matrix factorization
@@ -170,6 +172,8 @@ Learning outcomes:
 <aside class="course-schedule-notice course-schedule-notice--break"><strong>Recess Week</strong><span>Tue, 22 Sep 2026 · No class</span></aside>
 
 {{< week-card week="Week 7" date="29 Sep-5 Oct 2026" focus="Project Design Critique Workshop" due="Project design critique" >}}
+
+**Essay 2 release:** Tue, 29 Sep 2026.
 
 Student deliverables:
 
