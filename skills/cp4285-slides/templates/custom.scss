@@ -1,4 +1,6 @@
-/* Week overlay: course-wide rules are loaded from ../cp4285-common.scss.
- * Keep Week-specific visual layouts page-local with inline styles, following W01.
+/* Week overlay: ../cp4285-common.scss supplies all course-wide primitives.
+ * Add only a documented exception that is unique to this week and cannot be
+ * expressed with the shared classes. Do not duplicate title, frame, activity,
+ * MCQ, timer, card, table, grid, metric, chip, image, or flow rules here.
  */
 /*-- scss:rules --*/

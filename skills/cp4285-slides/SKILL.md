@@ -1,74 +1,64 @@
 ---
 name: cp4285-slides
-description: Style guide and authoring conventions for CP4285 Quarto RevealJS slide decks. Use when creating, editing, or extending any weekly lecture slide deck for the CP4285 course. Covers YAML front matter, colour palette, typography, SCSS theme, structural patterns, and content conventions extracted from the w01 reference deck.
+description: Create, edit, render, and review CP4285 Quarto RevealJS lecture decks. Use for any work in static/slides/wNN, including shared CP4285 primitives, title QR panels, frames, activities, MCQs, countdown timers, and lecture-delivery timelines.
 ---
 
-# CP4285 Slides — Authoring Guide
+# CP4285 Slide Authoring
 
-## Overview
+## Source of truth
 
-All CP4285 slide decks are authored in **Quarto Markdown (`.qmd`)** and rendered as **RevealJS** presentations. Each deck lives under `static/slides/weekNN/` in the repo and ships with its own `custom.scss` theme file (see `templates/custom.scss`).
+Use the following resources together. Do not recreate an existing visual rule from memory.
 
----
-
-## Learning Outcomes Quick Reference
-
-Use these outcomes when planning, reviewing, or revising a deck. The authoritative course pages are `content/_index.md` (course outcomes) and `content/docs/schedule.md` (session outcomes).
-
-### Course Learning Outcomes
-
-By the end of the course, students should be able to:
-
-| CLO | Outcome |
+| Resource | Use it for |
 |---|---|
-| **CLO 1** | Explain and compare classical recommendation methods, including collaborative filtering, content-based filtering, and hybrid approaches. |
-| **CLO 2** | Implement matrix factorization and neural recommendation models using modern deep learning frameworks. |
-| **CLO 3** | Design and execute rigorous offline evaluation protocols using appropriate ranking metrics. |
-| **CLO 4** | Analyse the cold-start problem and propose strategies to address it. |
-| **CLO 5** | Critique recommender systems from fairness, privacy, transparency, and stakeholder impact perspectives. |
-| **CLO 6** | Explain advanced recommendation architectures including sequential, graph-based, multi-objective, and LLM-enhanced systems. |
-| **CLO 7** | Design and justify a complete recommendation system pipeline from problem formulation through evaluation and ethical analysis. |
-| **CLO 8** | Communicate and defend recommendation-system designs and results to a technical audience. |
+| `static/slides/cp4285-common.scss` | Course-wide tokens and all reusable primitives. |
+| `static/slides/cp-timer.html` | Shared, data-driven countdown controller. |
+| `static/slides/w01/w01.qmd` | Reference for course pacing, title treatment, and activity use. |
+| `static/slides/w02/w02.qmd` | Reference for metrics, chips, flow cards, and factorisation MCQ. |
+| `templates/prototype-deck.qmd` | Copyable visual reference for every standard slide and activity prototype. |
+| `templates/custom.scss` | The only permitted starting point for a week-specific overlay. |
+| `templates/break-slide.qmd` | Shared-controller break-slide prototype. |
 
-### Session Learning Outcomes
+> Reuse semantic classes from `cp4285-common.scss`. Keep an inline `style` only for a **singular content composition** that does not recur across the course.
 
-| Session | Outcomes |
-|---|---|
-| **Week 1 — Recommendation Problems and Classical Methods** | Formulate recommendation problems; differentiate recommendation paradigms; Analyze cold-start challenges; explain how recommendation objectives affect exposure. |
-| **Week 2 — Latent Factor Models** | Explain latent-factor models; train embedding-based recommenders; compare prediction and ranking objectives; discuss risks of learning from historical behavior. |
-| **Week 3 — Evaluation of Recommendation Systems** | Design evaluation protocols; compute ranking metrics; critique metric selection; explain limitations of offline evaluation. |
-| **Week 4 — Neural Recommendation Models** | Build neural recommenders; compare neural and latent-factor approaches; Analyze explainability challenges; assess trade-offs between complexity and transparency. |
-| **Week 5 — Sequential and Session-Based Recommendation** | Model temporal preferences; implement next-item prediction; compare static and dynamic representations; critically assess engagement-driven objectives. |
-| **Week 6 — Retrieval and Ranking Architectures** | Explain industrial recommendation pipelines; design retrieval-ranking architectures; Analyze scalability trade-offs; evaluate how ranking affects different stakeholders. |
-| **Week 7 — Project Design Critique Workshop** | Defend recommendation-system designs; critique evaluation strategies; identify ethical risks early; refine project scope based on feedback. |
-| **Week 8 — Learning-to-Rank** | Formulate ranking objectives; compare ranking approaches; Analyze position bias; discuss fairness implications of ranking. |
-| **Week 9 — Graph-Based Recommendation** | Represent recommendations as graph problems; explain graph propagation; build graph-based recommenders; Analyze risks of graph-driven feedback loops. |
-| **Week 10 — Multi-Objective Recommendation** | Define non-accuracy objectives; measure diversity and novelty; design multi-objective recommenders; justify objective trade-offs. |
-| **Week 11 — Exploration and Online Learning** | Explain exploration strategies; design adaptive recommendation policies; Analyze recommendation feedback loops; discuss ethical implications of experimentation. |
-| **Week 12 — LLMs, Generative Recommendation, and Research Frontiers** | Explain modern recommendation research directions; evaluate LLM-based recommendation systems; critique emerging approaches; identify open research challenges. |
-| **Week 13 — Final Project Presentations** | Present recommendation-system designs professionally; defend technical decisions; interpret evaluation results critically; integrate technical, product, and societal considerations. |
+## New deck workflow
 
-When slides are changed, offer to check their alignment with both the relevant CLOs and the specific session outcomes. An alignment check should map slide content and activities to outcomes, identify missing, weak, or redundant coverage, and suggest targeted revisions; do not silently modify the deck as part of the check.
+1. Create `static/slides/wNN/` and copy `templates/prototype-deck.qmd` to `wNN.qmd`.
+2. Copy `templates/custom.scss` to `wNN-custom.scss` without adding course-wide rules.
+3. Replace all `TODO` values, including the title, date, QR assets, links, and timer identifiers.
+4. Retain or remove prototype slides deliberately. Do not ship instructional placeholder text.
+5. Render with `quarto render wNN.qmd` and inspect every affected slide in a browser at the 1600×900 canvas.
+6. Keep `wNN-timeline.md` synchronized with slide order, timings, and activity delivery mode.
+7. Commit the `.qmd`, rendered `.html`, overlay, timeline, and any changed shared asset together.
 
----
-
-## YAML Front Matter Template
+## Required YAML
 
 ```yaml
 ---
 title: "<Lecture Title>"
-subtitle: "CP4285 Modern Recommendation Systems — Week N"
+subtitle: |
+  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week NN</span>
+  <a class="title-qr" href="https://soc-n.us/cp4285-tNN-wNN" target="_blank" rel="noopener" aria-label="Open the Week NN slide deck">
+    <picture>
+      <source type="image/svg+xml" srcset="../../uploads/cp4285-tNN-wNN-HASH.svg">
+      <img class="title-qr-image" src="../../uploads/cp4285-tNN-wNN-HASH.png" alt="QR code for the Week NN slide deck">
+    </picture>
+    <span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-tNN-wNN</span></span>
+  </a>
 author: "CP4285 Instruction Team"
 date: "DD MMM YYYY"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, ../cp4285-common.scss, weekNN-custom.scss]
+    theme: [default, ../cp4285-common.scss, wNN-custom.scss]
+    include-after-body: ../cp-timer.html
     slide-number: true
     show-slide-number: all
+    width: 1600
+    height: 900
     chalkboard: false
     logo: "../../uploads/recommendation-social-media.png"
-    footer: "CP4285 · Week N · NUS School of Computing"
+    footer: "CP4285 · Week NN · NUS School of Computing"
     self-contained: true
     transition: slide
     highlight-style: github
@@ -78,704 +68,161 @@ format:
 ---
 ```
 
-Key rules:
-- `self-contained: true` — produces a single portable HTML file.
-- `logo` path is always relative: `../../uploads/recommendation-social-media.png`.
-- Footer format: `CP4285 · Week N · NUS School of Computing`.
-- Never enable `chalkboard`.
+Use a verified soc-n.us shortlink and its matching SVG/PNG QR assets before adding the title panel. The shared theme positions the panel and aligns the title, subtitle, author, and date. Do not override `#title-slide` positioning, title widths, or author padding in a week overlay.
 
-### Title Slide: QR Access Panel
+## Course visual contract
 
-Treat `static/slides/w01/w01.qmd` and `static/slides/w01/w01-custom.scss` as the **canonical CP4285 title-slide reference**. Preserve the standard RevealJS title treatment: white field, default dark course title, orange rule, and left-aligned subtitle, instruction team, and date. Let the default title sizing and wrapping respond naturally to the lecture title; a short title may occupy one line.
+Use Arial/Helvetica throughout. H1/H2 headings are dark grey with an orange rule; H3 headings are orange. Use NUS Navy `#003D7C`, Orange `#EF7C00`, and Teal `#00796B` as the primary palette. Treat Purple `#5C2D91` as a recap/accent variant, not a replacement palette.
 
-Do **not** add a course/week eyebrow, title-card gradient, bespoke title font size, title width cap, or title-specific colour override. Do **not** create an `include-in-header` title-style file: keep all title-panel CSS in the deck’s `custom.scss` theme.
-
-When a published deck has a course shortlink, make the QR code a prominent, clickable **right-hand title-slide panel**. Keep the lecture title, subtitle, instruction team, and date left aligned on the remaining space. Do not use a small inline QR code beneath the subtitle.
-
-Create and verify the shortlink before creating its QR code. Use the `manage-socn-links` skill for soc-n.us operations. Generate both SVG and PNG QR assets locally in `static/uploads/`: use SVG as the preferred source and PNG as the fallback. Put the exact, verified shortlink in the panel label. The whole panel must link to the shortlink in a new tab.
-
-Place the following metadata in the deck YAML, substituting the verified URL and asset filenames:
-
-```yaml
-subtitle: |
-  <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week N</span>
-  <a class="title-qr" href="https://soc-n.us/cp4285-tNN-wNN" target="_blank" rel="noopener" aria-label="Open the Week N slide deck">
-    <picture>
-      <source type="image/svg+xml" srcset="../../uploads/cp4285-tNN-wNN-HASH.svg">
-      <img class="title-qr-image" src="../../uploads/cp4285-tNN-wNN-HASH.png" alt="QR code for the Week N slide deck">
-    </picture>
-    <span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-tNN-wNN</span></span>
-  </a>
-```
-
-The shared `../cp4285-common.scss` theme provides the title-panel CSS. Keep the panel at least 205 px square on the 1600×900 canvas, with a white background, teal (`#00796B`) border, navy (`#003D7C`) label, and teal shortlink. The title, subtitle, author, and date must all be left aligned. Do not duplicate the title-panel rules in a week overlay.
-
-**RevealJS guardrail:** Never set `position: relative`, `display`, `top`, `left`, or a transform on `#title-slide` itself. Reveal positions title and content slides; overriding its positioning can place every later slide in normal document flow and cause navigation to land far below the viewport. Scope absolute positioning only to `.title-qr`.
-
-After changing the title panel, render the deck and compare Slide 1 against the Week 01 reference. Verify the standard dark title, orange rule, left-aligned metadata, QR clearance, and compact QR label. Then navigate from Slide 1 to Slide 2 in the browser and verify that the next slide begins at the normal top position, not below the viewport.
-
----
-
-## Colour Palette
-
-| Role | Hex | Usage |
-|---|---|---|
-| NUS Navy | `#003D7C` | H1/H2 headings, table headers |
-| NUS Orange | `#EF7C00` | Section title backgrounds, H3, links, accents |
-| Mid-grey | `#6b7280` | Footer text |
-| Orange tint | `rgba(239,124,0,0.07)` | Blockquote background |
-
-These are NUS brand colours. **Do not substitute** other colours.
-
----
-
-## Typography
-
-- **Body font:** Arial, Helvetica, sans-serif
-- **Heading font:** Arial, Helvetica, sans-serif (same family)
-- Heading colour: `#003D7C` (navy)
-- H3 colour: `#EF7C00` (orange)
-- All H1/H2 headings have a `3px solid #EF7C00` bottom border
-
----
-
-## Mathematical Notation
-
-Use Quarto's MathJax display math for every non-trivial equation. Write display equations with `$$ ... $$`, not hand-built HTML fractions or `\[ ... \]`, so they retain correct typesetting in the rendered RevealJS deck.
+Use a full-bleed orange H1 section slide and normal H2 content slides:
 
 ```markdown
-$$
-\operatorname{Sim}(u,v)=
-\frac{\sum_{\color{orange}{k\in I_u\cap I_v}} \color{teal}{r_{uk}r_{vk}}}
-{\color{navy}{\sqrt{\sum_{k\in I_u\cap I_v}r_{uk}^{2}}\;\sqrt{\sum_{k\in I_u\cap I_v}r_{vk}^{2}}}}
-$$
+# 02 Section Title {background-color="#EF7C00"}
+
+## Content slide title
 ```
 
-When teaching an equation, colour-code the meaningful components in the MathJax expression and immediately provide a plain-language key in the same colours. Use the supported named TeX colours `orange`, `teal`, and `navy` inside `\color{...}{...}`; do not use hexadecimal values in MathJax colour commands. Explain what each coloured quantity represents and why it matters, rather than narrating symbols mechanically. Keep the notation and the colour key together on the same slide, and visually inspect the rendered slide after changes.
-
-For multiword function identifiers in equations, prefer lowercase dashed notation over camel case: write `\operatorname{raw\text{-}cosine}(u,v)`, not `RawCosine(u,v)`.
-
----
-
-## SCSS Theme
-
-Load `../cp4285-common.scss` before the per-week overlay in every new deck. Copy `templates/custom.scss` as `weekNN-custom.scss`; use it only for a genuinely week-specific exception. Keep W01-style one-off visual layouts page-local with inline styles rather than growing a deck-wide custom stylesheet. Make a deliberate shared-theme change only when it applies across the course.
-
----
-
-## Slide Structure Conventions
-
-### Section Title Slides (H1)
-
-Every major section opens with a full-bleed orange title slide:
-
-```markdown
-# NN Section Title {background-color="#EF7C00"}
-```
-
-Section numbers are zero-padded two-digit integers (e.g. `01`, `02`).
-
-### Content Slides (H2)
-
-Regular slides use H2 headings.
-
-### Horizontal Rule Separators
-
-Use `---` (bare horizontal rule) to separate major sections before the H1 title slide.
-
-### Speaker Notes
-
-Every slide should have a speaker notes block, even if empty or a TODO:
+Give every slide a speaker-notes block, even when it is empty:
 
 ```markdown
 ::: notes
-<!-- TODO (students): ... -->
+<!-- Delivery note, source, or TODO. -->
 :::
 ```
 
----
+## Shared primitives
 
-## Content Patterns
+### Layout and spacing
 
-### YouTube Video Embed Slide Prototype
-
-Use this prototype when a lecture needs a dedicated video surface. The slide title must begin with the video-camera emoji and the slide must use a black background:
-
-````markdown
-## 🎥 Video: <short title> {background-color="#000000"}
-
-```{=html}
-<div style="display:flex;align-items:center;justify-content:center;width:100%;height:76vh;background:#000;">
-  <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener" aria-label="Open video: <short title>">
-    <img src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg" alt="YouTube thumbnail for <short title>" style="display:block;width:100%;max-width:1280px;height:auto;max-height:76vh;object-fit:contain;border:4px solid #EF7C00;">
-  </a>
-</div>
-```
-````
-
-Replace `VIDEO_ID` and the title/alt text with the selected video. Use the thumbnail as the visible preview rather than relying on an autoplaying iframe; clicking it opens the YouTube watch page in a new tab. Keep the thumbnail large enough for projection, preserve its 16:9 aspect ratio, and verify that it loads before delivery. Add the video URL and thumbnail source to the slide’s speaker notes `[Sources]` block.
-
-### Card-Suit User-Type Framework
-
-Use the following four user types when discussing how a recommendation system should treat different users. These are treatment lenses, not demographic or permanent personality labels; the same person may occupy different types across tasks or sessions.
-
-| Suit | User type | Treatment lens |
+| Need | Class | Rule |
 |---|---|---|
-| **♣ Clubs** | **Adversarial / Shill user** | Attempts to manipulate the system into recommending or avoiding specific items or users. Consider coordinated behaviour, fake signals, robustness, abuse detection, and incentive-aware safeguards. |
-| **♥ Hearts** | **Social user** | Responds strongly to social signals. Consider friends, communities, social similarity, shared taste, influence, and the risks of conformity or social exposure. |
-| **♦ Diamonds** | **Novelty seeker** | Is governed by novelty and wants new objects, trends, and emerging items. Consider exploration, diversity, freshness, serendipity, and cold-start exposure for new items. |
-| **♠ Spades** | **Loyalist / metadata-driven user** | Relies on particular metadata factors and stable preferences. Consider content features, attribute matching, consistency, explainable filters, and avoiding unnecessary drift. |
+| Vertical rhythm | `cp-stack` | Adds consistent sibling spacing. |
+| Centre a control or compact panel | `cp-center` | Centres text. |
+| Equal two-column layout | `cp-grid cp-grid--2` | Uses a **1.4em horizontal gap**. |
+| Content plus timer/asides | `cp-grid cp-grid--2-aside` | Uses a **1.6em horizontal gap** and a 220 px aside. |
+| Three metric columns | `cp-grid cp-grid--3` | Uses 0.75em horizontal and 0.65em row gaps. |
+| Four-answer MCQ grid | `cp-choice-grid` | Uses 0.85em horizontal and 0.75em row gaps. |
 
-The suits should be kept meaningfully different in terms of recommendation treatment: Clubs stress adversarial robustness, Hearts social similarity, Diamonds novelty and diversity, and Spades metadata-based continuity.
+Do not use Quarto `.columns` for a reusable visual component. Use the shared grid classes so the horizontal breathing room remains consistent. For singular diagram geometry, keep the exact grid inline and explain it with a nearby comment when needed.
 
-#### Per-topic inclusion prompt
+### Text, cards, tables, media, and flow
 
-When creating slides for any lecture topic or major concept, prompt the user before drafting the topic-specific treatment:
-
-> For **[topic]**, should the slides include considerations for any of these user types: **♣ Clubs (adversarial/shill), ♥ Hearts (social), ♦ Diamonds (novelty), or ♠ Spades (loyalist/metadata-driven)**? Select any that are relevant, or choose “none”.
-
-Use the selected types to add a concrete example, design trade-off, evaluation consideration, ethical question, or activity prompt. Do not force all four types into every topic, and do not silently choose on the user's behalf when the inclusion would materially change the topic's emphasis. If the user selects “none”, proceed without a suit-specific treatment.
-
-### Two-Column Layout
-
-```markdown
-::: {.columns}
-::: {.column width="50%"}
-Left content
-:::
-::: {.column width="50%"}
-Right content
-:::
-:::
-```
-
-### Incremental Bullet Lists
-
-```markdown
-::: {.incremental}
-- Point one
-- Point two
-:::
-```
-
-### Callout Boxes
-
-- `.callout-warning` — ethical issues, caveats, risks
-- `.callout-note` — supplementary information, reminders
-
-### To Think About Callout
-
-Use a titled Quarto callout, rather than a raw HTML block, for a short reflective question. It follows the warning/note callout convention while using the deck's teal `to-think-about` visual treatment. Keep it to one concise question and place it only where there is sufficient vertical space.
-
-```markdown
-::: {.callout-tip .to-think-about title="To think about"}
-Does top-*k* apply to users as well as items?
-:::
-```
-
-Quarto places the custom class on a wrapper around the generated callout. Define `.to-think-about .callout`, `.callout-body`, `.callout-title`, `.callout-title-container`, and `.callout-content` styles in the week theme. Match the standard callout convention: use a teal title band and a white content area, with the same dark neutral text (`#333333`) used by Warning and Note callouts; reset paragraph margins and `min-height` so the callout has no surplus vertical space. Hide the default tip icon and use `.to-think-about .callout-icon-container::before { content: "🤔"; }`; make the title a flex row with a `0.35em` gap so the thinker and title have one clear space. Do not recreate the callout shell with an inline `<div>`.
-
-### Tables
-
-Use Markdown pipe tables. Comparison tables use ✓ / ✗ for boolean values with `:---:` centre-alignment.
-
-### Ethics Thread Convention
-
-Each week includes at least one slide titled **"Ethics Thread: \<Topic\>"** using `.callout-warning` for the key concern.
-
-### Ethics-Focused AI Voice Mode Slides
-
-When AI Voice Mode is used to investigate recommender ethics, prefix the slide title with the Wi-Fi/signal emoji: **`📶 AI Voice Mode`**. Keep the experiment’s purpose explicit: students are examining assumptions, uncertainty, omissions, and ethical reasoning in an AI-mediated conversation. The emoji is a visual cue for the live voice interaction; it does not imply that the agent is authoritative or connected to a production recommender.
-
-### Summary Slide Convention
-
-Final slide of each deck: titled **"Summary"**, contains a comparison table and a bold **"Next week:"** teaser.
-
-### Summary / Key Point Slide Type
-
-Use a **Summary** or **Key Point** slide to consolidate a section, mark a memorable takeaway, or bridge to the next concept. These slides must be visually distinct from both orange section-title slides and regular body slides:
-
-- Use the proposed contrastive scheme: NUS Navy `#003D7C` as the slide background, white body text, and NUS Orange `#EF7C00` for borders, labels, or emphasis.
-- Always feature at least one of these visual anchors in the slide content: crossed fingers `🤞` or key `🔑` emojis. Use the emoji as a prominent cue, not as an incidental footer decoration.
-- Keep the slide focused on one synthesis or takeaway. A Summary slide may retain the deck’s comparison table and **"Next week:"** teaser; a Key Point slide should use a short statement plus supporting evidence or implications.
-- Visually emphasize the main takeaway text. Underline the key statement by default (for example, with `<u>...</u>`); a comparably strong treatment such as a highlighted label or accent rule is acceptable when underlining is unsuitable. Do not leave the slide’s central message as unstyled body text.
-- Preserve the required speaker notes block and verify that the navy/white/orange treatment remains legible in the classroom PDF.
-
-Example:
-
-```markdown
-# Key Point {background-color="#003D7C"}
-
-## 🤞 <u>One takeaway</u>
-
-Popularity is a useful baseline, but its feedback loop can change who receives exposure.
-```
-
-### Pre-Lecture Exercise Slide Types
-
-Add these two framed slide types to create continuity between weekly sessions. They reuse the medium-weight, high-contrast frame convention from in-lecture activity slides, but each has its own frame treatment and exact label:
-
-1. **Next Week Pre-Lecture Exercise** — place at the end of the current lecture’s teaching sequence (immediately before the final Summary slide when Summary must remain last). Give students a short prompt, reading check, or preparatory question for the following week. Use a medium NUS Navy frame (`#003D7C`) with an NUS Orange label reading **“Next Week Pre-Lecture Exercise”**.
-2. **Previous Week Exercise Review** — place near the beginning of the current lecture, after opening context and before new material. Show the prior exercise prompt or a representative response, then guide a brief review of the expected reasoning. Use a medium NUS Orange frame (`#EF7C00`) with an NUS Navy label reading **“Previous Week Exercise Review”**.
-
-For both types, keep the frame and label inside the slide area, make the exercise or review prompt the visual focus, and include enough space for students to annotate the PDF. Record the slide’s placement, time, delivery mode, and expected student response in the lecture-delivery timeline.
-
-Use the responsive medium frame consistently for both types: `border: clamp(3px, 0.6vw, 6px) solid <contrast-colour>`. Keep the frame thickness proportional to the viewport so it remains visible on projected and printed/PDF versions without dominating the content.
-
----
-
-## Classroom PDF and RevealJS Review
-
-The slides are exported to **PDF for in-class markup**, so the PDF is a primary classroom artifact. Every slide must remain legible and useful as a static page for students annotating during the lecture:
-
-- use readable font sizes, strong contrast, generous spacing, and tables/code that do not become illegible when exported or printed;
-- keep essential definitions, labels, context, and conclusions visible without requiring an animation step;
-- verify that the exported PDF has no clipped content, overflow, broken links, missing fonts, or content hidden by a fragment; and
-- inspect representative PDF pages at their intended viewing/printing size before delivery.
-
-RevealJS fragments, incremental lists, and other animation features are primarily for **self-paced review** and optional pacing during the live lecture. They must not be the only way a student can access information needed to understand or annotate a slide. When fragments are used, ensure the PDF export contains the complete intended content or provide an equivalent static presentation of that content.
-
----
-
-## File Layout per Week
-
-```
-static/slides/
-├── cp4285-common.scss  ← Shared course theme
-└── weekNN/
-    ├── weekNN.qmd       ← Quarto source (author this)
-    ├── weekNN.html      ← Rendered output (committed to repo)
-    ├── weekNN-timeline.md ← Lecture delivery timeline (keep synced with weekNN.qmd)
-    └── weekNN-custom.scss ← Thin local overlay copied from templates/custom.scss
-```
-
-Commit all per-week delivery artifacts together: the `.qmd` source, rendered `.html`, `weekNN-custom.scss`, and `weekNN-timeline.md` when present. When shared styles change, commit `../cp4285-common.scss` and the updated generated outputs in the same change. Keep the source, rendered output, styling, and delivery timeline synchronized.
-
-### Lecture Delivery Timeline
-
-Each week’s `weekNN-timeline.md` is a delivery companion to the slide deck, not a separate source of slide content. It **must be updated whenever the `.qmd` changes** so that it remains synced with the most current version of the slides. Before considering a deck update complete:
-
-- verify that every current section and slide appears in the timeline, with renamed or removed slides removed from the timeline;
-- update the timing and delivery mode when slide content or sequencing changes; and
-- verify that the individual slide times still add up to the stated lecture duration.
-
-Treat `weekNN.qmd` as the source of truth for slide order and titles. Do not modify the slides merely to make the timeline fit; revise the timeline to reflect the current deck.
-
-### In-Class Activity Delivery Mode
-
-The lecture timeline may assign a slide the **In-class activity** delivery mode. Every in-class activity must use one of these two formats:
-
-1. **Multiple-choice or response question:** Ask students to complete a quiz-style multiple-choice question or a short-response question. Collect or sample their answers, then go over the correct answer and the reasoning immediately in class. Address why plausible alternatives are wrong and resolve misconceptions before continuing.
-2. **Small-group discussion:** Put students into small groups for a few minutes to discuss a prompt and formulate an answer. Set a clear time limit and reporting expectation, then call on groups to share their answers. Synthesize the responses, correct inaccuracies, and connect the discussion back to the slide’s learning objective.
-
-For either format, state the task and expected output before starting, timebox the activity, and reserve time for the instructor’s immediate synthesis. Record the activity type in the lecture-delivery timeline so another instructor can run it without guessing which format is intended.
-
-#### Activity Slide Treatment
-
-Both in-class activity types use the following visual treatment:
-
-- A countdown timer is optional. Before designing an activity slide, ask the user: **“Should this activity use the default three-minute countdown timer?”** If they decline, omit the timer and record the untimed timebox in the timeline. If they choose a timer, use their specified duration or the three-minute default and configure it in the slide.
-- For timer-enabled activities, use a small countdown timer occupying approximately one quarter of the slide area, using the same MM:SS SVG donut-bar pattern as the break slide.
-- Use a shared NUS Navy slide background (`#003D7C`) with white body text and NUS Orange (`#EF7C00`) for the frame and emphasis; apply the timer treatment when one is enabled.
-- Surround the activity content with a responsive medium-weight, high-contrast frame: use `border: clamp(3px, 0.6vw, 6px) solid #EF7C00` so it remains visible without becoming oversized on smaller screens.
-- Put the format emoji in the slide title: **`🎰 Bandit Time: <short question>`** for multiple-choice/response questions and **`👥 <short activity title>`** for small-group discussion.
-- Do not add a reverse-contrast “In Lecture …” label box inside the frame. The title prefix is the activity-format cue; keep the frame for the prompt, response content, and timer when present.
-- Set foreground colours explicitly on every nested element; do not rely on inherited white text. White answer cards must set a dark text colour (for example, `color:#003D7C`), and prompts/controls on the navy background must set `color:#fff`.
-- For timer-enabled slides, make the timer self-contained and visible on navy slides: give the donut a visible stroke, place an opaque white centre circle behind the MM:SS text, set the timer text to navy (`#003D7C`), and keep the orange start/pause control visible. Never use `display:none`, transparent text, or a transparent timer centre for the classroom/PDF version.
-
-Keep the frame, title, prompt, and any timer legible in the classroom PDF; a timer should support pacing without crowding out the activity prompt or response space.
-
-#### MCQ / Bandit Time Slide Treatment
-
-For every multiple-choice quiz, use the visible slide-title pattern **`🎰 Bandit Time: <short question>`**. The slot-machine emoji must be the first visible token; do not add a separate in-frame quiz label or a generic `MCQ:` heading. The navy background and orange frame are shared with `👥` activity slides.
-
-Render the answer choices as readable cards rather than a plain bullet list. Use a responsive two-column card grid for four choices (additional choices may continue on subsequent rows), with a clearly visible letter/number and the full answer text in every card. Give each option a different primary-colour outline; use this default accessible palette unless the user specifies another:
-
-- A — red `#D32F2F`
-- B — blue `#1976D2`
-- C — green `#388E3C`
-- D — purple `#7B1FA2`
-
-Use a medium-weight outline (for example, `border: 4px solid <option-colour>`), a light/neutral card fill, explicit dark card text (for example, `color:#003D7C`), and enough padding for projection. Maintain strong text contrast and include the letter/number label so meaning never depends on colour alone. Keep the cards static and printable; do not hide choices behind animation or interaction. Add a countdown timer only when the user has opted in under the activity treatment above.
-
-Example structure:
-
-```markdown
-## 🎰 Bandit Time: Which signal should rank this item first?
-
-<div class="bandit-options">
-  <div class="bandit-option" style="border-color:#D32F2F"><strong>A.</strong> ...</div>
-  <div class="bandit-option" style="border-color:#1976D2"><strong>B.</strong> ...</div>
-  <div class="bandit-option" style="border-color:#388E3C"><strong>C.</strong> ...</div>
-  <div class="bandit-option" style="border-color:#7B1FA2"><strong>D.</strong> ...</div>
-</div>
-```
-
-### Countdown Timer Expiration Cue
-
-Every countdown timer (break slides and in-lecture activity slides) must use the same shared timer state machine: **Start → Pause → Resume → Expire → Restart**. Pressing the timer button while counting down pauses it; pressing again resumes it. When it reaches `00:00`, it must play one audible ring for **0.5 seconds**, turn the donut ring green (`#00c875`), show a completion status, and expose a **Restart** action that resets the display and ring to the initial state without starting until pressed again. Start the audio from the user-initiated timer interaction so browser autoplay policies do not suppress it. Reuse one `AudioContext` per slide and call the cue exactly once per expiry.
-
-Use a short, non-startling oscillator envelope (for example, a sine tone around 880 Hz with a quick gain fade) and keep the text/status change available for students who cannot hear the audio.
-
-Implement this behavior through one reusable `createCountdownTimer` factory (or an equivalent shared helper) copied into every timer slide; do not maintain separate break/activity timer logic.
-
-**Auto-pause on slide exit is mandatory.** Every timer must register itself in the global `window._cpTimers` registry using its `slideIndex` (0-based index of its parent `<section>`). A single `Reveal.on("slidechanged", ...)` listener — injected once in `include-in-header` after the `</style>` tag — fires on every slide transition and calls the pause function for the departing slide if a timer is running. The timer must pause silently at its current value and switch its button label to **▶ Resume**. See the **Timer Auto-Pause on Slide Exit** section for the full implementation pattern.
-
----
-
-## Rendering
-
-```bash
-cd static/slides/weekNN
-quarto render weekNN.qmd
-```
-
-### Post-Change PDF Preview
-
-Whenever any slide source (`weekNN.qmd`) or slide styling (`custom.scss`) is modified:
-
-1. Run the deck’s PDF export workflow to generate a fresh PDF from the current slides.
-2. Open the PDF preview and navigate directly to every affected slide, including adjacent slides when a shared layout or style change could shift content.
-3. Check the affected pages for legibility, clipping, overflow, missing content, and static completeness for classroom markup.
-4. If the change affects a shared template or theme, inspect representative examples of every affected layout before delivery.
-
-The PDF preview is a required visual check after slide changes; an HTML render alone is not sufficient.
-
----
-
-## Break Slides
-
-### When to Use
-
-Insert a break slide whenever a mid-lecture break is planned (typically once per 120-minute session). Place it between two `---` separators so it forms its own slide.
-
-### Design
-
-| Property | Value |
+| Pattern | Classes |
 |---|---|
-| Layout | Two-column split: a fun fact, short story, anecdote, or image on the left; timer panel on the right |
-| Background | `#000000` (black) |
-| Text colour | White (`#ffffff`) |
-| Accent colour | NUS Orange `#EF7C00` (donut ring, item highlights, button) |
-| Timer default | 5 minutes (configurable per slide) |
-| Timer controls | Manual — **▶ Start Timer**, **⏸ Pause**, **▶ Resume**, then **↻ Restart** after expiry |
-| Timer display | MM:SS countdown centred inside an SVG donut ring |
-| Ring behaviour | Drains clockwise; turns green (`#00c875`) when time is up |
+| Brand emphasis | `cp-text--navy`, `cp-text--orange`, `cp-text--teal`, `cp-text--muted`, plus `cp-text--strong` where needed. |
+| Accessibility-only status | `cp-sr-only`. |
+| General panel | `cp-card`, with `cp-card--soft`, `cp-card--prompt`, `cp-card--warning`, or `cp-card--compact`. |
+| Panel sub-elements | `cp-card__title`, `cp-card__meta`. |
+| Table cells | `cp-table`, `cp-table--compact`, `cp-table__cell`, `cp-table__cell--head`, `cp-table__cell--label`, `cp-table__cell--highlight`, `cp-table__cell--section`. |
+| Images | `cp-image`, plus `cp-image--shadow` or `cp-image--contain`. |
+| Survey metrics | `cp-metric`, `cp-metric--orange`, `cp-metric__label`, `cp-metric__value`, `cp-metric__meta`. |
+| Compact labels | `cp-chip`, `cp-chip--muted`, `cp-chip--navy`, `cp-chip--warning`. |
+| Process diagrams | `cp-flow-card`, `cp-flow-arrow`. |
 
-### Template
+Apply these classes to the smallest meaningful element. Do not colour every word merely because an emphasis class exists.
 
-The complete reusable snippet is in `templates/break-slide.qmd`. Copy it verbatim into the deck at the break point, then:
+## Frames and recaps
 
-1. **Replace every occurrence of `BREAKID`** with a short unique identifier (e.g. `wk1b1`) so that multiple break slides in the same HTML file do not share DOM IDs.
-2. **Replace the placeholder** inside the `<!-- TODO: insert a fun fact, short story, anecdote, or image ... -->` block with a subject-relevant item for that week (see guidance below).
-3. **Adjust `TOTAL`** in the `<script>` block if a duration other than 5 minutes is needed (e.g. `var TOTAL = 10 * 60;`).
+Use the shared fixed 20 px frame system. Do not reintroduce responsive `clamp()` frame borders.
 
-### Fun Fact / Short Story / Anecdote / Image Guidelines
-
-The **left-hand pane** must contain one fun fact, short story, anecdote, or image for the week. The **right-hand pane** is reserved for the timer and its controls. The item must be visible without starting the timer.
-
-The fun fact, short story, anecdote, or image caption must be:
-- **Directly relevant** to the week's lecture topic or a concept covered that day.
-- **Concise** — two to four sentences maximum.
-- **Engaging** — a surprising statistic, a historical origin story, or a real-world consequence of the topic.
-- Written in the second person or impersonal voice ("Did you know…", "The first…", "In 2006…").
-- Key terms or names highlighted with `<strong style="color:#EF7C00">…</strong>`.
-
-When authoring a break slide for a specific week, select the fun fact, short story, anecdote, or image from the week's session learning outcomes and slide content. Replace the generic placeholder before publishing; do not leave placeholder text in the delivered slide.
-
-### Placement in the Deck
-
-```markdown
----
-
-[copy templates/break-slide.qmd here; it already includes its own slide heading]
-
----
-
-## Next Slide After Break
-```
-
-### Placement in the Timeline
-
-Add a row to the lecture delivery timeline for the break slide:
-
-| Slide | Time | Mode | Delivery plan |
-|---|---:|---|---|
-| `Break` | 5 min | — | Click **▶ Start Timer** when announcing the break; **⏸ Pause**/**▶ Resume** as needed; click **↻ Restart Timer** after expiry to reset. Students return when the ring completes. |
-
-The break duration counts against the total lecture time; adjust adjacent slide timings accordingly.
-
----
-
-## Frame System
-
-All framed slides use a **fixed-size background frame** implemented as a `position:absolute` element, independent of content. This ensures consistent, thick borders at every viewport size and in PDF thumbnails.
-
-### Frame Dimensions (1600×900 canvas)
-
-| Property | Value |
-|---|---|
-| Slide canvas | 1600 × 900 px |
-| Frame inset | 40 px on all sides |
-| Frame outer rect | 1520 × 820 px |
-| Frame border thickness | **20 px** solid |
-| Frame border radius | 8 px |
-| Content layer inset | matches frame (40 px all sides) |
-| Content padding | 32 px top, 36 px sides, 28 px bottom |
-
-### Required CSS Classes
-
-Include the following CSS in the deck's `include-in-header` block (or in `custom.scss`). Do not inline these styles per-slide.
-
-```css
-.cp-frame-bg {
-  position: absolute;
-  inset: 40px;
-  border-width: 20px;
-  border-style: solid;
-  border-radius: 8px;
-  pointer-events: none;
-  z-index: 0;
-}
-.cp-frame-content {
-  position: absolute;
-  inset: 40px;
-  padding: 32px 36px 28px 36px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.cp-frame-label {
-  display: inline-block;
-  font-weight: bold;
-  font-size: 0.7em;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  padding: 0.28em 0.9em;
-  border-radius: 4px;
-  margin-bottom: 0.9em;
-  align-self: flex-start;
-  flex-shrink: 0;
-}
-.cp-frame-title  { font-size: 1.25em; font-weight: bold; margin-bottom: 0.55em; flex-shrink: 0; }
-.cp-frame-body   { font-size: 0.92em; line-height: 1.6; }
-/* Colour variants */
-.cp-frame-orange { border-color: #EF7C00; }
-.cp-frame-navy   { border-color: #003D7C; }
-.cp-frame-teal   { border-color: #00796B; }
-.cp-frame-purple { border-color: #5C2D91; }
-```
-
-### Framed Slide Markup Pattern
-
-```markdown
-## {background-color="#ffffff"}
-
-```{=html}
-<div class="cp-frame-bg cp-frame-COLOUR"></div>
+```html
+<div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
-  <div class="cp-frame-label" style="background:COLOUR;color:LABEL_TEXT;">LABEL</div>
-  <div class="cp-frame-title" style="color:TITLE_COLOUR;">Title</div>
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Previous Week Exercise Review</div>
+  <div class="cp-frame-title cp-text--navy">Title</div>
   <div class="cp-frame-body" style="color:#333;">Body content</div>
 </div>
 ```
-```
 
-### Colour Variants by Slide Type
+Available frame variants are `cp-frame-orange`, `cp-frame-navy`, `cp-frame-teal`, and `cp-frame-purple`. Use the W02 thumbnail recap classes only for a genuine previous-week composite recap: `cp-thumbnail-recap-content`, `cp-thumbnail-composite-wrap`, and `cp-thumbnail-composite`.
 
-| Slide Type | Frame class | Label bg | Label text | Slide bg |
-|---|---|---|---|---|
-| Previous Week Exercise Review | `cp-frame-orange` | `#EF7C00` | `#003D7C` | `#ffffff` |
-| Next Week Pre-Lecture Exercise | `cp-frame-navy` | `#003D7C` | `#EF7C00` | `#ffffff` |
-| 🎰 Bandit Time | `cp-frame-orange` | `#EF7C00` | — (no label box) | `#003D7C` |
-| 👥 In Lecture Activity | `cp-frame-orange` | `#EF7C00` | — (no label box) | `#003D7C` |
-| **Next Week Preview** | `cp-frame-teal` | `#00796B` | `white` | `#002a26` |
-| **Previous Week 4-Summary** | `cp-frame-purple` | `#5C2D91` | `white` | `#1a0a2e` |
+## Activity grammar
 
----
+Every activity must state the task, timebox, expected output, and instructor synthesis in speaker notes and in the delivery timeline.
 
-## Next Week Preview Slide
+| Activity type | Title convention | Core classes |
+|---|---|---|
+| Multiple choice / response | `🎰 Bandit Time: <question>` | `cp-activity cp-activity--navy cp-activity--framed`, `cp-choice-grid`, `cp-choice-card`. |
+| Small-group discussion | `👥 <activity title>` | `cp-activity cp-activity--navy cp-activity--framed`, `cp-activity__prompt`, `cp-activity__instructions`. |
+| Prompt plus timer | Either convention above | Add `cp-grid cp-grid--2-aside` and `cp-activity__timer`. |
 
-### Purpose
+### Canonical MCQ
 
-Placed at the end of the current lecture (after the Summary slide) to give students a conceptual hook for the following week before they encounter the formal material.
+Use the same answer convention in every deck: **A red**, **B blue**, **C green**, and **D purple**. Always retain the letter in visible text; colour must not carry meaning alone.
 
-### Design
-
-- Teal frame (`#00796B`), dark teal background (`#002a26`), white text
-- Label: **"Next Week Preview — Week N"**
-- Title: the next week's lecture title in light teal (`#80cbc4`)
-- Body: 3–5 bullet points covering the key ideas coming up, plus an optional italic reminder of the pre-lecture exercise
-
-### Markup
-
-```markdown
-## {background-color="#002a26"}
-
-```{=html}
-<div class="cp-frame-bg cp-frame-teal"></div>
-<div class="cp-frame-content" style="color:white;">
-  <div class="cp-frame-label" style="background:#00796B;color:white;">Next Week Preview — Week N</div>
-  <div class="cp-frame-title" style="color:#80cbc4;">Lecture Title</div>
-  <div class="cp-frame-body" style="color:#cce8e5;">
-    [2–3 sentence framing of the conceptual shift]
-    <ul style="margin-top:0.5em;line-height:1.7;">
-      <li><strong>Key idea 1</strong> — one sentence</li>
-      <li><strong>Key idea 2</strong> — one sentence</li>
-      <li><strong>Key idea 3</strong> — one sentence</li>
-    </ul>
-    <em style="color:#aaa;font-size:0.88em;">Pre-lecture exercise reminder (optional)</em>
+```html
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">Which description best fits this model?</p>
+    <div class="cp-choice-grid">
+      <div class="cp-choice-card cp-choice-card--a"><strong class="cp-choice-card__letter">A.</strong><span class="cp-choice-card__text">Option A</span></div>
+      <div class="cp-choice-card cp-choice-card--b"><strong class="cp-choice-card__letter">B.</strong><span class="cp-choice-card__text">Option B</span></div>
+      <div class="cp-choice-card cp-choice-card--c"><strong class="cp-choice-card__letter">C.</strong><span class="cp-choice-card__text">Option C</span></div>
+      <div class="cp-choice-card cp-choice-card--d"><strong class="cp-choice-card__letter">D.</strong><span class="cp-choice-card__text">Option D</span></div>
+    </div>
+  </div>
+  <div class="cp-activity__timer cp-center">
+    <!-- Copy the timer markup below only when a timer is required. -->
   </div>
 </div>
 ```
-```
 
----
+Keep the correct answer and explanation in notes, not on the student-facing question slide unless the slide is explicitly an answer/debrief slide.
 
-## Previous Week 4-Concept Recap Slide (Quarto Reveal)
+### Shared countdown timer
 
-### Purpose and Placement
-
-Use this screenshot-based recap after the Previous Week Exercise Review and before new material. Use the original slides that introduced four consequential concepts from Week N–1 to reactivate the conceptual sequence students need for the current lecture.
-
-### Why Use One Unified Graphic
-
-Build the four thumbnails into **one 16:9 recap composite** before inserting it into Quarto. Do not embed four separate image elements in the slide. A single composite prevents visual seams, inconsistent scaling, stale per-image references, and partial replacement errors when one source thumbnail changes.
-
-### Prepare the Recap Asset
-
-1. Select four **non-overlapping**, technically central source slides in reading order: representation or premise; goal or decision; method choice or trade-off; and procedure, limitation, or bridge to the current lecture.
-2. Capture each source slide at 16:9 without cropping, browser controls, or presenter overlays.
-3. Build the unified graphic with the reusable builder. The command below retains complete source slides and gives every quadrant a 1px purple outline (`#5C2D91`):
-
-   ```bash
-   python skills/cp4285-slides/scripts/build_recap_composite.py \
-     static/slides/weekNN/assets/recap/week-n-minus-1-four-concept-recap.png \
-     static/slides/weekNN/assets/recap/01.png \
-     static/slides/weekNN/assets/recap/02.png \
-     static/slides/weekNN/assets/recap/03.png \
-     static/slides/weekNN/assets/recap/04.png
-   ```
-
-4. Use descriptive `alt` text that names the four source concepts, not merely the week number.
-5. For Week 01, use: **The User–Item Matrix → From a Score to a Useful List → Similarity I: Pearson Correlation → From Neighbours to a Prediction**.
-
-### Quarto Source Template
-
-Copy `templates/previous-week-recap.qmd` into the destination lecture’s `.qmd` source. Replace the standard all-caps label and the single composite-image path. This is Quarto Reveal syntax, not standalone Markdown or HTML. The template includes the required speaker-notes block.
-
-### Styling Rules
-
-- Use a dark-purple background (`#1a0a2e`) and a purple frame (`#5C2D91`).
-- Use the standard `.cp-frame-label` as one compact, boxed, all-caps label, for example **"WEEK 01 RECAP"**. Do not add the prior lecture title or a secondary title such as "Four things to carry into today".
-- Preserve the composite’s zero-gap 2×2 layout and 1px purple quadrant outlines. Do not recreate outlines with four separate HTML image boxes.
-- Do not overlay explanatory text, icons, tables, or animations on the composite. Use speaker notes to supply the recall prompt and bridge to the current lecture.
-- Use `.cp-thumbnail-recap-content`, `.cp-thumbnail-composite-wrap`, and `.cp-thumbnail-composite` from `templates/custom.scss`. Copy the full stylesheet into a new deck’s local `custom.scss`.
-
----
-
-## Last Week Pre-Lecture Exercise: Canvas Voices
-
-Use this recap when a prior Canvas pre-lecture discussion should become evidence for the current lecture. Place it in an empty **Last Week Pre-Lecture Exercise** navy frame after the exercise prompt and before the new technical content.
-
-### Select Evidence
-
-1. Expand the complete Canvas discussion thread before selecting material.
-2. Select three or four primary student contributions that illustrate distinct, instructionally useful latent dimensions or reasoning moves.
-3. Add a direct reply only when a real follow-up response exists and extends the same theme, such as subjectivity, measurement, segmentation, variability, or a counterexample.
-4. Quote faithfully. Shorten only for fit with an ellipsis; do not rewrite student meaning or treat excerpts as quantitative evidence.
-
-### Protect Student Privacy
-
-- Omit names, initials, usernames, timestamps, and reply counts.
-- Use a participant avatar only when the instructor explicitly requests it. Save it locally under `assets/canvas-avatars/`, use the alt text `Anonymous Canvas participant avatar`, and never include the identity-to-asset mapping in the deck.
-- Label the slide as anonymised and state that quotations are shortened only for fit.
-
-### Build the Frame
-
-Copy `templates/last-week-canvas-voices.qmd` into the target deck. Use one `voice-bubble` per theme, with an avatar, a primary quotation, an optional `voice-reply`, and a terse theme label. Use a two-by-two `voice-bubble-grid` inside `.canvas-voices-frame`.
-
-### Layout Rules
-
-- Keep bubbles compact but spread them across the usable frame area with staggered vertical offsets.
-- Position each avatar just outside the lower-left edge of its bubble. Aim the bubble tail toward the avatar so the text reads as emitted by that participant.
-- Keep the primary quotation visually dominant. Render the actual follow-up reply as a smaller `Reply` line separated by a fine rule.
-- Scope all additions below `.canvas-voices-frame` in the deck's local `custom.scss`. Append overrides; do not alter shared `.cp-frame-*` rules.
-- Use course colours subtly to distinguish themes and preserve the navy frame treatment.
-
-### Validate
-
-Before delivery, confirm that every reply is thematically linked to the displayed quotation, names are absent, avatar files resolve locally, all bubbles fit in the frame, and `quarto render wNN.qmd` succeeds. Run `git diff --check` on the `.qmd` and `.scss` files.
-
----
-
-## Timer Auto-Pause on Slide Exit
-
-### Behaviour
-
-When the presenter navigates away from a slide that contains a running timer, the timer **automatically pauses** at its current value. The button label switches to **▶ Resume**. The timer does not reset; it resumes from where it left off when the presenter returns to the slide and clicks Resume.
-
-### Implementation
-
-Two additions are required in every deck that uses timers:
-
-**1. Global registry + Reveal listener** — add once in `include-in-header`, after the `</style>` tag:
+The YAML `include-after-body: ../cp-timer.html` loads the controller. **Never paste an inline timer script.** For each timer, give all IDs a unique prefix and place the data attributes on its button.
 
 ```html
-<script>
-window._cpTimers = window._cpTimers || {};
-document.addEventListener('DOMContentLoaded', function() {
-  function tryBind() {
-    if (typeof Reveal === 'undefined' || !Reveal.isReady || !Reveal.isReady()) {
-      setTimeout(tryBind, 200); return;
-    }
-    Reveal.on('slidechanged', function(e) {
-      var prev = e.previousSlide;
-      if (!prev) return;
-      var all = Array.prototype.slice.call(
-        document.querySelectorAll('.reveal .slides > section'));
-      var idx = all.indexOf(prev);
-      if (idx >= 0 && window._cpTimers[idx]) window._cpTimers[idx]();
-    });
-  }
-  tryBind();
-});
-</script>
+<div class="cp-timer">
+  <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three-minute countdown timer">
+    <circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle>
+    <circle id="TIMERID-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle>
+    <text id="TIMERID-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text>
+  </svg>
+  <span id="TIMERID-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span>
+  <button id="TIMERID-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="TIMERID-ring" data-text="TIMERID-text" data-status="TIMERID-status">▶ Start Timer</button>
+</div>
 ```
 
-**2. `slideIndex` option in `createCountdownTimer`** — each timer factory must:
-- Accept `o.slideIndex` (0-based index of the slide `<section>` that owns the timer)
-- Register a pause function in `window._cpTimers[o.slideIndex]` immediately after the `audioContext=null` declaration:
+The controller provides **Start → Pause → Resume → Expire → Restart**, plays one short expiry tone, turns the ring green at expiry, and pauses a running timer when the slide is left. Do not duplicate this behaviour in a week file.
 
-```js
-if (typeof o.slideIndex === 'number') {
-  window._cpTimers = window._cpTimers || {};
-  window._cpTimers[o.slideIndex] = function() {
-    if (state === 'running') {
-      clearInterval(interval); interval = null; state = 'paused';
-      buttonEl.textContent = '▶ Resume';
-    }
-  };
-}
+### Break slide
+
+Copy `templates/break-slide.qmd`. Replace every `BREAKID` with a unique identifier and replace the fun-fact placeholder. The shared timer controller requires no local script. Keep the black background, white text, orange accents, content-left/timer-right layout, and a large horizontal gap between columns.
+
+## Course content conventions
+
+Use Quarto MathJax for non-trivial equations. Colour meaningful mathematical quantities with named `orange`, `teal`, and `navy` TeX colours, then explain them in plain language on the same slide.
+
+Use `.callout-warning` for ethical risks and `.callout-note` for supplementary information. Use the shared `.to-think-about` callout treatment for one concise reflective question; do not recreate it as raw HTML.
+
+Each week should include an ethical thread appropriate to the topic. When a topic materially benefits from a user-treatment lens, ask whether to include the following dimensions rather than silently adding them: ♣ adversarial/shill, ♥ social, ♦ novelty, or ♠ loyalist/metadata-driven. Treat these as contextual design lenses, never fixed demographic labels.
+
+Finish a deck with a concise Summary slide and an explicit next-week bridge. Use a navy background, white text, orange emphasis, and a visible `🔑` or `🤞` synthesis cue for a Key Point or Summary slide.
+
+## Validation and delivery
+
+Run:
+
+```bash
+cd static/slides/wNN
+quarto render wNN.qmd
 ```
 
-**3. Pass `slideIndex` in the call:**
+After a shared-theme, primitive, timer, or template change, inspect every affected instance in W01 and W02. Verify title-slide navigation, two-column gaps, framed-slide geometry, MCQ card colours, timer start/pause/resume and slide-exit pause behaviour, text contrast, and absence of clipping. Update the rendered HTML and timeline before committing.
 
-```js
-createCountdownTimer({
-  total: TOTAL,
-  textId: 'timer-text-XXXX',
-  statusId: 'timer-status-XXXX',
-  ringId: 'donut-ring-XXXX',
-  buttonId: 'break-btn-XXXX',
-  slideIndex: N   // ← 0-based index of this slide's <section>
-});
+## File layout
+
+```text
+static/slides/
+├── cp4285-common.scss
+├── cp-timer.html
+└── wNN/
+    ├── wNN.qmd
+    ├── wNN.html
+    ├── wNN-custom.scss
+    └── wNN-timeline.md
 ```
 
-### Determining `slideIndex`
-
-Count all top-level `<section>` elements in `.reveal .slides` (i.e., every `## ` or `# ` heading in the `.qmd`, plus the implicit title slide at index 0). The title slide is index 0; each subsequent `---`-separated slide increments the index by 1.
+Commit source, rendered output, overlay, timeline, and all changed shared assets in one change.

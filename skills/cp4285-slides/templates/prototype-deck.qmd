@@ -1,0 +1,189 @@
+---
+title: "<Lecture Title>"
+subtitle: "CP4285 Modern Recommendation Systems — Week NN"
+author: "CP4285 Instruction Team"
+date: "DD MMM YYYY"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../cp4285-common.scss, wNN-custom.scss]
+    include-after-body: ../cp-timer.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: false
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week NN · NUS School of Computing"
+    self-contained: true
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+<!--
+COPYING CHECKLIST
+1. Rename this file to wNN.qmd and copy custom.scss to wNN-custom.scss.
+2. Replace the title metadata. Add the verified QR title-panel metadata described in SKILL.md.
+3. Keep, adapt, or delete every prototype deliberately. Remove all TODO text before delivery.
+4. Replace every TIMERID/BREAKID with a unique identifier in this deck.
+-->
+
+# 01 Opening {background-color="#EF7C00"}
+
+## Standard content slide
+
+Use Markdown for ordinary lecture content. Reserve raw HTML for a reusable primitive or a singular visual composition.
+
+::: {.callout-warning}
+State a caveat, ethical risk, or decision consequence here.
+:::
+
+::: notes
+TODO: Add delivery notes and sources.
+:::
+
+## Two-column comparison
+
+```{=html}
+<div class="cp-grid cp-grid--2">
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">Left concept</p>
+    <p style="margin:0;">Use the shared two-column grid; it guarantees a 1.4em horizontal gap.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">Right concept</p>
+    <p style="margin:0;">Keep a singular visual arrangement inline only when no shared primitive expresses it.</p>
+  </div>
+</div>
+```
+
+::: notes
+TODO: Explain the comparison and its practical implication.
+:::
+
+## Repeated data patterns
+
+```{=html}
+<div class="cp-grid cp-grid--3">
+  <div class="cp-metric"><span class="cp-metric__label">Metric one</span><strong class="cp-metric__value">85%</strong><span class="cp-metric__meta">One concise qualifier</span></div>
+  <div class="cp-metric"><span class="cp-metric__label">Metric two</span><strong class="cp-metric__value">42%</strong><span class="cp-metric__meta">One concise qualifier</span></div>
+  <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Risk signal</span><strong class="cp-metric__value">15%</strong><span class="cp-metric__meta">One concise qualifier</span></div>
+</div>
+
+<table class="cp-table cp-table--compact" style="margin-top:.8em;">
+  <thead><tr><th>Model</th><th>Signal</th><th>Decision</th></tr></thead>
+  <tbody>
+    <tr><td class="cp-table__cell cp-table__cell--label">Baseline</td><td class="cp-table__cell">Observed interaction</td><td class="cp-table__cell cp-table__cell--highlight">Inspect limitation</td></tr>
+  </tbody>
+</table>
+```
+
+::: notes
+TODO: Cite the data source and explain the comparison.
+:::
+
+# 02 Activities {background-color="#EF7C00"}
+
+## 🎰 Bandit Time: Which option best fits the model? {background-color="#003D7C"}
+
+```{=html}
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">Choose one answer, then justify it in one sentence.</p>
+    <div class="cp-choice-grid">
+      <div class="cp-choice-card cp-choice-card--a"><strong class="cp-choice-card__letter">A.</strong><span class="cp-choice-card__text">TODO: plausible distractor</span></div>
+      <div class="cp-choice-card cp-choice-card--b"><strong class="cp-choice-card__letter">B.</strong><span class="cp-choice-card__text">TODO: correct or plausible option</span></div>
+      <div class="cp-choice-card cp-choice-card--c"><strong class="cp-choice-card__letter">C.</strong><span class="cp-choice-card__text">TODO: plausible distractor</span></div>
+      <div class="cp-choice-card cp-choice-card--d"><strong class="cp-choice-card__letter">D.</strong><span class="cp-choice-card__text">TODO: plausible distractor</span></div>
+    </div>
+  </div>
+  <div class="cp-activity__timer">
+    <div class="cp-timer">
+      <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Twenty-second countdown timer">
+        <circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle>
+        <circle id="TIMERID-mcq-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle>
+        <text id="TIMERID-mcq-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:20</text>
+      </svg>
+      <span id="TIMERID-mcq-status" role="timer" aria-live="polite" class="cp-sr-only">00:20</span>
+      <button id="TIMERID-mcq-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="20" data-ring="TIMERID-mcq-ring" data-text="TIMERID-mcq-text" data-status="TIMERID-mcq-status">▶ Start Timer</button>
+    </div>
+  </div>
+</div>
+```
+
+::: notes
+Activity mode: MCQ/response. Timebox: 20 seconds. Expected output: one answer plus one-sentence justification. TODO: State the correct answer and explain why the alternatives fail.
+:::
+
+## 👥 Small-group discussion: Apply the concept {background-color="#003D7C"}
+
+```{=html}
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-stack">
+  <p class="cp-activity__prompt">In groups of three, identify one design trade-off and one stakeholder affected by it.</p>
+  <p class="cp-activity__instructions">Prepare one two-sentence report. Be ready to name the signal, objective, or assumption that drives your trade-off.</p>
+</div>
+```
+
+::: notes
+Activity mode: small-group discussion. Timebox: 3 minutes without a displayed timer. Expected output: one reported trade-off. TODO: State the instructor synthesis.
+:::
+
+## Break — 5 minutes {background-color="#000000"}
+
+```{=html}
+<div class="cp-grid cp-grid--2-aside" style="min-height:62vh;align-items:center;color:#fff;">
+  <div>
+    <div class="cp-kicker cp-text--orange" style="margin-bottom:.8em;">While you pause</div>
+    <h2 style="color:#fff;margin:.1em 0 .45em;">☕ BREAK</h2>
+    <p style="font-size:1.05em;line-height:1.42;margin:0;color:#d8d8d8;">TODO: Replace this with a concise, topic-relevant fact, story, image, or prompt.</p>
+  </div>
+  <div class="cp-activity__timer">
+    <div class="cp-timer">
+      <svg width="180" height="180" viewBox="0 0 180 180" aria-label="Five-minute break timer">
+        <circle cx="90" cy="90" r="75" fill="none" stroke="#333" stroke-width="14"></circle>
+        <circle id="BREAKID-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle>
+        <text id="BREAKID-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="32" font-weight="bold" fill="#00796B">05:00</text>
+      </svg>
+      <span id="BREAKID-status" role="timer" aria-live="polite" class="cp-sr-only">05:00</span>
+      <button id="BREAKID-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="300" data-ring="BREAKID-ring" data-text="BREAKID-text" data-status="BREAKID-status">▶ Start Timer</button>
+    </div>
+  </div>
+</div>
+```
+
+::: notes
+Replace every BREAKID with a unique identifier. Start the timer when announcing the break; it pauses automatically on slide exit.
+:::
+
+# 03 Framed continuity {background-color="#EF7C00"}
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title cp-text--navy">Prepare one observation</div>
+  <div class="cp-frame-body" style="color:#333;">
+    <div class="cp-card cp-card--prompt">TODO: State one focused preparatory prompt.</div>
+    <p style="margin:.7em 0 0;">TODO: State the deadline, expected response, and link or reading reference.</p>
+  </div>
+</div>
+```
+
+::: notes
+TODO: Add delivery instructions, deadline, and expected student response.
+:::
+
+# Summary {background-color="#003D7C"}
+
+## 🔑 <u>One concise takeaway</u>
+
+Use a short synthesis, then bridge explicitly to the next week.
+
+::: notes
+TODO: Add a next-week bridge and any source notes.
+:::
