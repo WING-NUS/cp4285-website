@@ -38,6 +38,7 @@ format:
   <h5 id="w02-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
     <li><strong class="cp-text--teal">20 Aug 2026</strong> — Refined content and classroom layouts for this release.</li>
+    <li><strong class="cp-text--teal">20 Aug 2026</strong> — Added a linked Week 3 evaluation preview image and attribution.</li>
   </ul>
 </div>
 ```
@@ -747,24 +748,17 @@ Expected direction: Case A supports a signed SVD-style residual view; Case B sup
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
   <div class="cp-frame-title" class="cp-text--navy">What Should Evaluation Be Responsible For?</div>
   <div class="cp-frame-body" style="color:#333;display:grid;grid-template-columns:minmax(270px,.82fr) minmax(0,1.48fr);gap:1em;align-items:stretch;">
-    <section aria-label="Assigned reading" style="padding:.46em;border:2px solid #D5DEE9;background:#F8FAFD;">
+    <section aria-label="Assigned reading" style="font-size:.88em;padding:.46em;border:2px solid #D5DEE9;background:#F8FAFD;">
       <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener" aria-label="Open the assigned Straits Times article">
         <img src="assets/article-thumbnails/st-social-media-safety-2026.png" alt="A young person looking at a phone while lying on a bed" style="display:block;width:100%;height:230px;object-fit:contain;background:#E9EFF6;">
       </a>
       <p style="margin-top:.22em;color:#657286;font-size:.54em;letter-spacing:.06em;">PHOTO: ST FILE</p>
-      <p><strong>Read:</strong> <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener">“S’pore studying restrictions on direct messaging, auto-play on social media to protect kids”</a></p>
-      <p style="color:#4B5563;">Use one detail about auto-play, direct messaging, or age assurance as evidence in your comment.</p>
+      <p style="font-size:.88em"><strong>Read:</strong> <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener">“S’pore studying restrictions on direct messaging, auto-play on social media to protect kids”</a></p>
     </section>
-    <section aria-label="Canvas comment task">
+    <section aria-label="Canvas comment task" style="font-size:.88em">
       <p><strong class="cp-text--navy">Canvas discussion board</strong> · post one individual comment before <strong class="cp-text--teal">Mon, 23:59 SGT</strong></p>
-      <div style="margin:0 0 .62em;padding:.72em .82em;border-left:7px solid #00796B;background:#F0F8F6;color:#003D7C;font-weight:bold;line-height:1.28;">A recommender may be evaluated using whether people watch, click, or continue interacting with suggested content. What is <strong>one responsibility</strong> that evaluation should include for younger users, beyond predicting continued engagement?</div>
+      <div style="margin:0 0 .62em;padding:.72em .82em;border-left:7px solid #00796B;background:#F0F8F6;color:#003D7C;font-weight:bold;line-height:1.28;font-size:.54em">A recommender may be evaluated using whether people watch, click, or continue interacting with suggested content. What is <strong>one responsibility</strong> that evaluation should include for younger users, beyond predicting continued engagement?</div>
       <p>In <strong>120–160 words</strong>, choose and name <strong>one card-suit lens</strong>, cite one article detail, and propose one piece of evidence, safeguard, or user control the platform should examine.</p>
-      <div aria-label="Choose one card-suit lens" style="display:grid;grid-template-columns:1fr 1fr;gap:.32em .55em;margin:.12em 0 .62em;">
-        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b class="cp-text--navy">♣ Robustness</b> · narrow or harmful incentives?</span>
-        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b style="color:#C62828;">♥ Social impact</b> · safety, well-being, or exposure?</span>
-        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b style="color:#C62828;">♦ Discovery</b> · variety or more of the same?</span>
-        <span style="padding:.30em .36em;border-bottom:1px solid #D5DEE9;color:#4B5563;line-height:1.15;"><b class="cp-text--navy">♠ Control &amp; explanation</b> · adjust or challenge the feed?</span>
-      </div>
       <p style="margin-bottom:0;color:#A24B00;font-weight:bold;text-align:center;"><strong>No classmate reply this week.</strong> Next week: protocols, ranking metrics, and what a score leaves out.</p>
     </section>
   </div>
@@ -772,8 +766,6 @@ Expected direction: Case A supports a signed SVD-style residual view; Case B sup
 ```
 
 ::: notes
-Use the Week 01 Slide 59 treatment directly: white field, navy frame, orange-on-navy label, and the standard shared CP4285 frame typography. The image is a local PNG copy of the article’s lead image so that it can render reliably; credit it as “PHOTO: ST FILE.” Direct students to the linked article and Canvas discussion board. State the deadline clearly. The task is an individual comment only; explicitly state that no reply is required because of the assignment deadline. Remind students to name their selected suit in the first sentence.
-
 [Sources]
 - Koh, S. (2026, 31 March). “S’pore studying restrictions on direct messaging, auto-play on social media to protect kids.” *The Straits Times*. Photo: ST FILE.
 :::
@@ -782,51 +774,34 @@ Use the Week 01 Slide 59 treatment directly: white field, navy frame, orange-on-
 
 ```{=html}
 <div class="cp-frame-bg cp-frame-teal"></div>
-<div class="cp-frame-content" style="color:white;">
+<div class="cp-frame-content" style="color:white;background:#002a26;inset:60px;padding:26px 32px 22px;font-size:.92em;">
   <div class="cp-frame-label" style="background:#00796B;color:white;">Next Week Preview — Week 03</div>
   <div class="cp-frame-title" style="color:#80cbc4;">Evaluation of Recommendation Systems</div>
   <div class="cp-frame-body" style="color:#cce8e5;">
-    <section>
-      <p style="font-size:1.08em;line-height:1.35;">An offline metric tells us how a list performed. Next, we ask whether the recommendation process performs well under a scenario.</p>
-      <p><strong style="color:#ffffff;">In Week 3:</strong></p>
-      <ul>
-        <li>design an evaluation protocol;</li>
-        <li>interpret ranked-list quality; and</li>
-        <li>identify what a score does not capture.</li>
-      </ul>
-    </section>
-    <section aria-label="The Week 01 four-suit evaluation lens" style="padding-left:.92em;border-left:5px solid #80cbc4;">
-      <p><strong style="color:#80cbc4;">Bring the Week 01 four-suit lens</strong></p>
-      <p><b>♣ ♥ ♦ ♠</b></p>
-    </section>
+    <div class="cp-grid cp-grid--2" style="align-items:center;">
+      <div>
+        <p style="margin:0 0 .35em;font-size:.88em;line-height:1.24;">An offline metric tells us how a list performed. Next, we ask whether the recommendation process performs well under a scenario.</p>
+        <p style="margin:.16em 0;"><strong style="color:#ffffff;">In Week 3:</strong></p>
+        <ul style="margin:.18em 0;line-height:1.25;">
+          <li>design an evaluation protocol;</li>
+          <li>interpret ranked-list quality; and</li>
+          <li>identify what a score does not capture.</li>
+          <li>Bring the Week 01 four-suit lens</strong> <b>♣ ♥ ♦ ♠</b> into the picture.</li>
+        </ul>
+      </div>
+      <figure style="margin:0;text-align:right;">
+        <a href="https://unsplash.com/photos/turned-on-monitoring-screen-qwtCeJ5cLYs" target="_blank" rel="noopener" aria-label="Open Stephen Dawson's monitoring dashboard photo on Unsplash">
+          <img class="cp-image" src="assets/unsplash/stephen-dawson-monitoring-dashboard.jpg" alt="Data reporting dashboard on a laptop screen with monitoring charts" style="display:block;width:100%;object-fit:contain;border:3px solid #80cbc4;background:#001d1a;">
+        </a>
+        <figcaption style="margin-top:.3em;color:#80cbc4;font-size:.53em;text-align:right;"><a href="https://unsplash.com/photos/turned-on-monitoring-screen-qwtCeJ5cLYs" target="_blank" rel="noopener" style="color:#80cbc4;">Photo: Stephen Dawson / Unsplash</a></figcaption>
+      </figure>
   </div>
 </div>
 ```
 
 ::: notes
-:::
-
-## {background-color="#002a26"}
-
-```{=html}
-<div class="cp-frame-bg cp-frame-teal"></div>
-<div class="cp-frame-content" style="color:#fff;">
-  <div class="cp-frame-label" style="background:#00796B;color:#fff;">Next Week Preview — Week 02</div>
-  <div class="cp-frame-title" style="color:#80cbc4;">Latent Factor Models</div>
-  <div class="cp-frame-body" style="color:#cce8e5;">
-    <p style="font-size:1.08em;margin:0 0 .55em;"><u>What if useful similarities are not directly visible in a sparse matrix?</u></p>
-    <ul style="margin:.3em 0 0;line-height:1.55;">
-      <li><strong>Move beyond local overlap</strong> — infer compact user and item representations from many ratings together.</li>
-      <li><strong>Interpret sparse evidence</strong> — ask which hidden preferences may explain observed patterns.</li>
-      <li><strong>Keep the same questions</strong> — what evidence is represented, what does the model optimise, and who might it leave unseen?</li>
-    </ul>
-  </div>
-</div>
-```
-
-::: notes
-Preview Week 02 without teaching factorisation yet. The contrast is local visible overlap versus inferred latent structure. Carry forward the course's problem-framing questions so the transition is conceptual, not merely mathematical.
+Preview Week 03 as a transition from representation to evaluation. Use the dashboard image as an editorial illustration of monitoring and reporting; it is not evidence of a recommendation metric or a real system evaluation.
 
 [Sources]
-- Aggarwal, C. C. (2016). *Recommender systems: The textbook*, Sections 2.5-2.5.2, pp. 47-50.
+- Dawson, Stephen. (2018). “turned on monitoring screen.” *Unsplash*. https://unsplash.com/photos/turned-on-monitoring-screen-qwtCeJ5cLYs. Licensed under the Unsplash License.
 :::
