@@ -1075,9 +1075,25 @@ display:block!important;
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
+  <div class="cp-frame-title cp-text--navy">What evidence would make that responsibility visible?</div>
+  <div class="cp-frame-body" style="color:#333;display:grid;grid-template-columns:1fr 1fr;gap:1.3em;align-items:stretch;">
+    <div class="cp-card cp-card--soft">
+      <p class="cp-card__title">Listen for in the discussion</p>
+      <ul style="margin:.25em 0 0;padding-left:1.15em;line-height:1.35;">
+        <li>the responsibility named beyond engagement;</li>
+        <li>the affected situation: ♣, ♥, ♦, or ♠; and</li>
+        <li>the evidence, safeguard, or user control proposed.</li>
+      </ul>
+    </div>
+    <div class="cp-card cp-card--prompt">
+      <p class="cp-card__title">🎙 Voice agent checkpoint</p>
+      <p style="margin:0;">Ask the voice agent: <em>“A platform says clicks prove its feed works for younger users. What question should its evaluation still answer?”</em></p>
+      <p class="cp-card__meta">Treat the response as a prompt for critique, not as evidence or a policy authority.</p>
+    </div>
+  </div>
 </div>
 <aside class="notes">
-
+<p>Delivery: 2-minute voice-agent interaction. Invite one student to phrase the question, then ask the room to identify the lens and the evidence that would be needed to investigate the agent’s concern. Do not treat a voice-agent answer as a factual source; it is a structured counterargument.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1090,11 +1106,26 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="week-3-evaluation-of-recommendation-systems" class="slide level2">
-<h2>Week 3: Evaluation of Recommendation Systems</h2>
-<p>This stub will develop offline protocols, ranking metrics, and their limitations.</p>
+<section id="evaluation-makes-a-claim-about-success" class="slide level2">
+<h2>Evaluation makes a claim about success</h2>
+<blockquote>
+<p>A model can score user-item pairs. An evaluation protocol decides whether those scores support a useful, defensible decision.</p>
+</blockquote>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Today: design the protocol, read ranking metrics, and ask what the metrics leave out.</p>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>TODO: add examples, activities, and delivery notes.</p>
+<p>Delivery: 1 minute. Use this as the bridge from Week 02’s score to Week 03’s evidence. Do not introduce every metric yet.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1116,7 +1147,7 @@ display:block!important;
 <li>Explain limitations of offline evaluation.</li>
 </ul>
 <aside class="notes">
-<p>TODO (instructor): connect the outcomes to the lecture sequence.</p>
+<p>Delivery: 1 minute. Point to the sequence: protocol first, metrics second, critique throughout, and limitations before deployment claims.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1129,21 +1160,78 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section class="slide level2">
-
+<section id="bandit-time-what-did-the-model-learn" class="slide level2" data-background-color="#003D7C">
+<h2>🎰 Bandit Time: What did the model learn?</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">A user has never clicked a recommended film. Which conclusion is justified?</p>
+    <div class="cp-choice-grid">
+      <div class="cp-choice-card cp-choice-card--a"><strong class="cp-choice-card__letter">A.</strong><span class="cp-choice-card__text">The user dislikes the film.</span></div>
+      <div class="cp-choice-card cp-choice-card--b"><strong class="cp-choice-card__letter">B.</strong><span class="cp-choice-card__text">The film was shown and ignored for a known reason.</span></div>
+      <div class="cp-choice-card cp-choice-card--c"><strong class="cp-choice-card__letter">C.</strong><span class="cp-choice-card__text">The log alone cannot separate preference from exposure or interface effects.</span></div>
+      <div class="cp-choice-card cp-choice-card--d"><strong class="cp-choice-card__letter">D.</strong><span class="cp-choice-card__text">The latent-factor model has no prediction for this user.</span></div>
+    </div>
+  </div>
+  <div class="cp-activity__timer cp-center">
+    <div class="cp-timer">
+      <svg width="140" height="140" viewbox="0 0 180 180" aria-label="Thirty-second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w03-tempo-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w03-tempo-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:30</text></svg>
+      <span id="w03-tempo-status" role="timer" aria-live="polite" class="cp-sr-only">00:30</span>
+      <button id="w03-tempo-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="30" data-ring="w03-tempo-ring" data-text="w03-tempo-text" data-status="w03-tempo-status">▶ Start Timer</button>
+    </div>
+  </div>
+</div>
+<aside class="notes">
+<p>Activity mode: TempoQuiz MCQ. Timebox: 30 seconds for response; use the remaining time for a quick poll. Expected output: C. Instructor synthesis: an unclicked item is observationally ambiguous; evaluation must specify what was exposed, what was observed, and what outcome is claimed.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="tempoquiz-debrief-absence-is-not-a-label" class="slide level2">
+<h2>TempoQuiz debrief: absence is not a label</h2>
+<div class="cp-grid cp-grid--2">
+  <div class="cp-card cp-card--warning"><p class="cp-card__title">Tempting shortcut</p><p style="margin:0;">“No click” means dislike, so treat it as a negative label.</p></div>
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Evaluation-aware view</p><p style="margin:0;">No click may mean no exposure, poor placement, wrong time, inattention, or lack of interest. The protocol must say which interpretation is defensible.</p></div>
+</div>
+<aside class="notes">
+<p>Delivery: 1 minute. Confirm C and link this ambiguity to the end-of-lecture offline-evaluation limitations.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section></section>
 <section>
 <section id="evaluation-design" class="title-slide slide level1 center" data-background-color="#EF7C00">
 <h1>02 Evaluation Design</h1>
 
 </section>
-<section id="offline-evaluation-protocols" class="slide level2">
-<h2>Offline evaluation protocols</h2>
+<section id="the-evaluation-contract" class="slide level2">
+<h2>The evaluation contract</h2>
+<div style="display:grid;grid-template-columns:1fr 2.1em 1fr 2.1em 1fr 2.1em 1fr;gap:.35em;align-items:stretch;margin:.65em 0;">
+  <div class="cp-flow-card"><strong>Scenario</strong><br>Who is deciding, and on which surface?</div><div class="cp-flow-arrow">→</div>
+  <div class="cp-flow-card"><strong>Candidates</strong><br>Which items could have appeared?</div><div class="cp-flow-arrow">→</div>
+  <div class="cp-flow-card"><strong>Relevance</strong><br>What counts as a useful outcome?</div><div class="cp-flow-arrow">→</div>
+  <div class="cp-flow-card"><strong>Decision</strong><br>What is shown at top-<em>K</em>?</div>
+</div>
 <blockquote>
-<p>TODO: introduce splits, candidate sets, and leakage safeguards.</p>
+<p>Do not choose a metric until these four terms are explicit.</p>
 </blockquote>
 <aside class="notes">
-<p>TODO (author): develop this concept with a worked example.</p>
+<p>Delivery: 2.5 minutes. Use a music-homepage example: a returning listener, 20 candidates, a saved/played track as relevance, and a five-item shelf. The same model may need a different protocol for a push notification.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1156,8 +1244,240 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="ethics-thread-what-metrics-omit" class="slide level2">
-<h2>Ethics Thread: What metrics omit</h2>
+<section id="bandit-time-which-split-supports-this-claim" class="slide level2" data-background-color="#003D7C">
+<h2>🎰 Bandit Time: Which split supports this claim?</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">You claim a news recommender will work next week. Which test design best supports that claim?</p>
+    <div class="cp-choice-grid">
+      <div class="cp-choice-card cp-choice-card--a"><strong class="cp-choice-card__letter">A.</strong><span class="cp-choice-card__text">Train and test on the same logged clicks.</span></div>
+      <div class="cp-choice-card cp-choice-card--b"><strong class="cp-choice-card__letter">B.</strong><span class="cp-choice-card__text">Randomly split all interactions, including future events and features.</span></div>
+      <div class="cp-choice-card cp-choice-card--c"><strong class="cp-choice-card__letter">C.</strong><span class="cp-choice-card__text">Train on earlier interactions; tune on a later validation period; test on an untouched future period.</span></div>
+      <div class="cp-choice-card cp-choice-card--d"><strong class="cp-choice-card__letter">D.</strong><span class="cp-choice-card__text">Choose the split after seeing which one gives the highest NDCG.</span></div>
+    </div>
+  </div>
+  <div class="cp-activity__timer cp-center">
+    <div class="cp-timer">
+      <svg width="140" height="140" viewbox="0 0 180 180" aria-label="Forty-five-second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w03-split-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w03-split-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:45</text></svg>
+      <span id="w03-split-status" role="timer" aria-live="polite" class="cp-sr-only">00:45</span>
+      <button id="w03-split-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="45" data-ring="w03-split-ring" data-text="w03-split-text" data-status="w03-split-status">▶ Start Timer</button>
+    </div>
+  </div>
+</div>
+<aside class="notes">
+<p>Activity mode: MCQ/response. Timebox: 45 seconds. Expected output: C. Instructor synthesis: a temporal split better matches a forward-looking claim, while validation must remain separate from the final test set.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="training-validation-and-testing-serve-different-decisions" class="slide level2">
+<h2>Training, validation, and testing serve different decisions</h2>
+<div class="cp-grid cp-grid--3">
+  <div class="cp-card"><p class="cp-card__title">Train</p><p style="margin:0;">Fit the recommender using only information available at the training cutoff.</p></div>
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Validate</p><p style="margin:0;">Choose hyperparameters, thresholds, and model variants without touching the final test period.</p></div>
+  <div class="cp-card cp-card--warning"><p class="cp-card__title">Test once</p><p style="margin:0;">Estimate performance of the chosen system on an untouched period; do not tune again after seeing it.</p></div>
+</div>
+<aside class="notes">
+<p>Delivery: 3.5 minutes, including the MCQ debrief. Explain leakage as information that would not have existed at recommendation time, including future clicks, popularity statistics, or labels.</p>
+<p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender Systems: The Textbook</em>, Sections 7.2 and 7.4, pp. 227-240.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section></section>
+<section>
+<section id="ranked-lists-not-just-scores" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>03 Ranked Lists, Not Just Scores</h1>
+
+</section>
+<section id="one-list-four-metric-lenses" class="slide level2">
+<h2>One list, four metric lenses</h2>
+<table class="cp-table cp-table--compact caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Ranked list</th>
+<th data-quarto-table-cell-role="th">Question answered</th>
+<th data-quarto-table-cell-role="th">Useful when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">Precision@K</td>
+<td class="cp-table__cell">Of the <em>K</em> shown items, how many were relevant?</td>
+<td class="cp-table__cell">Space is scarce; irrelevant exposure is costly.</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell cp-table__cell--label">Recall@K</td>
+<td class="cp-table__cell">How much of the relevant set was retrieved?</td>
+<td class="cp-table__cell">Missing useful items is costly.</td>
+</tr>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">MAP</td>
+<td class="cp-table__cell">Are relevant items repeatedly placed early?</td>
+<td class="cp-table__cell">Several binary-relevant items may matter.</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell cp-table__cell--label">NDCG</td>
+<td class="cp-table__cell">Are the most valuable items at the top?</td>
+<td class="cp-table__cell">Relevance is graded and rank position matters.</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="cp-card cp-card--prompt" style="margin-top:.55em;">The cutoff <em>K</em> is a product decision: a five-item carousel and a 50-result search page do not make the same claim.</div>
+<aside class="notes">
+<p>Delivery: 4 minutes. Students already know precision and recall; use them only as anchors. Explain MAP as repeated early precision over relevant items and NDCG as discounted, graded gain. Do not derive the formulas in full.</p>
+<p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender Systems: The Textbook</em>, Section 7.5, pp. 240-250.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="which-recommender-wins" class="slide level2" data-background-color="#003D7C">
+<h2>👥 Which recommender wins?</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">For a five-item music shelf, choose the better recommender and defend one metric.</p>
+    <div class="cp-grid cp-grid--2" style="font-size:1em;">
+      <div class="cp-card" style="color:#273244;"><p class="cp-card__title">A: early high-value hit</p><p style="margin:0;">1. ★★★★★   2. ○   3. ○   4. ★★   5. ○</p></div>
+      <div class="cp-card" style="color:#273244;"><p class="cp-card__title">B: more binary hits</p><p style="margin:0;">1. ★★   2. ★★   3. ○   4. ★★   5. ○</p></div>
+    </div>
+    <p class="cp-activity__instructions" style="margin-top:.7em;">In groups of 3–4: name the surface assumption, the metric, and one reason the other system might still be preferred.</p>
+  </div>
+  <div class="cp-activity__timer cp-center"><div class="cp-timer"><svg width="140" height="140" viewbox="0 0 180 180" aria-label="Three-minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w03-ranking-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w03-ranking-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg><span id="w03-ranking-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span><button id="w03-ranking-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="w03-ranking-ring" data-text="w03-ranking-text" data-status="w03-ranking-status">▶ Start Timer</button></div></div>
+</div>
+<aside class="notes">
+<p>Activity mode: small-group discussion. Timebox: 3 minutes, followed by a 1-minute report. Expected output: an explicit metric choice tied to a stated interface goal. Instructor synthesis: A may dominate on NDCG if the five-star item is uniquely valuable; B may win on binary recall or MAP. No metric is a universal winner.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="debrief-a-metric-is-an-ordering-of-priorities" class="slide level2">
+<h2>Debrief: a metric is an ordering of priorities</h2>
+<blockquote>
+<p>A system can be better at the top, better across many relevant items, or better at avoiding wasted slots. Your metric chooses among those priorities.</p>
+</blockquote>
+<aside class="notes">
+<p>Delivery: 1 minute. Make the bridge to the next section: even a well-chosen ranking metric is not the entire evaluation.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="break-5-minutes" class="slide level2" data-background-color="#000000">
+<h2>Break — 5 minutes</h2>
+<div class="cp-grid cp-grid--2-aside" style="min-height:62vh;align-items:center;color:#fff;"><div><div class="cp-kicker cp-text--orange" style="margin-bottom:.8em;">While you pause</div><h2 style="color:#fff;margin:.1em 0 .45em;">☕ BREAK</h2><p style="font-size:1.05em;line-height:1.42;margin:0;color:#d8d8d8;">A recommender can achieve perfect catalogue coverage by showing every item eventually. That does not mean any individual list is useful. Evaluation needs both system-wide and user-level views.</p></div><div class="cp-activity__timer"><div class="cp-timer"><svg width="180" height="180" viewbox="0 0 180 180" aria-label="Five-minute break timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#333" stroke-width="14"></circle><circle id="w03-break-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w03-break-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#00796B">05:00</text></svg><span id="w03-break-status" role="timer" aria-live="polite" class="cp-sr-only">05:00</span><button id="w03-break-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="300" data-ring="w03-break-ring" data-text="w03-break-text" data-status="w03-break-status">▶ Start Timer</button></div></div></div>
+<aside class="notes">
+<p>Delivery: 5-minute break. Start the shared timer when announcing the break; it pauses automatically if the slide is left.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section></section>
+<section>
+<section id="beyond-accuracy" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>04 Beyond Accuracy</h1>
+
+</section>
+<section id="same-precision-different-catalogue" class="slide level2">
+<h2>Same precision, different catalogue</h2>
+<div class="cp-grid cp-grid--2"><div class="cp-card cp-card--soft"><p class="cp-card__title">System P: popular repeat</p><p style="margin:0;">Every user sees familiar blockbusters. Precision@5 is high, but the catalogue is barely touched.</p><p class="cp-card__meta">Likely risk: repeated exposure and narrow discovery.</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">System D: relevant discovery</p><p style="margin:0;">Each user sees useful, less familiar options across the catalogue. Precision@5 is the same.</p><p class="cp-card__meta">Potential value: novelty, diversity, and long-tail exposure.</p></div></div>
+<aside class="notes">
+<p>Delivery: 3 minutes. Ask which system the original ranking metrics prefer: they may be tied. Introduce catalogue coverage as the fraction of the catalogue that reaches at least one user, but distinguish it from within-list diversity.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="evaluation-criteria-map" class="slide level2">
+<h2>Evaluation criteria map</h2>
+<div class="cp-grid cp-grid--3"><div class="cp-metric"><span class="cp-metric__label">Useful now</span><strong class="cp-metric__value">Relevance &amp; utility</strong><span class="cp-metric__meta">Precision, recall, MAP, NDCG, task completion</span></div><div class="cp-metric"><span class="cp-metric__label">Useful alternatives</span><strong class="cp-metric__value">Coverage &amp; discovery</strong><span class="cp-metric__meta">Catalogue coverage, novelty, diversity, serendipity</span></div><div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Safe and dependable</span><strong class="cp-metric__value">Trust &amp; resilience</strong><span class="cp-metric__meta">Confidence, robustness, stability, scalability</span></div></div>
+<aside class="notes">
+<p>Delivery: 4 minutes. Connect each group of criteria to a question raised in the W02 exercise. Stress that some criteria are harder to quantify, not less important.</p>
+<p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender Systems: The Textbook</em>, Section 7.3, pp. 229-235.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="voice-agent-conversion-is-enough" class="slide level2">
+<h2>🎙 Voice agent: “Conversion is enough”</h2>
+<div class="cp-grid cp-grid--2"><div class="cp-card cp-card--soft"><p class="cp-card__title">Voice agent prompt</p><p style="margin:0;"><em>“You are a product analyst. Make the strongest case that conversion rate alone should decide whether we ship this recommender.”</em></p><p class="cp-card__meta">Listen for the business case, then challenge its assumptions.</p></div><div class="cp-card cp-card--prompt"><p class="cp-card__title">Student response</p><p style="margin:0;">Name one guardrail metric and one harmful incentive that could be hidden by a conversion-only objective.</p></div></div>
+<aside class="notes">
+<p>Delivery: 3 minutes. Use an instructor-controlled voice agent. Ask it for a concise argument, then solicit two rebuttals. Expected output: a guardrail such as novelty, diversity, complaints/opt-outs, robustness, constraint satisfaction, or wellbeing. The agent is a debate device, never a factual authority.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="accuracy-is-a-proxy-not-a-verdict" class="slide level2">
+<h2>Accuracy is a proxy, not a verdict</h2>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1167,12 +1487,34 @@ display:block!important;
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>TODO: examine whose outcomes may be invisible in an accuracy-only evaluation.</p>
+<p>An observed click can be a useful signal without being a complete account of benefit, consent, satisfaction, or long-term welfare.</p>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>TODO (author): add a concrete stakeholder question.</p>
+<p>Delivery: 3 minutes. Connect the warning to the ♥ lens and state that the next activity treats the lenses as situational evaluation questions, not demographic categories.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section></section>
+<section>
+<section id="evaluation-through-the-card-lenses" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>05 Evaluation Through the Card Lenses</h1>
+
+</section>
+<section id="four-lenses-four-guardrail-families" class="slide level2">
+<h2>Four lenses, four guardrail families</h2>
+<div class="cp-grid cp-grid--2"><div class="cp-card"><p class="cp-card__title">♣ Clubs — adversarial / shill</p><p style="margin:0;">Can coordinated activity manipulate the list? Measure attack impact, anomaly detection, and stability.</p></div><div class="cp-card"><p class="cp-card__title">♥ Hearts — social</p><p style="margin:0;">Does social evidence help without creating unwanted exposure or conformity? Examine privacy, welfare, and subgroup outcomes.</p></div><div class="cp-card"><p class="cp-card__title">♦ Diamonds — novelty seeker</p><p style="margin:0;">Does the list enable discovery? Examine novelty, diversity, serendipity, and catalogue coverage.</p></div><div class="cp-card"><p class="cp-card__title">♠ Spades — loyalist / metadata-driven</p><p style="margin:0;">Are important requirements stable and visible? Examine constraint satisfaction, consistency, calibration, and explanation.</p></div></div>
+<aside class="notes">
+<p>Delivery: 4 minutes. Repeat that the suits are contextual treatment lenses; one person can shift between them across tasks.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1185,8 +1527,161 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section class="slide level2">
+<section id="metric-design-clinic" class="slide level2" data-background-color="#003D7C">
+<h2>👥 Metric design clinic</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside"><div><p class="cp-activity__prompt">Your group is assigned one card lens. Design a minimal evaluation plan for a recommendation surface.</p><p class="cp-activity__instructions">Name: (1) one primary metric; (2) two guardrails; and (3) one evidence gap that offline logs cannot resolve. Prepare a two-sentence report.</p></div><div class="cp-activity__timer cp-center"><div class="cp-timer"><svg width="140" height="140" viewbox="0 0 180 180" aria-label="Three-minute countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w03-lens-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w03-lens-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg><span id="w03-lens-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span><button id="w03-lens-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="w03-lens-ring" data-text="w03-lens-text" data-status="w03-lens-status">▶ Start Timer</button></div></div></div>
+<aside class="notes">
+<p>Activity mode: small-group discussion. Timebox: 3 minutes, followed by 2 minutes of reports. Expected output: one primary metric, two guardrails, and one evidence gap. Instructor synthesis: no group should claim that a single offline metric resolves its lens.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="debrief-metric-choices-distribute-attention" class="slide level2">
+<h2>Debrief: metric choices distribute attention</h2>
+<table class="cp-table cp-table--compact caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Lens</th>
+<th data-quarto-table-cell-role="th">Possible primary measure</th>
+<th data-quarto-table-cell-role="th">Example guardrail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">♣</td>
+<td class="cp-table__cell">Ranking utility under attack</td>
+<td class="cp-table__cell">Attack impact / stability</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell cp-table__cell--label">♥</td>
+<td class="cp-table__cell">Task completion or satisfaction</td>
+<td class="cp-table__cell">Privacy, opt-outs, welfare signal</td>
+</tr>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">♦</td>
+<td class="cp-table__cell">NDCG or utility</td>
+<td class="cp-table__cell">Novelty, diversity, coverage</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell cp-table__cell--label">♠</td>
+<td class="cp-table__cell">Constraint-satisfied relevance</td>
+<td class="cp-table__cell">Consistency / explanation quality</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Delivery: 5 minutes. Populate or compare this table with the room’s answers. The row entries are examples, not a formula; the correct choice depends on the surface and stakeholders.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section></section>
+<section>
+<section id="offline-is-a-simulation" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>06 Offline Is a Simulation</h1>
 
+</section>
+<section id="the-feedback-loop-hidden-in-a-log" class="slide level2">
+<h2>The feedback loop hidden in a log</h2>
+<div style="display:grid;grid-template-columns:1fr 2.1em 1fr 2.1em 1fr 2.1em 1fr 2.1em 1fr;gap:.25em;align-items:stretch;margin:.6em 0;"><div class="cp-flow-card"><strong>Exposure</strong><br>What the system displayed</div><div class="cp-flow-arrow">→</div><div class="cp-flow-card"><strong>Interaction</strong><br>Click, play, skip, save</div><div class="cp-flow-arrow">→</div><div class="cp-flow-card"><strong>Log</strong><br>Observed, selected data</div><div class="cp-flow-arrow">→</div><div class="cp-flow-card"><strong>Model</strong><br>Learns from the log</div><div class="cp-flow-arrow">→</div><div class="cp-flow-card"><strong>Future exposure</strong><br>Changes the next log</div></div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Unobserved is not random. The system’s own past choices influence what can be learned and evaluated.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Delivery: 4.5 minutes. Introduce missing-not-at-random feedback, position/exposure bias, and popularity feedback. A held-out interaction is an approximation to future behavior, not ground truth for all unseen items.</p>
+<p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender Systems: The Textbook</em>, Section 7.6, pp. 250-252.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="four-offline-failure-modes" class="slide level2">
+<h2>Four offline failure modes</h2>
+<div class="cp-grid cp-grid--2"><div class="cp-card cp-card--warning"><p class="cp-card__title">MNAR / selection bias</p><p style="margin:0;">Logged feedback reflects what users chose and what the system exposed. Mitigate with temporal realism, exposure data, and careful claims.</p></div><div class="cp-card cp-card--warning"><p class="cp-card__title">Temporal drift</p><p style="margin:0;">Preferences and catalogues change. Use forward-looking splits and report the evaluation window.</p></div><div class="cp-card cp-card--warning"><p class="cp-card__title">Leakage</p><p style="margin:0;">Future features or test-set tuning inflate results. Enforce a feature cutoff and final untouched test period.</p></div><div class="cp-card cp-card--warning"><p class="cp-card__title">Cold start and long tail</p><p style="margin:0;">Averages can hide new users, new items, and rare items. Report slices and coverage, not just one aggregate score.</p></div></div>
+<aside class="notes">
+<p>Delivery: 5 minutes. Ask students to match each failure mode to a repair. Clarify that a repair reduces risk; it does not transform offline data into a user study.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section></section>
+<section>
+<section id="from-benchmark-to-product-decision" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>07 From Benchmark to Product Decision</h1>
+
+</section>
+<section id="offline-online-user-impact" class="slide level2">
+<h2>Offline → online → user impact</h2>
+<div style="display:grid;grid-template-columns:1fr 2.1em 1fr 2.1em 1fr;gap:.45em;align-items:stretch;margin:.65em 0;"><div class="cp-flow-card"><strong>Offline benchmark</strong><br>Compare candidates under a declared protocol</div><div class="cp-flow-arrow">→</div><div class="cp-flow-card"><strong>Guarded online test</strong><br>Randomise exposure; monitor conversion and safeguards</div><div class="cp-flow-arrow">→</div><div class="cp-flow-card"><strong>User / product impact</strong><br>Interpret retention, satisfaction, complaints, and long-term effects</div></div>
+<aside class="notes">
+<p>Delivery: 2.5 minutes. Explain that A/B tests more directly measure user impact but still need the right outcomes, protection for affected users, and adequate duration. Tie to Chapter 7.2’s online evaluation discussion.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="exit-ticket-defend-an-evaluation-plan" class="slide level2" data-background-color="#003D7C">
+<h2>🤞 Exit ticket: defend an evaluation plan</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed"><p class="cp-activity__prompt">Choose a recommender surface you know. In four lines, specify:</p><ol class="cp-activity__instructions" style="padding-left:1.25em;"><li>the scenario and future-aware split;</li><li>one primary metric and the decision it supports;</li><li>two guardrail criteria; and</li><li>one card-lens risk or evidence gap.</li></ol></div>
+<aside class="notes">
+<p>Activity mode: individual exit ticket. Timebox: 3 minutes. Expected output: a four-line evaluation plan. Instructor synthesis: use submissions to reveal whether students distinguish ranking quality, protocol design, and non-accuracy guardrails.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section></section>
 <section>
 <section id="summary" class="title-slide slide level1 center" data-background-color="#003D7C">
@@ -1195,23 +1690,16 @@ display:block!important;
 </section>
 <section id="evaluation-choices-define-what-counts-as-a-good-recommendation." class="slide level2">
 <h2>🔑 <u>Evaluation choices define what counts as a good recommendation.</u></h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Measure</th>
-<th>TODO</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ranking quality</td>
-<td>Add metric and interpretation</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Next week:</strong> neural recommendation models.</p>
+<div style="color:#fff;font-size:.86em;line-height:1.45;">
+<ol type="1">
+<li>Write the deployment claim before selecting the split and metric.</li>
+<li>Use ranking metrics to evaluate the visible list, not an abstract score alone.</li>
+<li>Pair a primary metric with guardrails for discovery, trust, robustness, and constraints.</li>
+<li>Treat offline results as evidence for a next test—not proof of user benefit.</li>
+</ol>
+</div>
 <aside class="notes">
-<p>TODO (instructor): close with the stated transition.</p>
+<p>Delivery: 1.5 minutes. Restate the strongest transition from the lecture: metric selection is a value choice made concrete through a protocol.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
