@@ -88,29 +88,39 @@ Delivery: 5-minute review. This is copied from the Week 02 pre-lecture exercise 
 
 ```{=html}
 <div class="cp-frame-bg cp-frame-navy"></div>
-<div class="cp-frame-content">
+<div class="cp-frame-content" style="padding-top:28px;">
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
-  <div class="cp-frame-title cp-text--navy">What evidence would make that responsibility visible?</div>
-  <div class="cp-frame-body" style="color:#333;display:grid;grid-template-columns:1fr 1fr;gap:1.3em;align-items:stretch;">
-    <div class="cp-card cp-card--soft">
-      <p class="cp-card__title">Listen for in the discussion</p>
-      <ul style="margin:.25em 0 0;padding-left:1.15em;line-height:1.35;">
-        <li>the responsibility named beyond engagement;</li>
-        <li>the affected situation: ♣, ♥, ♦, or ♠; and</li>
-        <li>the evidence, safeguard, or user control proposed.</li>
-      </ul>
-    </div>
-    <div class="cp-card cp-card--prompt">
-      <p class="cp-card__title">🎙 Voice agent checkpoint</p>
-      <p style="margin:0;">Ask the voice agent: <em>“A platform says clicks prove its feed works for younger users. What question should its evaluation still answer?”</em></p>
-      <p class="cp-card__meta">Treat the response as a prompt for critique, not as evidence or a policy authority.</p>
-    </div>
+  <div class="cp-frame-title" style="margin-bottom:.22em;color:#003D7C;">Diamond and Clubs guardrails students proposed ♦ ♣</div>
+  <div aria-label="Two jointly attributed Canvas quotations about Diamond and Clubs evaluation guardrails" style="display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:center;gap:.66em;flex:1 1 auto;min-height:0;padding:.18em 1.9em .38em 1.35em;margin:0;">
+    <article style="position:relative;display:block;justify-self:stretch;min-width:0;padding:.52em .78em .46em 1.02em;border:2px solid #B8D2EF;border-radius:16px;background:#EEF6FF;color:#273244;overflow:visible;transform:translate(-.15em,-.10em);">
+      <div aria-label="Canvas contributor avatars" style="position:absolute;z-index:2;left:-32px;bottom:-17px;display:flex;align-items:center;">
+        <img src="assets/canvas-avatars/diamond-arulkumaran.png" alt="Canvas participant avatar" style="width:36px;height:36px;border:2px solid #2A76DD;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+        <img src="assets/canvas-avatars/diamond-poh-yu-wen.png" alt="Canvas participant avatar" style="width:36px;height:36px;margin-left:-10px;border:2px solid #2A76DD;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+      </div>
+      <p style="margin:0;font-size:.50em;font-style:italic;line-height:1.15;">“For younger users, evaluation should be responsible for limiting repetitive, compulsive exposure while still preserving meaningful discovery...</p>
+      <p style="margin:.11em 0 0;font-size:.50em;font-style:italic;line-height:1.15;">[evaluate] whether the ranked list provides genuine diversity and serendipity instead of trapping the user in one narrow content cluster...</p>
+      <p style="margin:.11em 0 0;font-size:.50em;font-style:italic;line-height:1.15;">Evaluation should therefore track content-drift within a session... [with] a session-level cap on category/intensity drift for accounts flagged as minors.”</p>
+      <span style="display:block;margin-top:.22em;color:#2A76DD;font-size:.32em;font-weight:800;letter-spacing:.05em;line-height:1.05;text-transform:uppercase;">♦ Diamonds (novelty)</span>
+    </article>
+    <article style="position:relative;display:block;justify-self:stretch;min-width:0;padding:.52em .78em .46em 1.02em;border:2px solid #B9DDD4;border-radius:16px;background:#F0F8F6;color:#273244;overflow:visible;transform:translate(.32em,.08em);">
+      <div aria-label="Canvas contributor avatars" style="position:absolute;z-index:2;left:-32px;bottom:-17px;display:flex;align-items:center;">
+        <img src="assets/canvas-avatars/clubs-yang-yatong.png" alt="Canvas participant avatar" style="width:36px;height:36px;border:2px solid #00796B;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+        <img src="assets/canvas-avatars/clubs-zhang-ming-jun.png" alt="Canvas participant avatar" style="width:36px;height:36px;margin-left:-10px;border:2px solid #00796B;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff;">
+      </div>
+      <p style="margin:0;font-size:.50em;font-style:italic;line-height:1.15;">“Evaluation for recommender systems should be responsible in preventing dogpiling and coordinated cyberbullying...</p>
+      <p style="margin:.11em 0 0;font-size:.50em;font-style:italic;line-height:1.15;">It is essential to guard against manipulation and content built to defeat the system...</p>
+      <p style="margin:.11em 0 0;font-size:.50em;font-style:italic;line-height:1.15;">Evaluation should therefore include adversarial robustness tests that simulate coordinated attempts to create and spread new coded trends, measuring how quickly the platform detects and limits their propagation among younger users.”</p>
+      <span style="display:block;margin-top:.22em;color:#00796B;font-size:.32em;font-weight:800;letter-spacing:.05em;line-height:1.05;text-transform:uppercase;">♣ Clubs (adversarial / shill)</span>
+    </article>
   </div>
 </div>
 ```
 
 ::: notes
-Delivery: 2-minute voice-agent interaction. Invite one student to phrase the question, then ask the room to identify the lens and the evidence that would be needed to investigate the agent's concern. Do not treat a voice-agent answer as a factual source; it is a structured counterargument.
+Delivery: 3-minute guided discussion. Read each jointly attributed quotation in full. Use the Diamond quotation to contrast meaningful discovery with session-level exposure limits; use the Clubs quotation to distinguish organic harmful behaviour from coordinated, evasive manipulation. Ask: “Which of these guardrails is visible in an offline log, and which needs a stress test or an intervention?”
+
+[Sources]
+- Canvas discussion: R Arulkumaran and Poh Yu Wen (Diamonds); Brendan Ng Jingjie, Yang Yatong, and Zhang Ming Jun (Clubs) (Week 03 pre-lecture exercise, accessed 25 Aug 2026).
 :::
 
 ## Evaluation makes a claim about success
