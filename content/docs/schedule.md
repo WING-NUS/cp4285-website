@@ -2,14 +2,12 @@
 title: Schedule
 weight: 10
 changelog:
+  - date: 20 Aug 2026
+    text: Refreshed the Week 03–13 embedded lecture decks with improved typography for readability and consistency.
   - date: 14 Aug 2026
     text: Added the Week 01 lecture recording link (NUSNet authentication required).
   - date: 10 Aug 2026
-    text: Added Week 03 and Week 08 assessment deadlines.
-  - date: 10 Aug 2026
-    text: Corrected the final project presentation date to Wed, 11 Nov 2026.
-  - date: 08 Aug 2026
-    text: Updated the embedded Week 01 slide-deck link.
+    text: Added the Week 03 and Week 08 assessment deadlines and corrected the final project presentation date to Wed, 11 Nov 2026.
 ---
 
 {{< changelog >}}

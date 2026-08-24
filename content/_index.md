@@ -34,6 +34,7 @@ sections:
         <section class="page-changelog" aria-labelledby="home-changelog-title">
           <h5 id="home-changelog-title">Changelog</h5>
           <ul>
+            <li><strong>20 Aug 2026</strong> — Refreshed typography across the Week 03–13 lecture decks for improved readability and a more consistent viewing experience.</li>
             <li><strong>14 Aug 2026</strong> — Openly shared the course slides and added an invitation for public users to share feedback.</li>
             <li><strong>17 Jun 2026</strong> — Clarified the CP428x pilot-course context.</li>
             <li><strong>17 Jun 2026</strong> — Added course rhythm, learning outcomes, and course-page links.</li>

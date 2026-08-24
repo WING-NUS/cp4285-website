@@ -1,0 +1,45 @@
+name: Validate Quarto slide decks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "static/slides/**"
+      - ".github/workflows/validate-slides.yml"
+  pull_request:
+    paths:
+      - "static/slides/**"
+      - ".github/workflows/validate-slides.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render-slides:
+    name: Render all Quarto decks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Quarto 1.10.18
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.10.18"
+
+      - name: Confirm Quarto snapshot
+        run: quarto --version
+
+      - name: Render every lecture deck
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' deck; do
+            echo "Rendering ${deck}"
+            quarto render "${deck}"
+          done < <(find static/slides -mindepth 2 -maxdepth 2 -name 'w*.qmd' -print0 | sort -z)
+
+      - name: Verify rendered output is committed
+        run: git diff --exit-code -- static/slides
