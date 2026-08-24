@@ -2,14 +2,19 @@
 title: "Evaluation of Recommendation Systems"
 subtitle: |
   <span class="title-qr-subtitle">CP4285 Modern Recommendation Systems — Week 03</span>
-  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w03" target="_blank" rel="noopener"><picture><source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w03-8c8ed9b2aa.svg"><img class="title-qr-image" src="../../uploads/cp4285-t2610-w03-8c8ed9b2aa.png" alt="QR code for the Week 03 slide deck"></picture><span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w03</span></span></a>
+  <a class="title-qr" href="https://soc-n.us/cp4285-t2610-w03" target="_blank" rel="noopener" aria-label="Open the Week 03 slide deck">
+    <picture>
+      <source type="image/svg+xml" srcset="../../uploads/cp4285-t2610-w03-8c8ed9b2aa.svg">
+      <img class="title-qr-image" src="../../uploads/cp4285-t2610-w03-8c8ed9b2aa.png" alt="QR code for the Week 03 slide deck">
+    </picture>
+    <span class="title-qr-label">Scan for the slides<br><span>soc-n.us/cp4285-t2610-w03</span></span>
+  </a>
 author: "CP4285 Instruction Team"
 date: "25 Aug 2026"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, ../w01/w01-custom.scss]
-    include-in-header: ../shared-title-qr-style.html
+    theme: [default, ../cp4285-common.scss, ../w01/w01-custom.scss]
     slide-number: true
     show-slide-number: all
     width: 1600
@@ -17,6 +22,7 @@ format:
     chalkboard: false
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 03 · NUS School of Computing"
+    include-after-body: ../cp-timer.html
     self-contained: true
     transition: slide
     highlight-style: github
@@ -25,7 +31,70 @@ format:
     scrollable: false
 ---
 
-# 01 Overview {background-color="#EF7C00"}
+# 01 Announcements and Context {background-color="#EF7C00"}
+
+## {background-color="#1a0a2e"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-purple"></div>
+<div class="cp-frame-content cp-thumbnail-recap-content" style="color:white;">
+  <div class="cp-frame-label" style="background:#5C2D91;color:white;margin-bottom:0;">WEEK 02 RECAP</div>
+  <div class="cp-thumbnail-composite-wrap">
+    <img class="cp-thumbnail-composite" src="assets/w02-recap-four-quadrant.png" alt="Week 02 recap: Three Routes to a Recommendation, Worked TF-IDF: Two Titles, One Interest Profile, Sparse and Dense Make Different Trade-offs, and A Dot Product Turns Factors into a Score" loading="eager">
+  </div>
+</div>
+```
+
+::: notes
+Delivery: 3-minute recap. Read the thumbnails clockwise: (1) alternative recommendation routes, (2) TF-IDF as an exact text representation and ranking calculation, (3) the sparse-versus-dense trade-off, and (4) the LFM dot product. Ask: “What evidence shows that the resulting list is good?” Do not attempt to reteach the individual methods.
+
+[Sources]
+- Week 02 slides: “Three Routes to a Recommendation,” “Worked TF-IDF: Two Titles, One Interest Profile,” “Sparse and Dense Make Different Trade-offs,” and “A Dot Product Turns Factors into a Score.”
+:::
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title" class="cp-text--navy">What Should Evaluation Be Responsible For?</div>
+  <div class="cp-frame-body" style="color:#333;display:grid;grid-template-columns:minmax(270px,.82fr) minmax(0,1.48fr);gap:1em;align-items:stretch;">
+    <section aria-label="Assigned reading" style="font-size:.88em;padding:.46em;border:2px solid #D5DEE9;background:#F8FAFD;">
+      <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener" aria-label="Open the assigned Straits Times article">
+        <img src="../w02/assets/article-thumbnails/st-social-media-safety-2026.png" alt="A young person looking at a phone while lying on a bed" style="display:block;width:100%;height:230px;object-fit:contain;background:#E9EFF6;">
+      </a>
+      <p style="margin-top:.22em;color:#657286;font-size:.54em;letter-spacing:.06em;">PHOTO: ST FILE</p>
+      <p style="font-size:.88em"><strong>Read:</strong> <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener">“S’pore studying restrictions on direct messaging, auto-play on social media to protect kids”</a></p>
+    </section>
+    <section aria-label="Canvas comment task" style="font-size:.88em">
+      <p><strong class="cp-text--navy">Canvas discussion board</strong> · post one individual comment before <strong class="cp-text--teal">Mon, 23:59 SGT</strong></p>
+      <div style="margin:0 0 .62em;padding:.72em .82em;border-left:7px solid #00796B;background:#F0F8F6;color:#003D7C;font-weight:bold;line-height:1.28;font-size:.54em">A recommender may be evaluated using whether people watch, click, or continue interacting with suggested content. What is <strong>one responsibility</strong> that evaluation should include for younger users, beyond predicting continued engagement?</div>
+      <p>In <strong>120–160 words</strong>, choose and name <strong>one card-suit lens</strong>, cite one article detail, and propose one piece of evidence, safeguard, or user control the platform should examine.</p>
+      <p style="margin-bottom:0;color:#A24B00;font-weight:bold;text-align:center;">No classmate reply this week. Today: protocols, ranking metrics, and what a score leaves out.</p>
+    </section>
+  </div>
+</div>
+```
+
+::: notes
+Delivery: 5-minute review. This is copied from the Week 02 pre-lecture exercise and relabelled as a review. Show the original prompt before discussing selected Canvas responses on the following slide. Ask students to identify the responsibility, lens, and evidence/safeguard in one response; do not evaluate individual contributions publicly.
+
+[Sources]
+- Koh, S. (2026, 31 March). “S’pore studying restrictions on direct messaging, auto-play on social media to protect kids.” *The Straits Times*. https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media
+:::
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
+</div>
+```
+
+::: notes
+:::
 
 ## Week 3: Evaluation of Recommendation Systems
 
@@ -82,4 +151,68 @@ TODO (author): add a concrete stakeholder question.
 
 ::: notes
 TODO (instructor): close with the stated transition.
+:::
+
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title cp-text--navy">What Does a Missing Interaction Mean?</div>
+  <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 31 Aug 23:59 SGT</span></p>
+    <p style="margin:.15em 0 .65em;">Post one concise response; then reply constructively to one classmate.</p>
+    <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
+      A user has never clicked a recommended item. Give two plausible interpretations: one about preference and one about exposure or the interface.
+    </div>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Next week: neural recommenders can learn richer interaction patterns, but they still learn only from the evidence the system records.</p>
+  </div>
+</div>
+```
+
+::: notes
+Delivery: introduce this as a pre-lecture activation task rather than a test of neural-network knowledge. Expected output: two distinct explanations for an unclicked recommendation (one preference-based and one exposure/interface-based), followed by a concise explanation that model capacity cannot identify information the logs do not contain. Ask students to make one constructive reply that either adds another plausible interpretation or identifies what evidence could distinguish the two accounts.
+
+Instructor synthesis for Week 04: connect responses to the difference between a richer scoring function and better observational data. Use the replies to foreground exposure bias, missing-not-at-random feedback, and the transparency limits of a complex model.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender Systems: The Textbook*, Sections 1.3.1.1-1.3.1.3, pp. 10-14; Section 3.6.4.6, pp. 109-112.
+:::
+
+## {background-color="#002a26"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-teal"></div>
+<div class="cp-frame-content" style="color:white;background:#002a26;inset:60px;padding:26px 32px 22px;font-size:.92em;">
+  <div class="cp-frame-label" style="background:#00796B;color:white;">Next Week Preview — Week 04</div>
+  <div class="cp-frame-title" style="color:#80cbc4;">Neural Recommendation Models</div>
+  <div class="cp-frame-body" style="color:#cce8e5;">
+    <div class="cp-grid cp-grid--2" style="align-items:center;">
+      <div>
+        <p style="margin:0 0 .35em;font-size:.88em;line-height:1.24;">A neural recommender can learn richer patterns from interactions. That does not make an unclicked item self-explanatory.</p>
+        <p style="margin:.16em 0;"><strong style="color:#ffffff;">In Week 4:</strong></p>
+        <ul style="margin:.18em 0;line-height:1.25;">
+          <li>compare neural and latent-factor recommenders;</li>
+          <li>examine deep ranking and representation learning; and</li>
+          <li>ask what model complexity can—and cannot—explain.</li>
+        </ul>
+      </div>
+      <figure style="margin:0;text-align:right;">
+        <a href="https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-neural-networks-used-in-deep-learning-it-was-created-by-novoto-studio-as-part-of-the-visualising-ai-proje-17483870/" target="_blank" rel="noopener" aria-label="Open the Google DeepMind neural-network illustration on Pexels">
+          <img class="cp-image" src="assets/pexels-googledeepmind-neural-network.jpg" alt="Abstract illustration of interconnected strands and nodes representing neural-network data flow" style="display:block;width:100%;object-fit:contain;border:3px solid #80cbc4;background:#001d1a;">
+        </a>
+        <figcaption style="margin-top:.3em;color:#80cbc4;font-size:.53em;text-align:right;"><a href="https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-neural-networks-used-in-deep-learning-it-was-created-by-novoto-studio-as-part-of-the-visualising-ai-proje-17483870/" target="_blank" rel="noopener" style="color:#80cbc4;">Illustration: Google DeepMind / Pexels</a></figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+```
+
+::: notes
+Preview Week 04 as a transition from choosing what counts in evaluation to examining how a model turns recorded interactions into a score. The illustration is an editorial visual metaphor for layered representations and data flow; it is not a literal neural-recommender architecture. Both the image and its caption link to the source.
+
+[Sources]
+- Google DeepMind. “Abstract illustration depicting complex digital neural networks and data flow.” *Pexels*. https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-neural-networks-used-in-deep-learning-it-was-created-by-novoto-studio-as-part-of-the-visualising-ai-proje-17483870/ (free to use).
 :::
