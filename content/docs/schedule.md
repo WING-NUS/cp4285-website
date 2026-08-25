@@ -2,6 +2,8 @@
 title: Schedule
 weight: 10
 changelog:
+  - date: 25 Aug 2026
+    text: Added a Week 03 notice confirming that no lecture recording is available.
   - date: 20 Aug 2026
     text: Refreshed the Week 03–13 embedded lecture decks with improved typography for readability and consistency.
   - date: 14 Aug 2026
@@ -96,6 +98,8 @@ Learning outcomes:
 **Slides:**
 
 {{< slides src="/cp4285-website/slides/w03/w03.html" title="Week 3 Slides" height="520px" >}}
+
+<p class="course-recording-notice"><strong>Lecture recording:</strong> The recording was not made, so no recording is available.</p>
 {{< /week-card >}}
 
 {{< week-card week="Week 4" date="1-7 Sep 2026" focus="Neural Recommendation Models" >}}

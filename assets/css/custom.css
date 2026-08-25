@@ -409,6 +409,16 @@ a {
   color: #f8fafc;
 }
 
+.course-recording-notice {
+  margin: 1.15rem 0 0;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.dark .course-recording-notice {
+  color: #fca5a5;
+}
+
 @media (max-width: 700px) {
   .weekly-detail-card__summary {
     grid-template-columns: auto minmax(0, 1fr) auto;
