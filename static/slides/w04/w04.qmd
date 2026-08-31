@@ -59,18 +59,39 @@ Delivery: 3-minute recap. Read the thumbnails clockwise: (1) evaluation requires
 - Week 03 slide 35: “The feedback loop hidden in a log.”
 :::
 
-## 
+## {background-color="#ffffff"}
 
 ```{=html}
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
-  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Week 04 Pre-Lecture Exercise</div>
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise</div>
   <div class="cp-frame-title cp-text--navy">What Does a Missing Interaction Mean?</div>
-  <div class="cp-frame-body cp-stack" style="color:#333;font-size:.82em;line-height:1.25;">
-    <p style="margin:0;color:#003D7C;font-weight:bold;">Canvas discussion board · submitted by <span class="cp-text--teal">Mon, 31 Aug · 23:59 SGT</span></p>
-    <div class="cp-card cp-card--prompt">A user has never clicked a recommended item. Give two plausible interpretations: one about preference and one about exposure or the interface.</div>
-    <p style="margin:0;">Use the responses as a constraint on today’s models: richer capacity can learn a more flexible interaction function, but it cannot recover information that the system never recorded.</p>
+  <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 31 Aug 23:59 SGT</span></p>
+    <p style="margin:.15em 0 .65em;">Post one concise response; then reply constructively to one classmate.</p>
+    <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
+      A user has never clicked a recommended item. Give two plausible interpretations: one about preference and one about exposure or the interface.
+    </div>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Neural recommenders can learn richer interaction patterns, but they still learn only from the evidence the system records.</p>
   </div>
+</div>
+```
+
+::: notes
+Delivery: introduce this as a pre-lecture activation task rather than a test of neural-network knowledge. Expected output: two distinct explanations for an unclicked recommendation (one preference-based and one exposure/interface-based), followed by a concise explanation that model capacity cannot identify information the logs do not contain. Ask students to make one constructive reply that either adds another plausible interpretation or identifies what evidence could distinguish the two accounts.
+
+Instructor synthesis for Week 04: connect responses to the difference between a richer scoring function and better observational data. Use the replies to foreground exposure bias, missing-not-at-random feedback, and the transparency limits of a complex model.
+
+[Sources]
+- Aggarwal, C. C. (2016). *Recommender Systems: The Textbook*, Sections 1.3.1.1-1.3.1.3, pp. 10-14; Section 3.6.4.6, pp. 109-112.
+:::
+
+##
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
 </div>
 ```
 
@@ -86,11 +107,17 @@ Delivery: 3 minutes. Invite two interpretations from the exercise. Keep the dist
 ```{=html}
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
-  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Week 04 Pre-Lecture Exercise</div>
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Pre-Lecture Synthesis</div>
+  <div class="cp-frame-title cp-text--navy">Capacity is not observability</div>
+  <div class="cp-frame-body cp-grid cp-grid--2" style="color:#333;font-size:.82em;line-height:1.25;">
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">What a non-click might mean</p><p style="margin:0;">Disinterest, no exposure, poor placement, wrong timing, unavailable inventory, or inattention.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">What today's model can change</p><p style="margin:0;">How it combines the information that was recorded - not whether the log distinguishes those explanations.</p></div>
+  </div>
 </div>
 ```
 
 ::: notes
+Delivery: 2 minutes. Take one or two student responses from the Canvas activity, then use the two cards to make the lecture constraint explicit. A more flexible scoring function may model richer associations in the recorded data; it does not identify which unrecorded exposure condition produced an absence. This completes the five-minute pre-lecture recap when combined with the prior slide.
 :::
 
 ## Week 04: Neural Recommendation Models
@@ -120,6 +147,202 @@ Delivery: 1 minute. Make the scope clear. The goal is not to memorise every neur
 Delivery: 1 minute. Read the action verbs, then use them as signposts through the sections. The final outcome keeps the Week 03 evidence lens active throughout the technical material.
 :::
 
+## A 90-second bridge: the Transformer learns which history matters
+
+```{=html}
+<div class="cp-stack" style="font-size:.76em;line-height:1.12;">
+  <div class="cp-flow-card" style="display:flex;align-items:center;gap:.4em;justify-content:center;">
+    <span class="cp-chip cp-chip--teal">ordered history</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">embeddings + position</span><span class="cp-flow-arrow">→</span><span class="cp-chip">attention</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--warning">next-item score</span>
+  </div>
+  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">One compatibility score</p><p style="margin:.18em 0;text-align:center;font-size:1.06em;">\(\color{navy}{q}=\color{teal}{[1,0]},\quad\color{orange}{k}=\color{orange}{[2,1]}\)</p><p style="margin:0;text-align:center;font-size:1.06em;">\(\color{navy}{q^\top}\color{orange}{k}=\color{teal}{1}\color{orange}{(2)}+\color{teal}{0}\color{orange}{(1)}=\color{navy}{\mathbf2}\)</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">Bridge</p><p style="margin:0;">Today: learn a score from a <strong>user–item pair</strong>. Next week: attention lets an <strong>ordered history</strong> shape that score.</p></div>
+  </div>
+</div>
+```
+
+::: notes
+Timing: 3 minutes. This is a vocabulary bridge, not a Transformer derivation. The worked dot product shows compatibility; next week adds normalisation and value mixing over ordered histories.
+
+[Source]
+- Vaswani, A. et al. (2017). “Attention Is All You Need.” *NeurIPS*.
+:::
+
+# 01 From Matrix Factorisation to Neural CF {background-color="#EF7C00"}
+
+::: notes
+Timing: 0 minutes.
+:::
+
+## Matrix factorisation: a dot product is an interaction rule
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.84em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Learn representations</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{teal}{\mathbf p_u}\in\mathbb R^d,\quad\color{orange}{\mathbf q_i}\in\mathbb R^d\)</p><p style="margin:0;">The axes are learned coordinates—not named traits without evidence.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Choose a fixed interaction</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{navy}{\hat y_{ui}}=\color{teal}{\mathbf p_u}^{\top}\color{orange}{\mathbf q_i}+\color{navy}{b_u+b_i}\)</p><p style="margin:0;">A dot product rewards aligned coordinates.</p></div>
+</div>
+```
+
+::: {.callout-note}
+If we retain the embeddings but replace the dot product, what can the scorer represent—and what extra evidence or compute will it need?
+:::
+
+::: notes
+Timing: 3 minutes. MF already learns embeddings; today’s architectural choice is how to combine them.
+
+[Source]
+- Koren, Bell, & Volinsky (2009). “Matrix Factorization Techniques for Recommender Systems.”
+:::
+
+## Worked MF score: one user, one candidate
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.84em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Given vectors</p><p style="margin:.22em 0;text-align:center;">\(\color{teal}{\mathbf p_u}=\color{teal}{[0.8,0.2]}\)</p><p style="margin:.22em 0;text-align:center;">\(\color{orange}{\mathbf q_i}=\color{orange}{[0.9,0.1]}\)</p><p style="margin:0;">Let both biases be zero.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Multiply, then add</p><p style="margin:.35em 0;text-align:center;font-size:1.18em;">\(\color{navy}{\hat y}=\color{teal}{0.8}\color{orange}{(0.9)}+\color{teal}{0.2}\color{orange}{(0.1)}\)</p><p style="margin:.35em 0;text-align:center;font-size:1.22em;">\(=\color{teal}{0.72}+\color{teal}{0.02}=\color{navy}{\mathbf{0.74}}\)</p><p style="margin:0;">A relative score, not automatically a probability or explanation.</p></div>
+</div>
+```
+
+::: notes
+Timing: 4 minutes. Ask students to state the two products before revealing the total.
+:::
+
+## Three ways to combine the same embeddings
+
+```{=html}
+<div class="cp-grid cp-grid--3" style="font-size:.72em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">GMF</p><p style="text-align:center;margin:.18em 0;">\(\color{teal}{\mathbf p_u}\odot\color{orange}{\mathbf q_i}\)</p><p style="margin:0;">Weight coordinate-wise matches.</p></div>
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">MLP</p><p style="text-align:center;margin:.18em 0;">\(f(\color{teal}{\mathbf p_u},\color{orange}{\mathbf q_i})\)</p><p style="margin:0;">Mix all coordinates non-linearly.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">NeuMF</p><p style="text-align:center;margin:.18em 0;">\([\mathrm{GMF};\mathrm{MLP}]\)</p><p style="margin:0;">Combine both paths before prediction.</p></div>
+</div>
+```
+
+::: notes
+Timing: 3 minutes. More capacity is a claim to test, not a free gain.
+
+[Source]
+- He, X. et al. (2017). “Neural Collaborative Filtering.” *WWW ’17*.
+:::
+
+## Worked interaction functions: same input, different score
+
+```{=html}
+<div class="cp-stack" style="font-size:.62em;line-height:1.1;">
+  <p style="margin:0;text-align:center;">\(\color{teal}{\mathbf p_u}=\color{teal}{[.8,.2]},\quad\color{orange}{\mathbf q_i}=\color{orange}{[.9,.1]}\) <span class="cp-text--muted">— toy weights expose the calculation.</span></p>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">1 · GMF</p><p style="margin:.16em 0;text-align:center;">\(\color{teal}{[.8,.2]}\odot\color{orange}{[.9,.1]}=\color{teal}{[.72,.02]}\)</p><p style="margin:0;text-align:center;">\(\color{navy}{s_G}=\color{navy}{[1,1]}^\top\color{teal}{[.72,.02]}=\color{navy}{\mathbf{.74}}\)</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">2 · MLP</p><p style="margin:.16em 0;text-align:center;">\(\color{teal}{\mathbf h}=\operatorname{ReLU}([.8+.1,\.2+.9])=\color{teal}{[.9,1.1]}\)</p><p style="margin:0;text-align:center;">\(\color{navy}{s_M}=\color{navy}{[.2,.4]}^\top\color{teal}{[.9,1.1]}=\color{navy}{\mathbf{.62}}\)</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">3 · NeuMF</p><p style="margin:.16em 0;text-align:center;">\(\color{navy}{s_N}=\color{navy}{[.5,.5,.1,.1]}^\top[\color{teal}{.72,.02};\color{teal}{.9,1.1}]\)</p><p style="margin:0;text-align:center;">\(=\color{teal}{.36+.01+.09+.11}=\color{navy}{\mathbf{.57}}\)</p></div>
+  </div>
+  <div class="to-think-about">Different scores reflect different <strong>toy weights</strong>. This demonstrates expressiveness, not a winner.</div>
+</div>
+```
+
+::: notes
+Timing: 5 minutes. Work left-to-right. GMF multiplies first; MLP combines coordinates; NeuMF combines both representations. Compare only under a shared protocol.
+
+[Source]
+- He, X. et al. (2017). “Neural Collaborative Filtering.” *WWW ’17*.
+:::
+
+## Code lens: the forward pass is the architecture choice
+
+```python
+mf_score = (user_embedding[u] * item_embedding[i]).sum()
+gmf = user_gmf[u] * item_gmf[i]
+mlp = relu(mlp_layers(concat(user_mlp[u], item_mlp[i])))
+neumf_score = prediction_layer(concat(gmf, mlp))
+```
+
+::: notes
+Timing: 2 minutes. This is pseudocode: the framework cannot choose the evaluation contract for us.
+:::
+
+# 02 Training for Ranked Recommendations {background-color="#EF7C00"}
+
+::: notes
+Timing: 0 minutes.
+:::
+
+## Implicit feedback creates a sampling decision
+
+```{=html}
+<div class="cp-stack" style="font-size:.78em;line-height:1.16;">
+  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Observed positive</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> clicked <strong class="cp-text--orange">City Gardens</strong>.</p><p style="margin:0;">A signal of possible interest—not a rating of every alternative.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Unobserved candidate</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> did not click <strong class="cp-text--orange">Riverside Diner</strong>.</p><p style="margin:0;">It may have been unseen, unavailable, badly timed, or unappealing.</p></div>
+  </div>
+  <div class="cp-flow-card" style="display:flex;align-items:center;justify-content:center;gap:.38em;"><span class="cp-chip cp-chip--navy">logged click</span><span class="cp-flow-arrow">→</span><span class="cp-chip">positive</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--warning">sampled unobserved item</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">training comparison</span></div>
+  <div class="to-think-about">Negative sampling is an assumption about missing feedback—not a discovered dislike.</div>
+</div>
+```
+
+::: notes
+Timing: 4 minutes. Ask for two non-preference explanations of the missing click; sampling changes which comparisons training sees.
+
+[Sources]
+- Aggarwal (2016), Sections 1.3.1.1 and 3.6.4.6.
+- Rendle et al. (2009). *BPR*.
+:::
+
+## Two training questions, two objectives
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.82em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Pointwise: is this pair positive?</p><p style="margin:.4em 0;text-align:center;font-size:1.1em;">\(\color{navy}{y_{ui}}\ \text{vs.}\ \color{teal}{\hat y_{ui}}\)</p><p style="margin:0;">Needs a target for an unobserved pair.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Pairwise: which item ranks higher?</p><p style="margin:.4em 0;text-align:center;font-size:1.1em;">\(\color{teal}{\hat s(u,i^+)}>\color{orange}{\hat s(u,i^-)}\)</p><p style="margin:0;">Matches a top-<em>k</em> comparison.</p></div>
+</div>
+```
+
+::: notes
+Timing: 3 minutes. A scorer such as MF or NeuMF can be trained with either objective.
+:::
+
+## BPR worked example: make the observed item rank higher
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.7em;line-height:1.12;align-items:stretch;">
+  <div class="cp-stack">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) City Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Diner (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">1 · Margin</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\Delta}=\color{teal}{1.20}-\color{orange}{0.40}=\color{navy}{0.80}\)</p><p style="margin:0;">Positive above sampled alternative.</p></div>
+  </div>
+  <div class="cp-stack">
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">2 · Pairwise probability</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\sigma(\Delta)}=\sigma(\color{navy}{0.80})=\color{teal}{0.690}\)</p><p style="margin:0;">Model confidence in this ordering.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">3 · Loss and update</p><p style="margin:.16em 0;text-align:center;font-size:1.04em;">\(\color{navy}{L_{\mathrm{BPR}}}=-\ln(\color{teal}{0.690})=\color{orange}{0.371}\)</p><p style="margin:.18em 0 0;">\(\partial L/\partial\Delta=\color{orange}{-0.310}\): gradient descent increases the positive score and/or lowers the sampled score.</p></div>
+  </div>
+</div>
+<p style="margin:.4em 0 0;text-align:center;color:#003D7C;font-weight:bold;font-size:.75em;">BPR ranks the click above this sampled comparison; it does not call the unclicked item “bad.”</p>
+```
+
+::: notes
+Timing: 6 minutes. Work triplet, margin, sigmoid, then negative log. The numbers are pedagogical current-model outputs.
+
+[Source]
+- Rendle et al. (2009), Eq. 13 and optimisation discussion.
+:::
+
+## 👥 Which negative is defensible? {background-color="#003D7C"}
+
+<div class="cp-activity cp-activity--navy cp-activity--framed">
+<p class="cp-activity__prompt">Aisha clicked City Gardens. Which is the most defensible BPR comparison: a restaurant never shown, one shown after it sold out, or one shown beside City Gardens at the same time? What uncertainty remains?</p>
+<p class="cp-activity__instructions">Groups of 3–4: choose one, give one reason and one remaining uncertainty. Prepare two sentences.</p>
+</div>
+
+::: notes
+Activity mode: group discussion. Timebox: 3 minutes. A contemporaneously shown, available alternative is generally more defensible, but not a ground-truth dislike.
+:::
+
+## 🎰 Bandit Time: What does BPR optimise? {background-color="#003D7C"}
+
+<div class="cp-activity cp-activity--navy cp-activity--framed">
+<p class="cp-activity__prompt">For Aisha, which change most directly reduces the BPR loss?</p>
+<div class="cp-choice-grid"><div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> Raise both scores equally.</div><div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> Make the clicked item score higher than the sampled item.</div><div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> Label every unclicked item dislike.</div><div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> Maximise City Gardens’ absolute score only.</div></div>
+</div>
+
+::: notes
+Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: B. BPR depends on the score difference.
+:::
+
 ## Break — 5 minutes {background-color="#000000"}
 
 ```{=html}
@@ -130,11 +353,12 @@ Delivery: 1 minute. Read the action verbs, then use them as signposts through th
     <p style="font-size:1.05em;line-height:1.42;margin:0;color:#d8d8d8;">
       TriRank extends the user–item graph with review aspects, modelling users, items, and the aspects mentioned in reviews as a tripartite graph. That extra evidence can support explanations such as “recommended because you value battery life and display quality.”  
     </p>
+    <br/>
     <p style="font-size:1.05em;line-height:1.42;margin:0;color:#d8d8d8;">
       TriRank was one of the final precursor works to Neural Collaborative Filtering (NeuCF) pioneered here at NUS.  
     </p>
     <p style="margin:.72em 0 0;color:#80cbc4;font-size:.58em;line-height:1.3;">
-      <a href="https://wing.comp.nus.edu.sg/publication/10-1145-2806416-2806504/" target="_blank" rel="noopener" style="color:#80cbc4;">He, Chen, Kan &amp; Chen (2015), “TriRank: Review-aware Explainable Recommendation by Modeling Aspects,” CIKM 2015</a>
+      He, Chen, Kan &amp; Chen (2015), “<a href="https://wing.comp.nus.edu.sg/publication/10-1145-2806416-2806504/" target="_blank" rel="noopener" style="color:#80cbc4;"><i>TriRank: Review-aware Explainable Recommendation by Modeling Aspects</i></a>,” CIKM 2015
     </p>
   </div>
   <div class="cp-activity__timer">
@@ -156,6 +380,165 @@ Delivery: announce a five-minute break and start the timer. TriRank was develope
 
 [Source]
 - He, X., Chen, T., Kan, M.-Y., & Chen, X. (2015). *TriRank: Review-aware Explainable Recommendation by Modeling Aspects*. CIKM. https://wing.comp.nus.edu.sg/publication/10-1145-2806416-2806504/
+:::
+
+# 03 Practical Comparison: Baseline First {background-color="#EF7C00"}
+
+::: notes
+Timing: 0 minutes.
+:::
+
+## The experiment contract
+
+```{=html}
+<table class="cp-table cp-table--compact" style="font-size:.72em;line-height:1.12;"><thead><tr><th>Hold fixed</th><th>Why</th><th>Inspect</th></tr></thead><tbody><tr><td class="cp-table__cell cp-table__cell--label">Data + split</td><td class="cp-table__cell">Both models face the same evidence.</td><td class="cp-table__cell">Is test later than training?</td></tr><tr><td class="cp-table__cell cp-table__cell--label">Negative sampler</td><td class="cp-table__cell">Sampling changes the ranking task.</td><td class="cp-table__cell">Which unseen items become negatives?</td></tr><tr><td class="cp-table__cell cp-table__cell--label">Metrics + K</td><td class="cp-table__cell">Metrics answer stated list-quality questions.</td><td class="cp-table__cell">Does K match the product surface?</td></tr><tr><td class="cp-table__cell cp-table__cell--label">Budget + reporting</td><td class="cp-table__cell">A gain needs cost and reproducibility context.</td><td class="cp-table__cell">Time, parameters, seeds, examples.</td></tr></tbody></table>
+```
+
+::: {.callout-warning}
+Changing the model and the split, sampler, or metric together does not identify what produced an apparent improvement.
+:::
+
+::: notes
+Timing: 4 minutes. This is the Week 03 evaluation contract applied to architecture comparison.
+:::
+
+## Practical walkthrough: BPR-MF in RecBole
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.78em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Baseline</p><p style="margin:0;">BPR learns a pairwise objective with latent-factor, dot-product scoring.</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Illustrative run</p><pre style="font-size:.62em;margin:.2em 0 0;"><code>run_recbole(model="BPR", dataset="ml-100k", config_file_list=["w04-ranking.yaml"])</code></pre></div></div>
+<div class="cp-flow-card" style="margin-top:.55em;text-align:center;font-size:.74em;"><strong>Keep fixed:</strong> split · sampler · metrics · seed policy <span class="cp-flow-arrow">→</span> <strong>Change:</strong> model = BPR <span class="cp-flow-arrow">→</span> <strong>Record:</strong> NDCG@10 · Recall@10 · time · parameters</div>
+```
+
+::: notes
+Timing: 3 minutes. This is illustrative code, not a live benchmark claim.
+
+[Sources]
+- RecBole BPR documentation and Quick-Start.
+:::
+
+## Practical walkthrough: change only the interaction function
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.78em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Same runner, new scorer</p><pre style="font-size:.62em;margin:.2em 0 0;"><code>run_recbole(model="NeuMF", dataset="ml-100k", config_file_list=["w04-ranking.yaml"])</code></pre></div><div class="cp-card cp-card--soft"><p class="cp-card__title">What changes</p><p style="margin:0;">NeuMF adds GMF and MLP paths. More parameters do not make feedback less ambiguous.</p></div></div>
+```
+
+::: {.callout-note}
+Locate the embedding tables, MLP layers, and prediction layer. Which is absent from a dot-product baseline?
+:::
+
+::: notes
+Timing: 3 minutes. Only the architecture changes if the referenced experiment contract remains shared.
+:::
+
+## 👥 Deployment decision clinic: Is NeuMF worth it? {background-color="#003D7C"}
+
+<div class="cp-activity cp-activity--navy cp-activity--framed"><p class="cp-activity__prompt">BPR-MF: NDCG@10 0.214, 2.1 min, 1.2M parameters. NeuMF: 0.221, 7.8 min, 5.9M. Deploy NeuMF, retain BPR-MF, or collect evidence?</p><p class="cp-activity__instructions">In two sentences, cite one quality result, one operational constraint, and one evidence or transparency concern. The figures are a teaching scenario.</p></div>
+
+::: notes
+Activity mode: group discussion. Timebox: 5 minutes. A 0.007 difference is not automatically a deployment decision.
+:::
+
+## 🎰 Bandit Time: Which evidence supports NeuMF? {background-color="#003D7C"}
+
+<div class="cp-activity cp-activity--navy cp-activity--framed"><p class="cp-activity__prompt">Which finding best supports replacing BPR-MF with NeuMF?</p><div class="cp-choice-grid"><div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> It has more layers.</div><div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> It wins once after changing sampler.</div><div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> A stable, meaningful gain under the same protocol clears cost and latency budget.</div><div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> One detailed post-hoc explanation.</div></div></div>
+
+::: notes
+Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: C.
+:::
+
+## Debrief: read the result as a trade-off
+
+```{=html}
+<div class="cp-grid cp-grid--3" style="font-size:.78em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Quality</p><p style="margin:0;">Stable across seeds, periods, and segments?</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Operations</p><p style="margin:0;">Fits latency, memory, and maintenance budget?</p></div><div class="cp-card cp-card--warning"><p class="cp-card__title">Evidence</p><p style="margin:0;">Does the protocol justify the user-facing claim?</p></div></div>
+```
+
+::: notes
+Timing: 2 minutes. A higher offline NDCG is evidence about a stated protocol—not a complete reason to deploy.
+:::
+
+# 04 Capacity Has Costs {background-color="#EF7C00"}
+
+::: notes
+Timing: 0 minutes.
+:::
+
+## When is neural complexity justified?
+
+```{=html}
+<table class="cp-table cp-table--compact" style="font-size:.72em;line-height:1.13;"><thead><tr><th>Question</th><th>Supports capacity</th><th>Retain simpler baseline</th></tr></thead><tbody><tr><td class="cp-table__cell cp-table__cell--label">Signal</td><td class="cp-table__cell">Held-out gain persists under declared protocol.</td><td class="cp-table__cell">Gain is small, unstable, or split-specific.</td></tr><tr><td class="cp-table__cell cp-table__cell--label">Operations</td><td class="cp-table__cell">Latency, memory, retraining fit budget.</td><td class="cp-table__cell">Gain costs too much complexity.</td></tr><tr><td class="cp-table__cell cp-table__cell--label">Accountability</td><td class="cp-table__cell">Team can document data, failures, safeguards.</td><td class="cp-table__cell">No honest explanation or audit.</td></tr></tbody></table>
+```
+
+::: notes
+Timing: 4 minutes. A neural model is not a default upgrade.
+:::
+
+## 📶 AI Voice Mode: challenge the deployment explanation
+
+<div class="cp-activity cp-activity--navy cp-activity--framed"><p class="cp-activity__prompt">“Deploy NeuMF: it achieved higher NDCG@10, so it understands users better.” Ask an AI voice agent to name two hidden assumptions and one check needed before deployment.</p><p class="cp-activity__instructions">First write your critique with a partner. Then critique what the agent omits, overstates, or frames too confidently.</p></div>
+
+::: notes
+Activity mode: AI Voice critique. Timebox: 3 minutes. The agent is not an authority or a production recommender.
+:::
+
+## Ethics debrief: a score is not an explanation
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.78em;"><div class="cp-card cp-card--warning"><p class="cp-card__title">Overclaim</p><p style="margin:0;">“This item is recommended because the model understands your preferences.”</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Accountable claim</p><p style="margin:0;">“Under stated data, objective, and ranking policy, the model assigned this item a high score.”</p></div></div>
+```
+
+::: {.callout-warning}
+Capacity makes a scorer more flexible; it does not make logged interactions complete, causal, or value-neutral evidence about a person.
+:::
+
+::: notes
+Timing: 4 minutes. Distinguish faithful inputs from a causal explanation of preference.
+:::
+
+# Summary {background-color="#003D7C"}
+
+```{=html}
+<div style="color:#fff;font-size:.78em;line-height:1.2;"><p style="margin:0 0 .55em;color:#fff;font-size:1.14em;"><span style="color:#EF7C00;">🔑</span> <u>Architecture and objective are separate choices.</u></p><div class="cp-grid cp-grid--2" style="gap:.55em .8em;"><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">1 · Represent</strong><br>Embeddings provide inputs.</div><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">2 · Interact</strong><br>MF dot product or neural function.</div><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">3 · Optimise</strong><br>BPR trains a relative ranking claim.</div><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">4 · Justify</strong><br>Keep costs and limits visible.</div></div><p style="margin:.65em 0 0;color:#EF7C00;font-weight:bold;text-align:center;">Next week: order, recency, and session context enter the model.</p></div>
+```
+
+::: notes
+Timing: 3 minutes. Bridge from static user–item scores to ordered histories.
+:::
+
+## {background-color="#ffffff"}
+
+```{=html}
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title cp-text--navy">Where Does One Session End?</div>
+  <div class="cp-frame-body" style="color:#333;font-size:.72em;line-height:1.2;">
+    <div class="cp-grid cp-grid--2" style="align-items:start;grid-template-columns:minmax(220px,.68fr) minmax(0,1.32fr);gap:1.05em;">
+      <figure style="margin:0;text-align:center;">
+        <a href="https://www.straitstimes.com/singapore/google-rolls-out-updated-ai-powered-ask-maps-feature-in-singapore" target="_blank" rel="noopener" aria-label="Open the Straits Times optional reading about Google Ask Maps">
+          <img class="cp-image" src="assets/ask-maps-optional-reading.png" alt="Screenshot of The Straits Times article about Google Ask Maps in Singapore" style="display:block;width:82%;max-height:285px;margin:0 auto;object-fit:contain;border:2px solid #c8d5df;background:#fff;">
+        </a>
+        <figcaption style="margin-top:.28em;color:#5F6B7A;font-size:.56em;line-height:1.15;"><a href="https://www.straitstimes.com/singapore/google-rolls-out-updated-ai-powered-ask-maps-feature-in-singapore" target="_blank" rel="noopener" style="color:#003D7C;">Optional reading: <em>The Straits Times</em>, 11 Aug 2026</a></figcaption>
+      </figure>
+      <div>
+        <p style="font-weight:bold;color:#003D7C;margin:0 0 .36em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 7 Sep 23:59 SGT</span></p>
+        <p style="margin:.10em 0 .42em;">Post one <strong>100–140 word</strong> decision memo. No classmate reply is required.</p>
+        <div style="margin:.14em 0 .46em;padding:.62em .76em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1em;line-height:1.22;color:#003D7C;font-weight:bold;">
+          A person asks Ask Maps for a 2pm lunch route, explores nearby cultural sites, then later asks for a halal eatery open after 10pm. Does the late-evening query begin a new session? Answer yes or no and cite two trace details.
+        </div>
+        <p style="margin:.38em 0 0;color:#003D7C;font-weight:bold;font-size:.92em;">Next week: sequences make order, recency, and local context part of the recommendation signal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+::: notes
+Delivery: introduce this as a pre-lecture activation task, not a test of GRU4Rec, SASRec, or Transformer knowledge. The optional article offers a familiar Singapore example of context-aware planning; it is a product illustration, not evidence that Ask Maps uses a particular sequence architecture. Expected output: one 100–140 word decision memo that answers yes or no and defends the proposed session boundary with two trace details. There is no classmate reply this week.
+
+Instructor synthesis for Week 05: cluster the yes/no judgments around time gap, task shift, and contextual continuity. Establish that sessionisation is a modelling decision informed by observed traces, rather than direct proof of a person’s intent.
+
+[Sources]
+- Ng, A. (2026, 11 August). “Google rolls out new AI-powered Ask Maps feature in Singapore.” <em>The Straits Times</em>. Optional reading. https://www.straitstimes.com/singapore/google-rolls-out-updated-ai-powered-ask-maps-feature-in-singapore
 :::
 
 ## {background-color="#002a26"}

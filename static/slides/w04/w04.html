@@ -35,6 +35,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="w04_files/libs/revealjs/dist/theme/quarto-32d026921de4f487b663066d9af0df02.css">
   <link href="w04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -190,21 +256,25 @@ CP4285 Instruction Team
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section-1" class="slide level2" data-background-color="#ffffff">
 <h2></h2>
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
-  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Week 04 Pre-Lecture Exercise</div>
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise</div>
   <div class="cp-frame-title cp-text--navy">What Does a Missing Interaction Mean?</div>
-  <div class="cp-frame-body cp-stack" style="color:#333;font-size:.82em;line-height:1.25;">
-    <p style="margin:0;color:#003D7C;font-weight:bold;">Canvas discussion board · submitted by <span class="cp-text--teal">Mon, 31 Aug · 23:59 SGT</span></p>
-    <div class="cp-card cp-card--prompt">A user has never clicked a recommended item. Give two plausible interpretations: one about preference and one about exposure or the interface.</div>
-    <p style="margin:0;">Use the responses as a constraint on today’s models: richer capacity can learn a more flexible interaction function, but it cannot recover information that the system never recorded.</p>
+  <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 31 Aug 23:59 SGT</span></p>
+    <p style="margin:.15em 0 .65em;">Post one concise response; then reply constructively to one classmate.</p>
+    <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
+      A user has never clicked a recommended item. Give two plausible interpretations: one about preference and one about exposure or the interface.
+    </div>
+    <p style="margin:.7em 0 0;color:#003D7C;font-weight:bold;">Neural recommenders can learn richer interaction patterns, but they still learn only from the evidence the system records.</p>
   </div>
 </div>
 <aside class="notes">
-<p>Delivery: 3 minutes. Invite two interpretations from the exercise. Keep the distinction crisp: a non-click can be consistent with disinterest, but also with no exposure, weak placement, poor timing, or inattention. Explain that neural collaborative filtering inherits this ambiguity whenever it learns from implicit logs.</p>
-<p>[Sources] - Week 03 slides: “TempoQuiz debrief: absence is not a label” and “What Does a Missing Interaction Mean?”</p>
+<p>Delivery: introduce this as a pre-lecture activation task rather than a test of neural-network knowledge. Expected output: two distinct explanations for an unclicked recommendation (one preference-based and one exposure/interface-based), followed by a concise explanation that model capacity cannot identify information the logs do not contain. Ask students to make one constructive reply that either adds another plausible interpretation or identifies what evidence could distinguish the two accounts.</p>
+<p>Instructor synthesis for Week 04: connect responses to the difference between a richer scoring function and better observational data. Use the replies to foreground exposure bias, missing-not-at-random feedback, and the transparency limits of a complex model.</p>
+<p>[Sources] - Aggarwal, C. C. (2016). <em>Recommender Systems: The Textbook</em>, Sections 1.3.1.1-1.3.1.3, pp.&nbsp;10-14; Section 3.6.4.6, pp.&nbsp;109-112.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -221,10 +291,36 @@ CP4285 Instruction Team
 <h2></h2>
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
-  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Week 04 Pre-Lecture Exercise</div>
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise · Canvas Voices</div>
 </div>
 <aside class="notes">
-
+<p>Delivery: 3 minutes. Invite two interpretations from the exercise. Keep the distinction crisp: a non-click can be consistent with disinterest, but also with no exposure, weak placement, poor timing, or inattention. Explain that neural collaborative filtering inherits this ambiguity whenever it learns from implicit logs.</p>
+<p>[Sources] - Week 03 slides: “TempoQuiz debrief: absence is not a label” and “What Does a Missing Interaction Mean?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Pre-Lecture Synthesis</div>
+  <div class="cp-frame-title cp-text--navy">Capacity is not observability</div>
+  <div class="cp-frame-body cp-grid cp-grid--2" style="color:#333;font-size:.82em;line-height:1.25;">
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">What a non-click might mean</p><p style="margin:0;">Disinterest, no exposure, poor placement, wrong timing, unavailable inventory, or inattention.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">What today's model can change</p><p style="margin:0;">How it combines the information that was recorded - not whether the log distinguishes those explanations.</p></div>
+  </div>
+</div>
+<aside class="notes">
+<p>Delivery: 2 minutes. Take one or two student responses from the Canvas activity, then use the two cards to make the lecture constraint explicit. A more flexible scoring function may model richer associations in the recorded data; it does not identify which unrecorded exposure condition produced an absence. This completes the five-minute pre-lecture recap when combined with the prior slide.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -291,6 +387,320 @@ CP4285 Instruction Team
           display:block!important;
       }</style></aside>
 </section>
+<section id="a-90-second-bridge-the-transformer-learns-which-history-matters" class="slide level2">
+<h2>A 90-second bridge: the Transformer learns which history matters</h2>
+<div class="cp-stack" style="font-size:.76em;line-height:1.12;">
+  <div class="cp-flow-card" style="display:flex;align-items:center;gap:.4em;justify-content:center;">
+    <span class="cp-chip cp-chip--teal">ordered history</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">embeddings + position</span><span class="cp-flow-arrow">→</span><span class="cp-chip">attention</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--warning">next-item score</span>
+  </div>
+  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">One compatibility score</p><p style="margin:.18em 0;text-align:center;font-size:1.06em;">\(\color{navy}{q}=\color{teal}{[1,0]},\quad\color{orange}{k}=\color{orange}{[2,1]}\)</p><p style="margin:0;text-align:center;font-size:1.06em;">\(\color{navy}{q^\top}\color{orange}{k}=\color{teal}{1}\color{orange}{(2)}+\color{teal}{0}\color{orange}{(1)}=\color{navy}{\mathbf2}\)</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">Bridge</p><p style="margin:0;">Today: learn a score from a <strong>user–item pair</strong>. Next week: attention lets an <strong>ordered history</strong> shape that score.</p></div>
+  </div>
+</div>
+<aside class="notes">
+<p>Timing: 3 minutes. This is a vocabulary bridge, not a Transformer derivation. The worked dot product shows compatibility; next week adds normalisation and value mixing over ordered histories.</p>
+<p>[Source] - Vaswani, A. et al.&nbsp;(2017). “Attention Is All You Need.” <em>NeurIPS</em>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="from-matrix-factorisation-to-neural-cf" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>01 From Matrix Factorisation to Neural CF</h1>
+<aside class="notes">
+<p>Timing: 0 minutes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="matrix-factorisation-a-dot-product-is-an-interaction-rule" class="slide level2">
+<h2>Matrix factorisation: a dot product is an interaction rule</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.84em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Learn representations</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{teal}{\mathbf p_u}\in\mathbb R^d,\quad\color{orange}{\mathbf q_i}\in\mathbb R^d\)</p><p style="margin:0;">The axes are learned coordinates—not named traits without evidence.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Choose a fixed interaction</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{navy}{\hat y_{ui}}=\color{teal}{\mathbf p_u}^{\top}\color{orange}{\mathbf q_i}+\color{navy}{b_u+b_i}\)</p><p style="margin:0;">A dot product rewards aligned coordinates.</p></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>If we retain the embeddings but replace the dot product, what can the scorer represent—and what extra evidence or compute will it need?</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 3 minutes. MF already learns embeddings; today’s architectural choice is how to combine them.</p>
+<p>[Source] - Koren, Bell, &amp; Volinsky (2009). “Matrix Factorization Techniques for Recommender Systems.”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="worked-mf-score-one-user-one-candidate" class="slide level2">
+<h2>Worked MF score: one user, one candidate</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.84em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Given vectors</p><p style="margin:.22em 0;text-align:center;">\(\color{teal}{\mathbf p_u}=\color{teal}{[0.8,0.2]}\)</p><p style="margin:.22em 0;text-align:center;">\(\color{orange}{\mathbf q_i}=\color{orange}{[0.9,0.1]}\)</p><p style="margin:0;">Let both biases be zero.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Multiply, then add</p><p style="margin:.35em 0;text-align:center;font-size:1.18em;">\(\color{navy}{\hat y}=\color{teal}{0.8}\color{orange}{(0.9)}+\color{teal}{0.2}\color{orange}{(0.1)}\)</p><p style="margin:.35em 0;text-align:center;font-size:1.22em;">\(=\color{teal}{0.72}+\color{teal}{0.02}=\color{navy}{\mathbf{0.74}}\)</p><p style="margin:0;">A relative score, not automatically a probability or explanation.</p></div>
+</div>
+<aside class="notes">
+<p>Timing: 4 minutes. Ask students to state the two products before revealing the total.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="three-ways-to-combine-the-same-embeddings" class="slide level2">
+<h2>Three ways to combine the same embeddings</h2>
+<div class="cp-grid cp-grid--3" style="font-size:.72em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">GMF</p><p style="text-align:center;margin:.18em 0;">\(\color{teal}{\mathbf p_u}\odot\color{orange}{\mathbf q_i}\)</p><p style="margin:0;">Weight coordinate-wise matches.</p></div>
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">MLP</p><p style="text-align:center;margin:.18em 0;">\(f(\color{teal}{\mathbf p_u},\color{orange}{\mathbf q_i})\)</p><p style="margin:0;">Mix all coordinates non-linearly.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">NeuMF</p><p style="text-align:center;margin:.18em 0;">\([\mathrm{GMF};\mathrm{MLP}]\)</p><p style="margin:0;">Combine both paths before prediction.</p></div>
+</div>
+<aside class="notes">
+<p>Timing: 3 minutes. More capacity is a claim to test, not a free gain.</p>
+<p>[Source] - He, X. et al.&nbsp;(2017). “Neural Collaborative Filtering.” <em>WWW ’17</em>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="worked-interaction-functions-same-input-different-score" class="slide level2">
+<h2>Worked interaction functions: same input, different score</h2>
+<div class="cp-stack" style="font-size:.62em;line-height:1.1;">
+  <p style="margin:0;text-align:center;">\(\color{teal}{\mathbf p_u}=\color{teal}{[.8,.2]},\quad\color{orange}{\mathbf q_i}=\color{orange}{[.9,.1]}\) <span class="cp-text--muted">— toy weights expose the calculation.</span></p>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">1 · GMF</p><p style="margin:.16em 0;text-align:center;">\(\color{teal}{[.8,.2]}\odot\color{orange}{[.9,.1]}=\color{teal}{[.72,.02]}\)</p><p style="margin:0;text-align:center;">\(\color{navy}{s_G}=\color{navy}{[1,1]}^\top\color{teal}{[.72,.02]}=\color{navy}{\mathbf{.74}}\)</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">2 · MLP</p><p style="margin:.16em 0;text-align:center;">\(\color{teal}{\mathbf h}=\operatorname{ReLU}([.8+.1,\.2+.9])=\color{teal}{[.9,1.1]}\)</p><p style="margin:0;text-align:center;">\(\color{navy}{s_M}=\color{navy}{[.2,.4]}^\top\color{teal}{[.9,1.1]}=\color{navy}{\mathbf{.62}}\)</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">3 · NeuMF</p><p style="margin:.16em 0;text-align:center;">\(\color{navy}{s_N}=\color{navy}{[.5,.5,.1,.1]}^\top[\color{teal}{.72,.02};\color{teal}{.9,1.1}]\)</p><p style="margin:0;text-align:center;">\(=\color{teal}{.36+.01+.09+.11}=\color{navy}{\mathbf{.57}}\)</p></div>
+  </div>
+  <div class="to-think-about">Different scores reflect different <strong>toy weights</strong>. This demonstrates expressiveness, not a winner.</div>
+</div>
+<aside class="notes">
+<p>Timing: 5 minutes. Work left-to-right. GMF multiplies first; MLP combines coordinates; NeuMF combines both representations. Compare only under a shared protocol.</p>
+<p>[Source] - He, X. et al.&nbsp;(2017). “Neural Collaborative Filtering.” <em>WWW ’17</em>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="code-lens-the-forward-pass-is-the-architecture-choice" class="slide level2">
+<h2>Code lens: the forward pass is the architecture choice</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-label="1"></a>mf_score <span class="op">=</span> (user_embedding[u] <span class="op">*</span> item_embedding[i]).<span class="bu">sum</span>()</span>
+<span id="cb1-2"><a href="" aria-label="2"></a>gmf <span class="op">=</span> user_gmf[u] <span class="op">*</span> item_gmf[i]</span>
+<span id="cb1-3"><a href="" aria-label="3"></a>mlp <span class="op">=</span> relu(mlp_layers(concat(user_mlp[u], item_mlp[i])))</span>
+<span id="cb1-4"><a href="" aria-label="4"></a>neumf_score <span class="op">=</span> prediction_layer(concat(gmf, mlp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Timing: 2 minutes. This is pseudocode: the framework cannot choose the evaluation contract for us.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="training-for-ranked-recommendations" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>02 Training for Ranked Recommendations</h1>
+<aside class="notes">
+<p>Timing: 0 minutes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="implicit-feedback-creates-a-sampling-decision" class="slide level2">
+<h2>Implicit feedback creates a sampling decision</h2>
+<div class="cp-stack" style="font-size:.78em;line-height:1.16;">
+  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Observed positive</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> clicked <strong class="cp-text--orange">City Gardens</strong>.</p><p style="margin:0;">A signal of possible interest—not a rating of every alternative.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Unobserved candidate</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> did not click <strong class="cp-text--orange">Riverside Diner</strong>.</p><p style="margin:0;">It may have been unseen, unavailable, badly timed, or unappealing.</p></div>
+  </div>
+  <div class="cp-flow-card" style="display:flex;align-items:center;justify-content:center;gap:.38em;"><span class="cp-chip cp-chip--navy">logged click</span><span class="cp-flow-arrow">→</span><span class="cp-chip">positive</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--warning">sampled unobserved item</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">training comparison</span></div>
+  <div class="to-think-about">Negative sampling is an assumption about missing feedback—not a discovered dislike.</div>
+</div>
+<aside class="notes">
+<p>Timing: 4 minutes. Ask for two non-preference explanations of the missing click; sampling changes which comparisons training sees.</p>
+<p>[Sources] - Aggarwal (2016), Sections 1.3.1.1 and 3.6.4.6. - Rendle et al.&nbsp;(2009). <em>BPR</em>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="two-training-questions-two-objectives" class="slide level2">
+<h2>Two training questions, two objectives</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.82em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Pointwise: is this pair positive?</p><p style="margin:.4em 0;text-align:center;font-size:1.1em;">\(\color{navy}{y_{ui}}\ \text{vs.}\ \color{teal}{\hat y_{ui}}\)</p><p style="margin:0;">Needs a target for an unobserved pair.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Pairwise: which item ranks higher?</p><p style="margin:.4em 0;text-align:center;font-size:1.1em;">\(\color{teal}{\hat s(u,i^+)}&gt;\color{orange}{\hat s(u,i^-)}\)</p><p style="margin:0;">Matches a top-<em>k</em> comparison.</p></div>
+</div>
+<aside class="notes">
+<p>Timing: 3 minutes. A scorer such as MF or NeuMF can be trained with either objective.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bpr-worked-example-make-the-observed-item-rank-higher" class="slide level2">
+<h2>BPR worked example: make the observed item rank higher</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.7em;line-height:1.12;align-items:stretch;">
+  <div class="cp-stack">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) City Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Diner (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">1 · Margin</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\Delta}=\color{teal}{1.20}-\color{orange}{0.40}=\color{navy}{0.80}\)</p><p style="margin:0;">Positive above sampled alternative.</p></div>
+  </div>
+  <div class="cp-stack">
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">2 · Pairwise probability</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\sigma(\Delta)}=\sigma(\color{navy}{0.80})=\color{teal}{0.690}\)</p><p style="margin:0;">Model confidence in this ordering.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">3 · Loss and update</p><p style="margin:.16em 0;text-align:center;font-size:1.04em;">\(\color{navy}{L_{\mathrm{BPR}}}=-\ln(\color{teal}{0.690})=\color{orange}{0.371}\)</p><p style="margin:.18em 0 0;">\(\partial L/\partial\Delta=\color{orange}{-0.310}\): gradient descent increases the positive score and/or lowers the sampled score.</p></div>
+  </div>
+</div>
+<p style="margin:.4em 0 0;text-align:center;color:#003D7C;font-weight:bold;font-size:.75em;">BPR ranks the click above this sampled comparison; it does not call the unclicked item “bad.”</p>
+<aside class="notes">
+<p>Timing: 6 minutes. Work triplet, margin, sigmoid, then negative log. The numbers are pedagogical current-model outputs.</p>
+<p>[Source] - Rendle et al.&nbsp;(2009), Eq. 13 and optimisation discussion.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="which-negative-is-defensible" class="slide level2" data-background-color="#003D7C">
+<h2>👥 Which negative is defensible?</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed">
+<p class="cp-activity__prompt">
+Aisha clicked City Gardens. Which is the most defensible BPR comparison: a restaurant never shown, one shown after it sold out, or one shown beside City Gardens at the same time? What uncertainty remains?
+</p>
+<p class="cp-activity__instructions">
+Groups of 3–4: choose one, give one reason and one remaining uncertainty. Prepare two sentences.
+</p>
+</div>
+<aside class="notes">
+<p>Activity mode: group discussion. Timebox: 3 minutes. A contemporaneously shown, available alternative is generally more defensible, but not a ground-truth dislike.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bandit-time-what-does-bpr-optimise" class="slide level2" data-background-color="#003D7C">
+<h2>🎰 Bandit Time: What does BPR optimise?</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed">
+<p class="cp-activity__prompt">
+For Aisha, which change most directly reduces the BPR loss?
+</p>
+<div class="cp-choice-grid">
+<div class="cp-choice-card cp-choice-card--a">
+<strong>A.</strong> Raise both scores equally.
+</div>
+<div class="cp-choice-card cp-choice-card--b">
+<strong>B.</strong> Make the clicked item score higher than the sampled item.
+</div>
+<div class="cp-choice-card cp-choice-card--c">
+<strong>C.</strong> Label every unclicked item dislike.
+</div>
+<div class="cp-choice-card cp-choice-card--d">
+<strong>D.</strong> Maximise City Gardens’ absolute score only.
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: B. BPR depends on the score difference.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="break-5-minutes" class="slide level2" data-background-color="#000000">
 <h2>Break — 5 minutes</h2>
 <div class="cp-grid cp-grid--2-aside" style="min-height:62vh;align-items:center;color:#fff;">
@@ -300,11 +710,12 @@ CP4285 Instruction Team
     <p style="font-size:1.05em;line-height:1.42;margin:0;color:#d8d8d8;">
       TriRank extends the user–item graph with review aspects, modelling users, items, and the aspects mentioned in reviews as a tripartite graph. That extra evidence can support explanations such as “recommended because you value battery life and display quality.”  
     </p>
+    <br>
     <p style="font-size:1.05em;line-height:1.42;margin:0;color:#d8d8d8;">
       TriRank was one of the final precursor works to Neural Collaborative Filtering (NeuCF) pioneered here at NUS.  
     </p>
     <p style="margin:.72em 0 0;color:#80cbc4;font-size:.58em;line-height:1.3;">
-      <a href="https://wing.comp.nus.edu.sg/publication/10-1145-2806416-2806504/" target="_blank" rel="noopener" style="color:#80cbc4;">He, Chen, Kan &amp; Chen (2015), “TriRank: Review-aware Explainable Recommendation by Modeling Aspects,” CIKM 2015</a>
+      He, Chen, Kan &amp; Chen (2015), “<a href="https://wing.comp.nus.edu.sg/publication/10-1145-2806416-2806504/" target="_blank" rel="noopener" style="color:#80cbc4;"><i>TriRank: Review-aware Explainable Recommendation by Modeling Aspects</i></a>,” CIKM 2015
     </p>
   </div>
   <div class="cp-activity__timer">
@@ -333,8 +744,382 @@ CP4285 Instruction Team
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="practical-comparison-baseline-first" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>03 Practical Comparison: Baseline First</h1>
+<aside class="notes">
+<p>Timing: 0 minutes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="section-3" class="slide level2" data-background-color="#002a26">
+<section id="the-experiment-contract" class="slide level2">
+<h2>The experiment contract</h2>
+<table class="cp-table cp-table--compact caption-top" style="font-size:.72em;line-height:1.12;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Hold fixed</th>
+<th data-quarto-table-cell-role="th">Why</th>
+<th data-quarto-table-cell-role="th">Inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">Data + split</td>
+<td class="cp-table__cell">Both models face the same evidence.</td>
+<td class="cp-table__cell">Is test later than training?</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell cp-table__cell--label">Negative sampler</td>
+<td class="cp-table__cell">Sampling changes the ranking task.</td>
+<td class="cp-table__cell">Which unseen items become negatives?</td>
+</tr>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">Metrics + K</td>
+<td class="cp-table__cell">Metrics answer stated list-quality questions.</td>
+<td class="cp-table__cell">Does K match the product surface?</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell cp-table__cell--label">Budget + reporting</td>
+<td class="cp-table__cell">A gain needs cost and reproducibility context.</td>
+<td class="cp-table__cell">Time, parameters, seeds, examples.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Changing the model and the split, sampler, or metric together does not identify what produced an apparent improvement.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 4 minutes. This is the Week 03 evaluation contract applied to architecture comparison.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="practical-walkthrough-bpr-mf-in-recbole" class="slide level2">
+<h2>Practical walkthrough: BPR-MF in RecBole</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.78em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Baseline</p><p style="margin:0;">BPR learns a pairwise objective with latent-factor, dot-product scoring.</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Illustrative run</p><pre style="font-size:.62em;margin:.2em 0 0;"><code>run_recbole(model="BPR", dataset="ml-100k", config_file_list=["w04-ranking.yaml"])</code></pre></div></div>
+<div class="cp-flow-card" style="margin-top:.55em;text-align:center;font-size:.74em;"><strong>Keep fixed:</strong> split · sampler · metrics · seed policy <span class="cp-flow-arrow">→</span> <strong>Change:</strong> model = BPR <span class="cp-flow-arrow">→</span> <strong>Record:</strong> NDCG@10 · Recall@10 · time · parameters</div>
+<aside class="notes">
+<p>Timing: 3 minutes. This is illustrative code, not a live benchmark claim.</p>
+<p>[Sources] - RecBole BPR documentation and Quick-Start.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="practical-walkthrough-change-only-the-interaction-function" class="slide level2">
+<h2>Practical walkthrough: change only the interaction function</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.78em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Same runner, new scorer</p><pre style="font-size:.62em;margin:.2em 0 0;"><code>run_recbole(model="NeuMF", dataset="ml-100k", config_file_list=["w04-ranking.yaml"])</code></pre></div><div class="cp-card cp-card--soft"><p class="cp-card__title">What changes</p><p style="margin:0;">NeuMF adds GMF and MLP paths. More parameters do not make feedback less ambiguous.</p></div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Locate the embedding tables, MLP layers, and prediction layer. Which is absent from a dot-product baseline?</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 3 minutes. Only the architecture changes if the referenced experiment contract remains shared.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="deployment-decision-clinic-is-neumf-worth-it" class="slide level2" data-background-color="#003D7C">
+<h2>👥 Deployment decision clinic: Is NeuMF worth it?</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed">
+<p class="cp-activity__prompt">
+BPR-MF: NDCG@10 0.214, 2.1 min, 1.2M parameters. NeuMF: 0.221, 7.8 min, 5.9M. Deploy NeuMF, retain BPR-MF, or collect evidence?
+</p>
+<p class="cp-activity__instructions">
+In two sentences, cite one quality result, one operational constraint, and one evidence or transparency concern. The figures are a teaching scenario.
+</p>
+</div>
+<aside class="notes">
+<p>Activity mode: group discussion. Timebox: 5 minutes. A 0.007 difference is not automatically a deployment decision.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bandit-time-which-evidence-supports-neumf" class="slide level2" data-background-color="#003D7C">
+<h2>🎰 Bandit Time: Which evidence supports NeuMF?</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed">
+<p class="cp-activity__prompt">
+Which finding best supports replacing BPR-MF with NeuMF?
+</p>
+<div class="cp-choice-grid">
+<div class="cp-choice-card cp-choice-card--a">
+<strong>A.</strong> It has more layers.
+</div>
+<div class="cp-choice-card cp-choice-card--b">
+<strong>B.</strong> It wins once after changing sampler.
+</div>
+<div class="cp-choice-card cp-choice-card--c">
+<strong>C.</strong> A stable, meaningful gain under the same protocol clears cost and latency budget.
+</div>
+<div class="cp-choice-card cp-choice-card--d">
+<strong>D.</strong> One detailed post-hoc explanation.
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: C.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="debrief-read-the-result-as-a-trade-off" class="slide level2">
+<h2>Debrief: read the result as a trade-off</h2>
+<div class="cp-grid cp-grid--3" style="font-size:.78em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Quality</p><p style="margin:0;">Stable across seeds, periods, and segments?</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Operations</p><p style="margin:0;">Fits latency, memory, and maintenance budget?</p></div><div class="cp-card cp-card--warning"><p class="cp-card__title">Evidence</p><p style="margin:0;">Does the protocol justify the user-facing claim?</p></div></div>
+<aside class="notes">
+<p>Timing: 2 minutes. A higher offline NDCG is evidence about a stated protocol—not a complete reason to deploy.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="capacity-has-costs" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>04 Capacity Has Costs</h1>
+<aside class="notes">
+<p>Timing: 0 minutes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="when-is-neural-complexity-justified" class="slide level2">
+<h2>When is neural complexity justified?</h2>
+<table class="cp-table cp-table--compact caption-top" style="font-size:.72em;line-height:1.13;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Question</th>
+<th data-quarto-table-cell-role="th">Supports capacity</th>
+<th data-quarto-table-cell-role="th">Retain simpler baseline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">Signal</td>
+<td class="cp-table__cell">Held-out gain persists under declared protocol.</td>
+<td class="cp-table__cell">Gain is small, unstable, or split-specific.</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell cp-table__cell--label">Operations</td>
+<td class="cp-table__cell">Latency, memory, retraining fit budget.</td>
+<td class="cp-table__cell">Gain costs too much complexity.</td>
+</tr>
+<tr class="odd">
+<td class="cp-table__cell cp-table__cell--label">Accountability</td>
+<td class="cp-table__cell">Team can document data, failures, safeguards.</td>
+<td class="cp-table__cell">No honest explanation or audit.</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Timing: 4 minutes. A neural model is not a default upgrade.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ai-voice-mode-challenge-the-deployment-explanation" class="slide level2">
+<h2>📶 AI Voice Mode: challenge the deployment explanation</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed">
+<p class="cp-activity__prompt">
+“Deploy NeuMF: it achieved higher NDCG@10, so it understands users better.” Ask an AI voice agent to name two hidden assumptions and one check needed before deployment.
+</p>
+<p class="cp-activity__instructions">
+First write your critique with a partner. Then critique what the agent omits, overstates, or frames too confidently.
+</p>
+</div>
+<aside class="notes">
+<p>Activity mode: AI Voice critique. Timebox: 3 minutes. The agent is not an authority or a production recommender.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ethics-debrief-a-score-is-not-an-explanation" class="slide level2">
+<h2>Ethics debrief: a score is not an explanation</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.78em;"><div class="cp-card cp-card--warning"><p class="cp-card__title">Overclaim</p><p style="margin:0;">“This item is recommended because the model understands your preferences.”</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Accountable claim</p><p style="margin:0;">“Under stated data, objective, and ranking policy, the model assigned this item a high score.”</p></div></div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Capacity makes a scorer more flexible; it does not make logged interactions complete, causal, or value-neutral evidence about a person.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 4 minutes. Distinguish faithful inputs from a causal explanation of preference.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="summary" class="title-slide slide level1 center" data-background-color="#003D7C">
+<h1>Summary</h1>
+<div style="color:#fff;font-size:.78em;line-height:1.2;"><p style="margin:0 0 .55em;color:#fff;font-size:1.14em;"><span style="color:#EF7C00;">🔑</span> <u>Architecture and objective are separate choices.</u></p><div class="cp-grid cp-grid--2" style="gap:.55em .8em;"><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">1 · Represent</strong><br>Embeddings provide inputs.</div><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">2 · Interact</strong><br>MF dot product or neural function.</div><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">3 · Optimise</strong><br>BPR trains a relative ranking claim.</div><div class="cp-card" style="background:rgba(255,255,255,.08);border-left:6px solid #EF7C00;color:#fff;"><strong style="color:#EF7C00;">4 · Justify</strong><br>Keep costs and limits visible.</div></div><p style="margin:.65em 0 0;color:#EF7C00;font-weight:bold;text-align:center;">Next week: order, recency, and session context enter the model.</p></div>
+<aside class="notes">
+<p>Timing: 3 minutes. Bridge from static user–item scores to ordered histories.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-4" class="slide level2" data-background-color="#ffffff">
+<h2></h2>
+<div class="cp-frame-bg cp-frame-navy"></div>
+<div class="cp-frame-content">
+  <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
+  <div class="cp-frame-title cp-text--navy">Where Does One Session End?</div>
+  <div class="cp-frame-body" style="color:#333;font-size:.72em;line-height:1.2;">
+    <div class="cp-grid cp-grid--2" style="align-items:start;grid-template-columns:minmax(220px,.68fr) minmax(0,1.32fr);gap:1.05em;">
+      <figure style="margin:0;text-align:center;">
+        <a href="https://www.straitstimes.com/singapore/google-rolls-out-updated-ai-powered-ask-maps-feature-in-singapore" target="_blank" rel="noopener" aria-label="Open the Straits Times optional reading about Google Ask Maps">
+          <img class="cp-image" src="assets/ask-maps-optional-reading.png" alt="Screenshot of The Straits Times article about Google Ask Maps in Singapore" style="display:block;width:82%;max-height:285px;margin:0 auto;object-fit:contain;border:2px solid #c8d5df;background:#fff;">
+        </a>
+        <figcaption style="margin-top:.28em;color:#5F6B7A;font-size:.56em;line-height:1.15;"><a href="https://www.straitstimes.com/singapore/google-rolls-out-updated-ai-powered-ask-maps-feature-in-singapore" target="_blank" rel="noopener" style="color:#003D7C;">Optional reading: <em>The Straits Times</em>, 11 Aug 2026</a></figcaption>
+      </figure>
+      <div>
+        <p style="font-weight:bold;color:#003D7C;margin:0 0 .36em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 7 Sep 23:59 SGT</span></p>
+        <p style="margin:.10em 0 .42em;">Post one <strong>100–140 word</strong> decision memo. No classmate reply is required.</p>
+        <div style="margin:.14em 0 .46em;padding:.62em .76em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1em;line-height:1.22;color:#003D7C;font-weight:bold;">
+          A person asks Ask Maps for a 2pm lunch route, explores nearby cultural sites, then later asks for a halal eatery open after 10pm. Does the late-evening query begin a new session? Answer yes or no and cite two trace details.
+        </div>
+        <p style="margin:.38em 0 0;color:#003D7C;font-weight:bold;font-size:.92em;">Next week: sequences make order, recency, and local context part of the recommendation signal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<aside class="notes">
+<p>Delivery: introduce this as a pre-lecture activation task, not a test of GRU4Rec, SASRec, or Transformer knowledge. The optional article offers a familiar Singapore example of context-aware planning; it is a product illustration, not evidence that Ask Maps uses a particular sequence architecture. Expected output: one 100–140 word decision memo that answers yes or no and defends the proposed session boundary with two trace details. There is no classmate reply this week.</p>
+<p>Instructor synthesis for Week 05: cluster the yes/no judgments around time gap, task shift, and contextual continuity. Establish that sessionisation is a modelling decision informed by observed traces, rather than direct proof of a person’s intent.</p>
+<p>[Sources] - Ng, A. (2026, 11 August). “Google rolls out new AI-powered Ask Maps feature in Singapore.” <em>The Straits Times</em>. Optional reading. https://www.straitstimes.com/singapore/google-rolls-out-updated-ai-powered-ask-maps-feature-in-singapore</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-5" class="slide level2" data-background-color="#002a26">
 <h2></h2>
 <div class="cp-frame-bg cp-frame-teal"></div>
 <div class="cp-frame-content" style="color:white;background:#002a26;inset:60px;padding:26px 32px 22px;font-size:.92em;">
