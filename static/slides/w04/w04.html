@@ -35,72 +35,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #24292e;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="w04_files/libs/revealjs/dist/theme/quarto-32d026921de4f487b663066d9af0df02.css">
   <link href="w04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -387,19 +321,76 @@ CP4285 Instruction Team
           display:block!important;
       }</style></aside>
 </section>
-<section id="a-90-second-bridge-the-transformer-learns-which-history-matters" class="slide level2">
-<h2>A 90-second bridge: the Transformer learns which history matters</h2>
-<div class="cp-stack" style="font-size:.76em;line-height:1.12;">
-  <div class="cp-flow-card" style="display:flex;align-items:center;gap:.4em;justify-content:center;">
-    <span class="cp-chip cp-chip--teal">ordered history</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">embeddings + position</span><span class="cp-flow-arrow">→</span><span class="cp-chip">attention</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--warning">next-item score</span>
+<section id="transformer-recap-query-key-value-attention" class="slide level2">
+<h2>Transformer recap: query, key, value, attention</h2>
+<div class="cp-grid cp-grid--2" style="grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:stretch;font-size:.7em;line-height:1.12;">
+  <div class="cp-card cp-card--soft" style="padding:.48em .58em;">
+    <p class="cp-card__title" style="margin-bottom:.26em;text-align:center;">Scaled dot-product attention</p>
+    <div class="cp-stack" style="gap:.16em;">
+      <div class="cp-center"><span class="cp-chip cp-chip--teal">input embeddings \(\color{teal}{X}\)</span></div>
+      <div class="cp-center" style="color:#EF7C00;font-size:1.45em;line-height:.7;">↓</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.34em;text-align:center;">
+        <div class="cp-chip cp-chip--navy">\(\color{navy}{Q}=\color{teal}{X}\color{navy}{W_Q}\)</div>
+        <div class="cp-chip">\(\color{orange}{K}=\color{teal}{X}\color{orange}{W_K}\)</div>
+        <div class="cp-chip cp-chip--warning">\(\color{orange}{V}=\color{teal}{X}\color{orange}{W_V}\)</div>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:.34em;align-items:center;">
+        <div class="cp-flow-card" style="min-height:0;padding:.28em .4em;"><strong>\(\color{navy}{Q}\color{orange}{K}^{\top}/\sqrt{d_k}\)</strong><br><span style="font-size:.82em;">scaled compatibility scores</span></div>
+        <div class="cp-center" style="color:#EF7C00;font-size:1.05em;line-height:1.1;">\(\color{orange}{V}\)<br>↓</div>
+      </div>
+      <div class="cp-center" style="color:#EF7C00;font-size:1.45em;line-height:.7;">↓</div>
+      <div class="cp-flow-card" style="min-height:0;padding:.28em .4em;"><strong>\(\color{teal}{H}=\operatorname{softmax}(\color{navy}{Q}\color{orange}{K}^{\top}/\sqrt{d_k})\color{orange}{V}\)</strong><br><span style="font-size:.82em;">contextualised output embeddings</span></div>
+    </div>
   </div>
-  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">One compatibility score</p><p style="margin:.18em 0;text-align:center;font-size:1.06em;">\(\color{navy}{q}=\color{teal}{[1,0]},\quad\color{orange}{k}=\color{orange}{[2,1]}\)</p><p style="margin:0;text-align:center;font-size:1.06em;">\(\color{navy}{q^\top}\color{orange}{k}=\color{teal}{1}\color{orange}{(2)}+\color{teal}{0}\color{orange}{(1)}=\color{navy}{\mathbf2}\)</p></div>
-    <div class="cp-card cp-card--prompt"><p class="cp-card__title">Bridge</p><p style="margin:0;">Today: learn a score from a <strong>user–item pair</strong>. Next week: attention lets an <strong>ordered history</strong> shape that score.</p></div>
+  <div class="cp-stack" style="gap:.65em;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Compatibility</p><p style="margin:.24em 0;text-align:center;font-size:1.15em;">\(\color{navy}{s_j}=\color{navy}{q}^{\top}\color{orange}{k_j}\)</p><p style="margin:0;">Queries score keys. Higher = closer match.</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">Weighted information</p><p style="margin:.24em 0;text-align:center;font-size:1.05em;">\(\color{teal}{h}=\sum_j\color{navy}{\alpha_j}\color{orange}{v_j},\quad\color{navy}{\alpha}=\operatorname{softmax}(s)\)</p><p style="margin:0;">Softmax gives weights; combine values.</p></div>
   </div>
 </div>
+<div class="to-think-about" title="To think about">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>To think about</strong></p>
+</div>
+<div class="callout-content">
+<p>Week 05 foreshadowing: Transformers natively deal with ordered interactions, which we don’t touch this week.</p>
+</div>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>Timing: 3 minutes. This is a vocabulary bridge, not a Transformer derivation. The worked dot product shows compatibility; next week adds normalisation and value mixing over ordered histories.</p>
+<p>Timing: 1.5 minutes. This is a vocabulary recap, not a Transformer derivation. Query, key, and value are roles produced by learned projections. Attention scores query–key compatibility, normalises those scores, then combines the values.</p>
+<p>[Source] - Vaswani, A. et al.&nbsp;(2017). “Attention Is All You Need.” <em>NeurIPS</em>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="attention-as-a-useritem-matching-mechanism" class="slide level2">
+<h2>Attention as a user–item matching mechanism</h2>
+<div class="cp-stack" style="font-size:.78em;line-height:1.16;">
+  <div class="cp-flow-card" style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:.42em;justify-content:center;min-height:0;">
+    <span class="cp-chip cp-chip--teal">user embedding \(e_u\)</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">user query \(q_u\)</span><span class="cp-flow-arrow">↔</span><span class="cp-chip cp-chip--warning">item key/value \((k_i,v_i)\)</span>
+  </div>
+  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Learned projections</p><p style="margin:.24em 0;text-align:center;font-size:1.06em;">\(\color{navy}{q_u}=W_Q\color{teal}{e_u}\)</p><p style="margin:.16em 0;text-align:center;font-size:1.06em;">\(\color{orange}{k_i}=W_K\color{orange}{e_i},\quad\color{orange}{v_i}=W_V\color{orange}{e_i}\)</p><p style="margin:0;">The user supplies the query; each candidate item supplies a key and value.</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">One user–item compatibility</p><p style="margin:.35em 0;text-align:center;font-size:1.18em;">\(\color{navy}{q_u}^{\top}\color{orange}{k_i}\)</p><p style="margin:0;">A higher score means an item key better matches a user query. Across candidates, softmax turns scores into weights for values.</p></div>
+  </div>
+  <div class="to-think-about">For this bridge, user = query and item = key/value. In a full Transformer, these are operational roles—not permanent identities.</div>
+</div>
+<aside class="notes">
+<p>Timing: 1.5 minutes. This is a simplified user–item mapping for the Week 4 bridge. It makes the attention score look familiar: a learned compatibility between a user representation and an item representation. Do not imply that all recommender Transformers use exactly this arrangement.</p>
 <p>[Source] - Vaswani, A. et al.&nbsp;(2017). “Attention Is All You Need.” <em>NeurIPS</em>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -430,11 +421,11 @@ CP4285 Instruction Team
           display:block!important;
       }</style></aside>
 </section>
-<section id="matrix-factorisation-a-dot-product-is-an-interaction-rule" class="slide level2">
-<h2>Matrix factorisation: a dot product is an interaction rule</h2>
+<section id="matrix-factorisation-a-dot-product-is-an-interaction" class="slide level2">
+<h2>Matrix factorisation: a dot product is an interaction</h2>
 <div class="cp-grid cp-grid--2" style="font-size:.84em;align-items:stretch;">
-  <div class="cp-card cp-card--soft"><p class="cp-card__title">Learn representations</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{teal}{\mathbf p_u}\in\mathbb R^d,\quad\color{orange}{\mathbf q_i}\in\mathbb R^d\)</p><p style="margin:0;">The axes are learned coordinates—not named traits without evidence.</p></div>
-  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Choose a fixed interaction</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{navy}{\hat y_{ui}}=\color{teal}{\mathbf p_u}^{\top}\color{orange}{\mathbf q_i}+\color{navy}{b_u+b_i}\)</p><p style="margin:0;">A dot product rewards aligned coordinates.</p></div>
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Learn latent representations</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{teal}{\mathbf p_u}\in\mathbb R^d,\quad\color{orange}{\mathbf q_i}\in\mathbb R^d\)</p><p style="margin:0;">The axes are learned embeddings of one-hot users and items.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Choose a fixed interaction</p><p style="margin:.26em 0;text-align:center;font-size:1.15em;">\(\color{navy}{\hat r_{ui}}=\color{teal}{\mathbf p_u}^{\top}\color{orange}{\mathbf q_i}+\color{navy}{b_u+b_i}\)</p><p style="margin:0;">A dot product rewards aligned representations.</p></div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -445,7 +436,7 @@ CP4285 Instruction Team
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>If we retain the embeddings but replace the dot product, what can the scorer represent—and what extra evidence or compute will it need?</p>
+<p>Use <span class="math inline">\(f_\theta(p_u,q_i)\)</span> to capture combinations a dot product misses. It needs more data, compute, and overfitting control.</p>
 </div>
 </div>
 </div>
@@ -466,12 +457,12 @@ CP4285 Instruction Team
 </section>
 <section id="worked-mf-score-one-user-one-candidate" class="slide level2">
 <h2>Worked MF score: one user, one candidate</h2>
-<div class="cp-grid cp-grid--2" style="font-size:.84em;align-items:stretch;">
-  <div class="cp-card cp-card--soft"><p class="cp-card__title">Given vectors</p><p style="margin:.22em 0;text-align:center;">\(\color{teal}{\mathbf p_u}=\color{teal}{[0.8,0.2]}\)</p><p style="margin:.22em 0;text-align:center;">\(\color{orange}{\mathbf q_i}=\color{orange}{[0.9,0.1]}\)</p><p style="margin:0;">Let both biases be zero.</p></div>
-  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Multiply, then add</p><p style="margin:.35em 0;text-align:center;font-size:1.18em;">\(\color{navy}{\hat y}=\color{teal}{0.8}\color{orange}{(0.9)}+\color{teal}{0.2}\color{orange}{(0.1)}\)</p><p style="margin:.35em 0;text-align:center;font-size:1.22em;">\(=\color{teal}{0.72}+\color{teal}{0.02}=\color{navy}{\mathbf{0.74}}\)</p><p style="margin:0;">A relative score, not automatically a probability or explanation.</p></div>
+<div class="cp-grid cp-grid--2" style="font-size:.78em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Given learned coordinates</p><p style="margin:.2em 0;text-align:center;">\(\color{teal}{\mathbf p_u}=\color{teal}{[0.8,0.2]}\)</p><p style="margin:0 0 .25em;">User: high on coordinate 1; low on coordinate 2.</p><p style="margin:.2em 0;text-align:center;">\(\color{orange}{\mathbf q_i}=\color{orange}{[0.9,0.1]}\)</p><p style="margin:0;">Item: also high on coordinate 1; low on coordinate 2.<br><br>These are learned coordinates, not named traits.</p></div>
+  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Multiply, then add</p><p style="margin:.24em 0;text-align:center;font-size:1.18em;">\(\color{navy}{\hat r_{ui}}=\color{teal}{0.8}\color{orange}{(0.9)}+\color{teal}{0.2}\color{orange}{(0.1)}\)</p><p style="margin:.25em 0;text-align:center;font-size:1.22em;">\(=\color{teal}{0.72}+\color{teal}{0.02}=\color{navy}{\mathbf{0.74}}\)</p><p style="margin:0;font-weight:normal;">\(0.72\): dominant alignment on coordinate 1.<br>\(0.02\): small alignment on coordinate 2.<br>\(0.74\): relative ranking score—not probability or explanation.</p></div>
 </div>
 <aside class="notes">
-<p>Timing: 4 minutes. Ask students to state the two products before revealing the total.</p>
+<p>Timing: 4 minutes. Ask students to state the two products before revealing the total. The coordinate labels describe their role in this example, not an interpretable real-world attribute.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -484,38 +475,53 @@ CP4285 Instruction Team
           display:block!important;
       }</style></aside>
 </section>
-<section id="three-ways-to-combine-the-same-embeddings" class="slide level2">
-<h2>Three ways to combine the same embeddings</h2>
-<div class="cp-grid cp-grid--3" style="font-size:.72em;align-items:stretch;">
-  <div class="cp-card cp-card--soft"><p class="cp-card__title">GMF</p><p style="text-align:center;margin:.18em 0;">\(\color{teal}{\mathbf p_u}\odot\color{orange}{\mathbf q_i}\)</p><p style="margin:0;">Weight coordinate-wise matches.</p></div>
-  <div class="cp-card cp-card--soft"><p class="cp-card__title">MLP</p><p style="text-align:center;margin:.18em 0;">\(f(\color{teal}{\mathbf p_u},\color{orange}{\mathbf q_i})\)</p><p style="margin:0;">Mix all coordinates non-linearly.</p></div>
-  <div class="cp-card cp-card--prompt"><p class="cp-card__title">NeuMF</p><p style="text-align:center;margin:.18em 0;">\([\mathrm{GMF};\mathrm{MLP}]\)</p><p style="margin:0;">Combine both paths before prediction.</p></div>
-</div>
-<aside class="notes">
-<p>Timing: 3 minutes. More capacity is a claim to test, not a free gain.</p>
-<p>[Source] - He, X. et al.&nbsp;(2017). “Neural Collaborative Filtering.” <em>WWW ’17</em>.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="worked-interaction-functions-same-input-different-score" class="slide level2">
-<h2>Worked interaction functions: same input, different score</h2>
-<div class="cp-stack" style="font-size:.62em;line-height:1.1;">
-  <p style="margin:0;text-align:center;">\(\color{teal}{\mathbf p_u}=\color{teal}{[.8,.2]},\quad\color{orange}{\mathbf q_i}=\color{orange}{[.9,.1]}\) <span class="cp-text--muted">— toy weights expose the calculation.</span></p>
-  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">1 · GMF</p><p style="margin:.16em 0;text-align:center;">\(\color{teal}{[.8,.2]}\odot\color{orange}{[.9,.1]}=\color{teal}{[.72,.02]}\)</p><p style="margin:0;text-align:center;">\(\color{navy}{s_G}=\color{navy}{[1,1]}^\top\color{teal}{[.72,.02]}=\color{navy}{\mathbf{.74}}\)</p></div>
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">2 · MLP</p><p style="margin:.16em 0;text-align:center;">\(\color{teal}{\mathbf h}=\operatorname{ReLU}([.8+.1,\.2+.9])=\color{teal}{[.9,1.1]}\)</p><p style="margin:0;text-align:center;">\(\color{navy}{s_M}=\color{navy}{[.2,.4]}^\top\color{teal}{[.9,1.1]}=\color{navy}{\mathbf{.62}}\)</p></div>
-    <div class="cp-card cp-card--prompt"><p class="cp-card__title">3 · NeuMF</p><p style="margin:.16em 0;text-align:center;">\(\color{navy}{s_N}=\color{navy}{[.5,.5,.1,.1]}^\top[\color{teal}{.72,.02};\color{teal}{.9,1.1}]\)</p><p style="margin:0;text-align:center;">\(=\color{teal}{.36+.01+.09+.11}=\color{navy}{\mathbf{.57}}\)</p></div>
+<section id="section-4" class="slide level2" data-background-color="#003D7C">
+<h2></h2>
+<div style="color:#fff;font-size:.84em;line-height:1.3;margin-top:.5em;max-width:90%;">
+  <p style="margin:0 0 .38em;padding-bottom:.24em;border-bottom:2px solid #EF7C00;font-size:1.15em;font-weight:bold;">🔑 Key Point: NeuMF combines GMF + MLP</p>
+  <div style="display:grid;grid-template-columns:.7fr 1.6fr .7fr;gap:1.05em;margin-top:.42em;align-items:stretch;">
+    <div style="border:2px solid #EF7C00;border-radius:16px;padding:.6em .7em;"><p style="margin:0;color:#EF7C00;font-weight:bold;">GMF</p><p style="margin:.58em 0 .72em;text-align:center;font-size:1.14em;">\(\color{teal}{\mathbf p_u}\odot\color{orange}{\mathbf q_i}\)</p><p style="margin:0;">Weights coordinate-wise matches, extending the dot-product path.</p></div>
+    <div style="border:2px solid #EF7C00;border-radius:16px;padding:.6em .7em;"><p style="margin:0;color:#EF7C00;font-weight:bold;">NeuMF</p><p class="fragment fade-in" data-fragment-index="1" style="margin:.35em 0 0;font-size:.78em;">1 · retain the GMF path</p><p class="fragment fade-in" data-fragment-index="2" style="margin:.2em 0 0;font-size:.78em;">2 · add the MLP path</p><figure class="fragment fade-in" data-fragment-index="3" style="margin:.32em 0 0;"><a href="https://arxiv.org/pdf/1708.05031" target="_blank" rel="noopener" aria-label="Open the Neural Collaborative Filtering paper PDF"><img src="assets/neumf-architecture.png" class="cp-image cp-image--contain" alt="Neural matrix factorisation architecture: GMF and MLP user-item paths are concatenated in a NeuMF layer before a score and training loss." style="display:block;width:100%;max-height:300px;object-fit:contain;background:#fff;"></a><figcaption style="margin-top:.2em;font-size:.68em;color:#bfe5df;">3 · concatenate both paths.</figcaption></figure></div>
+    <div style="border:2px solid #EF7C00;border-radius:16px;padding:.6em .7em;"><p style="margin:0;color:#EF7C00;font-weight:bold;">MLP</p><p style="margin:.58em 0 .72em;text-align:center;font-size:1.14em;">\(f(\color{teal}{\mathbf p_u},\color{orange}{\mathbf q_i})\)</p><p style="margin:0;">Mixes all coordinates through learned non-linear layers.</p></div>
   </div>
-  <div class="to-think-about">Different scores reflect different <strong>toy weights</strong>. This demonstrates expressiveness, not a winner.</div>
+</div>
+<aside class="notes">
+<p>Timing: 3 minutes. Use the same structure as Week 01’s key-point slides: contrast alternatives rather than declare a universal winner. The centre panel builds over three clicks: (1) retain GMF, (2) add MLP, and (3) reveal the NeuMF architecture in which the paths concatenate before prediction. The MLP may learn complementary non-linear interactions, but NeuMF does not constrain it to be the residual left by GMF: the two paths use separate representations and are fused at prediction. More capacity is a claim to test, not a free gain—and does not repair ambiguity in the observed evidence.</p>
+<p>[Source] - He, X., Liao, L., Zhang, H., Nie, L., Hu, X., &amp; Chua, T.-S. (2017). “Neural Collaborative Filtering.” <em>WWW ’17</em>, 173–182. doi:10.1145/3038912.3052569.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="worked-interaction-functions-same-inputs-three-scores" class="slide level2">
+<h2>Worked interaction functions: same inputs, three scores</h2>
+<div class="cp-stack" style="font-size:.76em;line-height:1.18;">
+  <p style="margin:0;text-align:center;font-size:.9em;"><strong>Shared toy inputs:</strong> \(\color{teal}{\mathbf p_u}=\color{teal}{[.8,.2]}\), \(\color{orange}{\mathbf q_i}=\color{orange}{[.9,.1]}\)</p>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft" style="min-height:430px;padding:.72em .78em;display:flex;flex-direction:column;"><p class="cp-card__title">1 · GMF</p><p style="margin:.55em 0 .16em;color:#00796B;font-weight:bold;">Element-wise match</p><p style="margin:0;text-align:center;font-size:1.08em;">\(\color{teal}{[.8,.2]}\odot\color{orange}{[.9,.1]}=\color{teal}{[.72,.02]}\)</p><p style="margin:.7em 0 .16em;color:#003D7C;font-weight:bold;">Read out</p><p style="margin:0;text-align:center;font-size:1.08em;">\(\color{navy}{s_G}=\color{navy}{[1,1]}^\top\color{teal}{[.72,.02]}\)</p><div style="margin-top:auto;padding-top:.58em;border-top:2px solid #00796B;text-align:center;font-size:1.2em;">\(\color{navy}{s_G}=\color{navy}{\mathbf{.74}}\)</div></div>
+    <div class="cp-card cp-card--soft" style="min-height:430px;padding:.72em .78em;display:flex;flex-direction:column;"><p class="cp-card__title">2 · MLP</p><p style="margin:.55em 0 .16em;color:#00796B;font-weight:bold;">Build a hidden representation</p><p style="margin:0;text-align:center;font-size:1.02em;">\(\color{teal}{\mathbf h}=\operatorname{ReLU}([.8+.1, .2+.9])\)</p><p style="margin:.18em 0 0;text-align:center;font-size:1.08em;">\(=\color{teal}{[.9,1.1]}\)</p><p style="margin:.7em 0 .16em;color:#003D7C;font-weight:bold;">Read out</p><p style="margin:0;text-align:center;font-size:1.08em;">\(\color{navy}{s_M}=\color{navy}{[.2,.4]}^\top\color{teal}{[.9,1.1]}\)</p><div style="margin-top:auto;padding-top:.58em;border-top:2px solid #00796B;text-align:center;font-size:1.2em;">\(\color{navy}{s_M}=\color{navy}{\mathbf{.62}}\)</div></div>
+    <div class="cp-card cp-card--prompt" style="min-height:430px;padding:.72em .78em;display:flex;flex-direction:column;"><p class="cp-card__title">3 · NeuMF</p><p style="margin:.55em 0 .16em;color:#00796B;font-weight:bold;">Concatenate both paths</p><p style="margin:0;text-align:center;font-size:1.03em;">\(\color{teal}{\mathbf z}=\color{teal}{[.72,.02;.9,1.1]}\)</p><p style="margin:.7em 0 .16em;color:#003D7C;font-weight:bold;">Read out</p><p style="margin:0;text-align:center;font-size:1.02em;">\(\color{navy}{s_N}=\color{navy}{[.5,.5,.1,.1]}^\top\color{teal}{\mathbf z}\)</p><p style="margin:.3em 0 0;text-align:center;">\(=\color{teal}{.36+.01+.09+.11}\)</p><div style="margin-top:auto;padding-top:.58em;border-top:2px solid #EF7C00;text-align:center;font-size:1.2em;">\(\color{navy}{s_N}=\color{navy}{\mathbf{.57}}\)</div></div>
+  </div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Navy vectors are toy <strong>readout weights</strong>. Each dot product produces one scalar: <span class="math inline">\(s_G\)</span>, <span class="math inline">\(s_M\)</span>, or <span class="math inline">\(s_N\)</span>.</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <p>Timing: 5 minutes. Work left-to-right. GMF multiplies first; MLP combines coordinates; NeuMF combines both representations. Compare only under a shared protocol.</p>
@@ -532,14 +538,25 @@ CP4285 Instruction Team
           display:block!important;
       }</style></aside>
 </section>
-<section id="code-lens-the-forward-pass-is-the-architecture-choice" class="slide level2">
-<h2>Code lens: the forward pass is the architecture choice</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-label="1"></a>mf_score <span class="op">=</span> (user_embedding[u] <span class="op">*</span> item_embedding[i]).<span class="bu">sum</span>()</span>
-<span id="cb1-2"><a href="" aria-label="2"></a>gmf <span class="op">=</span> user_gmf[u] <span class="op">*</span> item_gmf[i]</span>
-<span id="cb1-3"><a href="" aria-label="3"></a>mlp <span class="op">=</span> relu(mlp_layers(concat(user_mlp[u], item_mlp[i])))</span>
-<span id="cb1-4"><a href="" aria-label="4"></a>neumf_score <span class="op">=</span> prediction_layer(concat(gmf, mlp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="code-lens-where-each-neumf-component-lives" class="slide level2">
+<h2>Code lens: where each NeuMF component lives</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.72em;line-height:1.15;align-items:stretch;">
+  <div class="cp-card cp-card--soft" style="padding:.7em .8em;"><p class="cp-card__title">Annotated forward pass</p><pre style="margin:.42em 0 0;font-size:.84em;line-height:1.55;white-space:pre-wrap;"><code><span style="color:#00796B;">p_g, q_g = user_gmf[u], item_gmf[i]</span>
+<span style="color:#00796B;">g = p_g * q_g</span>       <span style="color:#555;"># GMF path</span>
+
+<span style="color:#00796B;">p_m, q_m = user_mlp[u], item_mlp[i]</span>
+<span style="color:#00796B;">h = mlp(concat(p_m, q_m))</span>  <span style="color:#555;"># MLP path</span>
+
+<span style="color:#003D7C;">r_ui = readout(concat(g, h))</span> <span style="color:#555;"># scalar score</span></code></pre></div>
+  <div class="cp-stack" style="gap:.56em;">
+    <div class="cp-flow-card" style="min-height:0;padding:.42em .58em;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:.35em;white-space:nowrap;"><span class="cp-chip cp-chip--teal">GMF features \(\color{teal}{g}\)</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--teal">MLP features \(\color{teal}{h}\)</span><span class="cp-flow-arrow">→</span><span class="cp-chip" style="border:2px solid #003D7C;background:#fff;color:#003D7C;">score \(\color{navy}{r_{ui}}\)</span></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Two representation paths</p><p style="margin:0;">Separate GMF/MLP embeddings create \(g\) and \(h\) on distinct paths.</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">One final readout</p><p style="margin:.2em 0;text-align:center;font-size:1.1em;">\(\color{navy}{\hat r_{ui}}=\color{navy}{\mathbf w}^{\top}[\color{teal}{g};\color{teal}{h}]+b\)</p><p style="margin:0;">\(\mathbf w\) maps concatenated \(g,h\) to one ranking score.</p></div>
+  </div>
+</div>
 <aside class="notes">
-<p>Timing: 2 minutes. This is pseudocode: the framework cannot choose the evaluation contract for us.</p>
+<p>Timing: 2 minutes. Map the lines to the previous slide: GMF produces coordinate-wise features (g); MLP produces non-linear features (h); NeuMF concatenates them and applies one final readout. The variable names are pedagogical pseudocode, not a RecBole implementation.</p>
+<p>[Source] - He, X. et al.&nbsp;(2017). “Neural Collaborative Filtering.” <em>WWW ’17</em>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1078,7 +1095,7 @@ First write your critique with a partner. Then critique what the agent omits, ov
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-4" class="slide level2" data-background-color="#ffffff">
+<section id="section-5" class="slide level2" data-background-color="#ffffff">
 <h2></h2>
 <div class="cp-frame-bg cp-frame-navy"></div>
 <div class="cp-frame-content">
@@ -1119,7 +1136,7 @@ First write your critique with a partner. Then critique what the agent omits, ov
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-5" class="slide level2" data-background-color="#002a26">
+<section id="section-6" class="slide level2" data-background-color="#002a26">
 <h2></h2>
 <div class="cp-frame-bg cp-frame-teal"></div>
 <div class="cp-frame-content" style="color:white;background:#002a26;inset:60px;padding:26px 32px 22px;font-size:.92em;">
