@@ -209,7 +209,7 @@ Timing: 1.5 minutes. This is a simplified user–item mapping for the Week 4 bri
 - Vaswani, A. et al. (2017). “Attention Is All You Need.” *NeurIPS*.
 :::
 
-# 01 From Matrix Factorisation to Neural CF {background-color="#EF7C00"}
+# 02 From Matrix Factorisation to Neural CF {background-color="#EF7C00"}
 
 ::: notes
 Timing: 0 minutes.
@@ -318,7 +318,7 @@ Timing: 2 minutes. Map the lines to the previous slide: GMF produces coordinate-
 - He, X. et al. (2017). “Neural Collaborative Filtering.” *WWW ’17*.
 :::
 
-# 02 Training for Ranked Recommendations {background-color="#EF7C00"}
+# 03 Training for Ranked Recommendations {background-color="#EF7C00"}
 
 ::: notes
 Timing: 0 minutes.
@@ -332,7 +332,7 @@ Timing: 0 minutes.
     <div class="cp-card cp-card--soft"><p class="cp-card__title">Observed positive</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> clicked <strong class="cp-text--orange">City Gardens</strong>.</p><p style="margin:0;">A signal of possible interest—not a rating of every alternative.</p></div>
     <div class="cp-card cp-card--warning"><p class="cp-card__title">Unobserved candidate</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> did not click <strong class="cp-text--orange">Riverside Diner</strong>.</p><p style="margin:0;">It may have been unseen, unavailable, badly timed, or unappealing.</p></div>
   </div>
-  <div class="cp-flow-card" style="display:flex;align-items:center;justify-content:center;gap:.38em;"><span class="cp-chip cp-chip--navy">logged click</span><span class="cp-flow-arrow">→</span><span class="cp-chip">positive</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--warning">sampled unobserved item</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">training comparison</span></div>
+  <div class="cp-flow-card" style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.38em;white-space:nowrap;"><span class="cp-chip cp-chip--navy">logged click</span><span class="cp-flow-arrow">→</span><span class="cp-chip">positive</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--warning">sampled unobserved item</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">training comparison</span></div>
   <div class="to-think-about">Negative sampling is an assumption about missing feedback—not a discovered dislike.</div>
 </div>
 ```
@@ -361,12 +361,10 @@ Timing: 3 minutes. A scorer such as MF or NeuMF can be trained with either objec
 ## BPR worked example: make the observed item rank higher
 
 ```{=html}
-<div class="cp-grid cp-grid--2" style="font-size:.7em;line-height:1.12;align-items:stretch;">
-  <div class="cp-stack">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) City Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Diner (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
+<div class="cp-stack" style="font-size:.7em;line-height:1.12;gap:.55em;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) City Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Diner (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
     <div class="cp-card cp-card--prompt"><p class="cp-card__title">1 · Margin</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\Delta}=\color{teal}{1.20}-\color{orange}{0.40}=\color{navy}{0.80}\)</p><p style="margin:0;">Positive above sampled alternative.</p></div>
-  </div>
-  <div class="cp-stack">
     <div class="cp-card cp-card--prompt"><p class="cp-card__title">2 · Pairwise probability</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\sigma(\Delta)}=\sigma(\color{navy}{0.80})=\color{teal}{0.690}\)</p><p style="margin:0;">Model confidence in this ordering.</p></div>
     <div class="cp-card cp-card--warning"><p class="cp-card__title">3 · Loss and update</p><p style="margin:.16em 0;text-align:center;font-size:1.04em;">\(\color{navy}{L_{\mathrm{BPR}}}=-\ln(\color{teal}{0.690})=\color{orange}{0.371}\)</p><p style="margin:.18em 0 0;">\(\partial L/\partial\Delta=\color{orange}{-0.310}\): gradient descent increases the positive score and/or lowers the sampled score.</p></div>
   </div>
@@ -442,7 +440,7 @@ Delivery: announce a five-minute break and start the timer. TriRank was develope
 - He, X., Chen, T., Kan, M.-Y., & Chen, X. (2015). *TriRank: Review-aware Explainable Recommendation by Modeling Aspects*. CIKM. https://wing.comp.nus.edu.sg/publication/10-1145-2806416-2806504/
 :::
 
-# 03 Practical Comparison: Baseline First {background-color="#EF7C00"}
+# 04 Practical Comparison: Baseline First {background-color="#EF7C00"}
 
 ::: notes
 Timing: 0 minutes.
@@ -516,7 +514,7 @@ Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: C.
 Timing: 2 minutes. A higher offline NDCG is evidence about a stated protocol—not a complete reason to deploy.
 :::
 
-# 04 Capacity Has Costs {background-color="#EF7C00"}
+# 05 Capacity Has Costs {background-color="#EF7C00"}
 
 ::: notes
 Timing: 0 minutes.

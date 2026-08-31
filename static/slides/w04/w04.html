@@ -406,7 +406,7 @@ CP4285 Instruction Team
 </section></section>
 <section>
 <section id="from-matrix-factorisation-to-neural-cf" class="title-slide slide level1 center" data-background-color="#EF7C00">
-<h1>01 From Matrix Factorisation to Neural CF</h1>
+<h1>02 From Matrix Factorisation to Neural CF</h1>
 <aside class="notes">
 <p>Timing: 0 minutes.</p>
 <style type="text/css">
@@ -571,7 +571,7 @@ CP4285 Instruction Team
 </section></section>
 <section>
 <section id="training-for-ranked-recommendations" class="title-slide slide level1 center" data-background-color="#EF7C00">
-<h1>02 Training for Ranked Recommendations</h1>
+<h1>03 Training for Ranked Recommendations</h1>
 <aside class="notes">
 <p>Timing: 0 minutes.</p>
 <style type="text/css">
@@ -593,7 +593,7 @@ CP4285 Instruction Team
     <div class="cp-card cp-card--soft"><p class="cp-card__title">Observed positive</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> clicked <strong class="cp-text--orange">City Gardens</strong>.</p><p style="margin:0;">A signal of possible interest—not a rating of every alternative.</p></div>
     <div class="cp-card cp-card--warning"><p class="cp-card__title">Unobserved candidate</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> did not click <strong class="cp-text--orange">Riverside Diner</strong>.</p><p style="margin:0;">It may have been unseen, unavailable, badly timed, or unappealing.</p></div>
   </div>
-  <div class="cp-flow-card" style="display:flex;align-items:center;justify-content:center;gap:.38em;"><span class="cp-chip cp-chip--navy">logged click</span><span class="cp-flow-arrow">→</span><span class="cp-chip">positive</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--warning">sampled unobserved item</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">training comparison</span></div>
+  <div class="cp-flow-card" style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.38em;white-space:nowrap;"><span class="cp-chip cp-chip--navy">logged click</span><span class="cp-flow-arrow">→</span><span class="cp-chip">positive</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--warning">sampled unobserved item</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">training comparison</span></div>
   <div class="to-think-about">Negative sampling is an assumption about missing feedback—not a discovered dislike.</div>
 </div>
 <aside class="notes">
@@ -633,12 +633,10 @@ CP4285 Instruction Team
 </section>
 <section id="bpr-worked-example-make-the-observed-item-rank-higher" class="slide level2">
 <h2>BPR worked example: make the observed item rank higher</h2>
-<div class="cp-grid cp-grid--2" style="font-size:.7em;line-height:1.12;align-items:stretch;">
-  <div class="cp-stack">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) City Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Diner (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
+<div class="cp-stack" style="font-size:.7em;line-height:1.12;gap:.55em;">
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) City Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Diner (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
     <div class="cp-card cp-card--prompt"><p class="cp-card__title">1 · Margin</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\Delta}=\color{teal}{1.20}-\color{orange}{0.40}=\color{navy}{0.80}\)</p><p style="margin:0;">Positive above sampled alternative.</p></div>
-  </div>
-  <div class="cp-stack">
     <div class="cp-card cp-card--prompt"><p class="cp-card__title">2 · Pairwise probability</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\sigma(\Delta)}=\sigma(\color{navy}{0.80})=\color{teal}{0.690}\)</p><p style="margin:0;">Model confidence in this ordering.</p></div>
     <div class="cp-card cp-card--warning"><p class="cp-card__title">3 · Loss and update</p><p style="margin:.16em 0;text-align:center;font-size:1.04em;">\(\color{navy}{L_{\mathrm{BPR}}}=-\ln(\color{teal}{0.690})=\color{orange}{0.371}\)</p><p style="margin:.18em 0 0;">\(\partial L/\partial\Delta=\color{orange}{-0.310}\): gradient descent increases the positive score and/or lowers the sampled score.</p></div>
   </div>
@@ -764,7 +762,7 @@ For Aisha, which change most directly reduces the BPR loss?
 </section></section>
 <section>
 <section id="practical-comparison-baseline-first" class="title-slide slide level1 center" data-background-color="#EF7C00">
-<h1>03 Practical Comparison: Baseline First</h1>
+<h1>04 Practical Comparison: Baseline First</h1>
 <aside class="notes">
 <p>Timing: 0 minutes.</p>
 <style type="text/css">
@@ -966,7 +964,7 @@ Which finding best supports replacing BPR-MF with NeuMF?
 </section></section>
 <section>
 <section id="capacity-has-costs" class="title-slide slide level1 center" data-background-color="#EF7C00">
-<h1>04 Capacity Has Costs</h1>
+<h1>05 Capacity Has Costs</h1>
 <aside class="notes">
 <p>Timing: 0 minutes.</p>
 <style type="text/css">
