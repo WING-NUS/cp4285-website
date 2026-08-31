@@ -44,16 +44,19 @@ Delivery: 15 seconds. Introduce the transition: Week 03 asked what evidence supp
 <div class="cp-frame-content cp-thumbnail-recap-content" style="color:white;">
   <div class="cp-frame-label" style="background:#5C2D91;color:white;margin-bottom:0;">WEEK 03 RECAP</div>
   <div class="cp-thumbnail-composite-wrap">
-    <img class="cp-thumbnail-composite" src="assets/w03-slide-09-recap.png" alt="Week 03 recap: Defensible evaluation connects a protocol, ranking metric, and limits of evidence." loading="eager">
+    <img class="cp-thumbnail-composite" src="assets/w03-recap-four-quadrant.png" alt="Week 03 recap, clockwise from upper left: Evaluation Is More Than a Score; Offline ranking metrics; Beyond relevance: measure what receives attention; and The feedback loop hidden in a log." loading="eager">
   </div>
 </div>
 ```
 
 ::: notes
-Delivery: 2 minutes. Ask students to restate the Week 03 evaluation chain: make the recommendation claim explicit, define an evaluation protocol, choose a ranking metric that matches the decision, and report what the log cannot establish. Today changes the scoring function, not these responsibilities.
+Delivery: 3-minute recap. Read the thumbnails clockwise: (1) evaluation requires a protocol, suitable ranking metric, and defensible limits on the claim; (2) precision, recall, MAP, and NDCG answer different ranking questions; (3) engagement, exposure, and discovery show why relevance alone is not enough; and (4) the exposure–interaction–log loop shapes the evidence available for future learning. Ask: “What changes when we replace the scoring function with a neural model—and what must stay the same?” Answer: model capacity changes, but the evaluation contract and the limits of logged evidence remain.
 
 [Sources]
 - Week 03 slide 9: “Key Point: Evaluation Is More Than a Score.”
+- Week 03 slide 18: “Offline ranking metrics.”
+- Week 03 slide 31: “Beyond relevance: measure what receives attention.”
+- Week 03 slide 35: “The feedback loop hidden in a log.”
 :::
 
 ## Last Week's Pre-Lecture Exercise
