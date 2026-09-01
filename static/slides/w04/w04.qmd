@@ -625,109 +625,13 @@ Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: D. Replacem
 Timing: 2 minutes. A higher offline NDCG is evidence about a stated protocol—not a complete reason to deploy.
 :::
 
-# 05 Capacity Has Costs {background-color="#EF7C00"}
+# 05 Revisiting our Card Lenses 🃏 {background-color="#EF7C00"}
 
 ::: notes
 Timing: 0 minutes.
 :::
 
-## When is neural complexity justified?
-
-```{=html}
-<table class="cp-table cp-table--compact" style="font-size:.72em;line-height:1.13;"><thead><tr><th>Question</th><th>Supports capacity</th><th>Retain simpler baseline</th></tr></thead><tbody><tr><td class="cp-table__cell cp-table__cell--label">Signal</td><td class="cp-table__cell">Held-out gain persists under declared protocol.</td><td class="cp-table__cell">Gain is small, unstable, or split-specific.</td></tr><tr><td class="cp-table__cell cp-table__cell--label">Operations</td><td class="cp-table__cell">Latency, memory, retraining fit budget.</td><td class="cp-table__cell">Gain costs too much complexity.</td></tr><tr><td class="cp-table__cell cp-table__cell--label">Accountability</td><td class="cp-table__cell">Team can document data, failures, safeguards.</td><td class="cp-table__cell">No honest explanation or audit.</td></tr></tbody></table>
-```
-
-::: notes
-Timing: 4 minutes. A neural model is not a default upgrade.
-:::
-
-## 📶 AI Voice Mode: challenge the deployment explanation
-
-<div class="cp-activity cp-activity--navy cp-activity--framed"><p class="cp-activity__prompt">“Deploy NeuMF: it achieved higher NDCG@10, so it understands users better.” Ask an AI voice agent to name two hidden assumptions and one check needed before deployment.</p><p class="cp-activity__instructions">First write your critique with a partner. Then critique what the agent omits, overstates, or frames too confidently.</p></div>
-
-::: notes
-Activity mode: AI Voice critique. Timebox: 3 minutes. The agent is not an authority or a production recommender.
-:::
-
-## ♣ Clubs: BPR and NeuMF can both learn an attack
-
-```{=html}
-<div class="cp-stack" style="font-size:.77em;line-height:1.18;">
-  <p style="margin:0;text-align:center;color:#003D7C;font-size:1.04em;"><strong>A pairwise win is not a robustness guarantee.</strong></p>
-  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · loss sees</p><p style="margin:0;">Observed positive <strong class="cp-text--navy">&gt;</strong> sampled unobserved item. Coordinated fake positives can create favourable training pairs for a target item.</p></div>
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · capacity changes</p><p style="margin:0;">It can fit richer interaction patterns—including an attack pattern if that pattern appears in the log. More parameters are <strong>not</strong> an abuse defence.</p></div>
-    <div class="cp-card cp-card--warning"><p class="cp-card__title">Before a deployment claim</p><p style="margin:0;">Stress-test plausible shill or coordinated behaviour. Report ranking shifts, affected users, and target-item exposure.</p></div>
-  </div>
-  <div class="to-think-about">If suspicious accounts or concentrated bursts are removed, does the claimed gain still hold?</div>
-</div>
-```
-
-::: {.callout-warning}
-Neither BPR-MF nor NeuMF is robust merely because it ranks held-out interactions well.
-:::
-
-::: notes
-Timing: 1 minute. Introduce Clubs as the Week 01 situational lens for adversarial or shill behaviour, not a kind of user. BPR is not inherently the vulnerable model and NeuMF is not inherently the unsafe model: both learn from the interaction record. BPR's observed-positive-versus-sampled-item comparisons can be influenced by coordinated fake positives; NeuMF can express more complex versions of any pattern present in the log. Ask what would count as robustness evidence: a plausible attack-injection test, sensitivity after excluding suspicious accounts, and a report of ranking concentration. Reconnect to the evaluation contract: a stable NDCG result supports the declared held-out protocol, not resilience to strategic data creation.
-
-[Course connections]
-- Week 01: “Four Different Safeguards” — Clubs foreground manipulation, coordinated abuse, and robustness.
-- Week 04: “Implicit feedback creates a sampling decision” and “The experiment contract.”
-:::
-
-## <span style="color:#D32F2F;">♥</span> Hearts: Neither score identifies free preference
-
-```{=html}
-<div class="cp-stack" style="font-size:.76em;line-height:1.17;">
-  <div class="cp-flow-card" style="padding:.48em .6em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.45em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">social cue or peer activity</span><span class="cp-flow-arrow">→</span><span class="cp-chip">prominent exposure</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">logged click</span></div>
-  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · pairwise claim</p><p style="margin:0;">The clicked item moves above a sampled alternative. The loss does not identify independent interest, a friend’s cue, or ranking-induced visibility.</p></div>
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · richer patterns</p><p style="margin:0;">It may learn complex user, item, and context co-occurrences. Flexibility cannot turn observational social traces into causal preference evidence.</p></div>
-    <div class="cp-card cp-card--warning"><p class="cp-card__title">Evidence + protection</p><p style="margin:0;">Record exposure and relevant social context; compare contexts; give users controls over social cues and sharing.</p></div>
-  </div>
-  <div class="to-think-about">What in the data lets us say this reflects preference rather than system or peer influence?</div>
-</div>
-```
-
-::: {.callout-warning}
-A high score may predict behaviour after influence—not explain what the person independently wants.
-:::
-
-::: notes
-Timing: 1 minute. Apply the Week 01 Hearts lens: social evidence can inform, but it can also create unwanted exposure or conformity pressure. Connect to the Week 04 missing-click exercise. Just as a non-click does not distinguish disinterest from no exposure or poor placement, a click does not distinguish independent interest from social framing or visibility. Do not claim that BPR avoids social influence because it is simpler, or that NeuMF can identify it because it is more expressive. The response is better measurement, context-specific evaluation, and meaningful user controls.
-
-[Course connections]
-- Week 01: “Four Different Safeguards” — Hearts foreground social evidence, influence, and conformity risk.
-- Week 04: “What Does a Missing Interaction Mean?” and “Capacity is not observability.”
-:::
-
-## <span style="color:#D32F2F;">♦</span> Diamonds: Better ranking can reduce discovery
-
-```{=html}
-<div class="cp-stack" style="font-size:.76em;line-height:1.17;">
-  <div class="cp-flow-card" style="padding:.48em .6em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.45em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">sparse long-tail evidence</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">BPR-MF or NeuMF ranking</span><span class="cp-flow-arrow">→</span><span class="cp-chip">top-<i>K</i> exposure</span></div>
-  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · tail evidence</p><p style="margin:0;">Tail items have few observed positives. Sampled unobserved items become training alternatives despite weak evidence that they were seen.</p></div>
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · no discovery objective</p><p style="margin:0;">Richer signals may help where they exist, but a small aggregate NDCG gain can still concentrate exposure on familiar items.</p></div>
-    <div class="cp-card cp-card--warning"><p class="cp-card__title">Report beside NDCG@<i>K</i></p><p style="margin:0;">Catalogue coverage, long-tail share, new-item exposure, and relevant segment outcomes—plus candidate policy and sampler.</p></div>
-  </div>
-  <div class="to-think-about">Would this result still count as an improvement if the top-<i>K</i> list became less discoverable?</div>
-</div>
-```
-
-::: {.callout-warning}
-BPR and NeuMF optimise the ranking objective supplied to them; neither automatically protects long-tail opportunity.
-:::
-
-::: notes
-Timing: 1 minute. Return to the Week 01 Diamonds question: does the list include genuinely new, long-tail, or emerging options? Week 01 established that the long tail is under-observed, not empty. Week 04 adds the mechanism: negative sampling constructs a training comparison from unobserved feedback, and NDCG evaluates a stated list-quality objective. Do not claim that either model necessarily reduces diversity; that needs measurement. The defensible conclusion is that neither standard BPR training nor NeuMF capacity supplies a discovery guarantee, so a deployment comparison must report the outcomes that matter to the service.
-
-[Course connections]
-- Week 01: “The Long Tail” and “Four Different Safeguards” — Diamonds foreground novelty, diversity, and new-item exposure.
-- Week 04: “Implicit feedback creates a sampling decision” and “The experiment contract.”
-:::
-
-## ♠ Spades: Requirements need policy
+## ♠ Spades: Requirements need policy 📶
 
 ```{=html}
 <div class="cp-stack" style="font-size:.70em;line-height:1.16;">
@@ -753,6 +657,84 @@ Timing: 1 minute. Close with the Week 01 Spades lens: a person should be able to
 [Course connections]
 - Week 01: “Four Different Safeguards” — Spades foreground stable attributes, filters, consistency, and explanation.
 - Week 04: “Ethics debrief: a score is not an explanation” and “Capacity has costs.”
+:::
+
+## <span style="color:#D32F2F;">♥</span> Hearts: Neither score identifies free preference 📶
+
+```{=html}
+<div class="cp-stack" style="font-size:.76em;line-height:1.17;">
+  <div class="cp-flow-card" style="padding:.48em .6em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.45em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">social cue or peer activity</span><span class="cp-flow-arrow">→</span><span class="cp-chip">prominent exposure</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">logged click</span></div>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · pairwise claim</p><p style="margin:0;">The clicked item moves above a sampled alternative. The loss does not identify independent interest, a friend’s cue, or ranking-induced visibility.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · richer patterns</p><p style="margin:0;">It may learn complex user, item, and context co-occurrences. Flexibility cannot turn observational social traces into causal preference evidence.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Evidence + protection</p><p style="margin:0;">Record exposure and relevant social context; compare contexts; give users controls over social cues and sharing.</p></div>
+  </div>
+  <div class="to-think-about">What in the data lets us say this reflects preference rather than system or peer influence?</div>
+</div>
+```
+
+::: {.callout-warning}
+A high score may predict behaviour after influence—not explain what the person independently wants.
+:::
+
+::: notes
+Timing: 1 minute. Apply the Week 01 Hearts lens: social evidence can inform, but it can also create unwanted exposure or conformity pressure. Connect to the Week 04 missing-click exercise. Just as a non-click does not distinguish disinterest from no exposure or poor placement, a click does not distinguish independent interest from social framing or visibility. Do not claim that BPR avoids social influence because it is simpler, or that NeuMF can identify it because it is more expressive. The response is better measurement, context-specific evaluation, and meaningful user controls.
+
+[Course connections]
+- Week 01: “Four Different Safeguards” — Hearts foreground social evidence, influence, and conformity risk.
+- Week 04: “What Does a Missing Interaction Mean?” and “Capacity is not observability.”
+:::
+
+## <span style="color:#D32F2F;">♦</span> Diamonds: Better ranking can reduce discovery 📶
+
+```{=html}
+<div class="cp-stack" style="font-size:.76em;line-height:1.17;">
+  <div class="cp-flow-card" style="padding:.48em .6em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.45em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">sparse long-tail evidence</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">BPR-MF or NeuMF ranking</span><span class="cp-flow-arrow">→</span><span class="cp-chip">top-<i>K</i> exposure</span></div>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · tail evidence</p><p style="margin:0;">Tail items have few observed positives. Sampled unobserved items become training alternatives despite weak evidence that they were seen.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · no discovery objective</p><p style="margin:0;">Richer signals may help where they exist, but a small aggregate NDCG gain can still concentrate exposure on familiar items.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Report beside NDCG@<i>K</i></p><p style="margin:0;">Catalogue coverage, long-tail share, new-item exposure, and relevant segment outcomes—plus candidate policy and sampler.</p></div>
+  </div>
+  <div class="to-think-about">Would this result still count as an improvement if the top-<i>K</i> list became less discoverable?</div>
+</div>
+```
+
+::: {.callout-warning}
+BPR and NeuMF optimise the ranking objective supplied to them; neither automatically protects long-tail opportunity.
+:::
+
+::: notes
+Timing: 1 minute. Return to the Week 01 Diamonds question: does the list include genuinely new, long-tail, or emerging options? Week 01 established that the long tail is under-observed, not empty. Week 04 adds the mechanism: negative sampling constructs a training comparison from unobserved feedback, and NDCG evaluates a stated list-quality objective. Do not claim that either model necessarily reduces diversity; that needs measurement. The defensible conclusion is that neither standard BPR training nor NeuMF capacity supplies a discovery guarantee, so a deployment comparison must report the outcomes that matter to the service.
+
+[Course connections]
+- Week 01: “The Long Tail” and “Four Different Safeguards” — Diamonds foreground novelty, diversity, and new-item exposure.
+- Week 04: “Implicit feedback creates a sampling decision” and “The experiment contract.”
+:::
+
+## ♣ Clubs: BPR and NeuMF can both learn an attack 📶
+
+```{=html}
+<div class="cp-stack" style="font-size:.77em;line-height:1.18;">
+  <p style="margin:0;text-align:center;color:#003D7C;font-size:1.04em;"><strong>A pairwise win is not a robustness guarantee.</strong></p>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · loss sees</p><p style="margin:0;">Observed positive <strong class="cp-text--navy">&gt;</strong> sampled unobserved item. Coordinated fake positives can create favourable training pairs for a target item.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · capacity changes</p><p style="margin:0;">It can fit richer interaction patterns—including an attack pattern if that pattern appears in the log. More parameters are <strong>not</strong> an abuse defence.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Before a deployment claim</p><p style="margin:0;">Stress-test plausible shill or coordinated behaviour. Report ranking shifts, affected users, and target-item exposure.</p></div>
+  </div>
+  <div class="to-think-about">If suspicious accounts or concentrated bursts are removed, does the claimed gain still hold?</div>
+</div>
+```
+
+::: {.callout-warning}
+Neither BPR-MF nor NeuMF is robust merely because it ranks held-out interactions well.
+:::
+
+::: notes
+Timing: 1 minute. Introduce Clubs as the Week 01 situational lens for adversarial or shill behaviour, not a kind of user. BPR is not inherently the vulnerable model and NeuMF is not inherently the unsafe model: both learn from the interaction record. BPR's observed-positive-versus-sampled-item comparisons can be influenced by coordinated fake positives; NeuMF can express more complex versions of any pattern present in the log. Ask what would count as robustness evidence: a plausible attack-injection test, sensitivity after excluding suspicious accounts, and a report of ranking concentration. Reconnect to the evaluation contract: a stable NDCG result supports the declared held-out protocol, not resilience to strategic data creation.
+
+[Course connections]
+- Week 01: “Four Different Safeguards” — Clubs foreground manipulation, coordinated abuse, and robustness.
+- Week 04: “Implicit feedback creates a sampling decision” and “The experiment contract.”
 :::
 
 # Summary {background-color="#003D7C"}

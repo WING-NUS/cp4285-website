@@ -1058,8 +1058,8 @@ Which evidence best supports replacing BPR-MF with NeuMF in this service?
       }</style></aside>
 </section></section>
 <section>
-<section id="capacity-has-costs" class="title-slide slide level1 center" data-background-color="#EF7C00">
-<h1>05 Capacity Has Costs</h1>
+<section id="revisiting-our-card-lenses" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>05 Revisiting our Card Lenses 🃏</h1>
 <aside class="notes">
 <p>Timing: 0 minutes.</p>
 <style type="text/css">
@@ -1074,82 +1074,18 @@ Which evidence best supports replacing BPR-MF with NeuMF in this service?
           display:block!important;
       }</style></aside>
 </section>
-<section id="when-is-neural-complexity-justified" class="slide level2">
-<h2>When is neural complexity justified?</h2>
-<table class="cp-table cp-table--compact caption-top" style="font-size:.72em;line-height:1.13;">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Question</th>
-<th data-quarto-table-cell-role="th">Supports capacity</th>
-<th data-quarto-table-cell-role="th">Retain simpler baseline</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="cp-table__cell cp-table__cell--label">Signal</td>
-<td class="cp-table__cell">Held-out gain persists under declared protocol.</td>
-<td class="cp-table__cell">Gain is small, unstable, or split-specific.</td>
-</tr>
-<tr class="even">
-<td class="cp-table__cell cp-table__cell--label">Operations</td>
-<td class="cp-table__cell">Latency, memory, retraining fit budget.</td>
-<td class="cp-table__cell">Gain costs too much complexity.</td>
-</tr>
-<tr class="odd">
-<td class="cp-table__cell cp-table__cell--label">Accountability</td>
-<td class="cp-table__cell">Team can document data, failures, safeguards.</td>
-<td class="cp-table__cell">No honest explanation or audit.</td>
-</tr>
-</tbody>
-</table>
-<aside class="notes">
-<p>Timing: 4 minutes. A neural model is not a default upgrade.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="ai-voice-mode-challenge-the-deployment-explanation" class="slide level2">
-<h2>📶 AI Voice Mode: challenge the deployment explanation</h2>
-<div class="cp-activity cp-activity--navy cp-activity--framed">
-<p class="cp-activity__prompt">
-“Deploy NeuMF: it achieved higher NDCG@10, so it understands users better.” Ask an AI voice agent to name two hidden assumptions and one check needed before deployment.
-</p>
-<p class="cp-activity__instructions">
-First write your critique with a partner. Then critique what the agent omits, overstates, or frames too confidently.
-</p>
-</div>
-<aside class="notes">
-<p>Activity mode: AI Voice critique. Timebox: 3 minutes. The agent is not an authority or a production recommender.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="clubs-bpr-and-neumf-can-both-learn-an-attack" class="slide level2">
-<h2>♣ Clubs: BPR and NeuMF can both learn an attack</h2>
-<div class="cp-stack" style="font-size:.77em;line-height:1.18;">
-  <p style="margin:0;text-align:center;color:#003D7C;font-size:1.04em;"><strong>A pairwise win is not a robustness guarantee.</strong></p>
-  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · loss sees</p><p style="margin:0;">Observed positive <strong class="cp-text--navy">&gt;</strong> sampled unobserved item. Coordinated fake positives can create favourable training pairs for a target item.</p></div>
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · capacity changes</p><p style="margin:0;">It can fit richer interaction patterns—including an attack pattern if that pattern appears in the log. More parameters are <strong>not</strong> an abuse defence.</p></div>
-    <div class="cp-card cp-card--warning"><p class="cp-card__title">Before a deployment claim</p><p style="margin:0;">Stress-test plausible shill or coordinated behaviour. Report ranking shifts, affected users, and target-item exposure.</p></div>
+<section id="spades-requirements-need-policy" class="slide level2">
+<h2>♠ Spades: Requirements need policy 📶</h2>
+<div class="cp-stack" style="font-size:.70em;line-height:1.16;">
+  <div class="cp-flow-card" style="padding:.45em .5em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.34em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">stated requirement</span><span class="cp-flow-arrow">→</span><span class="cp-chip">eligibility + constraint policy</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">BPR-MF or NeuMF ranking</span><span class="cp-flow-arrow">→</span><span class="cp-chip">faithful explanation</span></div>
+  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF</p><p style="margin:0;">It learns an observed-versus-sampled ordering. It does not guarantee that an important attribute or rule is satisfied.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF</p><p style="margin:0;">A flexible interaction score neither makes an attribute a hard condition nor proves that its rationale is truthful.</p></div>
   </div>
-  <div class="to-think-about">If suspicious accounts or concentrated bursts are removed, does the claimed gain still hold?</div>
+  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Overclaim</p><p style="margin:0;">“This item is recommended because the model understands your preferences.”</p></div>
+    <div class="cp-card cp-card--prompt"><p class="cp-card__title">Accountable claim</p><p style="margin:0;">“Among items meeting the stated requirements, this item ranked highly under our declared data, objective, and policy.”</p></div>
+  </div>
 </div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -1160,13 +1096,13 @@ First write your critique with a partner. Then critique what the agent omits, ov
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>Neither BPR-MF nor NeuMF is robust merely because it ranks held-out interactions well.</p>
+<p>Use the model to rank eligible options; do not use its score as evidence that a critical requirement has been met.</p>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Timing: 1 minute. Introduce Clubs as the Week 01 situational lens for adversarial or shill behaviour, not a kind of user. BPR is not inherently the vulnerable model and NeuMF is not inherently the unsafe model: both learn from the interaction record. BPR’s observed-positive-versus-sampled-item comparisons can be influenced by coordinated fake positives; NeuMF can express more complex versions of any pattern present in the log. Ask what would count as robustness evidence: a plausible attack-injection test, sensitivity after excluding suspicious accounts, and a report of ranking concentration. Reconnect to the evaluation contract: a stable NDCG result supports the declared held-out protocol, not resilience to strategic data creation.</p>
-<p>[Course connections] - Week 01: “Four Different Safeguards” — Clubs foreground manipulation, coordinated abuse, and robustness. - Week 04: “Implicit feedback creates a sampling decision” and “The experiment contract.”</p>
+<p>Timing: 1 minute. Close with the Week 01 Spades lens: a person should be able to hold an important attribute fixed and understand why an item appears. This incorporates the previous “a score is not an explanation” debrief. Neither BPR’s relative ordering nor NeuMF’s nonlinear score promises a satisfied requirement or an honest explanation. Non-negotiable conditions belong in eligibility or constrained ranking; soft preferences may be traded off transparently. Read the accountable claim aloud and stress that it reports the actual decision policy rather than attributing human-like understanding to a model.</p>
+<p>[Course connections] - Week 01: “Four Different Safeguards” — Spades foreground stable attributes, filters, consistency, and explanation. - Week 04: “Ethics debrief: a score is not an explanation” and “Capacity has costs.”</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1180,7 +1116,7 @@ First write your critique with a partner. Then critique what the agent omits, ov
       }</style></aside>
 </section>
 <section id="hearts-neither-score-identifies-free-preference" class="slide level2">
-<h2><span style="color:#D32F2F;">♥</span> Hearts: Neither score identifies free preference</h2>
+<h2><span style="color:#D32F2F;">♥</span> Hearts: Neither score identifies free preference 📶</h2>
 <div class="cp-stack" style="font-size:.76em;line-height:1.17;">
   <div class="cp-flow-card" style="padding:.48em .6em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.45em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">social cue or peer activity</span><span class="cp-flow-arrow">→</span><span class="cp-chip">prominent exposure</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">logged click</span></div>
   <div class="cp-grid cp-grid--3" style="align-items:stretch;">
@@ -1219,7 +1155,7 @@ First write your critique with a partner. Then critique what the agent omits, ov
       }</style></aside>
 </section>
 <section id="diamonds-better-ranking-can-reduce-discovery" class="slide level2">
-<h2><span style="color:#D32F2F;">♦</span> Diamonds: Better ranking can reduce discovery</h2>
+<h2><span style="color:#D32F2F;">♦</span> Diamonds: Better ranking can reduce discovery 📶</h2>
 <div class="cp-stack" style="font-size:.76em;line-height:1.17;">
   <div class="cp-flow-card" style="padding:.48em .6em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.45em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">sparse long-tail evidence</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">BPR-MF or NeuMF ranking</span><span class="cp-flow-arrow">→</span><span class="cp-chip">top-<i>K</i> exposure</span></div>
   <div class="cp-grid cp-grid--3" style="align-items:stretch;">
@@ -1257,18 +1193,16 @@ First write your critique with a partner. Then critique what the agent omits, ov
           display:block!important;
       }</style></aside>
 </section>
-<section id="spades-requirements-need-policy" class="slide level2">
-<h2>♠ Spades: Requirements need policy</h2>
-<div class="cp-stack" style="font-size:.70em;line-height:1.16;">
-  <div class="cp-flow-card" style="padding:.45em .5em;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.34em;text-align:center;white-space:nowrap;"><span class="cp-chip cp-chip--warning">stated requirement</span><span class="cp-flow-arrow">→</span><span class="cp-chip">eligibility + constraint policy</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">BPR-MF or NeuMF ranking</span><span class="cp-flow-arrow">→</span><span class="cp-chip">faithful explanation</span></div>
-  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF</p><p style="margin:0;">It learns an observed-versus-sampled ordering. It does not guarantee that an important attribute or rule is satisfied.</p></div>
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF</p><p style="margin:0;">A flexible interaction score neither makes an attribute a hard condition nor proves that its rationale is truthful.</p></div>
+<section id="clubs-bpr-and-neumf-can-both-learn-an-attack" class="slide level2">
+<h2>♣ Clubs: BPR and NeuMF can both learn an attack 📶</h2>
+<div class="cp-stack" style="font-size:.77em;line-height:1.18;">
+  <p style="margin:0;text-align:center;color:#003D7C;font-size:1.04em;"><strong>A pairwise win is not a robustness guarantee.</strong></p>
+  <div class="cp-grid cp-grid--3" style="align-items:stretch;">
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">BPR-MF · loss sees</p><p style="margin:0;">Observed positive <strong class="cp-text--navy">&gt;</strong> sampled unobserved item. Coordinated fake positives can create favourable training pairs for a target item.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">NeuMF · capacity changes</p><p style="margin:0;">It can fit richer interaction patterns—including an attack pattern if that pattern appears in the log. More parameters are <strong>not</strong> an abuse defence.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Before a deployment claim</p><p style="margin:0;">Stress-test plausible shill or coordinated behaviour. Report ranking shifts, affected users, and target-item exposure.</p></div>
   </div>
-  <div class="cp-grid cp-grid--2" style="align-items:stretch;">
-    <div class="cp-card cp-card--warning"><p class="cp-card__title">Overclaim</p><p style="margin:0;">“This item is recommended because the model understands your preferences.”</p></div>
-    <div class="cp-card cp-card--prompt"><p class="cp-card__title">Accountable claim</p><p style="margin:0;">“Among items meeting the stated requirements, this item ranked highly under our declared data, objective, and policy.”</p></div>
-  </div>
+  <div class="to-think-about">If suspicious accounts or concentrated bursts are removed, does the claimed gain still hold?</div>
 </div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -1279,13 +1213,13 @@ First write your critique with a partner. Then critique what the agent omits, ov
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>Use the model to rank eligible options; do not use its score as evidence that a critical requirement has been met.</p>
+<p>Neither BPR-MF nor NeuMF is robust merely because it ranks held-out interactions well.</p>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Timing: 1 minute. Close with the Week 01 Spades lens: a person should be able to hold an important attribute fixed and understand why an item appears. This incorporates the previous “a score is not an explanation” debrief. Neither BPR’s relative ordering nor NeuMF’s nonlinear score promises a satisfied requirement or an honest explanation. Non-negotiable conditions belong in eligibility or constrained ranking; soft preferences may be traded off transparently. Read the accountable claim aloud and stress that it reports the actual decision policy rather than attributing human-like understanding to a model.</p>
-<p>[Course connections] - Week 01: “Four Different Safeguards” — Spades foreground stable attributes, filters, consistency, and explanation. - Week 04: “Ethics debrief: a score is not an explanation” and “Capacity has costs.”</p>
+<p>Timing: 1 minute. Introduce Clubs as the Week 01 situational lens for adversarial or shill behaviour, not a kind of user. BPR is not inherently the vulnerable model and NeuMF is not inherently the unsafe model: both learn from the interaction record. BPR’s observed-positive-versus-sampled-item comparisons can be influenced by coordinated fake positives; NeuMF can express more complex versions of any pattern present in the log. Ask what would count as robustness evidence: a plausible attack-injection test, sensitivity after excluding suspicious accounts, and a report of ranking concentration. Reconnect to the evaluation contract: a stable NDCG result supports the declared held-out protocol, not resilience to strategic data creation.</p>
+<p>[Course connections] - Week 01: “Four Different Safeguards” — Clubs foreground manipulation, coordinated abuse, and robustness. - Week 04: “Implicit feedback creates a sampling decision” and “The experiment contract.”</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
