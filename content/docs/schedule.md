@@ -2,14 +2,14 @@
 title: Schedule
 weight: 10
 changelog:
+  - date: 1 Sep 2026
+    text: Added Week 04 slides and video.
   - date: 25 Aug 2026
     text: Added a Week 03 notice confirming that no lecture recording is available.
   - date: 20 Aug 2026
     text: Refreshed the Week 03–13 embedded lecture decks with improved typography for readability and consistency.
   - date: 14 Aug 2026
     text: Added the Week 01 lecture recording link (NUSNet authentication required).
-  - date: 10 Aug 2026
-    text: Added the Week 03 and Week 08 assessment deadlines and corrected the final project presentation date to Wed, 11 Nov 2026.
 ---
 
 {{< changelog >}}
@@ -73,6 +73,8 @@ Learning outcomes:
 **Slides:**
 
 {{< slides src="/cp4285-website/slides/w02/w02.html" title="Week 2 Slides" height="520px" >}}
+
+**Lecture video:** [Watch the Week 02 lecture recording](https://soc-n.us/cp4285-t2610-w02-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
 {{< week-card week="Week 3" date="25-31 Aug 2026" focus="Evaluation of Recommendation Systems" due="Essay 1 + Project Mini-team Declaration — Mon, 24 Aug, 23:59 SGT" >}}
@@ -122,6 +124,8 @@ Learning outcomes:
 **Slides:**
 
 {{< slides src="/cp4285-website/slides/w04/w04.html" title="Week 4 Slides" height="520px" >}}
+
+**Lecture video:** [Watch the Week 04 lecture recording](https://soc-n.us/cp4285-t2610-w04-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
 {{< week-card week="Week 5" date="8-14 Sep 2026" focus="Sequential and Session-Based Recommendation" >}}
