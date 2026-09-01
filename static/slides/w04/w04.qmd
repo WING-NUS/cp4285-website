@@ -329,8 +329,8 @@ Timing: 0 minutes.
 ```{=html}
 <div class="cp-stack" style="font-size:.78em;line-height:1.16;">
   <div class="cp-grid cp-grid--2" style="align-items:stretch;">
-    <div class="cp-card cp-card--soft"><p class="cp-card__title">Observed positive</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> clicked <strong class="cp-text--orange">City Gardens</strong>.</p><p style="margin:0;">A signal of possible interest—not a rating of every alternative.</p></div>
-    <div class="cp-card cp-card--warning"><p class="cp-card__title">Unobserved candidate</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> did not click <strong class="cp-text--orange">Riverside Diner</strong>.</p><p style="margin:0;">It may have been unseen, unavailable, badly timed, or unappealing.</p></div>
+    <div class="cp-card cp-card--soft"><p class="cp-card__title">Observed positive</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> clicked <strong class="cp-text--orange">Botanic Gardens</strong>.</p><p style="margin:0;">A signal of possible interest—not a rating of every alternative.</p></div>
+    <div class="cp-card cp-card--warning"><p class="cp-card__title">Unobserved candidate</p><p style="margin:.15em 0 .35em;"><strong class="cp-text--navy">Aisha</strong> did not click <strong class="cp-text--orange">Riverside Food Court</strong>.</p><p style="margin:0;">It may have been unseen, unavailable, badly timed, or unappealing.</p></div>
   </div>
   <div class="cp-flow-card" style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.38em;white-space:nowrap;"><span class="cp-chip cp-chip--navy">logged click</span><span class="cp-flow-arrow">→</span><span class="cp-chip">positive</span><span class="cp-flow-arrow">+</span><span class="cp-chip cp-chip--warning">sampled unobserved item</span><span class="cp-flow-arrow">→</span><span class="cp-chip cp-chip--navy">training comparison</span></div>
   <div class="to-think-about">Negative sampling is an assumption about missing feedback—not a discovered dislike.</div>
@@ -345,24 +345,52 @@ Timing: 4 minutes. Ask for two non-preference explanations of the missing click;
 - Rendle et al. (2009). *BPR*.
 :::
 
-## Two training questions, two objectives
+## Pointwise prediction loss vs. pairwise ranking loss
 
 ```{=html}
-<div class="cp-grid cp-grid--2" style="font-size:.82em;align-items:stretch;">
-  <div class="cp-card cp-card--soft"><p class="cp-card__title">Pointwise: is this pair positive?</p><p style="margin:.4em 0;text-align:center;font-size:1.1em;">\(\color{navy}{y_{ui}}\ \text{vs.}\ \color{teal}{\hat y_{ui}}\)</p><p style="margin:0;">Needs a target for an unobserved pair.</p></div>
-  <div class="cp-card cp-card--prompt"><p class="cp-card__title">Pairwise: which item ranks higher?</p><p style="margin:.4em 0;text-align:center;font-size:1.1em;">\(\color{teal}{\hat s(u,i^+)}>\color{orange}{\hat s(u,i^-)}\)</p><p style="margin:0;">Matches a top-<em>k</em> comparison.</p></div>
+<!-- A compact source figure anchors the abstract loss contrast in BPR's preference-relation construction. -->
+<div class="cp-stack" style="gap:.30em;">
+  <div class="cp-grid" style="grid-template-columns:minmax(210px,.48fr) minmax(0,1fr);gap:1.15em;align-items:stretch;font-size:.72em;line-height:1.14;">
+    <figure class="cp-card cp-card--soft" style="margin:0;padding:.58em .62em .46em;display:flex;flex-direction:column;justify-content:center;">
+      <a href="https://arxiv.org/pdf/1205.2618" target="_blank" rel="noopener" aria-label="Open the PDF of Rendle et al.'s BPR paper">
+        <img class="cp-image cp-image--contain" src="assets/bpr-preference-relations-rendle-2009.png" alt="BPR paper figure showing a partial user-item feedback matrix and two user-specific item preference relations derived from it" style="display:block;width:100%;max-height:330px;object-fit:contain;cursor:pointer;" />
+      </a>
+      <figcaption style="margin-top:.26em;color:#5F6B7A;font-size:.74em;line-height:1.16;text-align:center;">Click figure to open the source paper.<br><em>Rendle et al. (2009), Fig. 1</em></figcaption>
+    </figure>
+  <div class="cp-stack" style="gap:.52em;justify-content:center;">
+    <div class="cp-grid cp-grid--2" style="align-items:stretch;">
+      <div class="cp-card cp-card--soft">
+        <p class="cp-card__title">Pointwise: predict one interaction label</p>
+        <p style="margin:.24em 0 .04em;text-align:center;font-size:.96em;">\(\color{navy}{L_{\mathrm{pt}}}=-[\,\color{navy}{r_{ui}}\log\sigma(\color{teal}{\hat r_{ui}})\)</p>
+        <p style="margin:.04em 0 .24em;text-align:center;font-size:.96em;">\(\hspace{1.45em}+ (1-\color{navy}{r_{ui}})\log(1-\sigma(\color{teal}{\hat r_{ui}}))\,]\)</p>
+        <p style="margin:.12em 0 0;"><strong class="cp-text--navy">Training claim:</strong> “Did Aisha interact with City Gardens?”</p>
+      </div>
+      <div class="cp-card cp-card--prompt">
+        <p class="cp-card__title">Pairwise: predict one ordering</p>
+        <p style="margin:.28em 0;text-align:center;font-size:.98em;">\(\color{navy}{L_{\mathrm{BPR}}}=-\log\sigma(\color{teal}{\hat r(u,i^+)}-\color{orange}{\hat r(u,i^-)})\)</p>
+        <p style="margin:.12em 0 0;"><strong class="cp-text--navy">Training claim:</strong> “Should City Gardens rank above Riverside Food Court?”</p>
+      </div>
+    </div>
+      <div class="to-think-about">The figure makes the choice visible: <strong>pointwise calibrates a pair</strong>; <strong>pairwise orders a comparison</strong>.</div>
+    </div>
+  </div>
+  <p style="margin:.10em 0 0;color:#5F6B7A;font-size:.54em;line-height:1.20;">Rendle, S., Freudenthaler, C., Gantner, Z., &amp; Schmidt-Thieme, L. (2009). <em>BPR: Bayesian personalized ranking from implicit feedback</em>. In <em>Proceedings of the Twenty-Fifth Conference on Uncertainty in Artificial Intelligence</em> (pp. 452–461). AUAI Press. <a href="https://arxiv.org/pdf/1205.2618" target="_blank" rel="noopener">PDF</a></p>
 </div>
 ```
 
 ::: notes
-Timing: 3 minutes. A scorer such as MF or NeuMF can be trained with either objective.
+Timing: 3 minutes. The figure is linked to the stable open PDF on arXiv. Use the supplied reproduction of Rendle et al.’s Figure 1 to show that BPR begins with a partial user–item matrix and constructs user-specific preference relations. Then contrast the unit of learning: pointwise loss compares one user–item pair with a target label, whereas BPR compares a clicked item with a sampled alternative through their score difference. Use the Aisha examples to make the distinction concrete. The central caveat is unchanged: with implicit data, label construction or negative sampling is an assumption about missing feedback—not proof of dislike. The next slide restates the same contrast in plain-language training questions.
+
+[Sources]
+- Aggarwal, C. C. (2016). <em>Recommender Systems: The Textbook</em>, Sections 1.3.1.1 and 3.6.4.6.
+- Rendle, S., Freudenthaler, C., Gantner, Z., & Schmidt-Thieme, L. (2009). <em>BPR: Bayesian Personalized Ranking from Implicit Feedback</em>, Eq. 13.
 :::
 
-## BPR worked example: make the observed item rank higher
+## BPR example: make the observed item rank higher
 
 ```{=html}
 <div class="cp-stack" style="font-size:.7em;line-height:1.12;gap:.55em;">
-  <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) City Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Diner (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
+  <div class="cp-card cp-card--soft"><p class="cp-card__title">Triplet</p><p style="margin:.14em 0;">\(\color{navy}{u}=\) Aisha; \(\color{teal}{i^+}=\) Botanic Gardens (clicked); \(\color{orange}{i^-}=\) Riverside Food Court (sampled).</p><p style="margin:0;">\(\color{teal}{\hat s(u,i^+)}=1.20,\ \color{orange}{\hat s(u,i^-)}=0.40\)</p></div>
   <div class="cp-grid cp-grid--3" style="align-items:stretch;">
     <div class="cp-card cp-card--prompt"><p class="cp-card__title">1 · Margin</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\Delta}=\color{teal}{1.20}-\color{orange}{0.40}=\color{navy}{0.80}\)</p><p style="margin:0;">Positive above sampled alternative.</p></div>
     <div class="cp-card cp-card--prompt"><p class="cp-card__title">2 · Pairwise probability</p><p style="margin:.2em 0;text-align:center;font-size:1.16em;">\(\color{teal}{\sigma(\Delta)}=\sigma(\color{navy}{0.80})=\color{teal}{0.690}\)</p><p style="margin:0;">Model confidence in this ordering.</p></div>
@@ -373,32 +401,50 @@ Timing: 3 minutes. A scorer such as MF or NeuMF can be trained with either objec
 ```
 
 ::: notes
-Timing: 6 minutes. Work triplet, margin, sigmoid, then negative log. The numbers are pedagogical current-model outputs.
+Timing: 5 minutes. Work triplet, margin, sigmoid, then negative log. The numbers are pedagogical current-model outputs.
 
 [Source]
 - Rendle et al. (2009), Eq. 13 and optimisation discussion.
 :::
 
-## 👥 Which negative is defensible? {background-color="#003D7C"}
+## {background-color="#003D7C"}
 
-<div class="cp-activity cp-activity--navy cp-activity--framed">
-<p class="cp-activity__prompt">Aisha clicked City Gardens. Which is the most defensible BPR comparison: a restaurant never shown, one shown after it sold out, or one shown beside City Gardens at the same time? What uncertainty remains?</p>
-<p class="cp-activity__instructions">Groups of 3–4: choose one, give one reason and one remaining uncertainty. Prepare two sentences.</p>
+```{=html}
+<div class="cp-frame-bg cp-frame-orange"></div>
+<div class="cp-frame-content" style="color:#fff;">
+  <div class="cp-frame-title cp-text--orange">👥 Which negative is defensible?</div>
+  <div class="cp-frame-body" style="font-size:.70em;line-height:1.3;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.3em;align-items:center;color:#fff;">
+    <div>
+      <p style="font-size:1.12em;font-weight:bold;color:#EF7C00;margin:.25em 0;">Aisha clicked Botanic Gardens. Which sampled comparison is most defensible?</p>
+      <ol style="margin:.35em 0;padding-left:1.2em;line-height:1.35;">
+        <li>A restaurant that was never shown.</li>
+        <li>One shown after it closed.</li>
+        <li>One shown beside Botanic Gardens at the same time.</li>
+      </ol>
+      <p style="margin:.4em 0 0;"><strong>Groups of 3–4: choose one; give one reason and one remaining uncertainty. Prepare two sentences.</strong></p>
+    </div>
+    <div style="text-align:center;">
+      <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three-minute group discussion timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"/><circle cx="90" cy="90" r="62" fill="#fff"/><circle id="w04-negative-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"/><text id="w04-negative-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
+      <span id="w04-negative-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span>
+      <button id="w04-negative-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="w04-negative-ring" data-text="w04-negative-text" data-status="w04-negative-status">▶ Start Timer</button>
+    </div>
+  </div>
 </div>
+```
 
 ::: notes
-Activity mode: group discussion. Timebox: 3 minutes. A contemporaneously shown, available alternative is generally more defensible, but not a ground-truth dislike.
+Activity mode: group discussion. Timebox: 3 minutes. Task: compare the three sampled-negative choices for Aisha’s click. Expected output: two sentences naming the strongest comparison, one reason, and one remaining uncertainty. Instructor synthesis: a contemporaneously shown, available alternative is generally more defensible, but not a ground-truth dislike. Start the timer after groups are formed; the shared controller pauses it automatically if the slide is left.
 :::
 
 ## 🎰 Bandit Time: What does BPR optimise? {background-color="#003D7C"}
 
 <div class="cp-activity cp-activity--navy cp-activity--framed">
-<p class="cp-activity__prompt">For Aisha, which change most directly reduces the BPR loss?</p>
-<div class="cp-choice-grid"><div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> Raise both scores equally.</div><div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> Make the clicked item score higher than the sampled item.</div><div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> Label every unclicked item dislike.</div><div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> Maximise City Gardens’ absolute score only.</div></div>
+<p class="cp-activity__prompt">For Aisha’s clicked Botanic Gardens and sampled Riverside Food Court, which update most directly reduces the BPR loss?</p>
+<div class="cp-choice-grid"><div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> Widen the margin: raise Botanic Gardens’ score and/or lower Riverside Food Court’s score for Aisha.</div><div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> Raise both item scores by the same amount because both may be relevant.</div><div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> Optimise Botanic Gardens’ standalone click probability without using the sampled alternative.</div><div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> Set Riverside Food Court to a zero target for everyone who has not clicked it.</div></div>
 </div>
 
 ::: notes
-Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: B. BPR depends on the score difference.
+Activity mode: Bandit Time MCQ. Timebox: 2 minutes. Expected answer: A. BPR reduces loss by widening the positive-minus-sampled-item score margin. B leaves the margin unchanged; C is a pointwise objective; D wrongly treats missing feedback as a universal negative label.
 :::
 
 ## Break — 5 minutes {background-color="#000000"}
@@ -498,10 +544,10 @@ Activity mode: group discussion. Timebox: 5 minutes. A 0.007 difference is not a
 
 ## 🎰 Bandit Time: Which evidence supports NeuMF? {background-color="#003D7C"}
 
-<div class="cp-activity cp-activity--navy cp-activity--framed"><p class="cp-activity__prompt">Which finding best supports replacing BPR-MF with NeuMF?</p><div class="cp-choice-grid"><div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> It has more layers.</div><div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> It wins once after changing sampler.</div><div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> A stable, meaningful gain under the same protocol clears cost and latency budget.</div><div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> One detailed post-hoc explanation.</div></div></div>
+<div class="cp-activity cp-activity--navy cp-activity--framed"><p class="cp-activity__prompt">Which evidence best supports replacing BPR-MF with NeuMF in this service?</p><div class="cp-choice-grid"><div class="cp-choice-card cp-choice-card--a"><strong>A.</strong> NeuMF wins on one seed, although the latency measurement uses a different candidate set.</div><div class="cp-choice-card cp-choice-card--b"><strong>B.</strong> A post-hoc explanation is persuasive to reviewers, but quality and operational cost are not compared.</div><div class="cp-choice-card cp-choice-card--c"><strong>C.</strong> NeuMF gains after the time split and negative sampler both change from the BPR-MF run.</div><div class="cp-choice-card cp-choice-card--d"><strong>D.</strong> Under the same split, sampler, and seeds, NeuMF has a stable meaningful gain, fits the latency budget, and documents limits.</div></div></div>
 
 ::: notes
-Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: C.
+Activity mode: Bandit Time MCQ. Timebox: 3 minutes. Expected answer: D. Replacement requires a stable meaningful gain under the same protocol, operational feasibility, and documented limits. A confounds the latency comparison; B substitutes a persuasive rationale for evaluation; C changes the evaluation evidence at the same time as the model.
 :::
 
 ## Debrief: read the result as a trade-off
