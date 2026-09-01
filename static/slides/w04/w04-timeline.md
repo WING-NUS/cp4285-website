@@ -13,7 +13,7 @@ This timeline is synchronized with `w04.qmd`. It is a 90-minute lecture plan, in
 | 30:00-49:00 | 19:00 | Implicit feedback, pointwise-versus-pairwise losses, objectives, BPR, pre-break activities | Worked explanation + activity | Contrast a per-pair prediction loss with BPR’s relative-ranking loss; then work the BPR calculation. Students discuss defensible sampled negatives and complete the BPR Bandit Time MCQ. |
 | 49:00-54:00 | 5:00 | TriRank research interlude | Break | Run the shared timer. Ask whether aspect-based reasons are transparency, persuasion, or both. |
 | 54:00-74:00 | 20:00 | BPR-MF/NeuMF practical comparison, post-break activities | Practical comparison + activity | Hold split, sampler, metrics, and compute budget fixed. Students make and defend a deployment decision, then complete the post-break MCQ. |
-| 74:00-88:00 | 14:00 | Capacity, AI Voice critique, ethics debrief, summary | Critique + synthesis | Evaluate whether an observed gain justifies complexity; distinguish a model score from a user-facing explanation. |
+| 74:00-88:00 | 14:00 | Capacity, AI Voice critique, four card-suit ethics lenses, summary | Critique + synthesis | Evaluate whether an observed gain justifies complexity; test the claim through robustness, social influence, discovery, and constraint lenses; distinguish a model score from a user-facing explanation. |
 | 88:00-90:00 | 2:00 | Week 05 pre-lecture exercise and preview | Bridge | Set the session-boundary memo and connect static scores to ordered history, recency, and session context. |
 
 ## Activity contracts
@@ -42,3 +42,4 @@ This timeline is synchronized with `w04.qmd`. It is a 90-minute lecture plan, in
 - Do not fabricate Canvas quotations. Use actual anonymised pre-lecture responses if they are available; otherwise facilitate the synthesis prompts on the slides.
 - Keep the RecBole comparison illustrative unless a controlled local run and its configuration are available.
 - State the timebox before each activity and limit group reports to preserve the 90-minute plan. The 30:00–49:00 block allocates 3:00 to the new loss contrast, 2:00 to the training-question summary, 5:00 to the BPR worked example, 3:00 to negative-sampling discussion, and 2:00 to the BPR MCQ.
+- In the final four-slide lens sequence, retain the one-minute pace per lens. The suits are situational treatment lenses—not fixed user categories—and each asks for an additional deployment check rather than selecting a universally better model.
