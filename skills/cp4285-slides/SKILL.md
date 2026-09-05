@@ -140,6 +140,10 @@ Available frame variants are `cp-frame-orange`, `cp-frame-navy`, `cp-frame-teal`
 
 Every activity must state the task, timebox, expected output, and instructor synthesis in speaker notes and in the delivery timeline.
 
+### Pre-lecture activities
+
+Use a pre-lecture prompt to activate an outcome that students have already encountered and to surface a tension that the following lecture will resolve. Do not require students to name, distinguish, or apply architecture vocabulary that the following week is intended to teach. State the response format and deadline visibly; specify the expected output and next-lecture synthesis in the notes.
+
 | Activity type | Title convention | Core classes |
 |---|---|---|
 | Multiple choice / response | `🎰 Bandit Time: <question>` | `cp-activity cp-activity--navy cp-activity--framed`, `cp-choice-grid`, `cp-choice-card`. |
