@@ -14,10 +14,10 @@ format:
     show-slide-number: all
     width: 1600
     height: 900
-    chalkboard: false
+    chalkboard: true
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 11 · NUS School of Computing"
-    self-contained: true
+    self-contained: false
     transition: slide
     highlight-style: github
     code-line-numbers: true
@@ -47,16 +47,17 @@ format:
 # 02 Adaptive Policies {background-color="#EF7C00"}
 ## Multi-armed and contextual bandits
 > TODO: add exploration-exploitation examples.
+
 ## Ethics Thread: Online experimentation
-::: {.callout-warning}
+:::: {.callout-warning}
 TODO: examine fair exposure and experimental risk.
-:::
+::::
 ---
 
 # Summary {background-color="#003D7C"}
 ## 🔑 <u>Learning online changes what the system chooses to observe.</u>
 **Next week:** LLMs, generative recommendation, and research frontiers.
 
-::: notes
+:::: notes
 TODO (instructor): close with the stated transition.
-:::
+::::

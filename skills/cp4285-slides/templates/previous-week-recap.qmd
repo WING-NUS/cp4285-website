@@ -1,5 +1,13 @@
 ## {background-color="#1a0a2e"}
 
+<!--
+COMPOSITE ASSET CONTRACT
+- Make one 1920x1080 image from four 16:9 source-slide captures.
+- Tiles touch in a 2x2 contact sheet: no white gutters or canvas padding.
+- Use a 2 px #5C2D91 cross-rule between tiles and a 2 px #1A0A2E dark perimeter around the full composite.
+- If a source uses fragments, capture its final fully revealed build.
+-->
+
 ```{=html}
 <div class="cp-frame-bg cp-frame-purple"></div>
 <div class="cp-frame-content cp-thumbnail-recap-content" style="color:white;">
@@ -11,5 +19,5 @@
 ```
 
 ::: notes
-Use the unified four-quadrant graphic as a recall prompt. Ask students to name the sequence represented by the four source slides and state how it motivates the first new concept in the current lecture.
+Use the unified four-quadrant graphic as a recall prompt. Name the four source slides, ask students to identify the sequence they represent, and state how it motivates the first new concept in the current lecture.
 :::

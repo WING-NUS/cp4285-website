@@ -29,7 +29,7 @@ Start with `cp4285-common.scss`; then consult the resource for the component bei
 4. Retain or remove prototype slides deliberately. Do not ship instructional placeholder text.
 5. Render with `quarto render wNN.qmd` and inspect every affected slide in a browser at the 1600×900 canvas.
 6. Keep `wNN-timeline.md` synchronized with slide order, timings, and activity delivery mode.
-7. Keep the `.qmd`, rendered `.html`, overlay, timeline, and any changed shared asset synchronized. When the work is committed, include them together.
+7. Keep the `.qmd`, rendered `.html`, generated `wNN_files/` directory, overlay, timeline, and any changed shared asset synchronized. When the work is committed, include them together.
 
 ### Commit attribution
 
@@ -37,7 +37,7 @@ When committing work produced through an agent, use `<Agent> (via Min): <imperat
 
 ## YAML invariants and defaults
 
-Every deck must use the 1600×900 canvas, the course footer pattern, `DD MMM YYYY` lecture-date format, the shared course theme, and a week-specific overlay. The YAML below is the default starting point. Values such as QR and logo paths, `self-contained`, `chalkboard`, and timer inclusion may vary when the deck needs them; keep any variation valid and consistent with the deck's assets and features.
+Every deck must use the 1600×900 canvas, the course footer pattern, `DD MMM YYYY` lecture-date format, the shared course theme, a week-specific overlay, and the RevealJS chalkboard. Chalkboard requires `self-contained: false`; retain that pairing unless the instructor explicitly asks to disable the chalkboard. The YAML below is the default starting point. Values such as QR and logo paths and timer inclusion may vary when the deck needs them; keep any variation valid and consistent with the deck's assets and features.
 
 ```yaml
 ---
@@ -62,10 +62,10 @@ format:
     show-slide-number: all
     width: 1600
     height: 900
-    chalkboard: false
+    chalkboard: true
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week NN · NUS School of Computing"
-    self-contained: true
+    self-contained: false
     transition: slide
     highlight-style: github
     code-line-numbers: true
@@ -158,6 +158,17 @@ Use the shared fixed 20 px frame system. Do not reintroduce responsive `clamp()`
 
 Available frame variants are `cp-frame-orange`, `cp-frame-navy`, `cp-frame-teal`, and `cp-frame-purple`. Use the W02 thumbnail recap classes only for a genuine previous-week composite recap: `cp-thumbnail-recap-content`, `cp-thumbnail-composite-wrap`, and `cp-thumbnail-composite`.
 
+### Four-quadrant previous-week recap
+
+Use [`templates/previous-week-recap.qmd`](templates/previous-week-recap.qmd) for the slide markup. The composite asset is a single 1920x1080 image made from four 16:9 source-slide captures:
+
+- Put the four tiles in a true 2x2 contact sheet. Do not add canvas padding, whitespace, or gutters around the tiles.
+- Separate adjacent tiles with a 2 px Purple (`#5C2D91`) cross-rule. Add a 2 px dark (`#1A0A2E`) perimeter around the whole composite; never use a white perimeter.
+- Capture each source slide at its complete instructional state. For a fragment/build slide, advance to and capture the final fully revealed state.
+- Keep the purple `cp-frame-purple` recap frame and label outside the composite. The image should not recreate a second thick frame.
+
+The recap is a quick retrieval cue, not a re-teaching deck: provide concise alt text, name the four source slides in notes, and end the notes with one bridge question into the new topic.
+
 ## Activity grammar
 
 Every activity must state the task, timebox, expected output, and instructor synthesis in speaker notes and in the delivery timeline.
@@ -219,6 +230,8 @@ Copy `templates/break-slide.qmd`. Replace every `BREAKID` with a unique identifi
 
 ## Course content conventions
 
+End a blockquote with a blank line before the next heading or fenced div. Without that boundary, Pandoc can absorb the following heading and fence into the quote, leaving literal fence markers in the output and triggering Quarto warnings.
+
 Use Quarto MathJax for non-trivial equations. Colour meaningful mathematical quantities with named `orange`, `teal`, and `navy` TeX colours, then explain them in plain language on the same slide.
 
 Use `.callout-warning` for ethical risks and `.callout-note` for supplementary information. Use the shared `.to-think-about` callout treatment for one concise reflective question; do not recreate it as raw HTML.
@@ -247,6 +260,7 @@ static/slides/
 └── wNN/
     ├── wNN.qmd
     ├── wNN.html
+    ├── wNN_files/      # Required RevealJS assets when chalkboard is enabled
     ├── wNN-custom.scss
     └── wNN-timeline.md
 ```

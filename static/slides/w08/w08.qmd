@@ -14,10 +14,10 @@ format:
     show-slide-number: all
     width: 1600
     height: 900
-    chalkboard: false
+    chalkboard: true
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 08 · NUS School of Computing"
-    self-contained: true
+    self-contained: false
     transition: slide
     highlight-style: github
     code-line-numbers: true
@@ -47,16 +47,17 @@ format:
 # 02 Ranking Objectives {background-color="#EF7C00"}
 ## Pointwise, pairwise, and listwise learning
 > TODO: add LambdaRank intuition and worked examples.
+
 ## Ethics Thread: Position bias
-::: {.callout-warning}
+:::: {.callout-warning}
 TODO: examine fair ranking under biased feedback.
-:::
+::::
 ---
 
 # Summary {background-color="#003D7C"}
 ## 🔑 <u>A ranking objective encodes which errors matter most.</u>
 **Next week:** graph-based recommendation.
 
-::: notes
+:::: notes
 TODO (instructor): close with the stated transition.
-:::
+::::

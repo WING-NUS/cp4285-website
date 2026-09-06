@@ -1,10 +1,25 @@
 {{- with .Page.Params.changelog -}}
+{{- $visibleEntries := first 3 . -}}
+{{- $earlierEntries := after 3 . -}}
 <section class="page-changelog" aria-labelledby="page-changelog-title">
   <h5 id="page-changelog-title">Changelog</h5>
   <ul>
-    {{- range first 3 . -}}
+    {{- range $visibleEntries -}}
       <li><strong>{{ .date }}</strong> — {{ .text }}</li>
     {{- end -}}
   </ul>
+  {{- with $earlierEntries -}}
+    <details class="page-changelog__archive">
+      <summary class="page-changelog__toggle">
+        <span class="page-changelog__show">Show earlier changes</span>
+        <span class="page-changelog__hide">Hide earlier changes</span>
+      </summary>
+      <ul>
+        {{- range . -}}
+          <li><strong>{{ .date }}</strong> — {{ .text }}</li>
+        {{- end -}}
+      </ul>
+    </details>
+  {{- end -}}
 </section>
 {{- end -}}

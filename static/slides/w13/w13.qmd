@@ -14,10 +14,10 @@ format:
     show-slide-number: all
     width: 1600
     height: 900
-    chalkboard: false
+    chalkboard: true
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 13 · NUS School of Computing"
-    self-contained: true
+    self-contained: false
     transition: slide
     highlight-style: github
     code-line-numbers: true
@@ -47,16 +47,17 @@ format:
 # 02 Presentation Guide {background-color="#EF7C00"}
 ## Evidence, error analysis, and ethical analysis
 > TODO: add presentation sequence, peer feedback, and assessment guidance.
+
 ## Ethics Thread: Technical, product, and societal consequences
-::: {.callout-warning}
+:::: {.callout-warning}
 TODO: prepare closing synthesis prompts.
-:::
+::::
 ---
 
 # Summary {background-color="#003D7C"}
 ## 🔑 <u>A recommender project is complete only when its evidence and impacts are communicated.</u>
 **Next:** reading week and final assessment.
 
-::: notes
+:::: notes
 TODO (instructor): close with the stated transition.
-:::
+::::

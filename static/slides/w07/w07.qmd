@@ -14,10 +14,10 @@ format:
     show-slide-number: all
     width: 1600
     height: 900
-    chalkboard: false
+    chalkboard: true
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 07 · NUS School of Computing"
-    self-contained: true
+    self-contained: false
     transition: slide
     highlight-style: github
     code-line-numbers: true
@@ -47,16 +47,17 @@ format:
 # 02 Peer Critique {background-color="#EF7C00"}
 ## Project design review
 > TODO: add critique prompts, timing, and submission workflow.
+
 ## Ethics Thread: Scope and feasibility
-::: {.callout-warning}
+:::: {.callout-warning}
 TODO: connect design choices to bias and stakeholder risks.
-:::
+::::
 ---
 
 # Summary {background-color="#003D7C"}
 ## 🔑 <u>A defensible project starts with a well-specified recommendation problem.</u>
 **Next week:** learning-to-rank.
 
-::: notes
+:::: notes
 TODO (instructor): close with the stated transition.
-:::
+::::

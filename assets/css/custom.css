@@ -61,12 +61,49 @@ a {
   margin-top: 0.15rem;
 }
 
+.page-changelog__archive {
+  margin-top: 0.45rem;
+}
+
+.page-changelog__toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #003d7c;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.page-changelog__toggle:focus-visible {
+  outline: 3px solid color-mix(in srgb, #003d7c 60%, transparent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.page-changelog__hide,
+.page-changelog__archive[open] .page-changelog__show {
+  display: none;
+}
+
+.page-changelog__archive[open] .page-changelog__hide {
+  display: inline;
+}
+
+.page-changelog__archive ul {
+  margin-top: 0.4rem;
+}
+
 .dark .page-changelog {
   background: rgba(96, 165, 250, 0.12);
   color: #d1d5db;
 }
 
 .dark .page-changelog h5 {
+  color: #93c5fd;
+}
+
+.dark .page-changelog__toggle {
   color: #93c5fd;
 }
 

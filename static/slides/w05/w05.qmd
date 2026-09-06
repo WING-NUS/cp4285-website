@@ -14,10 +14,10 @@ format:
     show-slide-number: all
     width: 1600
     height: 900
-    chalkboard: false
+    chalkboard: true
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week 05 · NUS School of Computing"
-    self-contained: true
+    self-contained: false
     transition: slide
     highlight-style: github
     code-line-numbers: true
@@ -25,7 +25,7 @@ format:
     scrollable: false
 ---
 
-# 01 Overview {background-color="#EF7C00"}
+# 01 Announcements and Context {background-color="#EF7C00"}
 
 ```{=html}
 <div aria-labelledby="w05-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
@@ -56,6 +56,22 @@ Delivery: 3-minute recap. Read the quadrants clockwise: (1) attention turns quer
 - Week 04, slides 9, 14, 19, and 35.
 :::
 
+## Quizzes - From Week 01 (10%)
+
+- Quizzes are **jointly created by peers and instructors**
+- Peers contribute candidate questions, answers, and plausible distractors from their self-learning
+  - Min will assign peers randomly to a week and section responsible.
+  - Min will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
+- Combined worth **10%** of total marks
+- **AI tools must not be used during in-class quizzes.**
+
+::: {.callout-note}
+Co-creation makes quizzes part of the pilot course: students help build better learning materials for this cohort and future cohorts.
+:::
+
+::: notes
+:::
+
 ## {background-color="#ffffff"}
 
 ```{=html}
@@ -72,7 +88,7 @@ Delivery: 3-minute recap. Read the quadrants clockwise: (1) attention turns quer
         <figcaption style="margin-top:.28em;color:#5F6B7A;font-size:.56em;line-height:1.15;"><a href="https://www.straitstimes.com/singapore/google-rolls-out-updated-ai-powered-ask-maps-feature-in-singapore" target="_blank" rel="noopener" style="color:#003D7C;">Optional reading: <em>The Straits Times</em>, 11 Aug 2026</a></figcaption>
       </figure>
       <div>
-        <p style="font-weight:bold;color:#003D7C;margin:0 0 .36em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 7 Sep 23:59 SGT</span></p>
+        <p style="font-weight:bold;color:#003D7C;margin:0 0 .36em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 7 Sep 2026 · 23:59 SGT</span></p>
         <p style="margin:.10em 0 .42em;">Post one <strong>100–140 word</strong> decision memo. No classmate reply is required.</p>
         <div style="margin:.14em 0 .46em;padding:.62em .76em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1em;line-height:1.22;color:#003D7C;font-weight:bold;">
           A person asks Ask Maps for a 2pm lunch route, explores nearby cultural sites, then later asks for a halal eatery open after 10pm. Does the late-evening query begin a new session? Answer yes or no and cite two trace details.
@@ -131,7 +147,9 @@ TODO: examine manipulation risks in engagement optimization.
 TODO (author): add a concrete stakeholder question.
 :::
 
----
+# 03 Session-Based Models {background-color="#EF7C00"}
+
+# 04 Summary {background-color="#EF7C00"}
 
 # Summary {background-color="#003D7C"}
 
@@ -151,7 +169,7 @@ TODO (instructor): close with the stated transition.
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
   <div class="cp-frame-title cp-text--navy">When Should the Current Session Outweigh History?</div>
   <div class="cp-frame-body" style="color:#333;font-size:.79em;line-height:1.24;">
-    <p style="font-weight:bold;color:#003D7C;margin:0 0 .42em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 14 Sep 23:59 SGT</span></p>
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .42em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 14 Sep 2026 · 23:59 SGT</span></p>
     <p style="margin:.1em 0 .46em;">Post one <strong>120–140 word</strong> response. No classmate reply is required.</p>
     <div style="margin:.16em 0 .52em;padding:.72em .86em;border-left:7px solid #00796B;background:#F0F8F6;color:#003D7C;font-weight:bold;line-height:1.28;">
       A user's long-term history is vegetarian cafés. In their current session, they search “late-night halal food”, open nearby restaurant pages, and check delivery times. What should the app consider now - and what should it not assume?

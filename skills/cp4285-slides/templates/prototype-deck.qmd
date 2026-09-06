@@ -12,10 +12,10 @@ format:
     show-slide-number: all
     width: 1600
     height: 900
-    chalkboard: false
+    chalkboard: true
     logo: "../../uploads/recommendation-social-media.png"
     footer: "CP4285 · Week NN · NUS School of Computing"
-    self-contained: true
+    self-contained: false
     transition: slide
     highlight-style: github
     code-line-numbers: true
@@ -30,6 +30,8 @@ COPYING CHECKLIST
 3. Replace the changelog's date and initial-entry text; use Navy before/on the lecture date and Orange after it.
 4. Keep, adapt, or delete every prototype deliberately. Remove all TODO text before delivery.
 5. Replace every TIMERID/BREAKID with a unique identifier in this deck.
+6. For a previous-week four-slide recap, copy `previous-week-recap.qmd`; its composite asset must use touching tiles, thin Purple internal dividers, and a dark perimeter.
+7. Chalkboard requires `self-contained: false`; retain the rendered `wNN_files/` directory with the deck.
 -->
 
 # 01 Opening {background-color="#EF7C00"}
