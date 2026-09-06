@@ -108,6 +108,8 @@ Learning outcomes:
 
 {{< week-card week="Week 04" date="1–7 Sep 2026" focus="Neural Recommendation Models" >}}
 
+**Project teams release:** Tue, 1 Sep 2026.
+
 Topics:
 
 - Neural collaborative filtering
