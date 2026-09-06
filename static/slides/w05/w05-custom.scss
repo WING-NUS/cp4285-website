@@ -1,6 +1,38 @@
-/*
- * Week 05 has no visual exceptions.
- * Course-wide title, frame, activity, MCQ, timer, card, table, grid, metric,
- * image, and flow styles are inherited from ../cp4285-common.scss.
- */
 /*-- scss:rules --*/
+
+/* Week 05 process sequences read from left to right. */
+.cp-flow-sequence {
+  display: flex;
+  align-items: stretch;
+  gap: 0.28em;
+  width: 100%;
+}
+
+.cp-flow-sequence .cp-flow-card {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.cp-flow-sequence > .cp-flow-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.cp-flow-card--sequence {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.28em;
+  min-height: 5.4em;
+}
+
+.cp-flow-card--sequence .cp-flow-step {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.cp-flow-card--sequence .cp-flow-arrow {
+  flex: 0 0 auto;
+}
