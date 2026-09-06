@@ -35,6 +35,7 @@ Delivery: 30 seconds. Welcome students, flag the quiz co-creation notice, and st
 <div aria-labelledby="w05-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
   <h5 id="w05-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
+    <li><strong class="cp-text--navy">6 Sep 2026</strong> — Added the Weeks 01–05 quiz-question contribution and Week 07 quiz details.</li>
     <li><strong class="cp-text--navy">5 Sep 2026</strong> — Added the Week 04 recap and Week 06 preview.</li>
   </ul>
 </div>
@@ -63,9 +64,9 @@ Delivery: 3-minute recap. Read the quadrants clockwise: (1) attention turns quer
 ## Quizzes - From Week 01 (10%)
 
 - Quizzes are **jointly created by peers and instructors**
-- Peers contribute candidate questions, answers, and plausible distractors from their self-learning
-  - Min will assign peers randomly to a week and section responsible.
-  - Min will curate, verify, and finalise questions so that the assessments remains fair, accurate, and aligned with the course learning outcomes
+- Peers contribute candidate questions, answers, and worked solutions where needed
+  - Min assigns each student a week, lecture section, difficulty, and question format.
+  - Min curates, verifies, and finalises questions so that assessments remain fair, accurate, and aligned with the course learning outcomes.
 - Combined worth **10%** of total marks
 - **AI tools must not be used during in-class quizzes.**
 
@@ -76,6 +77,26 @@ Co-creation makes quizzes part of the pilot course: students help build better l
 ::: notes
 Delivery: 1 minute. Keep this administrative notice to its essential policy: peers propose questions, instructors curate them, and in-class quizzes are AI-free.
 :::
+
+## Peer Quiz Question-Bank Contribution {background-color="#ffffff"}
+
+```{=html}
+<div style="font-size:.82em;line-height:1.22;">
+  <p style="margin:.05em 0 .42em;">Covers <strong>Weeks 01–05</strong>. Your identifier determines one lecture section and one difficulty: <strong>easy, medium, or hard</strong>.</p>
+  <p style="margin:.1em 0 .22em;color:#003D7C;font-weight:bold;">Your assigned contribution</p>
+  <ul style="margin:.08em 0 .4em;padding-left:1.15em;">
+    <li><strong>Two MCQ/MRQ questions</strong>, <strong>two fill-in-the-blank questions</strong>, or <strong>one calculation question</strong> with full working</li>
+    <li>Include the answer for every question.</li>
+  </ul>
+  <p style="margin:.2em 0 .58em;">Submit on Canvas by <strong><span class="cp-text--teal">Mon, 21 Sep 2026, 23:59 SGT</span></strong>. You have two weeks to prepare.</p>
+  <div class="cp-card cp-card--soft" style="padding:.55em .72em;">
+    <p class="cp-card__title" style="margin-bottom:.18em;">Week 07 (Open Book) Quiz <span class="cp-text--teal">· Tue, 28 Sep 2026</span></p>
+    <p style="margin:0;"><strong><span class="cp-text--teal">~30 minutes</span></strong> at the beginning of class. A mix of instructor and peer questions, completed on paper and proctored.</p>
+  </div>
+</div>
+```
+
+# 02 Lecture Overview {background-color="#EF7C00"}
 
 ## {background-color="#ffffff"}
 
@@ -129,6 +150,29 @@ Instructor synthesis for Week 05: cluster the yes/no judgments around time gap, 
 ::: notes
 :::
 
+## Which interaction history is available?
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="grid-template-columns:minmax(0,1.75fr) minmax(235px,.65fr);align-items:center;gap:.75em;">
+  <figure style="margin:0;">
+    <img class="cp-image cp-image--contain" src="assets/session-srs-sars-figure-1-3.png" alt="Comparison of three recommender settings. Session-based recommendation uses only the current session. Session-aware recommendation combines the current session with short-term historical sessions. Sequence-aware recommendation uses a long-term ordered interaction history and current interactions." style="display:block;width:100%;max-height:500px;object-fit:contain;margin:0 auto;">
+  </figure>
+  <div class="cp-stack" style="font-size:.72em;line-height:1.14;">
+    <div class="cp-card cp-card--soft" style="padding:.42em .55em;"><p class="cp-card__title">Session-based</p><p style="margin:0;">Use the ordered events in the current session when no durable history is available.</p></div>
+    <div class="cp-card cp-card--soft" style="padding:.42em .55em;"><p class="cp-card__title">Session-aware</p><p style="margin:0;">Combine the current session with earlier sessions from an identified user.</p></div>
+    <div class="cp-card cp-card--soft" style="padding:.42em .55em;"><p class="cp-card__title">Sequence-aware</p><p style="margin:0;">Model a longer ordered history when earlier interactions may still matter.</p></div>
+  </div>
+</div>
+<p style="margin:.35em 0 0;padding-top:.25em;border-top:1px solid #c8d5df;color:#5F6B7A;font-size:.34em;line-height:1.15;">Source: Ravanmehr, R., &amp; Mohamadrezaei, R. (2024). <em>Session-based recommender systems using deep learning</em> (Fig. 1.3, p. 15). Springer. <a href="https://doi.org/10.1007/978-3-031-42559-2" target="_blank" rel="noopener" style="color:#003D7C;">https://doi.org/10.1007/978-3-031-42559-2</a></p>
+```
+
+::: notes
+Delivery: 3 minutes. Use the figure to separate three questions that the literature sometimes names inconsistently. Session-based recommendation sees only the current ordered session. Session-aware recommendation joins that local evidence to earlier sessions. Sequence-aware recommendation draws on a longer ordered interaction history. The three settings can all predict a next item, but they justify different claims about what evidence the model may use.
+
+[Source]
+- Ravanmehr and Mohamadrezaei (2024), <em>Session-Based Recommender Systems Using Deep Learning</em>, Fig. 1.3, p. 15. The original rotated figure has been extracted and rotated for legibility.
+:::
+
 ## Week 05: What changes when interactions have an order?
 
 <div class="cp-grid cp-grid--2">
@@ -147,7 +191,7 @@ Instructor synthesis for Week 05: cluster the yes/no judgments around time gap, 
 Delivery: 3 minutes. This is a bridge, not a second Transformer lecture. The recurring question is whether a system should use durable history, current-session evidence, or both.
 :::
 
-# 02 Session-Based Models {background-color="#EF7C00"}
+# 03 Session-Based Models {background-color="#EF7C00"}
 
 ::: notes
 Delivery: 30 seconds. Frame this half as a response to immediate, often anonymous intent; its question is what to use right now without making a lasting claim about the person.
@@ -169,11 +213,9 @@ Delivery: 2.5 minutes. Tie this directly to the Ask Maps exercise. A session can
 ## Sessionisation is a modelling decision
 
 ```{=html}
-<div class="cp-flow-sequence">
+<div class="cp-grid cp-grid--3">
   <div class="cp-flow-card"><strong>1. Time gap</strong><br><span>Has enough inactivity elapsed to make a new task plausible?</span></div>
-  <span class="cp-flow-arrow" aria-hidden="true">→</span>
   <div class="cp-flow-card"><strong>2. Task shift</strong><br><span>Did the intent move from museum planning to food delivery?</span></div>
-  <span class="cp-flow-arrow" aria-hidden="true">→</span>
   <div class="cp-flow-card"><strong>3. Continuity</strong><br><span>Do location, timing, and actions still support one coherent task?</span></div>
 </div>
 ```
@@ -189,7 +231,7 @@ Delivery: 3 minutes. Make the distinction explicit: a thirty-minute timeout is a
 ## From an event log to next-item examples
 
 ```{=html}
-<div class="cp-flow-card cp-flow-card--sequence"><span class="cp-flow-step">view ramen</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">open halal filter</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">inspect delivery time</span><span class="cp-flow-arrow" aria-hidden="true">→</span><strong class="cp-flow-step">predict: late-night restaurant</strong></div>
+<div class="cp-flow-card">view ramen <span class="cp-flow-arrow">→</span> open halal filter <span class="cp-flow-arrow">→</span> inspect delivery time <span class="cp-flow-arrow">→</span> <strong>predict: late-night restaurant</strong></div>
 ```
 
 <table class="cp-table cp-table--compact" style="margin-top:.75em;"><thead><tr><th>Observed prefix</th><th>Training target</th></tr></thead><tbody><tr><td class="cp-table__cell">[ramen]</td><td class="cp-table__cell cp-table__cell--highlight">halal filter</td></tr><tr><td class="cp-table__cell">[ramen, halal filter]</td><td class="cp-table__cell cp-table__cell--highlight">delivery time</td></tr></tbody></table>
@@ -223,7 +265,7 @@ Activity mode: MCQ/response. Timebox: 20 seconds, then a 1 minute 40 second debr
 ## GRU4Rec: carry a changing session state
 
 ```{=html}
-<div class="cp-flow-card cp-flow-card--sequence"><strong class="cp-flow-step">item 1</strong><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">GRU state</span><span class="cp-flow-arrow" aria-hidden="true">→</span><strong class="cp-flow-step">item 2</strong><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">updated GRU state</span><span class="cp-flow-arrow" aria-hidden="true">→</span><strong class="cp-flow-step">score next items</strong></div>
+<div class="cp-flow-card"><strong>item 1</strong> <span class="cp-flow-arrow">→</span> GRU state <span class="cp-flow-arrow">→</span> <strong>item 2</strong> <span class="cp-flow-arrow">→</span> updated GRU state <span class="cp-flow-arrow">→</span> <strong>score next items</strong></div>
 ```
 
 <div class="cp-grid cp-grid--2" style="margin-top:.8em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Update gate</p><p style="margin:0;">How much useful context should the model retain?</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Reset gate</p><p style="margin:0;">Which old context should stop dominating the state?</p></div></div>
@@ -235,18 +277,12 @@ Delivery: 4 minutes. Do not derive GRU equations. Explain the state as a learned
 - Hidasi et al. (2016), “Session-based Recommendations with Recurrent Neural Networks.”
 :::
 
-## <span style="color:#ffffff;">🎥 Video: GRU intuition</span> {background-color="#000000"}
+## Watch for the GRU intuition
 
-```{=html}
-<div style="display:flex;align-items:center;justify-content:center;width:100%;height:76vh;background:#000;">
-  <a href="https://www.youtube.com/watch?v=IBs8D8PWMc8&t=282s" target="_blank" rel="noopener" aria-label="Open video: Gated Recurrent Unit explained in detail">
-    <img src="https://img.youtube.com/vi/IBs8D8PWMc8/maxresdefault.jpg" alt="YouTube thumbnail for Gated Recurrent Unit explained in detail" style="display:block;width:100%;max-width:1280px;height:auto;max-height:76vh;object-fit:contain;border:4px solid #EF7C00;">
-  </a>
-</div>
-```
+<div class="cp-grid cp-grid--2"><div><iframe width="100%" height="430" src="https://www.youtube-nocookie.com/embed/IBs8D8PWMc8?start=282&end=402&rel=0" title="Gated Recurrent Unit explanation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="cp-card cp-card--prompt"><p class="cp-card__title">While you watch</p><p style="margin:0;">Which gate would help after a user abruptly shifts from planning museums to finding food delivery?</p><p class="cp-card__meta">The clip explains GRUs generally; the instructor maps the idea to GRU4Rec.</p></div></div>
 
 ::: notes
-Delivery: 2 minutes. Open at 4:42 and play to 6:42 only. Ask: “Which gate would help after a user abruptly shifts from planning museums to finding food delivery?” The clip explains GRUs generally; map the idea to GRU4Rec without treating the video as an authority on recommender systems.
+Delivery: 2 minutes. Play 4:42–6:42 only. Stop on time. Ask for one gate-based explanation; do not treat this external video as an authority on recommender systems.
 
 [Source]
 - Learn With Jay, “Gated Recurrent Unit | GRU | Explained in detail,” YouTube, 2024. https://www.youtube.com/watch?v=IBs8D8PWMc8
@@ -294,7 +330,7 @@ Delivery: 3 minutes. A session-based model uses only current-session events. A s
 Delivery: start the shared five-minute timer. It pauses automatically if the slide is left.
 :::
 
-# 03 Sequential Recommendation {background-color="#EF7C00"}
+# 04 Sequential Recommendation {background-color="#EF7C00"}
 
 ::: notes
 Delivery: 30 seconds. Move from an immediate local task to ordered history that can reveal durable preferences, drift, and exceptions.
@@ -311,7 +347,7 @@ Delivery: 3 minutes. A long history can contain routine preferences, drift, and 
 ## Preserve chronology in the learning pipeline
 
 ```{=html}
-<div class="cp-flow-card cp-flow-card--sequence"><span class="cp-flow-step">earlier history</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">train sequence model</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">later held-out interaction</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">rank candidates</span></div>
+<div class="cp-flow-card">earlier history <span class="cp-flow-arrow">→</span> train sequence model <span class="cp-flow-arrow">→</span> later held-out interaction <span class="cp-flow-arrow">→</span> rank candidates</div>
 ```
 
 <p style="margin-top:.8em;">A random split lets the model learn from actions that had not happened at recommendation time.</p>
@@ -349,7 +385,7 @@ Delivery: 2.5 minutes. Reconnect to the bridge: attention over actions is useful
 ## SASRec: causal self-attention for next-item prediction
 
 ```{=html}
-<div class="cp-flow-card cp-flow-card--sequence"><span class="cp-flow-step">item embeddings<br>+ position embeddings</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">masked self-attention</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">contextual sequence representation</span><span class="cp-flow-arrow" aria-hidden="true">→</span><span class="cp-flow-step">score next items</span></div>
+<div class="cp-flow-card">item embeddings + position embeddings <span class="cp-flow-arrow">→</span> masked self-attention <span class="cp-flow-arrow">→</span> contextual sequence representation <span class="cp-flow-arrow">→</span> score next items</div>
 ```
 
 <div class="cp-grid cp-grid--2" style="margin-top:.8em;"><div class="cp-card cp-card--soft"><p class="cp-card__title">Causal mask</p><p style="margin:0;">At position <em>t</em>, the model cannot inspect future actions.</p></div><div class="cp-card cp-card--soft"><p class="cp-card__title">Position matters</p><p style="margin:0;">The same items in a different order can imply a different next item.</p></div></div>
@@ -397,7 +433,7 @@ Activity mode: small-group discussion. Total timebox: 10 minutes; use the displa
 Delivery: 2 minutes. Model choice is a data-and-goal decision, not a race toward the newest architecture.
 :::
 
-# 04 Summary {background-color="#003D7C"}
+# 05 Summary {background-color="#003D7C"}
 
 ::: notes
 Delivery: 30 seconds. Signal that this is a distinct five-minute close: consolidate the representation, evaluation, and objective choices before previewing Week 06.
@@ -450,4 +486,5 @@ Delivery: 2 minutes. This is a pre-lecture activation task, not a test of Week 0
 ```
 
 ::: notes
-Deli
+Delivery: 2 minutes. Preview the retrieval, ranking, and re-ranking pipeline as the next design problem. The fetching image is a visual bridge: retrieval finds plausible candidates, while ranking and re-ranking decide what reaches the user.
+:::
