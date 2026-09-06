@@ -34,12 +34,23 @@ sections:
         <section class="page-changelog" aria-labelledby="home-changelog-title">
           <h5 id="home-changelog-title">Changelog</h5>
           <ul>
-            <li><strong>20 Aug 2026</strong> — Refreshed typography across the Week 03–13 lecture decks for improved readability and a more consistent viewing experience.</li>
-            <li><strong>14 Aug 2026</strong> — Openly shared the course slides and added an invitation for public users to share feedback.</li>
-            <li><strong>17 Jun 2026</strong> — Clarified the CP428x pilot-course context.</li>
-            <li><strong>17 Jun 2026</strong> — Added course rhythm, learning outcomes, and course-page links.</li>
-            <li><strong>17 Jun 2026</strong> — Updated the course overview and WING.NUS information.</li>
+            <li><strong>6 Sep 2026</strong> — Refreshed the lecture decks and authoring workflow, and made page changelog history expandable.</li>
+            <li><strong>5 Sep 2026</strong> — Standardised schedule labels and date-time formatting, with a Week 05 recap and Week 06 preview.</li>
+            <li><strong>1 Sep 2026</strong> — Published Week 04 lecture materials and recording, including the neural-model comparison and Week 05 bridge.</li>
           </ul>
+          <details class="page-changelog__archive">
+            <summary class="page-changelog__toggle">
+              <span class="page-changelog__show">Show earlier changes</span>
+              <span class="page-changelog__hide">Hide earlier changes</span>
+            </summary>
+            <ul>
+              <li><strong>31 Aug 2026</strong> — Expanded the Week 04 neural-recommendation lecture and its transition into sequential recommendation.</li>
+              <li><strong>25 Aug 2026</strong> — Published Week 03 evaluation materials and recorded that no lecture video is available.</li>
+              <li><strong>20 Aug 2026</strong> — Refreshed deck typography and clarified Week 01–03 course materials.</li>
+              <li><strong>14 Aug 2026</strong> — Openly shared the course slides and invited public feedback.</li>
+              <li><strong>17 Jun 2026</strong> — Added the CP428x pilot-course context, course rhythm, learning outcomes, course links, and WING.NUS information.</li>
+            </ul>
+          </details>
         </section>
     design:
       css_class: "bg-white dark:bg-gray-950"
