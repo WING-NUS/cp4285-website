@@ -7,7 +7,7 @@ description: Create, edit, render, and review CP4285 Quarto RevealJS lecture dec
 
 ## Source of truth
 
-Use the following resources together. Do not recreate an existing visual rule from memory.
+Start with `cp4285-common.scss`; then consult the resource for the component being created or changed. Do not recreate an existing visual rule from memory.
 
 | Resource | Use it for |
 |---|---|
@@ -29,9 +29,15 @@ Use the following resources together. Do not recreate an existing visual rule fr
 4. Retain or remove prototype slides deliberately. Do not ship instructional placeholder text.
 5. Render with `quarto render wNN.qmd` and inspect every affected slide in a browser at the 1600×900 canvas.
 6. Keep `wNN-timeline.md` synchronized with slide order, timings, and activity delivery mode.
-7. Commit the `.qmd`, rendered `.html`, overlay, timeline, and any changed shared asset together.
+7. Keep the `.qmd`, rendered `.html`, overlay, timeline, and any changed shared asset synchronized. When the work is committed, include them together.
 
-## Required YAML
+### Commit attribution
+
+When committing work produced through an agent, use `<Agent> (via Min): <imperative summary>`. For example, use `Codex (via Min): Update Week 04 changelog` for Codex work or `Manus (via Min): Update Week 04 changelog` for Manus work. Do not add agent attribution to work not produced through an agent.
+
+## YAML invariants and defaults
+
+Every deck must use the 1600×900 canvas, the course footer pattern, `DD MMM YYYY` lecture-date format, the shared course theme, and a week-specific overlay. The YAML below is the default starting point. Values such as QR and logo paths, `self-contained`, `chalkboard`, and timer inclusion may vary when the deck needs them; keep any variation valid and consistent with the deck's assets and features.
 
 ```yaml
 ---
@@ -69,6 +75,22 @@ format:
 ```
 
 Use a verified soc-n.us shortlink and its matching SVG/PNG QR assets before adding the title panel. The shared theme positions the panel and aligns the title, subtitle, author, and date. Do not override `#title-slide` positioning, title widths, or author padding in a week overlay.
+
+## Changelog slides
+
+Every deck must include a changelog on its first section slide, normally slide 2. Retain only its three most recent **distinct update dates** and combine all changes from the same calendar date into one concise entry. Compare dates by calendar date with the lecture date in the deck YAML: dates after the lecture must use Orange `#EF7C00` (for example, `<strong style="color:#EF7C00;">DD MMM YYYY</strong>`); lecture-date and pre-lecture entries must use Navy `#003D7C`. Keep the changelog in descending date order and update the rendered HTML after changing it.
+
+## Assets
+
+Put course-wide assets in `static/uploads/` and deck-specific assets in `static/slides/wNN/assets/`. Use descriptive kebab-case filenames. Give every meaningful image useful alt text; record the source and any required attribution in speaker notes. After adding or moving an asset, render the deck and verify the rendered slide resolves the intended file.
+
+## Accessibility
+
+Do not communicate meaning through colour alone: retain visible labels for choices, statuses, and any colour-coded distinction. Use concise, descriptive alternative text for meaningful images, and keep interactive controls keyboard-operable. At the 1600×900 canvas, inspect contrast, readable text size, and clipping for the entire slide. For slides with fragments or other builds, advance through every state and inspect the final fully revealed state as well as the initial state; content that fits initially but overlaps, clips, or loses contrast after animation is not acceptable.
+
+## Change propagation
+
+When changing a course-wide convention, first identify every affected deck source, rendered HTML file, timeline, template, and shared asset. Update and render each affected deck; do not leave a course-wide formatting, primitive, timer, or changelog rule only partially propagated.
 
 ## Course visual contract
 
