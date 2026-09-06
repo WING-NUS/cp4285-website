@@ -27,11 +27,21 @@ format:
 COPYING CHECKLIST
 1. Rename this file to wNN.qmd and copy custom.scss to wNN-custom.scss.
 2. Replace the title metadata. Add the verified QR title-panel metadata described in SKILL.md.
-3. Keep, adapt, or delete every prototype deliberately. Remove all TODO text before delivery.
-4. Replace every TIMERID/BREAKID with a unique identifier in this deck.
+3. Replace the changelog's date and initial-entry text; use Navy before/on the lecture date and Orange after it.
+4. Keep, adapt, or delete every prototype deliberately. Remove all TODO text before delivery.
+5. Replace every TIMERID/BREAKID with a unique identifier in this deck.
 -->
 
 # 01 Opening {background-color="#EF7C00"}
+
+```{=html}
+<div aria-labelledby="wNN-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
+  <h5 id="wNN-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
+  <ul style="margin:0;padding-left:1.2em;">
+    <li><strong class="cp-text--navy">DD MMM YYYY</strong> — Created the initial Week NN deck.</li>
+  </ul>
+</div>
+```
 
 ## Standard content slide
 

@@ -2,6 +2,11 @@
 
 > **Purpose.** This file is the delivery companion to `w03.qmd`. It records the actual teaching sequence, identifies timing and instructional risks, and supplies a 90-minute cut plan. It does **not** modify the slide deck.
 
+## Changelog
+
+- **5 Sep 2026** — Corrected the split-design timer to 45 seconds and standardised week labels and deadline date-time formatting.
+- **25 Aug 2026** — Added the Week 02 Canvas Voices review and Week 04 pre-lecture bridge.
+
 ## Executive delivery status
 
 The current source supports a **94 minute 15 second instructional run** when the explicit speaker-note durations, stated activity/report times, and a conservative allowance for the two untimed closing slides are added. This total includes the five-minute break but **excludes slide transitions, polling delay, movement into groups, technology setup, and extended student discussion**. It therefore cannot reliably fit a 90-minute meeting without cuts.
@@ -39,7 +44,6 @@ The principal problem is **density rather than direction**. The full deck introd
 
 | Priority | Finding in the current source | Why it matters in delivery | Action recorded in this timeline |
 | --- | --- | --- | --- |
-| **P0** | The split-design timer displays and notes **45 seconds**, but its controller is set to `data-seconds="30"` and the screen-reader status is also `00:30` in `w03.qmd` lines 297–299. | The visible activity contract, spoken instruction, and actual timer disagree. | Correct the deck before delivery; the timeline assumes a 45-second response period. |
 | **P0** | The former timeline described sections and activities that are no longer present, including a separate card-lens section, a conversion-only voice interaction, and an exit ticket. | A facilitator using that plan would search for non-existent slides and misallocate class time. | This file supersedes the prior timing and activity checklist. |
 | **P1** | The source adds to **94:15** before normal delivery friction. | There is no protection for a productive student question, a slow room poll, or regrouping. | Use the 90-minute cut plan at minimum; do not simply speak faster through worked examples. |
 | **P1** | `Beyond Accuracy` combines catalogue coverage, card-lens design, exposure, discovery, ILD, trust, resilience, scalability, and p95 latency. | Students may retain a vocabulary list rather than the decision logic: primary outcome, guardrails, and evidence gap. | Preserve the metric-design clinic; compress supporting inventories before compressing the clinic. |
@@ -68,7 +72,7 @@ If an additional three to five minutes are required in the room, shorten or omit
 | Activity | Intended learning check | Planned time | Source timer ID | Delivery check |
 | --- | --- | ---: | --- | --- |
 | Missing-interaction TempoQuiz | Identify that no click does not establish preference. | 0:30 response plus debrief | `w03-tempo` | Controller and display both specify 30 seconds. |
-| Split-design MCQ | Select a forward-looking split with separate validation and test periods. | 0:45 response, included in the 3:30 block | `w03-split` | **Repair required:** the controller currently runs for 30 seconds although the display and notes specify 45. |
+| Split-design MCQ | Select a forward-looking split with separate validation and test periods. | 0:45 response, included in the 3:30 block | `w03-split` | Controller, visible display, and notes specify 45 seconds. |
 | Metric Lens Table | Connect Precision, Recall, MAP, and NDCG to a use case. | 2:00 | None | Collect one justification; do not attempt to hear every pair. |
 | Which recommender wins? | State a surface assumption, metric, and reason the alternative may still be preferred. | 3:00 discussion + 1:00 report | `w03-ranking` | The 180-second timer matches the notes. |
 | Metric design clinic | Propose one primary measure, two guardrails, and one evidence gap. | 3:00 discussion + 2:00 reports | `w03-lens` | The 180-second timer matches the notes. Limit oral reporting using the cut plan. |
@@ -103,7 +107,7 @@ The following transitions are the highest-value spoken links. They should be del
 | Check | Required state |
 | --- | --- |
 | Timing | Select the full-source run only for a session longer than 95 minutes; otherwise commit to the cut plan before class. |
-| Split MCQ timer | Align `w03-split` visible text, screen-reader status, `data-seconds`, and notes at 45 seconds. |
+| Split MCQ timer | Controller, visible text, screen-reader status, and notes all specify 45 seconds. |
 | Activity reports | Decide in advance which two groups will report from the metric-design clinic. |
 | Worked examples | State the binary relevance threshold before MAP and the graded gain before NDCG. |
 | CTR | Repeat that CTR comparisons require matching surface, placement, audience, and impression definition. |
@@ -112,4 +116,4 @@ The following transitions are the highest-value spoken links. They should be del
 
 ## Source basis
 
-This review is based on `static/slides/w03/w03.qmd`, audited on 25 Aug 2026. The timeline calculations intentionally include the source-note durations and stated group-report allowances. They exclude ordinary slide movement and unscripted interaction, so they should be interpreted as a lower bound rather than a guaranteed wall-clock duration.
+This review is based on `static/slides/w03/w03.qmd`, rechecked on 5 Sep 2026. The timeline calculations intentionally include the source-note durations and stated group-report allowances. They exclude ordinary slide movement and unscripted interaction, so they should be interpreted as a lower bound rather than a guaranteed wall-clock duration.

@@ -26,6 +26,16 @@ format:
 ---
 
 # 01 Overview {background-color="#EF7C00"}
+
+```{=html}
+<div aria-labelledby="w09-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
+  <h5 id="w09-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
+  <ul style="margin:0;padding-left:1.2em;">
+    <li><strong class="cp-text--navy">6 Sep 2026</strong> — Created the initial Week 09 deck.</li>
+  </ul>
+</div>
+```
+
 ## Week 9: Graph-Based Recommendation
 ## Learning outcomes
 - Represent recommendations as graph problems.

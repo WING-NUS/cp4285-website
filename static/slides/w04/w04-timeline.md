@@ -2,6 +2,12 @@
 
 This timeline is synchronized with `w04.qmd`. It is a 90-minute lecture plan, inclusive of the five-minute TriRank break, activities, and the Week 05 pre-lecture exercise.
 
+## Changelog
+
+- **5 Sep 2026** — Standardised week labels and deadline date-time formatting across the course materials.
+- **1 Sep 2026** — Refined the BPR-MF/NeuMF comparison, capacity discussion, activities, and Week 05 bridge.
+- **31 Aug 2026** — Added the Week 03 recap, neural-recommendation teaching sequence, and supporting assets.
+
 ## Run of show
 
 | Start-end | Duration | Slide block | Mode | Instructor outcome |

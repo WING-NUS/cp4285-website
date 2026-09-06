@@ -2,8 +2,10 @@
 title: Schedule
 weight: 10
 changelog:
+  - date: 5 Sep 2026
+    text: Standardised week labels and date-time formatting across the schedule and Weeks 01–04 materials.
   - date: 1 Sep 2026
-    text: Added Week 04 slides and video.
+    text: Added Week 04 slides and video, including the neural-model comparison and Week 05 bridge.
   - date: 25 Aug 2026
     text: Added a Week 03 notice confirming that no lecture recording is available.
   - date: 20 Aug 2026
@@ -22,7 +24,7 @@ changelog:
 
 ## Weekly Schedule
 
-{{< week-card week="Week 1" date="11-17 Aug 2026" focus="Recommendation Problems and Classical Methods" >}}
+{{< week-card week="Week 01" date="11–17 Aug 2026" focus="Recommendation Problems and Classical Methods" >}}
 
 Topics:
 
@@ -45,12 +47,12 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w01/w01.html" title="Week 1 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w01/w01.html" title="Week 01 Slides" height="520px" >}}
 
 **Lecture video:** [Watch the Week 01 lecture recording](https://soc-n.us/cp4285-t2610-w01-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
-{{< week-card week="Week 2" date="18-24 Aug 2026" focus="Latent Factor Models" >}}
+{{< week-card week="Week 02" date="18–24 Aug 2026" focus="Latent Factor Models" >}}
 
 **Essay 1 release:** Tue, 18 Aug 2026.
 
@@ -72,12 +74,12 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w02/w02.html" title="Week 2 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w02/w02.html" title="Week 02 Slides" height="520px" >}}
 
 **Lecture video:** [Watch the Week 02 lecture recording](https://soc-n.us/cp4285-t2610-w02-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
-{{< week-card week="Week 3" date="25-31 Aug 2026" focus="Evaluation of Recommendation Systems" due="Essay 1 + Project Mini-team Declaration — Mon, 24 Aug, 23:59 SGT" >}}
+{{< week-card week="Week 03" date="25–31 Aug 2026" focus="Evaluation of Recommendation Systems" due="Essay 1 + Project Mini-team Declaration — Mon, 24 Aug 2026 · 23:59 SGT" >}}
 
 Topics:
 
@@ -99,12 +101,12 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w03/w03.html" title="Week 3 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w03/w03.html" title="Week 03 Slides" height="520px" >}}
 
 <p class="course-recording-notice"><strong>Lecture recording:</strong> The recording was not made, so no recording is available.</p>
 {{< /week-card >}}
 
-{{< week-card week="Week 4" date="1-7 Sep 2026" focus="Neural Recommendation Models" >}}
+{{< week-card week="Week 04" date="1–7 Sep 2026" focus="Neural Recommendation Models" >}}
 
 Topics:
 
@@ -123,12 +125,12 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w04/w04.html" title="Week 4 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w04/w04.html" title="Week 04 Slides" height="520px" >}}
 
 **Lecture video:** [Watch the Week 04 lecture recording](https://soc-n.us/cp4285-t2610-w04-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
-{{< week-card week="Week 5" date="8-14 Sep 2026" focus="Sequential and Session-Based Recommendation" >}}
+{{< week-card week="Week 05" date="8–14 Sep 2026" focus="Sequential and Session-Based Recommendation" >}}
 
 Topics:
 
@@ -148,10 +150,10 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w05/w05.html" title="Week 5 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w05/w05.html" title="Week 05 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 6" date="15-21 Sep 2026" focus="Retrieval and Ranking Architectures" >}}
+{{< week-card week="Week 06" date="15–21 Sep 2026" focus="Retrieval and Ranking Architectures" >}}
 
 Topics:
 
@@ -172,12 +174,12 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w06/w06.html" title="Week 6 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w06/w06.html" title="Week 06 Slides" height="520px" >}}
 {{< /week-card >}}
 
 <aside class="course-schedule-notice course-schedule-notice--break"><strong>Recess Week</strong><span>Tue, 22 Sep 2026 · No class</span></aside>
 
-{{< week-card week="Week 7" date="29 Sep-5 Oct 2026" focus="Project Design Critique Workshop" due="Project design critique" >}}
+{{< week-card week="Week 07" date="29 Sep–5 Oct 2026" focus="Project Design Critique Workshop" due="Project design critique" >}}
 
 **Essay 2 release:** Tue, 29 Sep 2026.
 
@@ -211,10 +213,10 @@ Suggested weight: 5-10% participation or milestone grade.
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w07/w07.html" title="Week 7 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w07/w07.html" title="Week 07 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 8" date="6-12 Oct 2026" focus="Learning-to-Rank" due="Essay 2 — Mon, 5 Oct, 23:59 SGT" >}}
+{{< week-card week="Week 08" date="6–12 Oct 2026" focus="Learning-to-Rank" due="Essay 2 — Mon, 5 Oct 2026 · 23:59 SGT" >}}
 
 Topics:
 
@@ -234,10 +236,10 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w08/w08.html" title="Week 8 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w08/w08.html" title="Week 08 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 9" date="13-19 Oct 2026" focus="Graph-Based Recommendation" >}}
+{{< week-card week="Week 09" date="13–19 Oct 2026" focus="Graph-Based Recommendation" >}}
 
 Topics:
 
@@ -257,10 +259,10 @@ Learning outcomes:
 
 **Slides:**
 
-{{< slides src="/cp4285-website/slides/w09/w09.html" title="Week 9 Slides" height="520px" >}}
+{{< slides src="/cp4285-website/slides/w09/w09.html" title="Week 09 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 10" date="20-26 Oct 2026" focus="Multi-Objective Recommendation" >}}
+{{< week-card week="Week 10" date="20–26 Oct 2026" focus="Multi-Objective Recommendation" >}}
 
 Topics:
 
@@ -284,7 +286,7 @@ Learning outcomes:
 {{< slides src="/cp4285-website/slides/w10/w10.html" title="Week 10 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 11" date="27 Oct-2 Nov 2026" focus="Exploration and Online Learning" >}}
+{{< week-card week="Week 11" date="27 Oct–2 Nov 2026" focus="Exploration and Online Learning" >}}
 
 Topics:
 
@@ -307,7 +309,7 @@ Learning outcomes:
 {{< slides src="/cp4285-website/slides/w11/w11.html" title="Week 11 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 12" date="3-9 Nov 2026" focus="LLMs, Generative Recommendation, and Research Frontiers" >}}
+{{< week-card week="Week 12" date="3–9 Nov 2026" focus="LLMs, Generative Recommendation, and Research Frontiers" >}}
 
 Topics:
 

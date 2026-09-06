@@ -37,9 +37,9 @@ format:
 <div aria-labelledby="w01-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
   <h5 id="w01-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
+    <li><strong style="color:#EF7C00;">5 Sep 2026</strong> — Standardised week labels and deadline date-time formatting; resized the dataset-catalogue screenshot to fit the slide.</li>
     <li><strong style="color:#EF7C00;">20 Aug 2026</strong> — Standardised slide primitives and timers; clarified worked examples, colour mapping, and notation.</li>
     <li><strong class="cp-text--navy">11 Aug 2026</strong> — Added QR deck access and retimed the Week 01 delivery timeline.</li>
-    <li><strong style="cp-text--navy">10 Aug 2026</strong> — Built the core recommendation-problem activities and neighbourhood-CF teaching sequence.</li>
   </ul>
 </div>
 ```
@@ -272,14 +272,14 @@ There are **no tutorial sessions** for this course — We'll be building the mat
 | Essays | 20% |
 | Group Project | 30% |
 | In-Class Quizzes| 10% |
-| Final Exam (<span class="cp-text--teal">Mon, 23 Nov 2026, 13:00–15:00</span>) | 30% |
+| Final Exam (<span class="cp-text--teal">Mon, 23 Nov 2026 · 13:00–15:00 SGT</span>) | 30% |
 
 ## Class Participation (10%)
 1. **In-lecture activities**
 2. **Pre-lecture activities**
 3. **Pre-Flight Survey** and **Midterm Survey**
-    - *Pre-Flight Survey* (due Week 02; <span class="cp-text--teal">Mon, 17 Aug 2026 23:59 SGT</span>)
-    - *Midterm Survey* (due Week 08; <span class="cp-text--teal">Mon, 5 Oct 2026 23:59 SGT</span>)
+    - *Pre-Flight Survey* (due Week 02; <span class="cp-text--teal">Mon, 17 Aug 2026 · 23:59 SGT</span>)
+    - *Midterm Survey* (due Week 08; <span class="cp-text--teal">Mon, 5 Oct 2026 · 23:59 SGT</span>)
 
     Complete these on time — they are **free marks**
 
@@ -295,8 +295,8 @@ Missing the Pre-Flight or Midterm Survey will directly reduce your participation
 
 **Two individual take-home essays**, each worth **10%**
 
-  - **Essay 1:** Due Week 03; <span class="cp-text--teal">Mon, 24 Aug 2026 23:59 SGT</span>
-  - **Essay 2:** Due Week 08; <span class="cp-text--teal">Mon 5 Oct 2026 23:59 SGT</span>
+  - **Essay 1:** Due Week 03; <span class="cp-text--teal">Mon, 24 Aug 2026 · 23:59 SGT</span>
+  - **Essay 2:** Due Week 08; <span class="cp-text--teal">Mon, 5 Oct 2026 · 23:59 SGT</span>
 
 Short written analyses of recommender-system methods, evaluation choices, and social implications (8%).  Randomised peer review counts towards the remaining 2%.
 
@@ -318,12 +318,12 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 **Milestones:**
 
 ::: {.incremental}
-- **Week 03:** Project Mini-team Declaration — <span class="cp-text--teal">Mon, 24 Aug 2026 23:59 SGT</span>
+- **Week 03:** Project Mini-team Declaration — <span class="cp-text--teal">Mon, 24 Aug 2026 · 23:59 SGT</span>
   - Submit a self-formed team or indicate that you need instructor placement
   - Min has the final decision on group formation (may override student-formed groups)
 - **Week 07:** Project Design Critique Workshop
 - **Week 13:** Final Project Presentation at 29th STePS: <span class="cp-text--teal">Wed, 11 Nov</span>
-  - Teams presenting at 29th STePS do **not** submit a project report; other teams submit a report instead, due same <span class="cp-text--teal">Wed, 11 Nov 2026 23:59 SGT</span>
+  - Teams presenting at 29th STePS do **not** submit a project report; other teams submit a report instead, due same <span class="cp-text--teal">Wed, 11 Nov 2026 · 23:59 SGT</span>
 :::
 
 ::: notes
@@ -333,8 +333,8 @@ Essays assess your own critical thinking. AI may assist but must not substitute 
 ## Recommendation Dataset Catalogue
 
 <div style="height:68vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-  <a href="https://github.com/RUCAIBox/RecSysDatasets" target="_blank" rel="noopener" style="display:block;width:min(1120px,88%);">
-    <img src="../../uploads/recsysdatasets-github.png" alt="Screenshot of the RUCAIBox RecSysDatasets GitHub repository, a public catalogue of recommender-system data sources." style="display:block;width:100%;border:4px solid #003D7C;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.2);">
+  <a href="https://github.com/RUCAIBox/RecSysDatasets" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:100%;max-height:51vh;">
+    <img src="../../uploads/recsysdatasets-github.png" alt="Screenshot of the RUCAIBox RecSysDatasets GitHub repository, a public catalogue of recommender-system data sources." style="display:block;width:auto;max-width:min(1120px,88vw);height:auto;max-height:50vh;object-fit:contain;border:4px solid #003D7C;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.2);">
   </a>
   <p style="margin:.7em 0 0;font-size:.68em;color:#00796B;font-weight:bold;">Click the screenshot to open the live dataset catalogue.</p>
   <p style="margin:.22em 0 0;font-size:.45em;color:#6b7280;">RUCAIBox. (n.d.). <em>RecSysDatasets</em> [GitHub repository]. <a href="https://github.com/RUCAIBox/RecSysDatasets" target="_blank" rel="noopener" class="cp-text--teal">github.com/RUCAIBox/RecSysDatasets</a></p>
@@ -371,7 +371,7 @@ While the we will try to get the slides synced with the website or Canvas, use i
 
 There will likely be errors in the lecture, so check any doubts or questions with Min.
 
-Unless a slide or Canvas announcement specifies otherwise, assignment deadlines are <strong class="cp-text--teal">Mondays, 23:59 SGT</strong>.
+Unless a slide or Canvas announcement specifies otherwise, assignment deadlines are on <strong class="cp-text--teal">Mon, 23:59 SGT</strong>.
 
 ::: {.callout-note}
 The slide deck built in Quarto and rendered through `reveal.js`.  The website is also built Hugo and served using Github Pages.  This means any student, member of the public, or AI can inspect all details of the course.  Use this to your advantage.
@@ -1554,7 +1554,7 @@ This is the course-level close for Week 01. It bridges the problem framing from 
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
   <div class="cp-frame-title" class="cp-text--navy">Look for Hidden Structure</div>
   <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
-    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 17 Aug 23:59 SGT</span></p>
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 17 Aug 2026 · 23:59 SGT</span></p>
     <p style="margin:.15em 0 .65em;">Post a short, concrete response to this question; then reply constructively to one classmate.</p>
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       Name one latent dimension that could explain several ratings—but is not an item metadata label.

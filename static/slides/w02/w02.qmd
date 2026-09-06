@@ -37,8 +37,8 @@ format:
 <div aria-labelledby="w02-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
   <h5 id="w02-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
-    <li><strong class="cp-text--teal">20 Aug 2026</strong> — Refined content and classroom layouts for this release.</li>
-    <li><strong class="cp-text--teal">20 Aug 2026</strong> — Added a linked Week 3 evaluation preview image and attribution.</li>
+    <li><strong style="color:#EF7C00;">5 Sep 2026</strong> — Standardised week labels and deadline date-time formatting across the course materials.</li>
+    <li><strong style="color:#EF7C00;">20 Aug 2026</strong> — Refined content and classroom layouts; added the linked Week 03 evaluation preview image and attribution.</li>
   </ul>
 </div>
 ```
@@ -108,7 +108,7 @@ Expanded weighted phrase cloud. Font size represents thematic centrality in the 
   <div class="cp-flow-card"><strong>Defend</strong><br>Evidence, limits, and a substantive suit lens.</div>
 </div>
 
-- ⚠️ (Short) **1,500 words** · Due **Mon, 24 Aug 2026, 23:59 SGT**.
+- ⚠️ (Short) **1,500 words** · Due **Mon, 24 Aug 2026 · 23:59 SGT**.
 - Use no more than **two external sources**; distinguish platform facts from your reasoned proposal.
 - Feature a card-suit lens in the technical design, objective, constraint, or evaluation criterion.
 - Include an AI-use declaration; AI may assist inquiry but you need to own the argument.
@@ -126,7 +126,7 @@ Expanded weighted phrase cloud. Font size represents thematic centrality in the 
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Last Week Pre-Lecture Exercise</div>
   <div class="cp-frame-title" class="cp-text--navy">Look for Hidden Structure</div>
   <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
-    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 24 Aug 23:59 SGT</span></p>
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 24 Aug 2026 · 23:59 SGT</span></p>
     <p style="margin:.15em 0 .65em;">Post a short, concrete response to this question; then reply constructively to one classmate.</p>
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       Name one latent dimension that could explain several ratings—but is not an item metadata label.
@@ -781,7 +781,7 @@ Expected direction: Case A supports a signed SVD-style residual view; Case B sup
     <div class="cp-grid cp-grid--2" style="align-items:center;">
       <div>
         <p style="margin:0 0 .35em;font-size:.88em;line-height:1.24;">An offline metric tells us how a list performed. Next, we ask whether the recommendation process performs well under a scenario.</p>
-        <p style="margin:.16em 0;"><strong style="color:#ffffff;">In Week 3:</strong></p>
+        <p style="margin:.16em 0;"><strong style="color:#ffffff;">In Week 03:</strong></p>
         <ul style="margin:.18em 0;line-height:1.25;">
           <li>design an evaluation protocol;</li>
           <li>interpret ranked-list quality; and</li>

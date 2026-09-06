@@ -37,8 +37,8 @@ format:
 <div aria-labelledby="w03-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
   <h5 id="w03-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
-    <li><strong class="cp-text--teal">25 Aug 2026</strong> — Added the Week 02 Canvas Voices review and guardrail discussion.</li>
-    <li><strong class="cp-text--teal">25 Aug 2026</strong> — Added the Week 04 pre-lecture activity and linked preview image.</li>
+    <li><strong style="color:#EF7C00;">5 Sep 2026</strong> — Corrected the split-design response timer and standardised week labels and deadline date-time formatting.</li>
+    <li><strong class="cp-text--navy">25 Aug 2026</strong> — Added the Week 02 Canvas Voices review and guardrail discussion, plus the Week 04 pre-lecture activity and linked preview image.</li>
   </ul>
 </div>
 ```
@@ -68,7 +68,7 @@ Delivery: 3-minute recap. Read the thumbnails clockwise: (1) alternative recomme
 
 ## Recap: Yesterday’s deadlines
 
-<p style="margin:.05em 0 .62em;color:#A24B00;font-size:.48em;font-weight:700;letter-spacing:.045em;text-transform:uppercase;">Mon, 24 Aug · 23:59 SGT</p>
+<p style="margin:.05em 0 .62em;color:#A24B00;font-size:.48em;font-weight:700;letter-spacing:.045em;text-transform:uppercase;">Mon, 24 Aug 2026 · 23:59 SGT</p>
 
 ```{=html}
 <div aria-label="Yesterday's deadlines checklist" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.58em .76em;max-width:88%;min-height:11em;margin:.30em auto 0;">
@@ -295,8 +295,8 @@ Delivery: 2.5 minutes. Use a music-homepage example: a returning listener, 20 ca
   <div class="cp-activity__timer cp-center">
     <div class="cp-timer">
       <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Forty-five-second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w03-split-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w03-split-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:45</text></svg>
-      <span id="w03-split-status" role="timer" aria-live="polite" class="cp-sr-only">00:30</span>
-      <button id="w03-split-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="30" data-ring="w03-split-ring" data-text="w03-split-text" data-status="w03-split-status">▶ Start Timer</button>
+      <span id="w03-split-status" role="timer" aria-live="polite" class="cp-sr-only">00:45</span>
+      <button id="w03-split-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="45" data-ring="w03-split-ring" data-text="w03-split-text" data-status="w03-split-status">▶ Start Timer</button>
     </div>
   </div>
 </div>
@@ -749,7 +749,7 @@ Delivery: 2 minutes. Close by moving clockwise through the four panels. Reconnec
   <div class="cp-frame-label" style="background:#003D7C;color:#EF7C00;">Next Week Pre-Lecture Exercise</div>
   <div class="cp-frame-title cp-text--navy">What Does a Missing Interaction Mean?</div>
   <div class="cp-frame-body" style="color:#333;font-size:.82em;line-height:1.25;">
-    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 31 Aug 23:59 SGT</span></p>
+    <p style="font-weight:bold;color:#003D7C;margin:0 0 .45em;">Canvas discussion board · post before <span class="cp-text--teal">Mon, 31 Aug 2026 · 23:59 SGT</span></p>
     <p style="margin:.15em 0 .65em;">Post one concise response; then reply constructively to one classmate.</p>
     <div style="margin:.2em 0 .75em;padding:1em 1.15em;border-left:7px solid #00796B;background:#F0F8F6;font-size:1.18em;line-height:1.3;color:#003D7C;font-weight:bold;">
       A user has never clicked a recommended item. Give two plausible interpretations: one about preference and one about exposure or the interface.
@@ -779,7 +779,7 @@ Instructor synthesis for Week 04: connect responses to the difference between a 
     <div class="cp-grid cp-grid--2" style="align-items:center;">
       <div>
         <p style="margin:0 0 .35em;font-size:.88em;line-height:1.24;">A neural recommender can learn richer patterns from interactions. That does not make an unclicked item self-explanatory.</p>
-        <p style="margin:.16em 0;"><strong style="color:#ffffff;">In Week 4:</strong></p>
+        <p style="margin:.16em 0;"><strong style="color:#ffffff;">In Week 04:</strong></p>
         <ul style="margin:.18em 0;line-height:1.25;">
           <li>compare neural and latent-factor recommenders;</li>
           <li>examine deep ranking and representation learning; and</li>

@@ -78,7 +78,7 @@ Use a verified soc-n.us shortlink and its matching SVG/PNG QR assets before addi
 
 ## Changelog slides
 
-Every deck must include a changelog on its first section slide, normally slide 2. Retain only its three most recent **distinct update dates** and combine all changes from the same calendar date into one concise entry. Compare dates by calendar date with the lecture date in the deck YAML: dates after the lecture must use Orange `#EF7C00` (for example, `<strong style="color:#EF7C00;">DD MMM YYYY</strong>`); lecture-date and pre-lecture entries must use Navy `#003D7C`. Keep the changelog in descending date order and update the rendered HTML after changing it.
+Create a changelog when the initial deck is created. Every deck must include it on its first section slide, normally slide 2. Retain only its three most recent **distinct update dates** and combine all changes from the same calendar date into one concise entry. Compare dates by calendar date with the lecture date in the deck YAML: dates after the lecture must use Orange `#EF7C00` (for example, `<strong style="color:#EF7C00;">DD MMM YYYY</strong>`); lecture-date and pre-lecture entries must use Navy `#003D7C`. Keep the changelog in descending date order and update the rendered HTML after changing it.
 
 ## Assets
 
