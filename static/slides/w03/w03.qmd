@@ -98,7 +98,7 @@ Delivery: 45 seconds. Confirm the four items that were due yesterday, then trans
   </div>
   <div role="group" aria-label="Focus of critique" style="padding:.72em .82em;border-top:6px solid #00796B;background:#F0F8F6;color:#273244;">
     <p style="margin:0 0 .42em;color:#00796B;font-size:.50em;font-weight:800;letter-spacing:.055em;text-transform:uppercase;">Focus of critique</p>
-    <p style="margin:0;font-size:.55em;line-height:1.24;">Assess the quality of the essay’s <strong style="color:#003D7C;">card suit</strong> lens' quality.</p>  <p style="font-size:.55em;line-height:1.24;"> - How well does it match the recommendation surface?  <br/> - How useful is the insight?</p>
+    <p style="margin:0;font-size:.55em;line-height:1.24;">Assess the quality of the essay’s <strong style="color:#003D7C;">🃏 card suit</strong> lens' quality.</p>  <p style="font-size:.55em;line-height:1.24;"> - How well does it match the recommendation surface?  <br/> - How useful is the insight?</p>
   </div>
 </div>
 ```
@@ -109,7 +109,7 @@ Delivery: 45 seconds. Confirm the four items that were due yesterday, then trans
 <p style="font-size:.55em;line-height:1.24;"><strong>Due:</strong> <span class="cp-text--teal">Mon, 31 Aug 2026 · 23:59 SGT</span></p>
 
 ```{=html}
-<div role="note" style="margin:.12em .06em .55em;padding:.48em .68em;border-left:5px solid #5C2D91;background:#F4F0FA;color:#40374B;font-size:.55em;line-height:1.24;"><strong style="color:#5C2D91;">AI-use note.</strong>As per the `e1` specification, remember AI should not be used in completing the peer review.</div>
+<div role="note" style="margin:.12em .06em .55em;padding:.48em .68em;border-left:5px solid #5C2D91;background:#F4F0FA;color:#40374B;font-size:.55em;line-height:1.24;"><strong style="color:#5C2D91;">AI-use note.</strong> As per the <code>e1</code> specification, remember AI should not be used in completing the peer review.</div>
 ```
 
 ::: notes
@@ -135,7 +135,7 @@ Delivery: 2 minutes. Explain that TA Sahaj will assign each target essay. The re
       <p style="font-size:.88em"><strong>Read:</strong> <a href="https://www.straitstimes.com/singapore/singapore-studying-restrictions-on-direct-messaging-auto-play-on-social-media" target="_blank" rel="noopener">“S’pore studying restrictions on direct messaging, auto-play on social media to protect kids”</a></p>
     </div>
     <div role="group" aria-label="Canvas comment task" style="font-size:.88em">
-      <p><strong class="cp-text--navy">Canvas discussion board</strong> · post one individual comment before <strong class="cp-text--teal">Mon, 23:59 SGT</strong></p>
+      <p><strong class="cp-text--navy">Canvas discussion board</strong> · post one individual comment before <strong class="cp-text--teal">Mon, 24 Aug 2026 · 23:59 SGT</strong></p>
       <div style="margin:0 0 .62em;padding:.72em .82em;border-left:7px solid #00796B;background:#F0F8F6;color:#003D7C;font-weight:bold;line-height:1.28;font-size:.54em">A recommender may be evaluated using whether people watch, click, or continue interacting with suggested content. What is <strong>one responsibility</strong> that evaluation should include for younger users, beyond predicting continued engagement?</div>
       <p>In <strong>120–160 words</strong>, choose and name <strong>one card-suit lens</strong>, cite one article detail, and propose one piece of evidence, safeguard, or user control the platform should examine.</p>
       <p style="margin-bottom:0;color:#A24B00;font-weight:bold;text-align:center;">No classmate reply this week. Today: protocols, ranking metrics, and what a score leaves out.</p>
