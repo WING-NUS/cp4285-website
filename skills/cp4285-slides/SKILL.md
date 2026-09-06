@@ -78,7 +78,7 @@ Use a verified soc-n.us shortlink and its matching SVG/PNG QR assets before addi
 
 ## Changelog slides
 
-Create a changelog when the initial deck is created. Every deck must include it on its first section slide, normally slide 2. Retain only its three most recent **distinct update dates** and combine all changes from the same calendar date into one concise entry. Compare dates by calendar date with the lecture date in the deck YAML: dates after the lecture must use Orange `#EF7C00` (for example, `<strong style="color:#EF7C00;">DD MMM YYYY</strong>`); lecture-date and pre-lecture entries must use Navy `#003D7C`. Keep the changelog in descending date order and update the rendered HTML after changing it.
+Create a changelog when the initial deck is created. Every deck must include it on its first section slide, normally slide 2. Retain at most three **distinct update dates**, combining all changes from the same calendar date into one concise entry. Reserve the final entry for the most recent update dated strictly before the lecture date; use the two newest other dates for the remaining slots. If that pre-lecture update is absent from the visible changelog, derive a concise summary from the latest earlier Git commit that touched `wNN.qmd` or `wNN.html`. Compare dates by calendar date with the lecture date in the deck YAML: dates after the lecture must use Orange `#EF7C00` (for example, `<strong style="color:#EF7C00;">DD MMM YYYY</strong>`); lecture-date and pre-lecture entries must use Navy `#003D7C`. Keep the changelog in descending date order and update the rendered HTML after changing it.
 
 ## Assets
 

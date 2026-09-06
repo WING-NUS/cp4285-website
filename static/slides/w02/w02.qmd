@@ -37,8 +37,9 @@ format:
 <div aria-labelledby="w02-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
   <h5 id="w02-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
   <ul style="margin:0;padding-left:1.2em;">
+    <li><strong style="color:#EF7C00;">6 Sep 2026</strong> — Clarified the SVD/NMF factor correspondence and deadline emphasis; added a summary slide.</li>
     <li><strong style="color:#EF7C00;">5 Sep 2026</strong> — Standardised week labels and deadline date-time formatting across the course materials.</li>
-    <li><strong style="color:#EF7C00;">20 Aug 2026</strong> — Refined content and classroom layouts; added the linked Week 03 evaluation preview image and attribution.</li>
+    <li><strong class="cp-text--navy">14 Aug 2026</strong> — Created the initial Week 02–13 deck set.</li>
   </ul>
 </div>
 ```
@@ -108,7 +109,7 @@ Expanded weighted phrase cloud. Font size represents thematic centrality in the 
   <div class="cp-flow-card"><strong>Defend</strong><br>Evidence, limits, and a substantive suit lens.</div>
 </div>
 
-- ⚠️ (Short) **1,500 words** · Due **Mon, 24 Aug 2026 · 23:59 SGT**.
+- ⚠️ (Short) **1,500 words** · **Due:** <span class="cp-text--teal">Mon, 24 Aug 2026 · 23:59 SGT</span>.
 - Use no more than **two external sources**; distinguish platform facts from your reasoned proposal.
 - Feature a card-suit lens in the technical design, objective, constraint, or evaluation criterion.
 - Include an AI-use declaration; AI may assist inquiry but you need to own the argument.
@@ -514,12 +515,12 @@ Both methods approximate a matrix with fewer factors, but their **constraints ch
 ### SVD-style lens
 
 $$
-R \approx U_k\Sigma_kV_k^{\top}
+R \approx \color{teal}{U_k}\color{navy}{\Sigma_k}\color{orange}{V_k^{\top}}
 $$
 
 - Factors may be **positive or negative**.
 - Natural for centred residuals: above- and below-baseline evidence can offset.
-- The singular values in \(\Sigma_k\) scale the retained directions.
+- \(\color{navy}{\Sigma_k}\) scales the retained directions.
 
 :::
 ::: {.column width="47%"}
@@ -527,7 +528,7 @@ $$
 ### NMF lens
 
 $$
-X \approx WH, \qquad W,H\geq0
+X \approx \color{teal}{W}\color{orange}{H}, \qquad \color{teal}{W},\color{orange}{H}\geq0
 $$
 
 - Factors are **nonnegative and additive**.
@@ -559,13 +560,13 @@ R=
 -2&-2&4
 \end{bmatrix}
 =
-\underbrace{\frac{1}{\sqrt6}\begin{bmatrix}1\\1\\-2\end{bmatrix}}_{U_1}
-\underbrace{[6]}_{\Sigma_1}
-\underbrace{\frac{1}{\sqrt6}\begin{bmatrix}1&1&-2\end{bmatrix}}_{V_1^\top}
+\underbrace{\frac{1}{\sqrt6}\begin{bmatrix}1\\1\\-2\end{bmatrix}}_{\color{teal}{U_1}}
+\underbrace{[6]}_{\color{navy}{\Sigma_1}}
+\underbrace{\frac{1}{\sqrt6}\begin{bmatrix}1&1&-2\end{bmatrix}}_{\color{orange}{V_1^\top}}
 $$
 
 $$
-\text{Exact rank 1:}\quad U_1\in\mathbb{R}^{3\times1},\quad \Sigma_1\in\mathbb{R}^{1\times1},\quad V_1^\top\in\mathbb{R}^{1\times3}.
+\text{Exact rank 1:}\quad \color{teal}{U_1}\in\mathbb{R}^{3\times1},\quad \color{navy}{\Sigma_1}\in\mathbb{R}^{1\times1},\quad \color{orange}{V_1^\top}\in\mathbb{R}^{1\times3}.
 $$
 :::
 
@@ -579,7 +580,7 @@ $$
 ::: {.column width="47%"}
 ### Why this is an SVD
 
-- $U_1$ and $V_1$ are unit-length directions; $\Sigma_1=6$ carries the scale.
+- $\color{teal}{U_1}$ and $\color{orange}{V_1}$ are unit-length directions; $\color{navy}{\Sigma_1}=6$ carries the scale.
 - Signed residuals are baseline deviations, not negative ratings.
 :::
 :::
@@ -607,27 +608,27 @@ X=
 1&1\\
 1&2\\
 2&1
-\end{bmatrix}}_{W}
+\end{bmatrix}}_{\color{teal}{W}}
 \underbrace{\begin{bmatrix}
 2&1&0\\
 0&1&2
-\end{bmatrix}}_{H}
+\end{bmatrix}}_{\color{orange}{H}}
 $$
 
 $$
-\text{Exact rank 2:}\quad W\in\mathbb{R}_{\ge0}^{3\times2},\qquad H\in\mathbb{R}_{\ge0}^{2\times3}.
+\text{Exact rank 2:}\quad \color{teal}{W}\in\mathbb{R}_{\ge0}^{3\times2},\qquad \color{orange}{H}\in\mathbb{R}_{\ge0}^{2\times3}.
 $$
 :::
 
 ::: {.columns style="font-size:.78em;line-height:1.18;margin-top:-.45em;"}
 ::: {.column width="47%"}
-### Components in $H$
+### Components in $\color{orange}{H}$
 
 - Component 1 is strongest at Restaurant 1: $[2,1,0]$.
 - Component 2 is strongest at Restaurant 3: $[0,1,2]$.
 :::
 ::: {.column width="47%"}
-### Mixtures in $W$
+### Mixtures in $\color{teal}{W}$
 
 - Diner mixtures are $[1,1]$, $[1,2]$, and $[2,1]$.
 - $X_{23}=1\times0+2\times2=4$: nonnegative contributions add.
@@ -640,19 +641,32 @@ This is an exact rank-two NMF reconstruction. Use it to teach additive structure
 - Lee, D. D., & Seung, H. S. (1999). “Learning the parts of objects by non-negative matrix factorization.”
 :::
 
-## 🎰 Bandit Time: What Does Factorisation Learn? {background-color="#003D7C"}
+## 👥 Factorisation evidence check {background-color="#003D7C"}
 
-<p style="color:#fff;"><strong>A restaurant app has a sparse matrix of diner ratings. Which description best matches latent-factor factorisation?</strong></p>
-
-<div class="cp-choice-grid">
-  <div class="cp-choice-card cp-choice-card--a"><strong style="display:inline-block;min-width:1.35em;">A.</strong> It sorts restaurants only by their recorded cuisine label.</div>
-  <div class="cp-choice-card cp-choice-card--b"><strong style="display:inline-block;min-width:1.35em;">B.</strong> It learns compact vectors for diners and restaurants from many observed interactions, then uses their alignment to estimate affinity.</div>
-  <div class="cp-choice-card cp-choice-card--c"><strong style="display:inline-block;min-width:1.35em;">C.</strong> It treats every unvisited restaurant as a one-star rating.</div>
-  <div class="cp-choice-card cp-choice-card--d"><strong style="display:inline-block;min-width:1.35em;">D.</strong> It copies the rating of the geographically nearest diner.</div>
+```{=html}
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">A restaurant app has a sparse matrix of diner ratings. Which description best matches latent-factor factorisation?</p>
+    <div class="cp-grid cp-grid--2" style="font-size:.88em;">
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">A · Recorded labels only</p><p style="margin:0;">It sorts restaurants only by their recorded cuisine label.</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">B · Learned interaction vectors</p><p style="margin:0;">It learns compact diner and restaurant vectors from observed interactions, then uses their alignment to estimate affinity.</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">C · Unvisited means one star</p><p style="margin:0;">It treats every unvisited restaurant as a one-star rating.</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">D · Geographic copying</p><p style="margin:0;">It copies the rating of the geographically nearest diner.</p></div>
+    </div>
+    <p class="cp-activity__instructions" style="margin-top:.65em;">In groups of 3–4: choose one answer, then prepare a two-sentence explanation naming the evidence and learned representation it requires.</p>
+  </div>
+  <div class="cp-activity__timer cp-center">
+    <div class="cp-timer">
+      <svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three-minute group discussion timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w02-factorisation-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w02-factorisation-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg>
+      <span id="w02-factorisation-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span>
+      <button id="w02-factorisation-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="w02-factorisation-ring" data-text="w02-factorisation-text" data-status="w02-factorisation-status">▶ Start Timer</button>
+    </div>
+  </div>
 </div>
+```
 
 ::: notes
-MCQ. The correct answer is **B**. Invite an individual choice, then ask pairs to identify the evidence and representation implied by their selected answer. Reveal verbally: factorisation approximates the interaction matrix with learned user and item coordinates. Cuisine can be useful metadata, but it is not what the latent vectors are restricted to represent. Do not display the answer or an answer explanation on the student-facing slide.
+Activity mode: small-group discussion. Timebox: 3 minutes, followed by a 1-minute report. Expected output: answer B and a two-sentence explanation that names observed interactions as the evidence and compact diner/item vectors as the learned representation. Instructor synthesis: factorisation approximates the interaction matrix with learned user and item coordinates. Cuisine can be useful metadata, but it is not what the latent vectors are restricted to represent. Start the timer after groups are formed; the shared controller pauses it automatically if the slide is left.
 [Sources]
 - Koren, Y., Bell, R., & Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.” *Computer*, 42(8), 30–37.
 :::
@@ -731,14 +745,30 @@ Read the term key before narrating the equation: distinguish observed evidence, 
 - Koren, Y., Bell, R., & Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.”
 :::
 
-## {background-color="#003D7C"}
+## 🔑 Summary {background-color="#003D7C"}
 
-<div style="height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;">
-  <p style="max-width:1100px;margin:0;font-size:2.05em;line-height:1.18;font-weight:bold;color:#fff;">👥 “Which factorisation lens fits the evidence?”<br><span style="display:block;margin-top:.62em;font-size:.38em;line-height:1.35;font-weight:normal;">In groups of 3–4: choose <strong>SVD</strong> or <strong>NMF</strong>, name the data property that supports the choice, and state one caveat. <strong>Time: 5 minutes.</strong></span></p>
+```{=html}
+<div style="color:#fff;font-size:.96em;line-height:1.32;">
+  <p style="margin:.05em 0 .75em;font-size:1.12em;"><u>A recommender's representation determines which evidence can be compared, inferred, and acted upon.</u></p>
+  <div style="padding:.9em 1.05em;border-left:6px solid #EF7C00;background:#174F88;">
+    <p style="margin:0 0 .45em;color:#EF7C00;font-weight:bold;">🔑 Three ideas to carry forward</p>
+    <ul style="margin:.1em 0 0 1.1em;padding:0;">
+      <li><strong>Frame:</strong> begin with a user-facing decision, then state the observed evidence and constraints it must respect.</li>
+      <li><strong>Represent:</strong> explicit fields and text need an encoding; sparse and dense vectors preserve different kinds of similarity.</li>
+      <li><strong>Infer:</strong> latent factors compress interaction patterns into user and item vectors, but an unobserved interaction is not a negative preference.</li>
+    </ul>
+  </div>
 </div>
+```
+
 ::: notes
-Expected direction: Case A supports a signed SVD-style residual view; Case B supports NMF’s nonnegative additive components; Case C requires groups to state that unobserved interactions should not be silently treated as zero evidence. Put the three cases on the board or read them aloud before displaying this prompt. Invite one short report per case, then bridge back to fitting only the observed set Ω.
+This closes the three Week 02 sections. Section 01 framed a recommendation decision and its evidence; Section 02 showed how observed fields and text become comparable representations; Section 03 used latent factors to infer compact user and item coordinates from interactions. Emphasise that representation is a modelling choice: it makes some patterns available for a score while leaving other evidence absent or ambiguous. Bridge to Week 03: evaluation must test whether the chosen representation and objective support a defensible claim of success.
+
+[Sources]
+- Ricci, F., Rokach, L., & Shapira, B. (eds.). *Recommender Systems Handbook*, 3rd ed., Chapters 4 and 12.
+- Koren, Y., Bell, R., & Volinsky, C. (2009). “Matrix Factorization Techniques for Recommender Systems.”
 :::
+
 
 ## {background-color="#ffffff"}
 
