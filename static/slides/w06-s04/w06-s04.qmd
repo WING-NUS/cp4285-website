@@ -1,0 +1,277 @@
+---
+title: "Ranking, Re-ranking, and Visibility"
+subtitle: "CP4285 Modern Recommendation Systems — Week 06 · Section 04"
+author: "CP4285 Instruction Team"
+date: "15 Sep 2026"
+date-format: "DD MMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../cp4285-common.scss, w06-s04-custom.scss]
+    include-after-body: ../cp-timer.html
+    slide-number: true
+    show-slide-number: all
+    width: 1600
+    height: 900
+    chalkboard: true
+    logo: "../../uploads/recommendation-social-media.png"
+    footer: "CP4285 · Week 06 · NUS School of Computing"
+    self-contained: false
+    transition: slide
+    highlight-style: github
+    code-line-numbers: true
+    smaller: false
+    scrollable: false
+---
+
+# 04 Ranking, Re-ranking, and Visibility {background-color="#EF7C00"}
+
+```{=html}
+<div aria-labelledby="w06-s04-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
+  <h5 id="w06-s04-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
+  <ul style="margin:0;padding-left:1.2em;"><li><strong class="cp-text--navy">15 Sep 2026</strong> — Created the standalone Section 04 deck.</li></ul>
+</div>
+```
+
+::: notes
+Slide 01.
+Delivery: 30 seconds. Introduce this as the independent Section 04 deck for later insertion into Week 06. Its worked example changes from course-resource retrieval to internship ranking, while retaining the shared language of candidates, scores, shortlist, and final list.
+:::
+
+## Ranking allocates attention
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Worked request</span>
+    <p class="cp-card__title">Amir seeks a Singapore product-analytics internship</p>
+    <p style="margin:.45em 0 0;">He can work in Singapore, wants a role starting in May, values analytics work over generic marketing, and needs an application deadline he can still meet.</p>
+    <p class="cp-card__meta">Illustrative candidates and scores in this section are invented for teaching.</p>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">The visible surface</span>
+    <p class="cp-card__title">Six retrieved jobs; three first-page positions</p>
+    <div class="cp-flow-card" style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.38em;margin-top:.55em;text-align:center;white-space:nowrap;"><strong>Retrieve</strong><span class="cp-flow-arrow">→</span><strong>Rank + re-rank</strong><span class="cp-flow-arrow">→</span><strong>Expose</strong></div>
+    <p style="margin:.55em 0 0;"><strong>Top positions concentrate attention.</strong> The final order therefore allocates visibility as well as predicted relevance.</p>
+  </div>
+</div>
+
+```
+
+::: notes
+Slide 02.
+Delivery: 2 minutes. State the case and make the distinction explicit: retrieval has supplied plausible candidates; this section concerns the order in which people encounter them. Ask students what information should remove a job before ranking versus what information should merely change its position. Instructor synthesis: eligibility is a hard constraint; preference evidence is normally a ranking feature.
+:::
+
+## Code walk: filter first, score second
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.72em;align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">1 · Eligibility and lightweight score</p>
+    <pre style="margin:.35em 0 0;font-size:.76em;line-height:1.4;white-space:pre-wrap;"><code><span style="color:#555;"># illustrative pandas-style walkthrough</span>
+eligible = jobs.query(
+  <span style="color:#EF7C00;">"singapore and authorised and days_to_close &gt;= 7"</span>
+)
+
+eligible[<span style="color:#EF7C00;">"base_score"</span>] = (
+  <span style="color:#00796B;">.50</span> * eligible.skills_match
+  + <span style="color:#00796B;">.30</span> * eligible.role_intent
+  + <span style="color:#00796B;">.20</span> * eligible.recency
+)
+shortlist = eligible.nlargest(<span style="color:#EF7C00;">4</span>, <span style="color:#EF7C00;">"base_score"</span>)</code></pre>
+    <p class="cp-card__meta">The weights are a policy choice, not facts discovered by the code.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">2 · Inspect the intermediate output</p>
+    <table class="cp-table cp-table--compact" style="font-size:.72em;margin:.35em 0 0;"><thead><tr><th>Role</th><th>Skills</th><th>Intent</th><th>Recent</th><th>Score</th></tr></thead><tbody>
+      <tr><td class="cp-table__cell--label">MarinaLab · product analyst</td><td>0.86</td><td>0.95</td><td>0.80</td><td class="cp-table__cell--highlight">0.876</td></tr>
+      <tr><td class="cp-table__cell--label">Northstar · data intern</td><td>0.91</td><td>0.74</td><td>0.90</td><td>0.857</td></tr>
+      <tr><td class="cp-table__cell--label">CivicPulse · insights intern</td><td>0.79</td><td>0.88</td><td>0.85</td><td>0.826</td></tr>
+      <tr><td class="cp-table__cell--label">AtlasRetail · analytics intern</td><td>0.82</td><td>0.77</td><td>0.75</td><td>0.779</td></tr>
+    </tbody></table>
+    <p style="margin:.58em 0 0;"><strong>Question:</strong> what important preference or protection is still absent from this score?</p>
+  </div>
+</div>
+```
+
+::: notes
+Slide 03.
+Delivery: 4 minutes. Walk line by line: first remove jobs Amir cannot take or cannot apply to in time; only then rank the remaining items. Read the score as a transparent weighted combination, not a claim that the weights are correct. Ask the displayed question before advancing. Expected response: examples include an important fixed attribute, employer concentration, an explanation, social pressure, freshness, or resistance to manipulation. Instructor synthesis: the score exposes a policy that can be questioned and changed.
+:::
+
+## ♠ Spades: keep important attributes fixed
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Without a stable constraint</span>
+    <p class="cp-card__title">A high score can still produce the wrong recommendation</p>
+    <div style="margin-top:.55em;padding:.55em .65em;border-left:5px solid #D32F2F;background:#fff4f4;"><strong>Northstar · data intern</strong><br><span class="cp-card__meta">0.857 score — but the role requires a work authorisation Amir does not hold.</span></div>
+    <p style="margin:.55em 0 0;">A model should not ask a user to infer that a critical requirement was ignored.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♠ Loyalist / metadata-driven lens</span>
+    <p class="cp-card__title">Filters, consistency, and explanation</p>
+    <ul style="margin:.48em 0 0;padding-left:1.15em;"><li><strong>Filter:</strong> Singapore, eligibility, deadline, role type.</li><li><strong>Keep fixed:</strong> an explicit constraint remains true after re-ranking.</li><li><strong>Explain:</strong> “Shown because it matches your analytics coursework and May start preference.”</li></ul>
+  </div>
+</div>
+
+```
+
+::: {.callout-tip .to-think-about title="To think about"}
+Which attribute should be an inviolable filter here, and which should remain a tradeable ranking feature?
+:::
+
+::: notes
+Slide 04.
+Delivery: 3 minutes. Revisit the Week 01 Spades lens by its original meaning: loyalist or metadata-driven users need stable attributes, filters, consistency, and explanation. Do not call Spades a generic ranking objective. Invite one answer to the reflective question. Instructor synthesis: filters express commitments that a high aggregate score may not override; explanations help students see whether those commitments were respected.
+:::
+
+## Code walk: re-rank a shortlist, not the whole corpus
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="font-size:.72em;align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">A richer list-level pass</p>
+    <pre style="margin:.35em 0 0;font-size:.75em;line-height:1.42;white-space:pre-wrap;"><code><span style="color:#555;"># only after retrieval + lightweight ranking</span>
+final = rerank(
+  shortlist,
+  <span style="color:#003D7C;">query</span>=<span style="color:#EF7C00;">"product analytics internship"</span>,
+  <span style="color:#003D7C;">must_keep</span>=[<span style="color:#EF7C00;">"eligible"</span>, <span style="color:#EF7C00;">"singapore"</span>],
+  <span style="color:#003D7C;">max_per_employer</span>=<span style="color:#EF7C00;">1</span>,
+  <span style="color:#003D7C;">freshness_bonus</span>=<span style="color:#00796B;">0.04</span>
+)
+
+display(final[[<span style="color:#EF7C00;">"rank"</span>, <span style="color:#EF7C00;">"role"</span>, <span style="color:#EF7C00;">"why"</span>]])</code></pre>
+    <p class="cp-card__meta">The exact method can vary; its list-level constraints must be explicit and testable.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">Final visible list</p>
+    <ol style="margin:.35em 0 0;padding-left:1.25em;line-height:1.5;"><li><strong>MarinaLab · product analyst</strong><br><span class="cp-card__meta">strong fit; eligible; still open</span></li><li><strong>CivicPulse · insights intern</strong><br><span class="cp-card__meta">strong fit; recent listing; distinct employer</span></li><li><strong>AtlasRetail · analytics intern</strong><br><span class="cp-card__meta">eligible; preserves a qualified retail-analytics option</span></li></ol>
+    <p style="margin:.55em 0 0;color:#00796B;"><strong>Re-ranking changes an ordered list, not the set of basic eligibility rules.</strong></p>
+  </div>
+</div>
+```
+
+::: notes
+Slide 05.
+Delivery: 3 minutes. Explain why the expensive or richer list-level procedure is reserved for the shortlist. Point to `must_keep`: re-ranking cannot reintroduce an ineligible job. Point to the employer cap and freshness bonus: these are explicit interventions in the final list, not accidental by-products of a single score. Expected output: students can name the difference between filtering, scoring, and re-ranking.
+:::
+
+## ♦ Diamonds: retain qualified novelty and exposure
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;font-size:.92em;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Before list-level intervention</span>
+    <p class="cp-card__title">Relevant—but concentrated</p>
+    <div class="cp-stack" style="gap:.28em;margin-top:.5em;"><div class="cp-flow-card"><strong>1</strong> MarinaLab · product analyst</div><div class="cp-flow-card"><strong>2</strong> MarinaLab · data intern</div><div class="cp-flow-card"><strong>3</strong> Northstar · data intern</div></div>
+    <p class="cp-card__meta">Repeated employers and familiar items can crowd out a qualified new option.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♦ Novelty-seeker lens</span>
+    <p class="cp-card__title">Freshness, diversity, serendipity, new-item exposure</p>
+    <div class="cp-stack" style="gap:.28em;margin-top:.5em;"><div class="cp-flow-card"><strong>1</strong> MarinaLab · product analyst</div><div class="cp-flow-card"><strong>2</strong> CivicPulse · insights intern <span class="cp-chip cp-chip--navy">new employer</span></div><div class="cp-flow-card"><strong>3</strong> AtlasRetail · analytics intern <span class="cp-chip cp-chip--muted">recent</span></div></div>
+    <p class="cp-card__meta">Novelty is constrained by qualification; it is not random exploration.</p>
+  </div>
+</div>
+```
+
+::: notes
+Slide 06.
+Delivery: 3 minutes. State the Week 01 Diamonds meaning exactly: novelty seeker—freshness, diversity, serendipity, and new-item exposure. Compare the lists: the revised list has not promoted an irrelevant job; it has avoided spending multiple visible positions on the same employer while retaining qualified options. Ask whether a cap of one employer is always appropriate. Instructor synthesis: it is a context-specific policy that should be evaluated, not a universal rule.
+:::
+
+## ♥ Hearts: social evidence can help and distort
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">A tempting feature</span>
+    <p class="cp-card__title">“47 students from your programme saved this role”</p>
+    <p style="margin:.5em 0 0;">This cue may reduce uncertainty. It may also disclose a peer group’s behaviour, trigger conformity, or make a weak job appear safer than it is.</p>
+    <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Design question</span><span class="cp-metric__value">Show?</span><span class="cp-metric__meta">To whom, with what threshold, and with what explanation?</span></div>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♥ Social lens</span>
+    <p class="cp-card__title">Social evidence, influence, and conformity risk</p>
+    <ul style="margin:.5em 0 0;padding-left:1.15em;"><li>Aggregate and threshold a cue before display.</li><li>Do not imply a peer endorsement the data cannot support.</li><li>Test whether the cue shifts choices toward popularity rather than fit.</li><li>Give the user a way to hide social signals.</li></ul>
+  </div>
+</div>
+
+```
+
+::: notes
+Slide 07.
+Delivery: 3 minutes. Revisit Hearts by its Week 01 meaning: social evidence, influence, and conformity risk. Ask students for one condition under which the cue could be useful and one under which it should be hidden. Instructor synthesis: a social feature is neither automatically helpful nor automatically harmful; its aggregation, presentation, and audience matter.
+:::
+
+## ♣ Clubs: protect the list from manipulation
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Suspicious signal</span>
+    <p class="cp-card__title">A weak listing rises after a burst of saves</p>
+    <table class="cp-table cp-table--compact" style="margin:.42em 0 0;font-size:.76em;"><thead><tr><th>Role</th><th>Fit</th><th>Saves</th><th>Concern</th></tr></thead><tbody><tr><td class="cp-table__cell--label">BrightPath · analyst trainee</td><td>0.41</td><td>1,240 / 2 h</td><td class="cp-table__cell--highlight">coordinated burst</td></tr></tbody></table>
+    <p style="margin:.55em 0 0;">If raw engagement enters the ranker, a coordinated campaign can buy visibility.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♣ Adversarial / shill lens</span>
+    <p class="cp-card__title">Manipulation, coordinated abuse, robustness</p>
+    <pre style="margin:.42em 0 0;font-size:.72em;line-height:1.38;white-space:pre-wrap;"><code>if suspicious_save_burst(job):
+    job.engagement_weight = <span style="color:#EF7C00;">0</span>
+    job.review_state = <span style="color:#EF7C00;">"hold"</span>
+
+ranker.fit_score(job)
+<span style="color:#555;"># preserve an audit trail; do not silently erase it</span></code></pre>
+    <p class="cp-card__meta">Robustness needs monitoring and investigation, not a permanent assumption that engagement is trustworthy.</p>
+  </div>
+</div>
+
+```
+
+::: notes
+Slide 08.
+Delivery: 3 minutes. Revisit Clubs by its Week 01 meaning: adversarial or shill behaviour, manipulation, coordinated abuse, and robustness. Stress that the example is a diagnostic pattern, not proof of wrongdoing. The response suppresses the untrusted engagement contribution and routes the listing for review while retaining an audit record. Ask: “Why not simply delete the job?” Expected response: the system needs due process, traceability, and a way to learn from false positives.
+:::
+
+## 👥 Audit one internship list through four treatment lenses {background-color="#003D7C"}
+
+```{=html}
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">In groups, audit the three-role final list. For each Week 01 card-suit lens, name one check or safeguard the system needs.</p>
+    <div class="cp-grid cp-grid--2" style="gap:.48em;font-size:.76em;line-height:1.18;">
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♠ Spades</p><p style="margin:0;">Which stable attribute must remain fixed, and how will the user see why?</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♦ Diamonds</p><p style="margin:0;">How will you check qualified freshness, diversity, or new-item exposure?</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♥ Hearts</p><p style="margin:0;">What social cue needs a privacy or conformity safeguard?</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♣ Clubs</p><p style="margin:0;">Which signal could be manipulated, and what robustness check responds?</p></div>
+    </div>
+    <p class="cp-activity__instructions" style="margin-top:.55em;">Prepare a four-line audit: one check per suit. Be ready to justify one choice from the final ranked list.</p>
+  </div>
+  <div class="cp-activity__timer cp-center"><div class="cp-timer"><svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three-minute group discussion timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w06-s04-audit-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w06-s04-audit-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg><span id="w06-s04-audit-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span><button id="w06-s04-audit-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="w06-s04-audit-ring" data-text="w06-s04-audit-text" data-status="w06-s04-audit-status">▶ Start Timer</button></div></div>
+</div>
+```
+
+::: notes
+Slide 09.
+Activity mode: small-group discussion. Timebox: 3 minutes of group writing with the displayed timer, then 3 minutes for reports. Task: produce one check or safeguard for each original Week 01 treatment lens. Expected output: a four-line audit tied to the same internship list. Instructor synthesis: a defensible ranker exposes its filtering, scoring, re-ranking, social, novelty, and robustness choices so that different situated needs can contest and improve them.
+:::
+
+## 🔑 Re-ranking makes trade-offs inspectable {background-color="#003D7C"}
+
+```{=html}
+<div class="cp-stack" style="max-width:87%;margin:0 auto;color:#fff;">
+  <p style="font-size:1.12em;margin:0;text-align:center;"><strong style="color:#EF7C00;">Retrieve</strong> plausible options → <strong style="color:#EF7C00;">filter</strong> non-negotiables → <strong style="color:#EF7C00;">rank</strong> lightweight fit → <strong style="color:#EF7C00;">re-rank</strong> the shortlist → <strong style="color:#EF7C00;">audit</strong> the visible list.</p>
+  <div class="cp-grid cp-grid--2" style="margin-top:.75em;">
+    <div class="cp-card" style="background:rgba(255,255,255,.1);color:#fff;"><p class="cp-card__title" style="color:#fff;">The engineering claim</p><p style="margin:0;">Reserve richer, list-level computation for a small candidate set—and make its constraints explicit.</p></div>
+    <div class="cp-card" style="background:rgba(255,255,255,.1);color:#fff;"><p class="cp-card__title" style="color:#fff;">The treatment-lens claim</p><p style="margin:0;">A good list protects stable constraints, qualified novelty, careful social evidence, and robustness against manipulation.</p></div>
+  </div>
+</div>
+```
+
+::: notes
+Slide 10.
+Delivery: 2 minutes. Re-state the cascade and name the two conclusions. The engineering conclusion is about reserving expensive judgement for a shortlist. The treatment-lens conclusion uses the original Week 01 suit meanings: Spades for stable metadata and explanation, Diamonds for qualified novelty, Hearts for social influence and conformity risk, Clubs for robustness against manipulation. Bridge back to the combined Week 06 narrative: retrieval preserves plausible options; ranking and re-ranking shape the attention they receive.
+:::

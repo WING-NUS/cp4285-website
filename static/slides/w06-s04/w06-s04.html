@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="w06-s04_files/libs/clipboard/clipboard.min.js"></script>
+<script src="w06-s04_files/libs/quarto-html/tabby.min.js"></script>
+<script src="w06-s04_files/libs/quarto-html/popper.min.js"></script>
+<script src="w06-s04_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="w06-s04_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="w06-s04_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="w06-s04_files/libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="CP4285 Instruction Team">
+  <meta name="dcterms.date" content="2026-09-15">
+  <title>Ranking, Re-ranking, and Visibility</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="w06-s04_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="w06-s04_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="w06-s04_files/libs/revealjs/dist/theme/quarto-32d026921de4f487b663066d9af0df02.css">
+  <link href="w06-s04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="w06-s04_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="w06-s04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="w06-s04_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="w06-s04_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="w06-s04_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Ranking, Re-ranking, and Visibility</h1>
+  <p class="subtitle">CP4285 Modern Recommendation Systems — Week 06 · Section 04</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+CP4285 Instruction Team
+</div>
+</div>
+</div>
+
+  <p class="date">15 Sep 2026</p>
+</section>
+<section>
+<section id="ranking-re-ranking-and-visibility" class="title-slide slide level1 center" data-background-color="#EF7C00">
+<h1>04 Ranking, Re-ranking, and Visibility</h1>
+<div aria-labelledby="w06-s04-changelog-title" style="margin:1.2em auto 0;max-width:72%;padding:.55em .8em;border-left:3px solid #003D7C;border-radius:0 6px 6px 0;background:rgba(255,255,255,.78);color:#003D7C;font-family:Arial,Helvetica,sans-serif;font-size:.42em;line-height:1.35;">
+  <h5 id="w06-s04-changelog-title" style="margin:0 0 .25em;font-size:1em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Changelog</h5>
+  <ul style="margin:0;padding-left:1.2em;"><li><strong class="cp-text--navy">15 Sep 2026</strong> — Created the standalone Section 04 deck.</li></ul>
+</div>
+<aside class="notes">
+<p>Slide 01. Delivery: 30 seconds. Introduce this as the independent Section 04 deck for later insertion into Week 06. Its worked example changes from course-resource retrieval to internship ranking, while retaining the shared language of candidates, scores, shortlist, and final list.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ranking-allocates-attention" class="slide level2">
+<h2>Ranking allocates attention</h2>
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Worked request</span>
+    <p class="cp-card__title">Amir seeks a Singapore product-analytics internship</p>
+    <p style="margin:.45em 0 0;">He can work in Singapore, wants a role starting in May, values analytics work over generic marketing, and needs an application deadline he can still meet.</p>
+    <p class="cp-card__meta">Illustrative candidates and scores in this section are invented for teaching.</p>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">The visible surface</span>
+    <p class="cp-card__title">Six retrieved jobs; three first-page positions</p>
+    <div class="cp-flow-card" style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.38em;margin-top:.55em;text-align:center;white-space:nowrap;"><strong>Retrieve</strong><span class="cp-flow-arrow">→</span><strong>Rank + re-rank</strong><span class="cp-flow-arrow">→</span><strong>Expose</strong></div>
+    <p style="margin:.55em 0 0;"><strong>Top positions concentrate attention.</strong> The final order therefore allocates visibility as well as predicted relevance.</p>
+  </div>
+</div>
+
+<aside class="notes">
+<p>Slide 02. Delivery: 2 minutes. State the case and make the distinction explicit: retrieval has supplied plausible candidates; this section concerns the order in which people encounter them. Ask students what information should remove a job before ranking versus what information should merely change its position. Instructor synthesis: eligibility is a hard constraint; preference evidence is normally a ranking feature.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="code-walk-filter-first-score-second" class="slide level2">
+<h2>Code walk: filter first, score second</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.72em;align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">1 · Eligibility and lightweight score</p>
+    <pre style="margin:.35em 0 0;font-size:.76em;line-height:1.4;white-space:pre-wrap;"><code><span style="color:#555;"># illustrative pandas-style walkthrough</span>
+eligible = jobs.query(
+  <span style="color:#EF7C00;">"singapore and authorised and days_to_close &gt;= 7"</span>
+)
+
+eligible[<span style="color:#EF7C00;">"base_score"</span>] = (
+  <span style="color:#00796B;">.50</span> * eligible.skills_match
+  + <span style="color:#00796B;">.30</span> * eligible.role_intent
+  + <span style="color:#00796B;">.20</span> * eligible.recency
+)
+shortlist = eligible.nlargest(<span style="color:#EF7C00;">4</span>, <span style="color:#EF7C00;">"base_score"</span>)</code></pre>
+    <p class="cp-card__meta">The weights are a policy choice, not facts discovered by the code.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">2 · Inspect the intermediate output</p>
+    
+<table class="cp-table cp-table--compact caption-top" style="font-size:.72em;margin:.35em 0 0;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Role</th>
+<th data-quarto-table-cell-role="th">Skills</th>
+<th data-quarto-table-cell-role="th">Intent</th>
+<th data-quarto-table-cell-role="th">Recent</th>
+<th data-quarto-table-cell-role="th">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="cp-table__cell--label">MarinaLab · product analyst</td>
+<td>0.86</td>
+<td>0.95</td>
+<td>0.80</td>
+<td class="cp-table__cell--highlight">0.876</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell--label">Northstar · data intern</td>
+<td>0.91</td>
+<td>0.74</td>
+<td>0.90</td>
+<td>0.857</td>
+</tr>
+<tr class="odd">
+<td class="cp-table__cell--label">CivicPulse · insights intern</td>
+<td>0.79</td>
+<td>0.88</td>
+<td>0.85</td>
+<td>0.826</td>
+</tr>
+<tr class="even">
+<td class="cp-table__cell--label">AtlasRetail · analytics intern</td>
+<td>0.82</td>
+<td>0.77</td>
+<td>0.75</td>
+<td>0.779</td>
+</tr>
+</tbody>
+</table>
+
+    <p style="margin:.58em 0 0;"><strong>Question:</strong> what important preference or protection is still absent from this score?</p>
+  </div>
+</div>
+<aside class="notes">
+<p>Slide 03. Delivery: 4 minutes. Walk line by line: first remove jobs Amir cannot take or cannot apply to in time; only then rank the remaining items. Read the score as a transparent weighted combination, not a claim that the weights are correct. Ask the displayed question before advancing. Expected response: examples include an important fixed attribute, employer concentration, an explanation, social pressure, freshness, or resistance to manipulation. Instructor synthesis: the score exposes a policy that can be questioned and changed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="spades-keep-important-attributes-fixed" class="slide level2">
+<h2>♠ Spades: keep important attributes fixed</h2>
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Without a stable constraint</span>
+    <p class="cp-card__title">A high score can still produce the wrong recommendation</p>
+    <div style="margin-top:.55em;padding:.55em .65em;border-left:5px solid #D32F2F;background:#fff4f4;"><strong>Northstar · data intern</strong><br><span class="cp-card__meta">0.857 score — but the role requires a work authorisation Amir does not hold.</span></div>
+    <p style="margin:.55em 0 0;">A model should not ask a user to infer that a critical requirement was ignored.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♠ Loyalist / metadata-driven lens</span>
+    <p class="cp-card__title">Filters, consistency, and explanation</p>
+    <ul style="margin:.48em 0 0;padding-left:1.15em;"><li><strong>Filter:</strong> Singapore, eligibility, deadline, role type.</li><li><strong>Keep fixed:</strong> an explicit constraint remains true after re-ranking.</li><li><strong>Explain:</strong> “Shown because it matches your analytics coursework and May start preference.”</li></ul>
+  </div>
+</div>
+
+<div class="to-think-about" title="To think about">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>To think about</strong></p>
+</div>
+<div class="callout-content">
+<p>Which attribute should be an inviolable filter here, and which should remain a tradeable ranking feature?</p>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Slide 04. Delivery: 3 minutes. Revisit the Week 01 Spades lens by its original meaning: loyalist or metadata-driven users need stable attributes, filters, consistency, and explanation. Do not call Spades a generic ranking objective. Invite one answer to the reflective question. Instructor synthesis: filters express commitments that a high aggregate score may not override; explanations help students see whether those commitments were respected.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="code-walk-re-rank-a-shortlist-not-the-whole-corpus" class="slide level2">
+<h2>Code walk: re-rank a shortlist, not the whole corpus</h2>
+<div class="cp-grid cp-grid--2" style="font-size:.72em;align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">A richer list-level pass</p>
+    <pre style="margin:.35em 0 0;font-size:.75em;line-height:1.42;white-space:pre-wrap;"><code><span style="color:#555;"># only after retrieval + lightweight ranking</span>
+final = rerank(
+  shortlist,
+  <span style="color:#003D7C;">query</span>=<span style="color:#EF7C00;">"product analytics internship"</span>,
+  <span style="color:#003D7C;">must_keep</span>=[<span style="color:#EF7C00;">"eligible"</span>, <span style="color:#EF7C00;">"singapore"</span>],
+  <span style="color:#003D7C;">max_per_employer</span>=<span style="color:#EF7C00;">1</span>,
+  <span style="color:#003D7C;">freshness_bonus</span>=<span style="color:#00796B;">0.04</span>
+)
+
+display(final[[<span style="color:#EF7C00;">"rank"</span>, <span style="color:#EF7C00;">"role"</span>, <span style="color:#EF7C00;">"why"</span>]])</code></pre>
+    <p class="cp-card__meta">The exact method can vary; its list-level constraints must be explicit and testable.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <p class="cp-card__title">Final visible list</p>
+    <ol style="margin:.35em 0 0;padding-left:1.25em;line-height:1.5;"><li><strong>MarinaLab · product analyst</strong><br><span class="cp-card__meta">strong fit; eligible; still open</span></li><li><strong>CivicPulse · insights intern</strong><br><span class="cp-card__meta">strong fit; recent listing; distinct employer</span></li><li><strong>AtlasRetail · analytics intern</strong><br><span class="cp-card__meta">eligible; preserves a qualified retail-analytics option</span></li></ol>
+    <p style="margin:.55em 0 0;color:#00796B;"><strong>Re-ranking changes an ordered list, not the set of basic eligibility rules.</strong></p>
+  </div>
+</div>
+<aside class="notes">
+<p>Slide 05. Delivery: 3 minutes. Explain why the expensive or richer list-level procedure is reserved for the shortlist. Point to <code>must_keep</code>: re-ranking cannot reintroduce an ineligible job. Point to the employer cap and freshness bonus: these are explicit interventions in the final list, not accidental by-products of a single score. Expected output: students can name the difference between filtering, scoring, and re-ranking.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="diamonds-retain-qualified-novelty-and-exposure" class="slide level2">
+<h2>♦ Diamonds: retain qualified novelty and exposure</h2>
+<div class="cp-grid cp-grid--2" style="align-items:stretch;font-size:.92em;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Before list-level intervention</span>
+    <p class="cp-card__title">Relevant—but concentrated</p>
+    <div class="cp-stack" style="gap:.28em;margin-top:.5em;"><div class="cp-flow-card"><strong>1</strong> MarinaLab · product analyst</div><div class="cp-flow-card"><strong>2</strong> MarinaLab · data intern</div><div class="cp-flow-card"><strong>3</strong> Northstar · data intern</div></div>
+    <p class="cp-card__meta">Repeated employers and familiar items can crowd out a qualified new option.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♦ Novelty-seeker lens</span>
+    <p class="cp-card__title">Freshness, diversity, serendipity, new-item exposure</p>
+    <div class="cp-stack" style="gap:.28em;margin-top:.5em;"><div class="cp-flow-card"><strong>1</strong> MarinaLab · product analyst</div><div class="cp-flow-card"><strong>2</strong> CivicPulse · insights intern <span class="cp-chip cp-chip--navy">new employer</span></div><div class="cp-flow-card"><strong>3</strong> AtlasRetail · analytics intern <span class="cp-chip cp-chip--muted">recent</span></div></div>
+    <p class="cp-card__meta">Novelty is constrained by qualification; it is not random exploration.</p>
+  </div>
+</div>
+<aside class="notes">
+<p>Slide 06. Delivery: 3 minutes. State the Week 01 Diamonds meaning exactly: novelty seeker—freshness, diversity, serendipity, and new-item exposure. Compare the lists: the revised list has not promoted an irrelevant job; it has avoided spending multiple visible positions on the same employer while retaining qualified options. Ask whether a cap of one employer is always appropriate. Instructor synthesis: it is a context-specific policy that should be evaluated, not a universal rule.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="hearts-social-evidence-can-help-and-distort" class="slide level2">
+<h2>♥ Hearts: social evidence can help and distort</h2>
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">A tempting feature</span>
+    <p class="cp-card__title">“47 students from your programme saved this role”</p>
+    <p style="margin:.5em 0 0;">This cue may reduce uncertainty. It may also disclose a peer group’s behaviour, trigger conformity, or make a weak job appear safer than it is.</p>
+    <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Design question</span><span class="cp-metric__value">Show?</span><span class="cp-metric__meta">To whom, with what threshold, and with what explanation?</span></div>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♥ Social lens</span>
+    <p class="cp-card__title">Social evidence, influence, and conformity risk</p>
+    <ul style="margin:.5em 0 0;padding-left:1.15em;"><li>Aggregate and threshold a cue before display.</li><li>Do not imply a peer endorsement the data cannot support.</li><li>Test whether the cue shifts choices toward popularity rather than fit.</li><li>Give the user a way to hide social signals.</li></ul>
+  </div>
+</div>
+
+<aside class="notes">
+<p>Slide 07. Delivery: 3 minutes. Revisit Hearts by its Week 01 meaning: social evidence, influence, and conformity risk. Ask students for one condition under which the cue could be useful and one under which it should be hidden. Instructor synthesis: a social feature is neither automatically helpful nor automatically harmful; its aggregation, presentation, and audience matter.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="clubs-protect-the-list-from-manipulation" class="slide level2">
+<h2>♣ Clubs: protect the list from manipulation</h2>
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Suspicious signal</span>
+    <p class="cp-card__title">A weak listing rises after a burst of saves</p>
+    
+<table class="cp-table cp-table--compact caption-top" style="margin:.42em 0 0;font-size:.76em;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Role</th>
+<th data-quarto-table-cell-role="th">Fit</th>
+<th data-quarto-table-cell-role="th">Saves</th>
+<th data-quarto-table-cell-role="th">Concern</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="cp-table__cell--label">BrightPath · analyst trainee</td>
+<td>0.41</td>
+<td>1,240 / 2 h</td>
+<td class="cp-table__cell--highlight">coordinated burst</td>
+</tr>
+</tbody>
+</table>
+
+    <p style="margin:.55em 0 0;">If raw engagement enters the ranker, a coordinated campaign can buy visibility.</p>
+  </div>
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">♣ Adversarial / shill lens</span>
+    <p class="cp-card__title">Manipulation, coordinated abuse, robustness</p>
+    <pre style="margin:.42em 0 0;font-size:.72em;line-height:1.38;white-space:pre-wrap;"><code>if suspicious_save_burst(job):
+    job.engagement_weight = <span style="color:#EF7C00;">0</span>
+    job.review_state = <span style="color:#EF7C00;">"hold"</span>
+
+ranker.fit_score(job)
+<span style="color:#555;"># preserve an audit trail; do not silently erase it</span></code></pre>
+    <p class="cp-card__meta">Robustness needs monitoring and investigation, not a permanent assumption that engagement is trustworthy.</p>
+  </div>
+</div>
+<aside class="notes">
+<p>Slide 08. Delivery: 3 minutes. Revisit Clubs by its Week 01 meaning: adversarial or shill behaviour, manipulation, coordinated abuse, and robustness. Stress that the example is a diagnostic pattern, not proof of wrongdoing. The response suppresses the untrusted engagement contribution and routes the listing for review while retaining an audit record. Ask: “Why not simply delete the job?” Expected response: the system needs due process, traceability, and a way to learn from false positives.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="audit-one-internship-list-through-four-treatment-lenses" class="slide level2" data-background-color="#003D7C">
+<h2>👥 Audit one internship list through four treatment lenses</h2>
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">In groups, audit the three-role final list. For each Week 01 card-suit lens, name one check or safeguard the system needs.</p>
+    <div class="cp-grid cp-grid--2" style="gap:.48em;font-size:.76em;line-height:1.18;">
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♠ Spades</p><p style="margin:0;">Which stable attribute must remain fixed, and how will the user see why?</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♦ Diamonds</p><p style="margin:0;">How will you check qualified freshness, diversity, or new-item exposure?</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♥ Hearts</p><p style="margin:0;">What social cue needs a privacy or conformity safeguard?</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">♣ Clubs</p><p style="margin:0;">Which signal could be manipulated, and what robustness check responds?</p></div>
+    </div>
+    <p class="cp-activity__instructions" style="margin-top:.55em;">Prepare a four-line audit: one check per suit. Be ready to justify one choice from the final ranked list.</p>
+  </div>
+  <div class="cp-activity__timer cp-center"><div class="cp-timer"><svg width="140" height="140" viewbox="0 0 180 180" aria-label="Three-minute group discussion timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w06-s04-audit-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w06-s04-audit-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg><span id="w06-s04-audit-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span><button id="w06-s04-audit-btn" type="button" class="cp-timer__button" data-cp-timer="" data-seconds="180" data-ring="w06-s04-audit-ring" data-text="w06-s04-audit-text" data-status="w06-s04-audit-status">▶ Start Timer</button></div></div>
+</div>
+<aside class="notes">
+<p>Slide 09. Activity mode: small-group discussion. Timebox: 3 minutes of group writing with the displayed timer, then 3 minutes for reports. Task: produce one check or safeguard for each original Week 01 treatment lens. Expected output: a four-line audit tied to the same internship list. Instructor synthesis: a defensible ranker exposes its filtering, scoring, re-ranking, social, novelty, and robustness choices so that different situated needs can contest and improve them.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="re-ranking-makes-trade-offs-inspectable" class="slide level2" data-background-color="#003D7C">
+<h2>🔑 Re-ranking makes trade-offs inspectable</h2>
+<div class="cp-stack" style="max-width:87%;margin:0 auto;color:#fff;">
+  <p style="font-size:1.12em;margin:0;text-align:center;"><strong style="color:#EF7C00;">Retrieve</strong> plausible options → <strong style="color:#EF7C00;">filter</strong> non-negotiables → <strong style="color:#EF7C00;">rank</strong> lightweight fit → <strong style="color:#EF7C00;">re-rank</strong> the shortlist → <strong style="color:#EF7C00;">audit</strong> the visible list.</p>
+  <div class="cp-grid cp-grid--2" style="margin-top:.75em;">
+    <div class="cp-card" style="background:rgba(255,255,255,.1);color:#fff;"><p class="cp-card__title" style="color:#fff;">The engineering claim</p><p style="margin:0;">Reserve richer, list-level computation for a small candidate set—and make its constraints explicit.</p></div>
+    <div class="cp-card" style="background:rgba(255,255,255,.1);color:#fff;"><p class="cp-card__title" style="color:#fff;">The treatment-lens claim</p><p style="margin:0;">A good list protects stable constraints, qualified novelty, careful social evidence, and robustness against manipulation.</p></div>
+  </div>
+</div>
+<aside class="notes">
+<p>Slide 10. Delivery: 2 minutes. Re-state the cascade and name the two conclusions. The engineering conclusion is about reserving expensive judgement for a shortlist. The treatment-lens conclusion uses the original Week 01 suit meanings: Spades for stable metadata and explanation, Diamonds for qualified novelty, Hearts for social influence and conformity risk, Clubs for robustness against manipulation. Bridge back to the combined Week 06 narrative: retrieval preserves plausible options; ranking and re-ranking shape the attention they receive.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../../uploads/recommendation-social-media.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>CP4285 · Week 06 · NUS School of Computing</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="w06-s04_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="w06-s04_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="w06-s04_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="w06-s04_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+    (function () {
+      function byId(id) {
+        return id ? document.getElementById(id) : null;
+      }
+
+      function format(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var remainder = seconds % 60;
+        return (minutes < 10 ? '0' + minutes : String(minutes)) + ':' + (remainder < 10 ? '0' + remainder : String(remainder));
+      }
+
+      function setupTimer(button) {
+        if (button.dataset.cpTimerBound === 'true') return;
+        var duration = Number(button.dataset.seconds || 0);
+        var ring = byId(button.dataset.ring);
+        var text = byId(button.dataset.text);
+        var status = byId(button.dataset.status);
+        if (!duration || !ring || !text || !status) return;
+
+        button.dataset.cpTimerBound = 'true';
+        var remaining = duration;
+        var interval = null;
+        var state = 'idle';
+        var audio = null;
+        var circumference = 2 * Math.PI * Number(ring.getAttribute('r') || 75);
+        var originalStroke = ring.getAttribute('stroke') || '#EF7C00';
+
+        function update() {
+          text.textContent = format(remaining);
+          status.textContent = state === 'complete' ? "Time's up!" : format(remaining);
+          ring.setAttribute('stroke-dashoffset', circumference * (1 - remaining / duration));
+        }
+
+        function pause() {
+          if (state !== 'running') return;
+          window.clearInterval(interval);
+          interval = null;
+          state = 'paused';
+          button.textContent = '▶ Resume';
+        }
+
+        function reset() {
+          window.clearInterval(interval);
+          interval = null;
+          remaining = duration;
+          state = 'idle';
+          ring.setAttribute('stroke', originalStroke);
+          button.textContent = '▶ Start Timer';
+          update();
+        }
+
+        function chime() {
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          if (!audio) audio = new AudioContextClass();
+          if (audio.state === 'suspended') audio.resume();
+          var oscillator = audio.createOscillator();
+          var gain = audio.createGain();
+          var now = audio.currentTime;
+          oscillator.type = 'sine';
+          oscillator.frequency.value = 880;
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+          oscillator.connect(gain);
+          gain.connect(audio.destination);
+          oscillator.start(now);
+          oscillator.stop(now + 0.5);
+        }
+
+        button.addEventListener('click', function () {
+          if (state === 'complete') {
+            reset();
+            return;
+          }
+          if (state === 'running') {
+            pause();
+            return;
+          }
+          state = 'running';
+          button.textContent = '⏸ Pause';
+          interval = window.setInterval(function () {
+            remaining = Math.max(0, remaining - 1);
+            update();
+            if (remaining === 0) {
+              window.clearInterval(interval);
+              interval = null;
+              state = 'complete';
+              ring.setAttribute('stroke', '#00C875');
+              button.textContent = '↻ Restart Timer';
+              chime();
+            }
+          }, 1000);
+        });
+
+        var slide = button.closest('section');
+        if (slide) slide.dataset.cpTimerPause = 'true';
+        update();
+      }
+
+      function setupAll() {
+        document.querySelectorAll('button[data-cp-timer]').forEach(setupTimer);
+        if (!window.Reveal || window.__cpTimerSlideListener) return;
+        window.__cpTimerSlideListener = true;
+        window.Reveal.on('slidechanged', function (event) {
+          if (!event.previousSlide || event.previousSlide.dataset.cpTimerPause !== 'true') return;
+          event.previousSlide.querySelectorAll('button[data-cp-timer]').forEach(function (button) {
+            if (button.textContent === '⏸ Pause') button.click();
+          });
+        });
+      }
+
+      if (window.Reveal && window.Reveal.isReady && window.Reveal.isReady()) {
+        setupAll();
+      } else if (window.Reveal) {
+        window.Reveal.on('ready', setupAll);
+      } else {
+        window.addEventListener('load', setupAll);
+      }
+    }());
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
