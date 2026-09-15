@@ -1,0 +1,36 @@
+/* Auxiliary deck overlay. Course-wide rules live in ../cp4285-common.scss. */
+/*-- scss:rules --*/
+.reveal .dataset-url {
+  font-size: .66em;
+  overflow-wrap: anywhere;
+}
+
+.reveal .dataset-papers {
+  font-size: .62em;
+  line-height: 1.38;
+}
+
+/* NUS navy links remain recognisable in both screen and print views. */
+.reveal a,
+.reveal a:visited,
+.reveal a.paper-ref,
+.reveal a.paper-ref:visited {
+  color: #003D7C;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.1em;
+}
+
+@page {
+  size: 1600px 900px;
+  margin: 0;
+}
+
+@media print {
+  .reveal .slides aside.notes,
+  .reveal .speaker-notes,
+  .footer.footer-default,
+  .quarto-auto-generated-content {
+    display: none !important;
+  }
+}
