@@ -128,64 +128,177 @@ Delivery: 2 minutes. This is a pre-lecture activation task, not a test of Week 0
 Delivery: 2 minutes. State the outcomes as design capabilities rather than a list to memorise. Connect the prior exercise to the first hand-off: current-session signals may be valuable, but they must be available and affordable at the stage where they are used. Preview the notation used today: corpus size N, candidate depths K1, K2, and K3, embedding dimension d, joint sequence length L, and context token budget B.
 :::
 
-## Why retrieval alone cannot choose the final evidence
+# 02 Pipeline Design {background-color="#EF7C00"}
+
+::: notes
+Delivery: 20 seconds. Introduce the section as the architectural response to the Week 06 outcomes: a useful system does not make one decision over the whole corpus. The next two slides establish why stages are necessary; the remaining slides specify what must cross their boundaries.
+:::
+
+## Maya’s current intent: a five-day trip
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft" style="display:flex;flex-direction:column;justify-content:space-between;">
+    <div>
+      <span class="cp-kicker">Shopping session</span>
+      <p class="cp-card__title">Maya’s long-term purchases are mostly electronics and stationery.</p>
+      <p style="margin:.55em 0 0;line-height:1.38;">Today she searches for luggage, opens cabin-bag dimensions, compares wheels and weight, and checks delivery before Friday.</p>
+    </div>
+    <div style="margin-top:.8em;padding:.65em .75em;border-left:5px solid #EF7C00;background:#fff7ed;color:#003D7C;">
+      <span style="display:block;font-size:.72em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Current query</span>
+      <strong style="font-size:1.08em;line-height:1.2;">“compact carry-on luggage for a five-day trip”</strong>
+    </div>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Fictional product catalogue</span>
+    <p class="cp-card__title">N ≈ 5,000,000 active SKUs</p>
+    <p class="cp-card__meta" style="margin:.25em 0 0;">Illustrative catalogue records—not retrieved candidates.</p>
+    <div class="cp-grid cp-grid--2" style="margin-top:.48em;gap:.34em;font-size:.68em;line-height:1.18;">
+      <div class="cp-chip cp-chip--navy">SKU-LUG-204<br><span style="font-weight:400;">Compact Carry-on Spinner · strong overlap</span></div>
+      <div class="cp-chip cp-chip--navy">SKU-BPK-619<br><span style="font-weight:400;">40L Cabin Backpack · strong overlap</span></div>
+      <div class="cp-chip cp-chip--navy">SKU-LUG-118<br><span style="font-weight:400;">Hard-shell Carry-on · strong overlap</span></div>
+      <div class="cp-chip cp-chip--navy">SKU-CHK-841<br><span style="font-weight:400;">28-inch Checked Suitcase · too large</span></div>
+      <div class="cp-chip cp-chip--navy">SKU-TOT-730<br><span style="font-weight:400;">Travel Tote · travel, not luggage</span></div>
+      <div class="cp-chip cp-chip--navy">SKU-ORG-501<br><span style="font-weight:400;">Packing Cubes · accessory</span></div>
+      <div class="cp-chip cp-chip--navy">SKU-PAS-338<br><span style="font-weight:400;">Passport Wallet · accessory</span></div>
+      <div class="cp-chip cp-chip--navy">SKU-BPK-280<br><span style="font-weight:400;">Laptop Backpack · nearby category</span></div>
+    </div>
+  </div>
+</div>
+<div class="cp-card cp-card--prompt" style="margin-top:.65em;"><strong>Question:</strong> before selecting Maya’s final list, which products must enter the candidate set?</div>
+```
+
+::: notes
+Delivery: 90 seconds. Read Maya’s query and session trace aloud, then give students 20 seconds to scan the illustrative records from the five-million-SKU fictional catalogue. Ask for one strong overlap and one nearby-but-weaker record; do not ask for a final order. Synthesize: shown records are not already the candidate set. Current session evidence should influence the search, but the next two slides explain why the system cannot make the final decision across every catalogue item. These fictional product labels will be used consistently throughout Sections 02 and 03.
+:::
+
+## Why candidate generation cannot choose final products
 
 ```{=html}
 <div class="cp-stack" style="max-width:92%;margin:0 auto;">
-  <p style="margin:0;color:#425466;font-size:.88em;">Each stage receives fewer items and is allowed to use more expensive evidence. A document removed early cannot be recovered later.</p>
+  <p style="margin:0;color:#425466;font-size:.88em;">Each stage receives fewer products and is allowed to use richer query and session evidence. A product removed early cannot be recovered later.</p>
   <div style="display:grid;grid-template-columns:1fr .14fr 1fr .14fr 1fr .14fr 1fr;align-items:stretch;gap:.32em;">
-    <div class="cp-flow-card"><span class="cp-kicker">Indexed retrieval</span><strong>Corpus N</strong><span class="cp-card__meta">Sparse, dense, or hybrid search</span></div>
+    <div class="cp-flow-card"><span class="cp-kicker">Product catalogue</span><strong>Catalogue N</strong><span class="cp-card__meta">Titles, descriptions, attributes, images</span></div>
     <div class="cp-flow-arrow" aria-hidden="true">→</div>
-    <div class="cp-flow-card"><span class="cp-kicker">Candidate set</span><strong>K₁ ≈ 1,000</strong><span class="cp-card__meta">High recall under a latency budget</span></div>
+    <div class="cp-flow-card"><span class="cp-kicker">Candidate set</span><strong>K₁</strong><span class="cp-card__meta">Broad, plausible product matches</span></div>
     <div class="cp-flow-arrow" aria-hidden="true">→</div>
-    <div class="cp-flow-card"><span class="cp-kicker">Lightweight ranking</span><strong>K₂ ≈ 100</strong><span class="cp-card__meta">Richer request-time features</span></div>
+    <div class="cp-flow-card"><span class="cp-kicker">Lightweight ranking</span><strong>K₂</strong><span class="cp-card__meta">Price, popularity, and session features</span></div>
     <div class="cp-flow-arrow" aria-hidden="true">→</div>
-    <div class="cp-flow-card"><span class="cp-kicker">Deep re-ranking</span><strong>K₃ ≈ 10–30</strong><span class="cp-card__meta">Joint query-document relevance</span></div>
+    <div class="cp-flow-card"><span class="cp-kicker">Deep re-ranking</span><strong>K₃</strong><span class="cp-card__meta">Richer query-product fit</span></div>
   </div>
-  <div class="cp-card cp-card--prompt" style="margin-top:.25em;"><strong>Then assemble:</strong> deduplicate, diversify, preserve provenance, and fit evidence within the RAG context budget <strong>B</strong>.</div>
+  <div class="cp-card cp-card--prompt" style="margin-top:.25em;"><strong>Then present:</strong> remove near-duplicates, explain the ordering, and return a manageable product shortlist for Maya.</div>
 </div>
 ```
 
 ::: notes
-Delivery: 3 minutes. Retrieval is deliberately broad: it should retain plausible evidence, not make the final semantic distinction. The lightweight ranker makes a first precision-oriented cut with features that are more expensive or less indexable than retrieval features. The deep re-ranker reads query and document together, so it is reserved for a shortlist. Context assembly is not another relevance model: it is a list-level and token-budget decision. Ask: “If a relevant source falls outside K1, can a perfect re-ranker rescue it?” No.
+Delivery: 3 minutes. Candidate generation is deliberately broad: it should retain products that could suit Maya’s current trip, not make the final preference distinction. The lightweight ranker makes a first precision-oriented cut with features that are more expensive or less indexable than candidate-generation features. The deep re-ranker uses richer query-product interaction, so it is reserved for a shortlist. Ask: “If a suitable carry-on bag falls outside K1, can a perfect re-ranker rescue it?” No.
 :::
 
-## Why not use one deep scoring stage? {background-color="#ffffff"}
+## Why not use one deep query-product scoring stage? {background-color="#ffffff"}
 
 ```{=html}
 <div class="cp-grid cp-grid--2" style="align-items:stretch;">
   <div class="cp-card cp-card--warning">
     <span class="cp-kicker">Single-stage deep scoring</span>
-    <p class="cp-card__title">Apply joint attention to every retrieved candidate</p>
-    <p style="margin:.45em 0;"><strong>Input:</strong> K₁ candidates, each with a query-document sequence of length L.</p>
-    <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Approximate attention compute</span><span class="cp-metric__value">O(K₁L²d)</span><span class="cp-metric__meta">K₁ candidates × quadratic sequence interaction × hidden dimension d</span></div>
-    <p class="cp-card__meta" style="margin-top:.6em;">With K₁ = 1,000, every request fetches and jointly processes 1,000 document texts. The most expensive model is spent on many weak candidates.</p>
+    <p class="cp-card__title">Apply joint attention to every candidate product</p>
+    <p style="margin:.45em 0;"><strong>Input:</strong> K₁ products, each with a query-product sequence of length L.</p>
+    <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Approximate attention compute</span><span class="cp-metric__value">O(K₁L²d)</span><span class="cp-metric__meta">K₁ products × quadratic query-product interaction × hidden dimension d</span></div>
+    <p class="cp-card__meta" style="margin-top:.6em;">With K₁ = 1,000, every request jointly processes 1,000 product descriptions with Maya’s query and session. The most expensive model is spent on many weak matches.</p>
   </div>
   <div class="cp-card cp-card--soft">
-    <span class="cp-kicker">Staged ranking and re-ranking</span>
-    <p class="cp-card__title">Use deep joint scoring only after two cheaper cuts</p>
+    <span class="cp-kicker">Staged product ranking</span>
+    <p class="cp-card__title">Use deep query-product scoring only after cheaper cuts</p>
     <div class="cp-stack" style="gap:.35em;">
-      <div><strong>Retrieve:</strong> N → K₁ with an index; exact dense scan is O(Nd), while ANN trades exactness for measured speed.</div>
-      <div><strong>Rank:</strong> K₁ → K₂ with lightweight features, often O(K₁d) or a bounded feature-model cost.</div>
-      <div><strong>Re-rank:</strong> K₂ → K₃ with joint attention, O(K₂L²d).</div>
+      <div><strong>Generate:</strong> N → K₁ with a lexical, dense, or hybrid candidate index.</div>
+      <div><strong>Rank:</strong> K₁ → K₂ with lightweight product and session features.</div>
+      <div><strong>Re-rank:</strong> K₂ → K₃ with joint query-product scoring, O(K₂L²d).</div>
     </div>
-    <div class="cp-metric"><span class="cp-metric__label">Deep-scoring reduction</span><span class="cp-metric__value">K₁ / K₂</span><span class="cp-metric__meta">1,000 → 20 means 50× fewer joint query-document evaluations</span></div>
+    <div class="cp-metric"><span class="cp-metric__label">Deep-scoring reduction</span><span class="cp-metric__value">K₁ / K₂</span><span class="cp-metric__meta">1,000 → 20 means 50× fewer query-product evaluations</span></div>
   </div>
 </div>
 ```
 
 ::: notes
-Delivery: 3 minutes. Contrast the columns carefully. The left is not merely slow because it has many candidates; self-attention makes each query-document comparison much more expensive than a cached-vector score. The right column does not claim a universal ANN complexity bound: latency and recall depend on index type, hardware, and configuration. The engineering claim is that stages reserve expensive query-document interaction for candidates that survived cheaper evidence. The next sections make these terms concrete with index, embedding, and ranking code.
+Delivery: 3 minutes. Contrast the columns carefully. The left is not merely slow because it has many products; self-attention makes each query-product comparison much more expensive than a cached-vector score. The right column does not claim a universal retrieval complexity bound: latency and recall depend on the index type, hardware, and configuration. The engineering claim is that stages reserve expensive query-product interaction for candidates that survived cheaper evidence. The next sections make these terms concrete with index, embedding, and ranking code.
 :::
 
-# 02 Pipeline Design {background-color="#EF7C00"}
-## Candidate generation, ranking, and re-ranking
-> TODO: add two-tower architectures and systems trade-offs.
+## What must be ready before Maya shops?
 
-## Ethics Thread: Visibility allocation
-:::: {.callout-warning}
-TODO: examine stakeholder impacts of ranking choices.
-::::
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Before the query · offline</span>
+    <p class="cp-card__title">Prepare the product catalogue</p>
+    <ul style="margin:.45em 0 0;padding-left:1.05em;line-height:1.4;">
+      <li>store product title, description, category, and attributes;</li>
+      <li>attach price, availability, and stable product identifiers;</li>
+      <li>build and cache searchable representations.</li>
+    </ul>
+    <p class="cp-card__meta" style="margin-top:.7em;"><strong>Output:</strong> an indexed product catalogue with stable IDs.</p>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">When Maya searches · online</span>
+    <p class="cp-card__title">Respond to her query and current session</p>
+    <ul style="margin:.45em 0 0;padding-left:1.05em;line-height:1.4;">
+      <li>encode the query and current-session signals;</li>
+      <li>retrieve plausible product candidates;</li>
+      <li>rank using product and session features; and</li>
+      <li>return an explainable product list.</li>
+    </ul>
+    <p class="cp-card__meta" style="margin-top:.7em;"><strong>Output:</strong> a small, ranked product shortlist.</p>
+  </div>
+</div>
+<div class="cp-card cp-card--prompt" style="margin-top:.65em;"><strong>Design boundary:</strong> cached product representations make broad retrieval possible; detailed query-product matching waits until the shortlist.</div>
+```
+
+::: notes
+Delivery: 2 minutes. “Offline” is work performed before Maya searches; “online” is work that happens within her request’s latency budget. Reconnect to Week 05: the current session can change what the system retrieves even when long-term purchases say something different. Mention availability only as catalogue metadata; the teaching point is the representation boundary and the move from broad retrieval to richer matching. Do not introduce a specific index implementation yet.
+:::
+
+## Code walk: retrieve broad product candidates
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Candidate generation</span>
+    <pre style="margin:.42em 0 0;padding:.72em;border-radius:6px;background:#17212b;color:#ecf2f7;font-size:.66em;line-height:1.35;overflow:hidden;"><code>query = "compact carry-on luggage"
+
+candidates = index.search(
+    query=combine(query, maya.session),
+    k=100,
+)</code></pre>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Candidate products</span>
+    <pre style="margin:.42em 0 0;padding:.72em;border-radius:6px;background:#17212b;color:#ecf2f7;font-size:.62em;line-height:1.35;overflow:hidden;"><code>SKU-LUG-204  Compact Carry-on Spinner
+SKU-BPK-619  40L Cabin Backpack
+SKU-LUG-118  Hard-shell Carry-on
+SKU-DUF-403  Weekender Duffel
+SKU-TOT-730  Travel Tote</code></pre>
+  </div>
+</div>
+<p style="margin:.65em 0 0;color:#425466;font-size:.82em;"><strong>The candidate set contains products that could fit Maya’s current trip.</strong> It is not yet a justified recommendation order.</p>
+```
+
+::: notes
+Delivery: 3 minutes. Walk down the code in order. `combine` stands for a representation that lets the current session influence the query; its implementation belongs in Section 03. The call requests a broad K1 candidate set, while the right panel shows five example products from that set. Read the output as candidates, not as a final preference order. Do not explain the internals of `index.search` here; Section 03 will compare lexical, dense, and hybrid implementations. Check understanding: “Does appearing in this list mean SKU-LUG-204 is Maya’s recommendation?” No; it means the system should inspect it next.
+:::
+
+## A product candidate needs evidence for later ranking
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft"><span class="cp-kicker">Catalogue → candidates</span><p class="cp-card__title">Retrieve a product at all</p><p class="cp-card__meta">Carry product ID, title, category, and cached representation.</p></div>
+  <div class="cp-card cp-card--soft"><span class="cp-kicker">Candidates → ranker</span><p class="cp-card__title">Compare practical fit</p><p class="cp-card__meta">Make price, attributes, popularity, and session signals available.</p></div>
+  <div class="cp-card cp-card--soft"><span class="cp-kicker">Ranker → re-ranker</span><p class="cp-card__title">Reserve a shortlist</p><p class="cp-card__meta">Pass only products worth richer query-product comparison.</p></div>
+  <div class="cp-card cp-card--warning"><span class="cp-kicker">Re-ranker → Maya</span><p class="cp-card__title">Explain the shortlist</p><p class="cp-card__meta">Return product reasons, comparable alternatives, and near-duplicate control.</p></div>
+</div>
+<div class="cp-card cp-card--prompt" style="margin-top:.65em;"><strong>Failure to audit:</strong> if SKU-LUG-204 never enters the candidate set, no later ranker can recommend it.</div>
+```
+
+::: notes
+Delivery: 2 minutes. Read the cards as interface contracts, not as four new models. Each hand-off states what the next stage is allowed to know and what it must preserve. Return to SKU-LUG-204: later ranking may demote it, but candidate generation is the only point at which the system can ensure it remains visible. Transition: “What representations let `index.search` find a product whose catalogue wording differs from Maya’s query?”
+:::
 
 # ☕ When Google results danced {background-color="#000000"}
 
@@ -226,6 +339,237 @@ Historical source: Philipp Lenssen, “Google Dance – The Index Update of the 
 Image source and attribution: “Google’s First Server Rack,” photograph by Photographing Travis, 12 Aug 2012, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Google%27s_First_Server_Rack.jpg, CC BY 2.0, https://creativecommons.org/licenses/by/2.0/. Resized for the slide; retain the on-slide credit and link.
 :::
 
+# 03 Retrieval Architectures {background-color="#EF7C00"}
+
+::: notes
+Delivery: 20 seconds. Resume from the break by returning to the opaque `index.search` call from Section 02. This section opens that component: first, how products become vectors and an index; then, how exact and approximate search trade work, storage, and candidate recall.
+:::
+
+## Keywords help—until the catalogue uses different words
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Maya’s current query</span>
+    <p class="cp-card__title">“compact carry-on luggage for a five-day trip”</p>
+    <p class="cp-card__meta">Exact terms make the carry-on spinners easy to find.</p>
+    <div style="margin-top:.62em;padding:.52em .65em;background:#fff;border-left:4px solid #003D7C;"><strong>Lexical strength:</strong> product codes, dimensions, brands, and exact category terms.</div>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Catalogue wording</span>
+    <p class="cp-card__title">SKU-BPK-619 · “40L Cabin Backpack”</p>
+    <p class="cp-card__meta">It may suit a five-day trip even though its title contains neither “compact” nor “luggage.”</p>
+    <div style="margin-top:.62em;padding:.52em .65em;background:#fff;border-left:4px solid #EF7C00;"><strong>Retrieval question:</strong> can the system preserve semantic matches without losing exact constraints?</div>
+  </div>
+</div>
+<div class="cp-card cp-card--prompt" style="margin-top:.65em;"><strong>Candidate generation needs complementary signals:</strong> lexical matching for exact language; dense matching for related meaning.</div>
+```
+
+::: notes
+Delivery: 2 minutes. Contrast the exact phrase “carry-on luggage” with the catalogue title “Cabin Backpack.” Make the modest claim: dense retrieval can help preserve a semantic candidate, not prove that it should rank first. State that dimensions and product codes remain good lexical evidence, so the section will return to hybrid candidate generation at the end.
+:::
+
+## Two towers create a shared comparison space
+
+```{=html}
+<div style="display:grid;grid-template-columns:1fr .16fr 1fr .16fr 1fr;align-items:stretch;gap:.42em;max-width:94%;margin:0 auto;">
+  <div class="cp-flow-card"><span class="cp-kicker">Offline · product tower</span><strong>Product title, description, attributes</strong><span class="cp-card__meta">SKU-LUG-204 → product vector vₚ</span></div>
+  <div class="cp-flow-arrow" aria-hidden="true">→</div>
+  <div class="cp-flow-card"><span class="cp-kicker">Shared vector space</span><strong>Comparable embeddings</strong><span class="cp-card__meta">nearer vectors = stronger semantic candidate fit</span></div>
+  <div class="cp-flow-arrow" aria-hidden="true">←</div>
+  <div class="cp-flow-card"><span class="cp-kicker">Online · query tower</span><strong>Maya’s query + current session</strong><span class="cp-card__meta">→ query vector v_q</span></div>
+</div>
+<div class="cp-grid cp-grid--2" style="margin-top:.7em;align-items:stretch;">
+  <div class="cp-card cp-card--soft"><strong>Training:</strong> historical sessions and observed product interactions teach the towers which query-product pairs belong near each other.</div>
+  <div class="cp-card cp-card--warning"><strong>Retrieval:</strong> compare v_q with cached product vectors; do not run the product tower again for every query.</div>
+</div>
+```
+
+::: notes
+Delivery: 2 minutes. Separate learning from retrieval. The towers are trained offline from historical interactions; once trained, the product tower encodes catalogue products before Maya arrives. At request time the query tower encodes the current request and session. Do not suggest that a two-tower similarity is a final product ranking: it produces an efficient candidate signal.
+:::
+
+## Offline: build the dense product index
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">After training the towers</span>
+    <pre style="margin:.42em 0 0;padding:.72em;border-radius:6px;background:#17212b;color:#ecf2f7;font-size:.61em;line-height:1.32;overflow:hidden;"><code>product_vectors = product_tower.encode(products)
+faiss.normalize_L2(product_vectors)
+
+base = faiss.IndexFlatIP(d)
+index = faiss.IndexIDMap(base)
+index.add_with_ids(product_vectors, sku_ids)</code></pre>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">What the index retains</span>
+    <div class="cp-stack" style="gap:.42em;margin-top:.44em;">
+      <div><strong>Vector:</strong> searchable representation of each product.</div>
+      <div><strong>SKU ID:</strong> stable pointer back to title, price, image, and inventory metadata.</div>
+      <div><strong>Refresh path:</strong> new or materially changed products need a new vector and index entry.</div>
+    </div>
+    <p class="cp-card__meta" style="margin-top:.62em;">The two-tower model creates vectors. FAISS stores and searches them.</p>
+  </div>
+</div>
+<div class="cp-card cp-card--prompt" style="margin-top:.65em;"><strong>Normalised inner product:</strong> with L2-normalised vectors, `IndexFlatIP` gives an exact cosine-similarity baseline.</div>
+```
+
+::: notes
+Delivery: 3 minutes. Walk line by line. First encode all products with the product tower; then normalise vectors; then create a FAISS exact inner-product index; finally associate each vector with its stable SKU. Explain that the vector index does not replace product metadata: it returns SKU IDs that the retrieval service uses to fetch current details. Mention that changed products must be re-encoded and updated. [Source: FAISS, “Faiss indexes,” https://github.com/facebookresearch/faiss/wiki/Faiss-indexes]
+:::
+
+## Exact dense search is the baseline to beat
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Exact `IndexFlatIP` search</span>
+    <p class="cp-card__title">Compare Maya’s vector with every product vector</p>
+    <div class="cp-metric"><span class="cp-metric__label">Per-query work</span><span class="cp-metric__value">O(Nd)</span><span class="cp-metric__meta">5,000,000 products × 768 dimensions ≈ 3.84 billion dimension-wise comparisons</span></div>
+    <p class="cp-card__meta" style="margin-top:.58em;">Exact search is often the correct baseline for a smaller catalogue or an offline audit.</p>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Raw vector storage</span>
+    <p class="cp-card__title">Float32 vectors occupy real memory</p>
+    <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Vector store</span><span class="cp-metric__value">≈ 15.4 GB</span><span class="cp-metric__meta">5,000,000 × 768 × 4 bytes; before SKU IDs, metadata, and index overhead</span></div>
+    <p class="cp-card__meta" style="margin-top:.58em;">The catalogue scale—not the presence of embeddings—motivates approximate search.</p>
+  </div>
+</div>
+```
+
+::: notes
+Delivery: 2 minutes. Treat Flat search as the reference, not a failure. Derive the storage estimate aloud: five million times 768 times four bytes is about 15.4 GB in decimal units, before metadata. The per-query comparison count is a scale intuition, not a wall-clock latency claim; hardware and batching change elapsed time. State the evaluation rule: compare ANN candidate recall and latency against this exact baseline.
+:::
+
+## FAISS/HNSW: traverse promising product neighbours
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Graph ANN code walk</span>
+    <pre style="margin:.42em 0 0;padding:.72em;border-radius:6px;background:#17212b;color:#ecf2f7;font-size:.59em;line-height:1.32;overflow:hidden;"><code>base = faiss.IndexHNSWFlat(d, 32)
+index = faiss.IndexIDMap(base)
+index.add_with_ids(product_vectors, sku_ids)
+
+base.hnsw.efSearch = 64
+scores, ids = index.search(maya_vector, k=100)</code></pre>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">HNSW trade-off</span>
+    <p class="cp-card__title">Explore a graph, not every vector</p>
+    <div class="cp-stack" style="gap:.4em;">
+      <div><strong>M = 32:</strong> more graph links can improve recall but consume more memory.</div>
+      <div><strong>efSearch = 64:</strong> more exploration usually improves recall but costs more time.</div>
+      <div><strong>Storage:</strong> raw vectors still need ≈15.4 GB; 32 base-layer links add roughly 1.3 GB before overhead.</div>
+    </div>
+  </div>
+</div>
+<div class="cp-card cp-card--prompt" style="margin-top:.65em;"><strong>Candidate contract:</strong> HNSW may return fewer comparisons and lower latency, but its Recall@K₁ must be measured against `IndexFlatIP`.</div>
+```
+
+::: notes
+Delivery: 3 minutes. Explain HNSW as a proximity graph: the search navigates promising neighbours rather than scanning all product vectors. M controls graph connectivity; `efSearch` controls query exploration. Use the storage arithmetic as an order-of-magnitude estimate: five million times 32 links times 8 bytes is about 1.28 GB before higher-layer and object overhead. Do not promise a fixed latency or recall. [Source: FAISS, “Faiss indexes,” https://github.com/facebookresearch/faiss/wiki/Faiss-indexes]
+:::
+
+## IVF: search selected vector clusters
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Inverted-file (IVF) intuition</span>
+    <p class="cp-card__title">Cluster product vectors before queries arrive</p>
+    <div style="display:grid;grid-template-columns:1fr .14fr 1fr .14fr 1fr;align-items:center;gap:.26em;margin-top:.52em;">
+      <div class="cp-flow-card"><strong>5M vectors</strong><span class="cp-card__meta">offline k-means</span></div>
+      <div class="cp-flow-arrow" aria-hidden="true">→</div>
+      <div class="cp-flow-card"><strong>4,096 lists</strong><span class="cp-card__meta">coarse clusters</span></div>
+      <div class="cp-flow-arrow" aria-hidden="true">→</div>
+      <div class="cp-flow-card"><strong>Probe 32 lists</strong><span class="cp-card__meta">search a fraction</span></div>
+    </div>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Average-work estimate</span>
+    <p class="cp-card__title">`nprobe` is a recall–latency control</p>
+    <div class="cp-metric cp-metric--orange"><span class="cp-metric__label">Approximate vectors scanned</span><span class="cp-metric__value">≈ 39,000</span><span class="cp-metric__meta">5,000,000 × 32 / 4,096 ≈ 1/128 of a full scan, before coarse assignment</span></div>
+    <p class="cp-card__meta" style="margin-top:.55em;">`IndexIVFFlat` keeps full vectors; IVF reduces search work, not raw-vector storage. IVF-PQ can reduce storage at additional approximation cost.</p>
+  </div>
+</div>
+```
+
+::: notes
+Delivery: 2 minutes. Explain that IVF is a cluster-pruning strategy, not a graph. It trains a coarse quantizer offline, then examines only `nprobe` nearby lists at query time. Derive the 39,000 estimate from five million times 32 divided by 4,096; clarify it is an average list-balance estimate. Contrast with HNSW: HNSW navigates neighbours, whereas IVF selects clusters. Do not conflate `IndexIVFFlat`, which retains full vectors, with compressed IVF-PQ. [Source: FAISS, “Faiss indexes,” https://github.com/facebookresearch/faiss/wiki/Faiss-indexes]
+:::
+
+## 🎰 Bandit Time: What does `nprobe` change? {background-color="#003D7C"}
+
+```{=html}
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">Maya’s five-million-product index has 4,096 IVF lists. The system raises `nprobe` from 32 to 128. What is the most defensible expectation?</p>
+    <div class="cp-choice-grid">
+      <div class="cp-choice-card cp-choice-card--a"><strong class="cp-choice-card__letter">A.</strong><span class="cp-choice-card__text">The vectors are automatically compressed, so storage falls.</span></div>
+      <div class="cp-choice-card cp-choice-card--b"><strong class="cp-choice-card__letter">B.</strong><span class="cp-choice-card__text">More lists are searched, so recall may rise and query work usually rises.</span></div>
+      <div class="cp-choice-card cp-choice-card--c"><strong class="cp-choice-card__letter">C.</strong><span class="cp-choice-card__text">The ranker can recover every product omitted by IVF.</span></div>
+      <div class="cp-choice-card cp-choice-card--d"><strong class="cp-choice-card__letter">D.</strong><span class="cp-choice-card__text">The two-tower model no longer needs product vectors.</span></div>
+    </div>
+  </div>
+  <div class="cp-activity__timer cp-center"><div class="cp-timer"><svg width="140" height="140" viewBox="0 0 180 180" aria-label="Forty-five-second countdown timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w06-ivf-mcq-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w06-ivf-mcq-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">00:45</text></svg><span id="w06-ivf-mcq-status" role="timer" aria-live="polite" class="cp-sr-only">00:45</span><button id="w06-ivf-mcq-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="45" data-ring="w06-ivf-mcq-ring" data-text="w06-ivf-mcq-text" data-status="w06-ivf-mcq-status">▶ Start Timer</button></div></div>
+</div>
+```
+
+::: notes
+Activity mode: individual response / TempoQuiz. Timebox: 45 seconds to answer, followed by 75 seconds of debrief. Correct answer: B. Increasing `nprobe` searches more IVF lists; it usually spends more work and can recover more true neighbours. A confuses IVF with compression, C ignores the irreversible candidate-generation boundary, and D confuses the learned representation with the index. Expected output: students articulate the recall–latency trade-off in one sentence. Instructor synthesis: `nprobe` is a deployment control that requires measurement against an exact baseline.
+:::
+
+## 👥 Retrieval design clinic: choose the candidate index {background-color="#003D7C"}
+
+```{=html}
+<div class="cp-activity cp-activity--navy cp-activity--framed cp-grid cp-grid--2-aside">
+  <div>
+    <p class="cp-activity__prompt">Your group owns one deployment scenario. Choose the initial candidate index and defend the trade-off.</p>
+    <div class="cp-grid cp-grid--3" style="margin-top:.54em;font-size:.75em;line-height:1.2;">
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">A · audit baseline</p><p style="margin:0;">5M vectors; exact reproducibility matters; offline or relaxed latency.</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">B · live shopping</p><p style="margin:0;">5M vectors; high Recall@K₁; raw vectors fit in memory; tight latency.</p></div>
+      <div class="cp-card cp-card--soft"><p class="cp-card__title">C · marketplace scale</p><p style="margin:0;">100M vectors; raw-vector storage is costly; bounded query budget.</p></div>
+    </div>
+    <p class="cp-activity__instructions" style="margin-top:.62em;">Choose <strong>Flat, HNSW, or IVF / IVF-PQ</strong>. Report: (1) the index; (2) one recall–latency or storage consequence; and (3) the exact-baseline comparison you would run.</p>
+  </div>
+  <div class="cp-activity__timer cp-center"><div class="cp-timer"><svg width="140" height="140" viewBox="0 0 180 180" aria-label="Three-minute group discussion timer"><circle cx="90" cy="90" r="75" fill="none" stroke="#ddd" stroke-width="14"></circle><circle id="w06-retrieval-clinic-ring" class="cp-timer__ring" cx="90" cy="90" r="75" fill="none" stroke="#EF7C00" stroke-width="14" stroke-dasharray="471.24" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 90 90)"></circle><text id="w06-retrieval-clinic-text" class="cp-timer__text" x="90" y="98" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#00796B">03:00</text></svg><span id="w06-retrieval-clinic-status" role="timer" aria-live="polite" class="cp-sr-only">03:00</span><button id="w06-retrieval-clinic-btn" type="button" class="cp-timer__button" data-cp-timer data-seconds="180" data-ring="w06-retrieval-clinic-ring" data-text="w06-retrieval-clinic-text" data-status="w06-retrieval-clinic-status">▶ Start Timer</button></div></div>
+</div>
+```
+
+::: notes
+Activity mode: small-group discussion. Timebox: 3 minutes of group work, followed by 2 minutes of reports and synthesis. Expected output: an index choice, one explicit runtime or storage consequence, and one baseline comparison. Instructor synthesis: A starts with Flat because exactness is valuable; B can begin with HNSW when memory is available and high candidate recall matters; C motivates IVF with compression because 100M full vectors are expensive. No choice is automatically correct: validate Recall@K₁, latency, memory, update behaviour, and operational constraints against an exact baseline where feasible.
+:::
+
+## Candidate generation is a measured contract
+
+```{=html}
+<div class="cp-grid cp-grid--2" style="align-items:stretch;">
+  <div class="cp-card cp-card--soft">
+    <span class="cp-kicker">Hybrid candidate score</span>
+    <p class="cp-card__title">Protect exact terms and semantic neighbours</p>
+    <div style="margin:.5em 0;padding:.62em .72em;background:#fff;border-left:5px solid #003D7C;font-family:Arial,Helvetica,sans-serif;font-size:1.05em;"><strong>s</strong><sub>candidate</sub>(p) = α · <strong>s</strong><sub>lexical</sub>(p) + (1 − α) · <strong>s</strong><sub>dense</sub>(p)</div>
+    <p class="cp-card__meta">Lexical signals preserve exact dimensions, brands, and product codes. Dense signals preserve meaning such as “Cabin Backpack.”</p>
+  </div>
+  <div class="cp-card cp-card--warning">
+    <span class="cp-kicker">Evaluate before ranking</span>
+    <p class="cp-card__title">Measure candidate quality at K₁</p>
+    <div class="cp-stack" style="gap:.38em;">
+      <div><strong>Recall@K₁:</strong> did suitable products survive?</div>
+      <div><strong>Latency:</strong> can retrieval meet the request budget?</div>
+      <div><strong>Storage:</strong> do vectors and index structure fit the deployment?</div>
+      <div><strong>Freshness:</strong> do changed products receive updated representations?</div>
+    </div>
+  </div>
+</div>
+<div class="cp-card cp-card--prompt" style="margin-top:.65em;"><strong>Bridge to ranking:</strong> FAISS and hybrid retrieval preserve broad candidates. The ranker and re-ranker decide which surviving products deserve the top positions.</div>
+```
+
+::: notes
+Delivery: 2 minutes. Return to the lexical/dense tension from the first slide. The formula is a conceptual fusion rule, not a claim that fixed alpha works for every system. Candidate generation must be evaluated separately from ranking: Recall@K1 asks whether the right products survived, while downstream metrics judge ordering only among survivors. Close by restoring the Section 02 contract: omitted products cannot be rescued later.
+:::
+
 # Summary {background-color="#003D7C"}
 ## 🔑 <u>Pipeline stages allocate both computation and visibility.</u>
 
@@ -236,7 +580,7 @@ TODO (instructor): close with the stated transition.
 ## {background-color="#002a26"}
 
 ```{=html}
-<div class="cp-frame-bg cp-frame-teal"></div>
+<div class="cp-frame-bg cp-frame-teal" style="z-index:3;"></div>
 <div class="cp-frame-content" style="inset:0;padding:0;overflow:hidden;">
   <a href="https://commons.wikimedia.org/wiki/File:Soldering_workshop_in_the_Prototyping_Lab,_National_Design_Centre,_Singapore_-_20141201-02.jpg" target="_blank" rel="noopener" aria-label="Open the original Wikimedia Commons photograph of a National Design Centre Singapore workshop" style="position:absolute;inset:0;display:block;">
     <img src="assets/preview/w07-ndc-prototyping-workshop.jpg" alt="Participants prototyping at the National Design Centre in Singapore" style="display:block;width:100%;height:100%;object-fit:cover;">
@@ -246,8 +590,8 @@ TODO (instructor): close with the stated transition.
     <div class="cp-frame-label" style="display:inline-block;margin:0 0 .45em;background:#00796B;color:#fff;">Next Week Preview — Week 07</div>
     <div class="cp-frame-title" style="max-width:65%;color:#80cbc4;line-height:1.05;">Quiz and Project Design Critique Workshop</div>
   </div>
-  <div style="position:absolute;right:3.5%;bottom:3%;font-size:.52em;line-height:1.3;"><a href="https://commons.wikimedia.org/wiki/File:Soldering_workshop_in_the_Prototyping_Lab,_National_Design_Centre,_Singapore_-_20141201-02.jpg" target="_blank" rel="noopener" style="color:#d8fffa;text-decoration:underline;text-shadow:0 1px 3px #001d1a;">Mitch Altman · CC BY-SA 2.0 · Wikimedia Commons ↗</a></div>
 </div>
+<div style="position:absolute;right:42px;bottom:42px;z-index:4;max-width:38%;padding:.34em .58em;background:rgba(0,42,38,.82);font-size:.52em;line-height:1.3;text-align:right;"><a href="https://commons.wikimedia.org/wiki/File:Soldering_workshop_in_the_Prototyping_Lab,_National_Design_Centre,_Singapore_-_20141201-02.jpg" target="_blank" rel="noopener" style="color:#d8fffa;text-decoration:underline;">Mitch Altman · CC BY-SA 2.0 · Wikimedia Commons ↗</a></div>
 ```
 
 ::: notes
