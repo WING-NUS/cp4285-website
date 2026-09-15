@@ -34,6 +34,7 @@ sections:
         <section class="page-changelog" aria-labelledby="home-changelog-title">
           <h5 id="home-changelog-title">Changelog</h5>
           <ul>
+            <li><strong>15 Sep 2026</strong> — Published the Week 06 retrieval-and-ranking lecture, including the project-milestone discussion and ranking, re-ranking, and visibility materials.</li>
             <li><strong>8 Sep 2026</strong> — Made weekly schedule cards a click-anywhere accordion with smooth opening and closing, while preserving links and embedded materials.</li>
             <li><strong>6 Sep 2026</strong> — Refreshed the lecture decks and authoring workflow, and made page changelog history expandable.</li>
             <li><strong>5 Sep 2026</strong> — Standardised schedule labels and date-time formatting, with a Week 05 recap and Week 06 preview.</li>

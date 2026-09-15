@@ -2,6 +2,8 @@
 title: Assignments
 weight: 20
 changelog:
+  - date: 15 Sep 2026
+    text: Clarified the project path from the design critique update to the 11 Nov STePS poster or final report deliverable.
   - date: 10 Aug 2026
     text: Clarified quiz AI restrictions and the alternative final project deliverables.
   - date: 10 Aug 2026

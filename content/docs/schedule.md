@@ -2,6 +2,8 @@
 title: Schedule
 weight: 10
 changelog:
+  - date: 15 Sep 2026
+    text: Added Week 05 and Week 06 lecture recording links, and published the Week 06 retrieval-and-ranking deck with its project-milestone discussion.
   - date: 8 Sep 2026
     text: Made weekly schedule cards a click-anywhere accordion with smooth opening and closing, while preserving links and embedded materials.
   - date: 5 Sep 2026
@@ -157,6 +159,8 @@ Learning outcomes:
 **Slides:**
 
 {{< slides src="/cp4285-website/slides/w05/w05.html" title="Week 05 Slides" height="520px" >}}
+
+**Lecture video:** [Watch the Week 05 lecture recording](https://soc-n.us/cp4285-t2610-w05-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
 {{< week-card week="Week 06" date="15–21 Sep 2026" focus="Retrieval and Ranking Architectures" due="Question Bank Collection — Mon, 21 Sep 2026 · 23:59 SGT" >}}
@@ -181,6 +185,8 @@ Learning outcomes:
 **Slides:**
 
 {{< slides src="/cp4285-website/slides/w06/w06.html" title="Week 06 Slides" height="520px" >}}
+
+**Lecture video:** [Watch the Week 06 lecture recording](https://soc-n.us/cp4285-t2610-w06-video) — requires NUSNet authentication.
 {{< /week-card >}}
 
 <aside class="course-schedule-notice course-schedule-notice--break"><strong>Recess Week</strong><span>Tue, 22 Sep 2026 · No class</span></aside>
