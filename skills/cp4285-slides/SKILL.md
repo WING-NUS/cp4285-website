@@ -158,6 +158,12 @@ Use the shared fixed 20 px frame system. Do not reintroduce responsive `clamp()`
 
 Available frame variants are `cp-frame-orange`, `cp-frame-navy`, `cp-frame-teal`, and `cp-frame-purple`. Use the W02 thumbnail recap classes only for a genuine previous-week composite recap: `cp-thumbnail-recap-content`, `cp-thumbnail-composite-wrap`, and `cp-thumbnail-composite`.
 
+### Next-week preview slide
+
+End a deck with a dedicated full-bleed next-week preview after the Summary slide. Use the teal frame treatment unless an instructor asks for another variant. Keep the visual **centred inside the frame**, not viewport-wide beneath it: the preview's `cp-frame-content` must use the same fixed inset as `cp-frame-bg` (currently `40px`), and its image must use `object-fit: contain` on a matching dark background so no instructional details are cropped. Put gradient/title overlays inside that same framed content area.
+
+If the preview includes a credit or AI-generation caption, place it as a sibling after `cp-frame-content` with a higher stacking layer (for example, `z-index:4`) so it remains visibly in front of the frame. Keep a descriptive image alt text and record its source in speaker notes.
+
 ### Four-quadrant previous-week recap
 
 Use [`templates/previous-week-recap.qmd`](templates/previous-week-recap.qmd) for the slide markup. The composite asset is a single 1920x1080 image made from four 16:9 source-slide captures:
