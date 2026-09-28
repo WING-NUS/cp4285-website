@@ -8,8 +8,8 @@ date: "10 Nov 2026"
 date-format: "DD MMM YYYY"
 format:
   revealjs:
-    theme: [default, ../w01/w01-custom.scss]
-    include-in-header: ../shared-title-qr-style.html
+    theme: [default, ../cp4285-common.scss, w13-custom.scss]
+    include-after-body: ../cp-timer.html
     slide-number: true
     show-slide-number: all
     width: 1600

@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="w12_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="w12_files/libs/revealjs/dist/theme/quarto-32d026921de4f487b663066d9af0df02.css">
   <link href="w12_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="w12_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="w12_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -129,18 +129,6 @@
       margin-left: auto;
       margin-right: 0; 
     }
-  </style>
-  <style>
-  .reveal #title-slide { box-sizing: border-box; padding: 1.2em 340px 1.2em 1.5em; background:#fff; color:#003D7C; text-align:left; }
-  .reveal #title-slide .title { max-width:10em; margin:.7em 0 .24em; color:#003D7C; font-size:2.35em; font-weight:700; line-height:1.06; }
-  .reveal #title-slide .subtitle { max-width:42em; margin:0; color:#333; font-size:.72em; line-height:1.35; }
-  .reveal #title-slide .title-qr-subtitle { display:block; }
-  .reveal #title-slide .title-qr { position:absolute; top:50%; right:1.5em; width:255px; transform:translateY(-50%); box-sizing:border-box; display:block; padding:16px 16px 14px; border:4px solid #00796B; border-radius:12px; background:#fff; color:#003D7C; text-align:center; text-decoration:none; }
-  .reveal #title-slide .title-qr-image { display:block; width:205px; height:205px; margin:0 auto 9px; }
-  .reveal #title-slide .title-qr-label { display:block; font-size:.62em; font-weight:700; line-height:1.18; }
-  .reveal #title-slide .title-qr-label span { color:#00796B; font-size:.86em; }
-  .reveal #title-slide .quarto-title-authors, .reveal #title-slide .quarto-title-author { justify-content:flex-start; margin-left:0; margin-right:0; color:#333; text-align:left; }
-  .reveal #title-slide .date { margin-top:1.1em; color:#00796B; text-align:left; }
   </style>
 </head>
 <body class="quarto-light">
@@ -453,6 +441,127 @@ CP4285 Instruction Team
           RevealZoom
         ]
       });
+    </script>
+    <script>
+    (function () {
+      function byId(id) {
+        return id ? document.getElementById(id) : null;
+      }
+
+      function format(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var remainder = seconds % 60;
+        return (minutes < 10 ? '0' + minutes : String(minutes)) + ':' + (remainder < 10 ? '0' + remainder : String(remainder));
+      }
+
+      function setupTimer(button) {
+        if (button.dataset.cpTimerBound === 'true') return;
+        var duration = Number(button.dataset.seconds || 0);
+        var ring = byId(button.dataset.ring);
+        var text = byId(button.dataset.text);
+        var status = byId(button.dataset.status);
+        if (!duration || !ring || !text || !status) return;
+
+        button.dataset.cpTimerBound = 'true';
+        var remaining = duration;
+        var interval = null;
+        var state = 'idle';
+        var audio = null;
+        var circumference = 2 * Math.PI * Number(ring.getAttribute('r') || 75);
+        var originalStroke = ring.getAttribute('stroke') || '#EF7C00';
+
+        function update() {
+          text.textContent = format(remaining);
+          status.textContent = state === 'complete' ? "Time's up!" : format(remaining);
+          ring.setAttribute('stroke-dashoffset', circumference * (1 - remaining / duration));
+        }
+
+        function pause() {
+          if (state !== 'running') return;
+          window.clearInterval(interval);
+          interval = null;
+          state = 'paused';
+          button.textContent = '▶ Resume';
+        }
+
+        function reset() {
+          window.clearInterval(interval);
+          interval = null;
+          remaining = duration;
+          state = 'idle';
+          ring.setAttribute('stroke', originalStroke);
+          button.textContent = '▶ Start Timer';
+          update();
+        }
+
+        function chime() {
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          if (!audio) audio = new AudioContextClass();
+          if (audio.state === 'suspended') audio.resume();
+          var oscillator = audio.createOscillator();
+          var gain = audio.createGain();
+          var now = audio.currentTime;
+          oscillator.type = 'sine';
+          oscillator.frequency.value = 880;
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+          oscillator.connect(gain);
+          gain.connect(audio.destination);
+          oscillator.start(now);
+          oscillator.stop(now + 0.5);
+        }
+
+        button.addEventListener('click', function () {
+          if (state === 'complete') {
+            reset();
+            return;
+          }
+          if (state === 'running') {
+            pause();
+            return;
+          }
+          state = 'running';
+          button.textContent = '⏸ Pause';
+          interval = window.setInterval(function () {
+            remaining = Math.max(0, remaining - 1);
+            update();
+            if (remaining === 0) {
+              window.clearInterval(interval);
+              interval = null;
+              state = 'complete';
+              ring.setAttribute('stroke', '#00C875');
+              button.textContent = '↻ Restart Timer';
+              chime();
+            }
+          }, 1000);
+        });
+
+        var slide = button.closest('section');
+        if (slide) slide.dataset.cpTimerPause = 'true';
+        update();
+      }
+
+      function setupAll() {
+        document.querySelectorAll('button[data-cp-timer]').forEach(setupTimer);
+        if (!window.Reveal || window.__cpTimerSlideListener) return;
+        window.__cpTimerSlideListener = true;
+        window.Reveal.on('slidechanged', function (event) {
+          if (!event.previousSlide || event.previousSlide.dataset.cpTimerPause !== 'true') return;
+          event.previousSlide.querySelectorAll('button[data-cp-timer]').forEach(function (button) {
+            if (button.textContent === '⏸ Pause') button.click();
+          });
+        });
+      }
+
+      if (window.Reveal && window.Reveal.isReady && window.Reveal.isReady()) {
+        setupAll();
+      } else if (window.Reveal) {
+        window.Reveal.on('ready', setupAll);
+      } else {
+        window.addEventListener('load', setupAll);
+      }
+    }());
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
