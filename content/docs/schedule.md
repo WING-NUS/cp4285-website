@@ -228,7 +228,7 @@ Suggested weight: 5-10% participation or milestone grade.
 {{< slides src="/cp4285-website/slides/w07/w07.html" title="Week 07 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 08" date="6–12 Oct 2026" focus="Learning-to-Rank" due="Essay 2 — Mon, 5 Oct 2026 · 23:59 SGT" >}}
+{{< week-card week="Week 08" date="6–12 Oct 2026" focus="Learning-to-Rank" >}}
 
 Topics:
 
@@ -251,7 +251,7 @@ Learning outcomes:
 {{< slides src="/cp4285-website/slides/w08/w08.html" title="Week 08 Slides" height="520px" >}}
 {{< /week-card >}}
 
-{{< week-card week="Week 09" date="13–19 Oct 2026" focus="Graph-Based Recommendation" >}}
+{{< week-card week="Week 09" date="13–19 Oct 2026" focus="Graph-Based Recommendation" due="Essay 2 — Mon, 12 Oct 2026 · 23:59 SGT" >}}
 
 Topics:
 
