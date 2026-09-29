@@ -2,6 +2,8 @@
 title: Assignments
 weight: 20
 changelog:
+  - date: 29 Sep 2026
+    text: Moved the Essay 2 deadline to Mon, 12 Oct 2026 at 23:59 SGT.
   - date: 15 Sep 2026
     text: Clarified the project path from the design critique update to the 11 Nov STePS poster or final report deliverable.
   - date: 10 Aug 2026
@@ -38,7 +40,7 @@ Coursework is organized around steady participation, written critique, project w
 
 ## Essays
 
-There are two individual take-home essays. Each essay is worth **10%**: **8%** for the written analysis and **2%** for randomized peer review. Essay 1 is due **Mon, 24 Aug 2026, 23:59 SGT**; Essay 2 is due **Mon, 5 Oct 2026, 23:59 SGT**.
+There are two individual take-home essays. Each essay is worth **10%**: **8%** for the written analysis and **2%** for randomized peer review. Essay 1 is due **Mon, 24 Aug 2026, 23:59 SGT**; Essay 2 is due **Mon, 12 Oct 2026, 23:59 SGT**.
 
 AI tools may be used as a resource, but an AI declaration is mandatory and the analysis must remain your own work.
 

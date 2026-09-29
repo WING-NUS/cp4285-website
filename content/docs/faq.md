@@ -2,6 +2,8 @@
 title: Frequently Asked Questions (FAQ)
 weight: 25
 changelog:
+  - date: 29 Sep 2026
+    text: Moved the Essay 2 deadline to Mon, 12 Oct 2026 at 23:59 SGT.
   - date: 10 Aug 2026
     text: Clarified quiz AI restrictions and the alternative final project deliverables.
   - date: 10 Aug 2026
@@ -42,7 +44,7 @@ For questions about lecture material, please use the relevant weekly discussion 
    Please refer to the [Grading page](../grading) for the full breakdown: Final Exam (30%), Group Project (30%), Essays (20%), Quizzes/Tests (10%), Class Participation (10%).
 
 2. *Are essays individual or group work?*
-   Essays are individual take-home assignments. Each is worth 10%: 8% for the written analysis and 2% for randomized peer review. Essay 1 is due **Mon, 24 Aug 2026, 23:59 SGT**; Essay 2 is due **Mon, 5 Oct 2026, 23:59 SGT**. AI tools are permitted as a resource, but no collaboration with other students is allowed. You must submit an AI declaration with each essay; where requested by Min, you must provide full documentation of your AI use. Please refer to the [Grading page](../grading) for the full AI use policy.
+   Essays are individual take-home assignments. Each is worth 10%: 8% for the written analysis and 2% for randomized peer review. Essay 1 is due **Mon, 24 Aug 2026, 23:59 SGT**; Essay 2 is due **Mon, 12 Oct 2026, 23:59 SGT**. AI tools are permitted as a resource, but no collaboration with other students is allowed. You must submit an AI declaration with each essay; where requested by Min, you must provide full documentation of your AI use. Please refer to the [Grading page](../grading) for the full AI use policy.
 
 3. *What is the group project about?*
    Please refer to the [Assignments page](../assignments) for full details. In brief, your team will select a recommendation system dataset, implement classical and neural baselines, evaluate them rigorously, and conduct an ethical analysis. Teams selected to present at 29th STePS will present on **Wed, 11 Nov 2026** and do not submit a project report; teams not presenting submit a report instead.

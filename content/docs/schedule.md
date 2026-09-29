@@ -2,6 +2,8 @@
 title: Schedule
 weight: 10
 changelog:
+  - date: 29 Sep 2026
+    text: Moved the Essay 2 deadline to Mon, 12 Oct 2026 at 23:59 SGT.
   - date: 15 Sep 2026
     text: Added Week 05 and Week 06 lecture recording links, and published the Week 06 retrieval-and-ranking deck with its project-milestone discussion.
   - date: 8 Sep 2026
